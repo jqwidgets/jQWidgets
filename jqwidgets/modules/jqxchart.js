@@ -180,20 +180,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 9815:
@@ -397,20 +383,6 @@ License: https://jqwidgets.com/license/ */
 })(jqxBaseFramework);
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1395,7 +1367,7 @@ License: https://jqwidgets.com/license/ */
             },
 
             _credits: function () {
-                if ($.jqx["c" + "r" + "e" + "d" + "i" + "t" + "s"] !== "70208878-FCD1-4EC7-9249-BA0F153A5DE8") {
+                if ($.jqx["c" + "r" + "e" + "d" + "i" + "t" + "s"] !== "71208878-FCD1-4EC7-9249-BA0F153A5DE8") {
 	var self = this;
 	var t = String.fromCharCode(119, 119, 119, 46, 106, 113, 119, 105, 100, 103, 101, 116, 115, 46, 99, 111, 109);
 	if (!self._isRangeSelectorInstance && location.hostname.indexOf(t.substring(4)) == -1) {
@@ -11060,20 +11032,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 2306:
@@ -11788,20 +11746,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 2462:
@@ -11957,20 +11901,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 5459:
@@ -11978,11 +11908,11 @@ License: https://jqwidgets.com/license/ */
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -20175,6 +20105,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
+			if (window.jQuery.fn.extend) {
+				window.jQuery.fn.stop = window.JQXLite.fn.stop;
+				window.jQuery.fn.animate = window.JQXLite.fn.animate;
+
+				var keys = Object.keys(window.JQXLite.fn);
+				for (var index in keys) {
+					var key = keys[index];
+					if (window.jQuery.fn[key] == undefined) {
+						window.jQuery.fn[key] = window.JQXLite.fn[key];
+					}
+				}
+			}
+
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -21796,7 +21739,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -22289,12 +22232,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -22990,6 +22933,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
+		if (!$.easing) {
+			$.easing = {};
+		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -23329,20 +23275,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -28290,20 +28222,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 })(pdfDataExport.API)
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -34456,20 +34374,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 3159:
@@ -37390,20 +37294,6 @@ var saveAs = window.jqxSaveAs = saveAs
     };       
 })(jqxBaseFramework); // end of jqxPlot
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

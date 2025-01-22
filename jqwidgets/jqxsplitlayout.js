@@ -1,6 +1,6 @@
 /*
-jQWidgets v20.0.0 (2024-Sep)
-Copyright (c) 2011-2024 jQWidgets.
+jQWidgets v22.0.0 (2025-Jan)
+Copyright (c) 2011-2025 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -2459,20 +2459,6 @@ customElements.define('jqx-tab-layout-item', TabLayoutItem);
 customElements.define('jqx-split-layout', SplitLayout);
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

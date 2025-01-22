@@ -2256,20 +2256,6 @@ document.Globalize = Globalize;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 7351:
@@ -2277,1197 +2263,1184 @@ document.Globalize = Globalize;
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
-
-(function ($) {
-    $.jqx.cssroundedcorners = function (value) {
-        var cssMap = {
-            'all': 'jqx-rc-all',
-            'top': 'jqx-rc-t',
-            'bottom': 'jqx-rc-b',
-            'left': 'jqx-rc-l',
-            'right': 'jqx-rc-r',
-            'top-right': 'jqx-rc-tr',
-            'top-left': 'jqx-rc-tl',
-            'bottom-right': 'jqx-rc-br',
-            'bottom-left': 'jqx-rc-bl'
-        };
-
-        for (var prop in cssMap) {
-            if (!cssMap.hasOwnProperty(prop))
-                continue;
-
-            if (value == prop)
-                return cssMap[prop];
-        }
+(function () {
+    if (typeof document === 'undefined') {
+        return;
     }
 
-    $.jqx.jqxWidget("jqxButton", "", {});
+    (function ($) {
+        $.jqx.cssroundedcorners = function (value) {
+            var cssMap = {
+                'all': 'jqx-rc-all',
+                'top': 'jqx-rc-t',
+                'bottom': 'jqx-rc-b',
+                'left': 'jqx-rc-l',
+                'right': 'jqx-rc-r',
+                'top-right': 'jqx-rc-tr',
+                'top-left': 'jqx-rc-tl',
+                'bottom-right': 'jqx-rc-br',
+                'bottom-left': 'jqx-rc-bl'
+            };
 
-    $.extend($.jqx._jqxButton.prototype, {
-        defineInstance: function () {
-            var settings = {
-                type: '',
-                cursor: 'arrow',
-                // rounds the button corners.
-                roundedCorners: 'all',
-                // enables / disables the button
-                disabled: false,
-                // sets height to the button.
-                height: null,
-                // sets width to the button.
-                width: null,
-                overrideTheme: false,
-                enableHover: true,
-                enableDefault: true,
-                enablePressed: true,
-                imgPosition: "center",
-                imgSrc: "",
-                imgWidth: 16,
-                imgHeight: 16,
-                value: null,
-                textPosition: "",
-                textImageRelation: "overlay",
-                rtl: false,
-                _ariaDisabled: false,
-                _scrollAreaButton: false,
-                // "primary", "inverse", "danger", "info", "success", "warning", "link"
-                template: "default",
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
+            for (var prop in cssMap) {
+                if (!cssMap.hasOwnProperty(prop))
+                    continue;
+
+                if (value == prop)
+                    return cssMap[prop];
+            }
+        }
+
+        $.jqx.jqxWidget("jqxButton", "", {});
+
+        $.extend($.jqx._jqxButton.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    type: '',
+                    cursor: 'arrow',
+                    // rounds the button corners.
+                    roundedCorners: 'all',
+                    // enables / disables the button
+                    disabled: false,
+                    // sets height to the button.
+                    height: null,
+                    // sets width to the button.
+                    width: null,
+                    overrideTheme: false,
+                    enableHover: true,
+                    enableDefault: true,
+                    enablePressed: true,
+                    imgPosition: "center",
+                    imgSrc: "",
+                    imgWidth: 16,
+                    imgHeight: 16,
+                    value: null,
+                    textPosition: "",
+                    textImageRelation: "overlay",
+                    rtl: false,
+                    _ariaDisabled: false,
+                    _scrollAreaButton: false,
+                    // "primary", "inverse", "danger", "info", "success", "warning", "link"
+                    template: "default",
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    }
                 }
-            }
-            if (this === $.jqx._jqxButton.prototype) {
+                if (this === $.jqx._jqxButton.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
                 return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
+            },
 
-        _addImage: function (name) {
-            var that = this;
-            if (that.element.nodeName.toLowerCase() == "input" || that.element.nodeName.toLowerCase() == "button" || that.element.nodeName.toLowerCase() == "div") {
-                if (!that._img) {
-                    that.field = that.element;
-                    if (that.field.className) {
-                        that._className = that.field.className;
-                    }
+            _addImage: function (name) {
+                var that = this;
+                if (that.element.nodeName.toLowerCase() == "input" || that.element.nodeName.toLowerCase() == "button" || that.element.nodeName.toLowerCase() == "div") {
+                    if (!that._img) {
+                        that.field = that.element;
+                        if (that.field.className) {
+                            that._className = that.field.className;
+                        }
 
-                    var properties = {
-                        'title': that.field.title
-                    };
+                        var properties = {
+                            'title': that.field.title
+                        };
 
-                    var value = null;
-                    if (that.field.getAttribute('value')) {
-                        var value = that.field.getAttribute('value');
-                    }
-                    else if (that.element.nodeName.toLowerCase() != "input") {
-                        var value = that.element.innerHTML;
-                    }
-                    if (that.value) {
-                        value = that.value;
-                    }
-                    if (that.field.id.length) {
-                        properties.id = that.field.id.replace(/[^\w]/g, '_') + "_" + name;
+                        var value = null;
+                        if (that.field.getAttribute('value')) {
+                            var value = that.field.getAttribute('value');
+                        }
+                        else if (that.element.nodeName.toLowerCase() != "input") {
+                            var value = that.element.innerHTML;
+                        }
+                        if (that.value) {
+                            value = that.value;
+                        }
+                        if (that.field.id.length) {
+                            properties.id = that.field.id.replace(/[^\w]/g, '_') + "_" + name;
+                        }
+                        else {
+                            properties.id = $.jqx.utilities.createId() + "_" + name;
+                        }
+
+
+                        var wrapper = document.createElement('div');
+                        wrapper.id = properties.id;
+                        wrapper.title = properties.title;
+                        wrapper.style.cssText = that.field.style.cssText;
+                        wrapper.style.boxSizing = 'border-box';
+
+                        var img = document.createElement("img");
+                        img.setAttribute('src', that.imgSrc);
+                        img.setAttribute('width', that.imgWidth);
+                        img.setAttribute('height', that.imgHeight);
+                        wrapper.appendChild(img);
+                        that._img = img;
+
+                        var text = document.createElement('span');
+                        if (value) {
+                            text.innerHTML = value;
+                            that.value = value;
+                        }
+                        wrapper.appendChild(text);
+                        that._text = text;
+
+                        that.field.style.display = "none";
+                        if (that.field.parentNode) {
+                            that.field.parentNode.insertBefore(wrapper, that.field.nextSibling);
+                        }
+
+                        var data = that.host.data();
+                        that.host = $(wrapper);
+                        that.host.data(data);
+                        that.element = wrapper;
+                        that.element.id = that.field.id;
+                        that.field.id = properties.id;
+                        var elementObj = new $(that.element);
+                        var fieldObj = new $(that.field);
+                        if (that._className) {
+                            elementObj.addClass(that._className);
+                            fieldObj.removeClass(that._className);
+                        }
+
+                        if (that.field.tabIndex) {
+                            var tabIndex = that.field.tabIndex;
+                            that.field.tabIndex = -1;
+                            that.element.tabIndex = tabIndex;
+                        }
                     }
                     else {
-                        properties.id = $.jqx.utilities.createId() + "_" + name;
+                        that._img.setAttribute('src', that.imgSrc);
+                        that._img.setAttribute('width', that.imgWidth);
+                        that._img.setAttribute('height', that.imgHeight);
+                        that._text.innerHTML = that.value;
+                    }
+                    if (!that.imgSrc) {
+                        that._img.style.display = "none";
+                    }
+                    else {
+                        that._img.style.display = "inline";
                     }
 
-
-                    var wrapper = document.createElement('div');
-                    wrapper.id = properties.id;
-                    wrapper.title = properties.title;
-                    wrapper.style.cssText = that.field.style.cssText;
-                    wrapper.style.boxSizing = 'border-box';
-
-                    var img = document.createElement("img");
-                    img.setAttribute('src', that.imgSrc);
-                    img.setAttribute('width', that.imgWidth);
-                    img.setAttribute('height', that.imgHeight);
-                    wrapper.appendChild(img);
-                    that._img = img;
-
-                    var text = document.createElement('span');
-                    if (value) {
-                        text.innerHTML = value;
-                        that.value = value;
+                    if (!that.value) {
+                        that._text.style.display = "none";
                     }
-                    wrapper.appendChild(text);
-                    that._text = text;
-
-                    that.field.style.display = "none";
-                    if (that.field.parentNode) {
-                        that.field.parentNode.insertBefore(wrapper, that.field.nextSibling);
+                    else {
+                        that._text.style.display = "inline";
                     }
 
-                    var data = that.host.data();
-                    that.host = $(wrapper);
-                    that.host.data(data);
-                    that.element = wrapper;
-                    that.element.id = that.field.id;
-                    that.field.id = properties.id;
-                    var elementObj = new $(that.element);
-                    var fieldObj = new $(that.field);
-                    if (that._className) {
-                        elementObj.addClass(that._className);
-                        fieldObj.removeClass(that._className);
-                    }
+                    that._positionTextAndImage();
+                }
+            },
 
-                    if (that.field.tabIndex) {
-                        var tabIndex = that.field.tabIndex;
-                        that.field.tabIndex = -1;
-                        that.element.tabIndex = tabIndex;
-                    }
-                }
-                else {
-                    that._img.setAttribute('src', that.imgSrc);
-                    that._img.setAttribute('width', that.imgWidth);
-                    that._img.setAttribute('height', that.imgHeight);
-                    that._text.innerHTML = that.value;
-                }
-                if (!that.imgSrc) {
-                    that._img.style.display = "none";
-                }
-                else {
-                    that._img.style.display = "inline";
+            _positionTextAndImage: function () {
+                var that = this;
+                var width = that.element.offsetWidth;
+                var height = that.element.offsetHeight;
+
+                var imgWidth = that.imgWidth;
+                var imgHeight = that.imgHeight;
+                if (that.imgSrc == "") {
+                    imgWidth = 0;
+                    imgHeight = 0;
                 }
 
-                if (!that.value) {
-                    that._text.style.display = "none";
-                }
-                else {
-                    that._text.style.display = "inline";
-                }
-
-                that._positionTextAndImage();
-            }
-        },
-
-        _positionTextAndImage: function () {
-            var that = this;
-            var width = that.element.offsetWidth;
-            var height = that.element.offsetHeight;
-
-            var imgWidth = that.imgWidth;
-            var imgHeight = that.imgHeight;
-            if (that.imgSrc == "") {
-                imgWidth = 0;
-                imgHeight = 0;
-            }
-
-            var textWidth = that._text.offsetWidth;
-            var textHeight = that._text.offsetHeight;
-            var offset = 4;
-            var edgeOffset = 4;
-            var factorIncrease = 4;
-            var w = 0;
-            var h = 0;
-            switch (that.textImageRelation) {
-                case "imageBeforeText":
-                case "textBeforeImage":
-                    w = imgWidth + textWidth + 2 * factorIncrease + offset + 2 * edgeOffset;
-                    h = Math.max(imgHeight, textHeight) + 2 * factorIncrease + offset + 2 * edgeOffset;
-                    break;
-                case "imageAboveText":
-                case "textAboveImage":
-                    w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
-                    h = imgHeight + textHeight + offset + 2 * factorIncrease + 2 * edgeOffset;
-                    break;
-                case "overlay":
-                    w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
-                    h = Math.max(imgHeight, textHeight) + 2 * factorIncrease;
-                    break;
-            }
-
-            if (!that.width) {
-                that.element.style.width = w + "px";
-                width = w;
-            }
-
-            if (!that.height) {
-                that.element.style.height = h + "px";
-                height = h;
-            }
-
-            that._img.style.position = 'absolute';
-            that._text.style.position = 'absolute';
-            that.element.style.position = 'relative';
-            that.element.style.overflow = 'hidden';
-
-            var textRect = {};
-            var imageRect = {};
-
-            var drawElement = function (element, drawArea, pos, w, h) {
-                if (drawArea.width < w) drawArea.width = w;
-                if (drawArea.height < h) drawArea.height = h;
-
-                switch (pos) {
-                    case "left":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                var textWidth = that._text.offsetWidth;
+                var textHeight = that._text.offsetHeight;
+                var offset = 4;
+                var edgeOffset = 4;
+                var factorIncrease = 4;
+                var w = 0;
+                var h = 0;
+                switch (that.textImageRelation) {
+                    case "imageBeforeText":
+                    case "textBeforeImage":
+                        w = imgWidth + textWidth + 2 * factorIncrease + offset + 2 * edgeOffset;
+                        h = Math.max(imgHeight, textHeight) + 2 * factorIncrease + offset + 2 * edgeOffset;
                         break;
-                    case "topLeft":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + "px";
+                    case "imageAboveText":
+                    case "textAboveImage":
+                        w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
+                        h = imgHeight + textHeight + offset + 2 * factorIncrease + 2 * edgeOffset;
                         break;
-                    case "bottomLeft":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
+                    case "overlay":
+                        w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
+                        h = Math.max(imgHeight, textHeight) + 2 * factorIncrease;
                         break;
+                }
+
+                if (!that.width) {
+                    that.element.style.width = w + "px";
+                    width = w;
+                }
+
+                if (!that.height) {
+                    that.element.style.height = h + "px";
+                    height = h;
+                }
+
+                that._img.style.position = 'absolute';
+                that._text.style.position = 'absolute';
+                that.element.style.position = 'relative';
+                that.element.style.overflow = 'hidden';
+
+                var textRect = {};
+                var imageRect = {};
+
+                var drawElement = function (element, drawArea, pos, w, h) {
+                    if (drawArea.width < w) drawArea.width = w;
+                    if (drawArea.height < h) drawArea.height = h;
+
+                    switch (pos) {
+                        case "left":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                            break;
+                        case "topLeft":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottomLeft":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                        default:
+                        case "center":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";
+                            break;
+                        case "top":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottom":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                        case "right":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                            break;
+                        case "topRight":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottomRight":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                    }
+                }
+
+                var left = 0;
+                var top = 0;
+                var right = width;
+                var bottom = height;
+                var middle = (right - left) / 2;
+                var center = (bottom - top) / 2;
+                var img = that._img;
+                var text = that._text;
+                var rectHeight = bottom - top;
+                var rectWidth = right - left;
+                left += edgeOffset;
+                top += edgeOffset;
+                right = right - edgeOffset - 2;
+                rectWidth = rectWidth - 2 * edgeOffset - 2;
+                rectHeight = rectHeight - 2 * edgeOffset - 2;
+
+                switch (that.textImageRelation) {
+                    case "imageBeforeText":
+
+                        switch (that.imgPosition) {
+                            case "left":
+                            case "topLeft":
+                            case "bottomLeft":
+                                imageRect = { left: left, top: top, width: left + imgWidth, height: rectHeight };
+                                textRect = { left: left + imgWidth + offset, top: top, width: rectWidth - imgWidth - offset, height: rectHeight };
+                                break;
+                            case "center":
+                            case "top":
+                            case "bottom":
+                                imageRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: imgWidth, height: rectHeight };
+                                textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
+                                break;
+                            case "right":
+                            case "topRight":
+                            case "bottomRight":
+                                imageRect = { left: right - textWidth - imgWidth - offset, top: top, width: imgWidth, height: rectHeight };
+                                textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "textBeforeImage":
+
+                        switch (that.textPosition) {
+                            case "left":
+                            case "topLeft":
+                            case "bottomLeft":
+                                textRect = { left: left, top: top, width: left + textWidth, height: rectHeight };
+                                imageRect = { left: left + textWidth + offset, top: top, width: rectWidth - textWidth - offset, height: rectHeight };
+                                break;
+                            case "center":
+                            case "top":
+                            case "bottom":
+                                textRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: textWidth, height: rectHeight };
+                                imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
+                                break;
+                            case "right":
+                            case "topRight":
+                            case "bottomRight":
+                                textRect = { left: right - textWidth - imgWidth - offset, top: top, width: textWidth, height: rectHeight };
+                                imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "imageAboveText":
+
+                        switch (that.imgPosition) {
+                            case "topRight":
+                            case "top":
+                            case "topLeft":
+                                imageRect = { left: left, top: top, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: top + imgHeight + offset, width: rectWidth, height: rectHeight - imgHeight - offset };
+                                break;
+                            case "left":
+                            case "center":
+                            case "right":
+                                imageRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: rectHeight - imageRect.top - offset - imgHeight };
+                                break;
+                            case "bottomLeft":
+                            case "bottom":
+                            case "bottomRight":
+                                imageRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: textHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+                        break;
+                    case "textAboveImage":
+                        switch (that.textPosition) {
+                            case "topRight":
+                            case "top":
+                            case "topLeft":
+                                textRect = { left: left, top: top, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: top + textHeight + offset, width: rectWidth, height: rectHeight - textHeight - offset };
+                                break;
+                            case "left":
+                            case "center":
+                            case "right":
+                                textRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: rectHeight - textRect.top - offset - textHeight };
+                                break;
+                            case "bottomLeft":
+                            case "bottom":
+                            case "bottomRight":
+                                textRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: imgHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "overlay":
                     default:
-                    case "center":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";
-                        break;
-                    case "top":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + "px";
-                        break;
-                    case "bottom":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
-                        break;
-                    case "right":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
-                        break;
-                    case "topRight":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + "px";
-                        break;
-                    case "bottomRight":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
+                        textRect = { left: left, top: top, width: rectWidth, height: rectHeight };
+                        imageRect = { left: left, top: top, width: rectWidth, height: rectHeight };
+
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
                         break;
                 }
-            }
+            },
 
-            var left = 0;
-            var top = 0;
-            var right = width;
-            var bottom = height;
-            var middle = (right - left) / 2;
-            var center = (bottom - top) / 2;
-            var img = that._img;
-            var text = that._text;
-            var rectHeight = bottom - top;
-            var rectWidth = right - left;
-            left += edgeOffset;
-            top += edgeOffset;
-            right = right - edgeOffset - 2;
-            rectWidth = rectWidth - 2 * edgeOffset - 2;
-            rectHeight = rectHeight - 2 * edgeOffset - 2;
+            createInstance: function (args) {
+                var that = this;
+                that._setSize();
 
-            switch (that.textImageRelation) {
-                case "imageBeforeText":
+                var isMaterial = that.isMaterialized();
 
-                    switch (that.imgPosition) {
-                        case "left":
-                        case "topLeft":
-                        case "bottomLeft":
-                            imageRect = { left: left, top: top, width: left + imgWidth, height: rectHeight };
-                            textRect = { left: left + imgWidth + offset, top: top, width: rectWidth - imgWidth - offset, height: rectHeight };
-                            break;
-                        case "center":
-                        case "top":
-                        case "bottom":
-                            imageRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: imgWidth, height: rectHeight };
-                            textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
-                            break;
-                        case "right":
-                        case "topRight":
-                        case "bottomRight":
-                            imageRect = { left: right - textWidth - imgWidth - offset, top: top, width: imgWidth, height: rectHeight };
-                            textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "textBeforeImage":
-
-                    switch (that.textPosition) {
-                        case "left":
-                        case "topLeft":
-                        case "bottomLeft":
-                            textRect = { left: left, top: top, width: left + textWidth, height: rectHeight };
-                            imageRect = { left: left + textWidth + offset, top: top, width: rectWidth - textWidth - offset, height: rectHeight };
-                            break;
-                        case "center":
-                        case "top":
-                        case "bottom":
-                            textRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: textWidth, height: rectHeight };
-                            imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
-                            break;
-                        case "right":
-                        case "topRight":
-                        case "bottomRight":
-                            textRect = { left: right - textWidth - imgWidth - offset, top: top, width: textWidth, height: rectHeight };
-                            imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "imageAboveText":
-
-                    switch (that.imgPosition) {
-                        case "topRight":
-                        case "top":
-                        case "topLeft":
-                            imageRect = { left: left, top: top, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: top + imgHeight + offset, width: rectWidth, height: rectHeight - imgHeight - offset };
-                            break;
-                        case "left":
-                        case "center":
-                        case "right":
-                            imageRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: rectHeight - imageRect.top - offset - imgHeight };
-                            break;
-                        case "bottomLeft":
-                        case "bottom":
-                        case "bottomRight":
-                            imageRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: textHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-                    break;
-                case "textAboveImage":
-                    switch (that.textPosition) {
-                        case "topRight":
-                        case "top":
-                        case "topLeft":
-                            textRect = { left: left, top: top, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: top + textHeight + offset, width: rectWidth, height: rectHeight - textHeight - offset };
-                            break;
-                        case "left":
-                        case "center":
-                        case "right":
-                            textRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: rectHeight - textRect.top - offset - textHeight };
-                            break;
-                        case "bottomLeft":
-                        case "bottom":
-                        case "bottomRight":
-                            textRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: imgHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "overlay":
-                default:
-                    textRect = { left: left, top: top, width: rectWidth, height: rectHeight };
-                    imageRect = { left: left, top: top, width: rectWidth, height: rectHeight };
-
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-            }
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            that._setSize();
-
-            var isMaterial = that.isMaterialized();
-
-            that.buttonObj = new $(that.element);
-
-            if (that.imgSrc != "" || that.textPosition != "" || (that.element.value && that.element.value.indexOf("<") >= 0) || that.value != null) {
-                that.refresh();
-                that._addImage("jqxButton");
                 that.buttonObj = new $(that.element);
-            }
 
-            if (!that._ariaDisabled) {
-                that.element.setAttribute('role', 'button');
-            }
-            if (that.type !== '') {
-                that.element.setAttribute('type', that.type);
-            }
-            if (!that.overrideTheme) {
-                that.buttonObj.addClass(that.toThemeProperty($.jqx.cssroundedcorners(that.roundedCorners)));
-                if (that.enableDefault) {
-                    that.buttonObj.addClass(that.toThemeProperty('jqx-button'));
-                }
-                that.buttonObj.addClass(that.toThemeProperty('jqx-widget'));
-            }
-
-            that.isTouchDevice = $.jqx.mobile.isTouchDevice();
-            if (!that._ariaDisabled) {
-                $.jqx.aria(this);
-            }
-
-            if (that.cursor != 'arrow') {
-                if (!that.disabled) {
-                    that.element.style.cursor = that.cursor;
-                }
-                else {
-                    that.element.style.cursor = "arrow";
-                }
-            }
-
-            var eventNames = 'mouseenter mouseleave mousedown focus blur';
-            if (that._scrollAreaButton) {
-                var eventNames = 'mousedown';
-            }
-
-            if (that.isTouchDevice) {
-                that.addHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'), function (event) {
-                    that.isPressed = true;
+                if (that.imgSrc != "" || that.textPosition != "" || (that.element.value && that.element.value.indexOf("<") >= 0) || that.value != null) {
                     that.refresh();
-                });
-                that.addHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id, function (event) {
-                    that.isPressed = false;
-                    that.refresh();
-                });
-            }
-
-            that.addHandler(that.host, eventNames, function (event) {
-                switch (event.type) {
-                    case 'mouseenter':
-                        if (!that.isTouchDevice) {
-                            if (!that.disabled && that.enableHover) {
-                                that.isMouseOver = true;
-                                that.refresh();
-                            }
-                        }
-                        break;
-                    case 'mouseleave':
-                        if (!that.isTouchDevice) {
-                            if (!that.disabled && that.enableHover) {
-                                that.isMouseOver = false;
-                                that.refresh();
-                            }
-                        }
-                        break;
-                    case 'mousedown':
-                        if (!that.disabled) {
-                            that.isPressed = true;
-                            that.refresh();
-                        }
-                        break;
-                    case 'focus':
-                        if (!that.disabled) {
-                            that.isFocused = true;
-                            that.refresh();
-                        }
-                        break;
-                    case 'blur':
-                        if (!that.disabled) {
-                            that.isFocused = false;
-                            that.refresh();
-                        }
-                        break;
+                    that._addImage("jqxButton");
+                    that.buttonObj = new $(that.element);
                 }
-            });
 
-            that.mouseupfunc = function (event) {
-                if (!that.disabled) {
-                    if (that.isPressed || that.isMouseOver) {
+                if (!that._ariaDisabled) {
+                    that.element.setAttribute('role', 'button');
+                }
+                if (that.type !== '') {
+                    that.element.setAttribute('type', that.type);
+                }
+                if (!that.overrideTheme) {
+                    that.buttonObj.addClass(that.toThemeProperty($.jqx.cssroundedcorners(that.roundedCorners)));
+                    if (that.enableDefault) {
+                        that.buttonObj.addClass(that.toThemeProperty('jqx-button'));
+                    }
+                    that.buttonObj.addClass(that.toThemeProperty('jqx-widget'));
+                }
+
+                that.isTouchDevice = $.jqx.mobile.isTouchDevice();
+                if (!that._ariaDisabled) {
+                    $.jqx.aria(this);
+                }
+
+                if (that.cursor != 'arrow') {
+                    if (!that.disabled) {
+                        that.element.style.cursor = that.cursor;
+                    }
+                    else {
+                        that.element.style.cursor = "arrow";
+                    }
+                }
+
+                var eventNames = 'mouseenter mouseleave mousedown focus blur';
+                if (that._scrollAreaButton) {
+                    var eventNames = 'mousedown';
+                }
+
+                if (that.isTouchDevice) {
+                    that.addHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'), function (event) {
+                        that.isPressed = true;
+                        that.refresh();
+                    });
+                    that.addHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id, function (event) {
                         that.isPressed = false;
                         that.refresh();
+                    });
+                }
+
+                that.addHandler(that.host, eventNames, function (event) {
+                    switch (event.type) {
+                        case 'mouseenter':
+                            if (!that.isTouchDevice) {
+                                if (!that.disabled && that.enableHover) {
+                                    that.isMouseOver = true;
+                                    that.refresh();
+                                }
+                            }
+                            break;
+                        case 'mouseleave':
+                            if (!that.isTouchDevice) {
+                                if (!that.disabled && that.enableHover) {
+                                    that.isMouseOver = false;
+                                    that.refresh();
+                                }
+                            }
+                            break;
+                        case 'mousedown':
+                            if (!that.disabled) {
+                                that.isPressed = true;
+                                that.refresh();
+                            }
+                            break;
+                        case 'focus':
+                            if (!that.disabled) {
+                                that.isFocused = true;
+                                that.refresh();
+                            }
+                            break;
+                        case 'blur':
+                            if (!that.disabled) {
+                                that.isFocused = false;
+                                that.refresh();
+                            }
+                            break;
+                    }
+                });
+
+                that.mouseupfunc = function (event) {
+                    if (!that.disabled) {
+                        if (that.isPressed || that.isMouseOver) {
+                            that.isPressed = false;
+                            that.refresh();
+                        }
                     }
                 }
-            }
 
-            that.addHandler(document, 'mouseup.button' + that.element.id, that.mouseupfunc);
+                that.addHandler(document, 'mouseup.button' + that.element.id, that.mouseupfunc);
 
-            try {
-                if (document.referrer != "" || window.frameElement) {
-                    if (window.top != null && window.top != window.that) {
-                        var parentLocation = '';
-                        if (window.parent && document.referrer) {
-                            parentLocation = document.referrer;
-                        }
+                try {
+                    if (document.referrer != "" || window.frameElement) {
+                        if (window.top != null && window.top != window.that) {
+                            var parentLocation = '';
+                            if (window.parent && document.referrer) {
+                                parentLocation = document.referrer;
+                            }
 
-                        if (parentLocation.indexOf(document.location.host) != -1) {
-                            if (window.top.document) {
-                                window.top.document.addEventListener('mouseup', that._topDocumentMouseupHandler);
+                            if (parentLocation.indexOf(document.location.host) != -1) {
+                                if (window.top.document) {
+                                    window.top.document.addEventListener('mouseup', that._topDocumentMouseupHandler);
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (error) {
-            }
+                catch (error) {
+                }
 
-            that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
-                instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
-                instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
-            };
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
-                    instance.refresh();
-                    instance.element.setAttribute('disabled', value);
-                    instance.element.disabled = value;
-                    if (!value) {
-                        instance.element.style.cursor = instance.cursor;
+                that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
+                    instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
+                    instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
+                };
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.refresh();
+                        instance.element.setAttribute('disabled', value);
+                        instance.element.disabled = value;
+                        if (!value) {
+                            instance.element.style.cursor = instance.cursor;
+                        }
+                        else {
+                            instance.element.style.cursor = 'default';
+                        }
+
+                        $.jqx.aria(instance, "aria-disabled", instance.disabled);
                     }
-                    else {
-                        instance.element.style.cursor = 'default';
+                };
+                that.propertyChangeMap['rtl'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.refresh();
+                    }
+                };
+                that.propertyChangeMap['template'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.buttonObj.removeClass(instance.toThemeProperty("jqx-" + oldVal));
+                        instance.refresh();
+                    }
+                };
+                that.propertyChangeMap['theme'] = function (instance, key, oldVal, value) {
+                    instance.buttonObj.removeClass(instance.element);
+
+                    if (oldVal) {
+                        instance.buttonObj.removeClass('jqx-button-' + oldVal);
+                        instance.buttonObj.removeClass('jqx-widget-' + oldVal);
+                        instance.buttonObj.removeClass('jqx-fill-state-normal-' + oldVal);
+                        instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)) + '-' + oldVal);
                     }
 
-                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
-                }
-            };
-            that.propertyChangeMap['rtl'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
+                    if (instance.enableDefault) {
+                        instance.buttonObj.addClass(instance.toThemeProperty('jqx-button'));
+                    }
+                    instance.buttonObj.addClass(instance.toThemeProperty('jqx-widget'));
+                    if (!instance.overrideTheme) {
+                        instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)));
+                    }
+                    instance._oldCSSCurrent = null;
                     instance.refresh();
-                }
-            };
-            that.propertyChangeMap['template'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
-                    instance.buttonObj.removeClass(instance.toThemeProperty("jqx-" + oldVal));
-                    instance.refresh();
-                }
-            };
-            that.propertyChangeMap['theme'] = function (instance, key, oldVal, value) {
-                instance.buttonObj.removeClass(instance.element);
+                };
 
-                if (oldVal) {
-                    instance.buttonObj.removeClass('jqx-button-' + oldVal);
-                    instance.buttonObj.removeClass('jqx-widget-' + oldVal);
-                    instance.buttonObj.removeClass('jqx-fill-state-normal-' + oldVal);
-                    instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)) + '-' + oldVal);
+                if (that.disabled) {
+                    that.element.disabled = true;
+                    that.element.setAttribute('disabled', 'true');
                 }
 
-                if (instance.enableDefault) {
-                    instance.buttonObj.addClass(instance.toThemeProperty('jqx-button'));
+                if (that.textPosition) {
+                    $.jqx.utilities.resize(this.host, function () {
+                        that._positionTextAndImage();
+                    });
                 }
-                instance.buttonObj.addClass(instance.toThemeProperty('jqx-widget'));
-                if (!instance.overrideTheme) {
-                    instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)));
-                }
-                instance._oldCSSCurrent = null;
-                instance.refresh();
-            };
+            }, // createInstance
 
-            if (that.disabled) {
-                that.element.disabled = true;
-                that.element.setAttribute('disabled', 'true');
-            }
-			
-			if (that.textPosition){
-			  $.jqx.utilities.resize(this.host, function () {
-				that._positionTextAndImage();
-			  });
-			}
-        }, // createInstance
+            resize: function (width, height) {
+                this.width = width;
+                this.height = height;
+                this._setSize();
+            },
 
-        resize: function (width, height) {
-            this.width = width;
-            this.height = height;
-            this._setSize();
-        },
-
-        val: function (value) {
-            var that = this;
-            var input = that.host.find('input');
-            if (input.length > 0) {
-                if (arguments.length == 0 || typeof (value) == "object") {
+            val: function (value) {
+                var that = this;
+                var input = that.host.find('input');
+                if (input.length > 0) {
+                    if (arguments.length == 0 || typeof (value) == "object") {
+                        return input.val();
+                    }
+                    input.val(value);
+                    that.refresh();
                     return input.val();
                 }
-                input.val(value);
-                that.refresh();
-                return input.val();
-            }
 
-            if (arguments.length == 0 || typeof (value) == "object") {
+                if (arguments.length == 0 || typeof (value) == "object") {
+                    if (that.element.nodeName.toLowerCase() == "button") {
+                        return $(that.element).text();
+                    }
+                    return that.element.value;
+                }
+
+                if (arguments.length > 0 && that._text) {
+                    that._text.innerHTML = arguments[0];
+                    that.refresh();
+
+                    return;
+                }
+                else if (arguments.length > 0 && that.element.nodeName === 'DIV') {
+                    that.element.innerHTML = arguments[0];
+                    that.refresh();
+                }
+
+                that.element.value = arguments[0];
                 if (that.element.nodeName.toLowerCase() == "button") {
-                    return $(that.element).text();
+                    $(that.element).html(arguments[0]);
                 }
-                return that.element.value;
-            }
 
-            if (arguments.length > 0 && that._text) {
-                that._text.innerHTML = arguments[0];
                 that.refresh();
+            },
 
-                return;
-            }
-            else if (arguments.length > 0 && that.element.nodeName === 'DIV') {
-                that.element.innerHTML = arguments[0];
-                that.refresh();
-            }
+            _setSize: function () {
+                var that = this;
+                var height = that.height;
+                var width = that.width;
 
-            that.element.value = arguments[0];
-            if (that.element.nodeName.toLowerCase() == "button") {
-                $(that.element).html(arguments[0]);
-            }
-
-            that.refresh();
-        },
-
-        _setSize: function () {
-            var that = this;
-            var height = that.height;
-            var width = that.width;
-
-            if (height) {
-                if (!isNaN(height)) {
-                    height = height + "px";
+                if (height) {
+                    if (!isNaN(height)) {
+                        height = height + "px";
+                    }
+                    that.element.style.height = height;
                 }
-                that.element.style.height = height;
-            }
 
-            if (width) {
-                if (!isNaN(width)) {
-                    width = width + "px";
+                if (width) {
+                    if (!isNaN(width)) {
+                        width = width + "px";
+                    }
+                    that.element.style.width = width;
                 }
-                that.element.style.width = width;
-            }
-        },
+            },
 
-        _removeHandlers: function () {
-            var that = this;
-            that.removeHandler(that.host, 'selectstart');
-            that.removeHandler(that.host, 'click');
-            that.removeHandler(that.host, 'focus');
-            that.removeHandler(that.host, 'blur');
-            that.removeHandler(that.host, 'mouseenter');
-            that.removeHandler(that.host, 'mouseleave');
-            that.removeHandler(that.host, 'mousedown');
-            that.removeHandler($(document), 'mouseup.button' + that.element.id, that.mouseupfunc);
-            if (that.isTouchDevice) {
-                that.removeHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'));
-                that.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id);
-            }
-            that.mouseupfunc = null;
-            delete that.mouseupfunc;
-        },
-
-        focus: function () {
-            this.host.focus();
-        },
-
-        destroy: function () {
-            var that = this;
-            that._removeHandlers();
-            var vars = $.data(that.element, "jqxButton");
-            if (vars) {
-                delete vars.instance;
-            }
-            that.host.removeClass();
-            that.host.removeData();
-            that.host.remove();
-            delete that.set;
-            delete that.get;
-            delete that.call;
-            delete that.element;
-            delete that.host;
-        },
-
-        render: function () {
-            this.refresh();
-        },
-
-        propertiesChangedHandler: function (object, oldValues, newValues) {
-            if (newValues && newValues.width && newValues.height && Object.keys(newValues).length == 2) {
-                object._setSize();
-                object.refresh();
-            }
-        },
-
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (this.isInitialized == undefined || this.isInitialized == false)
-                return;
-
-            if (value == oldvalue) {
-                return;
-            }
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key === "type") {
-                object.element.setAttribute('type', value);
-            }
-            if (key == "textImageRelation" || key == "textPosition" || key == "imgPosition") {
-                if (object._img) {
-                    object._positionTextAndImage();
+            _removeHandlers: function () {
+                var that = this;
+                that.removeHandler(that.host, 'selectstart');
+                that.removeHandler(that.host, 'click');
+                that.removeHandler(that.host, 'focus');
+                that.removeHandler(that.host, 'blur');
+                that.removeHandler(that.host, 'mouseenter');
+                that.removeHandler(that.host, 'mouseleave');
+                that.removeHandler(that.host, 'mousedown');
+                that.removeHandler($(document), 'mouseup.button' + that.element.id, that.mouseupfunc);
+                if (that.isTouchDevice) {
+                    that.removeHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'));
+                    that.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id);
                 }
-                else object._addImage("jqxButton");
-            }
-            if (key == "imgSrc" || key == "imgWidth" || key == "imgHeight") {
-                object._addImage("jqxButton");
-            }
+                that.mouseupfunc = null;
+                delete that.mouseupfunc;
+            },
 
-            if (key === "value") {
-                object.val(value);
-            }
+            focus: function () {
+                this.host.focus();
+            },
 
-            if (key == "width" || key == "height") {
-                object._setSize();
-                object.refresh();
-            }
-        },
-
-        refresh: function () {
-            var that = this;
-            if (that.overrideTheme)
-                return;
-
-            var cssFocused = that.toThemeProperty('jqx-fill-state-focus');
-            var cssDisabled = that.toThemeProperty('jqx-fill-state-disabled');
-            var cssNormal = that.toThemeProperty('jqx-fill-state-normal');
-
-            if (!that.enableDefault) {
-                cssNormal = "";
-            }
-
-            var cssHover = that.toThemeProperty('jqx-fill-state-hover');
-            var cssPressed = that.toThemeProperty('jqx-fill-state-pressed');
-            var cssPressedHover = that.toThemeProperty('jqx-fill-state-pressed');
-            if (!that.enablePressed) {
-                cssPressed = "";
-            }
-            var cssCurrent = '';
-
-            if (!that.host) {
-                return;
-            }
-
-            that.element.disabled = that.disabled;
-
-            if (that.disabled) {
-                if (that._oldCSSCurrent) {
-                    that.buttonObj.removeClass(that._oldCSSCurrent);
+            destroy: function () {
+                var that = this;
+                that._removeHandlers();
+                var vars = $.data(that.element, "jqxButton");
+                if (vars) {
+                    delete vars.instance;
                 }
-                cssCurrent = cssNormal + " " + cssDisabled;
+                that.host.removeClass();
+                that.host.removeData();
+                that.host.remove();
+                delete that.set;
+                delete that.get;
+                delete that.call;
+                delete that.element;
+                delete that.host;
+            },
+
+            render: function () {
+                this.refresh();
+            },
+
+            propertiesChangedHandler: function (object, oldValues, newValues) {
+                if (newValues && newValues.width && newValues.height && Object.keys(newValues).length == 2) {
+                    object._setSize();
+                    object.refresh();
+                }
+            },
+
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (this.isInitialized == undefined || this.isInitialized == false)
+                    return;
+
+                if (value == oldvalue) {
+                    return;
+                }
+
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key === "type") {
+                    object.element.setAttribute('type', value);
+                }
+                if (key == "textImageRelation" || key == "textPosition" || key == "imgPosition") {
+                    if (object._img) {
+                        object._positionTextAndImage();
+                    }
+                    else object._addImage("jqxButton");
+                }
+                if (key == "imgSrc" || key == "imgWidth" || key == "imgHeight") {
+                    object._addImage("jqxButton");
+                }
+
+                if (key === "value") {
+                    object.val(value);
+                }
+
+                if (key == "width" || key == "height") {
+                    object._setSize();
+                    object.refresh();
+                }
+            },
+
+            refresh: function () {
+                var that = this;
+                if (that.overrideTheme)
+                    return;
+
+                var cssFocused = that.toThemeProperty('jqx-fill-state-focus');
+                var cssDisabled = that.toThemeProperty('jqx-fill-state-disabled');
+                var cssNormal = that.toThemeProperty('jqx-fill-state-normal');
+
+                if (!that.enableDefault) {
+                    cssNormal = "";
+                }
+
+                var cssHover = that.toThemeProperty('jqx-fill-state-hover');
+                var cssPressed = that.toThemeProperty('jqx-fill-state-pressed');
+                var cssPressedHover = that.toThemeProperty('jqx-fill-state-pressed');
+                if (!that.enablePressed) {
+                    cssPressed = "";
+                }
+                var cssCurrent = '';
+
+                if (!that.host) {
+                    return;
+                }
+
+                that.element.disabled = that.disabled;
+
+                if (that.disabled) {
+                    if (that._oldCSSCurrent) {
+                        that.buttonObj.removeClass(that._oldCSSCurrent);
+                    }
+                    cssCurrent = cssNormal + " " + cssDisabled;
+                    if (that.template !== "default" && that.template !== "") {
+                        cssCurrent += " " + "jqx-" + that.template;
+                        if (that.theme != "") {
+                            cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
+                        }
+                    }
+                    that.buttonObj.addClass(cssCurrent);
+                    that._oldCSSCurrent = cssCurrent;
+                    return;
+                }
+                else {
+                    if (that.isMouseOver && !that.isTouchDevice) {
+                        if (that.isPressed)
+                            cssCurrent = cssPressedHover;
+                        else
+                            cssCurrent = cssHover;
+                    }
+                    else {
+                        if (that.isPressed)
+                            cssCurrent = cssPressed;
+                        else
+                            cssCurrent = cssNormal;
+                    }
+                }
+
+                if (that.isFocused) {
+                    cssCurrent += " " + cssFocused;
+                }
+
                 if (that.template !== "default" && that.template !== "") {
                     cssCurrent += " " + "jqx-" + that.template;
                     if (that.theme != "") {
                         cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
                     }
                 }
-                that.buttonObj.addClass(cssCurrent);
-                that._oldCSSCurrent = cssCurrent;
-                return;
+
+                if (cssCurrent != that._oldCSSCurrent) {
+                    if (that._oldCSSCurrent) {
+                        that.buttonObj.removeClass(that._oldCSSCurrent);
+                    }
+                    that.buttonObj.addClass(cssCurrent);
+                    that._oldCSSCurrent = cssCurrent;
+                }
+                if (that.rtl) {
+                    that.buttonObj.addClass(that.toThemeProperty('jqx-rtl'));
+                    that.element.style.direction = 'rtl';
+                }
+
+
+                if (that.isMaterialized()) {
+                    that.host.addClass('buttonRipple');
+                }
             }
-            else {
-                if (that.isMouseOver && !that.isTouchDevice) {
-                    if (that.isPressed)
-                        cssCurrent = cssPressedHover;
-                    else
-                        cssCurrent = cssHover;
+        });
+
+        //// LinkButton
+        $.jqx.jqxWidget("jqxLinkButton", "", {});
+
+        $.extend($.jqx._jqxLinkButton.prototype, {
+            defineInstance: function () {
+                // enables / disables the button
+                this.disabled = false;
+                // sets height to the button.
+                this.height = null;
+                // sets width to the button.
+                this.width = null;
+                this.rtl = false;
+                this.href = null;
+            },
+
+            createInstance: function (args) {
+                var that = this;
+                this.host.onselectstart = function () { return false; };
+                this.host.attr('role', 'button');
+
+                var height = this.height || this.element.offsetHeight;
+                var width = this.width || this.element.offsetWidth;
+                this.href = this.element.getAttribute('href');
+                this.target = this.element.getAttribute('target');
+                this.content = this.host.text();
+                this.element.innerHTML = "";
+                var wrapElement = document.createElement('input');
+                wrapElement.type = "button";
+                wrapElement.className = "jqx-wrapper " + this.toThemeProperty('jqx-reset');
+
+                this._setSize(wrapElement, width, height);
+
+                wrapElement.value = this.content;
+                var helper = new $(this.element);
+                helper.addClass(this.toThemeProperty('jqx-link'));
+                this.element.style.color = 'inherit';
+                this.element.appendChild(wrapElement);
+                this._setSize(wrapElement, width, height);
+
+                var param = args == undefined ? {} : args[0] || {};
+                $(wrapElement).jqxButton(param);
+                this.wrapElement = wrapElement;
+                if (this.disabled) {
+                    this.element.disabled = true;
+                }
+
+                this.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    instance.element.disabled = value;
+                    instance.wrapElement.jqxButton({ disabled: value });
+                }
+
+                this.addHandler($(wrapElement), 'click', function (event) {
+                    if (!this.disabled) {
+                        that.onclick(event);
+                    }
+                    return false;
+                });
+            },
+
+            _setSize: function (element, width, height) {
+                var that = this;
+
+                if (height) {
+                    if (!isNaN(height)) {
+                        height = height + "px";
+                    }
+                    element.style.height = height;
+                }
+
+                if (width) {
+                    if (!isNaN(width)) {
+                        width = width + "px";
+                    }
+                    element.style.width = width;
+                }
+            },
+
+
+            onclick: function (event) {
+                if (this.target != null) {
+                    window.open(this.href, this.target);
                 }
                 else {
-                    if (that.isPressed)
-                        cssCurrent = cssPressed;
-                    else
-                        cssCurrent = cssNormal;
+                    window.location = this.href;
                 }
             }
+        });
+        //// End of LinkButton
 
-            if (that.isFocused) {
-                cssCurrent += " " + cssFocused;
-            }
+        //// RepeatButton
+        $.jqx.jqxWidget("jqxRepeatButton", "jqxButton", {});
 
-            if (that.template !== "default" && that.template !== "") {
-                cssCurrent += " " + "jqx-" + that.template;
-                if (that.theme != "") {
-                    cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
-                }
-            }
+        $.extend($.jqx._jqxRepeatButton.prototype, {
+            defineInstance: function () {
+                this.delay = 50;
+            },
 
-            if (cssCurrent != that._oldCSSCurrent) {
-                if (that._oldCSSCurrent) {
-                    that.buttonObj.removeClass(that._oldCSSCurrent);
-                }
-                that.buttonObj.addClass(cssCurrent);
-                that._oldCSSCurrent = cssCurrent;
-            }
-            if (that.rtl) {
-                that.buttonObj.addClass(that.toThemeProperty('jqx-rtl'));
-                that.element.style.direction = 'rtl';
-            }
+            createInstance: function (args) {
+                var that = this;
 
+                var isTouchDevice = $.jqx.mobile.isTouchDevice();
 
-            if (that.isMaterialized()) {
-                that.host.addClass('buttonRipple');
-            }
-        }
-    });
+                var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
+                var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
 
-    //// LinkButton
-    $.jqx.jqxWidget("jqxLinkButton", "", {});
+                this.addHandler($(document), up, function (event) {
+                    if (that.timeout != null) {
+                        clearTimeout(that.timeout);
+                        that.timeout = null;
+                        that.refresh();
+                    }
+                    if (that.timer != undefined) {
+                        clearInterval(that.timer);
+                        that.timer = null;
+                        that.refresh();
+                    }
+                });
 
-    $.extend($.jqx._jqxLinkButton.prototype, {
-        defineInstance: function () {
-            // enables / disables the button
-            this.disabled = false;
-            // sets height to the button.
-            this.height = null;
-            // sets width to the button.
-            this.width = null;
-            this.rtl = false;
-            this.href = null;
-        },
+                this.addHandler(this.base.host, down, function (event) {
+                    if (that.timer != null) {
+                        clearInterval(that.timer);
+                    }
 
-        createInstance: function (args) {
-            var that = this;
-            this.host.onselectstart = function () { return false; };
-            this.host.attr('role', 'button');
+                    that.timeout = setTimeout(function () {
+                        clearInterval(that.timer);
+                        that.timer = setInterval(function (event) { that.ontimer(event); }, that.delay);
+                    }, 150);
+                });
 
-            var height = this.height || this.element.offsetHeight;
-            var width = this.width || this.element.offsetWidth;
-            this.href = this.element.getAttribute('href');
-            this.target = this.element.getAttribute('target');
-            this.content = this.host.text();
-            this.element.innerHTML = "";
-            var wrapElement = document.createElement('input');
-            wrapElement.type = "button";
-            wrapElement.className = "jqx-wrapper " + this.toThemeProperty('jqx-reset');
-
-            this._setSize(wrapElement, width, height);
-
-            wrapElement.value = this.content;
-            var helper = new $(this.element);
-            helper.addClass(this.toThemeProperty('jqx-link'));
-            this.element.style.color = 'inherit';
-            this.element.appendChild(wrapElement);
-            this._setSize(wrapElement, width, height);
-
-            var param = args == undefined ? {} : args[0] || {};
-            $(wrapElement).jqxButton(param);
-            this.wrapElement = wrapElement;
-            if (this.disabled) {
-                this.element.disabled = true;
-            }
-
-            this.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                instance.element.disabled = value;
-                instance.wrapElement.jqxButton({ disabled: value });
-            }
-
-            this.addHandler($(wrapElement), 'click', function (event) {
-                if (!this.disabled) {
-                    that.onclick(event);
-                }
-                return false;
-            });
-        },
-
-        _setSize: function (element, width, height) {
-            var that = this;
-
-            if (height) {
-                if (!isNaN(height)) {
-                    height = height + "px";
-                }
-                element.style.height = height;
-            }
-
-            if (width) {
-                if (!isNaN(width)) {
-                    width = width + "px";
-                }
-                element.style.width = width;
-            }
-        },
-
-
-        onclick: function (event) {
-            if (this.target != null) {
-                window.open(this.href, this.target);
-            }
-            else {
-                window.location = this.href;
-            }
-        }
-    });
-    //// End of LinkButton
-
-    //// RepeatButton
-    $.jqx.jqxWidget("jqxRepeatButton", "jqxButton", {});
-
-    $.extend($.jqx._jqxRepeatButton.prototype, {
-        defineInstance: function () {
-            this.delay = 50;
-        },
-
-        createInstance: function (args) {
-            var that = this;
-
-            var isTouchDevice = $.jqx.mobile.isTouchDevice();
-
-            var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
-            var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
-
-            this.addHandler($(document), up, function (event) {
-                if (that.timeout != null) {
-                    clearTimeout(that.timeout);
-                    that.timeout = null;
-                    that.refresh();
-                }
-                if (that.timer != undefined) {
-                    clearInterval(that.timer);
-                    that.timer = null;
-                    that.refresh();
-                }
-            });
-
-            this.addHandler(this.base.host, down, function (event) {
-                if (that.timer != null) {
-                    clearInterval(that.timer);
-                }
-
-                that.timeout = setTimeout(function () {
-                    clearInterval(that.timer);
-                    that.timer = setInterval(function (event) { that.ontimer(event); }, that.delay);
-                }, 150);
-            });
-
-            this.mousemovefunc = function (event) {
-                if (!isTouchDevice) {
-                    if (event.which == 0) {
-                        if (that.timer != null) {
-                            clearInterval(that.timer);
-                            that.timer = null;
+                this.mousemovefunc = function (event) {
+                    if (!isTouchDevice) {
+                        if (event.which == 0) {
+                            if (that.timer != null) {
+                                clearInterval(that.timer);
+                                that.timer = null;
+                            }
                         }
                     }
                 }
-            }
 
-            this.addHandler(this.base.host, 'mousemove', this.mousemovefunc);
-        },
+                this.addHandler(this.base.host, 'mousemove', this.mousemovefunc);
+            },
 
-        destroy: function () {
-            var isTouchDevice = $.jqx.mobile.isTouchDevice();
-            var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
-            var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
-            this.removeHandler(this.base.host, 'mousemove', this.mousemovefunc);
-            this.removeHandler(this.base.host, down);
-            this.removeHandler($(document), up);
-            this.timer = null;
-            delete this.mousemovefunc;
-            delete this.timer;
-            var vars = $.data(this.base.element, "jqxRepeatButton");
-            if (vars) {
-                delete vars.instance;
-            }
-            $(this.base.element).removeData();
-            this.base.destroy();
-            delete this.base;
-
-        },
-
-        stop: function () {
-            clearInterval(this.timer);
-            this.timer = null;
-        },
-
-        ontimer: function (event) {
-            var event = new $.Event('click');
-            if (this.base != null && this.base.host != null) {
-                this.base.host.trigger(event);
-            }
-        }
-    });
-    //// End of RepeatButton
-    //// ToggleButton
-    $.jqx.jqxWidget("jqxToggleButton", "jqxButton", {});
-
-    $.extend($.jqx._jqxToggleButton.prototype, {
-        defineInstance: function () {
-            this.toggled = false;
-            this.uiToggle = true;
-            this.aria =
-            {
-                "aria-checked": { name: "toggled", type: "boolean" },
-                "aria-disabled": { name: "disabled", type: "boolean" }
-            };
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            that.base.overrideTheme = true;
-            that.isTouchDevice = $.jqx.mobile.isTouchDevice();
-            $.jqx.aria(this);
-
-            that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
-                instance.base.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
-                instance.base.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
-            };
-
-            that.propertyChangeMap['toggled'] = function (instance, key, oldVal, value) {
-                instance.refresh();
-            };
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                instance.base.disabled = value;
-                instance.refresh();
-            };
-
-            that.addHandler(that.base.host, 'click', function (event) {
-                if (!that.base.disabled && that.uiToggle) {
-                    that.toggle();
+            destroy: function () {
+                var isTouchDevice = $.jqx.mobile.isTouchDevice();
+                var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
+                var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
+                this.removeHandler(this.base.host, 'mousemove', this.mousemovefunc);
+                this.removeHandler(this.base.host, down);
+                this.removeHandler($(document), up);
+                this.timer = null;
+                delete this.mousemovefunc;
+                delete this.timer;
+                var vars = $.data(this.base.element, "jqxRepeatButton");
+                if (vars) {
+                    delete vars.instance;
                 }
-            });
+                $(this.base.element).removeData();
+                this.base.destroy();
+                delete this.base;
 
-            if (!that.isTouchDevice) {
-                that.addHandler(that.base.host, 'mouseenter', function (event) {
+            },
+
+            stop: function () {
+                clearInterval(this.timer);
+                this.timer = null;
+            },
+
+            ontimer: function (event) {
+                var event = new $.Event('click');
+                if (this.base != null && this.base.host != null) {
+                    this.base.host.trigger(event);
+                }
+            }
+        });
+        //// End of RepeatButton
+        //// ToggleButton
+        $.jqx.jqxWidget("jqxToggleButton", "jqxButton", {});
+
+        $.extend($.jqx._jqxToggleButton.prototype, {
+            defineInstance: function () {
+                this.toggled = false;
+                this.uiToggle = true;
+                this.aria =
+                {
+                    "aria-checked": { name: "toggled", type: "boolean" },
+                    "aria-disabled": { name: "disabled", type: "boolean" }
+                };
+            },
+
+            createInstance: function (args) {
+                var that = this;
+                that.base.overrideTheme = true;
+                that.isTouchDevice = $.jqx.mobile.isTouchDevice();
+                $.jqx.aria(this);
+                that.base.host.attr('role', 'checkbox');
+
+                that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
+                    instance.base.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
+                    instance.base.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
+                };
+
+                that.propertyChangeMap['toggled'] = function (instance, key, oldVal, value) {
+                    instance.refresh();
+                };
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    instance.base.disabled = value;
+                    instance.refresh();
+                };
+
+                that.addHandler(that.base.host, 'click', function (event) {
+                    if (!that.base.disabled && that.uiToggle) {
+                        that.toggle();
+                    }
+                });
+
+                if (!that.isTouchDevice) {
+                    that.addHandler(that.base.host, 'mouseenter', function (event) {
+                        if (!that.base.disabled) {
+                            that.refresh();
+                        }
+                    });
+
+                    that.addHandler(that.base.host, 'mouseleave', function (event) {
+                        if (!that.base.disabled) {
+                            that.refresh();
+                        }
+                    });
+                }
+
+                that.addHandler(that.base.host, 'mousedown', function (event) {
                     if (!that.base.disabled) {
                         that.refresh();
                     }
                 });
 
-                that.addHandler(that.base.host, 'mouseleave', function (event) {
+                that.addHandler($(document), 'mouseup.togglebutton' + that.base.element.id, function (event) {
                     if (!that.base.disabled) {
                         that.refresh();
                     }
                 });
-            }
+            },
 
-            that.addHandler(that.base.host, 'mousedown', function (event) {
-                if (!that.base.disabled) {
-                    that.refresh();
+            destroy: function () {
+                this._removeHandlers();
+                this.base.destroy();
+            },
+
+            _removeHandlers: function () {
+                this.removeHandler(this.base.host, 'click');
+                this.removeHandler(this.base.host, 'mouseenter');
+                this.removeHandler(this.base.host, 'mouseleave');
+                this.removeHandler(this.base.host, 'mousedown');
+                this.removeHandler($(document), 'mouseup.togglebutton' + this.base.element.id);
+            },
+
+            toggle: function () {
+                this.toggled = !this.toggled;
+                this.refresh();
+                $.jqx.aria(this, "aria-checked", this.toggled);
+            },
+
+            unCheck: function () {
+                this.toggled = false;
+                this.refresh();
+            },
+
+            check: function () {
+                this.toggled = true;
+                this.refresh();
+            },
+
+            refresh: function () {
+                var that = this;
+                var cssDisabled = that.base.toThemeProperty('jqx-fill-state-disabled');
+                var cssNormal = that.base.toThemeProperty('jqx-fill-state-normal');
+                if (!that.base.enableDefault) {
+                    cssNormal = "";
                 }
-            });
+                var cssHover = that.base.toThemeProperty('jqx-fill-state-hover');
+                var cssPressed = that.base.toThemeProperty('jqx-fill-state-pressed');
+                var cssPressedHover = that.base.toThemeProperty('jqx-fill-state-pressed');
+                var cssCurrent = '';
+                that.base.element.disabled = that.base.disabled;
 
-            that.addHandler($(document), 'mouseup.togglebutton' + that.base.element.id, function (event) {
-                if (!that.base.disabled) {
-                    that.refresh();
-                }
-            });
-        },
-
-        destroy: function () {
-            this._removeHandlers();
-            this.base.destroy();
-        },
-
-        _removeHandlers: function () {
-            this.removeHandler(this.base.host, 'click');
-            this.removeHandler(this.base.host, 'mouseenter');
-            this.removeHandler(this.base.host, 'mouseleave');
-            this.removeHandler(this.base.host, 'mousedown');
-            this.removeHandler($(document), 'mouseup.togglebutton' + this.base.element.id);
-        },
-
-        toggle: function () {
-            this.toggled = !this.toggled;
-            this.refresh();
-            $.jqx.aria(this, "aria-checked", this.toggled);
-        },
-
-        unCheck: function () {
-            this.toggled = false;
-            this.refresh();
-        },
-
-        check: function () {
-            this.toggled = true;
-            this.refresh();
-        },
-
-        refresh: function () {
-            var that = this;
-            var cssDisabled = that.base.toThemeProperty('jqx-fill-state-disabled');
-            var cssNormal = that.base.toThemeProperty('jqx-fill-state-normal');
-            if (!that.base.enableDefault) {
-                cssNormal = "";
-            }
-            var cssHover = that.base.toThemeProperty('jqx-fill-state-hover');
-            var cssPressed = that.base.toThemeProperty('jqx-fill-state-pressed');
-            var cssPressedHover = that.base.toThemeProperty('jqx-fill-state-pressed');
-            var cssCurrent = '';
-            that.base.element.disabled = that.base.disabled;
-
-            if (that.base.disabled) {
-                cssCurrent = cssNormal + " " + cssDisabled;
-                that.base.buttonObj.addClass(cssCurrent);
-                return;
-            }
-            else {
-                if (that.base.isMouseOver && !that.isTouchDevice) {
-                    if (that.base.isPressed || that.toggled)
-                        cssCurrent = cssPressedHover;
-                    else
-                        cssCurrent = cssHover;
+                if (that.base.disabled) {
+                    cssCurrent = cssNormal + " " + cssDisabled;
+                    that.base.buttonObj.addClass(cssCurrent);
+                    return;
                 }
                 else {
-                    if (that.base.isPressed || that.toggled)
-                        cssCurrent = cssPressed;
-                    else
-                        cssCurrent = cssNormal;
+                    if (that.base.isMouseOver && !that.isTouchDevice) {
+                        if (that.base.isPressed || that.toggled)
+                            cssCurrent = cssPressedHover;
+                        else
+                            cssCurrent = cssHover;
+                    }
+                    else {
+                        if (that.base.isPressed || that.toggled)
+                            cssCurrent = cssPressed;
+                        else
+                            cssCurrent = cssNormal;
+                    }
                 }
-            }
 
-            if (that.base.template !== "default" && that.base.template !== "") {
-                cssCurrent += " " + "jqx-" + that.base.template;
-                if (that.base.theme != "") {
-                    cssCurrent += " " + "jqx-" + that.template + "-" + that.base.theme;
+                if (that.base.template !== "default" && that.base.template !== "") {
+                    cssCurrent += " " + "jqx-" + that.base.template;
+                    if (that.base.theme != "") {
+                        cssCurrent += " " + "jqx-" + that.template + "-" + that.base.theme;
+                    }
                 }
+
+                if (that.base.buttonObj.hasClass(cssDisabled) && cssDisabled != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssDisabled);
+                }
+
+                if (that.base.buttonObj.hasClass(cssNormal) && cssNormal != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssNormal);
+                }
+
+                if (that.base.buttonObj.hasClass(cssHover) && cssHover != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssHover);
+                }
+
+                if (that.base.buttonObj.hasClass(cssPressed) && cssPressed != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssPressed);
+                }
+
+                if (that.base.buttonObj.hasClass(cssPressedHover) && cssPressedHover != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssPressedHover);
+                }
+
+                if (!that.base.buttonObj.hasClass(cssCurrent)) {
+                    that.base.buttonObj.addClass(cssCurrent);
+                }
+            },
+
+            _topDocumentMouseupHandler: function (event) {
+                var that = this;
+                that.isPressed = false;
+                that.refresh();
             }
+        });
+        //// End of ToggleButton
 
-            if (that.base.buttonObj.hasClass(cssDisabled) && cssDisabled != cssCurrent) {
-                that.base.buttonObj.removeClass(cssDisabled);
-            }
-
-            if (that.base.buttonObj.hasClass(cssNormal) && cssNormal != cssCurrent) {
-                that.base.buttonObj.removeClass(cssNormal);
-            }
-
-            if (that.base.buttonObj.hasClass(cssHover) && cssHover != cssCurrent) {
-                that.base.buttonObj.removeClass(cssHover);
-            }
-
-            if (that.base.buttonObj.hasClass(cssPressed) && cssPressed != cssCurrent) {
-                that.base.buttonObj.removeClass(cssPressed);
-            }
-
-            if (that.base.buttonObj.hasClass(cssPressedHover) && cssPressedHover != cssCurrent) {
-                that.base.buttonObj.removeClass(cssPressedHover);
-            }
-
-            if (!that.base.buttonObj.hasClass(cssCurrent)) {
-                that.base.buttonObj.addClass(cssCurrent);
-            }
-        },
-
-        _topDocumentMouseupHandler: function (event) {
-            var that = this;
-            that.isPressed = false;
-            that.refresh();
-        }
-    });
-    //// End of ToggleButton
-
-})(jqxBaseFramework);
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3478,837 +3451,1755 @@ document.Globalize = Globalize;
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
-(function ($) {
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
+    (function ($) {
 
-    $.jqx.jqxWidget("jqxComboBox", "", {});
+        $.jqx.jqxWidget("jqxComboBox", "", {});
 
-    $.extend($.jqx._jqxComboBox.prototype, {
-        defineInstance: function () {
-            var settings = {
-                // enables/disables the combobox.
-                disabled: false,
-                // gets or sets the listbox width.
-                width: 200,
-                // gets or sets the listbox height.
-                height: 25,
-                // Represents the collection of list items.
-                items: new Array(),
-                // Gets or sets the selected index.
-                selectedIndex: -1,
-                selectedItems: new Array(),
-                _selectedItems: new Array(),
-                // data source.
-                source: null,
-                autoItemsHeight: false,
-                // gets or sets the scrollbars size.
-                scrollBarSize: $.jqx.utilities.scrollBarSize,
-                // gets or sets the scrollbars size.
-                arrowSize: 17,
-                // enables/disables the hover state.
-                enableHover: true,
-                // enables/disables the selection.
-                enableSelection: true,
-                // gets the visible items. // this property is internal for the combobox.
-                visualItems: new Array(),
-                // gets the groups. // this property is internal for the combobox.
-                groups: new Array(),
-                // gets or sets whether the items width should be equal to the combobox's width.
-                equalItemsWidth: true,
-                // gets or sets the height of the ListBox Items. When the itemHeight:= - 1, each item's height is equal to its desired height.
-                itemHeight: -1,
-                // represents the combobox's events.
-                visibleItems: new Array(),
-                // emptry group's text.
-                hint: true,
-                emptyGroupText: 'Group',
-                emptyString: "",
-                ready: null,
-                // Type: Number
-                // Default: 100
-                // Showing Popup Animation's delay.
-                openDelay: 250,
-                // Type: Number
-                // Default: 200
-                // Hiding Popup Animation's delay.
-                closeDelay: 300,
-                // default, none
-                // Type: String.
-                // enables or disables the animation.
-                animationType: 'default',
-                // Type: String
-                // Default: auto ( the drop down takes the combobox's width.)
-                // Sets the popup's width.
-                dropDownWidth: 'auto',
-                // Type: String
-                // Default: 200px ( the height is 200px )
-                // Sets the popup's height.
-                dropDownHeight: '200px',
-                // Type: Boolean
-                // Default: false
-                // Sets the popup's height to be equal to the items summary height,
-                autoDropDownHeight: false,
-                // Type: Boolean
-                // Default: false
-                // Enables or disables the browser detection.
-                enableBrowserBoundsDetection: false,
-                dropDownHorizontalAlignment: 'left',
-                dropDownVerticalAlignment: 'bottom',
-                dropDownContainer: "default",
-                // Type: String
-                // Default: startswithignorecase
-                // Possible Values: 'none, 'contains', 'containsignorecase', 'equals', 'equalsignorecase', 'startswithignorecase', 'startswith', 'endswithignorecase', 'endswith'
-                searchMode: 'startswithignorecase',
-                autoComplete: false,
-                remoteAutoComplete: false,
-                remoteAutoCompleteDelay: 500,
-                selectionMode: "default",
-                minLength: 2,
-                displayMember: "",
-                valueMember: "",
-                groupMember: "",
-                searchMember: "",
-                keyboardSelection: true,
-                renderer: null,
-                autoOpen: false,
-                template: "",
-                checkboxes: false,
-                promptText: "",
-                placeHolder: "",
-                rtl: false,
-                listBox: null,
-                validateSelection: null,
-                showCloseButtons: true,
-                renderSelectedItem: null,
-                search: null,
-                popupZIndex: 2000,
-                searchString: null,
-                multiSelect: false,
-                showArrow: true,
-                _disabledItems: new Array(),
-                touchMode: 'auto',
-                autoBind: true,
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
-                },
-                events:
-                    [
-                        // occurs when the combobox is opened.
-                        'open',
-                        // occurs when the combobox is closed.
-                        'close',
-                        // occurs when an item is selected.
-                        'select',
-                        // occurs when an item is unselected.
-                        'unselect',
-                        // occurs when the selection is changed.
-                        'change',
-                        // triggered when the user checks or unchecks an item.
-                        'checkChange',
-                        // triggered when the binding is completed.
-                        'bindingComplete',
-                        // triggered when a new item is added.
-                        'itemAdd',
-                        // triggered when a new item is removed.
-                        'itemRemove',
-                        // triggered when a new item is updated.
-                        'itemUpdate'
-                    ]
-            };
-            if (this === $.jqx._jqxComboBox.prototype) {
-                return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            this.host.attr('role', 'combobox');
-            $.jqx.aria(this, "aria-autocomplete", "both");
-
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw new Error("jqxComboBox: Missing reference to jqxlistbox.js.");
-            }
-            $.jqx.aria(this);
-
-            if (that.isMaterialized()) {
-                var elementStyle = window.getComputedStyle(this.element);
-                var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
-                var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
-                var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
-
-                if (arrowSize) {
-                    this.arrowSize = parseInt(arrowSize);
-                }
-                else {
-                    this.arrowSize = 25;
-                }
-
-                if (animation && this.animationType == "default") {
-                    this.animationType = animation.trim();
-                }
-
-                if (rowHeight && this.itemHeight === -1) {
-                    this.itemHeight = parseInt(rowHeight);
-                }
-            }
-
-            // prompt text is deprecated.
-            if (this.promptText != "") {
-                this.placeHolder = this.promptText;
-            }
-
-            this.render();
-        },
-
-        render: function () {
-            var that = this;
-            var nodeName = that.element.nodeName.toLowerCase();
-            if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
-                that.field = that.element;
-                if (that.field.className) {
-                    that._className = that.field.className;
-                }
-
-                var properties = {
-                    'title': that.field.title
+        $.extend($.jqx._jqxComboBox.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    // enables/disables the combobox.
+                    disabled: false,
+                    // gets or sets the listbox width.
+                    width: 200,
+                    // gets or sets the listbox height.
+                    height: 25,
+                    // Represents the collection of list items.
+                    items: new Array(),
+                    // Gets or sets the selected index.
+                    selectedIndex: -1,
+                    selectedItems: new Array(),
+                    _selectedItems: new Array(),
+                    // data source.
+                    source: null,
+                    autoItemsHeight: false,
+                    // gets or sets the scrollbars size.
+                    scrollBarSize: $.jqx.utilities.scrollBarSize,
+                    // gets or sets the scrollbars size.
+                    arrowSize: 17,
+                    // enables/disables the hover state.
+                    enableHover: true,
+                    // enables/disables the selection.
+                    enableSelection: true,
+                    // gets the visible items. // this property is internal for the combobox.
+                    visualItems: new Array(),
+                    // gets the groups. // this property is internal for the combobox.
+                    groups: new Array(),
+                    // gets or sets whether the items width should be equal to the combobox's width.
+                    equalItemsWidth: true,
+                    // gets or sets the height of the ListBox Items. When the itemHeight:= - 1, each item's height is equal to its desired height.
+                    itemHeight: -1,
+                    // represents the combobox's events.
+                    visibleItems: new Array(),
+                    // emptry group's text.
+                    hint: true,
+                    emptyGroupText: 'Group',
+                    emptyString: "",
+                    ready: null,
+                    // Type: Number
+                    // Default: 100
+                    // Showing Popup Animation's delay.
+                    openDelay: 250,
+                    // Type: Number
+                    // Default: 200
+                    // Hiding Popup Animation's delay.
+                    closeDelay: 300,
+                    // default, none
+                    // Type: String.
+                    // enables or disables the animation.
+                    animationType: 'default',
+                    // Type: String
+                    // Default: auto ( the drop down takes the combobox's width.)
+                    // Sets the popup's width.
+                    dropDownWidth: 'auto',
+                    // Type: String
+                    // Default: 200px ( the height is 200px )
+                    // Sets the popup's height.
+                    dropDownHeight: '200px',
+                    // Type: Boolean
+                    // Default: false
+                    // Sets the popup's height to be equal to the items summary height,
+                    autoDropDownHeight: false,
+                    // Type: Boolean
+                    // Default: false
+                    // Enables or disables the browser detection.
+                    enableBrowserBoundsDetection: false,
+                    dropDownHorizontalAlignment: 'left',
+                    dropDownVerticalAlignment: 'bottom',
+                    dropDownContainer: "default",
+                    // Type: String
+                    // Default: startswithignorecase
+                    // Possible Values: 'none, 'contains', 'containsignorecase', 'equals', 'equalsignorecase', 'startswithignorecase', 'startswith', 'endswithignorecase', 'endswith'
+                    searchMode: 'startswithignorecase',
+                    autoComplete: false,
+                    remoteAutoComplete: false,
+                    remoteAutoCompleteDelay: 500,
+                    selectionMode: "default",
+                    minLength: 2,
+                    displayMember: "",
+                    valueMember: "",
+                    groupMember: "",
+                    searchMember: "",
+                    keyboardSelection: true,
+                    renderer: null,
+                    autoOpen: false,
+                    template: "",
+                    checkboxes: false,
+                    promptText: "",
+                    placeHolder: "",
+                    rtl: false,
+                    listBox: null,
+                    validateSelection: null,
+                    showCloseButtons: true,
+                    renderSelectedItem: null,
+                    search: null,
+                    popupZIndex: 2000,
+                    searchString: null,
+                    multiSelect: false,
+                    showArrow: true,
+                    _disabledItems: new Array(),
+                    touchMode: 'auto',
+                    autoBind: true,
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    },
+                    events:
+                        [
+                            // occurs when the combobox is opened.
+                            'open',
+                            // occurs when the combobox is closed.
+                            'close',
+                            // occurs when an item is selected.
+                            'select',
+                            // occurs when an item is unselected.
+                            'unselect',
+                            // occurs when the selection is changed.
+                            'change',
+                            // triggered when the user checks or unchecks an item.
+                            'checkChange',
+                            // triggered when the binding is completed.
+                            'bindingComplete',
+                            // triggered when a new item is added.
+                            'itemAdd',
+                            // triggered when a new item is removed.
+                            'itemRemove',
+                            // triggered when a new item is updated.
+                            'itemUpdate'
+                        ]
                 };
+                if (this === $.jqx._jqxComboBox.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
+                return settings;
+            },
 
-                if (that.field.id.length) {
-                    properties.id = that.field.id.replace(/[^\w]/g, '_') + "_jqxComboBox";
+            createInstance: function (args) {
+                var that = this;
+                this.host.attr('role', 'combobox');
+                this.host.attr('aria-expanded', 'false');
+                $.jqx.aria(this, "aria-autocomplete", "both");
+
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw new Error("jqxComboBox: Missing reference to jqxlistbox.js.");
+                }
+                $.jqx.aria(this);
+
+                if (that.isMaterialized()) {
+                    var elementStyle = window.getComputedStyle(this.element);
+                    var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
+                    var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
+                    var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
+
+                    if (arrowSize) {
+                        this.arrowSize = parseInt(arrowSize);
+                    }
+                    else {
+                        this.arrowSize = 25;
+                    }
+
+                    if (animation && this.animationType == "default") {
+                        this.animationType = animation.trim();
+                    }
+
+                    if (rowHeight && this.itemHeight === -1) {
+                        this.itemHeight = parseInt(rowHeight);
+                    }
+                }
+
+                // prompt text is deprecated.
+                if (this.promptText != "") {
+                    this.placeHolder = this.promptText;
+                }
+
+                this.render();
+            },
+
+            render: function () {
+                var that = this;
+                var nodeName = that.element.nodeName.toLowerCase();
+                if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
+                    that.field = that.element;
+                    if (that.field.className) {
+                        that._className = that.field.className;
+                    }
+
+                    var properties = {
+                        'title': that.field.title
+                    };
+
+                    if (that.field.id.length) {
+                        properties.id = that.field.id.replace(/[^\w]/g, '_') + "_jqxComboBox";
+                    }
+                    else {
+                        properties.id = $.jqx.utilities.createId() + "_jqxComboBox";
+                    }
+
+                    var wrapper = $("<div></div>", properties);
+                    if (!that.width) {
+                        that.width = $(that.field).width();
+                    }
+                    if (!that.height) {
+                        that.height = $(that.field).outerHeight();
+                    }
+
+                    that.element.style.cssText = that.field.style.cssText;
+                    $(that.field).hide().after(wrapper);
+                    var data = that.host.data();
+                    that.host = wrapper;
+                    that.host.data(data);
+                    that.element = wrapper[0];
+                    that.element.id = that.field.id;
+                    that.field.id = properties.id;
+                    if (that._className) {
+                        that.host.addClass(that._className);
+                        $(that.field).removeClass(that._className);
+                    }
+
+                    if (that.field.tabIndex) {
+                        var tabIndex = that.field.tabIndex;
+                        that.field.tabIndex = -1;
+                        that.element.tabIndex = tabIndex;
+                    }
+                    if (that.field.innerHTML != "") {
+                        var result = $.jqx.parseSourceTag(that.field);
+                        that.source = result.items;
+                        if (that.selectedIndex == -1)
+                            that.selectedIndex = result.index;
+                    }
                 }
                 else {
-                    properties.id = $.jqx.utilities.createId() + "_jqxComboBox";
-                }
-
-                var wrapper = $("<div></div>", properties);
-                if (!that.width) {
-                    that.width = $(that.field).width();
-                }
-                if (!that.height) {
-                    that.height = $(that.field).outerHeight();
-                }
-
-                that.element.style.cssText = that.field.style.cssText;
-                $(that.field).hide().after(wrapper);
-                var data = that.host.data();
-                that.host = wrapper;
-                that.host.data(data);
-                that.element = wrapper[0];
-                that.element.id = that.field.id;
-                that.field.id = properties.id;
-                if (that._className) {
-                    that.host.addClass(that._className);
-                    $(that.field).removeClass(that._className);
-                }
-
-                if (that.field.tabIndex) {
-                    var tabIndex = that.field.tabIndex;
-                    that.field.tabIndex = -1;
-                    that.element.tabIndex = tabIndex;
-                }
-                if (that.field.innerHTML != "") {
-                    var result = $.jqx.parseSourceTag(that.field);
-                    that.source = result.items;
-                    if (that.selectedIndex == -1)
-                        that.selectedIndex = result.index;
-                }
-            }
-            else {
-                if (that.host.find('li').length > 0 || that.host.find('option').length > 0) {
-                    var result = $.jqx.parseSourceTag(that.element);
-                    that.source = result.items;
-                }
-            }
-            that.removeHandlers();
-            that.isanimating = false;
-            that.id = $.jqx.utilities.createId();
-            that.element.innerHTML = "";
-            var comboStructure = $("<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
-                "<div id='dropdownlistWrapper' style='padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;'>" +
-                "<div id='dropdownlistContent' style='padding: 0; margin: 0; border-top: none; border-bottom: none; float: left; position: absolute;'></div>" +
-                "<div id='dropdownlistArrow' role='button' style='padding: 0; margin: 0; border-left-width: 1px; border-bottom-width: 0px; border-top-width: 0px; border-right-width: 0px; float: right; position: absolute;'></div>" +
-                "</div>" +
-                "</div>");
-            that.comboStructure = comboStructure;
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw "jqxComboBox: Missing reference to jqxlistbox.js.";
-            }
-
-            that.touch = $.jqx.mobile.isTouchDevice();
-            if (that.touchMode === true) {
-                that.touch = true;
-            }
-
-            that.host.append(comboStructure);
-
-            that.dropdownlistWrapper = that.host.find('#dropdownlistWrapper');
-            that.dropdownlistArrow = that.host.find('#dropdownlistArrow');
-            that.dropdownlistContent = that.host.find('#dropdownlistContent');
-            that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content'));
-            that.dropdownlistContent.addClass(that.toThemeProperty('jqx-widget-content'));
-            that.dropdownlistWrapper[0].id = "dropdownlistWrapper" + that.element.id;
-            that.dropdownlistArrow[0].id = "dropdownlistArrow" + that.element.id;
-            that.dropdownlistContent[0].id = "dropdownlistContent" + that.element.id;
-            if (that.template) {
-                that.dropdownlistArrow.addClass(that.toThemeProperty("jqx-" + that.template + ""));
-            }
-            that.dropdownlistContent.append($('<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0; padding: 0; padding-left: 3px; padding-right: 3px; border: 0;" type="textarea"/>'));
-            that.input = that.dropdownlistContent.find('input');
-            that.input.addClass(that.toThemeProperty('jqx-combobox-input'));
-            that.input.addClass(that.toThemeProperty('jqx-widget-content'));
-
-            if (that.host.attr('tabindex')) {
-                that.input.attr('tabindex', that.host.attr('tabindex'));
-                that.host.removeAttr('tabindex');
-            }
-
-
-            var label = $("<label></label>");
-            if (this.hint) {
-                label[0].innerHTML = this.placeHolder;
-            }
-
-            label.addClass(that.toThemeProperty('jqx-input-label'));
-            that.dropdownlistWrapper.append(label);
-            that.label = label;
-
-            var bar = $("<span></span>");
-            that.dropdownlistWrapper.append(bar);
-            bar.addClass(that.toThemeProperty('jqx-input-bar'));
-            that.bar = bar;
-
-            var that = this;
-
-            if (that.template) {
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-            }
-
-            that._addInput();
-            if (that.rtl) {
-                that.input.css({ direction: "rtl" });
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-rtl'));
-            }
-
-            try {
-                var listBoxID = 'listBox' + that.id;
-                var oldContainer = $($.find('#' + listBoxID));
-                if (oldContainer.length > 0) {
-                    oldContainer.remove();
-                }
-                $.jqx.aria(this, "aria-owns", listBoxID);
-                $.jqx.aria(this, "aria-haspopup", true);
-                $.jqx.aria(this, "aria-multiline", false);
-                if (that.listBoxContainer) that.listBoxContainer.jqxListBox('destroy');
-                if (that.container) that.container.remove();
-                var container = $("<div style='overflow: hidden; border: none; background-color: transparent; position: absolute;' id='listBox" + that.id + "'><div id='innerListBox" + that.id + "'></div></div>");
-                container.hide();
-                if (that.dropDownContainer == "element") {
-                    container.appendTo(that.host);
-                }
-                else {
-                    container.appendTo(document.body);
-                }
-                container.addClass(that.toThemeProperty('jqx-listbox-container'));
-
-                that.container = container;
-                that.listBoxContainer = $($.find('#innerListBox' + that.id));
-
-                var width = that.width;
-                if (that.dropDownWidth != 'auto') {
-                    width = that.dropDownWidth;
-                }
-
-                if (that.dropDownHeight == null) {
-                    that.dropDownHeight = 200;
-                }
-
-                that.container.width(parseInt(width) + 25);
-                that.container.height(parseInt(that.dropDownHeight) + 25);
-                that._ready = false;
-
-                that.addHandler(that.listBoxContainer, 'bindingComplete', function (event) {
-                    if (!that.listBox) {
-                        that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                    if (that.host.find('li').length > 0 || that.host.find('option').length > 0) {
+                        var result = $.jqx.parseSourceTag(that.element);
+                        that.source = result.items;
                     }
-                    if (!that._ready) {
-                        if (that.ready) {
-                            that.ready();
-                        }
-                        that._ready = true;
-                    }
-                    that._raiseEvent('6');
-                });
-                that.addHandler(that.listBoxContainer, 'itemAdd', function (event) {
-                    that._raiseEvent('7', event.args);
-                });
-                that.addHandler(that.listBoxContainer, 'itemRemove', function (event) {
-                    that._raiseEvent('8', event.args);
-                });
-                that.addHandler(that.listBoxContainer, 'itemUpdate', function (event) {
-                    that._raiseEvent('9', event.args);
-                });
-
-                var initializing = true;
-                that.listBoxContainer.jqxListBox({
-                    autoItemsHeight: that.autoItemsHeight,
-                    _checkForHiddenParent: false, allowDrop: false, allowDrag: false,
-                    checkboxes: that.checkboxes, emptyString: that.emptyString, autoBind: !that.remoteAutoComplete && that.autoBind,
-                    renderer: that.renderer, rtl: that.rtl, itemHeight: that.itemHeight, selectedIndex: that.selectedIndex, incrementalSearch: false, width: width, scrollBarSize: that.scrollBarSize, autoHeight: that.autoDropDownHeight, height: that.dropDownHeight, groupMember: that.groupMember, searchMember: that.searchMember, displayMember: that.displayMember, valueMember: that.valueMember, source: that.source, theme: that.theme,
-                    rendered: function () {
-                        that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
-                        if (that.remoteAutoComplete) {
-                            if (that.autoDropDownHeight) {
-                                that.container.height(that.listBox.virtualSize.height + 25);
-                                that.listBoxContainer.height(that.listBox.virtualSize.height);
-                                that.listBox._arrange();
-                            }
-                            else {
-                                that.listBox._arrange();
-                                that.listBox.ensureVisible(0);
-                                that.listBox._renderItems();
-                                that.container.height(that.listBoxContainer.height() + 25);
-                            }
-
-                            if (that.searchString != undefined && that.searchString.length >= that.minLength) {
-                                var items = that.listBoxContainer.jqxListBox('items');
-                                if (items) {
-                                    if (items.length > 0) {
-                                        if (!that.isOpened()) {
-                                            that.open();
-                                        }
-                                    }
-                                    else that.close();
-                                } else that.close();
-                            }
-                            else {
-                                that.close();
-                            }
-                        }
-                        else {
-                            that.renderSelection('mouse');
-                            if (that.multiSelect) {
-                                that.doMultiSelect(false);
-                            }
-                        }
-
-                        if (that.rendered) {
-                            that.rendered();
-                        }
-                    }
-                });
-
-                if (that.dropDownContainer == "element") {
-                    that.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
                 }
-                else {
-                    that.listBoxContainer.css({ position: 'absolute', zIndex: that.popupZIndex, top: 0, left: 0 });
+                that.removeHandlers();
+                that.isanimating = false;
+                that.id = $.jqx.utilities.createId();
+                that.element.innerHTML = "";
+                var comboStructure = $("<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
+                    "<div id='dropdownlistWrapper' style='padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;'>" +
+                    "<div id='dropdownlistContent' style='padding: 0; margin: 0; border-top: none; border-bottom: none; float: left; position: absolute;'></div>" +
+                    "<div id='dropdownlistArrow' role='button' style='padding: 0; margin: 0; border-left-width: 1px; border-bottom-width: 0px; border-top-width: 0px; border-right-width: 0px; float: right; position: absolute;'></div>" +
+                    "</div>" +
+                    "</div>");
+                that.comboStructure = comboStructure;
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw "jqxComboBox: Missing reference to jqxlistbox.js.";
                 }
-                that.listBoxContainer.css('border-top-width', '1px');
-                that.listBoxContainer.addClass(that.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    that.listBoxContainer.addClass(that.toThemeProperty('jqx-noshadow'));
+
+                that.touch = $.jqx.mobile.isTouchDevice();
+                if (that.touchMode === true) {
+                    that.touch = true;
                 }
+
+                that.host.append(comboStructure);
+
+                that.dropdownlistWrapper = that.host.find('#dropdownlistWrapper');
+                that.dropdownlistArrow = that.host.find('#dropdownlistArrow');
+                that.dropdownlistContent = that.host.find('#dropdownlistContent');
+                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content'));
+                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.dropdownlistWrapper[0].id = "dropdownlistWrapper" + that.element.id;
+                that.dropdownlistArrow[0].id = "dropdownlistArrow" + that.element.id;
+                that.dropdownlistContent[0].id = "dropdownlistContent" + that.element.id;
                 if (that.template) {
-                    that.listBoxContainer.addClass(that.toThemeProperty("jqx-" + that.template + "-item"));
+                    that.dropdownlistArrow.addClass(that.toThemeProperty("jqx-" + that.template + ""));
+                }
+                that.dropdownlistContent.append($('<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0; padding: 0; padding-left: 3px; padding-right: 3px; border: 0;" type="textarea"/>'));
+                that.input = that.dropdownlistContent.find('input');
+                that.input.addClass(that.toThemeProperty('jqx-combobox-input'));
+                that.input.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.input[0].setAttribute('aria-label', 'input');
+
+                if (that.host.attr('tabindex')) {
+                    that.input.attr('tabindex', that.host.attr('tabindex'));
+                    that.host.removeAttr('tabindex');
                 }
 
-                that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
-                that.listBox.enableSelection = that.enableSelection;
-                that.listBox.enableHover = that.enableHover;
-                that.listBox.equalItemsWidth = that.equalItemsWidth;
-                that.listBox._arrange();
-                that.addHandler(that.listBoxContainer, 'unselect', function (event) {
-                    if (!that.multiSelect) {
-                        that._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+
+                var label = $("<label></label>");
+                if (this.hint) {
+                    label[0].innerHTML = this.placeHolder;
+                }
+
+                label.addClass(that.toThemeProperty('jqx-input-label'));
+                that.dropdownlistWrapper.append(label);
+                that.label = label;
+
+                var bar = $("<span></span>");
+                that.dropdownlistWrapper.append(bar);
+                bar.addClass(that.toThemeProperty('jqx-input-bar'));
+                that.bar = bar;
+
+                var that = this;
+
+                if (that.template) {
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+                }
+
+                that._addInput();
+                if (that.rtl) {
+                    that.input.css({ direction: "rtl" });
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-rtl'));
+                }
+
+                try {
+                    var listBoxID = 'listBox' + that.id;
+                    var oldContainer = $($.find('#' + listBoxID));
+                    if (oldContainer.length > 0) {
+                        oldContainer.remove();
                     }
-                });
-
-                that.addHandler(that.listBoxContainer, 'change', function (event) {
-                    if (!that.multiSelect) {
-                        that.selectedIndex = that.listBox.selectedIndex;
-                        that._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
-                    }
-                });
-
-                if (that.animationType == 'none') {
-                    that.container.css('display', 'none');
-                }
-                else {
-                    that.container.hide();
-                }
-                initializing = false;
-            }
-            catch (e) {
-                throw e;
-            }
-
-
-            var that = this;
-            that.input.attr('disabled', that.disabled);
-            var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
-            if (!ie7) {
-                if (that.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = that.placeHolder;
-                }
-                else {
-                    that.input.attr('placeholder', that.placeHolder);
-                }
-            }
-
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (value) {
-                    instance.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                    instance.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-                }
-                else {
-                    instance.host.removeClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                    instance.host.removeClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-                }
-                instance.input.attr('disabled', instance.disabled);
-                $.jqx.aria(instance, "aria-disabled", instance.disabled);
-                instance.input.attr('disabled', instance.disabled);
-            }
-
-            if (that.disabled) {
-                that.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                that.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-            }
-
-            that.host.addClass(that.toThemeProperty('jqx-combobox-state-normal'));
-            that.host.addClass(that.toThemeProperty('jqx-combobox'));
-            that.host.addClass(that.toThemeProperty('jqx-rc-all'));
-            that.host.addClass(that.toThemeProperty('jqx-widget'));
-            that.host.addClass(that.toThemeProperty('jqx-widget-content'));
-            that.dropdownlistArrowIcon = $("<div></div>");
-            if (that.dropDownVerticalAlignment == "top") {
-                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
-            }
-            else {
-                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down'));
-            }
-            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon'));
-            that.dropdownlistArrow.append(that.dropdownlistArrowIcon);
-            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-normal'));
-            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-normal'));
-            if (!that.rtl) {
-                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-r'));
-            }
-            else {
-                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-l'));
-            }
-
-            that._setSize();
-            that._updateHandlers();
-
-            that.addHandler(that.input, 'keyup.textchange', function (event) {
-                if (that._writeTimer) clearTimeout(that._writeTimer);
-                that._writeTimer = setTimeout(function () {
-                    var foundMatch = that._search(event);
-                    if (that.cinput && that.input) {
-                        if (!that.displayMember) {
-                            that.cinput[0].value = that.input[0].value;
-                        }
-                        else {
-                            that._updateInputSelection();
-                        }
-                    }
-                }, 50);
-            });
-
-            // fix for IE7
-            if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                if (that.host.parents('.jqx-window').length > 0) {
-                    var zIndex = that.host.parents('.jqx-window').css('z-index');
-                    container.css('z-index', zIndex + 10);
-                    that.listBoxContainer.css('z-index', zIndex + 10);
-                }
-            }
-
-            if (that.checkboxes) {
-                that.input.attr('readonly', true);
-                $.jqx.aria(this, "aria-readonly", true);
-            }
-            else {
-                $.jqx.aria(this, "aria-readonly", false);
-            }
-            if (!that.remoteAutoComplete) {
-                that.searchString = "";
-            }
-
-            this.bar.css('top', this.host.height());
-        },
-
-        _addInput: function () {
-            var name = this.host.attr('name');
-            this.cinput = $("<input type='hidden'/>");
-            this.host.append(this.cinput);
-            if (name) {
-                this.cinput.attr('name', name);
-            }
-        },
-
-        _updateInputSelection: function () {
-            if (this.cinput) {
-                var selectedValues = new Array();
-                if (this.selectedIndex == -1) {
-                    this.cinput.val("");
-                }
-                else {
-                    var selectedItem = this.getSelectedItem();
-                    if (selectedItem != null) {
-                        this.cinput.val(selectedItem.value);
-                        selectedValues.push(selectedItem.value);
+                    $.jqx.aria(this, "aria-owns", listBoxID);
+                    $.jqx.aria(this, "aria-haspopup", true);
+                    if (that.listBoxContainer) that.listBoxContainer.jqxListBox('destroy');
+                    if (that.container) that.container.remove();
+                    var container = $("<div style='overflow: hidden; border: none; background-color: transparent; position: absolute;' id='listBox" + that.id + "'><div id='innerListBox" + that.id + "'></div></div>");
+                    container.hide();
+                    if (that.dropDownContainer == "element") {
+                        container.appendTo(that.host);
                     }
                     else {
-                        this.cinput.val(this.dropdownlistContent.text());
+                        container.appendTo(document.body);
                     }
-                }
+                    container.addClass(that.toThemeProperty('jqx-listbox-container'));
 
-                if (this.checkboxes || this.multiSelect) {
-                    if (!this.multiSelect) {
-                        var items = this.getCheckedItems();
-                    }
-                    else {
-                        var items = this.getSelectedItems();
+                    that.container = container;
+                    that.listBoxContainer = $($.find('#innerListBox' + that.id));
+
+                    var width = that.width;
+                    if (that.dropDownWidth != 'auto') {
+                        width = that.dropDownWidth;
                     }
 
-                    var str = "";
-                    if (items != null) {
-                        for (var i = 0; i < items.length; i++) {
-                            if (i == items.length - 1) {
-                                str += items[i].value;
+                    if (that.dropDownHeight == null) {
+                        that.dropDownHeight = 200;
+                    }
+
+                    that.container.width(parseInt(width) + 25);
+                    that.container.height(parseInt(that.dropDownHeight) + 25);
+                    that._ready = false;
+
+                    that.addHandler(that.listBoxContainer, 'bindingComplete', function (event) {
+                        if (!that.listBox) {
+                            that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                        }
+                        if (!that._ready) {
+                            if (that.ready) {
+                                that.ready();
+                            }
+                            that._ready = true;
+                        }
+                        that._raiseEvent('6');
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemAdd', function (event) {
+                        that._raiseEvent('7', event.args);
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemRemove', function (event) {
+                        that._raiseEvent('8', event.args);
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemUpdate', function (event) {
+                        that._raiseEvent('9', event.args);
+                    });
+
+                    var initializing = true;
+                    that.listBoxContainer.jqxListBox({
+                        autoItemsHeight: that.autoItemsHeight,
+                        _checkForHiddenParent: false, allowDrop: false, allowDrag: false,
+                        checkboxes: that.checkboxes, emptyString: that.emptyString, autoBind: !that.remoteAutoComplete && that.autoBind,
+                        renderer: that.renderer, rtl: that.rtl, itemHeight: that.itemHeight, selectedIndex: that.selectedIndex, incrementalSearch: false, width: width, scrollBarSize: that.scrollBarSize, autoHeight: that.autoDropDownHeight, height: that.dropDownHeight, groupMember: that.groupMember, searchMember: that.searchMember, displayMember: that.displayMember, valueMember: that.valueMember, source: that.source, theme: that.theme,
+                        rendered: function () {
+                            that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                            if (that.remoteAutoComplete) {
+                                if (that.autoDropDownHeight) {
+                                    that.container.height(that.listBox.virtualSize.height + 25);
+                                    that.listBoxContainer.height(that.listBox.virtualSize.height);
+                                    that.listBox._arrange();
+                                }
+                                else {
+                                    that.listBox._arrange();
+                                    that.listBox.ensureVisible(0);
+                                    that.listBox._renderItems();
+                                    that.container.height(that.listBoxContainer.height() + 25);
+                                }
+
+                                if (that.searchString != undefined && that.searchString.length >= that.minLength) {
+                                    var items = that.listBoxContainer.jqxListBox('items');
+                                    if (items) {
+                                        if (items.length > 0) {
+                                            if (!that.isOpened()) {
+                                                that.open();
+                                            }
+                                        }
+                                        else that.close();
+                                    } else that.close();
+                                }
+                                else {
+                                    that.close();
+                                }
                             }
                             else {
-                                str += items[i].value + ",";
+                                that.renderSelection('mouse');
+                                if (that.multiSelect) {
+                                    that.doMultiSelect(false);
+                                }
                             }
-                            selectedValues.push(items[i].value);
+
+                            if (that.rendered) {
+                                that.rendered();
+                            }
                         }
-                    }
-                    this.cinput.val(str);
-                }
-                if (this.field && this.cinput) {
-                    if (this.field.nodeName.toLowerCase() == "select") {
-                        $.each(this.field, function (index, value) {
-                            $(this).removeAttr('selected');
-                            this.selected = selectedValues.indexOf(this.value) >= 0;
-                            if (this.selected) {
-                                $(this).attr('selected', true);
-                            }
-                        });
+                    });
+
+                    if (that.dropDownContainer == "element") {
+                        that.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
                     }
                     else {
-                        $.each(this.items, function (index, value) {
-                            $(this.originalItem.originalItem).removeAttr('data-selected');
-                            this.selected = selectedValues.indexOf(this.value) >= 0;
-                            if (this.selected) {
-                                $(this.originalItem.originalItem).attr('data-selected', true);
-                            }
-                        });
+                        that.listBoxContainer.css({ position: 'absolute', zIndex: that.popupZIndex, top: 0, left: 0 });
                     }
+                    that.listBoxContainer.css('border-top-width', '1px');
+                    that.listBoxContainer.addClass(that.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        that.listBoxContainer.addClass(that.toThemeProperty('jqx-noshadow'));
+                    }
+                    if (that.template) {
+                        that.listBoxContainer.addClass(that.toThemeProperty("jqx-" + that.template + "-item"));
+                    }
+
+                    that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                    that.listBox.enableSelection = that.enableSelection;
+                    that.listBox.enableHover = that.enableHover;
+                    that.listBox.equalItemsWidth = that.equalItemsWidth;
+                    that.listBox._arrange();
+                    that.addHandler(that.listBoxContainer, 'unselect', function (event) {
+                        if (!that.multiSelect) {
+                            that._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+                        }
+                    });
+
+                    that.addHandler(that.listBoxContainer, 'change', function (event) {
+                        if (!that.multiSelect) {
+                            that.selectedIndex = that.listBox.selectedIndex;
+                            that._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
+                        }
+                    });
+
+                    if (that.animationType == 'none') {
+                        that.container.css('display', 'none');
+                    }
+                    else {
+                        that.container.hide();
+                    }
+                    initializing = false;
                 }
-            }
-        },
-
-        _search: function (event) {
-            var that = this;
-
-            if (event.keyCode == 9)
-                return;
-
-            if (that.searchMode == 'none' || that.searchMode == null || that.searchMode == 'undefined') {
-                return;
-            }
-
-            if (event.keyCode == 16 || event.keyCode == 17 || event.keyCode == 20)
-                return;
-
-            if (that.checkboxes) {
-                return;
-            }
-
-            if (that.multiSelect) {
-                var span = $("<span style='visibility: hidden; white-space: nowrap;'>" + document.createTextNode(that.input.val()) + "</span>");
-                span.addClass(that.toThemeProperty('jqx-widget'));
-                $(document.body).append(span);
-                var width = span.width() + 15;
-                span.remove();
-
-                if (width > that.host.width()) {
-                    width = that.host.width();
-                }
-                if (width < 25) {
-                    width = 25;
+                catch (e) {
+                    throw e;
                 }
 
-                that.input.css('width', width + 'px');
-                if (that.selectedItems.length == 0) {
-                    that.input.css('width', '100%');
 
-                    if (!that.isMaterialized()) {
+                var that = this;
+                that.input.attr('disabled', that.disabled);
+                var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
+                if (!ie7) {
+                    if (that.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = that.placeHolder;
+                    }
+                    else {
                         that.input.attr('placeholder', that.placeHolder);
                     }
                 }
+
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (value) {
+                        instance.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                        instance.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                    }
+                    else {
+                        instance.host.removeClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                        instance.host.removeClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                    }
+                    instance.input.attr('disabled', instance.disabled);
+                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
+                    instance.input.attr('disabled', instance.disabled);
+                }
+
+                if (that.disabled) {
+                    that.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                    that.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                }
+
+                that.host.addClass(that.toThemeProperty('jqx-combobox-state-normal'));
+                that.host.addClass(that.toThemeProperty('jqx-combobox'));
+                that.host.addClass(that.toThemeProperty('jqx-rc-all'));
+                that.host.addClass(that.toThemeProperty('jqx-widget'));
+                that.host.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.dropdownlistArrowIcon = $("<div></div>");
+                if (that.dropDownVerticalAlignment == "top") {
+                    that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
+                }
                 else {
-                    if (!that.isMaterialized()) {
-                        that.input.attr('placeholder', "");
-                    }
+                    that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down'));
+                }
+                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon'));
+                that.dropdownlistArrow.append(that.dropdownlistArrowIcon);
+                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-normal'));
+                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-normal'));
+                that.dropdownlistArrow[0].setAttribute('aria-label', 'expand');
+
+                if (!that.rtl) {
+                    that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-r'));
+                }
+                else {
+                    that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-l'));
                 }
 
-                var top = parseInt(this._findPos(that.host[0])[1]) + parseInt(that.host.outerHeight()) - 1 + 'px';
-                var isMobileBrowser = false;// $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
-                if ((isMobileBrowser != null && isMobileBrowser)) {
-                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(that.host.outerHeight());
-                    if ($('body').css('border-top-width') != '0px') {
-                        top = parseInt(top) - this._getBodyOffset().top + 'px';
-                    }
-                }
+                that._setSize();
+                that._updateHandlers();
 
-                that.container.css('top', top);
-                var height = parseInt(that.host.height());
-                that.dropdownlistArrow.height(height);
-            }
+                that.addHandler(that.input, 'paste.textchange', function (event) {
+                    if (that._writeTimer) clearTimeout(that._writeTimer);
+                    that._writeTimer = setTimeout(function () {
+                        that.ctrlKey = false;
 
-            if (!that.isanimating) {
-                if (event.altKey && event.keyCode == 38) {
-                    that.hideListBox('altKey');
-                    return false;
-                }
-
-                if (event.altKey && event.keyCode == 40) {
-                    if (!that.isOpened()) {
-                        that.showListBox('altKey');
-                    }
-                    return false;
-                }
-            }
-
-            if (event.keyCode == 37 || event.keyCode == 39)
-                return false;
-
-            if (event.altKey || event.keyCode == 18)
-                return;
-
-            if (event.keyCode >= 33 && event.keyCode <= 40) {
-                return;
-            }
-
-            if (event.ctrlKey || that.ctrlKey) {
-                if (event.keyCode != 88 && event.keyCode != 86) {
-                    return;
-                }
-            }
-
-            var value = that.input.val();
-            if (value.length == 0 && !that.autoComplete) {
-                that.listBox.searchString = that.input.val();
-                that.listBox.clearSelection();
-                that.hideListBox('search');
-                that.searchString = that.input.val();
-                return;
-            }
-
-            if (that.remoteAutoComplete) {
-                var that = this;
-                var clearListSelection = function () {
-                    that.listBox.vScrollInstance.value = 0;
-                }
-
-                if (value.length >= that.minLength) {
-                    if (!event.ctrlKey && !event.altKey) {
-                        if (that.searchString != value) {
-                            var source = that.listBoxContainer.jqxListBox('source');
-                            if (source == null) {
-                                that.listBoxContainer.jqxListBox({ source: that.source });
+                        var foundMatch = that._search(event);
+                        if (that.cinput && that.input) {
+                            if (!that.displayMember) {
+                                that.cinput[0].value = that.input[0].value;
                             }
-                            if (that._searchTimer) {
-                                clearTimeout(that._searchTimer);
-                            }
-                            if (event.keyCode != 13 && event.keyCode != 27) {
-                                that._searchTimer = setTimeout(function () {
-                                    clearListSelection();
-                                    if (that.autoDropDownHeight) {
-                                        that.listBox.autoHeight = true;
-                                    }
-                                    that.searchString = that.input.val();
-                                    if (that.search != null) {
-                                        that.search(that.input.val());
-                                    }
-                                    else {
-                                        throw "'search' function is not defined";
-                                    }
-
-                                }, that.remoteAutoCompleteDelay);
+                            else {
+                                that._updateInputSelection();
                             }
                         }
-                        that.searchString = value;
+                    }, 50);
+                });
+
+                that.addHandler(that.input, 'keyup.textchange', function (event) {
+                    if (that._writeTimer) clearTimeout(that._writeTimer);
+                    that._writeTimer = setTimeout(function () {
+                        var foundMatch = that._search(event);
+                        if (that.cinput && that.input) {
+                            if (!that.displayMember) {
+                                that.cinput[0].value = that.input[0].value;
+                            }
+                            else {
+                                that._updateInputSelection();
+                            }
+                        }
+                    }, 50);
+                });
+
+                // fix for IE7
+                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                    if (that.host.parents('.jqx-window').length > 0) {
+                        var zIndex = that.host.parents('.jqx-window').css('z-index');
+                        container.css('z-index', zIndex + 10);
+                        that.listBoxContainer.css('z-index', zIndex + 10);
                     }
                 }
+
+                if (that.checkboxes) {
+                    that.input.attr('readonly', true);
+                    $.jqx.aria(this, "aria-readonly", true);
+                }
                 else {
-                    if (that._searchTimer) clearTimeout(that._searchTimer);
-                    clearListSelection();
+                    $.jqx.aria(this, "aria-readonly", false);
+                }
+                if (!that.remoteAutoComplete) {
                     that.searchString = "";
-                    that.search("");
-                    that.listBoxContainer.jqxListBox({ source: null });
                 }
-                return;
-            }
 
-            var that = this;
-            if (value === that.searchString) {
-                return;
-            }
+                this.bar.css('top', this.host.height());
+            },
 
-            if (!(event.keyCode == '27' || event.keyCode == '13')) {
-                var currentValue = that.input[0].value;
-                var matches = that._updateItemsVisibility(value);
-                var matchItems = matches.matchItems;
-                if (that.autoComplete && that.autoItemsHeight) {
-                    that.input[0].value = currentValue;
+            _addInput: function () {
+                var name = this.host.attr('name');
+                this.cinput = $("<input type='hidden'/>");
+                this.host.append(this.cinput);
+                if (name) {
+                    this.cinput.attr('name', name);
                 }
-                var index = matches.index;
-                if (!that.autoComplete && !that.remoteAutoComplete) {
-                    if (!that.multiSelect || (that.multiSelect && index >= 0)) {
-                        that.listBox.selectIndex(index);
-                        var isInView = that.listBox.isIndexInView(index);
-                        if (!isInView) {
-                            that.listBox.ensureVisible(index);
+            },
+
+            _updateInputSelection: function () {
+                if (this.cinput) {
+                    var selectedValues = new Array();
+                    if (this.selectedIndex == -1) {
+                        this.cinput.val("");
+                    }
+                    else {
+                        var selectedItem = this.getSelectedItem();
+                        if (selectedItem != null) {
+                            this.cinput.val(selectedItem.value);
+                            selectedValues.push(selectedItem.value);
                         }
                         else {
-                            that.listBox._renderItems();
+                            this.cinput.val(this.dropdownlistContent.text());
+                        }
+                    }
+
+                    if (this.checkboxes || this.multiSelect) {
+                        if (!this.multiSelect) {
+                            var items = this.getCheckedItems();
+                        }
+                        else {
+                            var items = this.getSelectedItems();
+                        }
+
+                        var str = "";
+                        if (items != null) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (i == items.length - 1) {
+                                    str += items[i].value;
+                                }
+                                else {
+                                    str += items[i].value + ",";
+                                }
+                                selectedValues.push(items[i].value);
+                            }
+                        }
+                        this.cinput.val(str);
+                    }
+                    if (this.field && this.cinput) {
+                        if (this.field.nodeName.toLowerCase() == "select") {
+                            $.each(this.field, function (index, value) {
+                                $(this).removeAttr('selected');
+                                this.selected = selectedValues.indexOf(this.value) >= 0;
+                                if (this.selected) {
+                                    $(this).attr('selected', true);
+                                }
+                            });
+                        }
+                        else {
+                            $.each(this.items, function (index, value) {
+                                $(this.originalItem.originalItem).removeAttr('data-selected');
+                                this.selected = selectedValues.indexOf(this.value) >= 0;
+                                if (this.selected) {
+                                    $(this.originalItem.originalItem).attr('data-selected', true);
+                                }
+                            });
+                        }
+                    }
+                }
+            },
+
+            _search: function (event) {
+                var that = this;
+
+                if (event.keyCode == 9)
+                    return;
+
+                if (that.searchMode == 'none' || that.searchMode == null || that.searchMode == 'undefined') {
+                    return;
+                }
+
+                if (event.keyCode == 16 || event.keyCode == 17 || event.keyCode == 20)
+                    return;
+
+                if (that.checkboxes) {
+                    return;
+                }
+
+                if (that.multiSelect) {
+                    var span = $("<span style='visibility: hidden; white-space: nowrap;'>" + document.createTextNode(that.input.val()) + "</span>");
+                    span.addClass(that.toThemeProperty('jqx-widget'));
+                    $(document.body).append(span);
+                    var width = span.width() + 15;
+                    span.remove();
+
+                    if (width > that.host.width()) {
+                        width = that.host.width();
+                    }
+                    if (width < 25) {
+                        width = 25;
+                    }
+
+                    that.input.css('width', width + 'px');
+                    if (that.selectedItems.length == 0) {
+                        that.input.css('width', '100%');
+
+                        if (!that.isMaterialized()) {
+                            that.input.attr('placeholder', that.placeHolder);
+                        }
+                    }
+                    else {
+                        if (!that.isMaterialized()) {
+                            that.input.attr('placeholder', "");
+                        }
+                    }
+
+                    var top = parseInt(this._findPos(that.host[0])[1]) + parseInt(that.host.outerHeight()) - 1 + 'px';
+                    var isMobileBrowser = false;// $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+                    if ((isMobileBrowser != null && isMobileBrowser)) {
+                        top = $.jqx.mobile.getTopPos(this.element) + parseInt(that.host.outerHeight());
+                        if ($('body').css('border-top-width') != '0px') {
+                            top = parseInt(top) - this._getBodyOffset().top + 'px';
+                        }
+                    }
+
+                    that.container.css('top', top);
+                    var height = parseInt(that.host.height());
+                    that.dropdownlistArrow.height(height);
+                }
+
+                if (!that.isanimating) {
+                    if (event.altKey && event.keyCode == 38) {
+                        that.hideListBox('altKey');
+                        return false;
+                    }
+
+                    if (event.altKey && event.keyCode == 40) {
+                        if (!that.isOpened()) {
+                            that.showListBox('altKey');
+                        }
+                        return false;
+                    }
+                }
+
+                if (event.keyCode == 37 || event.keyCode == 39)
+                    return false;
+
+                if (event.altKey || event.keyCode == 18)
+                    return;
+
+                if (event.keyCode >= 33 && event.keyCode <= 40) {
+                    return;
+                }
+
+                if (event.ctrlKey || that.ctrlKey) {
+                    if (event.keyCode != 88 && event.keyCode != 86) {
+                        return;
+                    }
+                }
+
+                var value = that.input.val();
+                if (value.length == 0 && !that.autoComplete) {
+                    that.listBox.searchString = that.input.val();
+                    that.listBox.clearSelection();
+                    that.hideListBox('search');
+                    that.searchString = that.input.val();
+                    return;
+                }
+
+                if (that.remoteAutoComplete) {
+                    var that = this;
+                    var clearListSelection = function () {
+                        that.listBox.vScrollInstance.value = 0;
+                    }
+
+                    if (value.length >= that.minLength) {
+                        if (!event.ctrlKey && !event.altKey) {
+                            if (that.searchString != value) {
+                                var source = that.listBoxContainer.jqxListBox('source');
+                                if (source == null) {
+                                    that.listBoxContainer.jqxListBox({ source: that.source });
+                                }
+                                if (that._searchTimer) {
+                                    clearTimeout(that._searchTimer);
+                                }
+                                if (event.keyCode != 13 && event.keyCode != 27) {
+                                    that._searchTimer = setTimeout(function () {
+                                        clearListSelection();
+                                        if (that.autoDropDownHeight) {
+                                            that.listBox.autoHeight = true;
+                                        }
+                                        that.searchString = that.input.val();
+                                        if (that.search != null) {
+                                            that.search(that.input.val());
+                                        }
+                                        else {
+                                            throw "'search' function is not defined";
+                                        }
+
+                                    }, that.remoteAutoCompleteDelay);
+                                }
+                            }
+                            that.searchString = value;
+                        }
+                    }
+                    else {
+                        if (that._searchTimer) clearTimeout(that._searchTimer);
+                        clearListSelection();
+                        that.searchString = "";
+                        that.search("");
+                        that.listBoxContainer.jqxListBox({ source: null });
+                    }
+                    return;
+                }
+
+                var that = this;
+                if (value === that.searchString) {
+                    return;
+                }
+
+                if (!(event.keyCode == '27' || event.keyCode == '13')) {
+                    var currentValue = that.input[0].value;
+                    var matches = that._updateItemsVisibility(value);
+                    var matchItems = matches.matchItems;
+                    if (that.autoComplete && that.autoItemsHeight) {
+                        that.input[0].value = currentValue;
+                    }
+                    var index = matches.index;
+                    if (!that.autoComplete && !that.remoteAutoComplete) {
+                        if (!that.multiSelect || (that.multiSelect && index >= 0)) {
+                            that.listBox.selectIndex(index);
+                            var isInView = that.listBox.isIndexInView(index);
+                            if (!isInView) {
+                                that.listBox.ensureVisible(index);
+                            }
+                            else {
+                                that.listBox._renderItems();
+                            }
+                        }
+                    }
+
+                    if (that.autoComplete && matchItems.length === 0) {
+                        that.hideListBox('search');
+                    }
+                }
+
+                if (event.keyCode == '13') {
+                    var isOpen = that.container.css('display') == 'block';
+                    if (isOpen && !that.isanimating) {
+                        that.hideListBox('keyboard');
+                        that._oldvalue = that.listBox.selectedValue;
+                        return;
+                    }
+                }
+                else if (event.keyCode == '27') {
+                    var isOpen = that.container.css('display') == 'block';
+                    if (isOpen && !that.isanimating) {
+                        if (!that.multiSelect) {
+                            var item = that.listBox.getVisibleItem(that._oldvalue);
+                            if (item) {
+                                var that = this;
+                                setTimeout(
+                                    function () {
+                                        if (that.autoComplete) {
+                                            that._updateItemsVisibility("");
+                                        }
+                                        that.listBox.selectIndex(item.index);
+                                        that.renderSelection('api');
+                                    }, that.closeDelay);
+                            }
+                            else {
+                                that.clearSelection();
+                            }
+                        }
+                        else {
+                            that.input.val("");
+                            that.listBox.selectedValue = null;
+                        }
+
+                        that.hideListBox('keyboard');
+                        that.renderSelection('api');
+                        event.preventDefault();
+                        return false;
+                    }
+                }
+                else {
+                    if (!that.isOpened() && !that.opening && !event.ctrlKey) {
+                        if (that.listBox.visibleItems && that.listBox.visibleItems.length > 0) {
+                            if (that.input.val() != that.searchString && that.searchString != undefined && index != -1) {
+                                that.showListBox('search');
+                            }
+                        }
+                    }
+                    that.searchString = that.input.val();
+
+                    if (that.searchString == "") {
+                        if (!that.listBox.itemsByValue[""]) {
+                            index = -1;
+                            if (!that.multiSelect) {
+                                that.clearSelection();
+                            }
+                        }
+                    }
+
+                    var item = that.listBox.getVisibleItem(index);
+
+                    if (item != undefined) {
+                        that._updateInputSelection();
+                    }
+                }
+            },
+
+            val: function (value) {
+                if (!this.input) return "";
+                var isEmpty = function (obj) {
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key))
+                            return false;
+                    }
+
+                    if (typeof value == "number")
+                        return false;
+                    if (typeof value == "date")
+                        return false;
+                    if (typeof value == "boolean")
+                        return false;
+                    if (typeof value == "string")
+                        return false;
+
+                    return true;
+                }
+
+                if (isEmpty(value) || arguments.length == 0) {
+                    var item = this.getSelectedItem();
+                    if (item) {
+                        return item.value;
+                    }
+
+
+                    return this.input.val();
+                }
+                else {
+                    var item = this.getItemByValue(value);
+                    if (item != null) {
+                        this.selectItem(item);
+                    }
+                    else {
+                        this.input.val(value);
+                    }
+                    return this.input.val();
+                }
+            },
+
+            focus: function () {
+                var that = this;
+                var doFocus = function () {
+                    that.input.focus();
+                    var val = that.input.val();
+                    that._setSelection(0, val.length);
+                }
+                doFocus();
+                setTimeout(function () {
+                    doFocus();
+                }, 10);
+            },
+
+            _setSelection: function (start, end) {
+                try {
+                    if ('selectionStart' in this.input[0]) {
+                        this.input[0].focus();
+                        this.input[0].setSelectionRange(start, end);
+                    }
+                    else {
+                        var range = this.input[0].createTextRange();
+                        range.collapse(true);
+                        range.moveEnd('character', end);
+                        range.moveStart('character', start);
+                        range.select();
+                    }
+                }
+                catch (error) {
+                }
+            },
+
+            setContent: function (value) {
+                this.input.val(value);
+            },
+
+            // get all matches of a searched value.
+            _updateItemsVisibility: function (value) {
+                var items = this.getItems();
+                if (items == undefined) {
+                    return { index: -1, matchItem: new Array() }
+                }
+
+                var that = this;
+                var index = -1;
+                var matchItems = new Array();
+                var newItemsIndex = 0;
+
+                $.each(items, function (i) {
+                    var itemValue = '';
+                    if (!this.isGroup) {
+                        if (this.searchLabel) {
+                            itemValue = this.searchLabel;
+                        }
+                        else if (this.label) {
+                            itemValue = this.label;
+                        }
+                        else if (this.value) {
+                            itemValue = this.value;
+                        }
+                        else if (this.title) {
+                            itemValue = this.title;
+                        }
+                        else itemValue = 'jqxItem';
+                        itemValue = itemValue.toString();
+                        var matches = false;
+                        switch (that.searchMode) {
+                            case 'containsignorecase':
+                                matches = $.jqx.string.containsIgnoreCase(itemValue, value);
+                                break;
+                            case 'contains':
+                                matches = $.jqx.string.contains(itemValue, value);
+                                break;
+                            case 'equals':
+                                matches = $.jqx.string.equals(itemValue, value);
+                                break;
+                            case 'equalsignorecase':
+                                matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
+                                break;
+                            case 'startswith':
+                                matches = $.jqx.string.startsWith(itemValue, value);
+                                break;
+                            case 'startswithignorecase':
+                                matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
+                                break;
+                            case 'endswith':
+                                matches = $.jqx.string.endsWith(itemValue, value);
+                                break;
+                            case 'endswithignorecase':
+                                matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
+                                break;
+                        }
+
+                        if (that.autoComplete && !matches) {
+                            this.visible = false;
+                        }
+
+                        if (matches && that.autoComplete) {
+                            matchItems[newItemsIndex++] = this;
+                            this.visible = true;
+                            index = this.visibleIndex;
+                        }
+
+                        if (value == '' && that.autoComplete) {
+                            this.visible = true;
+                            matches = false;
+                        }
+
+                        if (that.multiSelect) {
+                            this.disabled = false;
+                            if (that.selectedItems.indexOf(this.value) >= 0 || that._disabledItems.indexOf(this.value) >= 0) {
+                                this.disabled = true;
+                                matches = false;
+                            }
+                        }
+
+                        if (!that.multiSelect) {
+                            if (matches && !that.autoComplete) {
+                                index = this.visibleIndex;
+                                return false;
+                            }
+                        }
+                        else {
+                            if (matches && !that.autoComplete) {
+                                if (index === -1) {
+                                    index = this.visibleIndex;
+                                }
+                                return true;
+                            }
+                        }
+                    }
+                });
+                this.listBox.searchString = value;
+                var that = this;
+                var selectFirstItem = function () {
+                    if (that.multiSelect) return;
+                    var nonDisabledIndex = 0;
+                    var foundIndex = false;
+                    var item = null;
+                    for (var indx = 0; indx < that.listBox.items.length; indx++) {
+                        that.listBox.selectedIndexes[indx] = -1;
+                        if (!that.listBox.items[indx].disabled) {
+                            if (foundIndex == false) {
+                                item = that.listBox.items[indx];
+                                nonDisabledIndex = item.visibleIndex;
+                                foundIndex = true;
+                            }
+                        }
+                    }
+                    that.listBox.selectedIndex = -1;
+                    that.listBox.selectedIndex = nonDisabledIndex;
+                    that.listBox.selectedIndexes[nonDisabledIndex] = nonDisabledIndex;
+                    if (that.listBox.visibleItems.length > 0) {
+                        if (item) {
+                            that.listBox.selectedValue = item.value;
+                        }
+                        else {
+                            that.listBox.selectedValue = null;
+                        }
+                    }
+                    else {
+                        that.listBox.selectedValue = null;
+                    }
+                    that.listBox.ensureVisible(0);
+                }
+
+                if (!this.autoComplete) {
+                    selectFirstItem();
+                    return { index: index, matchItems: matchItems };
+                }
+
+                this.listBox.renderedVisibleItems = new Array();
+                var vScrollValue = this.listBox.vScrollInstance.value;
+                this.listBox.vScrollInstance.value = 0;
+                this.listBox.visibleItems = new Array();
+                this.listBox._renderItems();
+                var selectedValue = this.listBox.selectedValue;
+                var item = this.listBox.getItemByValue(selectedValue);
+                if (!this.multiSelect) {
+                    if (item) {
+                        if (item.visible) {
+                            this.listBox.selectedIndex = item.visibleIndex;
+                            for (var indx = 0; indx < this.listBox.items.length; indx++) {
+                                this.listBox.selectedIndexes[indx] = -1;
+                            }
+                            this.listBox.selectedIndexes[item.visibleIndex] = item.visibleIndex;
+                        }
+                        else {
+                            for (var indx = 0; indx < this.listBox.items.length; indx++) {
+                                this.listBox.selectedIndexes[indx] = -1;
+                            }
+                            this.listBox.selectedIndex = -1;
+                        }
+                    }
+                }
+                else {
+                    selectFirstItem();
+                }
+
+                this.listBox._renderItems();
+                var height = this.listBox._calculateVirtualSize().height;
+                if (height < vScrollValue) {
+                    vScrollValue = 0;
+                    this.listBox.vScrollInstance.refresh();
+                }
+                if (this.autoDropDownHeight) {
+                    this._disableSelection = true;
+                    if (this.listBox.autoHeight != this.autoDropDownHeight) {
+                        this.listBoxContainer.jqxListBox({ autoHeight: this.autoDropDownHeight });
+                    }
+                    this.container.height(height + 25);
+                    this.listBox.invalidate();
+                    this._disableSelection = false;
+                }
+                else {
+                    if (height < parseInt(this.dropDownHeight)) {
+                        var scrollOffset = this.listBox.hScrollBar[0].style.visibility == "hidden" ? 0 : 20;
+                        this.listBox.height = scrollOffset + height;
+                        this.container.height(height + 25 + scrollOffset);
+                        this.listBox.invalidate();
+                    }
+                    else {
+                        this.listBox.height = parseInt(this.dropDownHeight);
+                        this.container.height(parseInt(this.dropDownHeight) + 25);
+                        this.listBox.invalidate();
+                    }
+                }
+
+                this.listBox.vScrollInstance.setPosition(vScrollValue);
+                return { index: index, matchItems: matchItems };
+            },
+
+            // gets all items that match to a search value.
+            findItems: function (value) {
+                var items = this.getItems();
+                var that = this;
+                var index = 0;
+                var matchItems = new Array();
+
+                $.each(items, function (i) {
+                    var itemValue = '';
+                    if (!this.isGroup) {
+                        if (this.label) {
+                            itemValue = this.label;
+                        }
+                        else if (this.value) {
+                            itemValue = this.value;
+                        }
+                        else if (this.title) {
+                            itemValue = this.title;
+                        }
+                        else itemValue = 'jqxItem';
+
+                        var matches = false;
+                        switch (that.searchMode) {
+                            case 'containsignorecase':
+                                matches = $.jqx.string.containsIgnoreCase(itemValue, value);
+                                break;
+                            case 'contains':
+                                matches = $.jqx.string.contains(itemValue, value);
+                                break;
+                            case 'equals':
+                                matches = $.jqx.string.equals(itemValue, value);
+                                break;
+                            case 'equalsignorecase':
+                                matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
+                                break;
+                            case 'startswith':
+                                matches = $.jqx.string.startsWith(itemValue, value);
+                                break;
+                            case 'startswithignorecase':
+                                matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
+                                break;
+                            case 'endswith':
+                                matches = $.jqx.string.endsWith(itemValue, value);
+                                break;
+                            case 'endswithignorecase':
+                                matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
+                                break;
+                        }
+
+                        if (matches) {
+                            matchItems[index++] = this;
+                        }
+                    }
+                });
+
+                return matchItems;
+            },
+
+            //[optimize]
+            _resetautocomplete: function () {
+                $.each(this.listBox.items, function (i) {
+                    this.visible = true;
+                });
+                this.listBox.vScrollInstance.value = 0;
+                this.listBox._addItems();
+                this.listBox.autoHeight = false;
+
+                this.listBox.height = this.dropDownHeight;
+                this.container.height(parseInt(this.dropDownHeight) + 25);
+                this.listBoxContainer.height(parseInt(this.dropDownHeight));
+                this.listBox._arrange();
+
+                this.listBox._addItems();
+                this.listBox._renderItems();
+            },
+
+            // gets all items.
+            getItems: function () {
+                var item = this.listBox.items;
+                return item;
+            },
+
+            getVisibleItems: function () {
+                return this.listBox.getVisibleItems();
+            },
+
+            _setSize: function () {
+                var computedStyle = window.getComputedStyle(this.element);
+                var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
+                var boxSizing = computedStyle.boxSizing;
+
+                if (boxSizing === 'border-box' || isNaN(borderSize)) {
+                    borderSize = 0;
+                }
+
+                if (this.width != null && this.width.toString().indexOf("px") != -1) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+                else if (this.width != undefined && !isNaN(this.width)) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+
+                if (this.height != null && this.height.toString().indexOf("px") != -1) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                }
+                else if (this.height != undefined && !isNaN(this.height)) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                };
+
+                var isPercentage = false;
+                if (this.width != null && this.width.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.width = this.width;
+
+                    if (borderSize > 0) {
+                        this.host.css('box-sizing', 'border-box');
+                    }
+                }
+
+                if (this.height != null && this.height.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.height = this.height;
+                }
+
+                if (isPercentage) {
+                    var that = this;
+                    var width = this.host.width();
+                    if (this.dropDownWidth != 'auto') {
+                        width = this.dropDownWidth;
+                    }
+                    this.listBoxContainer.jqxListBox({ width: width });
+                    this.container.width(parseInt(width) + 25);
+                    this._arrange();
+                }
+                var that = this;
+
+                var resizeFunc = function () {
+                    if (that.multiSelect) {
+                        that.host.height(that.height);
+                    }
+
+                    that._arrange();
+                    if (that.multiSelect) {
+                        that.host.height('auto');
+                    }
+                }
+
+                that.oldWidth = that.host.width();
+                that.oldHeight = that.host.height();
+                $.jqx.utilities.resize(this.host, function () {
+                    var w = that.host.width();
+                    var h = that.host.height();
+
+                    if (w != that.oldWidth || h != that.oldHeight) {
+                        resizeFunc();
+                        that.hideListBox('api');
+                    }
+
+                    that.oldWidth = w;
+                    that.oldHeight = h;
+                });
+            },
+
+            // returns true when the listbox is opened, otherwise returns false.
+            isOpened: function () {
+                var that = this;
+                var openedListBox = $.data(document.body, "openedCombojqxListBox" + this.element.id);
+
+                if (this.container.css('display') != 'block')
+                    return false;
+
+                if (openedListBox != null && openedListBox == that.listBoxContainer) {
+                    return true;
+                }
+
+                return false;
+            },
+
+            _updateHandlers: function () {
+                var that = this;
+                var hovered = false;
+                this.removeHandlers();
+
+                if (this.multiSelect) {
+                    this.addHandler(this.dropdownlistContent, 'click', function (event) {
+                        if (event.target.href) return false;
+
+                        that.input.focus();
+                        setTimeout(function () {
+                            that.input.focus();
+                        }, 10);
+                    });
+                    this.addHandler(this.dropdownlistContent, 'focus', function (event) {
+                        if (event.target.href) return false;
+
+                        that.input.focus();
+                        setTimeout(function () {
+                            that.input.focus();
+                        }, 10);
+                    });
+                }
+
+                if (!this.touch) {
+                    if (this.host.parents()) {
+                        this.addHandler(this.host.parents(), 'scroll.combobox' + this.element.id, function (event) {
+                            var opened = that.isOpened();
+                            if (opened) {
+                                that.close();
+                            }
+                        });
+                    }
+
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        if (!that.disabled && that.enableHover) {
+                            hovered = true;
+                            that.host.addClass(that.toThemeProperty('jqx-combobox-state-hover'));
+                            if (that.dropDownVerticalAlignment == "top") {
+                                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
+                            }
+                            else {
+                                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            }
+                            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
+                            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-hover'));
+                        }
+                    });
+                    this.addHandler(this.host, 'mouseleave', function () {
+                        if (!that.disabled && that.enableHover) {
+                            that.host.removeClass(that.toThemeProperty('jqx-combobox-state-hover'));
+                            that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
+                            that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-fill-state-hover'));
+                            hovered = false;
+                        }
+                    });
+                }
+
+                if (that.autoOpen) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        var isOpened = that.isOpened();
+                        if (!isOpened && that.autoOpen) {
+                            that.open();
+                            that.host.focus();
+                        }
+                    });
+
+                    this.addHandler($(document), 'mousemove.' + that.id, function (event) {
+                        var isOpened = that.isOpened();
+                        if (isOpened && that.autoOpen) {
+                            var offset = that.host.coord();
+                            var top = offset.top;
+                            var left = offset.left;
+                            var popupOffset = that.container.coord();
+                            var popupLeft = popupOffset.left;
+                            var popupTop = popupOffset.top;
+
+                            var canClose = true;
+
+                            if (event.pageY >= top && event.pageY <= top + that.host.height() + 2) {
+                                if (event.pageX >= left && event.pageX < left + that.host.width())
+                                    canClose = false;
+                            }
+                            if (event.pageY >= popupTop && event.pageY <= popupTop + that.container.height() - 20) {
+                                if (event.pageX >= popupLeft && event.pageX < popupLeft + that.container.width())
+                                    canClose = false;
+                            }
+
+                            if (canClose) {
+                                that.close();
+                            }
+                        }
+                    });
+                }
+
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+
+                var dropDownButtonClicked = function (event) {
+                    if (!that.disabled) {
+                        var isOpen = that.container.css('display') == 'block';
+                        if (!that.isanimating) {
+                            if (isOpen) {
+                                that.hideListBox('api');
+                                if (!$.jqx.mobile.isTouchDevice()) {
+                                    that.input.focus();
+                                    setTimeout(function () {
+                                        that.input.focus();
+                                    }, 10);
+                                }
+                                return true;
+                            }
+                            else {
+                                if (that.autoDropDownHeight) {
+                                    that.container.height(that.listBoxContainer.height() + 25);
+                                    var autoheight = that.listBoxContainer.jqxListBox('autoHeight');
+                                    if (!autoheight) {
+                                        that.listBoxContainer.jqxListBox({ autoHeight: that.autoDropDownHeight })
+                                        that.listBox._arrange();
+                                        that.listBox.ensureVisible(0);
+                                        that.listBox._renderItems();
+                                        that.container.height(that.listBoxContainer.height() + 25);
+                                    }
+                                }
+                                that.showListBox('api');
+                                if (!$.jqx.mobile.isTouchDevice()) {
+                                    setTimeout(function () {
+                                        that.input.focus();
+                                    }, 10);
+                                }
+                                else {
+                                    return true;
+                                }
+                            }
                         }
                     }
                 }
 
-                if (that.autoComplete && matchItems.length === 0) {
-                    that.hideListBox('search');
-                }
-            }
+                this.addHandler(this.dropdownlistArrow, eventName,
+                    function (event) {
+                        dropDownButtonClicked(event);
+                        //       return false;
+                    });
+                this.addHandler(this.dropdownlistArrowIcon, eventName,
+                    function (event) {
 
-            if (event.keyCode == '13') {
-                var isOpen = that.container.css('display') == 'block';
-                if (isOpen && !that.isanimating) {
-                    that.hideListBox('keyboard');
-                    that._oldvalue = that.listBox.selectedValue;
-                    return;
+                        //   dropDownButtonClicked(event);
+                        //     return false;
+                    });
+
+                this.addHandler(this.host, 'focus', function () {
+                    that.focus();
+                });
+
+                this.addHandler(this.input, 'focus', function (event) {
+                    that.focused = true;
+                    that.host.addClass(that.toThemeProperty('jqx-combobox-state-focus'));
+                    that.host.addClass(that.toThemeProperty('jqx-fill-state-focus'));
+                    that.bar.addClass('focused');
+                    that.label.addClass('focused');
+
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-focus'));
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+
+                });
+                this.addHandler(this.input, 'blur', function () {
+                    that.focused = false;
+                    that.bar.removeClass('focused');
+                    that.label.removeClass('focused');
+
+                    if (!that.isOpened() && !that.opening) {
+                        if (that.selectionMode == "dropDownList") {
+                            that._selectOldValue();
+                        }
+
+                        that.host.removeClass(that.toThemeProperty('jqx-combobox-state-focus'));
+                        that.host.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
+                        that.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-focus'));
+                    }
+                    if (that._searchTimer) clearTimeout(that._searchTimer);
+                });
+                this.addHandler($(document), 'mousedown.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
+                if (this.touch) {
+                    this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
                 }
-            }
-            else if (event.keyCode == '27') {
-                var isOpen = that.container.css('display') == 'block';
-                if (isOpen && !that.isanimating) {
+
+                this.addHandler(this.host, 'keydown', function (event) {
+                    var isOpen = that.container.css('display') == 'block';
+                    that.ctrlKey = event.ctrlKey;
+                    if (that.host.css('display') == 'none') {
+                        return true;
+                    }
+
+                    if (event.keyCode == '13' || event.keyCode == '9') {
+                        if (isOpen && !that.isanimating) {
+                            if (that.listBox.selectedIndex != -1) {
+                                that.renderSelection('mouse');
+                                var index = that.listBox.selectedIndex;
+                                var item = that.listBox.getVisibleItem(index);
+                                if (item) {
+                                    that.listBox.selectedValue = item.value;
+                                }
+                                that._setSelection(that.input.val().length, that.input.val().length);
+                                that.hideListBox('keyboard');
+                            }
+                            if (event.keyCode == '13') {
+                                that._oldvalue = that.listBox.selectedValue;
+                            }
+                            if (!that.keyboardSelection) {
+                                that._raiseEvent('2', { index: that.selectedIndex, type: 'keyboard', item: that.getItem(that.selectedIndex) });
+                            }
+
+                            if (event.keyCode == '9') return true;
+                            return false;
+                        }
+                    }
+
+                    if (event.keyCode == 115) {
+                        if (!that.isanimating) {
+                            if (!that.isOpened()) {
+                                that.showListBox('keyboard');
+                            }
+                            else if (that.isOpened()) {
+                                that.hideListBox('keyboard');
+                            }
+                        }
+                        return false;
+                    }
+
+                    if (event.altKey) {
+                        if (that.host.css('display') == 'block') {
+                            if (!that.isanimating) {
+                                if (event.keyCode == 38) {
+                                    if (that.isOpened()) {
+                                        that.hideListBox('altKey');
+                                    }
+                                }
+                                else if (event.keyCode == 40) {
+                                    if (!that.isOpened()) {
+                                        that.showListBox('altKey');
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (event.keyCode == '27' || event.keyCode == '9') {
+                        if (that.isOpened() && !that.isanimating) {
+
+                            if (event.keyCode == '27') {
+                                if (!that.multiSelect) {
+                                    var item = that.listBox.getItemByValue(that._oldvalue);
+                                    if (item) {
+                                        setTimeout(
+                                            function () {
+                                                if (that.autoComplete) {
+                                                    that._updateItemsVisibility("");
+                                                }
+                                                that.listBox.selectIndex(item.index);
+                                                that.renderSelection('api');
+                                            }, that.closeDelay);
+                                    }
+                                    else {
+                                        that.clearSelection();
+                                    }
+                                }
+                                else {
+                                    that.listBox.selectedValue = null;
+                                    that.input.val("");
+                                }
+                            }
+                            that.hideListBox('keyboard');
+
+
+                            if (event.keyCode == '9')
+                                return true;
+
+                            that.renderSelection('api');
+                            event.preventDefault();
+
+                            return false;
+                        }
+                    }
+
+                    var key = event.keyCode;
+
+                    if (isOpen && !that.disabled && key != 8) {
+                        return that.listBox._handleKeyDown(event);
+                    }
+                    else if (!that.disabled && !isOpen) {
+                        var key = event.keyCode;
+                        // arrow keys.
+                        if (key == 33 || key == 34 || key == 35 || key == 36 || key == 38 || key == 40) {
+                            return that.listBox._handleKeyDown(event);
+                        }
+                    }
+                    if (key === 8 && that.multiSelect) {
+                        if (that.input.val().length === 0) {
+                            var lastItem = that.selectedItems[that.selectedItems.length - 1];
+                            that.selectedItems.pop();
+                            that._selectedItems.pop();
+                            if (lastItem) {
+                                that._raiseEvent('3', { index: lastItem.index, type: 'keyboard', item: lastItem });
+                                that._raiseEvent('4', { index: lastItem.index, type: 'keyboard', item: lastItem });
+                            }
+
+                            that.listBox.selectedValue = null;
+                            that.doMultiSelect();
+                            return false;
+                        }
+                    }
+
+
+                    if (that.isMaterialized() && that.hint) {
+                        setTimeout(function () {
+                            if (that.input[0].value.length === 0) {
+                                that.element.removeAttribute('hint');
+                                that.label[0].innerHTML = that.placeHolder;
+                            }
+                            else if (that.hint) {
+                                that.element.setAttribute('hint', true);
+                            }
+                        });
+                    }
+                });
+
+                this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
+                    that.renderSelection('mouse');
+                    that._updateInputSelection();
+                    that._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
+                });
+
+                this.addHandler(this.listBoxContainer, 'select', function (event) {
+                    if (!that.disabled) {
+                        if (event.args.type != 'keyboard' || that.keyboardSelection) {
+                            that.renderSelection(event.args.type);
+                            if (!that.multiSelect) {
+                                that._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item });
+                            }
+                            if (event.args.type == 'mouse') {
+                                that._oldvalue = that.listBox.selectedValue;
+
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                    if (!that.touch) {
+                                        that.input.focus();
+                                    }
+                                    else {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                if (this.listBox != null && this.listBox.content != null) {
+                    this.addHandler(this.listBox.content, 'click', function (event) {
+                        if (!that.disabled) {
+                            if (that.listBox.itemswrapper) {
+                                if (event.target === that.listBox.itemswrapper[0])
+                                    return true;
+                            }
+
+                            if (event.target && event.target.className) {
+                                if (event.target.className.indexOf('jqx-fill-state-disabled') >= 0) {
+                                    return true;
+                                }
+                            }
+
+                            that.renderSelection('mouse');
+                            that._oldvalue = that.listBox.selectedValue;
+                            if (!that.touch && !that.ishiding) {
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                    that.input.focus();
+                                }
+                            }
+                            if (that.touch === true) {
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+
+            _selectOldValue: function () {
+                var that = this;
+                if (that.listBox.selectedIndex == -1) {
                     if (!that.multiSelect) {
-                        var item = that.listBox.getVisibleItem(that._oldvalue);
+                        var item = that.listBox.getItemByValue(that._oldvalue);
                         if (item) {
-                            var that = this;
                             setTimeout(
                                 function () {
                                     if (that.autoComplete) {
@@ -4320,2447 +5211,1535 @@ document.Globalize = Globalize;
                         }
                         else {
                             that.clearSelection();
+                            that.listBox.selectIndex(0);
+                            that.renderSelection('api');
                         }
                     }
                     else {
+                        that.listBox.selectedValue = null;
                         that.input.val("");
-                        that.listBox.selectedValue = null;
                     }
-
-                    that.hideListBox('keyboard');
+                }
+                else {
                     that.renderSelection('api');
-                    event.preventDefault();
-                    return false;
                 }
-            }
-            else {
-                if (!that.isOpened() && !that.opening && !event.ctrlKey) {
-                    if (that.listBox.visibleItems && that.listBox.visibleItems.length > 0) {
-                        if (that.input.val() != that.searchString && that.searchString != undefined && index != -1) {
-                            that.showListBox('search');
-                        }
-                    }
-                }
-                that.searchString = that.input.val();
+            },
 
-                if (that.searchString == "") {
-                    if (!that.listBox.itemsByValue[""]) {
-                        index = -1;
-                        if (!that.multiSelect) {
-                            that.clearSelection();
-                        }
-                    }
-                }
-
-                var item = that.listBox.getVisibleItem(index);
-
-                if (item != undefined) {
-                    that._updateInputSelection();
-                }
-            }
-        },
-
-        val: function (value) {
-            if (!this.input) return "";
-            var isEmpty = function (obj) {
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key))
-                        return false;
-                }
-
-                if (typeof value == "number")
-                    return false;
-                if (typeof value == "date")
-                    return false;
-                if (typeof value == "boolean")
-                    return false;
-                if (typeof value == "string")
-                    return false;
-
-                return true;
-            }
-
-            if (isEmpty(value) || arguments.length == 0) {
-                var item = this.getSelectedItem();
-                if (item) {
-                    return item.value;
-                }
-
-
-                return this.input.val();
-            }
-            else {
-                var item = this.getItemByValue(value);
-                if (item != null) {
-                    this.selectItem(item);
-                }
-                else {
-                    this.input.val(value);
-                }
-                return this.input.val();
-            }
-        },
-
-        focus: function () {
-            var that = this;
-            var doFocus = function () {
-                that.input.focus();
-                var val = that.input.val();
-                that._setSelection(0, val.length);
-            }
-            doFocus();
-            setTimeout(function () {
-                doFocus();
-            }, 10);
-        },
-
-        _setSelection: function (start, end) {
-            try {
-                if ('selectionStart' in this.input[0]) {
-                    this.input[0].focus();
-                    this.input[0].setSelectionRange(start, end);
-                }
-                else {
-                    var range = this.input[0].createTextRange();
-                    range.collapse(true);
-                    range.moveEnd('character', end);
-                    range.moveStart('character', start);
-                    range.select();
-                }
-            }
-            catch (error) {
-            }
-        },
-
-        setContent: function (value) {
-            this.input.val(value);
-        },
-
-        // get all matches of a searched value.
-        _updateItemsVisibility: function (value) {
-            var items = this.getItems();
-            if (items == undefined) {
-                return { index: -1, matchItem: new Array() }
-            }
-
-            var that = this;
-            var index = -1;
-            var matchItems = new Array();
-            var newItemsIndex = 0;
-
-            $.each(items, function (i) {
-                var itemValue = '';
-                if (!this.isGroup) {
-                    if (this.searchLabel) {
-                        itemValue = this.searchLabel;
-                    }
-                    else if (this.label) {
-                        itemValue = this.label;
-                    }
-                    else if (this.value) {
-                        itemValue = this.value;
-                    }
-                    else if (this.title) {
-                        itemValue = this.title;
-                    }
-                    else itemValue = 'jqxItem';
-                    itemValue = itemValue.toString();
-                    var matches = false;
-                    switch (that.searchMode) {
-                        case 'containsignorecase':
-                            matches = $.jqx.string.containsIgnoreCase(itemValue, value);
-                            break;
-                        case 'contains':
-                            matches = $.jqx.string.contains(itemValue, value);
-                            break;
-                        case 'equals':
-                            matches = $.jqx.string.equals(itemValue, value);
-                            break;
-                        case 'equalsignorecase':
-                            matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
-                            break;
-                        case 'startswith':
-                            matches = $.jqx.string.startsWith(itemValue, value);
-                            break;
-                        case 'startswithignorecase':
-                            matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
-                            break;
-                        case 'endswith':
-                            matches = $.jqx.string.endsWith(itemValue, value);
-                            break;
-                        case 'endswithignorecase':
-                            matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
-                            break;
-                    }
-
-                    if (that.autoComplete && !matches) {
-                        this.visible = false;
-                    }
-
-                    if (matches && that.autoComplete) {
-                        matchItems[newItemsIndex++] = this;
-                        this.visible = true;
-                        index = this.visibleIndex;
-                    }
-
-                    if (value == '' && that.autoComplete) {
-                        this.visible = true;
-                        matches = false;
-                    }
-
-                    if (that.multiSelect) {
-                        this.disabled = false;
-                        if (that.selectedItems.indexOf(this.value) >= 0 || that._disabledItems.indexOf(this.value) >= 0) {
-                            this.disabled = true;
-                            matches = false;
-                        }
-                    }
-
-                    if (!that.multiSelect) {
-                        if (matches && !that.autoComplete) {
-                            index = this.visibleIndex;
-                            return false;
-                        }
-                    }
-                    else {
-                        if (matches && !that.autoComplete) {
-                            if (index === -1) {
-                                index = this.visibleIndex;
-                            }
-                            return true;
-                        }
-                    }
-                }
-            });
-            this.listBox.searchString = value;
-            var that = this;
-            var selectFirstItem = function () {
-                if (that.multiSelect) return;
-                var nonDisabledIndex = 0;
-                var foundIndex = false;
-                var item = null;
-                for (var indx = 0; indx < that.listBox.items.length; indx++) {
-                    that.listBox.selectedIndexes[indx] = -1;
-                    if (!that.listBox.items[indx].disabled) {
-                        if (foundIndex == false) {
-                            item = that.listBox.items[indx];
-                            nonDisabledIndex = item.visibleIndex;
-                            foundIndex = true;
-                        }
-                    }
-                }
-                that.listBox.selectedIndex = -1;
-                that.listBox.selectedIndex = nonDisabledIndex;
-                that.listBox.selectedIndexes[nonDisabledIndex] = nonDisabledIndex;
-                if (that.listBox.visibleItems.length > 0) {
-                    if (item) {
-                        that.listBox.selectedValue = item.value;
-                    }
-                    else {
-                        that.listBox.selectedValue = null;
-                    }
-                }
-                else {
-                    that.listBox.selectedValue = null;
-                }
-                that.listBox.ensureVisible(0);
-            }
-
-            if (!this.autoComplete) {
-                selectFirstItem();
-                return { index: index, matchItems: matchItems };
-            }
-
-            this.listBox.renderedVisibleItems = new Array();
-            var vScrollValue = this.listBox.vScrollInstance.value;
-            this.listBox.vScrollInstance.value = 0;
-            this.listBox.visibleItems = new Array();
-            this.listBox._renderItems();
-            var selectedValue = this.listBox.selectedValue;
-            var item = this.listBox.getItemByValue(selectedValue);
-            if (!this.multiSelect) {
-                if (item) {
-                    if (item.visible) {
-                        this.listBox.selectedIndex = item.visibleIndex;
-                        for (var indx = 0; indx < this.listBox.items.length; indx++) {
-                            this.listBox.selectedIndexes[indx] = -1;
-                        }
-                        this.listBox.selectedIndexes[item.visibleIndex] = item.visibleIndex;
-                    }
-                    else {
-                        for (var indx = 0; indx < this.listBox.items.length; indx++) {
-                            this.listBox.selectedIndexes[indx] = -1;
-                        }
-                        this.listBox.selectedIndex = -1;
-                    }
-                }
-            }
-            else {
-                selectFirstItem();
-            }
-
-            this.listBox._renderItems();
-            var height = this.listBox._calculateVirtualSize().height;
-            if (height < vScrollValue) {
-                vScrollValue = 0;
-                this.listBox.vScrollInstance.refresh();
-            }
-            if (this.autoDropDownHeight) {
-                this._disableSelection = true;
-                if (this.listBox.autoHeight != this.autoDropDownHeight) {
-                    this.listBoxContainer.jqxListBox({ autoHeight: this.autoDropDownHeight });
-                }
-                this.container.height(height + 25);
-                this.listBox.invalidate();
-                this._disableSelection = false;
-            }
-            else {
-                if (height < parseInt(this.dropDownHeight)) {
-                    var scrollOffset = this.listBox.hScrollBar[0].style.visibility == "hidden" ? 0 : 20;
-                    this.listBox.height = scrollOffset + height;
-                    this.container.height(height + 25 + scrollOffset);
-                    this.listBox.invalidate();
-                }
-                else {
-                    this.listBox.height = parseInt(this.dropDownHeight);
-                    this.container.height(parseInt(this.dropDownHeight) + 25);
-                    this.listBox.invalidate();
-                }
-            }
-
-            this.listBox.vScrollInstance.setPosition(vScrollValue);
-            return { index: index, matchItems: matchItems };
-        },
-
-        // gets all items that match to a search value.
-        findItems: function (value) {
-            var items = this.getItems();
-            var that = this;
-            var index = 0;
-            var matchItems = new Array();
-
-            $.each(items, function (i) {
-                var itemValue = '';
-                if (!this.isGroup) {
-                    if (this.label) {
-                        itemValue = this.label;
-                    }
-                    else if (this.value) {
-                        itemValue = this.value;
-                    }
-                    else if (this.title) {
-                        itemValue = this.title;
-                    }
-                    else itemValue = 'jqxItem';
-
-                    var matches = false;
-                    switch (that.searchMode) {
-                        case 'containsignorecase':
-                            matches = $.jqx.string.containsIgnoreCase(itemValue, value);
-                            break;
-                        case 'contains':
-                            matches = $.jqx.string.contains(itemValue, value);
-                            break;
-                        case 'equals':
-                            matches = $.jqx.string.equals(itemValue, value);
-                            break;
-                        case 'equalsignorecase':
-                            matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
-                            break;
-                        case 'startswith':
-                            matches = $.jqx.string.startsWith(itemValue, value);
-                            break;
-                        case 'startswithignorecase':
-                            matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
-                            break;
-                        case 'endswith':
-                            matches = $.jqx.string.endsWith(itemValue, value);
-                            break;
-                        case 'endswithignorecase':
-                            matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
-                            break;
-                    }
-
-                    if (matches) {
-                        matchItems[index++] = this;
-                    }
-                }
-            });
-
-            return matchItems;
-        },
-
-        //[optimize]
-        _resetautocomplete: function () {
-            $.each(this.listBox.items, function (i) {
-                this.visible = true;
-            });
-            this.listBox.vScrollInstance.value = 0;
-            this.listBox._addItems();
-            this.listBox.autoHeight = false;
-
-            this.listBox.height = this.dropDownHeight;
-            this.container.height(parseInt(this.dropDownHeight) + 25);
-            this.listBoxContainer.height(parseInt(this.dropDownHeight));
-            this.listBox._arrange();
-
-            this.listBox._addItems();
-            this.listBox._renderItems();
-        },
-
-        // gets all items.
-        getItems: function () {
-            var item = this.listBox.items;
-            return item;
-        },
-
-        getVisibleItems: function () {
-            return this.listBox.getVisibleItems();
-        },
-
-        _setSize: function () {
-            var computedStyle = window.getComputedStyle(this.element);
-            var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
-            var boxSizing = computedStyle.boxSizing;
-
-            if (boxSizing === 'border-box' || isNaN(borderSize)) {
-                borderSize = 0;
-            }
-
-            if (this.width != null && this.width.toString().indexOf("px") != -1) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-            else if (this.width != undefined && !isNaN(this.width)) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-
-            if (this.height != null && this.height.toString().indexOf("px") != -1) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            }
-            else if (this.height != undefined && !isNaN(this.height)) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            };
-
-            var isPercentage = false;
-            if (this.width != null && this.width.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.width = this.width;
-
-                if (borderSize > 0) {
-                    this.host.css('box-sizing', 'border-box');
-                }
-            }
-
-            if (this.height != null && this.height.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.height = this.height;
-            }
-
-            if (isPercentage) {
+            removeHandlers: function () {
                 var that = this;
-                var width = this.host.width();
-                if (this.dropDownWidth != 'auto') {
-                    width = this.dropDownWidth;
-                }
-                this.listBoxContainer.jqxListBox({ width: width });
-                this.container.width(parseInt(width) + 25);
-                this._arrange();
-            }
-            var that = this;
-
-            var resizeFunc = function () {
-                if (that.multiSelect) {
-                    that.host.height(that.height);
+                if (this.dropdownlistWrapper != null) {
+                    this.removeHandler(this.dropdownlistWrapper, 'mousedown');
                 }
 
-                that._arrange();
-                if (that.multiSelect) {
-                    that.host.height('auto');
+                if (this.dropdownlistContent) {
+                    this.removeHandler(this.dropdownlistContent, 'click');
+                    this.removeHandler(this.dropdownlistContent, 'focus');
                 }
-            }
-
-            that.oldWidth = that.host.width();
-            that.oldHeight = that.host.height();
-            $.jqx.utilities.resize(this.host, function () {
-                var w = that.host.width();
-                var h = that.host.height();
-
-                if (w != that.oldWidth || h != that.oldHeight) {
-                    resizeFunc();
-                    that.hideListBox('api');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.host, 'focus');
+                if (this.input != null) {
+                    this.removeHandler(this.input, 'focus');
+                    this.removeHandler(this.input, 'blur');
                 }
-
-                that.oldWidth = w;
-                that.oldHeight = h;
-            });
-        },
-
-        // returns true when the listbox is opened, otherwise returns false.
-        isOpened: function () {
-            var that = this;
-            var openedListBox = $.data(document.body, "openedCombojqxListBox" + this.element.id);
-
-            if (this.container.css('display') != 'block')
-                return false;
-
-            if (openedListBox != null && openedListBox == that.listBoxContainer) {
-                return true;
-            }
-
-            return false;
-        },
-
-        _updateHandlers: function () {
-            var that = this;
-            var hovered = false;
-            this.removeHandlers();
-
-            if (this.multiSelect) {
-                this.addHandler(this.dropdownlistContent, 'click', function (event) {
-                    if (event.target.href) return false;
-
-                    that.input.focus();
-                    setTimeout(function () {
-                        that.input.focus();
-                    }, 10);
-                });
-                this.addHandler(this.dropdownlistContent, 'focus', function (event) {
-                    if (event.target.href) return false;
-
-                    that.input.focus();
-                    setTimeout(function () {
-                        that.input.focus();
-                    }, 10);
-                });
-            }
-
-            if (!this.touch) {
+                this.removeHandler(this.host, 'mouseenter');
+                this.removeHandler(this.host, 'mouseleave');
+                this.removeHandler($(document), 'mousemove.' + that.id);
+                if (this.listBoxContainer) {
+                    this.removeHandler(this.listBoxContainer, 'checkChange');
+                    this.removeHandler(this.listBoxContainer, 'select');
+                }
                 if (this.host.parents()) {
-                    this.addHandler(this.host.parents(), 'scroll.combobox' + this.element.id, function (event) {
-                        var opened = that.isOpened();
-                        if (opened) {
-                            that.close();
-                        }
-                    });
+                    this.removeHandler(this.host.parents(), 'scroll.combobox' + this.element.id);
+                }
+                if (this.dropdownlistArrowIcon && this.dropdownlistArrow) {
+                    var eventName = 'mousedown';
+                    if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                    this.removeHandler(this.dropdownlistArrowIcon, eventName);
+                    this.removeHandler(this.dropdownlistArrow, eventName);
+                }
+            },
+
+            // gets an item by index.
+            getItem: function (index) {
+                var item = this.listBox.getItem(index);
+                return item;
+            },
+
+            getItemByValue: function (value) {
+                var item = this.listBox.getItemByValue(value);
+                return item;
+            },
+
+            getVisibleItem: function (index) {
+                var item = this.listBox.getVisibleItem(index);
+                return item;
+            },
+
+            // renders the selection.
+            renderSelection: function (type) {
+                if (type == undefined || type == 'none') {
+                    return;
                 }
 
-                this.addHandler(this.host, 'mouseenter', function () {
-                    if (!that.disabled && that.enableHover) {
-                        hovered = true;
-                        that.host.addClass(that.toThemeProperty('jqx-combobox-state-hover'));
-                        if (that.dropDownVerticalAlignment == "top") {
-                            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
-                        }
-                        else {
-                            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        }
-                        that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
-                        that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-hover'));
-                    }
-                });
-                this.addHandler(this.host, 'mouseleave', function () {
-                    if (!that.disabled && that.enableHover) {
-                        that.host.removeClass(that.toThemeProperty('jqx-combobox-state-hover'));
-                        that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
-                        that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-fill-state-hover'));
-                        hovered = false;
-                    }
-                });
-            }
+                if (this._disableSelection === true)
+                    return;
 
-            if (that.autoOpen) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    var isOpened = that.isOpened();
-                    if (!isOpened && that.autoOpen) {
-                        that.open();
-                        that.host.focus();
-                    }
-                });
+                if (this.listBox == null)
+                    return;
 
-                this.addHandler($(document), 'mousemove.' + that.id, function (event) {
-                    var isOpened = that.isOpened();
-                    if (isOpened && that.autoOpen) {
-                        var offset = that.host.coord();
-                        var top = offset.top;
-                        var left = offset.left;
-                        var popupOffset = that.container.coord();
-                        var popupLeft = popupOffset.left;
-                        var popupTop = popupOffset.top;
-
-                        var canClose = true;
-
-                        if (event.pageY >= top && event.pageY <= top + that.host.height() + 2) {
-                            if (event.pageX >= left && event.pageX < left + that.host.width())
-                                canClose = false;
-                        }
-                        if (event.pageY >= popupTop && event.pageY <= popupTop + that.container.height() - 20) {
-                            if (event.pageX >= popupLeft && event.pageX < popupLeft + that.container.width())
-                                canClose = false;
-                        }
-
-                        if (canClose) {
-                            that.close();
-                        }
-                    }
-                });
-            }
-
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-
-            var dropDownButtonClicked = function (event) {
-                if (!that.disabled) {
-                    var isOpen = that.container.css('display') == 'block';
-                    if (!that.isanimating) {
-                        if (isOpen) {
-                            that.hideListBox('api');
-                            if (!$.jqx.mobile.isTouchDevice()) {
-                                that.input.focus();
-                                setTimeout(function () {
-                                    that.input.focus();
-                                }, 10);
-                            }
-                            return true;
-                        }
-                        else {
-                            if (that.autoDropDownHeight) {
-                                that.container.height(that.listBoxContainer.height() + 25);
-                                var autoheight = that.listBoxContainer.jqxListBox('autoHeight');
-                                if (!autoheight) {
-                                    that.listBoxContainer.jqxListBox({ autoHeight: that.autoDropDownHeight })
-                                    that.listBox._arrange();
-                                    that.listBox.ensureVisible(0);
-                                    that.listBox._renderItems();
-                                    that.container.height(that.listBoxContainer.height() + 25);
-                                }
-                            }
-                            that.showListBox('api');
-                            if (!$.jqx.mobile.isTouchDevice()) {
-                                setTimeout(function () {
-                                    that.input.focus();
-                                }, 10);
-                            }
-                            else {
-                                return true;
-                            }
-                        }
-                    }
+                if (this.multiSelect) {
+                    return;
                 }
-            }
+                var item = this.listBox.visibleItems[this.listBox.selectedIndex];
 
-            this.addHandler(this.dropdownlistArrow, eventName,
-                function (event) {
-                    dropDownButtonClicked(event);
-                    //       return false;
-                });
-            this.addHandler(this.dropdownlistArrowIcon, eventName,
-                function (event) {
-
-                    //   dropDownButtonClicked(event);
-                    //     return false;
-                });
-
-            this.addHandler(this.host, 'focus', function () {
-                that.focus();
-            });
-
-            this.addHandler(this.input, 'focus', function (event) {
-                that.focused = true;
-                that.host.addClass(that.toThemeProperty('jqx-combobox-state-focus'));
-                that.host.addClass(that.toThemeProperty('jqx-fill-state-focus'));
-                that.bar.addClass('focused');
-                that.label.addClass('focused');
-
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-focus'));
-                if (event.stopPropagation) {
-                    event.stopPropagation();
-                }
-
-            });
-            this.addHandler(this.input, 'blur', function () {
-                that.focused = false;
-                that.bar.removeClass('focused');
-                that.label.removeClass('focused');
-
-                if (!that.isOpened() && !that.opening) {
-                    if (that.selectionMode == "dropDownList") {
-                        that._selectOldValue();
-                    }
-
-                    that.host.removeClass(that.toThemeProperty('jqx-combobox-state-focus'));
-                    that.host.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
-                    that.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-focus'));
-                }
-                if (that._searchTimer) clearTimeout(that._searchTimer);
-            });
-            this.addHandler($(document), 'mousedown.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
-            if (this.touch) {
-                this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
-            }
-
-            this.addHandler(this.host, 'keydown', function (event) {
-                var isOpen = that.container.css('display') == 'block';
-                that.ctrlKey = event.ctrlKey;
-                if (that.host.css('display') == 'none') {
-                    return true;
-                }
-
-                if (event.keyCode == '13' || event.keyCode == '9') {
-                    if (isOpen && !that.isanimating) {
-                        if (that.listBox.selectedIndex != -1) {
-                            that.renderSelection('mouse');
-                            var index = that.listBox.selectedIndex;
-                            var item = that.listBox.getVisibleItem(index);
-                            if (item) {
-                                that.listBox.selectedValue = item.value;
-                            }
-                            that._setSelection(that.input.val().length, that.input.val().length);
-                            that.hideListBox('keyboard');
-                        }
-                        if (event.keyCode == '13') {
-                            that._oldvalue = that.listBox.selectedValue;
-                        }
-                        if (!that.keyboardSelection) {
-                            that._raiseEvent('2', { index: that.selectedIndex, type: 'keyboard', item: that.getItem(that.selectedIndex) });
-                        }
-
-                        if (event.keyCode == '9') return true;
-                        return false;
+                if (this.autoComplete && !this.checkboxes) {
+                    if (this.listBox.selectedValue !== undefined) {
+                        var item = this.getItemByValue(this.listBox.selectedValue);
                     }
                 }
 
-                if (event.keyCode == 115) {
-                    if (!that.isanimating) {
-                        if (!that.isOpened()) {
-                            that.showListBox('keyboard');
-                        }
-                        else if (that.isOpened()) {
-                            that.hideListBox('keyboard');
-                        }
+                if (this.checkboxes) {
+                    var checkedItems = this.getCheckedItems();
+                    if (checkedItems != null && checkedItems.length > 0) {
+                        item = checkedItems[0];
                     }
-                    return false;
+                    else item = null;
                 }
 
-                if (event.altKey) {
-                    if (that.host.css('display') == 'block') {
-                        if (!that.isanimating) {
-                            if (event.keyCode == 38) {
-                                if (that.isOpened()) {
-                                    that.hideListBox('altKey');
-                                }
-                            }
-                            else if (event.keyCode == 40) {
-                                if (!that.isOpened()) {
-                                    that.showListBox('altKey');
-                                }
-                            }
-                        }
-                    }
+                if (this.hint) {
+                    this.label[0].innerHTML = this.placeHolder;
                 }
 
-                if (event.keyCode == '27' || event.keyCode == '9') {
-                    if (that.isOpened() && !that.isanimating) {
-
-                        if (event.keyCode == '27') {
-                            if (!that.multiSelect) {
-                                var item = that.listBox.getItemByValue(that._oldvalue);
-                                if (item) {
-                                    setTimeout(
-                                        function () {
-                                            if (that.autoComplete) {
-                                                that._updateItemsVisibility("");
-                                            }
-                                            that.listBox.selectIndex(item.index);
-                                            that.renderSelection('api');
-                                        }, that.closeDelay);
-                                }
-                                else {
-                                    that.clearSelection();
-                                }
-                            }
-                            else {
-                                that.listBox.selectedValue = null;
-                                that.input.val("");
-                            }
-                        }
-                        that.hideListBox('keyboard');
-
-
-                        if (event.keyCode == '9')
-                            return true;
-
-                        that.renderSelection('api');
-                        event.preventDefault();
-
-                        return false;
-                    }
-                }
-
-                var key = event.keyCode;
-
-                if (isOpen && !that.disabled && key != 8) {
-                    return that.listBox._handleKeyDown(event);
-                }
-                else if (!that.disabled && !isOpen) {
-                    var key = event.keyCode;
-                    // arrow keys.
-                    if (key == 33 || key == 34 || key == 35 || key == 36 || key == 38 || key == 40) {
-                        return that.listBox._handleKeyDown(event);
-                    }
-                }
-                if (key === 8 && that.multiSelect) {
-                    if (that.input.val().length === 0) {
-                        var lastItem = that.selectedItems[that.selectedItems.length - 1];
-                        that.selectedItems.pop();
-                        that._selectedItems.pop();
-                        if (lastItem) {
-                            that._raiseEvent('3', { index: lastItem.index, type: 'keyboard', item: lastItem });
-                            that._raiseEvent('4', { index: lastItem.index, type: 'keyboard', item: lastItem });
-                        }
-
-                        that.listBox.selectedValue = null;
-                        that.doMultiSelect();
-                        return false;
-                    }
-                }
-
-
-                if (that.isMaterialized() && that.hint) {
-                    setTimeout(function () {
-                        if (that.input[0].value.length === 0) {
-                            that.element.removeAttribute('hint');
-                            that.label[0].innerHTML = that.placeHolder;
-                        }
-                        else if (that.hint) {
-                            that.element.setAttribute('hint', true);
-                        }
-                    });
-                }
-            });
-
-            this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
-                that.renderSelection('mouse');
-                that._updateInputSelection();
-                that._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
-            });
-
-            this.addHandler(this.listBoxContainer, 'select', function (event) {
-                if (!that.disabled) {
-                    if (event.args.type != 'keyboard' || that.keyboardSelection) {
-                        that.renderSelection(event.args.type);
-                        if (!that.multiSelect) {
-                            that._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item });
-                        }
-                        if (event.args.type == 'mouse') {
-                            that._oldvalue = that.listBox.selectedValue;
-
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                                if (!that.touch) {
-                                    that.input.focus();
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            if (this.listBox != null && this.listBox.content != null) {
-                this.addHandler(this.listBox.content, 'click', function (event) {
-                    if (!that.disabled) {
-                        if (that.listBox.itemswrapper) {
-                            if (event.target === that.listBox.itemswrapper[0])
-                                return true;
-                        }
-
-                        if (event.target && event.target.className) {
-                            if (event.target.className.indexOf('jqx-fill-state-disabled') >= 0) {
-                                return true;
-                            }
-                        }
-
-                        that.renderSelection('mouse');
-                        that._oldvalue = that.listBox.selectedValue;
-                        if (!that.touch && !that.ishiding) {
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                                that.input.focus();
-                            }
-                        }
-                        if (that.touch === true) {
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                            }
-                        }
-                    }
-                });
-            }
-        },
-
-        _selectOldValue: function () {
-            var that = this;
-            if (that.listBox.selectedIndex == -1) {
-                if (!that.multiSelect) {
-                    var item = that.listBox.getItemByValue(that._oldvalue);
-                    if (item) {
-                        setTimeout(
-                            function () {
-                                if (that.autoComplete) {
-                                    that._updateItemsVisibility("");
-                                }
-                                that.listBox.selectIndex(item.index);
-                                that.renderSelection('api');
-                            }, that.closeDelay);
-                    }
-                    else {
-                        that.clearSelection();
-                        that.listBox.selectIndex(0);
-                        that.renderSelection('api');
+                if (item != null) {
+                    if (this.hint) {
+                        this.element.setAttribute('hint', true);
                     }
                 }
                 else {
-                    that.listBox.selectedValue = null;
-                    that.input.val("");
+                    this.element.removeAttribute('hint');
                 }
-            }
-            else {
-                that.renderSelection('api');
-            }
-        },
 
-        removeHandlers: function () {
-            var that = this;
-            if (this.dropdownlistWrapper != null) {
-                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            }
+                this.bar.css('top', this.host.height());
 
-            if (this.dropdownlistContent) {
-                this.removeHandler(this.dropdownlistContent, 'click');
-                this.removeHandler(this.dropdownlistContent, 'focus');
-            }
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.host, 'focus');
-            if (this.input != null) {
-                this.removeHandler(this.input, 'focus');
-                this.removeHandler(this.input, 'blur');
-            }
-            this.removeHandler(this.host, 'mouseenter');
-            this.removeHandler(this.host, 'mouseleave');
-            this.removeHandler($(document), 'mousemove.' + that.id);
-            if (this.listBoxContainer) {
-                this.removeHandler(this.listBoxContainer, 'checkChange');
-                this.removeHandler(this.listBoxContainer, 'select');
-            }
-            if (this.host.parents()) {
-                this.removeHandler(this.host.parents(), 'scroll.combobox' + this.element.id);
-            }
-            if (this.dropdownlistArrowIcon && this.dropdownlistArrow) {
-                var eventName = 'mousedown';
-                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-                this.removeHandler(this.dropdownlistArrowIcon, eventName);
-                this.removeHandler(this.dropdownlistArrow, eventName);
-            }
-        },
-
-        // gets an item by index.
-        getItem: function (index) {
-            var item = this.listBox.getItem(index);
-            return item;
-        },
-
-        getItemByValue: function (value) {
-            var item = this.listBox.getItemByValue(value);
-            return item;
-        },
-
-        getVisibleItem: function (index) {
-            var item = this.listBox.getVisibleItem(index);
-            return item;
-        },
-
-        // renders the selection.
-        renderSelection: function (type) {
-            if (type == undefined || type == 'none') {
-                return;
-            }
-
-            if (this._disableSelection === true)
-                return;
-
-            if (this.listBox == null)
-                return;
-
-            if (this.multiSelect) {
-                return;
-            }
-            var item = this.listBox.visibleItems[this.listBox.selectedIndex];
-
-            if (this.autoComplete && !this.checkboxes) {
-                if (this.listBox.selectedValue !== undefined) {
-                    var item = this.getItemByValue(this.listBox.selectedValue);
-                }
-            }
-
-            if (this.checkboxes) {
-                var checkedItems = this.getCheckedItems();
-                if (checkedItems != null && checkedItems.length > 0) {
-                    item = checkedItems[0];
-                }
-                else item = null;
-            }
-
-            if (this.hint) {
-                this.label[0].innerHTML = this.placeHolder;
-            }
-
-            if (item != null) {
-                if (this.hint) {
-                    this.element.setAttribute('hint', true);
-                }
-            }
-            else {
-                this.element.removeAttribute('hint');
-            }
-
-            this.bar.css('top', this.host.height());
-
-            if (item == null) {
-                var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
-                this.input.val("");
-                this.input.attr('value', '');
-                if (!ie7) {
-                    if (this.isMaterialized()) {
-                        this.label[0].innerHTML = this.placeHolder;
-                        this.input.removeAttr('placeholder');
-                    }
-                    else {
-                        this.input.attr('placeholder', this.placeHolder);
-                    }
-                }
-                this._updateInputSelection();
-                return;
-            }
-
-            this.selectedIndex = this.listBox.selectedIndex;
-            var spanElement = $('<span></span>');
-
-            if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.label);
-            }
-            else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.value);
-            }
-            else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.title);
-            }
-            else {
-                $.jqx.utilities.html(spanElement, this.emptyString);
-            }
-            var spanHeight = spanElement.outerHeight();
-            if (this.checkboxes) {
-                var items = this.getCheckedItems();
-                var str = "";
-                for (var i = 0; i < items.length; i++) {
-                    if (i == items.length - 1) {
-                        str += items[i].label;
-                    }
-                    else {
-                        str += items[i].label + ", ";
-                    }
-                }
-                this.input.val(str);
-            }
-            else {
-                this.input.val(spanElement.text());
-            }
-            spanElement.remove();
-            this._updateInputSelection();
-            if (this.renderSelectedItem) {
-                var result = this.renderSelectedItem(this.listBox.selectedIndex, item);
-                if (result != undefined) {
-                    this.input[0].value = result;
-                }
-            }
-            this.input.attr('value', this.input.val());
-            if (this.listBox && this.listBox._activeElement) {
-                $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
-            }
-        },
-
-        dataBind: function () {
-            this.listBoxContainer.jqxListBox({ source: this.source });
-            this.renderSelection('mouse');
-            if (this.source == null) {
-                this.clearSelection();
-            }
-        },
-
-        clear: function () {
-            this.listBoxContainer.jqxListBox({ source: null });
-            this.clearSelection();
-        },
-
-        // clears the selection.
-        clearSelection: function (render) {
-            this.selectedIndex = -1;
-            this.listBox.clearSelection();
-            this.input.val("");
-            if (this.multiSelect) {
-                this.listBox.selectedValue = "";
-                this.selectedItems = new Array();
-                this._selectedItems = new Array();
-                this.doMultiSelect(false);
-            }
-        },
-
-        // unselects an item at specific index.
-        // @param Number
-        unselectIndex: function (index, render) {
-            if (isNaN(index))
-                return;
-
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            this.listBox.unselectIndex(index, render);
-            this.renderSelection('mouse');
-            if (this.multiSelect) {
-                if (index >= 0) {
-                    var multiItem = this.getItem(index);
-
-                    var indx = this.selectedItems.indexOf(multiItem.value);
-                    if (indx >= 0) {
-                        if (multiItem.value === this.listBox.selectedValue) {
-                            this.listBox.selectedValue = null;
+                if (item == null) {
+                    var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
+                    this.input.val("");
+                    this.input.attr('value', '');
+                    if (!ie7) {
+                        if (this.isMaterialized()) {
+                            this.label[0].innerHTML = this.placeHolder;
+                            this.input.removeAttr('placeholder');
                         }
+                        else {
+                            this.input.attr('placeholder', this.placeHolder);
+                        }
+                    }
+                    this._updateInputSelection();
+                    return;
+                }
 
-                        this.selectedItems.splice(indx, 1);
-                        this._selectedItems.splice(indx, 1);
+                this.selectedIndex = this.listBox.selectedIndex;
+                var spanElement = $('<span></span>');
+
+                if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.label);
+                }
+                else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.value);
+                }
+                else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.title);
+                }
+                else {
+                    $.jqx.utilities.html(spanElement, this.emptyString);
+                }
+                var spanHeight = spanElement.outerHeight();
+                if (this.checkboxes) {
+                    var items = this.getCheckedItems();
+                    var str = "";
+                    for (var i = 0; i < items.length; i++) {
+                        if (i == items.length - 1) {
+                            str += items[i].label;
+                        }
+                        else {
+                            str += items[i].label + ", ";
+                        }
+                    }
+                    this.input.val(str);
+                }
+                else {
+                    this.input.val(spanElement.text());
+                }
+                spanElement.remove();
+                this._updateInputSelection();
+                if (this.renderSelectedItem) {
+                    var result = this.renderSelectedItem(this.listBox.selectedIndex, item);
+                    if (result != undefined) {
+                        this.input[0].value = result;
                     }
                 }
-                this.doMultiSelect(false);
-            }
-        },
+                this.input.attr('value', this.input.val());
+                if (this.listBox && this.listBox._activeElement) {
+                    $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
+                }
+            },
 
-        // selects an item at specific index.
-        // @param Number
-        selectIndex: function (index, ensureVisible, render, forceSelect) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            this.listBox.selectIndex(index, ensureVisible, render, forceSelect);
-            this.renderSelection('mouse');
-            this.selectedIndex = index;
-            if (this.multiSelect) {
-                this.doMultiSelect();
-            }
-        },
-
-        selectItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.selectedIndex = -1;
-                this.listBox.selectItem(item);
-                this.selectedIndex = this.listBox.selectedIndex;
+            dataBind: function () {
+                this.listBoxContainer.jqxListBox({ source: this.source });
                 this.renderSelection('mouse');
+                if (this.source == null) {
+                    this.clearSelection();
+                }
+            },
+
+            clear: function () {
+                this.listBoxContainer.jqxListBox({ source: null });
+                this.clearSelection();
+            },
+
+            // clears the selection.
+            clearSelection: function (render) {
+                this.selectedIndex = -1;
+                this.listBox.clearSelection();
+                this.input.val("");
                 if (this.multiSelect) {
+                    this.listBox.selectedValue = "";
+                    this.selectedItems = new Array();
+                    this._selectedItems = new Array();
                     this.doMultiSelect(false);
                 }
-            }
-        },
+            },
 
-        unselectItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
+            // unselects an item at specific index.
+            // @param Number
+            unselectIndex: function (index, render) {
+                if (isNaN(index))
+                    return;
 
-            if (this.listBox != undefined) {
-                this.listBox.unselectItem(item);
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                this.listBox.unselectIndex(index, render);
                 this.renderSelection('mouse');
                 if (this.multiSelect) {
-                    var multiItem = this.getItemByValue(item);
-                    if (multiItem) {
-                        var index = this.selectedItems.indexOf(multiItem.value);
-                        if (index >= 0) {
+                    if (index >= 0) {
+                        var multiItem = this.getItem(index);
+
+                        var indx = this.selectedItems.indexOf(multiItem.value);
+                        if (indx >= 0) {
                             if (multiItem.value === this.listBox.selectedValue) {
                                 this.listBox.selectedValue = null;
                             }
 
-                            this.selectedItems.splice(index, 1);
-                            this._selectedItems.splice(index, 1);
+                            this.selectedItems.splice(indx, 1);
+                            this._selectedItems.splice(indx, 1);
                         }
                     }
-
                     this.doMultiSelect(false);
                 }
-            }
-        },
+            },
 
-        checkItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.checkItem(item);
-            }
-        },
-
-        uncheckItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.uncheckItem(item);
-            }
-        },
-
-        indeterminateItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.indeterminateItem(item);
-            }
-        },
-
-        getSelectedValue: function () {
-            return this.listBox.selectedValue;
-        },
-
-        // gets the selected index.
-        getSelectedIndex: function () {
-            if (!this.multiSelect) {
-                return this.listBox.selectedIndex;
-            }
-            else {
-                if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
-                    return this.getSelectedItems()[0].index;
-
-                if (this._selectedItems && this._selectedItems.length > 0) {
-                    return this.getSelectedItems()[0].index;
+            // selects an item at specific index.
+            // @param Number
+            selectIndex: function (index, ensureVisible, render, forceSelect) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
                 }
-            }
-        },
 
-        // gets the selected item.
-        getSelectedItem: function () {
-            if (!this.multiSelect) {
-                return this.getVisibleItem(this.listBox.selectedIndex);
-            }
-            else {
-                if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
-                    return this.getSelectedItems()[0];
-
-                if (this._selectedItems && this._selectedItems.length > 0) {
-                    return this.getSelectedItems()[0];
+                this.listBox.selectIndex(index, ensureVisible, render, forceSelect);
+                this.renderSelection('mouse');
+                this.selectedIndex = index;
+                if (this.multiSelect) {
+                    this.doMultiSelect();
                 }
-                return null;
-            }
-        },
+            },
 
-        // gets the selected items when multiselect is enabled.
-        getSelectedItems: function () {
-            if (this.remoteAutoComplete && this.multiSelect)
-                return this._selectedItems;
+            selectItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
 
-            var array = new Array();
-            var that = this;
-            $.each(this.selectedItems, function () {
-                var item = that.getItemByValue(this);
-                if (item) {
-                    array.push(item);
+                if (this.listBox != undefined) {
+                    this.listBox.selectedIndex = -1;
+                    this.listBox.selectItem(item);
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    this.renderSelection('mouse');
+                    if (this.multiSelect) {
+                        this.doMultiSelect(false);
+                    }
+                }
+            },
+
+            unselectItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.unselectItem(item);
+                    this.renderSelection('mouse');
+                    if (this.multiSelect) {
+                        var multiItem = this.getItemByValue(item);
+                        if (multiItem) {
+                            var index = this.selectedItems.indexOf(multiItem.value);
+                            if (index >= 0) {
+                                if (multiItem.value === this.listBox.selectedValue) {
+                                    this.listBox.selectedValue = null;
+                                }
+
+                                this.selectedItems.splice(index, 1);
+                                this._selectedItems.splice(index, 1);
+                            }
+                        }
+
+                        this.doMultiSelect(false);
+                    }
+                }
+            },
+
+            checkItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.checkItem(item);
+                }
+            },
+
+            uncheckItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.uncheckItem(item);
+                }
+            },
+
+            indeterminateItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.indeterminateItem(item);
+                }
+            },
+
+            getSelectedValue: function () {
+                return this.listBox.selectedValue;
+            },
+
+            // gets the selected index.
+            getSelectedIndex: function () {
+                if (!this.multiSelect) {
+                    return this.listBox.selectedIndex;
                 }
                 else {
-                    var item = that._selectedItems[this];
+                    if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
+                        return this.getSelectedItems()[0].index;
+
+                    if (this._selectedItems && this._selectedItems.length > 0) {
+                        return this.getSelectedItems()[0].index;
+                    }
+                }
+            },
+
+            // gets the selected item.
+            getSelectedItem: function () {
+                if (!this.multiSelect) {
+                    return this.getVisibleItem(this.listBox.selectedIndex);
+                }
+                else {
+                    if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
+                        return this.getSelectedItems()[0];
+
+                    if (this._selectedItems && this._selectedItems.length > 0) {
+                        return this.getSelectedItems()[0];
+                    }
+                    return null;
+                }
+            },
+
+            // gets the selected items when multiselect is enabled.
+            getSelectedItems: function () {
+                if (this.remoteAutoComplete && this.multiSelect)
+                    return this._selectedItems;
+
+                var array = new Array();
+                var that = this;
+                $.each(this.selectedItems, function () {
+                    var item = that.getItemByValue(this);
                     if (item) {
                         array.push(item);
                     }
+                    else {
+                        var item = that._selectedItems[this];
+                        if (item) {
+                            array.push(item);
+                        }
+                    }
+                });
+                return array;
+            },
+
+            getCheckedItems: function () {
+                return this.listBox.getCheckedItems();
+            },
+
+            checkIndex: function (index) {
+                this.listBox.checkIndex(index);
+            },
+
+            uncheckIndex: function (index) {
+                this.listBox.uncheckIndex(index);
+            },
+
+            indeterminateIndex: function (index) {
+                this.listBox.indeterminateIndex(index);
+            },
+            checkAll: function () {
+                this.listBox.checkAll();
+                this.renderSelection("mouse");
+            },
+
+            uncheckAll: function () {
+                this.listBox.uncheckAll();
+                this.renderSelection("mouse");
+            },
+
+            insertAt: function (item, index) {
+                if (item == null)
+                    return false;
+
+                return this.listBox.insertAt(item, index);
+            },
+
+            addItem: function (item) {
+                return this.listBox.addItem(item);
+            },
+
+            removeAt: function (index) {
+                var result = this.listBox.removeAt(index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            removeItem: function (item) {
+                var result = this.listBox.removeItem(item);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateItem: function (item, oldItem) {
+                var result = this.listBox.updateItem(item, oldItem);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateAt: function (item, index) {
+                var result = this.listBox.updateAt(item, index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            ensureVisible: function (index) {
+                return this.listBox.ensureVisible(index);
+            },
+
+            disableAt: function (index) {
+                var item = this.getVisibleItem(index);
+                if (item) {
+                    this._disabledItems.push(item.value);
                 }
-            });
-            return array;
-        },
+                return this.listBox.disableAt(index);
+            },
 
-        getCheckedItems: function () {
-            return this.listBox.getCheckedItems();
-        },
-
-        checkIndex: function (index) {
-            this.listBox.checkIndex(index);
-        },
-
-        uncheckIndex: function (index) {
-            this.listBox.uncheckIndex(index);
-        },
-
-        indeterminateIndex: function (index) {
-            this.listBox.indeterminateIndex(index);
-        },
-        checkAll: function () {
-            this.listBox.checkAll();
-            this.renderSelection("mouse");
-        },
-
-        uncheckAll: function () {
-            this.listBox.uncheckAll();
-            this.renderSelection("mouse");
-        },
-
-        insertAt: function (item, index) {
-            if (item == null)
-                return false;
-
-            return this.listBox.insertAt(item, index);
-        },
-
-        addItem: function (item) {
-            return this.listBox.addItem(item);
-        },
-
-        removeAt: function (index) {
-            var result = this.listBox.removeAt(index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        removeItem: function (item) {
-            var result = this.listBox.removeItem(item);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateItem: function (item, oldItem) {
-            var result = this.listBox.updateItem(item, oldItem);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateAt: function (item, index) {
-            var result = this.listBox.updateAt(item, index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        ensureVisible: function (index) {
-            return this.listBox.ensureVisible(index);
-        },
-
-        disableAt: function (index) {
-            var item = this.getVisibleItem(index);
-            if (item) {
-                this._disabledItems.push(item.value);
-            }
-            return this.listBox.disableAt(index);
-        },
-
-        enableAt: function (index) {
-            var item = this.getVisibleItem(index);
-            if (item) {
-                this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
-            }
-            return this.listBox.enableAt(index);
-        },
-
-        disableItem: function (item) {
-            var item = this.getVisibleItem(item);
-            if (item) {
-                this._disabledItems.push(item.value);
-            }
-            return this.listBox.disableItem(item);
-        },
-
-        enableItem: function (item) {
-            var item = this.getVisibleItem(item);
-            if (item) {
-                this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
-            }
-            return this.listBox.enableItem(item);
-        },
-
-        _findPos: function (obj) {
-            while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
-                obj = obj['nextSibling'];
-            }
-            if (obj) {
-                var position = $(obj).coord(true);
-                return [position.left, position.top];
-            }
-        },
-
-        testOffset: function (element, offset, inputHeight) {
-            var dpWidth = element.outerWidth();
-            var dpHeight = element.outerHeight();
-            var viewWidth = $(window).width() + $(window).scrollLeft();
-            var viewHeight = $(window).height() + $(window).scrollTop();
-
-            if (offset.left + dpWidth > viewWidth) {
-                if (dpWidth > this.host.width()) {
-                    var hostLeft = this.host.coord().left;
-                    var hOffset = dpWidth - this.host.width();
-                    offset.left = hostLeft - hOffset + 2;
+            enableAt: function (index) {
+                var item = this.getVisibleItem(index);
+                if (item) {
+                    this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
                 }
-            }
-            if (offset.left < 0) {
-                offset.left = parseInt(this.host.coord().left) + 'px'
-            }
+                return this.listBox.enableAt(index);
+            },
 
-            offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-                Math.abs(dpHeight + inputHeight + 23) : 0);
-
-            return offset;
-        },
-
-        open: function () {
-            if (!this.isOpened() && !this.opening) {
-                this.showListBox('api');
-            }
-        },
-
-        close: function () {
-            if (this.isOpened()) {
-                this.hideListBox('api');
-            }
-        },
-
-        _getBodyOffset: function () {
-            var top = 0;
-            var left = 0;
-            if ($('body').css('border-top-width') != '0px') {
-                top = parseInt($('body').css('border-top-width'));
-                if (isNaN(top)) top = 0;
-            }
-            if ($('body').css('border-left-width') != '0px') {
-                left = parseInt($('body').css('border-left-width'));
-                if (isNaN(left)) left = 0;
-            }
-            return { left: left, top: top };
-        },
-
-        // shows the listbox.
-        showListBox: function (mode) {
-            if (this.listBox.items && this.listBox.items.length == 0)
-                return;
-
-            if (mode == "search" && !this.autoComplete && !this.remoteAutoComplete) {
-                if (this.autoDropDownHeight) {
-                    this.container.height(this.listBoxContainer.height() + 25);
+            disableItem: function (item) {
+                var item = this.getVisibleItem(item);
+                if (item) {
+                    this._disabledItems.push(item.value);
                 }
-            }
-            this.element.setAttribute('opened', true);
+                return this.listBox.disableItem(item);
+            },
 
-            if (this.autoComplete || this.multiSelect && !this.remoteAutoComplete) {
-                if (mode != 'search') {
-                    this._updateItemsVisibility("");
+            enableItem: function (item) {
+                var item = this.getVisibleItem(item);
+                if (item) {
+                    this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
+                }
+                return this.listBox.enableItem(item);
+            },
 
-                    if (this.multiSelect) {
-                        var visibleItems = this.getVisibleItems();
-                        for (var i = 0; i < visibleItems.length; i++) {
-                            if (!visibleItems[i].disabled) {
-                                this.ensureVisible(i);
-                                break;
+            _findPos: function (obj) {
+                while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
+                    obj = obj['nextSibling'];
+                }
+                if (obj) {
+                    var position = $(obj).coord(true);
+                    return [position.left, position.top];
+                }
+            },
+
+            testOffset: function (element, offset, inputHeight) {
+                var dpWidth = element.outerWidth();
+                var dpHeight = element.outerHeight();
+                var viewWidth = $(window).width() + $(window).scrollLeft();
+                var viewHeight = $(window).height() + $(window).scrollTop();
+
+                if (offset.left + dpWidth > viewWidth) {
+                    if (dpWidth > this.host.width()) {
+                        var hostLeft = this.host.coord().left;
+                        var hOffset = dpWidth - this.host.width();
+                        offset.left = hostLeft - hOffset + 2;
+                    }
+                }
+                if (offset.left < 0) {
+                    offset.left = parseInt(this.host.coord().left) + 'px'
+                }
+
+                offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
+                    Math.abs(dpHeight + inputHeight + 23) : 0);
+
+                return offset;
+            },
+
+            open: function () {
+                if (!this.isOpened() && !this.opening) {
+                    this.showListBox('api');
+                }
+            },
+
+            close: function () {
+                if (this.isOpened()) {
+                    this.hideListBox('api');
+                }
+            },
+
+            _getBodyOffset: function () {
+                var top = 0;
+                var left = 0;
+                if ($('body').css('border-top-width') != '0px') {
+                    top = parseInt($('body').css('border-top-width'));
+                    if (isNaN(top)) top = 0;
+                }
+                if ($('body').css('border-left-width') != '0px') {
+                    left = parseInt($('body').css('border-left-width'));
+                    if (isNaN(left)) left = 0;
+                }
+                return { left: left, top: top };
+            },
+
+            // shows the listbox.
+            showListBox: function (mode) {
+                if (this.listBox.items && this.listBox.items.length == 0)
+                    return;
+
+                if (mode == "search" && !this.autoComplete && !this.remoteAutoComplete) {
+                    if (this.autoDropDownHeight) {
+                        this.container.height(this.listBoxContainer.height() + 25);
+                    }
+                }
+                this.element.setAttribute('opened', true);
+
+                if (this.autoComplete || this.multiSelect && !this.remoteAutoComplete) {
+                    if (mode != 'search') {
+                        this._updateItemsVisibility("");
+
+                        if (this.multiSelect) {
+                            var visibleItems = this.getVisibleItems();
+                            for (var i = 0; i < visibleItems.length; i++) {
+                                if (!visibleItems[i].disabled) {
+                                    this.ensureVisible(i);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
-            if (this.remoteAutoComplete) {
-                this.listBox.clearSelection();
-            }
+                if (this.remoteAutoComplete) {
+                    this.listBox.clearSelection();
+                }
 
-            if (mode != 'search') {
-                this._oldvalue = this.listBox.selectedValue;
-            }
+                if (mode != 'search') {
+                    this._oldvalue = this.listBox.selectedValue;
+                }
 
-            $.jqx.aria(this, "aria-expanded", true);
+                $.jqx.aria(this, "aria-expanded", true);
 
-            if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && this.width.indexOf('%') != -1) {
-                if (this.listBox.host.width() != this.host.width()) {
+                if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && this.width.indexOf('%') != -1) {
+                    if (this.listBox.host.width() != this.host.width()) {
+                        var width = this.element.offsetWidth;
+                        this.listBoxContainer.jqxListBox({ width: width });
+                        this.listBoxContainer[0].style.width = width + "px";
+                        this.container.width(parseInt(width) + 25);
+                    }
+                }
+                if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
                     var width = this.element.offsetWidth;
-                    this.listBoxContainer.jqxListBox({ width: width });
-                    this.listBoxContainer[0].style.width = width + "px";
+                    this.listBoxContainer.jqxListBox({ width: width + 1 });
                     this.container.width(parseInt(width) + 25);
                 }
-            }
-            if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
-                var width = this.element.offsetWidth;
-                this.listBoxContainer.jqxListBox({ width: width + 1 });
-                this.container.width(parseInt(width) + 25);
-            }
 
 
-            var that = this;
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var scrollPosition = $(window).scrollTop();
-            var scrollLeftPosition = $(window).scrollLeft();
-            var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
-            var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
-            left = leftPos + 'px';
-            if (this.dropDownContainer === 'element') {
-                top = parseInt(this.host.outerHeight()) - 1 + 'px';
-                left = 0;
-            }
-            var isMobileBrowser = $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
-            this.ishiding = false;
-
-            var hasTransform = $.jqx.utilities.hasTransform(this.host);
-
-            if (hasTransform || (isMobileBrowser != null && isMobileBrowser)) {
-                left = $.jqx.mobile.getLeftPos(this.element);
-                top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
-                if ($('body').css('border-top-width') != '0px') {
-                    top = parseInt(top) - this._getBodyOffset().top + 'px';
+                var that = this;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var scrollPosition = $(window).scrollTop();
+                var scrollLeftPosition = $(window).scrollLeft();
+                var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
+                var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
+                left = leftPos + 'px';
+                if (this.dropDownContainer === 'element') {
+                    top = parseInt(this.host.outerHeight()) - 1 + 'px';
+                    left = 0;
                 }
-                if ($('body').css('border-left-width') != '0px') {
-                    left = parseInt(left) - this._getBodyOffset().left + 'px';
+                var isMobileBrowser = $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+                this.ishiding = false;
+
+                var hasTransform = $.jqx.utilities.hasTransform(this.host);
+
+                if (hasTransform || (isMobileBrowser != null && isMobileBrowser)) {
+                    left = $.jqx.mobile.getLeftPos(this.element);
+                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+                    if ($('body').css('border-top-width') != '0px') {
+                        top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    }
+                    if ($('body').css('border-left-width') != '0px') {
+                        left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    }
                 }
-            }
 
-            this.host.addClass(this.toThemeProperty('jqx-combobox-state-selected'));
-            if (this.dropDownVerticalAlignment == "top") {
-                this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            }
-            else {
-                this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            }
-            this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
-            this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            this.host.addClass(this.toThemeProperty('jqx-combobox-state-focus'));
-            this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.dropdownlistContent.addClass(this.toThemeProperty('jqx-combobox-content-focus'));
-
-            this.container.css('left', left);
-            this.container.css('top', top);
-            listBoxInstance._arrange();
-
-            var closeAfterSelection = true;
-
-            var positionChanged = false;
-
-            if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
-                var containerWidth = this.container.outerWidth();
-                var containerLeftOffset = Math.abs(containerWidth - this.host.width());
-
-                if (containerWidth > this.host.width()) {
-                    this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
-                }
-                else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
-            }
-
-            if (this.dropDownVerticalAlignment == "top") {
-                var dpHeight = listBox.height();
-                positionChanged = true;
-
-                listBox.css('top', 23);
-                listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                var inputHeight = parseInt(this.host.outerHeight());
-                var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
-
-                this.container.css('top', t);
-            }
-
-            if (this.enableBrowserBoundsDetection) {
-                var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
-                if (parseInt(this.container.css('top')) != newOffset.top) {
-                    positionChanged = true;
-                    listBox.css('top', 23);
-                    listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                }
-                else listBox.css('top', 0);
-
-                this.container.css('top', newOffset.top);
-                this.container.css('top', newOffset.top);
-                if (parseInt(this.container.css('left')) != newOffset.left) {
-                    this.container.css('left', newOffset.left);
-                }
-            }
-
-            if (this.animationType == 'none' || this.animationType === 'transform') {
-                this.container.css('display', 'block');
-                $.data(document.body, "openedCombojqxListBoxParent", that);
-                $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                listBox.css('margin-top', 0);
-                listBox.css('opacity', 1);
-            }
-            else {
-                this.container.css('display', 'block');
-                var height = listBox.outerHeight();
-                listBox.stop();
-                if (this.animationType == 'fade') {
-                    listBox.css('margin-top', 0);
-                    listBox.css('opacity', 0);
-                    listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
-                        that.isanimating = false;
-                        that.opening = false;
-                        $.data(document.body, "openedCombojqxListBoxParent", that);
-                        $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                    });
+                this.host.addClass(this.toThemeProperty('jqx-combobox-state-selected'));
+                if (this.dropDownVerticalAlignment == "top") {
+                    this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
                 }
                 else {
+                    this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                }
+                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
+                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                this.host.addClass(this.toThemeProperty('jqx-combobox-state-focus'));
+                this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.dropdownlistContent.addClass(this.toThemeProperty('jqx-combobox-content-focus'));
+
+                this.container.css('left', left);
+                this.container.css('top', top);
+                listBoxInstance._arrange();
+
+                var closeAfterSelection = true;
+
+                var positionChanged = false;
+
+                if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
+                    var containerWidth = this.container.outerWidth();
+                    var containerLeftOffset = Math.abs(containerWidth - this.host.width());
+
+                    if (containerWidth > this.host.width()) {
+                        this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
+                    }
+                    else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
+                }
+
+                if (this.dropDownVerticalAlignment == "top") {
+                    var dpHeight = listBox.height();
+                    positionChanged = true;
+
+                    listBox.css('top', 23);
+                    listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    var inputHeight = parseInt(this.host.outerHeight());
+                    var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
+
+                    this.container.css('top', t);
+                }
+
+                if (this.enableBrowserBoundsDetection) {
+                    var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
+                    if (parseInt(this.container.css('top')) != newOffset.top) {
+                        positionChanged = true;
+                        listBox.css('top', 23);
+                        listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    }
+                    else listBox.css('top', 0);
+
+                    this.container.css('top', newOffset.top);
+                    this.container.css('top', newOffset.top);
+                    if (parseInt(this.container.css('left')) != newOffset.left) {
+                        this.container.css('left', newOffset.left);
+                    }
+                }
+
+                if (this.animationType == 'none' || this.animationType === 'transform') {
+                    this.container.css('display', 'block');
+                    $.data(document.body, "openedCombojqxListBoxParent", that);
+                    $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                    listBox.css('margin-top', 0);
                     listBox.css('opacity', 1);
-                    if (positionChanged) {
-                        listBox.css('margin-top', height);
+                }
+                else {
+                    this.container.css('display', 'block');
+                    var height = listBox.outerHeight();
+                    listBox.stop();
+                    if (this.animationType == 'fade') {
+                        listBox.css('margin-top', 0);
+                        listBox.css('opacity', 0);
+                        listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
+                            that.isanimating = false;
+                            that.opening = false;
+                            $.data(document.body, "openedCombojqxListBoxParent", that);
+                            $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                        });
                     }
                     else {
-                        listBox.css('margin-top', -height);
+                        listBox.css('opacity', 1);
+                        if (positionChanged) {
+                            listBox.css('margin-top', height);
+                        }
+                        else {
+                            listBox.css('margin-top', -height);
+                        }
+                        this.isanimating = true;
+                        this.opening = true;
+                        listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
+                            that.isanimating = false;
+                            that.opening = false;
+                            $.data(document.body, "openedCombojqxListBoxParent", that);
+                            $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                        });
                     }
-                    this.isanimating = true;
-                    this.opening = true;
-                    listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
-                        that.isanimating = false;
-                        that.opening = false;
-                        $.data(document.body, "openedCombojqxListBoxParent", that);
-                        $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                    });
                 }
-            }
-            listBoxInstance._renderItems();
-            if (!positionChanged) {
-                this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            }
-            else {
-                this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            }
-            listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                listBoxInstance._renderItems();
+                if (!positionChanged) {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                }
+                else {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                }
+                listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
 
-            this._raiseEvent('0', listBoxInstance);
-            listBox.addClass(this.toThemeProperty('jqx-popup-show'));
-        },
+                this._raiseEvent('0', listBoxInstance);
+                listBox.addClass(this.toThemeProperty('jqx-popup-show'));
+            },
 
-        doMultiSelect: function (setFocus) {
-            if (this.checkboxes) {
-                this.multiSelect = false;
-            }
+            doMultiSelect: function (setFocus) {
+                if (this.checkboxes) {
+                    this.multiSelect = false;
+                }
 
-            var that = this;
-            if (!this.multiSelect) {
-                var buttons = that.dropdownlistContent.find('.jqx-button');
+                var that = this;
+                if (!this.multiSelect) {
+                    var buttons = that.dropdownlistContent.find('.jqx-button');
+                    var eventName = 'mousedown';
+                    if (this.touch) {
+                        eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                    }
+                    this.removeHandler(buttons, eventName);
+                    this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
+                    buttons.remove();
+                    var items = this.listBox.items;
+                    if (!items) return;
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].disabled = false;
+                    }
+                    this.listBox._renderItems();
+
+                    this.selectedItems = new Array();
+                    this._selectedItems = new Array();
+                    return;
+                }
+
+                if (this.validateSelection) {
+                    var result = this.validateSelection(this.listBox.selectedValue);
+                    if (!result) {
+                        return;
+                    }
+                }
+
+                var oldItems = this.selectedItems;
+                if (this.listBox.selectedValue) {
+                    if (this.selectedItems.indexOf(this.listBox.selectedValue) === -1) {
+                        var item = this.getItemByValue(this.listBox.selectedValue);
+                        if (item && item.visible) {
+                            this.selectedItems.push(this.listBox.selectedValue);
+                            this._selectedItems.push(item);
+                            this._raiseEvent('2', { index: item.index, item: item });
+                            this._raiseEvent('4', { index: item.index, item: item });
+                        }
+                    }
+                    this.listBox.selectedIndex = -1;
+                }
+
+                var items = this.listBox.items;
+                if (!items) return;
+                for (var i = 0; i < items.length; i++) {
+                    items[i].disabled = false;
+                    if (this.selectedItems.indexOf(items[i].value) >= 0 || this._disabledItems.indexOf(this.value) >= 0) {
+                        items[i].disabled = true;
+                    }
+                }
+                this.listBox._renderItems();
+
+                this.searchString = "";
+                this.input.val("");
+                var items = "";
                 var eventName = 'mousedown';
+
+                var buttons = that.dropdownlistContent.find('.jqx-button');
                 if (this.touch) {
                     eventName = $.jqx.mobile.getTouchEventName('touchstart');
                 }
                 this.removeHandler(buttons, eventName);
                 this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
                 buttons.remove();
-                var items = this.listBox.items;
-                if (!items) return;
-                for (var i = 0; i < items.length; i++) {
-                    items[i].disabled = false;
-                }
-                this.listBox._renderItems();
 
-                this.selectedItems = new Array();
-                this._selectedItems = new Array();
-                return;
-            }
-
-            if (this.validateSelection) {
-                var result = this.validateSelection(this.listBox.selectedValue);
-                if (!result) {
-                    return;
-                }
-            }
-
-            var oldItems = this.selectedItems;
-            if (this.listBox.selectedValue) {
-                if (this.selectedItems.indexOf(this.listBox.selectedValue) === -1) {
-                    var item = this.getItemByValue(this.listBox.selectedValue);
-                    if (item && item.visible) {
-                        this.selectedItems.push(this.listBox.selectedValue);
-                        this._selectedItems.push(item);
-                        this._raiseEvent('2', { index: item.index, item: item });
-                        this._raiseEvent('4', { index: item.index, item: item });
+                that.input.detach();
+                if (this.selectedItems.length > 0) {
+                    that.input.css('width', '25px');
+                    if (this.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = this.placeHolder;
+                    }
+                    else {
+                        that.input.attr('placeholder', "");
                     }
                 }
-                this.listBox.selectedIndex = -1;
-            }
-
-            var items = this.listBox.items;
-            if (!items) return;
-            for (var i = 0; i < items.length; i++) {
-                items[i].disabled = false;
-                if (this.selectedItems.indexOf(items[i].value) >= 0 || this._disabledItems.indexOf(this.value) >= 0) {
-                    items[i].disabled = true;
-                }
-            }
-            this.listBox._renderItems();
-
-            this.searchString = "";
-            this.input.val("");
-            var items = "";
-            var eventName = 'mousedown';
-
-            var buttons = that.dropdownlistContent.find('.jqx-button');
-            if (this.touch) {
-                eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            }
-            this.removeHandler(buttons, eventName);
-            this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
-            buttons.remove();
-
-            that.input.detach();
-            if (this.selectedItems.length > 0) {
-                that.input.css('width', '25px');
-                if (this.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = this.placeHolder;
-                }
                 else {
-                    that.input.attr('placeholder', "");
+                    that.input.css('width', '100%');
+                    if (that.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = this.placeHolder;
+                    }
+                    else {
+                        that.input.attr('placeholder', this.placeHolder);
+                    }
                 }
-            }
-            else {
-                that.input.css('width', '100%');
-                if (that.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = this.placeHolder;
-                }
-                else {
-                    that.input.attr('placeholder', this.placeHolder);
-                }
-            }
 
-            if (that.isMaterialized()) {
-                if (that.hint) {
-                    setTimeout(function () {
-                        if (that.selectedItems.length === 0) {
-                            that.element.removeAttribute('hint');
-                            that.label[0].innerHTML = that.placeHolder;
-                        }
-                        else {
-                            if (that.hint) {
-                                that.element.setAttribute('hint', true);
+                if (that.isMaterialized()) {
+                    if (that.hint) {
+                        setTimeout(function () {
+                            if (that.selectedItems.length === 0) {
+                                that.element.removeAttribute('hint');
+                                that.label[0].innerHTML = that.placeHolder;
                             }
+                            else {
+                                if (that.hint) {
+                                    that.element.setAttribute('hint', true);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                $.each(this.selectedItems, function (index) {
+                    var item = that.getItemByValue(this);
+                    if (!item || that.remoteAutoComplete) {
+                        item = that._selectedItems[index];
+                    }
+
+                    var group = $('<div style="overflow: hidden; float: left;"></div>');
+                    group.addClass(that.toThemeProperty('jqx-button'));
+                    group.addClass(that.toThemeProperty('jqx-combobox-multi-item'));
+                    group.addClass(that.toThemeProperty('jqx-fill-state-normal'));
+                    group.addClass(that.toThemeProperty('jqx-rc-all'));
+                    if (item) {
+                        var text = item.label;
+                        if (that.renderSelectedItem) {
+                            var result = that.renderSelectedItem(index, item);
+                            if (result) text = result;
                         }
-                    });
-                }
-            }
 
-            $.each(this.selectedItems, function (index) {
-                var item = that.getItemByValue(this);
-                if (!item || that.remoteAutoComplete) {
-                    item = that._selectedItems[index];
-                }
-
-                var group = $('<div style="overflow: hidden; float: left;"></div>');
-                group.addClass(that.toThemeProperty('jqx-button'));
-                group.addClass(that.toThemeProperty('jqx-combobox-multi-item'));
-                group.addClass(that.toThemeProperty('jqx-fill-state-normal'));
-                group.addClass(that.toThemeProperty('jqx-rc-all'));
-                if (item) {
-                    var text = item.label;
-                    if (that.renderSelectedItem) {
-                        var result = that.renderSelectedItem(index, item);
-                        if (result) text = result;
-                    }
-
-                    if (group[0].innerHTML == '') {
-                        group[0].innerHTML = '<a data-value="' + item.value + '" style="float: left;" href="#">' + text + '</a>';
-                    }
-                    if (that.rtl) {
-                        group[0].innerHTML = '<a data-value="' + item.value + '" style="float: right;" href="#">' + text + '</a>';
-                    }
-                    var fl = !that.rtl ? 'right' : 'left';
-
-                    if (that.showCloseButtons) {
-                        var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
-                        if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                            closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                        if (group[0].innerHTML == '') {
+                            group[0].innerHTML = '<a data-value="' + item.value + '" style="float: left;" href="#">' + text + '</a>';
                         }
                         if (that.rtl) {
-                            var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                            group[0].innerHTML = '<a data-value="' + item.value + '" style="float: right;" href="#">' + text + '</a>';
+                        }
+                        var fl = !that.rtl ? 'right' : 'left';
+
+                        if (that.showCloseButtons) {
+                            var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
                             if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                                closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
                             }
-                        }
+                            if (that.rtl) {
+                                var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                                    closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                }
+                            }
 
-                        group[0].innerHTML += closebutton;
+                            group[0].innerHTML += closebutton;
+                        }
                     }
-                }
-                else {
-                    if (group[0].innerHTML == '') {
-                        group[0].innerHTML = '<a href="#"></a>';
+                    else {
+                        if (group[0].innerHTML == '') {
+                            group[0].innerHTML = '<a href="#"></a>';
+                        }
                     }
-                }
-                that.dropdownlistContent.append(group);
-            });
-            that.dropdownlistContent.append(that.input);
-            that.input.val("");
-            if (setFocus !== false) {
-                that.input.focus();
-                setTimeout(function () {
+                    that.dropdownlistContent.append(group);
+                });
+                that.dropdownlistContent.append(that.input);
+                that.input.val("");
+                if (setFocus !== false) {
                     that.input.focus();
-                }, 10);
-            }
-            var buttons = that.dropdownlistContent.find('.jqx-button');
-
-            if (this.touchMode === true) eventName = "mousedown";
-            this.addHandler(buttons, eventName, function (event) {
-                if (event.target.className.indexOf('jqx-icon-close') >= 0)
-                    return true;
-
-                if (that.disabled) {
-                    return true;
+                    setTimeout(function () {
+                        that.input.focus();
+                    }, 10);
                 }
+                var buttons = that.dropdownlistContent.find('.jqx-button');
 
-                var text = $(event.target).attr('data-value');
-                var item = that.getItemByValue(text);
-                if (item) {
-                    that.listBox.selectedValue = null;
-                    that.listBox.clearSelection();
-                }
-                that.listBox.scrollTo(0, 0);
-                that.open();
-                if (event.preventDefault) {
-                    event.preventDefault();
-                }
-                if (event.stopPropagation) {
-                    event.stopPropagation();
-                }
-                return false;
-            });
-            this.addHandler(buttons.find('.jqx-icon-close'), eventName, function (event) {
-                if (that.disabled) {
-                    return;
-                }
+                if (this.touchMode === true) eventName = "mousedown";
+                this.addHandler(buttons, eventName, function (event) {
+                    if (event.target.className.indexOf('jqx-icon-close') >= 0)
+                        return true;
 
-                var text = $(event.target).parent().parent().find('a').attr('data-value');
-                var item = that.getItemByValue(text);
-                if (item || (that.remoteAutoComplete && !item && that.selectedItems.indexOf(text) >= 0)) {
-                    that.listBox.selectedValue = null;
-                    var index = that.selectedItems.indexOf(text);
-                    var indx = item && item.index >= 0 ? item.index : index;
-                    if (index >= 0) {
-                        that.selectedItems.splice(index, 1);
-                        var selectedItem = that._selectedItems[index];
-                        if (!selectedItem) {
-                            selectedItem = item;
-                        }
-                        that._selectedItems.splice(index, 1);
-
-                        that._raiseEvent('3', { index: indx, type: 'mouse', item: selectedItem });
-                        that._raiseEvent('4', { index: indx, type: 'mouse', item: selectedItem });
-                        that.doMultiSelect();
+                    if (that.disabled) {
+                        return true;
                     }
-                    else {
-                        for (var i = 0; i < that.selectedItems.length; i++) {
-                            var selectedItem = that.selectedItems[i];
-                            if (selectedItem == text) {
-                                that.selectedItems.splice(i, 1);
-                                that._selectedItems.splice(i, 1);
-                                that._raiseEvent('3', { index: indx, type: 'mouse', item: item });
-                                that._raiseEvent('4', { index: indx, type: 'mouse', item: item });
-                                that.doMultiSelect();
-                                break;
+
+                    var text = $(event.target).attr('data-value');
+                    var item = that.getItemByValue(text);
+                    if (item) {
+                        that.listBox.selectedValue = null;
+                        that.listBox.clearSelection();
+                    }
+                    that.listBox.scrollTo(0, 0);
+                    that.open();
+                    if (event.preventDefault) {
+                        event.preventDefault();
+                    }
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+                    return false;
+                });
+                this.addHandler(buttons.find('.jqx-icon-close'), eventName, function (event) {
+                    if (that.disabled) {
+                        return;
+                    }
+
+                    var text = $(event.target).parent().parent().find('a').attr('data-value');
+                    var item = that.getItemByValue(text);
+                    if (item || (that.remoteAutoComplete && !item && that.selectedItems.indexOf(text) >= 0)) {
+                        that.listBox.selectedValue = null;
+                        var index = that.selectedItems.indexOf(text);
+                        var indx = item && item.index >= 0 ? item.index : index;
+                        if (index >= 0) {
+                            that.selectedItems.splice(index, 1);
+                            var selectedItem = that._selectedItems[index];
+                            if (!selectedItem) {
+                                selectedItem = item;
+                            }
+                            that._selectedItems.splice(index, 1);
+
+                            that._raiseEvent('3', { index: indx, type: 'mouse', item: selectedItem });
+                            that._raiseEvent('4', { index: indx, type: 'mouse', item: selectedItem });
+                            that.doMultiSelect();
+                        }
+                        else {
+                            for (var i = 0; i < that.selectedItems.length; i++) {
+                                var selectedItem = that.selectedItems[i];
+                                if (selectedItem == text) {
+                                    that.selectedItems.splice(i, 1);
+                                    that._selectedItems.splice(i, 1);
+                                    that._raiseEvent('3', { index: indx, type: 'mouse', item: item });
+                                    that._raiseEvent('4', { index: indx, type: 'mouse', item: item });
+                                    that.doMultiSelect();
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-            });
-
-            if (this.isMaterialized()) {
-                this.host.height(this.dropdownlistContent.height());
-            }
-
-            this.bar.css('top', this.host.height());
-            that.dropdownlistArrow.height(this.host.height());
-            that._updateInputSelection();
-        },
-
-        // hides the listbox.
-        hideListBox: function (mode) {
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var container = this.container;
-            if (this.container[0].style.display == 'none')
-                return;
-
-            this.element.setAttribute('opened', false);
-
-            $.jqx.aria(this, "aria-expanded", false);
-
-            if (mode == "keyboard" || mode == "mouse") {
-                this.listBox.searchString = "";
-            }
-            listBox.removeClass('jqx-popup-show');
-
-            if (mode == "keyboard" || mode == "mouse" && this.multiSelect) {
-                this.doMultiSelect();
-            }
-
-            var that = this;
-            $.data(document.body, "openedCombojqxListBox" + this.element.id, null);
-            if (this.animationType == 'none') {
-                this.opening = false;
-                this.container.css('display', 'none');
-            }
-            else if (this.animationType === 'transform') {
-                setTimeout(function () {
-                    container.css('display', 'none');
-                }, this.closeDelay);
-            }
-            else {
-                if (!this.ishiding) {
-                    var height = listBox.outerHeight();
-                    listBox.css('margin-top', 0);
-                    listBox.stop();
-                    this.opening = false;
-                    this.isanimating = true;
-                    var animationValue = -height;
-                    if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
-                        animationValue = height;
-                    }
-                    if (this.animationType == 'fade') {
-                        listBox.css({ 'opacity': 1 });
-                        listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
-                            that.isanimating = false;
-                            container.css('display', 'none');
-                            that.ishiding = false;
-                        });
-                    }
-                    else {
-                        listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
-                            that.isanimating = false;
-                            container.css('display', 'none'); that.ishiding = false;
-                        });
-                    }
-                }
-            }
-
-            this.ishiding = true;
-            this.host.removeClass(this.toThemeProperty('jqx-combobox-state-selected'));
-            this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            if (!this.focused) {
-                this.host.removeClass(this.toThemeProperty('jqx-combobox-state-focus'));
-                this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-                this.dropdownlistContent.removeClass(this.toThemeProperty('jqx-combobox-content-focus'));
-            }
-            this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-
-            this._raiseEvent('1', listBoxInstance);
-        },
-
-        /* Close popup if clicked elsewhere. */
-        closeOpenedListBox: function (event) {
-            var that = event.data.that;
-            var $target = $(event.target);
-            var openedListBox = event.data.listbox;
-            if (openedListBox == null)
-                return true;
-
-            if ($(event.target).ischildof(that.host)) {
-                return;
-            }
-
-            var dropdownlistInstance = that;
-
-            var isListBox = false;
-            $.each($target.parents(), function () {
-                if (this.className != 'undefined') {
-                    if (this.className.indexOf) {
-                        if (this.className.indexOf('jqx-listbox') != -1) {
-                            isListBox = true;
-                            return false;
-                        }
-                        if (this.className.indexOf('jqx-combobox') != -1) {
-                            if (that.element.id == this.id) {
-                                isListBox = true;
-                            }
-                            return false;
-                        }
-                    }
-                }
-            });
-
-            if (openedListBox != null && !isListBox) {
-                if (that.isOpened()) {
-                    that.hideListBox('api');
-                    that.input.blur();
-                }
-            }
-
-            return true;
-        },
-
-        loadFromSelect: function (id) {
-            this.listBox.loadFromSelect(id);
-            this.clearSelection();
-        },
-
-        refresh: function (initialRefresh) {
-            this._setSize();
-            this._arrange();
-            if (this.listBox) {
-                this.renderSelection();
-            }
-        },
-
-        resize: function () {
-            this._setSize();
-            this._arrange();
-        },
-
-        _arrange: function () {
-            var width = parseInt(this.host.width());
-            var height = parseInt(this.host.height());
-
-            var arrowHeight = this.arrowSize;
-            var arrowWidth = this.arrowSize;
-
-            var rightOffset = 1;
-            if (!this.showArrow) {
-                arrowWidth = 0;
-                arrowHeight = 0;
-                this.dropdownlistArrow.hide();
-                rightOffset = 0;
-                this.host.css('cursor', 'arrow');
-                if (this.theme === "fluent") {
-                    rightOffset = 1;
-                }
-            }
-            else {
-                if (this.dropdownlistArrow[0].style.display === "none") {
-                    this.dropdownlistArrow.show();
-                }
-            }
-            var contentWidth = width - arrowWidth - 1 * rightOffset;
-            if (contentWidth > 0) {
-                this.dropdownlistContent[0].style.width = contentWidth + 'px';
-            }
-            if (this.rtl) {
-                this.dropdownlistContent[0].style.width = (-1 + contentWidth + 'px');
-            }
-
-            this.dropdownlistContent[0].style.height = height + 'px';
-            this.dropdownlistContent[0].style.left = '0px';
-            this.dropdownlistContent[0].style.top = '0px';
-            this.dropdownlistArrow[0].style.width = arrowWidth + 'px';
-            this.dropdownlistArrow[0].style.height = height + 'px';
-            this.dropdownlistArrow[0].style.left = 1 + contentWidth + 'px';
-
-            this.input[0].style.width = '100%';
-
-            if (!this.multiSelect) {
-                this.input.height(height);
-            }
-
-            var inputHeight = this.input.height();
-            if (inputHeight == 0) {
-                inputHeight = parseInt(this.input.css('font-size')) + 3;
-            }
-
-            if (this.input[0].className.indexOf('jqx-rc-all') == -1) {
-                this.input.addClass(this.toThemeProperty('jqx-rc-all'));
-            }
-
-            var top = parseInt(height) / 2 - parseInt(inputHeight) / 2;
-            if (top > 0) {
-                //      this.input[0].style.marginTop = parseInt(top) + "px";
-            }
-
-            if (this.rtl) {
-                this.dropdownlistArrow.css('left', '0px');
-                this.dropdownlistContent.css('left', this.dropdownlistArrow.width());
-                if ($.jqx.browser.msie && $.jqx.browser.version <= 8) {
-                    this.dropdownlistContent.css('left', 1 + this.dropdownlistArrow.width());
-                }
-            }
-            if (this.multiSelect) {
-                this.input.css('float', 'left');
-                this.input.width(25);
-                this.dropdownlistWrapper.parent().css('height', 'auto');
-                this.dropdownlistContent.css('height', 'auto');
-                this.dropdownlistWrapper.css('height', 'auto');
-                this.dropdownlistContent.css('position', 'relative');
-                this.dropdownlistContent.css('cursor', 'text');
-                this.host.css('height', 'auto');
-                this.host.css('min-height', this.height);
-                this.dropdownlistContent.css('min-height', this.height);
-                var height = parseInt(this.host.height());
-                this.dropdownlistArrow.height(height);
-                var initialHeight = parseInt(this.host.css('min-height'));
-                var top = parseInt(initialHeight) / 2 - parseInt(inputHeight) / 2;
-                if (top > 0) {
-                    this.input.css('margin-top', top);
-                }
-
+                });
 
                 if (this.isMaterialized()) {
                     this.host.height(this.dropdownlistContent.height());
                 }
 
                 this.bar.css('top', this.host.height());
-                this.dropdownlistArrow.height(this.host.height());
-            }
-        },
+                that.dropdownlistArrow.height(this.host.height());
+                that._updateInputSelection();
+            },
 
-        destroy: function () {
-            if (this.source && this.source.unbindBindingUpdate) {
-                this.source.unbindBindingUpdate(this.element.id);
-                this.source.unbindBindingUpdate(this.listBoxContainer[0].id);
-                this.source.unbindDownloadComplete(this.element.id);
-                this.source.unbindDownloadComplete(this.listBoxContainer[0].id);
-            }
-            $.jqx.utilities.resize(this.host, null, true);
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBoxContainer, 'unselect');
-            this.removeHandler(this.listBoxContainer, 'change');
-            this.removeHandler(this.listBoxContainer, 'bindingComplete');
-            this.removeHandler(this.dropdownlistWrapper, 'selectstart');
-            this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBox.content, 'click');
-            this.removeHandlers();
-            this.removeHandler(this.input, 'keyup.textchange');
+            // hides the listbox.
+            hideListBox: function (mode) {
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var container = this.container;
+                if (this.container[0].style.display == 'none')
+                    return;
 
-            this.listBoxContainer.jqxListBox('destroy');
-            this.listBoxContainer.remove();
-            this.host.removeClass();
-            this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
-            if (this.touch) {
-                this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
-            }
-            this.cinput.remove();
-            delete this.cinput;
-            this.dropdownlistArrow.remove();
-            delete this.dropdownlistArrow;
-            this.dropdownlistArrowIcon.remove();
-            delete this.dropdownlistArrowIcon;
-            delete this.dropdownlistWrapper;
-            delete this.listBoxContainer;
-            delete this.input;
-            delete this.dropdownlistContent;
-            delete this.comboStructure;
-            this.container.remove();
-            delete this.listBox;
-            delete this.container;
-            var vars = $.data(this.element, "jqxComboBox");
-            if (vars) {
-                delete vars.instance;
-            }
-            this.host.removeData();
-            this.host.remove();
-            delete this.host;
-            delete this.set;
-            delete this.get;
-            delete this.call;
-            delete this.element;
-        },
+                this.element.setAttribute('opened', false);
 
-        //[optimize]
-        _raiseEvent: function (id, arg) {
-            if (arg == undefined)
-                arg = { owner: null };
+                $.jqx.aria(this, "aria-expanded", false);
 
-            var evt = this.events[id];
-            var args = arg;
-            args.owner = this;
-
-            var event = new $.Event(evt);
-            event.owner = this;
-            if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
-                event.args = arg;
-            }
-
-            var result = this.host.trigger(event);
-            return result;
-        },
-
-        propertiesChangedHandler: function (object, key, value) {
-            if (value.width && value.height && Object.keys(value).length == 2) {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
-                    }
+                if (mode == "keyboard" || mode == "mouse") {
+                    this.listBox.searchString = "";
                 }
-                object._arrange();
-                object.close();
-            }
-        },
+                listBox.removeClass('jqx-popup-show');
 
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (object.isInitialized == undefined || object.isInitialized == false)
-                return;
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key == "template") {
-                object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
-                object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
-                object.dropDownListArrow.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
-                object.dropDownListArrow.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+                if (mode == "keyboard" || mode == "mouse" && this.multiSelect) {
+                    this.doMultiSelect();
+                }
 
                 var that = this;
-
-                that.bar.removeClass(that.toThemeProperty("jqx-" + oldvalue));
-                that.label.removeClass(that.toThemeProperty("jqx-" + oldvalue));
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-
-            }
-
-            if (key == "dropDownVerticalAlignment") {
-                object.close();
-                object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
-                object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                if (object.dropDownVerticalAlignment == "top") {
-                    object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                $.data(document.body, "openedCombojqxListBox" + this.element.id, null);
+                if (this.animationType == 'none') {
+                    this.opening = false;
+                    this.container.css('display', 'none');
+                }
+                else if (this.animationType === 'transform') {
+                    setTimeout(function () {
+                        container.css('display', 'none');
+                    }, this.closeDelay);
                 }
                 else {
-                    object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                }
-                object.listBoxContainer.css('top', 0);
-                object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
-            }
-
-            if (key == "autoItemsHeight") {
-                object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
-            }
-
-            if (key == "itemHeight") {
-                object.listBoxContainer.jqxListBox({ itemHeight: value });
-            }
-
-            if (key == "renderSelectedItem") {
-                object.renderSelection('mouse');
-            }
-
-            if (key == "renderer") {
-                object.listBoxContainer.jqxListBox({ renderer: value });
-            }
-
-            if (key == "enableSelection") {
-                object.listBoxContainer.jqxListBox({ enableSelection: value });
-            }
-            if (key == "enableHover") {
-                object.listBoxContainer.jqxListBox({ enableHover: value });
-            }
-
-            if (key === "touchMode") {
-                object.listBoxContainer.jqxListBox({ touchMode: value });
-                object.touch = $.jqx.mobile.isTouchDevice();
-                if (object.touchMode === true) {
-                    object.touch = true;
-                }
-                object._updateHandlers();
-            }
-
-            if (key == "multiSelect") {
-                if (value) {
-                    object.doMultiSelect(false);
-                }
-                else {
-                    var items = object.listBox.items;
-                    var selectedIndex = -1;
-                    for (var i = 0; i < items.length; i++) {
-                        items[i].disabled = false;
-                        if (object.selectedItems.indexOf(items[i].value) >= 0 || object._disabledItems.indexOf(object.value) >= 0) {
-                            items[i].disabled = true;
-                            selectedIndex = items[i].index;
+                    if (!this.ishiding) {
+                        var height = listBox.outerHeight();
+                        listBox.css('margin-top', 0);
+                        listBox.stop();
+                        this.opening = false;
+                        this.isanimating = true;
+                        var animationValue = -height;
+                        if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
+                            animationValue = height;
+                        }
+                        if (this.animationType == 'fade') {
+                            listBox.css({ 'opacity': 1 });
+                            listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
+                                that.isanimating = false;
+                                container.css('display', 'none');
+                                that.ishiding = false;
+                            });
+                        }
+                        else {
+                            listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
+                                that.isanimating = false;
+                                container.css('display', 'none'); that.ishiding = false;
+                            });
                         }
                     }
-                    object.doMultiSelect(false);
-                    object.listBox._renderItems();
-                    if (!items) return;
-                    object.listBox.selectedIndex = selectedIndex;
-                    object.renderSelection('mouse');
-                    object.dropdownlistWrapper.parent().css('height', '100%');
-                    object.dropdownlistContent.css('height', '100');
-                    object.dropdownlistWrapper.css('height', '100');
-                    object.dropdownlistContent.css('position', 'relative');
-                    object.host.css('min-height', null);
-                    object._setSize();
-                    object._arrange();
-                }
-            }
-
-            if (key == "showArrow") {
-                object._arrange();
-                if (object.multiSelect) {
-                    object.doMultiSelect(false);
-                }
-            }
-
-            if (key == "placeHolder") {
-                if (object.isMaterialized()) {
-                    object.label.innerHTML = object.placeHolder;
-                }
-                else {
-                    object.input.attr('placeholder', object.placeHolder);
-                }
-            }
-
-            if (key == 'popupZIndex') {
-                object.listBoxContainer.css({ zIndex: object.popupZIndex });
-            }
-
-            if (key == 'promptText') {
-                object.placeHolder = value;
-            }
-
-            if (key == 'autoOpen') {
-                object._updateHandlers();
-            }
-
-            if (key == 'renderer') {
-                object.listBox.renderer = object.renderer;
-            }
-            if (key == 'itemHeight') {
-                object.listBox.itemHeight = value;
-            }
-
-            if (key == 'source') {
-                object.input.val("");
-                object.listBoxContainer.jqxListBox({ source: object.source });
-                object.renderSelection('mouse');
-                if (object.source == null) {
-                    object.clearSelection();
-                }
-                if (object.multiSelect) {
-                    object.selectedItems = new Array();
-                    object._selectedItems = new Array();
-                    object.doMultiSelect(false);
-                }
-            }
-            if (key == "rtl") {
-                if (value) {
-                    object.dropdownlistArrow.css('float', 'left');
-                    object.dropdownlistContent.css('float', 'right');
-                }
-                else {
-                    object.dropdownlistArrow.css('float', 'right');
-                    object.dropdownlistContent.css('float', 'left');
-                }
-                object.listBoxContainer.jqxListBox({ rtl: object.rtl });
-            }
-            if (key == "displayMember" || key == "valueMember") {
-                object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
-                object.renderSelection('mouse');
-            }
-
-            if (key == "autoDropDownHeight") {
-                object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
-                if (object.autoDropDownHeight) {
-                    object.container.height(object.listBoxContainer.height() + 25);
-                }
-                else {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
                 }
 
-                object.listBox._arrange();
-                object.listBox._updatescrollbars();
-            }
-
-            if (key == "dropDownHeight") {
-                if (!object.autoDropDownHeight) {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                this.ishiding = true;
+                this.host.removeClass(this.toThemeProperty('jqx-combobox-state-selected'));
+                this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                if (!this.focused) {
+                    this.host.removeClass(this.toThemeProperty('jqx-combobox-state-focus'));
+                    this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                    this.dropdownlistContent.removeClass(this.toThemeProperty('jqx-combobox-content-focus'));
                 }
-            }
+                this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
 
-            if (key == "dropDownWidth" || key == "scrollBarSize") {
-                var width = object.width;
-                if (object.dropDownWidth != 'auto') {
-                    width = object.dropDownWidth;
+                this._raiseEvent('1', listBoxInstance);
+            },
+
+            /* Close popup if clicked elsewhere. */
+            closeOpenedListBox: function (event) {
+                var that = event.data.that;
+                var $target = $(event.target);
+                var openedListBox = event.data.listbox;
+                if (openedListBox == null)
+                    return true;
+
+                if ($(event.target).ischildof(that.host)) {
+                    return;
                 }
 
-                object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
-                object.container.width(parseInt(width) + 25);
-            }
+                var dropdownlistInstance = that;
 
-            if (key == 'autoComplete') {
-                object._resetautocomplete();
-            }
+                var isListBox = false;
+                $.each($target.parents(), function () {
+                    if (this.className != 'undefined') {
+                        if (this.className.indexOf) {
+                            if (this.className.indexOf('jqx-listbox') != -1) {
+                                isListBox = true;
+                                return false;
+                            }
+                            if (this.className.indexOf('jqx-combobox') != -1) {
+                                if (that.element.id == this.id) {
+                                    isListBox = true;
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                });
 
-            if (key == "checkboxes") {
-                object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
-                if (object.checkboxes) {
-                    object.input.attr('readonly', true);
-                    $.jqx.aria(object, "aria-readonly", true);
-                }
-                else {
-                    $.jqx.aria(object, "aria-readonly", false);
-                }
-            }
-
-            if (key == 'theme' && value != null) {
-                object.listBoxContainer.jqxListBox({ theme: value });
-                object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-noshadow'));
-                }
-                $.jqx.utilities.setTheme(oldvalue, value, object.host);
-            }
-
-            if (key == 'rtl') {
-                object.render();
-                object.refresh();
-            }
-
-            if (key == 'width' || key == 'height') {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
+                if (openedListBox != null && !isListBox) {
+                    if (that.isOpened()) {
+                        that.hideListBox('api');
+                        that.input.blur();
                     }
                 }
-                object._arrange();
-                object.close();
-            }
 
-            if (key == 'selectedIndex') {
-                object.listBox.selectIndex(value);
-                object.renderSelection('mouse');
+                return true;
+            },
+
+            loadFromSelect: function (id) {
+                this.listBox.loadFromSelect(id);
+                this.clearSelection();
+            },
+
+            refresh: function (initialRefresh) {
+                this._setSize();
+                this._arrange();
+                if (this.listBox) {
+                    this.renderSelection();
+                }
+            },
+
+            resize: function () {
+                this._setSize();
+                this._arrange();
+            },
+
+            _arrange: function () {
+                var width = parseInt(this.host.width());
+                var height = parseInt(this.host.height());
+
+                var arrowHeight = this.arrowSize;
+                var arrowWidth = this.arrowSize;
+
+                var rightOffset = 1;
+                if (!this.showArrow) {
+                    arrowWidth = 0;
+                    arrowHeight = 0;
+                    this.dropdownlistArrow.hide();
+                    rightOffset = 0;
+                    this.host.css('cursor', 'arrow');
+                    if (this.theme === "fluent") {
+                        rightOffset = 1;
+                    }
+                }
+                else {
+                    if (this.dropdownlistArrow[0].style.display === "none") {
+                        this.dropdownlistArrow.show();
+                    }
+                }
+                var contentWidth = width - arrowWidth - 1 * rightOffset;
+                if (contentWidth > 0) {
+                    this.dropdownlistContent[0].style.width = contentWidth + 'px';
+                }
+                if (this.rtl) {
+                    this.dropdownlistContent[0].style.width = (-1 + contentWidth + 'px');
+                }
+
+                this.dropdownlistContent[0].style.height = height + 'px';
+                this.dropdownlistContent[0].style.left = '0px';
+                this.dropdownlistContent[0].style.top = '0px';
+                this.dropdownlistArrow[0].style.width = arrowWidth + 'px';
+                this.dropdownlistArrow[0].style.height = height + 'px';
+                this.dropdownlistArrow[0].style.left = 1 + contentWidth + 'px';
+
+                this.input[0].style.width = '100%';
+
+                if (!this.multiSelect) {
+                    this.input.height(height);
+                }
+
+                var inputHeight = this.input.height();
+                if (inputHeight == 0) {
+                    inputHeight = parseInt(this.input.css('font-size')) + 3;
+                }
+
+                if (this.input[0].className.indexOf('jqx-rc-all') == -1) {
+                    this.input.addClass(this.toThemeProperty('jqx-rc-all'));
+                }
+
+                var top = parseInt(height) / 2 - parseInt(inputHeight) / 2;
+                if (top > 0) {
+                    //      this.input[0].style.marginTop = parseInt(top) + "px";
+                }
+
+                if (this.rtl) {
+                    this.dropdownlistArrow.css('left', '0px');
+                    this.dropdownlistContent.css('left', this.dropdownlistArrow.width());
+                    if ($.jqx.browser.msie && $.jqx.browser.version <= 8) {
+                        this.dropdownlistContent.css('left', 1 + this.dropdownlistArrow.width());
+                    }
+                }
+                if (this.multiSelect) {
+                    this.input.css('float', 'left');
+                    this.input.width(25);
+                    this.dropdownlistWrapper.parent().css('height', 'auto');
+                    this.dropdownlistContent.css('height', 'auto');
+                    this.dropdownlistWrapper.css('height', 'auto');
+                    this.dropdownlistContent.css('position', 'relative');
+                    this.dropdownlistContent.css('cursor', 'text');
+                    this.host.css('height', 'auto');
+                    this.host.css('min-height', this.height);
+                    this.dropdownlistContent.css('min-height', this.height);
+                    var height = parseInt(this.host.height());
+                    this.dropdownlistArrow.height(height);
+                    var initialHeight = parseInt(this.host.css('min-height'));
+                    var top = parseInt(initialHeight) / 2 - parseInt(inputHeight) / 2;
+                    if (top > 0) {
+                        this.input.css('margin-top', top);
+                    }
+
+
+                    if (this.isMaterialized()) {
+                        this.host.height(this.dropdownlistContent.height());
+                    }
+
+                    this.bar.css('top', this.host.height());
+                    this.dropdownlistArrow.height(this.host.height());
+                }
+            },
+
+            destroy: function () {
+                if (this.source && this.source.unbindBindingUpdate) {
+                    this.source.unbindBindingUpdate(this.element.id);
+                    this.source.unbindBindingUpdate(this.listBoxContainer[0].id);
+                    this.source.unbindDownloadComplete(this.element.id);
+                    this.source.unbindDownloadComplete(this.listBoxContainer[0].id);
+                }
+                $.jqx.utilities.resize(this.host, null, true);
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBoxContainer, 'unselect');
+                this.removeHandler(this.listBoxContainer, 'change');
+                this.removeHandler(this.listBoxContainer, 'bindingComplete');
+                this.removeHandler(this.dropdownlistWrapper, 'selectstart');
+                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBox.content, 'click');
+                this.removeHandlers();
+                this.removeHandler(this.input, 'keyup.textchange');
+
+                this.listBoxContainer.jqxListBox('destroy');
+                this.listBoxContainer.remove();
+                this.host.removeClass();
+                this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
+                if (this.touch) {
+                    this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
+                }
+                this.cinput.remove();
+                delete this.cinput;
+                this.dropdownlistArrow.remove();
+                delete this.dropdownlistArrow;
+                this.dropdownlistArrowIcon.remove();
+                delete this.dropdownlistArrowIcon;
+                delete this.dropdownlistWrapper;
+                delete this.listBoxContainer;
+                delete this.input;
+                delete this.dropdownlistContent;
+                delete this.comboStructure;
+                this.container.remove();
+                delete this.listBox;
+                delete this.container;
+                var vars = $.data(this.element, "jqxComboBox");
+                if (vars) {
+                    delete vars.instance;
+                }
+                this.host.removeData();
+                this.host.remove();
+                delete this.host;
+                delete this.set;
+                delete this.get;
+                delete this.call;
+                delete this.element;
+            },
+
+            //[optimize]
+            _raiseEvent: function (id, arg) {
+                if (arg == undefined)
+                    arg = { owner: null };
+
+                var evt = this.events[id];
+                var args = arg;
+                args.owner = this;
+
+                var event = new $.Event(evt);
+                event.owner = this;
+                if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
+                    event.args = arg;
+                }
+
+                var result = this.host.trigger(event);
+                return result;
+            },
+
+            propertiesChangedHandler: function (object, key, value) {
+                if (value.width && value.height && Object.keys(value).length == 2) {
+                    object._setSize();
+                    if (key == 'width') {
+                        if (object.dropDownWidth == 'auto') {
+                            var width = object.host.width();
+                            object.listBoxContainer.jqxListBox({ width: width });
+                            object.container.width(parseInt(width) + 25);
+                        }
+                    }
+                    object._arrange();
+                    object.close();
+                }
+            },
+
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (object.isInitialized == undefined || object.isInitialized == false)
+                    return;
+
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key == "template") {
+                    object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
+                    object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
+                    object.dropDownListArrow.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
+                    object.dropDownListArrow.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+
+                    var that = this;
+
+                    that.bar.removeClass(that.toThemeProperty("jqx-" + oldvalue));
+                    that.label.removeClass(that.toThemeProperty("jqx-" + oldvalue));
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+
+                }
+
+                if (key == "dropDownVerticalAlignment") {
+                    object.close();
+                    object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    if (object.dropDownVerticalAlignment == "top") {
+                        object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    }
+                    else {
+                        object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    }
+                    object.listBoxContainer.css('top', 0);
+                    object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
+                }
+
+                if (key == "autoItemsHeight") {
+                    object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
+                }
+
+                if (key == "itemHeight") {
+                    object.listBoxContainer.jqxListBox({ itemHeight: value });
+                }
+
+                if (key == "renderSelectedItem") {
+                    object.renderSelection('mouse');
+                }
+
+                if (key == "renderer") {
+                    object.listBoxContainer.jqxListBox({ renderer: value });
+                }
+
+                if (key == "enableSelection") {
+                    object.listBoxContainer.jqxListBox({ enableSelection: value });
+                }
+                if (key == "enableHover") {
+                    object.listBoxContainer.jqxListBox({ enableHover: value });
+                }
+
+                if (key === "touchMode") {
+                    object.listBoxContainer.jqxListBox({ touchMode: value });
+                    object.touch = $.jqx.mobile.isTouchDevice();
+                    if (object.touchMode === true) {
+                        object.touch = true;
+                    }
+                    object._updateHandlers();
+                }
+
+                if (key == "multiSelect") {
+                    if (value) {
+                        object.doMultiSelect(false);
+                    }
+                    else {
+                        var items = object.listBox.items;
+                        var selectedIndex = -1;
+                        for (var i = 0; i < items.length; i++) {
+                            items[i].disabled = false;
+                            if (object.selectedItems.indexOf(items[i].value) >= 0 || object._disabledItems.indexOf(object.value) >= 0) {
+                                items[i].disabled = true;
+                                selectedIndex = items[i].index;
+                            }
+                        }
+                        object.doMultiSelect(false);
+                        object.listBox._renderItems();
+                        if (!items) return;
+                        object.listBox.selectedIndex = selectedIndex;
+                        object.renderSelection('mouse');
+                        object.dropdownlistWrapper.parent().css('height', '100%');
+                        object.dropdownlistContent.css('height', '100');
+                        object.dropdownlistWrapper.css('height', '100');
+                        object.dropdownlistContent.css('position', 'relative');
+                        object.host.css('min-height', null);
+                        object._setSize();
+                        object._arrange();
+                    }
+                }
+
+                if (key == "showArrow") {
+                    object._arrange();
+                    if (object.multiSelect) {
+                        object.doMultiSelect(false);
+                    }
+                }
+
+                if (key == "placeHolder") {
+                    if (object.isMaterialized()) {
+                        object.label.innerHTML = object.placeHolder;
+                    }
+                    else {
+                        object.input.attr('placeholder', object.placeHolder);
+                    }
+                }
+
+                if (key == 'popupZIndex') {
+                    object.listBoxContainer.css({ zIndex: object.popupZIndex });
+                }
+
+                if (key == 'promptText') {
+                    object.placeHolder = value;
+                }
+
+                if (key == 'autoOpen') {
+                    object._updateHandlers();
+                }
+
+                if (key == 'renderer') {
+                    object.listBox.renderer = object.renderer;
+                }
+                if (key == 'itemHeight') {
+                    object.listBox.itemHeight = value;
+                }
+
+                if (key == 'source') {
+                    object.input.val("");
+                    object.listBoxContainer.jqxListBox({ source: object.source });
+                    object.renderSelection('mouse');
+                    if (object.source == null) {
+                        object.clearSelection();
+                    }
+                    if (object.multiSelect) {
+                        object.selectedItems = new Array();
+                        object._selectedItems = new Array();
+                        object.doMultiSelect(false);
+                    }
+                }
+                if (key == "rtl") {
+                    if (value) {
+                        object.dropdownlistArrow.css('float', 'left');
+                        object.dropdownlistContent.css('float', 'right');
+                    }
+                    else {
+                        object.dropdownlistArrow.css('float', 'right');
+                        object.dropdownlistContent.css('float', 'left');
+                    }
+                    object.listBoxContainer.jqxListBox({ rtl: object.rtl });
+                }
+                if (key == "displayMember" || key == "valueMember") {
+                    object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
+                    object.renderSelection('mouse');
+                }
+
+                if (key == "autoDropDownHeight") {
+                    object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
+                    if (object.autoDropDownHeight) {
+                        object.container.height(object.listBoxContainer.height() + 25);
+                    }
+                    else {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+
+                    object.listBox._arrange();
+                    object.listBox._updatescrollbars();
+                }
+
+                if (key == "dropDownHeight") {
+                    if (!object.autoDropDownHeight) {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+                }
+
+                if (key == "dropDownWidth" || key == "scrollBarSize") {
+                    var width = object.width;
+                    if (object.dropDownWidth != 'auto') {
+                        width = object.dropDownWidth;
+                    }
+
+                    object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
+                    object.container.width(parseInt(width) + 25);
+                }
+
+                if (key == 'autoComplete') {
+                    object._resetautocomplete();
+                }
+
+                if (key == "checkboxes") {
+                    object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
+                    if (object.checkboxes) {
+                        object.input.attr('readonly', true);
+                        $.jqx.aria(object, "aria-readonly", true);
+                    }
+                    else {
+                        $.jqx.aria(object, "aria-readonly", false);
+                    }
+                }
+
+                if (key == 'theme' && value != null) {
+                    object.listBoxContainer.jqxListBox({ theme: value });
+                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        object.listBoxContainer.addClass(object.toThemeProperty('jqx-noshadow'));
+                    }
+                    $.jqx.utilities.setTheme(oldvalue, value, object.host);
+                }
+
+                if (key == 'rtl') {
+                    object.render();
+                    object.refresh();
+                }
+
+                if (key == 'width' || key == 'height') {
+                    object._setSize();
+                    if (key == 'width') {
+                        if (object.dropDownWidth == 'auto') {
+                            var width = object.host.width();
+                            object.listBoxContainer.jqxListBox({ width: width });
+                            object.container.width(parseInt(width) + 25);
+                        }
+                    }
+                    object._arrange();
+                    object.close();
+                }
+
+                if (key == 'selectedIndex') {
+                    object.listBox.selectIndex(value);
+                    object.renderSelection('mouse');
+                }
             }
-        }
-    });
-})(jqxBaseFramework);
+        });
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6771,11 +6750,11 @@ document.Globalize = Globalize;
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -14968,6 +14947,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
+			if (window.jQuery.fn.extend) {
+				window.jQuery.fn.stop = window.JQXLite.fn.stop;
+				window.jQuery.fn.animate = window.JQXLite.fn.animate;
+
+				var keys = Object.keys(window.JQXLite.fn);
+				for (var index in keys) {
+					var key = keys[index];
+					if (window.jQuery.fn[key] == undefined) {
+						window.jQuery.fn[key] = window.JQXLite.fn[key];
+					}
+				}
+			}
+
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -16589,7 +16581,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -17082,12 +17074,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -17783,6 +17775,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
+		if (!$.easing) {
+			$.easing = {};
+		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -18122,20 +18117,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -23083,20 +23064,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 })(pdfDataExport.API)
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -29249,20 +29216,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 5868:
@@ -29270,382 +29223,351 @@ var saveAs = window.jqxSaveAs = saveAs
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
 
-(function ($) {
+    (function ($) {
 
-    $.jqx.jqxWidget("jqxDropDownList", "", {});
+        $.jqx.jqxWidget("jqxDropDownList", "", {});
 
-    $.extend($.jqx._jqxDropDownList.prototype, {
-        defineInstance: function () {
-            var settings = {
-                // enables/disables the dropdownlist.
-                disabled: false,
-                // gets or sets the listbox width.
-                width: null,
-                // gets or sets the listbox height.
-                height: null,
-                // Represents the collection of list items.
-                items: new Array(),
-                // Gets or sets the selected index.
-                selectedIndex: -1,
-                // data source.
-                source: null,
-                // gets or sets the scrollbars size.
-                scrollBarSize: 15,
-                // gets or sets the scrollbars size.
-                arrowSize: 17,
-                // enables/disables the hover state.
-                enableHover: true,
-                // enables/disables the selection.
-                enableSelection: true,
-                autoItemsHeight: false,
-                // gets the visible items. // this property is internal for the dropdownlist.
-                visualItems: new Array(),
-                // gets the groups. // this property is internal for the dropdownlist.
-                groups: new Array(),
-                // gets or sets whether the items width should be equal to the dropdownlist's width.
-                equalItemsWidth: true,
-                // gets or sets the height of the ListBox Items. When the itemHeight == - 1, each item's height is equal to its desired height.
-                itemHeight: -1,
-                // represents the dropdownlist's events.
-                visibleItems: new Array(),
-                // emptry group's text.
-                emptyGroupText: 'Group',
-                checkboxes: false,
-                // Type: Number
-                // Default: 100
-                // Showing Popup Animation's delay.
-                openDelay: 250,
-                // Type: Number
-                // Default: 200
-                // Hiding Popup Animation's delay.
-                closeDelay: 300,
-                dropDownContainer: "default",
-                // default, none
-                // Type: String.
-                // enables or disables the animation.
-                animationType: 'default',
-                autoOpen: false,
-                // Type: String
-                // Default: auto ( the drop down takes the dropdownlist's width.)
-                // Sets the popup's width.
-                dropDownWidth: 'auto',
-                // Type: String
-                // Default: 200px ( the height is 200px )
-                // Sets the popup's height.
-                dropDownHeight: '200px',
-                // Type: Boolean
-                // Default: false
-                // Sets the popup's height to be equal to the items summary height,
-                autoDropDownHeight: false,
-                keyboardSelection: true,
-                // Type: Boolean
-                // Default: false
-                // Enables or disables the browser detection.
-                enableBrowserBoundsDetection: false,
-                dropDownHorizontalAlignment: 'left',
-                dropDownVerticalAlignment: 'bottom',
-                displayMember: "",
-                valueMember: "",
-                groupMember: "",
-                searchMember: "",
-                searchMode: 'startswithignorecase',
-                incrementalSearch: true,
-                incrementalSearchDelay: 700,
-                renderer: null,
-                placeHolder: "",
-                promptText: "Please Choose:",
-                emptyString: "",
-                rtl: false,
-                selectionRenderer: null,
-                listBox: null,
-                popupZIndex: 3001,
-                renderMode: "default",
-                touchMode: "auto",
-                _checkForHiddenParent: true,
-                autoBind: true,
-                ready: null,
-                focusable: true,
-                filterable: false,
-                filterHeight: 27,
-                filterPlaceHolder: "Looking for",
-                filterDelay: 100,
-                hint: true,
-                // "primary", "inverse", "danger", "info", "success", "warning", "link"
-                template: "default",
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
-                },
-                events:
-                    [
-                        // occurs when the dropdownlist is opened.
-                        'open',
-                        // occurs when the dropdownlist is closed.
-                        'close',
-                        // occurs when an item is selected.
-                        'select',
-                        // occurs when an item is unselected.
-                        'unselect',
-                        // occurs when the selection is changed.
-                        'change',
-                        // triggered when the user checks or unchecks an item.
-                        'checkChange',
-                        // triggered when the binding operation is completed.
-                        'bindingComplete',
-                        // triggered when a new item is added.
-                        'itemAdd',
-                        // triggered when a new item is removed.
-                        'itemRemove',
-                        // triggered when a new item is updated.
-                        'itemUpdate'
-                    ]
-            }
-            if (this === $.jqx._jqxDropDownList.prototype) {
+        $.extend($.jqx._jqxDropDownList.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    // enables/disables the dropdownlist.
+                    disabled: false,
+                    // gets or sets the listbox width.
+                    width: null,
+                    // gets or sets the listbox height.
+                    height: null,
+                    // Represents the collection of list items.
+                    items: new Array(),
+                    // Gets or sets the selected index.
+                    selectedIndex: -1,
+                    // data source.
+                    source: null,
+                    // gets or sets the scrollbars size.
+                    scrollBarSize: 15,
+                    // gets or sets the scrollbars size.
+                    arrowSize: 17,
+                    // enables/disables the hover state.
+                    enableHover: true,
+                    // enables/disables the selection.
+                    enableSelection: true,
+                    autoItemsHeight: false,
+                    // gets the visible items. // this property is internal for the dropdownlist.
+                    visualItems: new Array(),
+                    // gets the groups. // this property is internal for the dropdownlist.
+                    groups: new Array(),
+                    // gets or sets whether the items width should be equal to the dropdownlist's width.
+                    equalItemsWidth: true,
+                    // gets or sets the height of the ListBox Items. When the itemHeight == - 1, each item's height is equal to its desired height.
+                    itemHeight: -1,
+                    // represents the dropdownlist's events.
+                    visibleItems: new Array(),
+                    // emptry group's text.
+                    emptyGroupText: 'Group',
+                    checkboxes: false,
+                    // Type: Number
+                    // Default: 100
+                    // Showing Popup Animation's delay.
+                    openDelay: 250,
+                    // Type: Number
+                    // Default: 200
+                    // Hiding Popup Animation's delay.
+                    closeDelay: 300,
+                    dropDownContainer: "default",
+                    // default, none
+                    // Type: String.
+                    // enables or disables the animation.
+                    animationType: 'default',
+                    autoOpen: false,
+                    // Type: String
+                    // Default: auto ( the drop down takes the dropdownlist's width.)
+                    // Sets the popup's width.
+                    dropDownWidth: 'auto',
+                    // Type: String
+                    // Default: 200px ( the height is 200px )
+                    // Sets the popup's height.
+                    dropDownHeight: '200px',
+                    // Type: Boolean
+                    // Default: false
+                    // Sets the popup's height to be equal to the items summary height,
+                    autoDropDownHeight: false,
+                    keyboardSelection: true,
+                    // Type: Boolean
+                    // Default: false
+                    // Enables or disables the browser detection.
+                    enableBrowserBoundsDetection: false,
+                    dropDownHorizontalAlignment: 'left',
+                    dropDownVerticalAlignment: 'bottom',
+                    displayMember: "",
+                    valueMember: "",
+                    groupMember: "",
+                    searchMember: "",
+                    searchMode: 'startswithignorecase',
+                    incrementalSearch: true,
+                    incrementalSearchDelay: 700,
+                    renderer: null,
+                    placeHolder: "",
+                    promptText: "Please Choose:",
+                    emptyString: "",
+                    rtl: false,
+                    selectionRenderer: null,
+                    listBox: null,
+                    popupZIndex: 3001,
+                    renderMode: "default",
+                    touchMode: "auto",
+                    _checkForHiddenParent: true,
+                    autoBind: true,
+                    ready: null,
+                    focusable: true,
+                    filterable: false,
+                    filterHeight: 27,
+                    filterPlaceHolder: "Looking for",
+                    filterDelay: 100,
+                    hint: true,
+                    // "primary", "inverse", "danger", "info", "success", "warning", "link"
+                    template: "default",
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    },
+                    events:
+                        [
+                            // occurs when the dropdownlist is opened.
+                            'open',
+                            // occurs when the dropdownlist is closed.
+                            'close',
+                            // occurs when an item is selected.
+                            'select',
+                            // occurs when an item is unselected.
+                            'unselect',
+                            // occurs when the selection is changed.
+                            'change',
+                            // triggered when the user checks or unchecks an item.
+                            'checkChange',
+                            // triggered when the binding operation is completed.
+                            'bindingComplete',
+                            // triggered when a new item is added.
+                            'itemAdd',
+                            // triggered when a new item is removed.
+                            'itemRemove',
+                            // triggered when a new item is updated.
+                            'itemUpdate'
+                        ]
+                }
+                if (this === $.jqx._jqxDropDownList.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
                 return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
+            },
 
-        createInstance: function (args) {
-            var that = this;
+            createInstance: function (args) {
+                var that = this;
 
-            if (that.isMaterialized()) {
-                var elementStyle = window.getComputedStyle(this.element);
-                var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
-                var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
-                var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
+                if (that.isMaterialized()) {
+                    var elementStyle = window.getComputedStyle(this.element);
+                    var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
+                    var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
+                    var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
 
-                if (arrowSize) {
-                    this.arrowSize = parseInt(arrowSize);
-                }
-                else {
-                    this.arrowSize = 25;
-                }
+                    if (arrowSize) {
+                        this.arrowSize = parseInt(arrowSize);
+                    }
+                    else {
+                        this.arrowSize = 25;
+                    }
 
-                if (animation && this.animationType == "default") {
-                    this.animationType = animation.trim();
-                }
+                    if (animation && this.animationType == "default") {
+                        this.animationType = animation.trim();
+                    }
 
-                if (rowHeight && this.itemHeight === -1) {
-                    this.itemHeight = parseInt(rowHeight);
-                }
-            }
-
-            this.render();
-        },
-
-        render: function () {
-            var self = this;
-            if (!self.width) self.width = 200;
-            if (!self.height) self.height = 25;
-
-            self.host.addClass(self.toThemeProperty('jqx-dropdownlist'));
-
-            var nodeName = self.element.nodeName.toLowerCase();
-            if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
-                self.field = self.element;
-                if (self.field.className) {
-                    self._className = self.field.className;
+                    if (rowHeight && this.itemHeight === -1) {
+                        this.itemHeight = parseInt(rowHeight);
+                    }
                 }
 
-                var properties = {
-                    'title': self.field.title
-                };
+                this.render();
+            },
 
-                if (self.field.id.length) {
-                    properties.id = self.field.id.replace(/[^\w]/g, '_') + "_jqxDropDownList";
-                }
-                else {
-                    properties.id = $.jqx.utilities.createId() + "_jqxDropDownList";
-                }
+            render: function () {
+                var self = this;
+                if (!self.width) self.width = 200;
+                if (!self.height) self.height = 25;
 
-                var wrapper = $("<div></div>", properties);
-                if (!self.width) {
-                    self.width = $(self.field).width();
-                }
-                if (!self.height) {
-                    self.height = $(self.field).outerHeight();
-                }
-                wrapper[0].style.cssText = self.field.style.cssText;
-                $(self.field).hide().after(wrapper);
-                var data = self.host.data();
-                self.host = wrapper;
-                self.host.data(data);
-                self.element = wrapper[0];
-                self.element.id = self.field.id;
-                self.field.id = properties.id;
-                if (self._className) {
-                    self.host.addClass(self._className);
-                    $(self.field).removeClass(self._className);
-                }
+                self.host.addClass(self.toThemeProperty('jqx-dropdownlist'));
 
-                if (self.field.tabIndex) {
-                    var tabIndex = self.field.tabIndex;
-                    self.field.tabIndex = -1;
-                    self.element.tabIndex = tabIndex;
-                }
-                var result = $.jqx.parseSourceTag(self.field);
-                self.source = result.items;
-                if (self.selectedIndex == -1)
-                    self.selectedIndex = result.index;
-            }
-            else {
-                if (self.host.find('li').length > 0 || self.host.find('option').length > 0) {
-                    var result = $.jqx.parseSourceTag(self.element);
+                var nodeName = self.element.nodeName.toLowerCase();
+                if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
+                    self.field = self.element;
+                    if (self.field.className) {
+                        self._className = self.field.className;
+                    }
+
+                    var properties = {
+                        'title': self.field.title
+                    };
+
+                    if (self.field.id.length) {
+                        properties.id = self.field.id.replace(/[^\w]/g, '_') + "_jqxDropDownList";
+                    }
+                    else {
+                        properties.id = $.jqx.utilities.createId() + "_jqxDropDownList";
+                    }
+
+                    var wrapper = $("<div></div>", properties);
+                    if (!self.width) {
+                        self.width = $(self.field).width();
+                    }
+                    if (!self.height) {
+                        self.height = $(self.field).outerHeight();
+                    }
+                    wrapper[0].style.cssText = self.field.style.cssText;
+                    $(self.field).hide().after(wrapper);
+                    var data = self.host.data();
+                    self.host = wrapper;
+                    self.host.data(data);
+                    self.element = wrapper[0];
+                    self.element.id = self.field.id;
+                    self.field.id = properties.id;
+                    if (self._className) {
+                        self.host.addClass(self._className);
+                        $(self.field).removeClass(self._className);
+                    }
+
+                    if (self.field.tabIndex) {
+                        var tabIndex = self.field.tabIndex;
+                        self.field.tabIndex = -1;
+                        self.element.tabIndex = tabIndex;
+                    }
+                    var result = $.jqx.parseSourceTag(self.field);
                     self.source = result.items;
-                }
-            }
-            self.element.innerHTML = "";
-            self.isanimating = false;
-            self.id = self.element.id || $.jqx.utilities.createId();
-            self.host.attr('role', 'combobox');
-            $.jqx.aria(self, "aria-autocomplete", "both");
-            $.jqx.aria(self, "aria-readonly", false);
-
-            var comboStructure = "<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
-                "<div id='dropdownlistWrapper' style='overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;'>" +
-                "<div id='dropdownlistContent' unselectable='on' style='outline: none; background-color: transparent; border: none; float: left; position: relative;'></div>" +
-                "<div id='dropdownlistArrow' unselectable='on' style='background-color: transparent; border: none; float: right; position: relative;'><div unselectable='on'></div></div>" +
-                "</div>" +
-                "</div>";
-
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw new Error("jqxDropDownList: Missing reference to jqxlistbox.js.");
-            }
-
-            if (self.host.attr('tabindex')) {
-            }
-            else {
-                self.host.attr('tabindex', 0);
-            }
-
-            var me = self;
-
-            self.touch = $.jqx.mobile.isTouchDevice();
-            self.comboStructure = comboStructure;
-            self.element.innerHTML = comboStructure;
-
-            self.dropdownlistWrapper = $(self.element.firstChild.firstChild);
-            self.dropdownlistArrow = $(self.dropdownlistWrapper[0].firstChild.nextSibling);
-            self.arrow = $(self.dropdownlistArrow[0].firstChild);
-            self.dropdownlistContent = $(self.dropdownlistWrapper[0].firstChild);
-            self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content jqx-disableselect'));
-            if (self.rtl) {
-                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-rtl jqx-dropdownlist-content-rtl'));
-            }
-            self.addHandler(self.dropdownlistWrapper, 'selectstart', function () { return false; });
-            self.dropdownlistWrapper[0].id = "dropdownlistWrapper" + self.element.id;
-            self.dropdownlistArrow[0].id = "dropdownlistArrow" + self.element.id;
-            self.dropdownlistContent[0].id = "dropdownlistContent" + self.element.id;
-            self._addInput();
-
-            var label = $("<label></label");
-            if (this.hint) {
-                label[0].innerHTML = this.placeHolder;
-            }
-            label.addClass(self.toThemeProperty('jqx-input-label'));
-            self.dropdownlistWrapper.append(label);
-            self.label = label;
-
-            var bar = $("<span></span>");
-            self.dropdownlistWrapper.append(bar);
-            bar.addClass(self.toThemeProperty('jqx-input-bar'));
-            self.bar = bar;
-            self.bar.css('top', this.host.height());
-
-            var that = this;
-
-            if (that.template) {
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-            }
-
-            if (self.promptText != "Please Choose:") self.placeHolder = self.promptText;
-            var hostClassName = self.toThemeProperty('jqx-widget') + " " + self.toThemeProperty('jqx-dropdownlist-state-normal') + " " + self.toThemeProperty('jqx-rc-all') + " " + self.toThemeProperty('jqx-fill-state-normal');
-            self.element.className += " " + hostClassName;
-            self._firstDiv = $(self.element.firstChild);
-
-            try {
-                var listBoxID = 'listBox' + self.id;
-                var oldContainer = $($.find('#' + listBoxID));
-                if (oldContainer.length > 0) {
-                    oldContainer.remove();
-                }
-                $.jqx.aria(self, "aria-owns", listBoxID);
-                $.jqx.aria(self, "aria-haspopup", true);
-
-                var container = $("<div style='overflow: hidden; background-color: transparent; border: none; position: absolute;' id='listBox" + self.id + "'><div id='innerListBox" + self.id + "'></div></div>");
-                container.hide();
-                container.addClass(self.toThemeProperty('jqx-listbox-container'));
-                if (self.dropDownContainer == "element") {
-                    container.appendTo(self.host);
+                    if (self.selectedIndex == -1)
+                        self.selectedIndex = result.index;
                 }
                 else {
-                    container.appendTo(document.body);
+                    if (self.host.find('li').length > 0 || self.host.find('option').length > 0) {
+                        var result = $.jqx.parseSourceTag(self.element);
+                        self.source = result.items;
+                    }
                 }
-                self.container = container;
-                self.listBoxContainer = $($.find('#innerListBox' + self.id));
+                self.element.innerHTML = "";
+                self.isanimating = false;
+                self.id = self.element.id || $.jqx.utilities.createId();
+                self.host.attr('role', 'combobox');
+                self.host.attr('aria-label', 'DropDownList');
+                self.host.attr('aria-expanded', 'false');
 
-                var width = self.width;
-                if (self.dropDownWidth != 'auto') {
-                    width = self.dropDownWidth;
-                }
-                if (width == null) {
-                    width = self.host.width();
-                    if (width == 0) width = self.dropDownWidth;
+                $.jqx.aria(self, "aria-autocomplete", "both");
+                $.jqx.aria(self, "aria-readonly", false);
+
+                var comboStructure = "<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
+                    "<div id='dropdownlistWrapper' style='overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;'>" +
+                    "<div id='dropdownlistContent' unselectable='on' style='outline: none; background-color: transparent; border: none; float: left; position: relative;'></div>" +
+                    "<div id='dropdownlistArrow' unselectable='on' style='background-color: transparent; border: none; float: right; position: relative;'><div unselectable='on'></div></div>" +
+                    "</div>" +
+                    "</div>";
+
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw new Error("jqxDropDownList: Missing reference to jqxlistbox.js.");
                 }
 
-                if (self.dropDownHeight == null) {
-                    self.dropDownHeight = 200;
+                if (self.host.attr('tabindex')) {
                 }
+                else {
+                    self.host.attr('tabindex', 0);
+                }
+
                 var me = self;
-                self.container.width(parseInt(width) + 25);
-                self.container.height(parseInt(self.dropDownHeight) + 25);
-                self._ready = false;
-                self.addHandler(self.listBoxContainer, 'bindingComplete', function (event) {
-                    if (!self.listBox) {
-                        self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                    }
-                    if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
-                        self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                        self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
-                        self.renderSelection('mouse');
-                    } else {
-                        self.renderSelection('mouse');
-                    }
-                    if (!self._ready) {
-                        if (self.ready) {
-                            self.ready();
-                        }
-                        self._ready = true;
-                    }
-                    self._raiseEvent('6');
-                });
-                self.addHandler(self.listBoxContainer, 'itemAdd', function (event) {
-                    self._raiseEvent('7', event.args);
-                });
-                self.addHandler(self.listBoxContainer, 'itemRemove', function (event) {
-                    self._raiseEvent('8', event.args);
-                });
-                self.addHandler(self.listBoxContainer, 'itemUpdate', function (event) {
-                    self._raiseEvent('9', event.args);
-                });
 
-                self.listBoxContainer.jqxListBox({
-                    filterHeight: self.filterHeight,
-                    filterPlaceHolder: self.filterPlaceHolder,
-                    filterDelay: self.filterDelay,
-                    autoItemsHeight: self.autoItemsHeight,
-                    filterable: self.filterable, allowDrop: false, allowDrag: false,
-                    autoBind: self.autoBind, _checkForHiddenParent: false, focusable: self.focusable,
-                    touchMode: self.touchMode, checkboxes: self.checkboxes, rtl: self.rtl, _renderOnDemand: true, emptyString: self.emptyString, itemHeight: self.itemHeight, width: width, searchMode: self.searchMode, incrementalSearch: self.incrementalSearch, incrementalSearchDelay: self.incrementalSearchDelay, groupMember: self.groupMember, searchMember: self.searchMember, displayMember: self.displayMember, valueMember: self.valueMember, height: self.dropDownHeight, autoHeight: self.autoDropDownHeight, scrollBarSize: self.scrollBarSize, selectedIndex: self.selectedIndex, source: self.source, theme: self.theme,
-                    rendered: function () {
+                self.touch = $.jqx.mobile.isTouchDevice();
+                self.comboStructure = comboStructure;
+                self.element.innerHTML = comboStructure;
+
+                self.dropdownlistWrapper = $(self.element.firstChild.firstChild);
+                self.dropdownlistArrow = $(self.dropdownlistWrapper[0].firstChild.nextSibling);
+                self.arrow = $(self.dropdownlistArrow[0].firstChild);
+                self.dropdownlistContent = $(self.dropdownlistWrapper[0].firstChild);
+                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content jqx-disableselect'));
+                if (self.rtl) {
+                    self.dropdownlistContent.addClass(self.toThemeProperty('jqx-rtl jqx-dropdownlist-content-rtl'));
+                }
+                self.addHandler(self.dropdownlistWrapper, 'selectstart', function () { return false; });
+                self.dropdownlistWrapper[0].id = "dropdownlistWrapper" + self.element.id;
+                self.dropdownlistArrow[0].id = "dropdownlistArrow" + self.element.id;
+                self.dropdownlistContent[0].id = "dropdownlistContent" + self.element.id;
+                self._addInput();
+
+                var label = $("<label></label");
+                if (this.hint) {
+                    label[0].innerHTML = this.placeHolder;
+                }
+                label.addClass(self.toThemeProperty('jqx-input-label'));
+                self.dropdownlistWrapper.append(label);
+                self.label = label;
+
+                var bar = $("<span></span>");
+                self.dropdownlistWrapper.append(bar);
+                bar.addClass(self.toThemeProperty('jqx-input-bar'));
+                self.bar = bar;
+                self.bar.css('top', this.host.height());
+
+                var that = this;
+
+                if (that.template) {
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+                }
+
+                if (self.promptText != "Please Choose:") self.placeHolder = self.promptText;
+                var hostClassName = self.toThemeProperty('jqx-widget') + " " + self.toThemeProperty('jqx-dropdownlist-state-normal') + " " + self.toThemeProperty('jqx-rc-all') + " " + self.toThemeProperty('jqx-fill-state-normal');
+                self.element.className += " " + hostClassName;
+                self._firstDiv = $(self.element.firstChild);
+
+                try {
+                    var listBoxID = 'listBox' + self.id;
+                    var oldContainer = $($.find('#' + listBoxID));
+                    if (oldContainer.length > 0) {
+                        oldContainer.remove();
+                    }
+                    $.jqx.aria(self, "aria-owns", listBoxID);
+                    $.jqx.aria(self, "aria-haspopup", true);
+
+                    var container = $("<div style='overflow: hidden; background-color: transparent; border: none; position: absolute;' id='listBox" + self.id + "'><div id='innerListBox" + self.id + "'></div></div>");
+                    container.hide();
+                    container.addClass(self.toThemeProperty('jqx-listbox-container'));
+                    if (self.dropDownContainer == "element") {
+                        container.appendTo(self.host);
+                    }
+                    else {
+                        container.appendTo(document.body);
+                    }
+                    self.container = container;
+                    self.listBoxContainer = $($.find('#innerListBox' + self.id));
+
+                    var width = self.width;
+                    if (self.dropDownWidth != 'auto') {
+                        width = self.dropDownWidth;
+                    }
+                    if (width == null) {
+                        width = self.host.width();
+                        if (width == 0) width = self.dropDownWidth;
+                    }
+
+                    if (self.dropDownHeight == null) {
+                        self.dropDownHeight = 200;
+                    }
+                    var me = self;
+                    self.container.width(parseInt(width) + 25);
+                    self.container.height(parseInt(self.dropDownHeight) + 25);
+                    self._ready = false;
+                    self.addHandler(self.listBoxContainer, 'bindingComplete', function (event) {
+                        if (!self.listBox) {
+                            self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                        }
                         if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
                             self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
                             self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
@@ -29653,705 +29575,900 @@ var saveAs = window.jqxSaveAs = saveAs
                         } else {
                             self.renderSelection('mouse');
                         }
-                    }, renderer: self.renderer,
-                    filterChange: function (value) {
-                        if (self.autoDropDownHeight) {
-                            self.container.height(self.listBoxContainer.height() + 25);
-                        }
-                    }
-                });
-                if (self.dropDownContainer === "element") {
-                    self.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
-                }
-                else {
-                    self.listBoxContainer.css({ position: 'absolute', zIndex: self.popupZIndex, top: 0, left: 0 });
-                }
-                if (self.template) {
-                    self.listBoxContainer.addClass(self.toThemeProperty("jqx-" + self.template + "-item"));
-                }
-
-                self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                self.listBox.enableSelection = self.enableSelection;
-                self.listBox.enableHover = self.enableHover;
-                self.listBox.equalItemsWidth = self.equalItemsWidth;
-                self.listBox.selectIndex(self.selectedIndex);
-                self.listBox._arrange();
-                self.listBoxContainer.addClass(self.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    self.listBoxContainer.addClass(self.toThemeProperty('jqx-noshadow'));
-                }
-
-                self.addHandler(self.listBoxContainer, 'unselect', function (event) {
-                    self._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
-                });
-
-                self.addHandler(self.listBoxContainer, 'change', function (event) {
-                    if (event.args) {
-                        if (event.args.type != "keyboard") {
-                            self._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
-                        }
-                        else if (event.args.type == "keyboard") {
-                            if (!self.isOpened()) {
-                                self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                        if (!self._ready) {
+                            if (self.ready) {
+                                self.ready();
                             }
-                            else {
-                                if (event.args.item && event.args.oldItem && event.args.item.label !== event.args.oldItem.label) {
+                            self._ready = true;
+                        }
+                        self._raiseEvent('6');
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemAdd', function (event) {
+                        self._raiseEvent('7', event.args);
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemRemove', function (event) {
+                        self._raiseEvent('8', event.args);
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemUpdate', function (event) {
+                        self._raiseEvent('9', event.args);
+                    });
+
+                    self.listBoxContainer.jqxListBox({
+                        filterHeight: self.filterHeight,
+                        filterPlaceHolder: self.filterPlaceHolder,
+                        filterDelay: self.filterDelay,
+                        autoItemsHeight: self.autoItemsHeight,
+                        filterable: self.filterable, allowDrop: false, allowDrag: false,
+                        autoBind: self.autoBind, _checkForHiddenParent: false, focusable: self.focusable,
+                        touchMode: self.touchMode, checkboxes: self.checkboxes, rtl: self.rtl, _renderOnDemand: true, emptyString: self.emptyString, itemHeight: self.itemHeight, width: width, searchMode: self.searchMode, incrementalSearch: self.incrementalSearch, incrementalSearchDelay: self.incrementalSearchDelay, groupMember: self.groupMember, searchMember: self.searchMember, displayMember: self.displayMember, valueMember: self.valueMember, height: self.dropDownHeight, autoHeight: self.autoDropDownHeight, scrollBarSize: self.scrollBarSize, selectedIndex: self.selectedIndex, source: self.source, theme: self.theme,
+                        rendered: function () {
+                            if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
+                                self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                                self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
+                                self.renderSelection('mouse');
+                            } else {
+                                self.renderSelection('mouse');
+                            }
+                        }, renderer: self.renderer,
+                        filterChange: function (value) {
+                            if (self.autoDropDownHeight) {
+                                self.container.height(self.listBoxContainer.height() + 25);
+                            }
+                        }
+                    });
+                    if (self.dropDownContainer === "element") {
+                        self.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
+                    }
+                    else {
+                        self.listBoxContainer.css({ position: 'absolute', zIndex: self.popupZIndex, top: 0, left: 0 });
+                    }
+                    if (self.template) {
+                        self.listBoxContainer.addClass(self.toThemeProperty("jqx-" + self.template + "-item"));
+                    }
+
+                    self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                    self.listBox.enableSelection = self.enableSelection;
+                    self.listBox.enableHover = self.enableHover;
+                    self.listBox.equalItemsWidth = self.equalItemsWidth;
+                    self.listBox.selectIndex(self.selectedIndex);
+                    self.listBox._arrange();
+                    self.listBoxContainer.addClass(self.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        self.listBoxContainer.addClass(self.toThemeProperty('jqx-noshadow'));
+                    }
+
+                    self.addHandler(self.listBoxContainer, 'unselect', function (event) {
+                        self._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+                    });
+
+                    self.addHandler(self.listBoxContainer, 'change', function (event) {
+                        if (event.args) {
+                            if (event.args.type != "keyboard") {
+                                self._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
+                            }
+                            else if (event.args.type == "keyboard") {
+                                if (!self.isOpened()) {
                                     self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
                                 }
-                            }
-                        }
-                    }
-                });
-
-                if (self.animationType == 'none') {
-                    self.container.css('display', 'none');
-                }
-                else {
-                    self.container.hide();
-                }
-            }
-            catch (e) {
-                if (console)
-                    console.log(e);
-            }
-
-            var self = self;
-            self.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (value) {
-                    instance.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                    instance.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-                }
-                else {
-                    instance.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                    instance.host.removeClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.removeClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-                }
-                $.jqx.aria(instance, "aria-disabled", instance.disabled);
-            }
-
-            if (self.disabled) {
-                self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                self.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-            }
-
-            if (self.dropDownVerticalAlignment == "top") {
-                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up'));
-            }
-            else {
-                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down'));
-            }
-            self.arrow.addClass(self.toThemeProperty('jqx-icon'));
-
-            if (self.renderMode === "simple") {
-                self.arrow.remove();
-                self.host.removeClass(self.toThemeProperty('jqx-fill-state-normal'));
-                self.host.removeClass(self.toThemeProperty('jqx-rc-all'));
-            }
-            if (self.template) {
-                self.host.addClass(self.toThemeProperty("jqx-" + self.template))
-            }
-
-            self._updateHandlers();
-            self._setSize();
-            self._arrange();
-            if (self.listBox) {
-                self.renderSelection();
-            }
-
-            // fix for IE7
-            if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                if (self.host.parents('.jqx-window').length > 0) {
-                    var zIndex = self.host.parents('.jqx-window').css('z-index');
-                    container.css('z-index', zIndex + 10);
-                    self.listBoxContainer.css('z-index', zIndex + 10);
-                }
-            }
-        },
-
-        resize: function (width, height) {
-            this.width = width;
-            this.height = height;
-            this._setSize();
-            this._arrange();
-        },
-
-        val: function (value) {
-            if (!this.dropdownlistContent) return "";
-
-            var isEmpty = function (obj) {
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key))
-                        return false;
-                }
-
-                if (typeof value == "number")
-                    return false;
-                if (typeof value == "date")
-                    return false;
-                if (typeof value == "boolean")
-                    return false;
-                if (typeof value == "string")
-                    return false;
-
-                return true;
-            }
-
-            if (this.input && (isEmpty(value) || arguments.length == 0)) {
-                return this.input.val();
-            }
-
-            var item = this.getItemByValue(value);
-            if (item != null) {
-                this.selectItem(item);
-            }
-
-            if (this.input) {
-                return this.input.val();
-            }
-        },
-
-        focus: function () {
-            try {
-                var me = this;
-                var doFocus = function () {
-                    if (me.host) {
-                        me.host.focus();
-                        if (me._firstDiv) {
-                            me._firstDiv.focus();
-                        }
-                    }
-                }
-                doFocus();
-                setTimeout(function () {
-                    doFocus();
-                }, 10);
-            }
-            catch (error) {
-            }
-        },
-
-        _addInput: function () {
-            var name = this.host.attr('name');
-            this.input = $("<input type='hidden'/>");
-            this.host.append(this.input);
-            if (name) {
-                this.input.attr('name', name);
-            }
-        },
-
-        getItems: function () {
-            if (!this.listBox) {
-                return new Array();
-            }
-
-            return this.listBox.items;
-        },
-
-        getVisibleItems: function () {
-            return this.listBox.getVisibleItems();
-        },
-
-
-        _setSize: function () {
-            var computedStyle = window.getComputedStyle(this.element);
-            var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
-            var boxSizing = computedStyle.boxSizing;
-
-            if (this.element.offsetWidth === 0) {
-                borderSize = 2;
-            }
-
-            if (boxSizing === 'border-box' || isNaN(borderSize)) {
-                borderSize = 0;
-            }
-
-            if (this.width != null && this.width.toString().indexOf("px") != -1) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-            else if (this.width != undefined && !isNaN(this.width)) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-
-            if (this.height != null && this.height.toString().indexOf("px") != -1) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            }
-            else if (this.height != undefined && !isNaN(this.height)) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            };
-
-            var isPercentage = false;
-            if (this.width != null && this.width.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.width = this.width;
-
-                if (borderSize > 0) {
-                    this.host.css('box-sizing', 'border-box');
-                    this.listBoxContainer.css('box-sizing', 'border-box');
-                }
-            }
-
-            if (this.height != null && this.height.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.height = this.height;
-            }
-
-            var me = this;
-            var resizeFunc = function () {
-                me._arrange();
-                if (me.dropDownWidth == 'auto') {
-                    var width = me.host.width() + 2;
-                    me.listBoxContainer.jqxListBox({ width: width });
-                    me.container.width(parseInt(width) + 25);
-                }
-            }
-
-            if (isPercentage) {
-                var width = this.host.width() + 2;
-                if (this.dropDownWidth != 'auto') {
-                    width = this.dropDownWidth;
-                }
-                this.listBoxContainer.jqxListBox({ width: width });
-                this.container.width(parseInt(width) + 25);
-            }
-            $.jqx.utilities.resize(this.host, function () {
-                resizeFunc();
-            }, false, this._checkForHiddenParent);
-        },
-
-        // returns true when the listbox is opened, otherwise returns false.
-        isOpened: function () {
-            var me = this;
-            var openedListBox = $.data(document.body, "openedJQXListBox" + this.id);
-            if (openedListBox != null && openedListBox == me.listBoxContainer) {
-                return true;
-            }
-
-            return false;
-        },
-
-        _updateHandlers: function () {
-            var self = this;
-            var hovered = false;
-            this.removeHandlers();
-            if (!this.touch) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
-                        hovered = true;
-                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
-                        if (self.dropDownVerticalAlignment == "top") {
-                            self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        }
-                        else {
-                            self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        }
-                        self.host.addClass(self.toThemeProperty('jqx-fill-state-hover'));
-                    }
-                });
-
-                this.addHandler(this.host, 'mouseleave', function () {
-                    if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
-                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
-                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-hover'));
-                        self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        hovered = false;
-                    }
-                });
-            }
-
-            if (this.host.parents()) {
-                this.addHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id, function (event) {
-                    var opened = self.isOpened();
-                    if (opened) {
-                        self.close();
-                    }
-                });
-            }
-
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            this.addHandler(this.dropdownlistWrapper, eventName,
-                function (event) {
-                    if (!self.disabled) {
-                        var isOpen = self.container.css('display') == 'block';
-                        if (!self.isanimating) {
-                            if (isOpen) {
-                                self.hideListBox();
-                                return false;
-                            }
-                            else {
-                                self.showListBox();
-                                if (!self.focusable) {
-                                    if (event.preventDefault) {
-                                        event.preventDefault();
+                                else {
+                                    if (event.args.item && event.args.oldItem && event.args.item.label !== event.args.oldItem.label) {
+                                        self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
                                     }
-                                }
-                                else self.focus();
-
-                            //    event.stopPropagation();
-                            }
-                        }
-                    }
-                });
-
-            if (self.autoOpen) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    var isOpened = self.isOpened();
-                    if (!isOpened && self.autoOpen) {
-                        self.open();
-                        self.host.focus();
-                    }
-                });
-
-                $(document).on('mousemove.' + self.id, function (event) {
-                    var isOpened = self.isOpened();
-                    if (isOpened && self.autoOpen) {
-                        var offset = self.host.coord();
-                        var top = offset.top;
-                        var left = offset.left;
-                        var popupOffset = self.container.coord();
-                        var popupLeft = popupOffset.left;
-                        var popupTop = popupOffset.top;
-
-                        var canClose = true;
-
-                        if (event.pageY >= top && event.pageY <= top + self.host.height()) {
-                            if (event.pageX >= left && event.pageX < left + self.host.width())
-                                canClose = false;
-                        }
-                        if (event.pageY >= popupTop && event.pageY <= popupTop + self.container.height()) {
-                            if (event.pageX >= popupLeft && event.pageX < popupLeft + self.container.width())
-                                canClose = false;
-                        }
-
-                        if (canClose) {
-                            self.close();
-                        }
-                    }
-                });
-            }
-
-            if (this.touch) {
-                this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
-            }
-            else this.addHandler($(document), 'mousedown.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
-
-            this.addHandler(this.host, 'keydown', function (event) {
-                var isOpen = self.container.css('display') == 'block';
-
-                if (self.host.css('display') == 'none') {
-                    return true;
-                }
-
-                if (event.keyCode == '13' || event.keyCode == '9') {
-                    if (!self.isanimating) {
-                        if (isOpen) {
-                            self.renderSelection();
-                            if (event.keyCode == '13' && self.focusable) {
-                                self._firstDiv.focus();
-                            }
-                            self.hideListBox();
-                            if (!self.keyboardSelection) {
-                                self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                            }
-                            if (event.keyCode == "13") {
-                                self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                            }
-                        }
-                        if (isOpen && event.keyCode != '9') {
-                            return false;
-                        }
-                        return true;
-                    }
-                }
-
-                if (event.keyCode == 115) {
-                    if (!self.isanimating) {
-                        if (!self.isOpened()) {
-                            self.showListBox();
-                        }
-                        else if (self.isOpened()) {
-                            self.hideListBox();
-                        }
-                    }
-                    return false;
-                }
-
-                if (event.altKey) {
-                    if (self.host.css('display') == 'block') {
-                        if (event.keyCode == 38) {
-                            if (self.isOpened()) {
-                                self.hideListBox();
-                                return true;
-                            }
-                        }
-                        else if (event.keyCode == 40) {
-                            if (!self.isOpened()) {
-                                self.showListBox();
-                                return true;
-                            }
-                        }
-                    }
-                }
-
-                if (event.keyCode == '27') {
-                    if (!self.ishiding) {
-                        if (self.isOpened()) {
-                            self.hideListBox();
-                            if (self.tempSelectedIndex != undefined) {
-                                self.selectIndex(self.tempSelectedIndex);
-                            }
-                        }
-
-                        return true;
-                    }
-                }
-
-                if (!self.disabled) {
-                    self._kbnavigated = self.listBox._handleKeyDown(event);
-                    return self._kbnavigated;
-                }
-            });
-            this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
-                self.renderSelection();
-                self._updateInputSelection();
-                self._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
-            });
-
-            this.addHandler(this.listBoxContainer, 'select', function (event) {
-                if (!self.disabled) {
-                    if (!event.args)
-                        return;
-
-                    if (event.args.type == 'keyboard' && !self.isOpened()) {
-                        self.renderSelection();
-                    }
-
-                    if (event.args.type != 'keyboard' || self.keyboardSelection) {
-                        self.renderSelection();
-                        self._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item, originalEvent: event.args.originalEvent });
-                        if (event.args.type == 'mouse') {
-                            if (!self.checkboxes) {
-                                self.hideListBox();
-                                if (self._firstDiv && self.focusable) {
-                                    self._firstDiv.focus();
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            if (this.listBox) {
-                if (this.listBox.content) {
-                    this.addHandler(this.listBox.content, 'click', function (event) {
-                        if (!self.disabled) {
-                            if (self.listBox.itemswrapper && event.target === self.listBox.itemswrapper[0])
-                                return true;
-
-                            self.renderSelection('mouse');
-                            if (!self.touch) {
-                                if (!self.ishiding) {
-                                    if (!self.checkboxes) {
-                                        self.hideListBox();
-                                        if (self._firstDiv && self.focusable) {
-                                            self._firstDiv.focus();
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (!self.keyboardSelection) {
-                                if (self._kbnavigated === false) {
-                                    if (self.tempSelectedIndex != self.selectedIndex) {
-                                        self._raiseEvent('4', { index: self.selectedIndex, type: "mouse", item: self.getItem(self.selectedIndex) });
-                                    }
-                                    self._kbnavigated = true;
-                                }
-
-                                if (self._oldSelectedInd == undefined) self._oldSelectedIndx = self.selectedIndex;
-
-                                if (self.selectedIndex != self._oldSelectedIndx) {
-                                    self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                                    self._oldSelectedIndx = self.selectedIndex;
                                 }
                             }
                         }
                     });
+
+                    if (self.animationType == 'none') {
+                        self.container.css('display', 'none');
+                    }
+                    else {
+                        self.container.hide();
+                    }
                 }
-            }
-
-            this.addHandler(this.host, 'focus', function (event) {
-                if (self.renderMode !== 'simple') {
-                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                catch (e) {
+                    if (console)
+                        console.log(e);
                 }
-                self.bar.addClass('focused');
-                self.label.addClass('focused');
-            });
-            this.addHandler(this.host, 'blur', function () {
-                if (self.renderMode !== 'simple') {
-                    self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                var self = self;
+                self.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (value) {
+                        instance.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                        instance.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
+                    }
+                    else {
+                        instance.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                        instance.host.removeClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.removeClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
+                    }
+                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
                 }
-                self.bar.removeClass('focused');
-                self.label.removeClass('focused');
-            });
-            this.addHandler(this._firstDiv, 'focus', function (event) {
-                if (self.renderMode !== 'simple') {
-                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                if (self.disabled) {
+                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                    self.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                    self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
                 }
-                self.bar.addClass('focused');
-                self.label.addClass('focused');
-            });
-            this.addHandler(this._firstDiv, 'blur', function () {
-                if (self.renderMode !== 'simple') {
-                    self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                if (self.dropDownVerticalAlignment == "top") {
+                    self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up'));
                 }
-                self.bar.removeClass('focused');
-                self.label.removeClass('focused');
-            });
-        },
-
-        removeHandlers: function () {
-            var self = this;
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            this.removeHandler(this.dropdownlistWrapper, eventName);
-            if (this.listBox) {
-                if (this.listBox.content) {
-                    this.removeHandler(this.listBox.content, 'click');
+                else {
+                    self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down'));
                 }
-            }
+                self.arrow.addClass(self.toThemeProperty('jqx-icon'));
 
-            this.removeHandler(this.host, 'loadContent');
-            this.removeHandler(this.listBoxContainer, 'checkChange');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.host, 'focus');
-            this.removeHandler(this.host, 'blur');
-            this.removeHandler(this._firstDiv, 'focus');
-            this.removeHandler(this._firstDiv, 'blur');
-            this.removeHandler(this.host, 'mouseenter');
-            this.removeHandler(this.host, 'mouseleave');
-            this.removeHandler($(document), 'mousemove.' + self.id);
-        },
+                if (self.renderMode === "simple") {
+                    self.arrow.remove();
+                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-normal'));
+                    self.host.removeClass(self.toThemeProperty('jqx-rc-all'));
+                }
+                if (self.template) {
+                    self.host.addClass(self.toThemeProperty("jqx-" + self.template))
+                }
 
-        // gets an item by index.
-        getItem: function (index) {
-            var item = this.listBox.getItem(index);
-            return item;
-        },
+                self._updateHandlers();
+                self._setSize();
+                self._arrange();
+                if (self.listBox) {
+                    self.renderSelection();
+                }
 
-        getItemByValue: function (value) {
-            var item = this.listBox.getItemByValue(value);
-            return item;
-        },
+                // fix for IE7
+                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                    if (self.host.parents('.jqx-window').length > 0) {
+                        var zIndex = self.host.parents('.jqx-window').css('z-index');
+                        container.css('z-index', zIndex + 10);
+                        self.listBoxContainer.css('z-index', zIndex + 10);
+                    }
+                }
+            },
 
-        selectItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.selectItem(item);
-                this.selectedIndex = this.listBox.selectedIndex;
-                this.renderSelection('mouse');
-            }
-        },
-
-        unselectItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.unselectItem(item);
-                this.renderSelection('mouse');
-            }
-        },
-
-        checkItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.checkItem(item);
-            }
-        },
-
-        uncheckItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.uncheckItem(item);
-            }
-        },
-
-        indeterminateItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.indeterminateItem(item);
-            }
-        },
-
-
-        // renders the selection.
-        renderSelection: function () {
-            if (this.listBox == null)
-                return;
-
-            if (this.height && this.height.toString().indexOf('%') != -1) {
+            resize: function (width, height) {
+                this.width = width;
+                this.height = height;
+                this._setSize();
                 this._arrange();
-            }
+            },
 
-            var item = this.listBox.visibleItems[this.listBox.selectedIndex];
-            if (this.filterable) {
-                if (this.listBox.selectedIndex == -1) {
-                    for (var selectedValue in this.listBox.selectedValues) {
-                        var value = this.listBox.selectedValues[selectedValue];
-                        var selectedItem = this.listBox.getItemByValue(value);
-                        if (selectedItem) {
-                            item = selectedItem;
+            val: function (value) {
+                if (!this.dropdownlistContent) return "";
+
+                var isEmpty = function (obj) {
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key))
+                            return false;
+                    }
+
+                    if (typeof value == "number")
+                        return false;
+                    if (typeof value == "date")
+                        return false;
+                    if (typeof value == "boolean")
+                        return false;
+                    if (typeof value == "string")
+                        return false;
+
+                    return true;
+                }
+
+                if (this.input && (isEmpty(value) || arguments.length == 0)) {
+                    return this.input.val();
+                }
+
+                var item = this.getItemByValue(value);
+                if (item != null) {
+                    this.selectItem(item);
+                }
+
+                if (this.input) {
+                    return this.input.val();
+                }
+            },
+
+            focus: function () {
+                try {
+                    var me = this;
+                    var doFocus = function () {
+                        if (me.host) {
+                            me.host.focus();
+                            if (me._firstDiv) {
+                                me._firstDiv.focus();
+                            }
+                        }
+                    }
+                    doFocus();
+                    setTimeout(function () {
+                        doFocus();
+                    }, 10);
+                }
+                catch (error) {
+                }
+            },
+
+            _addInput: function () {
+                var name = this.host.attr('name');
+                this.input = $("<input type='hidden'/>");
+                this.host.append(this.input);
+                if (name) {
+                    this.input.attr('name', name);
+                }
+            },
+
+            getItems: function () {
+                if (!this.listBox) {
+                    return new Array();
+                }
+
+                return this.listBox.items;
+            },
+
+            getVisibleItems: function () {
+                return this.listBox.getVisibleItems();
+            },
+
+
+            _setSize: function () {
+                var computedStyle = window.getComputedStyle(this.element);
+                var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
+                var boxSizing = computedStyle.boxSizing;
+
+                if (this.element.offsetWidth === 0) {
+                    borderSize = 2;
+                }
+
+                if (boxSizing === 'border-box' || isNaN(borderSize)) {
+                    borderSize = 0;
+                }
+
+                if (this.width != null && this.width.toString().indexOf("px") != -1) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+                else if (this.width != undefined && !isNaN(this.width)) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+
+                if (this.height != null && this.height.toString().indexOf("px") != -1) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                }
+                else if (this.height != undefined && !isNaN(this.height)) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                };
+
+                var isPercentage = false;
+                if (this.width != null && this.width.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.width = this.width;
+
+                    if (borderSize > 0) {
+                        this.host.css('box-sizing', 'border-box');
+                        this.listBoxContainer.css('box-sizing', 'border-box');
+                    }
+                }
+
+                if (this.height != null && this.height.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.height = this.height;
+                }
+
+                var me = this;
+                var resizeFunc = function () {
+                    me._arrange();
+                    if (me.dropDownWidth == 'auto') {
+                        var width = me.host.width() + 2;
+                        me.listBoxContainer.jqxListBox({ width: width });
+                        me.container.width(parseInt(width) + 25);
+                    }
+                }
+
+                if (isPercentage) {
+                    var width = this.host.width() + 2;
+                    if (this.dropDownWidth != 'auto') {
+                        width = this.dropDownWidth;
+                    }
+                    this.listBoxContainer.jqxListBox({ width: width });
+                    this.container.width(parseInt(width) + 25);
+                }
+                $.jqx.utilities.resize(this.host, function () {
+                    resizeFunc();
+                }, false, this._checkForHiddenParent);
+            },
+
+            // returns true when the listbox is opened, otherwise returns false.
+            isOpened: function () {
+                var me = this;
+                var openedListBox = $.data(document.body, "openedJQXListBox" + this.id);
+                if (openedListBox != null && openedListBox == me.listBoxContainer) {
+                    return true;
+                }
+
+                return false;
+            },
+
+            _updateHandlers: function () {
+                var self = this;
+                var hovered = false;
+                this.removeHandlers();
+                if (!this.touch) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
+                            hovered = true;
+                            self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
+                            if (self.dropDownVerticalAlignment == "top") {
+                                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            }
+                            else {
+                                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            }
+                            self.host.addClass(self.toThemeProperty('jqx-fill-state-hover'));
+                        }
+                    });
+
+                    this.addHandler(this.host, 'mouseleave', function () {
+                        if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
+                            self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
+                            self.host.removeClass(self.toThemeProperty('jqx-fill-state-hover'));
+                            self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            hovered = false;
+                        }
+                    });
+                }
+
+                if (this.host.parents()) {
+                    this.addHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id, function (event) {
+                        var opened = self.isOpened();
+                        if (opened) {
+                            self.close();
+                        }
+                    });
+                }
+
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                this.addHandler(this.dropdownlistWrapper, eventName,
+                    function (event) {
+                        if (!self.disabled) {
+                            var isOpen = self.container.css('display') == 'block';
+                            if (!self.isanimating) {
+                                if (isOpen) {
+                                    self.hideListBox();
+                                    return false;
+                                }
+                                else {
+                                    self.showListBox();
+                                    if (!self.focusable) {
+                                        if (event.preventDefault) {
+                                            event.preventDefault();
+                                        }
+                                    }
+                                    else self.focus();
+
+                                    //    event.stopPropagation();
+                                }
+                            }
+                        }
+                    });
+
+                if (self.autoOpen) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        var isOpened = self.isOpened();
+                        if (!isOpened && self.autoOpen) {
+                            self.open();
+                            self.host.focus();
+                        }
+                    });
+
+                    $(document).on('mousemove.' + self.id, function (event) {
+                        var isOpened = self.isOpened();
+                        if (isOpened && self.autoOpen) {
+                            var offset = self.host.coord();
+                            var top = offset.top;
+                            var left = offset.left;
+                            var popupOffset = self.container.coord();
+                            var popupLeft = popupOffset.left;
+                            var popupTop = popupOffset.top;
+
+                            var canClose = true;
+
+                            if (event.pageY >= top && event.pageY <= top + self.host.height()) {
+                                if (event.pageX >= left && event.pageX < left + self.host.width())
+                                    canClose = false;
+                            }
+                            if (event.pageY >= popupTop && event.pageY <= popupTop + self.container.height()) {
+                                if (event.pageX >= popupLeft && event.pageX < popupLeft + self.container.width())
+                                    canClose = false;
+                            }
+
+                            if (canClose) {
+                                self.close();
+                            }
+                        }
+                    });
+                }
+
+                if (this.touch) {
+                    this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
+                }
+                else this.addHandler($(document), 'mousedown.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
+
+                this.addHandler(this.host, 'keydown', function (event) {
+                    var isOpen = self.container.css('display') == 'block';
+
+                    if (self.host.css('display') == 'none') {
+                        return true;
+                    }
+
+                    if (event.keyCode == '13' || event.keyCode == '9') {
+                        if (!self.isanimating) {
+                            if (isOpen) {
+                                self.renderSelection();
+                                if (event.keyCode == '13' && self.focusable) {
+                                    self._firstDiv.focus();
+                                }
+                                self.hideListBox();
+                                if (!self.keyboardSelection) {
+                                    self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                }
+                                if (event.keyCode == "13") {
+                                    self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                }
+                            }
+                            if (isOpen && event.keyCode != '9') {
+                                return false;
+                            }
+                            return true;
+                        }
+                    }
+
+                    if (event.keyCode == 115) {
+                        if (!self.isanimating) {
+                            if (!self.isOpened()) {
+                                self.showListBox();
+                            }
+                            else if (self.isOpened()) {
+                                self.hideListBox();
+                            }
+                        }
+                        return false;
+                    }
+
+                    if (event.altKey) {
+                        if (self.host.css('display') == 'block') {
+                            if (event.keyCode == 38) {
+                                if (self.isOpened()) {
+                                    self.hideListBox();
+                                    return true;
+                                }
+                            }
+                            else if (event.keyCode == 40) {
+                                if (!self.isOpened()) {
+                                    self.showListBox();
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (event.keyCode == '27') {
+                        if (!self.ishiding) {
+                            if (self.isOpened()) {
+                                self.hideListBox();
+                                if (self.tempSelectedIndex != undefined) {
+                                    self.selectIndex(self.tempSelectedIndex);
+                                }
+                            }
+
+                            return true;
+                        }
+                    }
+
+                    if (!self.disabled) {
+                        self._kbnavigated = self.listBox._handleKeyDown(event);
+                        return self._kbnavigated;
+                    }
+                });
+                this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
+                    self.renderSelection();
+                    self._updateInputSelection();
+                    self._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
+                });
+
+                this.addHandler(this.listBoxContainer, 'select', function (event) {
+                    if (!self.disabled) {
+                        if (!event.args)
+                            return;
+
+                        if (event.args.type == 'keyboard' && !self.isOpened()) {
+                            self.renderSelection();
+                        }
+
+                        if (event.args.type != 'keyboard' || self.keyboardSelection) {
+                            self.renderSelection();
+                            self._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item, originalEvent: event.args.originalEvent });
+                            if (event.args.type == 'mouse') {
+                                if (!self.checkboxes) {
+                                    self.hideListBox();
+                                    if (self._firstDiv && self.focusable) {
+                                        self._firstDiv.focus();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                if (this.listBox) {
+                    if (this.listBox.content) {
+                        this.addHandler(this.listBox.content, 'click', function (event) {
+                            if (!self.disabled) {
+                                if (self.listBox.itemswrapper && event.target === self.listBox.itemswrapper[0])
+                                    return true;
+
+                                self.renderSelection('mouse');
+                                if (!self.touch) {
+                                    if (!self.ishiding) {
+                                        if (!self.checkboxes) {
+                                            self.hideListBox();
+                                            if (self._firstDiv && self.focusable) {
+                                                self._firstDiv.focus();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (!self.keyboardSelection) {
+                                    if (self._kbnavigated === false) {
+                                        if (self.tempSelectedIndex != self.selectedIndex) {
+                                            self._raiseEvent('4', { index: self.selectedIndex, type: "mouse", item: self.getItem(self.selectedIndex) });
+                                        }
+                                        self._kbnavigated = true;
+                                    }
+
+                                    if (self._oldSelectedInd == undefined) self._oldSelectedIndx = self.selectedIndex;
+
+                                    if (self.selectedIndex != self._oldSelectedIndx) {
+                                        self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                        self._oldSelectedIndx = self.selectedIndex;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                this.addHandler(this.host, 'focus', function (event) {
+                    if (self.renderMode !== 'simple') {
+                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.addClass('focused');
+                    self.label.addClass('focused');
+                });
+                this.addHandler(this.host, 'blur', function () {
+                    if (self.renderMode !== 'simple') {
+                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.removeClass('focused');
+                    self.label.removeClass('focused');
+                });
+                this.addHandler(this._firstDiv, 'focus', function (event) {
+                    if (self.renderMode !== 'simple') {
+                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.addClass('focused');
+                    self.label.addClass('focused');
+                });
+                this.addHandler(this._firstDiv, 'blur', function () {
+                    if (self.renderMode !== 'simple') {
+                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.removeClass('focused');
+                    self.label.removeClass('focused');
+                });
+            },
+
+            removeHandlers: function () {
+                var self = this;
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                this.removeHandler(this.dropdownlistWrapper, eventName);
+                if (this.listBox) {
+                    if (this.listBox.content) {
+                        this.removeHandler(this.listBox.content, 'click');
+                    }
+                }
+
+                this.removeHandler(this.host, 'loadContent');
+                this.removeHandler(this.listBoxContainer, 'checkChange');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.host, 'focus');
+                this.removeHandler(this.host, 'blur');
+                this.removeHandler(this._firstDiv, 'focus');
+                this.removeHandler(this._firstDiv, 'blur');
+                this.removeHandler(this.host, 'mouseenter');
+                this.removeHandler(this.host, 'mouseleave');
+                this.removeHandler($(document), 'mousemove.' + self.id);
+            },
+
+            // gets an item by index.
+            getItem: function (index) {
+                var item = this.listBox.getItem(index);
+                return item;
+            },
+
+            getItemByValue: function (value) {
+                var item = this.listBox.getItemByValue(value);
+                return item;
+            },
+
+            selectItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.selectItem(item);
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    this.renderSelection('mouse');
+                }
+            },
+
+            unselectItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.unselectItem(item);
+                    this.renderSelection('mouse');
+                }
+            },
+
+            checkItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.checkItem(item);
+                }
+            },
+
+            uncheckItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.uncheckItem(item);
+                }
+            },
+
+            indeterminateItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.indeterminateItem(item);
+                }
+            },
+
+
+            // renders the selection.
+            renderSelection: function () {
+                if (this.listBox == null)
+                    return;
+
+                if (this.height && this.height.toString().indexOf('%') != -1) {
+                    this._arrange();
+                }
+
+                var item = this.listBox.visibleItems[this.listBox.selectedIndex];
+                if (this.filterable) {
+                    if (this.listBox.selectedIndex == -1) {
+                        for (var selectedValue in this.listBox.selectedValues) {
+                            var value = this.listBox.selectedValues[selectedValue];
+                            var selectedItem = this.listBox.getItemByValue(value);
+                            if (selectedItem) {
+                                item = selectedItem;
+                            }
                         }
                     }
                 }
-            }
 
-            var me = this;
-            if (this.checkboxes) {
-                var checkedItems = this.getCheckedItems();
-                if (checkedItems != null && checkedItems.length > 0) {
-                    item = checkedItems[0];
-                }
-                else item = null;
-            }
-
-            if (this.hint) {
-                if (this.label) {
-                    this.label[0].innerHTML = this.placeHolder;
+                var me = this;
+                if (this.checkboxes) {
+                    var checkedItems = this.getCheckedItems();
+                    if (checkedItems != null && checkedItems.length > 0) {
+                        item = checkedItems[0];
+                    }
+                    else item = null;
                 }
 
-                if (item != null) {
-                    this.element.setAttribute('hint', true);
-                }
-                else {
-                    this.element.removeAttribute('hint');
-                }
-            }
-
-            this.bar.css('top', this.host.height());
-            if (item == null) {
-                var spanElement = $('<span unselectable="on" style="color: inherit; border: none; background-color: transparent;"></span>');
-                spanElement.appendTo($(document.body));
-                spanElement.addClass(this.toThemeProperty('jqx-widget'));
-                spanElement.addClass(this.toThemeProperty('jqx-listitem-state-normal'));
-                spanElement.addClass(this.toThemeProperty('jqx-item'));
-
-                $.jqx.utilities.html(spanElement, this.placeHolder);
-                if (this.isMaterialized() && !this.element.getAttribute('default-placeholder') && this.hint) {
-                    spanElement[0].innerHTML = "";
-
+                if (this.hint) {
                     if (this.label) {
                         this.label[0].innerHTML = this.placeHolder;
                     }
+
+                    if (item != null) {
+                        this.element.setAttribute('hint', true);
+                    }
+                    else {
+                        this.element.removeAttribute('hint');
+                    }
                 }
-                var topPadding = this.dropdownlistContent.css('padding-top');
-                var bottomPadding = this.dropdownlistContent.css('padding-bottom');
-                spanElement.css('padding-top', topPadding);
-                spanElement.css('padding-bottom', bottomPadding);
+
+                this.bar.css('top', this.host.height());
+                if (item == null) {
+                    var spanElement = $('<span unselectable="on" style="color: inherit; border: none; background-color: transparent;"></span>');
+                    spanElement.appendTo($(document.body));
+                    spanElement.addClass(this.toThemeProperty('jqx-widget'));
+                    spanElement.addClass(this.toThemeProperty('jqx-listitem-state-normal'));
+                    spanElement.addClass(this.toThemeProperty('jqx-item'));
+
+                    $.jqx.utilities.html(spanElement, this.placeHolder);
+                    if (this.isMaterialized() && !this.element.getAttribute('default-placeholder') && this.hint) {
+                        spanElement[0].innerHTML = "";
+
+                        if (this.label) {
+                            this.label[0].innerHTML = this.placeHolder;
+                        }
+                    }
+                    var topPadding = this.dropdownlistContent.css('padding-top');
+                    var bottomPadding = this.dropdownlistContent.css('padding-bottom');
+                    spanElement.css('padding-top', topPadding);
+                    spanElement.css('padding-bottom', bottomPadding);
+                    var spanHeight = spanElement.outerHeight();
+                    spanElement.remove();
+                    spanElement.removeClass();
+                    $.jqx.utilities.html(this.dropdownlistContent, spanElement);
+                    var height = this.host.height();
+                    if (this.height != null && this.height != undefined) {
+                        if (this.height.toString().indexOf('%') === -1) {
+                            height = parseInt(this.height);
+                        }
+                    }
+
+                    var top = parseInt((parseInt(height) - parseInt(spanHeight)) / 2);
+
+                    if (this.host.css('box-sizing') === 'border-box') {
+                        top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
+                    }
+
+                    if (top > 0) {
+                        this.dropdownlistContent.css('margin-top', top + 'px');
+                        this.dropdownlistContent.css('margin-bottom', top + 'px');
+                    }
+                    if (this.selectionRenderer) {
+                        $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, -1, "", ""));
+                        this.dropdownlistContent.css('margin-top', '0px');
+                        this.dropdownlistContent.css('margin-bottom', '0px');
+                        this._updateInputSelection();
+                    }
+                    else this._updateInputSelection();
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    if (this.width === "auto") {
+                        this._arrange();
+                    }
+                    if (this.focusable && this.isOpened()) {
+                        this.focus();
+                    }
+                    return;
+                }
+
+                this.selectedIndex = this.listBox.selectedIndex;
+                var spanElement = $(document.createElement('span'));
+                spanElement[0].setAttribute('unselectable', 'on');
+                try {
+                    spanElement[0].style.color = "inherit";
+                }
+                catch (er) {
+                }
+
+                spanElement[0].style.borderWidth = '0px';
+                spanElement[0].style.backgroundColor = "transparent";
+                spanElement.appendTo($(document.body));
+                spanElement.addClass(this.toThemeProperty('jqx-widget jqx-listitem-state-normal jqx-item'));
+
+                var emptyItem = false;
+                try {
+                    if (item.html != undefined && item.html != null && item.html.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.html);
+                    }
+                    else if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.label);
+                    }
+                    else if (item.label === null || item.label === "") {
+                        emptyItem = true;
+                        $.jqx.utilities.html(spanElement, "");
+                    }
+                    else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.value);
+
+                    }
+                    else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.title);
+                    }
+                    else if (item.label == "" || item.label == null) {
+                        emptyItem = true;
+                        $.jqx.utilities.html(spanElement, "");
+                    }
+                }
+                catch (error) {
+                    var errorMessage = error;
+                }
+
+                var topPadding = this.dropdownlistContent[0].style.paddingTop;
+                var bottomPadding = this.dropdownlistContent[0].style.paddingBottom;
+                if (topPadding === "") topPadding = "0px";
+                if (bottomPadding === "") bottomPadding = "0px";
+
+                spanElement[0].style.paddingTop = topPadding;
+                spanElement[0].style.paddingBottom = bottomPadding;
+
                 var spanHeight = spanElement.outerHeight();
+                if (spanHeight === 0) {
+                    spanHeight = 16;
+                }
+
+                if ((item.label == "" || item.label == null) && emptyItem) {
+                    $.jqx.utilities.html(spanElement, "");
+                }
+                var notPercentageWidth = this.width && this.width.toString().indexOf('%') <= 0;
+
                 spanElement.remove();
                 spanElement.removeClass();
-                $.jqx.utilities.html(this.dropdownlistContent, spanElement);
+                if (this.selectionRenderer) {
+                    $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, item.index, item.label, item.value));
+                    if (this.focusable && this.isOpened()) {
+                        this.focus();
+                    }
+                }
+                else {
+                    if (this.checkboxes) {
+                        var items = this.getCheckedItems();
+                        var str = "";
+                        for (var i = 0; i < items.length; i++) {
+                            if (i == items.length - 1) {
+                                str += items[i].label;
+                            }
+                            else {
+                                str += items[i].label + ",";
+                            }
+                        }
+                        spanElement.text(str);
+                        if (notPercentageWidth) {
+                            spanElement.css('max-width', this.host.width() - 30);
+                        }
+                        spanElement.css('overflow', 'hidden');
+                        spanElement.css('display', 'block');
+                        if (!this.rtl) {
+                            if (notPercentageWidth) {
+                                spanElement.css('width', this.host.width() - 30);
+                            }
+                        }
+                        spanElement.css('text-overflow', 'ellipsis');
+                        spanElement.css('padding-bottom', 1 + parseInt(bottomPadding));
+
+                        this.dropdownlistContent.html(spanElement);
+                        if (this.focusable && this.isOpened()) {
+                            this.focus();
+                        }
+                    }
+                    else {
+                        var w = this.host.width() - this.arrowSize - 1;
+                        if (this.width && this.width !== 'auto') {
+                            if (notPercentageWidth) {
+                                if (!this.rtl) {
+                                    spanElement.css('max-width', w + "px");
+                                }
+                            }
+
+                            spanElement[0].style.overflow = "hidden";
+                            spanElement[0].style.display = "block";
+                            spanElement[0].style.paddingTop = (1 + parseInt(bottomPadding)) + "px";
+                            if (!this.rtl) {
+                                if (notPercentageWidth) {
+                                    if (w < 0) w = 0;
+                                    spanElement[0].style.width = w + "px";
+                                }
+                            }
+                            spanElement[0].style.textOverflow = 'ellipsis';
+                        }
+
+                        this.dropdownlistContent[0].innerHTML = spanElement[0].innerHTML;
+                        if (this.focusable && this.isOpened()) {
+                            this.focus();
+                        }
+                    }
+                }
+
                 var height = this.host.height();
                 if (this.height != null && this.height != undefined) {
                     if (this.height.toString().indexOf('%') === -1) {
@@ -30365,1058 +30482,883 @@ var saveAs = window.jqxSaveAs = saveAs
                     top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
                 }
 
-                if (top > 0) {
-                    this.dropdownlistContent.css('margin-top', top + 'px');
-                    this.dropdownlistContent.css('margin-bottom', top + 'px');
+                if (top >= 0) {
+                    this.dropdownlistContent[0].style.marginTop = top + 'px';
+                    this.dropdownlistContent[0].style.marginBottom = top + 'px';
                 }
                 if (this.selectionRenderer) {
-                    $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, -1, "", ""));
-                    this.dropdownlistContent.css('margin-top', '0px');
-                    this.dropdownlistContent.css('margin-bottom', '0px');
+                    this.dropdownlistContent[0].style.marginTop = '0px';
+                    this.dropdownlistContent[0].style.marginBottom = '0px';
+                }
+                if (this.dropdownlistContent && this.input) {
                     this._updateInputSelection();
                 }
-                else this._updateInputSelection();
-                this.selectedIndex = this.listBox.selectedIndex;
+                if (this.listBox && this.listBox._activeElement) {
+                    $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
+                }
                 if (this.width === "auto") {
                     this._arrange();
                 }
-                if (this.focusable && this.isOpened()) {
-                    this.focus();
-                }
-                return;
-            }
+            },
 
-            this.selectedIndex = this.listBox.selectedIndex;
-            var spanElement = $(document.createElement('span'));
-            spanElement[0].setAttribute('unselectable', 'on');
-            try {
-                spanElement[0].style.color = "inherit";
-            }
-            catch (er) {
-            }
-
-            spanElement[0].style.borderWidth = '0px';
-            spanElement[0].style.backgroundColor = "transparent";
-            spanElement.appendTo($(document.body));
-            spanElement.addClass(this.toThemeProperty('jqx-widget jqx-listitem-state-normal jqx-item'));
-
-            var emptyItem = false;
-            try {
-                if (item.html != undefined && item.html != null && item.html.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.html);
-                }
-                else if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.label);
-                }
-                else if (item.label === null || item.label === "") {
-                    emptyItem = true;
-                    $.jqx.utilities.html(spanElement, "");
-                }
-                else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.value);
-
-                }
-                else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.title);
-                }
-                else if (item.label == "" || item.label == null) {
-                    emptyItem = true;
-                    $.jqx.utilities.html(spanElement, "");
-                }
-            }
-            catch (error) {
-                var errorMessage = error;
-            }
-
-            var topPadding = this.dropdownlistContent[0].style.paddingTop;
-            var bottomPadding = this.dropdownlistContent[0].style.paddingBottom;
-            if (topPadding === "") topPadding = "0px";
-            if (bottomPadding === "") bottomPadding = "0px";
-
-            spanElement[0].style.paddingTop = topPadding;
-            spanElement[0].style.paddingBottom = bottomPadding;
-
-            var spanHeight = spanElement.outerHeight();
-            if (spanHeight === 0) {
-                spanHeight = 16;
-            }
-
-            if ((item.label == "" || item.label == null) && emptyItem) {
-                $.jqx.utilities.html(spanElement, "");
-            }
-            var notPercentageWidth = this.width && this.width.toString().indexOf('%') <= 0;
-
-            spanElement.remove();
-            spanElement.removeClass();
-            if (this.selectionRenderer) {
-                $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, item.index, item.label, item.value));
-                if (this.focusable && this.isOpened()) {
-                    this.focus();
-                }
-            }
-            else {
-                if (this.checkboxes) {
-                    var items = this.getCheckedItems();
-                    var str = "";
-                    for (var i = 0; i < items.length; i++) {
-                        if (i == items.length - 1) {
-                            str += items[i].label;
+            _updateInputSelection: function () {
+                if (this.input) {
+                    var selectedValues = new Array();
+                    if (this.selectedIndex == -1) {
+                        this.input.val("");
+                    }
+                    else {
+                        var selectedItem = this.getSelectedItem();
+                        if (selectedItem != null) {
+                            this.input.val(selectedItem.value);
+                            selectedValues.push(selectedItem.value);
                         }
                         else {
-                            str += items[i].label + ",";
+                            this.input.val(this.dropdownlistContent.text());
                         }
                     }
-                    spanElement.text(str);
-                    if (notPercentageWidth) {
-                        spanElement.css('max-width', this.host.width() - 30);
-                    }
-                    spanElement.css('overflow', 'hidden');
-                    spanElement.css('display', 'block');
-                    if (!this.rtl) {
-                        if (notPercentageWidth) {
-                            spanElement.css('width', this.host.width() - 30);
-                        }
-                    }
-                    spanElement.css('text-overflow', 'ellipsis');
-                    spanElement.css('padding-bottom', 1 + parseInt(bottomPadding));
-
-                    this.dropdownlistContent.html(spanElement);
-                    if (this.focusable && this.isOpened()) {
-                        this.focus();
-                    }
-                }
-                else {
-                    var w = this.host.width() - this.arrowSize - 1;
-                    if (this.width && this.width !== 'auto') {
-                        if (notPercentageWidth) {
-                            if (!this.rtl) {
-                                spanElement.css('max-width', w + "px");
+                    if (this.checkboxes) {
+                        var items = this.getCheckedItems();
+                        var str = "";
+                        if (items != null) {
+                            for (var i = 0; i < items.length; i++) {
+                                var value = items[i].value;
+                                if (value == undefined) continue;
+                                if (i == items.length - 1) {
+                                    str += value;
+                                }
+                                else {
+                                    str += value + ",";
+                                }
+                                selectedValues.push(value);
                             }
                         }
-
-                        spanElement[0].style.overflow = "hidden";
-                        spanElement[0].style.display = "block";
-                        spanElement[0].style.paddingTop = (1 + parseInt(bottomPadding)) + "px";
-                        if (!this.rtl) {
-                            if (notPercentageWidth) {
-                                if (w < 0) w = 0;
-                                spanElement[0].style.width = w + "px";
+                        this.input.val(str);
+                    }
+                }
+                if (this.field && this.input) {
+                    if (this.field.nodeName.toLowerCase() == "select") {
+                        $.each(this.field, function (index, value) {
+                            $(this).removeAttr('selected');
+                            this.selected = selectedValues.indexOf(this.value) >= 0;
+                            if (this.selected) {
+                                $(this).attr('selected', true);
                             }
-                        }
-                        spanElement[0].style.textOverflow = 'ellipsis';
-                    }
-
-                    this.dropdownlistContent[0].innerHTML = spanElement[0].innerHTML;
-                    if (this.focusable && this.isOpened()) {
-                        this.focus();
-                    }
-                }
-            }
-
-            var height = this.host.height();
-            if (this.height != null && this.height != undefined) {
-                if (this.height.toString().indexOf('%') === -1) {
-                    height = parseInt(this.height);
-                }
-            }
-
-            var top = parseInt((parseInt(height) - parseInt(spanHeight)) / 2);
-
-            if (this.host.css('box-sizing') === 'border-box') {
-                top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
-            }
-
-            if (top >= 0) {
-                this.dropdownlistContent[0].style.marginTop = top + 'px';
-                this.dropdownlistContent[0].style.marginBottom = top + 'px';
-            }
-            if (this.selectionRenderer) {
-                this.dropdownlistContent[0].style.marginTop = '0px';
-                this.dropdownlistContent[0].style.marginBottom = '0px';
-            }
-            if (this.dropdownlistContent && this.input) {
-                this._updateInputSelection();
-            }
-            if (this.listBox && this.listBox._activeElement) {
-                $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
-            }
-            if (this.width === "auto") {
-                this._arrange();
-            }
-        },
-
-        _updateInputSelection: function () {
-            if (this.input) {
-                var selectedValues = new Array();
-                if (this.selectedIndex == -1) {
-                    this.input.val("");
-                }
-                else {
-                    var selectedItem = this.getSelectedItem();
-                    if (selectedItem != null) {
-                        this.input.val(selectedItem.value);
-                        selectedValues.push(selectedItem.value);
+                        });
                     }
                     else {
-                        this.input.val(this.dropdownlistContent.text());
+                        $.each(this.items, function (index, value) {
+                            $(this.originalItem.originalItem).removeAttr('data-selected');
+                            this.selected = selectedValues.indexOf(this.value) >= 0;
+                            if (this.selected) {
+                                $(this.originalItem.originalItem).attr('data-selected', true);
+                            }
+                        });
                     }
                 }
-                if (this.checkboxes) {
-                    var items = this.getCheckedItems();
-                    var str = "";
-                    if (items != null) {
-                        for (var i = 0; i < items.length; i++) {
-                            var value = items[i].value;
-                            if (value == undefined) continue;
-                            if (i == items.length - 1) {
-                                str += value;
-                            }
-                            else {
-                                str += value + ",";
-                            }
-                            selectedValues.push(value);
-                        }
-                    }
-                    this.input.val(str);
-                }
-            }
-            if (this.field && this.input) {
-                if (this.field.nodeName.toLowerCase() == "select") {
-                    $.each(this.field, function (index, value) {
-                        $(this).removeAttr('selected');
-                        this.selected = selectedValues.indexOf(this.value) >= 0;
-                        if (this.selected) {
-                            $(this).attr('selected', true);
-                        }
-                    });
-                }
-                else {
-                    $.each(this.items, function (index, value) {
-                        $(this.originalItem.originalItem).removeAttr('data-selected');
-                        this.selected = selectedValues.indexOf(this.value) >= 0;
-                        if (this.selected) {
-                            $(this.originalItem.originalItem).attr('data-selected', true);
-                        }
-                    });
-                }
-            }
-        },
+            },
 
-        setContent: function (content) {
-            $.jqx.utilities.html(this.dropdownlistContent, content);
-            this._updateInputSelection();
-        },
+            setContent: function (content) {
+                $.jqx.utilities.html(this.dropdownlistContent, content);
+                this._updateInputSelection();
+            },
 
-        dataBind: function () {
-            this.listBoxContainer.jqxListBox({ source: this.source });
-            this.renderSelection('mouse');
-            if (this.source == null) {
+            dataBind: function () {
+                this.listBoxContainer.jqxListBox({ source: this.source });
+                this.renderSelection('mouse');
+                if (this.source == null) {
+                    this.clearSelection();
+                }
+            },
+
+            clear: function () {
+                this.listBoxContainer.jqxListBox({ source: null });
                 this.clearSelection();
-            }
-        },
+            },
 
-        clear: function () {
-            this.listBoxContainer.jqxListBox({ source: null });
-            this.clearSelection();
-        },
-
-        // clears the selection.
-        clearSelection: function (render) {
-            this.selectedIndex = -1;
-            this._updateInputSelection();
-            this.listBox.clearSelection();
-            this.renderSelection();
-            if (!this.selectionRenderer && !this.hint && !this.isMaterialized()) {
-                $.jqx.utilities.html(this.dropdownlistContent, this.placeHolder);
-            }
-        },
-
-        // unselects an item at specific index.
-        // @param Number
-        unselectIndex: function (index, render) {
-            if (isNaN(index))
-                return;
-
-            this.listBox.unselectIndex(index, render);
-            this.renderSelection();
-        },
-
-        // selects an item at specific index.
-        // @param Number
-        selectIndex: function (index, ensureVisible, render, forceSelect) {
-            this.listBox.selectIndex(index, ensureVisible, render, forceSelect, 'api');
-        },
-
-        // gets the selected index.
-        getSelectedIndex: function () {
-            return this.selectedIndex;
-        },
-
-        // gets the selected item.
-        getSelectedItem: function () {
-            return this.listBox.getVisibleItem(this.selectedIndex);
-        },
-
-        getCheckedItems: function () {
-            return this.listBox.getCheckedItems();
-        },
-
-        checkIndex: function (index) {
-            this.listBox.checkIndex(index);
-        },
-
-        uncheckIndex: function (index) {
-            this.listBox.uncheckIndex(index);
-        },
-
-        indeterminateIndex: function (index) {
-            this.listBox.indeterminateIndex(index);
-        },
-        checkAll: function () {
-            this.listBox.checkAll();
-            this.renderSelection('mouse');
-        },
-
-        uncheckAll: function () {
-            this.listBox.uncheckAll();
-            this.renderSelection('mouse');
-        },
-
-        addItem: function (item) {
-            return this.listBox.addItem(item);
-        },
-
-        insertAt: function (item, index) {
-            if (item == null)
-                return false;
-
-            return this.listBox.insertAt(item, index);
-        },
-
-        removeAt: function (index) {
-            var result = this.listBox.removeAt(index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        removeItem: function (item) {
-            var result = this.listBox.removeItem(item);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateItem: function (item, oldItem) {
-            var result = this.listBox.updateItem(item, oldItem);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateAt: function (item, index) {
-            var result = this.listBox.updateAt(item, index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        ensureVisible: function (index) {
-            return this.listBox.ensureVisible(index);
-        },
-
-        disableAt: function (index) {
-            return this.listBox.disableAt(index);
-        },
-
-        enableAt: function (index) {
-            return this.listBox.enableAt(index);
-        },
-
-        disableItem: function (item) {
-            return this.listBox.disableItem(item);
-        },
-
-        enableItem: function (item) {
-            return this.listBox.enableItem(item);
-        },
-
-        _findPos: function (obj) {
-            while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
-                obj = obj['nextSibling'];
-            }
-            var position = $(obj).coord(true);
-            return [position.left, position.top];
-        },
-
-        testOffset: function (element, offset, inputHeight) {
-            var dpWidth = element.outerWidth();
-            var dpHeight = element.outerHeight();
-            var viewWidth = $(window).width() + $(window).scrollLeft();
-            var viewHeight = $(window).height() + $(window).scrollTop();
-
-            if (offset.left + dpWidth > viewWidth) {
-                if (dpWidth > this.host.width()) {
-                    var hostLeft = this.host.coord().left;
-                    var hOffset = dpWidth - this.host.width();
-                    offset.left = hostLeft - hOffset + 2;
+            // clears the selection.
+            clearSelection: function (render) {
+                this.selectedIndex = -1;
+                this._updateInputSelection();
+                this.listBox.clearSelection();
+                this.renderSelection();
+                if (!this.selectionRenderer && !this.hint && !this.isMaterialized()) {
+                    $.jqx.utilities.html(this.dropdownlistContent, this.placeHolder);
                 }
-            }
-            if (offset.left < 0) {
-                offset.left = parseInt(this.host.coord().left) + 'px'
-            }
+            },
 
-            offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-                Math.abs(dpHeight + inputHeight + 22) : 0);
+            // unselects an item at specific index.
+            // @param Number
+            unselectIndex: function (index, render) {
+                if (isNaN(index))
+                    return;
 
-            return offset;
-        },
+                this.listBox.unselectIndex(index, render);
+                this.renderSelection();
+            },
 
-        open: function () {
-            this.showListBox();
-        },
+            // selects an item at specific index.
+            // @param Number
+            selectIndex: function (index, ensureVisible, render, forceSelect) {
+                this.listBox.selectIndex(index, ensureVisible, render, forceSelect, 'api');
+            },
 
-        close: function () {
-            this.hideListBox();
-        },
+            // gets the selected index.
+            getSelectedIndex: function () {
+                return this.selectedIndex;
+            },
 
-        _getBodyOffset: function () {
-            var top = 0;
-            var left = 0;
-            if ($('body').css('border-top-width') != '0px') {
-                top = parseInt($('body').css('border-top-width'));
-                if (isNaN(top)) top = 0;
-            }
-            if ($('body').css('border-left-width') != '0px') {
-                left = parseInt($('body').css('border-left-width'));
-                if (isNaN(left)) left = 0;
-            }
-            return { left: left, top: top };
-        },
+            // gets the selected item.
+            getSelectedItem: function () {
+                return this.listBox.getVisibleItem(this.selectedIndex);
+            },
 
-        // shows the listbox.
-        showListBox: function () {
-            $.jqx.aria(this, "aria-expanded", true);
-            if (this.listBox._renderOnDemand) {
-                this.listBoxContainer.jqxListBox({ _renderOnDemand: false });
-            }
+            getCheckedItems: function () {
+                return this.listBox.getCheckedItems();
+            },
 
-            if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && (this.width.indexOf('%') != -1 || this.width.indexOf('auto') != -1)) {
-                if (this.listBox.host.width() != this.host.width()) {
-                    var width = this.element.offsetWidth;
-                    this.listBoxContainer.jqxListBox({ width: width });
-                    this.container.width(parseInt(width) + 25);
+            checkIndex: function (index) {
+                this.listBox.checkIndex(index);
+            },
+
+            uncheckIndex: function (index) {
+                this.listBox.uncheckIndex(index);
+            },
+
+            indeterminateIndex: function (index) {
+                this.listBox.indeterminateIndex(index);
+            },
+            checkAll: function () {
+                this.listBox.checkAll();
+                this.renderSelection('mouse');
+            },
+
+            uncheckAll: function () {
+                this.listBox.uncheckAll();
+                this.renderSelection('mouse');
+            },
+
+            addItem: function (item) {
+                return this.listBox.addItem(item);
+            },
+
+            insertAt: function (item, index) {
+                if (item == null)
+                    return false;
+
+                return this.listBox.insertAt(item, index);
+            },
+
+            removeAt: function (index) {
+                var result = this.listBox.removeAt(index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            removeItem: function (item) {
+                var result = this.listBox.removeItem(item);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateItem: function (item, oldItem) {
+                var result = this.listBox.updateItem(item, oldItem);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateAt: function (item, index) {
+                var result = this.listBox.updateAt(item, index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            ensureVisible: function (index) {
+                return this.listBox.ensureVisible(index);
+            },
+
+            disableAt: function (index) {
+                return this.listBox.disableAt(index);
+            },
+
+            enableAt: function (index) {
+                return this.listBox.enableAt(index);
+            },
+
+            disableItem: function (item) {
+                return this.listBox.disableItem(item);
+            },
+
+            enableItem: function (item) {
+                return this.listBox.enableItem(item);
+            },
+
+            _findPos: function (obj) {
+                while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
+                    obj = obj['nextSibling'];
                 }
-            }
-            if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
-                var width = this.element.offsetWidth;
-                this.listBoxContainer.jqxListBox({ width: width + 1 });
-                this.container.width(parseInt(width) + 25);
-            }
+                var position = $(obj).coord(true);
+                return [position.left, position.top];
+            },
 
-            var self = this;
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var scrollPosition = $(window).scrollTop();
-            var scrollLeftPosition = $(window).scrollLeft();
-            var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
-            //var left = parseInt(Math.round(this.host.coord(true).left)) + 'px';
-            var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
-            left = leftPos + 'px';
+            testOffset: function (element, offset, inputHeight) {
+                var dpWidth = element.outerWidth();
+                var dpHeight = element.outerHeight();
+                var viewWidth = $(window).width() + $(window).scrollLeft();
+                var viewHeight = $(window).height() + $(window).scrollTop();
 
+                if (offset.left + dpWidth > viewWidth) {
+                    if (dpWidth > this.host.width()) {
+                        var hostLeft = this.host.coord().left;
+                        var hOffset = dpWidth - this.host.width();
+                        offset.left = hostLeft - hOffset + 2;
+                    }
+                }
+                if (offset.left < 0) {
+                    offset.left = parseInt(this.host.coord().left) + 'px'
+                }
 
-            if (this.dropDownContainer === 'element') {
-                top = parseInt(this.host.outerHeight()) - 1 + 'px';
-                left = 0;
-            }
+                offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
+                    Math.abs(dpHeight + inputHeight + 22) : 0);
 
+                return offset;
+            },
 
-            var isMobileBrowser = false;//$.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+            open: function () {
+                this.showListBox();
+            },
 
-            if (this.listBox == null)
-                return;
+            close: function () {
+                this.hideListBox();
+            },
 
-            this.ishiding = false;
-            if (!this.keyboardSelection) {
-                this.listBox.selectIndex(this.selectedIndex);
-                this.listBox.ensureVisible(this.selectedIndex);
-            }
-
-            this.tempSelectedIndex = this.selectedIndex;
-
-            if (this.autoDropDownHeight) {
-                this.container.height(this.listBoxContainer.height() + 25);
-            }
-
-            if ((isMobileBrowser != null && isMobileBrowser)) {
-                left = $.jqx.mobile.getLeftPos(this.element);
-                top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+            _getBodyOffset: function () {
+                var top = 0;
+                var left = 0;
                 if ($('body').css('border-top-width') != '0px') {
-                    top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    top = parseInt($('body').css('border-top-width'));
+                    if (isNaN(top)) top = 0;
                 }
                 if ($('body').css('border-left-width') != '0px') {
-                    left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    left = parseInt($('body').css('border-left-width'));
+                    if (isNaN(left)) left = 0;
                 }
-            }
+                return { left: left, top: top };
+            },
 
-            listBox.stop();
-            if (this.renderMode !== 'simple') {
-                this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
-                this.host.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+            // shows the listbox.
+            showListBox: function () {
+                $.jqx.aria(this, "aria-expanded", true);
+                if (this.listBox._renderOnDemand) {
+                    this.listBoxContainer.jqxListBox({ _renderOnDemand: false });
+                }
+
+                if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && (this.width.indexOf('%') != -1 || this.width.indexOf('auto') != -1)) {
+                    if (this.listBox.host.width() != this.host.width()) {
+                        var width = this.element.offsetWidth;
+                        this.listBoxContainer.jqxListBox({ width: width });
+                        this.container.width(parseInt(width) + 25);
+                    }
+                }
+                if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
+                    var width = this.element.offsetWidth;
+                    this.listBoxContainer.jqxListBox({ width: width + 1 });
+                    this.container.width(parseInt(width) + 25);
+                }
+
+                var self = this;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var scrollPosition = $(window).scrollTop();
+                var scrollLeftPosition = $(window).scrollLeft();
+                var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
+                //var left = parseInt(Math.round(this.host.coord(true).left)) + 'px';
+                var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
+                left = leftPos + 'px';
+
+
+                if (this.dropDownContainer === 'element') {
+                    top = parseInt(this.host.outerHeight()) - 1 + 'px';
+                    left = 0;
+                }
+
+
+                var isMobileBrowser = false;//$.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+
+                if (this.listBox == null)
+                    return;
+
+                this.ishiding = false;
+                if (!this.keyboardSelection) {
+                    this.listBox.selectIndex(this.selectedIndex);
+                    this.listBox.ensureVisible(this.selectedIndex);
+                }
+
+                this.tempSelectedIndex = this.selectedIndex;
+
+                if (this.autoDropDownHeight) {
+                    this.container.height(this.listBoxContainer.height() + 25);
+                }
+
+                if ((isMobileBrowser != null && isMobileBrowser)) {
+                    left = $.jqx.mobile.getLeftPos(this.element);
+                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+                    if ($('body').css('border-top-width') != '0px') {
+                        top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    }
+                    if ($('body').css('border-left-width') != '0px') {
+                        left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    }
+                }
+
+                listBox.stop();
+                if (this.renderMode !== 'simple') {
+                    this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
+                    this.host.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                    if (this.dropDownVerticalAlignment == "top") {
+                        this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                    }
+                    else {
+                        this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                    }
+                }
+
+
+                this.container.css('left', left);
+                this.container.css('top', top);
+                listBoxInstance._arrange();
+
+                var closeAfterSelection = true;
+                var positionChanged = false;
+
+                if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
+                    var containerWidth = this.container.outerWidth();
+                    var containerLeftOffset = -2 + Math.abs(containerWidth - this.host.width());
+
+                    if (containerWidth > this.host.width()) {
+                        this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
+                    }
+                    else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
+                }
+
                 if (this.dropDownVerticalAlignment == "top") {
-                    this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-                }
-                else {
-                    this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-                }
-            }
-
-
-            this.container.css('left', left);
-            this.container.css('top', top);
-            listBoxInstance._arrange();
-
-            var closeAfterSelection = true;
-            var positionChanged = false;
-
-            if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
-                var containerWidth = this.container.outerWidth();
-                var containerLeftOffset = -2 + Math.abs(containerWidth - this.host.width());
-
-                if (containerWidth > this.host.width()) {
-                    this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
-                }
-                else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
-            }
-
-            if (this.dropDownVerticalAlignment == "top") {
-                var dpHeight = listBox.height();
-                positionChanged = true;
-
-                listBox.css('top', 23);
-                listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                var inputHeight = parseInt(this.host.outerHeight());
-                var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
-
-                this.container.css('top', t);
-            }
-
-            if (this.enableBrowserBoundsDetection) {
-                var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
-                if (parseInt(this.container.css('top')) != newOffset.top) {
+                    var dpHeight = listBox.height();
                     positionChanged = true;
+
                     listBox.css('top', 23);
                     listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                }
-                else listBox.css('top', 0);
+                    var inputHeight = parseInt(this.host.outerHeight());
+                    var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
 
-                this.container.css('top', newOffset.top);
-                if (parseInt(this.container.css('left')) != newOffset.left) {
-                    this.container.css('left', newOffset.left);
+                    this.container.css('top', t);
                 }
-            }
 
-            if (this.animationType == 'none' || this.animationType === 'transform') {
-                this.container.css('display', 'block');
-                $.data(document.body, "openedJQXListBoxParent", self);
-                $.data(document.body, "openedJQXListBox" + this.id, listBox);
-                listBox.css('margin-top', 0);
-                listBox.css('opacity', 1);
-                listBoxInstance._renderItems();
-                self._raiseEvent('0', listBoxInstance);
-            }
-            else {
-                this.container.css('display', 'block');
-                self.isanimating = true;
-                if (this.animationType == 'fade') {
+                if (this.enableBrowserBoundsDetection) {
+                    var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
+                    if (parseInt(this.container.css('top')) != newOffset.top) {
+                        positionChanged = true;
+                        listBox.css('top', 23);
+                        listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    }
+                    else listBox.css('top', 0);
+
+                    this.container.css('top', newOffset.top);
+                    if (parseInt(this.container.css('left')) != newOffset.left) {
+                        this.container.css('left', newOffset.left);
+                    }
+                }
+
+                if (this.animationType == 'none' || this.animationType === 'transform') {
+                    this.container.css('display', 'block');
+                    $.data(document.body, "openedJQXListBoxParent", self);
+                    $.data(document.body, "openedJQXListBox" + this.id, listBox);
                     listBox.css('margin-top', 0);
-                    listBox.css('opacity', 0);
-                    listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
-                        $.data(document.body, "openedJQXListBoxParent", self);
-                        $.data(document.body, "openedJQXListBox" + self.id, listBox);
-                        self.ishiding = false;
-                        self.isanimating = false;
-                        listBoxInstance._renderItems();
-                        self._raiseEvent('0', listBoxInstance);
-                    });
-                }
-                else {
                     listBox.css('opacity', 1);
-                    var height = listBox.outerHeight();
-                    if (positionChanged) {
-                        listBox.css('margin-top', height);
-                    }
-                    else {
-                        listBox.css('margin-top', -height);
-                    }
-
-                    listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
-                        $.data(document.body, "openedJQXListBoxParent", self);
-                        $.data(document.body, "openedJQXListBox" + self.id, listBox);
-                        self.ishiding = false;
-                        self.isanimating = false;
-                        listBoxInstance._renderItems();
-                        self._raiseEvent('0', listBoxInstance);
-                    });
+                    listBoxInstance._renderItems();
+                    self._raiseEvent('0', listBoxInstance);
                 }
-            }
-            if (!positionChanged) {
-                this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            }
-            else {
-                this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            }
-            if (this.renderMode !== 'simple') {
-                listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-                this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
-                this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-            }
-
-            this.element.setAttribute('opened', true);
-            listBox.addClass(this.toThemeProperty('jqx-popup-show'));
-        },
-
-        // hides the listbox.
-        hideListBox: function () {
-            $.jqx.aria(this, "aria-expanded", false);
-
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var container = this.container;
-            var me = this;
-            this.element.removeAttribute('opened');
-
-            listBox.removeClass('jqx-popup-show');
-
-            $.data(document.body, "openedJQXListBox" + this.id, null);
-            if (this.animationType == 'none') {
-                this.container.css('display', 'none');
-            }
-            else if (this.animationType === 'transform') {
-                setTimeout(function () {
-                    container.css('display', 'none');
-                }, this.closeDelay);
-            }
-            else {
-                if (!me.ishiding) {
-                    listBox.stop();
-                    var height = listBox.outerHeight();
-                    listBox.css('margin-top', 0);
-                    me.isanimating = true;
-
-                    var animationValue = -height;
-                    if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
-                        animationValue = height;
-                    }
-
+                else {
+                    this.container.css('display', 'block');
+                    self.isanimating = true;
                     if (this.animationType == 'fade') {
-                        listBox.css({ 'opacity': 1 });
-                        listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
-                            container.css('display', 'none');
-                            me.isanimating = false;
-                            me.ishiding = false;
+                        listBox.css('margin-top', 0);
+                        listBox.css('opacity', 0);
+                        listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
+                            $.data(document.body, "openedJQXListBoxParent", self);
+                            $.data(document.body, "openedJQXListBox" + self.id, listBox);
+                            self.ishiding = false;
+                            self.isanimating = false;
+                            listBoxInstance._renderItems();
+                            self._raiseEvent('0', listBoxInstance);
                         });
                     }
                     else {
-                        listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
-                            container.css('display', 'none');
-                            me.isanimating = false;
-                            me.ishiding = false;
+                        listBox.css('opacity', 1);
+                        var height = listBox.outerHeight();
+                        if (positionChanged) {
+                            listBox.css('margin-top', height);
+                        }
+                        else {
+                            listBox.css('margin-top', -height);
+                        }
+
+                        listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
+                            $.data(document.body, "openedJQXListBoxParent", self);
+                            $.data(document.body, "openedJQXListBox" + self.id, listBox);
+                            self.ishiding = false;
+                            self.isanimating = false;
+                            listBoxInstance._renderItems();
+                            self._raiseEvent('0', listBoxInstance);
                         });
                     }
                 }
-            }
+                if (!positionChanged) {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                }
+                else {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                }
+                if (this.renderMode !== 'simple') {
+                    listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                    this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
+                    this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                }
 
-            this.ishiding = true;
-            this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
-            this.host.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
-            this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.element.setAttribute('opened', true);
+                listBox.addClass(this.toThemeProperty('jqx-popup-show'));
+            },
 
-            this._raiseEvent('1', listBoxInstance);
-        },
+            // hides the listbox.
+            hideListBox: function () {
+                $.jqx.aria(this, "aria-expanded", false);
 
-        /* Close popup if clicked elsewhere. */
-        closeOpenedListBox: function (event) {
-            var self = event.data.me;
-            var $target = $(event.target);
-            var openedListBox = event.data.listbox;
-            if (openedListBox == null)
-                return true;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var container = this.container;
+                var me = this;
+                this.element.removeAttribute('opened');
 
-            if ($(event.target).ischildof(event.data.me.host)) {
-                return true;
-            }
+                listBox.removeClass('jqx-popup-show');
 
-            if (!self.isOpened()) {
-                return true;
-            }
+                $.data(document.body, "openedJQXListBox" + this.id, null);
+                if (this.animationType == 'none') {
+                    this.container.css('display', 'none');
+                }
+                else if (this.animationType === 'transform') {
+                    setTimeout(function () {
+                        container.css('display', 'none');
+                    }, this.closeDelay);
+                }
+                else {
+                    if (!me.ishiding) {
+                        listBox.stop();
+                        var height = listBox.outerHeight();
+                        listBox.css('margin-top', 0);
+                        me.isanimating = true;
 
-            if ($(event.target).ischildof(self.listBoxContainer)) {
-                return true;
-            }
-
-            var dropdownlistInstance = self;
-
-            var isListBox = false;
-            $.each($target.parents(), function () {
-                if (this.className != 'undefined') {
-                    if (this.className.indexOf) {
-                        if (this.className.indexOf('jqx-listbox') != -1) {
-                            isListBox = true;
-                            return false;
+                        var animationValue = -height;
+                        if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
+                            animationValue = height;
                         }
-                        if (this.className.indexOf('jqx-dropdownlist') != -1) {
-                            if (self.element.id == this.id) {
+
+                        if (this.animationType == 'fade') {
+                            listBox.css({ 'opacity': 1 });
+                            listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
+                                container.css('display', 'none');
+                                me.isanimating = false;
+                                me.ishiding = false;
+                            });
+                        }
+                        else {
+                            listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
+                                container.css('display', 'none');
+                                me.isanimating = false;
+                                me.ishiding = false;
+                            });
+                        }
+                    }
+                }
+
+                this.ishiding = true;
+                this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
+                this.host.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
+                this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+
+                this._raiseEvent('1', listBoxInstance);
+            },
+
+            /* Close popup if clicked elsewhere. */
+            closeOpenedListBox: function (event) {
+                var self = event.data.me;
+                var $target = $(event.target);
+                var openedListBox = event.data.listbox;
+                if (openedListBox == null)
+                    return true;
+
+                if ($(event.target).ischildof(event.data.me.host)) {
+                    return true;
+                }
+
+                if (!self.isOpened()) {
+                    return true;
+                }
+
+                if ($(event.target).ischildof(self.listBoxContainer)) {
+                    return true;
+                }
+
+                var dropdownlistInstance = self;
+
+                var isListBox = false;
+                $.each($target.parents(), function () {
+                    if (this.className != 'undefined') {
+                        if (this.className.indexOf) {
+                            if (this.className.indexOf('jqx-listbox') != -1) {
                                 isListBox = true;
+                                return false;
                             }
-                            return false;
+                            if (this.className.indexOf('jqx-dropdownlist') != -1) {
+                                if (self.element.id == this.id) {
+                                    isListBox = true;
+                                }
+                                return false;
+                            }
                         }
                     }
+                });
+
+                if (openedListBox != null && !isListBox && self.isOpened()) {
+                    self.hideListBox();
                 }
-            });
 
-            if (openedListBox != null && !isListBox && self.isOpened()) {
-                self.hideListBox();
-            }
+                return true;
+            },
 
-            return true;
-        },
+            clearFilter: function () {
+                this.listBox.clearFilter();
+            },
 
-        clearFilter: function () {
-            this.listBox.clearFilter();
-        },
+            loadFromSelect: function (id) {
+                this.listBox.loadFromSelect(id);
+            },
 
-        loadFromSelect: function (id) {
-            this.listBox.loadFromSelect(id);
-        },
-
-        refresh: function (initialRefresh) {
-            if (initialRefresh !== true) {
-                this._setSize();
-                this._arrange();
-                if (this.listBox) {
-                    this.renderSelection();
-                }
-            }
-        },
-
-        _arrange: function () {
-            var that = this;
-            var width = parseInt(that.host.width());
-            var height = parseInt(that.host.height());
-            var arrowHeight = that.arrowSize;
-            var arrowWidth = that.arrowSize;
-            var rightOffset = 3;
-            var contentWidth = width - arrowWidth - 2 * rightOffset;
-            if (contentWidth > 0 && that.width !== "auto") {
-                that.dropdownlistContent[0].style.width = contentWidth + "px";
-            }
-            else if (contentWidth <= 0) {
-                that.dropdownlistContent[0].style.width = "0px";
-            }
-
-            if (that.width === "auto") {
-                that.dropdownlistContent.css('width', 'auto');
-                width = 2 + that.dropdownlistContent.width() + arrowWidth + 2 * rightOffset;
-                if (width < 47) {
-                    width = 47;
-                }
-                that.host.width(width);
-            }
-            that.dropdownlistContent[0].style.height = height + "px";
-            that.dropdownlistContent[0].style.left = "0px";
-            that.dropdownlistContent[0].style.top = "0px";
-
-            that.dropdownlistArrow[0].style.width = arrowWidth + "px";
-            if (that.width && that.width.toString().indexOf('%') >= 0) {
-                var arrowPercentage = (arrowWidth * 100) / width;
-                var contentPercentage = (contentWidth * 100) / width;
-                that.dropdownlistArrow[0].style.width = arrowPercentage + '%';
-                that.dropdownlistContent[0].style.width = contentPercentage + '%';
-            }
-            that.dropdownlistArrow[0].style.height = height + "px";
-
-            if (that.rtl) {
-                that.dropdownlistArrow.css('float', 'left');
-                that.dropdownlistContent.css('float', 'right');
-            }
-        },
-
-        destroy: function () {
-            $.jqx.utilities.resize(this.host, null, true);
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBoxContainer, 'unselect');
-            this.removeHandler(this.listBoxContainer, 'change');
-            this.removeHandler(this.dropdownlistWrapper, 'selectstart');
-            this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBox.content, 'click');
-            this.removeHandler(this.listBoxContainer, 'bindingComplete');
-
-            if (this.host.parents()) {
-                this.removeHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id);
-            }
-
-            this.removeHandlers();
-
-            this.listBoxContainer.jqxListBox('destroy');
-            this.listBoxContainer.remove();
-            this.host.removeClass();
-            this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
-            if (this.touch) {
-                this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
-            }
-
-            this.dropdownlistArrow.remove();
-            delete this.dropdownlistArrow;
-            delete this.dropdownlistWrapper;
-            delete this.listBoxContainer;
-            delete this.input;
-            delete this.arrow;
-            delete this.dropdownlistContent;
-            delete this.listBox;
-            delete this._firstDiv;
-            this.container.remove();
-            delete this.container;
-            var vars = $.data(this.element, "jqxDropDownList");
-            if (vars) {
-                delete vars.instance;
-            }
-            this.host.removeData();
-            this.host.remove();
-            delete this.comboStructure;
-            delete this.host;
-            delete this.element;
-        },
-
-        _raiseEvent: function (id, arg) {
-            if (arg == undefined)
-                arg = { owner: null };
-
-            var evt = this.events[id];
-            var args = arg;
-            args.owner = this;
-
-            var event = new $.Event(evt);
-            event.owner = this;
-            if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
-                event.args = arg;
-            }
-
-            var result = this.host.trigger(event);
-            return result;
-        },
-
-
-        propertiesChangedHandler: function (object, key, value) {
-            if (value.width && value.height && Object.keys(value).length == 2) {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
+            refresh: function (initialRefresh) {
+                if (initialRefresh !== true) {
+                    this._setSize();
+                    this._arrange();
+                    if (this.listBox) {
+                        this.renderSelection();
                     }
                 }
-                object._arrange();
-                object.close();
-            }
-        },
+            },
 
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (object.isInitialized == undefined || object.isInitialized == false)
-                return;
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key == "template") {
-                object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
-                object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
-                object.host.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
-                object.host.addClass(object.toThemeProperty("jqx-" + object.template + ""));
-            }
-
-            if (key == "dropDownVerticalAlignment") {
-                object.close();
-                object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
-                object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                if (object.dropDownVerticalAlignment == "top") {
-                    object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+            _arrange: function () {
+                var that = this;
+                var width = parseInt(that.host.width());
+                var height = parseInt(that.host.height());
+                var arrowHeight = that.arrowSize;
+                var arrowWidth = that.arrowSize;
+                var rightOffset = 3;
+                var contentWidth = width - arrowWidth - 2 * rightOffset;
+                if (contentWidth > 0 && that.width !== "auto") {
+                    that.dropdownlistContent[0].style.width = contentWidth + "px";
                 }
-                else {
-                    object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                }
-                object.listBoxContainer.css('top', 0);
-                object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
-            }
-
-            if (key == "autoItemsHeight") {
-                object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
-            }
-
-            if (key == "filterable") {
-                object.listBoxContainer.jqxListBox({ filterable: value });
-            }
-            if (key == "filterHeight") {
-                object.listBoxContainer.jqxListBox({ filterHeight: value });
-            }
-            if (key == "filterPlaceHolder") {
-                object.listBoxContainer.jqxListBox({ filterPlaceHolder: value });
-            }
-            if (key == "filterDelay") {
-                object.listBoxContainer.jqxListBox({ filterDelay: value });
-            }
-
-            if (key == "enableSelection") {
-                object.listBoxContainer.jqxListBox({ enableSelection: value });
-            }
-            if (key == "enableHover") {
-                object.listBoxContainer.jqxListBox({ enableHover: value });
-            }
-
-            if (key == 'autoOpen') {
-                object._updateHandlers();
-            }
-            if (key == 'emptyString') {
-                object.listBox.emptyString = object.emptyString;
-            }
-            if (key == "itemHeight") {
-                object.listBoxContainer.jqxListBox({ itemHeight: value });
-            }
-
-            if (key == "renderer") {
-                object.listBoxContainer.jqxListBox({ renderer: value });
-            }
-
-            if (key == "rtl") {
-                if (value) {
-                    object.dropdownlistArrow.css('float', 'left');
-                    object.dropdownlistContent.css('float', 'right');
-                }
-                else {
-                    object.dropdownlistArrow.css('float', 'right');
-                    object.dropdownlistContent.css('float', 'left');
-                }
-                object.listBoxContainer.jqxListBox({ rtl: object.rtl });
-            }
-            if (key == 'source') {
-                object.listBoxContainer.jqxListBox({ source: object.source });
-                object.listBox.selectedIndex = -1;
-                object.listBox.selectIndex(this.selectedIndex);
-                object.renderSelection();
-                if (value == null) {
-                    object.clear();
-                }
-            }
-
-            if (key == "displayMember" || key == "valueMember") {
-                object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
-                object.renderSelection();
-            }
-            if (key == "placeHolder") {
-                object.renderSelection();
-            }
-
-            if (key == 'theme' && value != null) {
-                object.listBoxContainer.jqxListBox({ theme: value });
-                object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
-                $.jqx.utilities.setTheme(oldvalue, value, object.host);
-            }
-
-            if (key == "autoDropDownHeight") {
-                object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
-                if (object.autoDropDownHeight) {
-                    object.container.height(object.listBoxContainer.height() + 25);
-                }
-                else {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                else if (contentWidth <= 0) {
+                    that.dropdownlistContent[0].style.width = "0px";
                 }
 
-                object.listBox._arrange();
-                object.listBox._updatescrollbars();
-            }
-
-            if (key == "searchMode") {
-                object.listBoxContainer.jqxListBox({ searchMode: object.searchMode });
-            }
-
-            if (key == "incrementalSearch") {
-                object.listBoxContainer.jqxListBox({ incrementalSearch: object.incrementalSearch });
-            }
-
-            if (key == "incrementalSearchDelay") {
-                object.listBoxContainer.jqxListBox({ incrementalSearchDelay: object.incrementalSearchDelay });
-            }
-
-            if (key == "dropDownHeight") {
-                if (!object.autoDropDownHeight) {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                if (that.width === "auto") {
+                    that.dropdownlistContent.css('width', 'auto');
+                    width = 2 + that.dropdownlistContent.width() + arrowWidth + 2 * rightOffset;
+                    if (width < 47) {
+                        width = 47;
+                    }
+                    that.host.width(width);
                 }
-            }
+                that.dropdownlistContent[0].style.height = height + "px";
+                that.dropdownlistContent[0].style.left = "0px";
+                that.dropdownlistContent[0].style.top = "0px";
 
-            if (key == "dropDownWidth" || key == "scrollBarSize") {
-                var width = object.width;
-                if (object.dropDownWidth != 'auto') {
-                    width = object.dropDownWidth;
+                that.dropdownlistArrow[0].style.width = arrowWidth + "px";
+                if (that.width && that.width.toString().indexOf('%') >= 0) {
+                    var arrowPercentage = (arrowWidth * 100) / width;
+                    var contentPercentage = (contentWidth * 100) / width;
+                    that.dropdownlistArrow[0].style.width = arrowPercentage + '%';
+                    that.dropdownlistContent[0].style.width = contentPercentage + '%';
+                }
+                that.dropdownlistArrow[0].style.height = height + "px";
+
+                if (that.rtl) {
+                    that.dropdownlistArrow.css('float', 'left');
+                    that.dropdownlistContent.css('float', 'right');
+                }
+            },
+
+            destroy: function () {
+                $.jqx.utilities.resize(this.host, null, true);
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBoxContainer, 'unselect');
+                this.removeHandler(this.listBoxContainer, 'change');
+                this.removeHandler(this.dropdownlistWrapper, 'selectstart');
+                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBox.content, 'click');
+                this.removeHandler(this.listBoxContainer, 'bindingComplete');
+
+                if (this.host.parents()) {
+                    this.removeHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id);
                 }
 
-                object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
-                object.container.width(parseInt(width) + 25);
-            }
+                this.removeHandlers();
 
-            if (key == 'width' || key == 'height') {
-                if (value != oldvalue) {
-                    this.refresh();
+                this.listBoxContainer.jqxListBox('destroy');
+                this.listBoxContainer.remove();
+                this.host.removeClass();
+                this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
+                if (this.touch) {
+                    this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
+                }
+
+                this.dropdownlistArrow.remove();
+                delete this.dropdownlistArrow;
+                delete this.dropdownlistWrapper;
+                delete this.listBoxContainer;
+                delete this.input;
+                delete this.arrow;
+                delete this.dropdownlistContent;
+                delete this.listBox;
+                delete this._firstDiv;
+                this.container.remove();
+                delete this.container;
+                var vars = $.data(this.element, "jqxDropDownList");
+                if (vars) {
+                    delete vars.instance;
+                }
+                this.host.removeData();
+                this.host.remove();
+                delete this.comboStructure;
+                delete this.host;
+                delete this.element;
+            },
+
+            _raiseEvent: function (id, arg) {
+                if (arg == undefined)
+                    arg = { owner: null };
+
+                var evt = this.events[id];
+                var args = arg;
+                args.owner = this;
+
+                var event = new $.Event(evt);
+                event.owner = this;
+                if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
+                    event.args = arg;
+                }
+
+                var result = this.host.trigger(event);
+                return result;
+            },
+
+
+            propertiesChangedHandler: function (object, key, value) {
+                if (value.width && value.height && Object.keys(value).length == 2) {
+                    object._setSize();
                     if (key == 'width') {
                         if (object.dropDownWidth == 'auto') {
-                            var width = 2 + object.host.width();
+                            var width = object.host.width();
                             object.listBoxContainer.jqxListBox({ width: width });
                             object.container.width(parseInt(width) + 25);
                         }
                     }
+                    object._arrange();
                     object.close();
                 }
-            }
+            },
 
-            if (key == "checkboxes") {
-                object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
-            }
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (object.isInitialized == undefined || object.isInitialized == false)
+                    return;
 
-            if (key == 'selectedIndex') {
-                if (object.listBox != null) {
-                    object.listBox.selectIndex(parseInt(value));
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key == "template") {
+                    object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
+                    object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
+                    object.host.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
+                    object.host.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+                }
+
+                if (key == "dropDownVerticalAlignment") {
+                    object.close();
+                    object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    if (object.dropDownVerticalAlignment == "top") {
+                        object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    }
+                    else {
+                        object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    }
+                    object.listBoxContainer.css('top', 0);
+                    object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
+                }
+
+                if (key == "autoItemsHeight") {
+                    object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
+                }
+
+                if (key == "filterable") {
+                    object.listBoxContainer.jqxListBox({ filterable: value });
+                }
+                if (key == "filterHeight") {
+                    object.listBoxContainer.jqxListBox({ filterHeight: value });
+                }
+                if (key == "filterPlaceHolder") {
+                    object.listBoxContainer.jqxListBox({ filterPlaceHolder: value });
+                }
+                if (key == "filterDelay") {
+                    object.listBoxContainer.jqxListBox({ filterDelay: value });
+                }
+
+                if (key == "enableSelection") {
+                    object.listBoxContainer.jqxListBox({ enableSelection: value });
+                }
+                if (key == "enableHover") {
+                    object.listBoxContainer.jqxListBox({ enableHover: value });
+                }
+
+                if (key == 'autoOpen') {
+                    object._updateHandlers();
+                }
+                if (key == 'emptyString') {
+                    object.listBox.emptyString = object.emptyString;
+                }
+                if (key == "itemHeight") {
+                    object.listBoxContainer.jqxListBox({ itemHeight: value });
+                }
+
+                if (key == "renderer") {
+                    object.listBoxContainer.jqxListBox({ renderer: value });
+                }
+
+                if (key == "rtl") {
+                    if (value) {
+                        object.dropdownlistArrow.css('float', 'left');
+                        object.dropdownlistContent.css('float', 'right');
+                    }
+                    else {
+                        object.dropdownlistArrow.css('float', 'right');
+                        object.dropdownlistContent.css('float', 'left');
+                    }
+                    object.listBoxContainer.jqxListBox({ rtl: object.rtl });
+                }
+                if (key == 'source') {
+                    object.listBoxContainer.jqxListBox({ source: object.source });
+                    object.listBox.selectedIndex = -1;
+                    object.listBox.selectIndex(this.selectedIndex);
+                    object.renderSelection();
+                    if (value == null) {
+                        object.clear();
+                    }
+                }
+
+                if (key == "displayMember" || key == "valueMember") {
+                    object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
                     object.renderSelection();
                 }
+                if (key == "placeHolder") {
+                    object.renderSelection();
+                }
+
+                if (key == 'theme' && value != null) {
+                    object.listBoxContainer.jqxListBox({ theme: value });
+                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
+                    $.jqx.utilities.setTheme(oldvalue, value, object.host);
+                }
+
+                if (key == "autoDropDownHeight") {
+                    object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
+                    if (object.autoDropDownHeight) {
+                        object.container.height(object.listBoxContainer.height() + 25);
+                    }
+                    else {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+
+                    object.listBox._arrange();
+                    object.listBox._updatescrollbars();
+                }
+
+                if (key == "searchMode") {
+                    object.listBoxContainer.jqxListBox({ searchMode: object.searchMode });
+                }
+
+                if (key == "incrementalSearch") {
+                    object.listBoxContainer.jqxListBox({ incrementalSearch: object.incrementalSearch });
+                }
+
+                if (key == "incrementalSearchDelay") {
+                    object.listBoxContainer.jqxListBox({ incrementalSearchDelay: object.incrementalSearchDelay });
+                }
+
+                if (key == "dropDownHeight") {
+                    if (!object.autoDropDownHeight) {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+                }
+
+                if (key == "dropDownWidth" || key == "scrollBarSize") {
+                    var width = object.width;
+                    if (object.dropDownWidth != 'auto') {
+                        width = object.dropDownWidth;
+                    }
+
+                    object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
+                    object.container.width(parseInt(width) + 25);
+                }
+
+                if (key == 'width' || key == 'height') {
+                    if (value != oldvalue) {
+                        this.refresh();
+                        if (key == 'width') {
+                            if (object.dropDownWidth == 'auto') {
+                                var width = 2 + object.host.width();
+                                object.listBoxContainer.jqxListBox({ width: width });
+                                object.container.width(parseInt(width) + 25);
+                            }
+                        }
+                        object.close();
+                    }
+                }
+
+                if (key == "checkboxes") {
+                    object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
+                }
+
+                if (key == 'selectedIndex') {
+                    if (object.listBox != null) {
+                        object.listBox.selectIndex(parseInt(value));
+                        object.renderSelection();
+                    }
+                }
             }
-        }
-    });
-})(jqxBaseFramework);
+        });
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -31427,1000 +31369,3191 @@ var saveAs = window.jqxSaveAs = saveAs
 
 ﻿/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
-
-(function ($) {
-    window.jqxToDash = function (value) {
-        return value.split(/(?=[A-Z])/).join('-').toLowerCase();
+(function () {
+    if (typeof document === 'undefined') {
+        return;
     }
 
-    class DataExporter {
-        constructor(exportDetails, groupBy, filterBy, conditionalFormatting) {
-            const that = this;
-
-            if (!exportDetails) {
-                exportDetails = {};
-            }
-
-            /*
-             * "style" object definition (all properties are optional):
-             *
-             * «any valid CSS property» - applied to whole table
-             * header (Object)
-             *      «any valid CSS property» - applied to header cells
-             *      «any column name» (Object)
-             *          «any valid CSS property» - applied to particular column header cell
-             * columns (Object)
-             *      «any valid CSS property» - applied to column cells
-             *      «any column name» (Object)
-             *          «any valid CSS property» - applied to the cells of particular column
-             *          format - applicable to numeric and date columns
-             *          «n» (Object), where «n» is a row index (related to use of "ConditionalFormatting" object)
-             *              background
-             *              border
-             *              color
-             * rows (Object)
-             *      «any valid CSS property» - applied to rows
-             *      alternationCount
-             *      alternationStart
-             *      alternationEnd
-             *      alternationIndex«n»Color, where «n» is an integer
-             *      alternationIndex«n»BorderColor, where «n» is an integer
-             *      alternationIndex«n»BackgroundColor, where «n» is an integer
-             *      «n» (Object), where «n» is a row index
-             *          «any valid CSS property» - applied to particular row
-             */
-            that.style = exportDetails.style;
-
-            that.header = exportDetails.header;
-            that.exportHeader = exportDetails.exportHeader || true;
-            that.hierarchical = exportDetails.hierarchical;
-            that.expandChar = exportDetails.expandChar || '+';
-            that.collapseChar = exportDetails.collapseChar || '-';
-            that.pageOrientation = exportDetails.pageOrientation;
-
-            if (!that.hierarchical && groupBy && groupBy.length > 0) {
-                that.groupBy = groupBy;
-            }
-            else {
-                that.mergedCells = exportDetails.mergedCells;
-            }
-
-            if (!that.groupBy && filterBy && Object.keys(filterBy).length > 0) {
-                that.filterBy = filterBy;
-            }
-
-            if (conditionalFormatting) {
-                that.conditionalFormatting = conditionalFormatting;
-            }
-
-            that.timeBetween1900And1970 = new Date(1970, 0, 1).getTime() - new Date(1900, 0, 1).getTime();
+    (function ($) {
+        window.jqxToDash = function (value) {
+            return value.split(/(?=[A-Z])/).join('-').toLowerCase();
         }
 
-        /**
-         * Generates and downloads a file.
-         */
-        downloadFile(data, type, fileName) {
-            let file;
-
-            if (!fileName) {
-                return data;
+        var LINE_SEPARATOR2 = "\r\n";
+        function returnAttributeIfPopulated(key, value, booleanTransformer) {
+            if (!value && value !== "" && value !== 0) {
+                return "";
             }
-
-            if (data instanceof Blob) {
-                file = data;
+            let xmlValue = value;
+            if (typeof value === "boolean") {
+                if (booleanTransformer) {
+                    xmlValue = booleanTransformer(value);
+                }
             }
-            else {
-                file = new Blob([data], { type: type });
-            }
-
-            if (window.navigator.msSaveOrOpenBlob) { // Edge
-                window.navigator.msSaveOrOpenBlob(file, fileName);
-            }
-            else { // Chrome, Firefox, Safari
-                const a = document.createElement('a'),
-                    url = URL.createObjectURL(file);
-
-                a.href = url;
-                a.download = fileName;
-                a.style.position = 'absolute';
-                a.style.visibility = 'hidden';
-
-                document.body.appendChild(a);
-
-                a.click();
-
-                setTimeout(function () {
-                    document.body.removeChild(a);
-                    window.URL.revokeObjectURL(url);
-                }, 0);
-            }
+            return ` ${key}="${xmlValue}"`;
         }
 
-        /**
-         * Exports data.
-         */
-        exportData(data, format, fileName, callback) {
-            const that = this;
-
-            that.actualHierarchy = that.hierarchical;
-            format = format.toLowerCase();
-
-            if (that.exportHeader) {
-                if (that.header) {
-                    data = data.slice(0);
-
-                    if (data.length === 0) {
-                        that.actualHierarchy = false;
+        var XmlFactory = class {
+            static createHeader(headerElement = {}) {
+                const headerStart = "<?";
+                const headerEnd = "?>";
+                const keys = ["version"];
+                if (!headerElement.version) {
+                    headerElement.version = "1.0";
+                }
+                if (headerElement.encoding) {
+                    keys.push("encoding");
+                }
+                if (headerElement.standalone) {
+                    keys.push("standalone");
+                }
+                const att = keys.map((key) => `${key}="${headerElement[key]}"`).join(" ");
+                return `${headerStart}xml ${att} ${headerEnd}`;
+            }
+            static createXml(xmlElement, booleanTransformer) {
+                let props = "";
+                if (xmlElement.properties) {
+                    if (xmlElement.properties.prefixedAttributes) {
+                        xmlElement.properties.prefixedAttributes.forEach((prefixedSet) => {
+                            Object.keys(prefixedSet.map).forEach((key) => {
+                                props += returnAttributeIfPopulated(
+                                    prefixedSet.prefix + key,
+                                    prefixedSet.map[key],
+                                    booleanTransformer
+                                );
+                            });
+                        });
                     }
-
-                    that.processComplexHeader(that.header, data, format);
-                }
-                else if (data.length === 1) {
-                    that.actualHierarchy = false;
-                }
-            }
-
-            if (data.length === 0) {
-                // eslint-disable-next-line
-                console.warn('No data to export.');
-                return;
-            }
-
-            if (format === 'xlsx') {
-                that.xlsxStartIndex = that.complexHeader ? that.complexHeader.length : +that.exportHeader;
-            }
-
-            if (that.actualHierarchy) {
-                data = that.processHierarchicalData(data, format);
-            }
-
-            that.getDatafields(data);
-
-            if (fileName && fileName.slice(fileName.length - format.length - 1, fileName.length) !== '.' + format) {
-                fileName += '.' + format;
-            }
-
-            let output = null;
-            switch (format) {
-                case 'csv':
-                    output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv', toRemove: 2 }, fileName);
-                    break;
-                case 'html':
-                    output = that.exportToHTML(data, fileName);
-                    break;
-                case 'jpeg':
-                case 'png':
-                    that.exportToImage(data, fileName, format, callback);
-                    break;
-                case 'json':
-                    output = that.exportToJSON(data, fileName);
-                    break;
-                case 'pdf':
-                    output = that.exportToPDF(data, fileName);
-                    break;
-                case 'tsv':
-                    output = that.exportToCSVAndTSV(data, { delimiter: '\t', MIME: 'text/tab-separated-values', toRemove: 1 }, fileName);
-                    break;
-                case 'xlsx':
-                    output = that.exportToXLSX(data, fileName);
-                    break;
-                case 'xml':
-                    output = that.exportToXML(data, fileName);
-                    break;
-            }
-
-            if (callback && output) {
-                callback(output);
-            }
-
-            delete that.complexHeader;
-
-            return output;
-        }
-
-        /**
-         * Exports to CSV and TSV.
-         */
-        exportToCSVAndTSV(data, formatOptions, fileName) {
-            const that = this,
-                datafields = that.datafields;
-            let stringResult = '';
-
-            for (let i = 0; i < data.length; i++) {
-                const currentRecord = data[i];
-                let stringifiedCurrentRecord = '';
-
-                for (let j = 0; j < datafields.length; j++) {
-                    if (that.actualHierarchy && j === 0) {
-                        stringifiedCurrentRecord += ('""' + formatOptions.delimiter).repeat(currentRecord._level - 1) +
-                            '"' + currentRecord[datafields[j]] + '"' + formatOptions.delimiter +
-                            ('""' + formatOptions.delimiter).repeat(that.maxLevel - currentRecord._level);
-                        continue;
-                    }
-
-                    stringifiedCurrentRecord += '"' + currentRecord[datafields[j]] + '"' + formatOptions.delimiter;
-                }
-
-                stringifiedCurrentRecord = stringifiedCurrentRecord.slice(0, stringifiedCurrentRecord.length - formatOptions.toRemove) + '\n';
-                stringResult += stringifiedCurrentRecord;
-            }
-
-            return this.downloadFile(stringResult, formatOptions.MIME, fileName);
-        }
-
-        /**
-         * Exports to HTML.
-         */
-        exportToHTML(data, fileName) {
-            const that = this,
-                datafields = that.datafields,
-                style = that.style;
-            let header = '',
-                startIndex = 0,
-                html2canvas = '';
-
-            data = that.processGroupingInformation(data);
-            that.data = data;
-
-            if (that.exportHeader) {
-                header = that.getHTMLHeader(datafields, data);
-                startIndex = 1;
-            }
-
-            if (arguments[2]) {
-                const scripts = Array.from(document.getElementsByTagName('script')),
-                    html2canvasScript = scripts.find(script => script.src.indexOf('html2canvas') !== -1);
-                html2canvas = `<script type="text/javascript" src="${html2canvasScript.src}"></script>`;
-            }
-
-            let htmlContent = `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style type="text/css">
-${that.getRowStyle()}${that.getColumnStyle()}
-    </style>${html2canvas}${that.toggleableFunctionality()}
-</head>
-<body>
-    <table${that.getTableStyle()}>${header}
-        <tbody>\n`;
-
-            const mergedMainCells = {},
-                mergedSecondaryCells = {},
-                groupsHandled = [];
-
-            that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells);
-
-            mainLoop:
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = data[i],
-                    row = i - startIndex;
-                let n = that.getAlternationIndex(row, ' rowN'),
-                    toCollapse = '',
-                    level = '',
-                    groupId = '',
-                    outlineLevel = 0;
-
-                if (that.actualHierarchy) {
-                    if (currentRecord._collapsed) {
-                        toCollapse = ' collapsed';
-                    }
-
-                    level = ` level="${currentRecord._level}"`;
-                }
-                else if (that.groupBy) {
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
-
-                        groupId += currentGroup;
-
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            htmlContent += `            <tr class="row">
-                <td class="column group" style="padding-left: ${outlineLevel * 25}px;" colspan="${that.datafields.length}">${currentGroupLabel}</td>
-            </tr>`;
-                            groupsHandled.push(groupId);
-                            i--;
-                            continue mainLoop;
-                        }
-
-                        outlineLevel++;
+                    if (xmlElement.properties.rawMap) {
+                        Object.keys(xmlElement.properties.rawMap).forEach((key) => {
+                            props += returnAttributeIfPopulated(key, xmlElement.properties.rawMap[key], booleanTransformer);
+                        });
                     }
                 }
+                let result = "<" + xmlElement.name + props;
+                if (!xmlElement.children && xmlElement.textNode == null) {
+                    return result + "/>" + LINE_SEPARATOR2;
+                }
+                if (xmlElement.textNode != null) {
+                    return result + ">" + xmlElement.textNode + "</" + xmlElement.name + ">" + LINE_SEPARATOR2;
+                }
+                result += ">" + LINE_SEPARATOR2;
+                if (xmlElement.children) {
+                    xmlElement.children.forEach((it) => {
+                        result += this.createXml(it, booleanTransformer);
+                    });
+                }
+                return result + "</" + xmlElement.name + ">" + LINE_SEPARATOR2;
+            }
+        };
 
-                let currentContent = `            <tr class="row row${row}${n}${toCollapse}"${level}`;
+        class DataExporter {
+            constructor(exportDetails, groupBy, filterBy, conditionalFormatting) {
+                const that = this;
 
-                if (!fileName) {
-                    currentContent += ' style="page-break-inside: avoid;"'
+                if (!exportDetails) {
+                    exportDetails = {};
                 }
 
-                currentContent += '>\n';
+                /*
+                 * "style" object definition (all properties are optional):
+                 *
+                 * «any valid CSS property» - applied to whole table
+                 * header (Object)
+                 *      «any valid CSS property» - applied to header cells
+                 *      «any column name» (Object)
+                 *          «any valid CSS property» - applied to particular column header cell
+                 * columns (Object)
+                 *      «any valid CSS property» - applied to column cells
+                 *      «any column name» (Object)
+                 *          «any valid CSS property» - applied to the cells of particular column
+                 *          format - applicable to numeric and date columns
+                 *          «n» (Object), where «n» is a row index (related to use of "ConditionalFormatting" object)
+                 *              background
+                 *              border
+                 *              color
+                 * rows (Object)
+                 *      «any valid CSS property» - applied to rows
+                 *      alternationCount
+                 *      alternationStart
+                 *      alternationEnd
+                 *      alternationIndex«n»Color, where «n» is an integer
+                 *      alternationIndex«n»BorderColor, where «n» is an integer
+                 *      alternationIndex«n»BackgroundColor, where «n» is an integer
+                 *      «n» (Object), where «n» is a row index
+                 *          «any valid CSS property» - applied to particular row
+                 */
+                that.style = exportDetails.style;
 
-                for (let j = 0; j < datafields.length; j++) {
-                    const cellCode = j + ',' + (row);
-                    let colspan = 1, rowspan = 1;
+                that.header = exportDetails.header;
+                that.exportHeader = exportDetails.exportHeader !== undefined ? exportDetails.exportHeader : true;
+                that.hierarchical = exportDetails.hierarchical;
+                that.expandChar = exportDetails.expandChar || '+';
+                that.collapseChar = exportDetails.collapseChar || '-';
+                that.pageOrientation = exportDetails.pageOrientation;
+                that.allowNull = exportDetails.allowNull || false;
+                that.spreadsheets = exportDetails.spreadsheets || null;
 
-                    if (mergedMainCells[cellCode]) {
-                        colspan = mergedMainCells[cellCode].colspan;
-                        rowspan = mergedMainCells[cellCode].rowspan;
-                    }
-                    else if (mergedSecondaryCells[cellCode]) {
-                        continue;
-                    }
+                that._media = [];
 
-                    const datafield = datafields[j];
-                    let value = currentRecord[datafield],
-                        indent = '';
-
-                    if (that.actualHierarchy && j === 0) {
-                        let sign = '';
-
-                        if (currentRecord._expanded) {
-                            sign = that.collapseChar;
-                        }
-                        else if (currentRecord._expanded === false) {
-                            sign = that.expandChar;
-                        }
-
-                        indent = `<div class="toggle-element" style="margin-left: ${25 * (currentRecord._level - 1) + 5}px;" expanded>${sign}</div>`;
-                    }
-
-                    value = that.getFormattedValue(value, datafield);
-
-                    let css = '';
-
-                    if (style && style.columns && style.columns[datafield] && style.columns[datafield][row]) {
-                        const uniqueStyle = style.columns[datafield][row];
-
-                        css += `border-color: ${uniqueStyle.border}; background-color: ${uniqueStyle.background}; color: ${uniqueStyle.color};"`;
-                    }
-
-                    if (j === 0 && outlineLevel > 1) {
-                        css += `padding-left: ${(outlineLevel - 1) * 25}px;"`;
-                    }
-
-                    if (css) {
-                        css = ` style="${css}"`;
-                    }
-
-                    currentContent += `                <td class="column column${datafield}"${css} colspan="${colspan}" rowspan="${rowspan}">${indent + value}</td>\n`;
-                }
-
-                htmlContent += currentContent + '            </tr>\n';
-            }
-
-            htmlContent += `        </tbody>
-    </table>
-</body>
-</html>`;
-
-            if (arguments[2]) {
-                return htmlContent;
-            }
-
-            return this.downloadFile(htmlContent, 'text/html', fileName);
-        }
-
-        /**
-         * Exports to an image (PNG/JPEG).
-         */
-        exportToImage(data, fileName, fileExtension, callback) {
-            const that = this;
-
-            try {
-                html2canvas;
-            }
-            catch (error) {
-                throw new Error('jqx-grid: Missing reference to \'html2canvas.min.js\'.');
-            }
-
-            let imageData = null;
-
-            const htmlContent = that.exportToHTML(data, fileName, true),
-                iframe = document.createElement('iframe');
-
-            iframe.style.position = 'absolute';
-            iframe.style.top = 0;
-            iframe.style.left = 0;
-            iframe.style.border = 'none';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.opacity = 0;
-
-            document.body.appendChild(iframe);
-
-            iframe.contentDocument.write(htmlContent);
-
-            function checkIframePopulated() {
-                if (!iframe.contentDocument.body || !iframe.contentDocument.body.firstElementChild) {
-                    requestAnimationFrame(checkIframePopulated);
+                if (!that.hierarchical && groupBy && groupBy.length > 0) {
+                    that.groupBy = groupBy;
                 }
                 else {
-                    iframe.contentWindow.html2canvas(iframe.contentDocument.body.firstElementChild).then(canvas => {
-                        const draw = $.jqxDraw(document.createElement('div'));
+                    that.mergedCells = exportDetails.mergedCells;
+                }
 
-                        imageData = canvas.toDataURL('image/png');
+                if (!that.groupBy && filterBy && Object.keys(filterBy).length > 0) {
+                    that.filterBy = filterBy;
+                }
 
-                        if (callback) {
-                            callback(imageData);
-                        }
-                        else {
-                            document.body.appendChild(canvas);
-                            draw.exportImage(undefined, canvas, fileExtension, fileName);
-                        }
+                if (conditionalFormatting) {
+                    that.conditionalFormatting = conditionalFormatting;
+                }
 
-                        iframe.remove();
-                        canvas.remove();
-                    });
+                that.timeBetween1900And1970 = new Date(1970, 0, 1, 0, 0, 0).getTime() - new Date(1900, 0, 1, 0, 0, 0).getTime();
+            }
+
+            /**
+             * Generates and downloads a file.
+             */
+            downloadFile(data, type, fileName) {
+                let file;
+
+                if (!fileName) {
+                    return data;
+                }
+
+                if (data instanceof Blob) {
+                    file = data;
+                }
+                else {
+                    file = new Blob([data], { type: type });
+                }
+
+                if (window.navigator.msSaveOrOpenBlob) { // Edge
+                    window.navigator.msSaveOrOpenBlob(file, fileName);
+                }
+                else { // Chrome, Firefox, Safari
+                    const a = document.createElement('a'),
+                        url = URL.createObjectURL(file);
+
+                    a.href = url;
+                    a.download = fileName;
+                    a.style.position = 'absolute';
+                    a.style.visibility = 'hidden';
+
+                    document.body.appendChild(a);
+
+                    a.click();
+
+                    setTimeout(function () {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }, 100);
                 }
             }
 
-            checkIframePopulated();
+            /**
+             * Exports data.
+             */
+            exportData(data, format, fileName, callback) {
+                const that = this;
 
-            return imageData;
-        }
+                that.actualHierarchy = that.hierarchical;
+                format = format.toLowerCase();
 
-        /**
-         * Gets merged cells information (for use in HTML and PDF export).
-         */
-        getMergedCellsInfo(mergedMainCells, mergedSecondaryCells, mapping) {
-            const that = this;
+                if (that.exportHeader) {
+                    if (that.header) {
+                        data = data.slice(0);
 
-            if (!that.mergedCells) {
-                return;
-            }
-
-            const multipleTables = mapping && mapping[that.datafields.length - 1] !== 0;
-
-            that.mergedCellsPDF = that.mergedCells.slice(0);
-
-            for (let i = 0; i < that.mergedCellsPDF.length; i++) {
-                const cellDefinition = that.mergedCellsPDF[i];
-                let colspan = cellDefinition.colspan,
-                    rowspan = cellDefinition.rowspan;
-
-                if (rowspan < 2 && colspan < 2) {
-                    continue;
-                }
-
-                const row = cellDefinition.cell[1];
-                let col = cellDefinition.cell[0];
-
-                if (multipleTables && colspan > 1) {
-                    const startTable = mapping[col],
-                        endTable = mapping[col + colspan - 1],
-                        splitCells = [];
-
-                    if (endTable > startTable) {
-                        let currentTable = startTable,
-                            currentColumn = col,
-                            overal = 0;
-
-                        mainLoop:
-                        for (let i = startTable; i <= endTable; i++) {
-                            let start = currentColumn,
-                                span = 0;
-
-                            while (mapping[currentColumn] === currentTable) {
-                                currentColumn++;
-                                overal++;
-                                span++;
-
-                                if (overal === colspan) {
-                                    splitCells.push({ start: start, span: span });
-                                    break mainLoop;
-                                }
-                            }
-
-                            splitCells.push({ start: start, span: span });
-                            currentTable = mapping[currentColumn];
+                        if (data.length === 0) {
+                            that.actualHierarchy = false;
                         }
 
-                        colspan = splitCells[0].span;
-
-                        for (let i = 1; i < splitCells.length; i++) {
-                            that.mergedCellsPDF.push({ cell: [splitCells[i].start, row], colspan: splitCells[i].span, rowspan: rowspan, originalCell: col });
-                        }
+                        that.processComplexHeader(that.header, data, format);
+                    }
+                    else if (data.length === 1) {
+                        that.actualHierarchy = false;
                     }
                 }
 
-                for (let j = col; j < col + colspan; j++) {
-                    for (let k = row; k < row + rowspan; k++) {
-                        const code = j + ',' + k;
-
-                        if (j === col && k === row) {
-                            mergedMainCells[code] = { colspan: colspan, rowspan: rowspan, originalCell: cellDefinition.originalCell };
-                            continue;
-                        }
-
-                        mergedSecondaryCells[code] = true;
-                    }
-                }
-            }
-        }
-
-        /**
-         * Gets alternation index.
-         */
-        getAlternationIndex(row, prefix) {
-            const that = this;
-
-            if (!that.style) {
-                return '';
-            }
-
-            const rowsDefinition = that.style.rows,
-                alternationCount = rowsDefinition && rowsDefinition.alternationCount;
-
-            if (alternationCount &&
-                (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
-                    (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
-                    rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
-                return prefix + (row % rowsDefinition.alternationCount);
-            }
-
-            return '';
-        }
-
-        /**
-         * Gets formatted numeric or date value (for use in HTML and PDF export).
-         */
-        getFormattedValue(value, datafield) {
-            const that = this,
-                style = that.style;
-
-            if (datafield && style && style.columns &&
-                style.columns[datafield] && style.columns[datafield].format) {
-                if (typeof value === 'number') {
-                    return that.formatNumber(value, style.columns[datafield].format);
-                }
-                else if (value instanceof Date) {
-                    return that.formatDate(value, style.columns[datafield].format);
-                }
-            }
-            else if (value instanceof Date) {
-                return that.formatDate(value, 'd');
-            }
-
-            return value;
-        }
-
-        /**
-         * Exports to JSON.
-         */
-        exportToJSON(data, fileName) {
-            return this.downloadFile(JSON.stringify(data, this.datafields.concat('rows')), 'application/json', fileName);
-        }
-
-        /**
-         * Exports to PDF.
-         */
-        exportToPDF(data, fileName) {
-            const that = this,
-                datafields = that.datafields,
-                startIndex = +that.exportHeader,
-                groupsHandled = [],
-                mergedMainCells = {},
-                mergedSecondaryCells = {},
-                mapping = {},
-                headerRows = startIndex ? that.complexHeader ? that.complexHeader.length : 1 : 0,
-                docDefinition = {
-                    pageOrientation: that.pageOrientation || 'portrait'
-                };
-            let header = [], content = [], tables;
-
-            function createTableRow() {
-                let tableRow = [];
-
-                for (let i = 0; i < tables.length; i++) {
-                    tableRow.push([]);
-                }
-
-                return tableRow;
-            }
-
-            data = that.processGroupingInformation(data);
-            that.data = data;
-            that.headerRows = headerRows;
-            that.getPDFStyle();
-
-            const styleInfo = that.styleInfo;
-
-            tables = styleInfo ? that.wrapPDFColumns(docDefinition, mapping) : [{ body: header, datafields: datafields }];
-
-            if (startIndex) {
-                header = that.getPDFHeader(datafields, tables, mapping);
-            }
-
-            that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells, mapping);
-
-            mainLoop:
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = data[i];
-                let groupId = '',
-                    outlineLevel = 0;
-
-                if (that.groupBy) {
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
-
-                        groupId += currentGroup;
-
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            that.createGroupHeaderRow(tables, { text: currentGroupLabel, style: ['row', 'cell', 'group'], marginLeft: outlineLevel * 7.5 });
-                            groupsHandled.push(groupId);
-                            i--;
-                            continue mainLoop;
-                        }
-
-                        outlineLevel++;
-                    }
-                }
-
-                const tableRow = createTableRow(),
-                    row = i - startIndex;
-                let n = that.getAlternationIndex(row, '');
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const datafield = datafields[j],
-                        entry = { style: ['row', 'row' + row, 'cell', 'cell' + datafield] },
-                        tableIndex = mapping[j] || 0;
-
-                    if (n !== undefined) {
-                        entry.style.splice(1, 0, 'rowN' + n);
-                    }
-
-                    if (that.mergedCellsPDF) {
-                        const cellCode = j + ',' + row,
-                            mergeInfo = mergedMainCells[cellCode];
-
-                        if (mergeInfo) {
-                            entry.colSpan = mergeInfo.colspan;
-                            entry.rowSpan = mergeInfo.rowspan;
-
-                            if (mergeInfo.originalCell !== undefined) {
-                                entry.text = '';
-                                entry.style[entry.style.length - 1] = 'cell' + datafields[mergeInfo.originalCell];
-                                tableRow[tableIndex].push(entry);
-                                continue;
-                            }
-                        }
-                        else if (mergedSecondaryCells[cellCode]) {
-                            tableRow[tableIndex].push({});
-                            continue;
-                        }
-                    }
-
-                    const value = that.getFormattedValue(currentRecord[datafield], datafield);
-
-                    entry.text = value.toString();
-                    that.getUniqueStylePDF(entry, datafield, row);
-                    that.setIndentation(entry, { j: j, currentRecord: currentRecord, value: value, outlineLevel: outlineLevel });
-                    tableRow[tableIndex].push(entry);
-                }
-
-                for (let k = 0; k < tables.length; k++) {
-                    tables[k].body.push(tableRow[k]);
-                }
-            }
-
-            if (styleInfo) {
-                for (let i = 0; i < tables.length; i++) {
-                    const body = tables[i].body;
-
-                    for (let j = headerRows - 1; j >= 0; j--) {
-                        body.unshift(header[i][j]);
-                    }
-
-                    content.push({
-                        table: {
-                            headerRows: headerRows,
-                            widths: tables[i].widths,
-                            heights: function (row) {
-                                if (styleInfo.heights[row]) {
-                                    return styleInfo.heights[row];
-                                }
-
-                                if (styleInfo.defaultHeight) {
-                                    return styleInfo.defaultHeight;
-                                }
-                            },
-                            body: body
-                        },
-                        pageBreak: 'after'
-                    });
-                }
-
-                delete content[tables.length - 1].pageBreak;
-                docDefinition.styles = styleInfo.styles;
-            }
-            else {
-                const body = tables[0].body;
-
-                for (let j = headerRows - 1; j >= 0; j--) {
-                    body.unshift(header[0][j]);
-                }
-
-                content = [{ table: { headerRows: headerRows, body: body } }];
-                docDefinition.styles = { header: { bold: true }, group: { bold: true } };
-            }
-
-            docDefinition.content = content;
-            pdfMake.createPdf(docDefinition).download(fileName);
-
-            delete that.mergedCellsPDF;
-            delete that.styleInfo;
-        }
-
-        /**
-         * Gets the header content when exporting to PDF.
-         */
-        getPDFStyle() {
-            const that = this,
-                style = that.style;
-
-            if (!style) {
-                return '';
-            }
-
-            const sampleRecord = that.data[0],
-                headerDefinition = style.header,
-                columnsDefinition = style.columns,
-                rowsDefinition = style.rows,
-                styleInfo = {
-                    heights: [],
-                    widths: Array(that.datafields.length).fill('*'),
-                    styles: {
-                        header: {},
-                        row: {},
-                        cell: {},
-                        group: { fillColor: '#FFFFFF', color: '#000000', bold: true }
-                    }
-                };
-
-            that.styleInfo = styleInfo;
-
-            function processStyleDefinition(definition, type) {
-                if (!definition) {
+                if (data.length === 0) {
+                    // eslint-disable-next-line
+                    console.warn('No data to export.');
                     return;
                 }
 
-                for (let prop in definition) {
-                    if (!definition.hasOwnProperty(prop)) {
+                if (format === 'xlsx') {
+                    that.xlsxStartIndex = that.complexHeader ? that.complexHeader.length : +that.exportHeader;
+
+                    const offset = that.headerContent ? that.headerContent.length : 0;
+                    that.xlsxStartIndex = that.xlsxStartIndex + offset;
+                }
+
+                if (that.actualHierarchy) {
+                    data = that.processHierarchicalData(data, format);
+                }
+
+                that.getDatafields(data);
+
+                if (fileName && fileName.slice(fileName.length - format.length - 1, fileName.length) !== '.' + format) {
+                    fileName += '.' + format;
+                }
+
+                let output = null;
+                switch (format) {
+                    case 'csv':
+                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv', toRemove: 2 }, fileName);
+                        break;
+                    case 'html':
+                        output = that.exportToHTML(data, fileName);
+                        break;
+                    case 'jpeg':
+                    case 'png':
+                        that.exportToImage(data, fileName, format, callback);
+                        break;
+                    case 'json':
+                        output = that.exportToJSON(data, fileName);
+                        break;
+                    case 'pdf':
+                        output = that.exportToPDF(data, fileName);
+                        break;
+                    case 'tsv':
+                        output = that.exportToCSVAndTSV(data, { delimiter: '\t', MIME: 'text/tab-separated-values', toRemove: 1 }, fileName);
+                        break;
+                    case 'xlsx':
+                        output = that.exportToXLSX(data, fileName, callback);
+                        break;
+                    case 'xml':
+                        output = that.exportToXML(data, fileName);
+                        break;
+                    case 'md':
+                        output = that.exportToMD(data, fileName);
+                        break;
+                }
+
+                if (callback && output) {
+                    callback(output);
+                }
+
+                delete that.complexHeader;
+
+                return output;
+            }
+
+            /**
+             * Exports to CSV and TSV.
+             */
+            exportToCSVAndTSV(data, formatOptions, fileName) {
+                const that = this,
+                    datafields = that.datafields;
+                let stringResult = '';
+
+                for (let i = 0; i < data.length; i++) {
+                    const currentRecord = data[i];
+                    let stringifiedCurrentRecord = '';
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        if (that.actualHierarchy && j === 0) {
+                            stringifiedCurrentRecord += ('""' + formatOptions.delimiter).repeat(currentRecord._level - 1) +
+                                '"' + currentRecord[datafields[j]] + '"' + formatOptions.delimiter +
+                                ('""' + formatOptions.delimiter).repeat(that.maxLevel - currentRecord._level);
+                            continue;
+                        }
+
+                        stringifiedCurrentRecord += '"' + currentRecord[datafields[j]] + '"' + formatOptions.delimiter;
+                    }
+
+                    stringifiedCurrentRecord = stringifiedCurrentRecord.slice(0, stringifiedCurrentRecord.length - formatOptions.toRemove) + '\n';
+                    stringResult += stringifiedCurrentRecord;
+                }
+
+                if (!fileName) {
+                    return stringResult;
+                }
+                return this.downloadFile(stringResult, formatOptions.MIME, fileName);
+            }
+
+            /**
+             * Exports to HTML.
+             */
+            exportToHTML(data, fileName) {
+                const that = this,
+                    datafields = that.datafields,
+                    style = that.style;
+                let header = '',
+                    startIndex = 0,
+                    html2canvas = '';
+
+                data = that.processGroupingInformation(data);
+                that.data = data;
+
+                if (that.exportHeader) {
+                    header = that.getHTMLHeader(datafields, data);
+                    startIndex = 1;
+                }
+
+                if (arguments[2]) {
+                    const scripts = Array.from(document.getElementsByTagName('script')),
+                        html2canvasScript = scripts.find(script => script.src.indexOf('html2canvas') !== -1);
+                    html2canvas = `<script type="text/javascript" src="${html2canvasScript.src}"></script>`;
+                }
+
+                let htmlContent = `<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style type="text/css">
+    ${that.getRowStyle()}${that.getColumnStyle()}
+        </style>${html2canvas}${that.toggleableFunctionality()}
+    </head>
+    <body>
+        <table${that.getTableStyle()}>${header}
+            <tbody>\n`;
+
+                const mergedMainCells = {},
+                    mergedSecondaryCells = {},
+                    groupsHandled = [];
+
+                that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells);
+
+                mainLoop:
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = data[i],
+                        row = i - startIndex;
+                    let n = that.getAlternationIndex(row, ' rowN'),
+                        toCollapse = '',
+                        level = '',
+                        groupId = '',
+                        outlineLevel = 0;
+
+                    if (that.actualHierarchy) {
+                        if (currentRecord._collapsed) {
+                            toCollapse = ' collapsed';
+                        }
+
+                        level = ` level="${currentRecord._level}"`;
+                    }
+                    else if (that.groupBy) {
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
+
+                            groupId += currentGroup;
+
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                htmlContent += `            <tr class="row">
+                    <td class="column group" style="padding-left: ${outlineLevel * 25}px;" colspan="${that.datafields.length}">${currentGroupLabel}</td>
+                </tr>`;
+                                groupsHandled.push(groupId);
+                                i--;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
+                        }
+                    }
+
+                    let currentContent = `            <tr class="row row${row}${n}${toCollapse}"${level}`;
+
+                    if (!fileName) {
+                        currentContent += ' style="page-break-inside: avoid;"'
+                    }
+
+                    currentContent += '>\n';
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const cellCode = j + ',' + (row);
+                        let colspan = 1, rowspan = 1;
+
+                        if (mergedMainCells[cellCode]) {
+                            colspan = mergedMainCells[cellCode].colspan;
+                            rowspan = mergedMainCells[cellCode].rowspan;
+                        }
+                        else if (mergedSecondaryCells[cellCode]) {
+                            continue;
+                        }
+
+                        const datafield = datafields[j];
+                        let value = currentRecord[datafield],
+                            indent = '';
+
+                        if (that.actualHierarchy && j === 0) {
+                            let sign = '';
+
+                            if (currentRecord._expanded) {
+                                sign = that.collapseChar;
+                            }
+                            else if (currentRecord._expanded === false) {
+                                sign = that.expandChar;
+                            }
+
+                            indent = `<div class="toggle-element" style="margin-left: ${25 * (currentRecord._level - 1) + 5}px;" expanded>${sign}</div>`;
+                        }
+
+                        value = that.getFormattedValue(value, datafield);
+
+                        if (typeof value === 'string' && (value.indexOf('base64') >= 0 || value.indexOf('.svg') >= 0 || value.indexOf('.png') >= 0 || value.indexOf('.jpeg') >= 0)) {
+                            value = `<img height="30" src="${value}"/>`;
+                        }
+
+                        let css = '';
+
+                        if (style && style.columns && style.columns[datafield] && style.columns[datafield][row]) {
+                            const uniqueStyle = style.columns[datafield][row];
+
+                            css += `border-color: ${uniqueStyle.border}; background-color: ${uniqueStyle.background}; color: ${uniqueStyle.color};"`;
+                        }
+
+                        if (j === 0 && outlineLevel > 1) {
+                            css += `padding-left: ${(outlineLevel - 1) * 25}px;"`;
+                        }
+
+                        if (css) {
+                            css = ` style="${css}"`;
+                        }
+
+                        currentContent += `                <td class="column column${datafield}"${css} colspan="${colspan}" rowspan="${rowspan}">${indent + value}</td>\n`;
+                    }
+
+                    htmlContent += currentContent + '            </tr>\n';
+                }
+
+                htmlContent += `        </tbody>
+        </table>
+    </body>
+    </html>`;
+
+                if (arguments[2]) {
+                    return htmlContent;
+                }
+
+                return this.downloadFile(htmlContent, 'text/html', fileName);
+            }
+
+            /**
+             * Exports to an image (PNG/JPEG).
+             */
+            exportToImage(data, fileName, fileExtension, callback) {
+                const that = this;
+
+                try {
+                    html2canvas;
+                }
+                catch (error) {
+                    throw new Error('jqx-grid: Missing reference to \'html2canvas.min.js\'.');
+                }
+
+                let imageData = null;
+
+                const htmlContent = that.exportToHTML(data, fileName, true),
+                    iframe = document.createElement('iframe');
+
+                iframe.style.position = 'absolute';
+                iframe.style.top = 0;
+                iframe.style.left = 0;
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.opacity = 0;
+                iframe.style.pointerEvents = 'none';
+
+                document.body.appendChild(iframe);
+
+                iframe.contentDocument.write(htmlContent);
+
+                function checkIframePopulated() {
+                    if (!iframe.contentDocument.body || !iframe.contentDocument.body.firstElementChild) {
+                        requestAnimationFrame(checkIframePopulated);
+                    }
+                    else {
+                        iframe.contentWindow.html2canvas(iframe.contentDocument.body.firstElementChild).then(canvas => {
+                            const draw = new JQX.Utilities.Draw(document.createElement('div'));
+
+                            imageData = canvas.toDataURL('image/png');
+
+                            if (callback) {
+                                callback(imageData);
+                            }
+                            else {
+                                document.body.appendChild(canvas);
+                                draw.exportImage(undefined, canvas, fileExtension, fileName);
+                            }
+
+                            iframe.remove();
+                            canvas.remove();
+                        });
+                    }
+                }
+
+                checkIframePopulated();
+
+                return imageData;
+            }
+
+            /**
+             * Gets merged cells information (for use in HTML and PDF export).
+             */
+            getMergedCellsInfo(mergedMainCells, mergedSecondaryCells, mapping) {
+                const that = this;
+
+                if (!that.mergedCells) {
+                    return;
+                }
+
+                const multipleTables = mapping && mapping[that.datafields.length - 1] !== 0;
+
+                that.mergedCellsPDF = that.mergedCells.slice(0);
+
+                for (let i = 0; i < that.mergedCellsPDF.length; i++) {
+                    const cellDefinition = that.mergedCellsPDF[i];
+                    let colspan = cellDefinition.colspan,
+                        rowspan = cellDefinition.rowspan;
+
+                    if (rowspan < 2 && colspan < 2) {
                         continue;
                     }
 
-                    if (sampleRecord[prop] === undefined) {
-                        if (prop === 'height' && type === 'header') {
-                            for (let i = 0; i < that.headerRows; i++) {
-                                styleInfo.heights[i] = (parseInt(definition[prop], 10) / that.headerRows) / 1.57;
+                    const row = cellDefinition.cell[1];
+                    let col = cellDefinition.cell[0];
+
+                    if (multipleTables && colspan > 1) {
+                        const startTable = mapping[col],
+                            endTable = mapping[col + colspan - 1],
+                            splitCells = [];
+
+                        if (endTable > startTable) {
+                            let currentTable = startTable,
+                                currentColumn = col,
+                                overal = 0;
+
+                            mainLoop:
+                            for (let i = startTable; i <= endTable; i++) {
+                                let start = currentColumn,
+                                    span = 0;
+
+                                while (mapping[currentColumn] === currentTable) {
+                                    currentColumn++;
+                                    overal++;
+                                    span++;
+
+                                    if (overal === colspan) {
+                                        splitCells.push({ start: start, span: span });
+                                        break mainLoop;
+                                    }
+                                }
+
+                                splitCells.push({ start: start, span: span });
+                                currentTable = mapping[currentColumn];
+                            }
+
+                            colspan = splitCells[0].span;
+
+                            for (let i = 1; i < splitCells.length; i++) {
+                                that.mergedCellsPDF.push({ cell: [splitCells[i].start, row], colspan: splitCells[i].span, rowspan: rowspan, originalCell: col });
                             }
                         }
-                        else {
-                            that.storePDFStyle({ prop: prop, value: definition[prop], toUpdate: type });
-                        }
                     }
-                    else {
-                        for (let columnProp in definition[prop]) {
-                            if (!isNaN(columnProp) || !definition[prop].hasOwnProperty(columnProp)) {
+
+                    for (let j = col; j < col + colspan; j++) {
+                        for (let k = row; k < row + rowspan; k++) {
+                            const code = j + ',' + k;
+
+                            if (j === col && k === row) {
+                                mergedMainCells[code] = { colspan: colspan, rowspan: rowspan, originalCell: cellDefinition.originalCell };
                                 continue;
                             }
 
-                            const value = definition[prop][columnProp],
-                                index = that.datafields.indexOf(prop);
-
-                            if (columnProp === 'width' && styleInfo.widths[index] === '*') {
-                                styleInfo.widths[index] = parseFloat(value);
-                            }
-                            else {
-                                that.storePDFStyle({ prop: columnProp, value: value, toUpdate: type + prop });
-                            }
+                            mergedSecondaryCells[code] = true;
                         }
                     }
                 }
             }
 
-            processStyleDefinition(headerDefinition, 'header');
-            processStyleDefinition(columnsDefinition, 'cell');
+            /**
+             * Gets alternation index.
+             */
+            getAlternationIndex(row, prefix) {
+                const that = this;
 
-            if (!rowsDefinition) {
-                return;
-            }
-
-            for (let prop in rowsDefinition) {
-                if (!rowsDefinition.hasOwnProperty(prop) || prop.indexOf('alt') !== -1) {
-                    continue;
+                if (!that.style) {
+                    return '';
                 }
 
-                const value = rowsDefinition[prop];
+                const rowsDefinition = that.style.rows,
+                    alternationCount = rowsDefinition && rowsDefinition.alternationCount;
 
-                if (!isNaN(prop)) {
-                    for (let rowProp in value) {
-                        if (value.hasOwnProperty(rowProp)) {
-                            if (rowProp === 'height') {
-                                styleInfo.heights[parseFloat(prop) + that.headerRows] = parseFloat(value[rowProp]) / 1.57;
-                            }
-                            else {
-                                that.storePDFStyle({ prop: rowProp, value: value[rowProp], toUpdate: 'row' + prop });
-                            }
+                if (alternationCount &&
+                    (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
+                        (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
+                        rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
+                    return prefix + (row % rowsDefinition.alternationCount);
+                }
+
+                return '';
+            }
+
+            /**
+             * Gets formatted numeric or date value (for use in HTML and PDF export).
+             */
+            getFormattedValue(value, datafield) {
+                const that = this,
+                    style = that.style;
+
+                if (value === null) {
+                    return that.allowNull ? 'null' : '';
+                }
+
+                if (datafield && style && style.columns &&
+                    style.columns[datafield] && style.columns[datafield].format) {
+                    if (typeof value === 'number') {
+                        return that.formatNumber(value, style.columns[datafield].format);
+                    }
+                    else if (value instanceof Date) {
+                        return that.formatDate(value, style.columns[datafield].format);
+                    }
+                }
+                else if (value instanceof Date) {
+                    return that.formatDate(value, 'd');
+                }
+
+                return value;
+            }
+
+            /**
+             * Exports to JSON.
+             */
+            exportToJSON(data, fileName) {
+                return this.downloadFile(JSON.stringify(data, this.datafields.concat('rows')), 'application/json', fileName);
+            }
+
+            /**
+             * Export to Markdown(MD)
+             * @param {string} data - the data to export
+             * @param {string} fileName - the name of the file
+             * @returns 
+             */
+            exportToMD(data, fileName) {
+                const that = this,
+                    dataFields = that.datafields;
+                let text = '';
+
+
+                for (let i = 0, max = data.length; i < max; i += 1) {
+                    for (let j = 0, max = dataFields.length; j < max; j += 1) {
+                        const dataField = data[i][dataFields[j]];
+
+                        if (typeof dataField === 'string') {
+                            text += dataField;
                         }
                     }
-
-                    continue;
                 }
 
-                if (prop === 'height') {
-                    styleInfo.defaultHeight = parseFloat(value) / 1.57;
-                }
-                else {
-                    that.storePDFStyle({ prop: prop, value: value, toUpdate: 'row' });
-                }
+                return that.downloadFile(text, 'application/text', fileName);
             }
 
-            if (!rowsDefinition.alternationCount) {
-                return;
-            }
-
-            for (let i = 0; i < rowsDefinition.alternationCount; i++) {
-                const styleN = {};
-
-                if (rowsDefinition[`alternationIndex${i}Color`]) {
-                    styleN.color = rowsDefinition[`alternationIndex${i}Color`];
+            /**
+             * Exports to PDF.
+             */
+            exportToPDF(data, fileName) {
+                try {
+                    pdfMake;
+                }
+                catch (error) {
+                    throw new Error('Missing reference to \'pdfmake.min.js\'.');
                 }
 
-                if (rowsDefinition[`alternationIndex${i}BackgroundColor`]) {
-                    styleN.fillColor = rowsDefinition[`alternationIndex${i}BackgroundColor`];
-                }
-
-                styleInfo.styles['rowN' + i] = styleN;
-            }
-        }
-
-        /**
-         * Stores style in object to be applied to generated PDF.
-         */
-        storePDFStyle(details) {
-            const that = this;
-            let objectToUpdate = that.styleInfo.styles[details.toUpdate];
-
-            if (!objectToUpdate) {
-                objectToUpdate = {};
-                that.styleInfo.styles[details.toUpdate] = objectToUpdate;
-            }
-
-            let value = details.value;
-
-            switch (details.prop) {
-                case 'backgroundColor':
-                    objectToUpdate.fillColor = value;
-                    break;
-                case 'color':
-                    objectToUpdate.color = value;
-                    break;
-                case 'fontSize':
-                    objectToUpdate.fontSize = parseFloat(value);
-                    break;
-                case 'fontStyle':
-                    if (value === 'italic') {
-                        objectToUpdate.italics = true;
-                    }
-
-                    break;
-                case 'fontWeight':
-                    if (value === 'bold') {
-                        objectToUpdate.bold = true;
-                    }
-
-                    break;
-                case 'textAlign':
-                    objectToUpdate.alignment = value;
-                    break;
-            }
-        }
-
-        /**
-         * Enables column wrapping when exporting to PDF.
-         */
-        wrapPDFColumns(docDefinition, mapping) {
-            const that = this,
-                styleInfo = this.styleInfo,
-                maxPerPage = docDefinition.pageOrientation === 'portrait' ? 775 : 1155, // maximum of 775px (portrait) or 1155px (landscape) per A4 page
-                tables = [];
-            let currentPage = 0;
-
-            for (let i = 0; i < styleInfo.widths.length; i++) {
-                let currentWidth = styleInfo.widths[i],
-                    numericWidth = currentWidth;
-
-                if (currentWidth === '*') {
-                    numericWidth = 150;
-                }
-                else if (currentWidth >= maxPerPage) {
-                    numericWidth = maxPerPage
-                    currentWidth = '*';
-                }
-                else {
-                    currentWidth /= 1.57;
-                }
-
-                if (tables[currentPage] === undefined) {
-                    const body = [];
-
-                    tables[currentPage] = {
-                        body: body,
-                        width: numericWidth,
-                        widths: [currentWidth],
-                        datafields: [that.datafields[i]]
+                const that = this,
+                    datafields = that.datafields,
+                    startIndex = +that.exportHeader,
+                    groupsHandled = [],
+                    mergedMainCells = {},
+                    mergedSecondaryCells = {},
+                    mapping = {},
+                    headerRows = startIndex ? that.complexHeader ? that.complexHeader.length : 1 : 0,
+                    docDefinition = {
+                        pageOrientation: that.pageOrientation || 'portrait'
                     };
+                let header = [], content = [], tables;
+
+                function createTableRow() {
+                    let tableRow = [];
+
+                    for (let i = 0; i < tables.length; i++) {
+                        tableRow.push([]);
+                    }
+
+                    return tableRow;
+                }
+
+                data = that.processGroupingInformation(data);
+                that.data = data;
+                that.headerRows = headerRows;
+                that.getPDFStyle();
+
+                const styleInfo = that.styleInfo;
+
+                tables = styleInfo ? that.wrapPDFColumns(docDefinition, mapping) : [{ body: header, datafields: datafields }];
+
+                if (startIndex) {
+                    header = that.getPDFHeader(datafields, tables, mapping);
+                }
+
+                that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells, mapping);
+
+                mainLoop:
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = data[i];
+                    let groupId = '',
+                        outlineLevel = 0;
+
+                    if (that.groupBy) {
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
+
+                            groupId += currentGroup;
+
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                that.createGroupHeaderRow(tables, { text: currentGroupLabel, style: ['row', 'cell', 'group'], marginLeft: outlineLevel * 7.5 });
+                                groupsHandled.push(groupId);
+                                i--;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
+                        }
+                    }
+
+                    const tableRow = createTableRow(),
+                        row = i - startIndex;
+                    let n = that.getAlternationIndex(row, '');
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const datafield = datafields[j],
+                            entry = { style: ['row', 'row' + row, 'cell', 'cell' + datafield] },
+                            tableIndex = mapping[j] || 0;
+
+                        if (n !== undefined) {
+                            entry.style.splice(1, 0, 'rowN' + n);
+                        }
+
+                        if (that.mergedCellsPDF) {
+                            const cellCode = j + ',' + row,
+                                mergeInfo = mergedMainCells[cellCode];
+
+                            if (mergeInfo) {
+                                entry.colSpan = mergeInfo.colspan;
+                                entry.rowSpan = mergeInfo.rowspan;
+
+                                if (mergeInfo.originalCell !== undefined) {
+                                    entry.text = '';
+                                    entry.style[entry.style.length - 1] = 'cell' + datafields[mergeInfo.originalCell];
+                                    tableRow[tableIndex].push(entry);
+                                    continue;
+                                }
+                            }
+                            else if (mergedSecondaryCells[cellCode]) {
+                                tableRow[tableIndex].push({});
+                                continue;
+                            }
+                        }
+
+                        const value = that.getFormattedValue(currentRecord[datafield], datafield);
+
+                        entry.text = value.toString();
+                        that.getUniqueStylePDF(entry, datafield, row);
+                        that.setIndentation(entry, { j: j, currentRecord: currentRecord, value: value, outlineLevel: outlineLevel });
+                        tableRow[tableIndex].push(entry);
+                    }
+
+                    for (let k = 0; k < tables.length; k++) {
+                        tables[k].body.push(tableRow[k]);
+                    }
+                }
+
+                if (styleInfo) {
+                    for (let i = 0; i < tables.length; i++) {
+                        const body = tables[i].body;
+
+                        for (let j = headerRows - 1; j >= 0; j--) {
+                            body.unshift(header[i][j]);
+                        }
+
+                        content.push({
+                            table: {
+                                headerRows: headerRows,
+                                widths: tables[i].widths,
+                                heights: function (row) {
+                                    if (styleInfo.heights[row]) {
+                                        return styleInfo.heights[row];
+                                    }
+
+                                    if (styleInfo.defaultHeight) {
+                                        return styleInfo.defaultHeight;
+                                    }
+                                },
+                                body: body
+                            },
+                            pageBreak: 'after'
+                        });
+                    }
+
+                    delete content[tables.length - 1].pageBreak;
+                    docDefinition.styles = styleInfo.styles;
+                }
+                else {
+                    const body = tables[0].body;
+
+                    for (let j = headerRows - 1; j >= 0; j--) {
+                        body.unshift(header[0][j]);
+                    }
+
+                    content = [{ table: { headerRows: headerRows, body: body } }];
+                    docDefinition.styles = { header: { bold: true }, group: { bold: true } };
+                }
+
+                docDefinition.content = content;
+
+                if (!fileName) {
+                    const output = pdfMake.createPdf(docDefinition);
+
+                    delete that.mergedCellsPDF;
+                    delete that.styleInfo;
+
+                    return output;
+                }
+                pdfMake.createPdf(docDefinition).download(fileName);
+
+                delete that.mergedCellsPDF;
+                delete that.styleInfo;
+            }
+
+            /**
+             * Gets the header content when exporting to PDF.
+             */
+            getPDFStyle() {
+                const that = this,
+                    style = that.style;
+
+                if (!style) {
+                    return '';
+                }
+
+                const sampleRecord = that.data[0],
+                    headerDefinition = style.header,
+                    columnsDefinition = style.columns,
+                    rowsDefinition = style.rows,
+                    styleInfo = {
+                        heights: [],
+                        widths: Array(that.datafields.length).fill('*'),
+                        styles: {
+                            header: {},
+                            row: {},
+                            cell: {},
+                            group: { fillColor: '#FFFFFF', color: '#000000', bold: true }
+                        }
+                    };
+
+                that.styleInfo = styleInfo;
+
+                function processStyleDefinition(definition, type) {
+                    if (!definition) {
+                        return;
+                    }
+
+                    for (let prop in definition) {
+                        if (!Object.prototype.hasOwnProperty.call(definition, prop)) {
+                            continue;
+                        }
+
+                        if (sampleRecord[prop] === undefined) {
+                            if (prop === 'height' && type === 'header') {
+                                for (let i = 0; i < that.headerRows; i++) {
+                                    styleInfo.heights[i] = (parseInt(definition[prop], 10) / that.headerRows) / 1.4;
+                                }
+                            }
+                            else {
+                                that.storePDFStyle({ prop: prop, value: definition[prop], toUpdate: type });
+                            }
+                        }
+                        else {
+                            for (let columnProp in definition[prop]) {
+                                if (!isNaN(columnProp) || !Object.prototype.hasOwnProperty.call(definition[prop], columnProp)) {
+                                    continue;
+                                }
+
+                                const value = definition[prop][columnProp],
+                                    index = that.datafields.indexOf(prop);
+
+                                if (columnProp === 'width' && styleInfo.widths[index] === '*') {
+                                    styleInfo.widths[index] = value;
+                                }
+                                else {
+                                    that.storePDFStyle({ prop: columnProp, value: value, toUpdate: type + prop });
+                                }
+                            }
+                        }
+                    }
+                }
+
+                processStyleDefinition(headerDefinition, 'header');
+                processStyleDefinition(columnsDefinition, 'cell');
+
+                if (!rowsDefinition) {
+                    return;
+                }
+
+                for (let prop in rowsDefinition) {
+                    if (!Object.prototype.hasOwnProperty.call(rowsDefinition, prop) || prop.indexOf('alt') !== -1) {
+                        continue;
+                    }
+
+                    const value = rowsDefinition[prop];
+
+                    if (!isNaN(prop)) {
+                        for (let rowProp in value) {
+                            if (Object.prototype.hasOwnProperty.call(value, rowProp)) {
+                                if (rowProp === 'height') {
+                                    styleInfo.heights[parseFloat(prop) + that.headerRows] = parseFloat(value[rowProp]) / 1.4;
+                                }
+                                else {
+                                    that.storePDFStyle({ prop: rowProp, value: value[rowProp], toUpdate: 'row' + prop });
+                                }
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    if (prop === 'height') {
+                        styleInfo.defaultHeight = parseFloat(value) / 1.4;
+                    }
+                    else {
+                        that.storePDFStyle({ prop: prop, value: value, toUpdate: 'row' });
+                    }
+                }
+
+                if (!rowsDefinition.alternationCount) {
+                    return;
+                }
+
+                for (let i = 0; i < rowsDefinition.alternationCount; i++) {
+                    const styleN = {};
+
+                    if (rowsDefinition[`alternationIndex${i}Color`]) {
+                        styleN.color = rowsDefinition[`alternationIndex${i}Color`];
+                    }
+
+                    if (rowsDefinition[`alternationIndex${i}BackgroundColor`]) {
+                        styleN.fillColor = rowsDefinition[`alternationIndex${i}BackgroundColor`];
+                    }
+
+                    styleInfo.styles['rowN' + i] = styleN;
+                }
+            }
+
+            /**
+             * Stores style in object to be applied to generated PDF.
+             */
+            storePDFStyle(details) {
+                const that = this;
+                let objectToUpdate = that.styleInfo.styles[details.toUpdate];
+
+                if (!objectToUpdate) {
+                    objectToUpdate = {};
+                    that.styleInfo.styles[details.toUpdate] = objectToUpdate;
+                }
+
+                let value = details.value;
+
+                switch (details.prop) {
+                    case 'backgroundColor':
+                        objectToUpdate.fillColor = value;
+                        break;
+                    case 'color':
+                        objectToUpdate.color = value;
+                        break;
+                    case 'fontSize':
+                        objectToUpdate.fontSize = parseFloat(value);
+                        break;
+                    case 'fontStyle':
+                        if (value === 'italic') {
+                            objectToUpdate.italics = true;
+                        }
+
+                        break;
+                    case 'fontWeight':
+                        if (value === 'bold') {
+                            objectToUpdate.bold = true;
+                        }
+
+                        break;
+                    case 'textAlign':
+                        objectToUpdate.alignment = value;
+                        break;
+                }
+            }
+
+            /**
+             * Enables column wrapping when exporting to PDF.
+             */
+            wrapPDFColumns(docDefinition, mapping) {
+                const that = this,
+                    styleInfo = this.styleInfo,
+                    maxPerPage = docDefinition.pageOrientation === 'portrait' ? 655 : 1155, // maximum of 655px (portrait) or 1155px (landscape) per A4 page
+                    tables = [];
+                let currentPage = 0;
+
+                for (let i = 0; i < styleInfo.widths.length; i++) {
+                    let currentWidth = styleInfo.widths[i],
+                        numericWidth;
+
+                    if (currentWidth === '*') {
+                        numericWidth = maxPerPage / 6;
+                    }
+                    else if (typeof currentWidth === 'string' && currentWidth.indexOf('%') !== -1) {
+                        numericWidth = Math.min(maxPerPage, Math.floor((parseFloat(currentWidth) / 100) * maxPerPage));
+
+                        if (numericWidth === maxPerPage) {
+                            currentWidth = '*';
+                        }
+                    }
+                    else {
+                        currentWidth = parseFloat(currentWidth);
+
+                        if (currentWidth >= maxPerPage) {
+                            numericWidth = maxPerPage
+                            currentWidth = '*';
+                        }
+                        else {
+                            numericWidth = currentWidth;
+                            currentWidth /= 1.4;
+                        }
+                    }
+
+                    if (tables[currentPage] === undefined) {
+                        const body = [];
+
+                        tables[currentPage] = {
+                            body: body,
+                            width: numericWidth,
+                            widths: [currentWidth],
+                            datafields: [that.datafields[i]]
+                        };
+                        mapping[i] = currentPage;
+                        continue;
+                    }
+
+                    const table = tables[currentPage];
+
+                    if (table.width + numericWidth > maxPerPage) {
+                        currentPage++;
+                        i--;
+                        continue;
+                    }
+
                     mapping[i] = currentPage;
-                    continue;
+                    table.width += numericWidth;
+                    table.widths.push(currentWidth);
+                    table.datafields.push(that.datafields[i]);
                 }
 
-                const table = tables[currentPage];
-
-                if (table.width + numericWidth > maxPerPage) {
-                    currentPage++;
-                    i--;
-                    continue;
-                }
-
-                mapping[i] = currentPage;
-                table.width += numericWidth;
-                table.widths.push(currentWidth);
-                table.datafields.push(that.datafields[i]);
+                return tables;
             }
 
-            return tables;
-        }
+            /**
+             * Gets the header content when exporting to PDF.
+             */
+            getPDFHeader(datafields, tables, mapping) {
+                const that = this,
+                    headerArray = [],
+                    headerRows = that.headerRows,
+                    headers = [],
+                    headerDataFields = [];
+                let result = [],
+                    headerStructure, headerDataFieldStructure;
 
-        /**
-         * Gets the header content when exporting to PDF.
-         */
-        getPDFHeader(datafields, tables, mapping) {
-            const that = this,
-                headerArray = [],
-                headerRows = that.headerRows,
-                headerStructure = that.complexHeader ? that.complexHeader : [Object.values(that.data[0])],
-                headers = [];
-            let result = [];
+                if (that.complexHeader) {
+                    headerStructure = that.complexHeader;
+                    headerDataFieldStructure = that.complexDataFieldsHeader;
+                }
+                else {
+                    headerStructure = [Object.values(that.data[0])];
+                    headerDataFieldStructure = headerStructure;
+                }
 
-            for (let i = 0; i < headerRows; i++) {
-                const row = headerStructure[i];
+                for (let i = 0; i < headerRows; i++) {
+                    const row = headerStructure[i],
+                        rowDataField = headerDataFieldStructure[i];
 
-                for (let k = 0; k < row.length; k++) {
-                    let tableIndex = mapping[k] || 0;
+                    for (let k = 0; k < row.length; k++) {
+                        let tableIndex = mapping[k] || 0;
 
-                    if (!headers[tableIndex]) {
-                        headers[tableIndex] = [];
+                        if (!headers[tableIndex]) {
+                            headers[tableIndex] = [];
+                            headerDataFields[tableIndex] = [];
+                        }
+
+                        if (!headers[tableIndex][i]) {
+                            headers[tableIndex][i] = [];
+                            headerDataFields[tableIndex][i] = [];
+                        }
+
+                        headers[tableIndex][i].push(row[k]);
+                        headerDataFields[tableIndex][i].push(rowDataField[k]);
                     }
+                }
 
-                    if (!headers[tableIndex][i]) {
-                        headers[tableIndex][i] = [];
+                function processHeader(header, headerDataField, result, table) {
+                    for (let j = 0; j < headerRows; j++) {
+                        const row = header[j],
+                            rowDataField = headerDataField[j];
+                        const tableRow = [];
+
+                        for (let k = 0; k < row.length; k++) {
+                            const currentDataField = rowDataField[k];
+                            let colspan = 1, rowspan = 1;
+
+                            if ((rowDataField[k - 1] && rowDataField[k - 1] === currentDataField) ||
+                                (headerDataField[j - 1] && (headerDataField[j - 1][k] === currentDataField))) {
+                                tableRow.push({});
+                                continue;
+                            }
+
+                            let iterator = k + 1;
+
+                            while (rowDataField[iterator] && rowDataField[iterator] === rowDataField[iterator - 1]) {
+                                colspan++;
+                                iterator++;
+                            }
+
+                            iterator = j + 1;
+
+                            while (headerDataField[iterator] && headerDataField[iterator][k] === currentDataField) {
+                                rowspan++;
+                                iterator++;
+                            }
+
+                            const datafield = j === headerRows - 1 || rowspan + j === headerRows ?
+                                table.datafields[k] : null,
+                                entry = {
+                                    text: row[k], colSpan: colspan, rowSpan: rowspan
+                                };
+
+                            if (!datafield) {
+                                entry.alignment = 'center';
+                                entry.style = 'header';
+                            }
+                            else {
+                                entry.style = ['header', 'header' + datafield];
+                            }
+
+                            tableRow.push(entry);
+                        }
+
+                        result.push(tableRow);
                     }
+                }
 
-                    headers[tableIndex][i].push(row[k]);
+                for (let i = 0; i < tables.length; i++) {
+                    result = [];
+                    processHeader(headers[i], headerDataFields[i], result, tables[i]);
+                    headerArray.push(result);
+                }
+
+                return headerArray;
+            }
+
+            /**
+             * Creates group header rows when exporting to PDF.
+             */
+            createGroupHeaderRow(tables, entryTemplate) {
+                for (let i = 0; i < tables.length; i++) {
+                    const entry = Object.assign({}, entryTemplate),
+                        colspan = tables[i].datafields.length,
+                        tableRow = [entry];
+
+                    entry.colSpan = colspan;
+                    tableRow.length = colspan;
+                    tableRow.fill({}, 1, colspan - 1);
+
+                    tables[i].body.push(tableRow);
                 }
             }
 
-            function processHeader(header, result, table) {
-                for (let j = 0; j < headerRows; j++) {
-                    const row = header[j];
-                    const tableRow = [];
+            /**
+             * Gets unique cell style when exporting to PDF.
+             */
+            getUniqueStylePDF(entry, datafield, row) {
+                const style = this.style;
+
+                function toHex(background) {
+                    const parts = /rgba\((\d+),(\d+),(\d+)\,(\d*.\d+|\d+)\)/gi.exec(background.replace(/\s/g, ''));
+
+                    if (parts === null) {
+                        return background;
+                    }
+
+                    const r = parseFloat(parts[1]).toString(16).toUpperCase(),
+                        g = parseFloat(parts[2]).toString(16).toUpperCase(),
+                        b = parseFloat(parts[3]).toString(16).toUpperCase();
+
+                    return '#' + ('0').repeat(2 - r.length) + r +
+                        ('0').repeat(2 - g.length) + g +
+                        ('0').repeat(2 - b.length) + b;
+                }
+
+                if (!style || !style.columns || !style.columns[datafield]) {
+                    return;
+                }
+
+                const uniqueStyle = style.columns[datafield][row];
+
+                if (!uniqueStyle) {
+                    return;
+                }
+
+                entry.fillColor = toHex(uniqueStyle.background);
+                entry.color = uniqueStyle.color.toLowerCase();
+            }
+
+            /**
+             * Sets the indentation of a PDF cell.
+             */
+            setIndentation(entry, details) {
+                if (details.j !== 0) {
+                    return;
+                }
+
+                const that = this;
+
+                if (that.actualHierarchy) {
+                    const currentRecord = details.currentRecord;
+
+                    if (currentRecord._expanded !== undefined) {
+                        entry.marginLeft = 25 * (currentRecord._level - 1);
+                        entry.text = that.collapseChar + ' ' + details.value;
+                    }
+                    else {
+                        entry.marginLeft = 25 * (currentRecord._level - 1) + 6;
+                    }
+                }
+                else if (details.outlineLevel > 1) {
+                    entry.marginLeft = (details.outlineLevel - 1) * 7.5;
+                }
+            }
+
+            addBodyImageToMap(image, rowIndex, col, columnsToExport) {
+                const sheetIndex = 1;
+                const { row, column } = image.position || {};
+                const calculatedImage = image;
+                if (columnsToExport) {
+                    if (rowIndex !== null && col !== null && (!row || !column)) {
+                        if (!image.position) {
+                            image.position = {};
+                        }
+                        image.position = Object.assign({}, image.position, {
+                            row: rowIndex,
+                            column: columnsToExport.indexOf(col) + 1
+                        });
+                    }
+                    calculatedImage.totalWidth = calculatedImage.width;
+                    calculatedImage.totalHeight = calculatedImage.height;
+                }
+                this.buildImageMap({ imageToAdd: calculatedImage, idx: sheetIndex });
+                let worksheetImageIdMap = this.worksheetImageIds.get(sheetIndex);
+                if (!worksheetImageIdMap) {
+                    worksheetImageIdMap = new Map();
+                    this.worksheetImageIds.set(sheetIndex, worksheetImageIdMap);
+                }
+                const sheetImages = this.worksheetImages.get(sheetIndex);
+                if (!sheetImages) {
+                    this.worksheetImages.set(sheetIndex, [calculatedImage]);
+                } else {
+                    sheetImages.push(calculatedImage);
+                }
+                if (!worksheetImageIdMap.get(image.id)) {
+                    worksheetImageIdMap.set(image.id, { index: worksheetImageIdMap.size, type: image.imageType });
+                }
+            }
+            buildImageMap(params) {
+                const { imageToAdd, idx } = params;
+                const mappedImagesToSheet = this.images.get(imageToAdd.id);
+                if (mappedImagesToSheet) {
+                    const currentSheetImages = mappedImagesToSheet.find((currentImage) => currentImage.sheetId === idx);
+                    if (currentSheetImages) {
+                        currentSheetImages.image.push(imageToAdd);
+                    } else {
+                        mappedImagesToSheet.push({
+                            sheetId: idx,
+                            image: [imageToAdd]
+                        });
+                    }
+                } else {
+                    this.images.set(imageToAdd.id, [{ sheetId: idx, image: [imageToAdd] }]);
+                    this.workbookImageIds.set(imageToAdd.id, { type: imageToAdd.imageType, index: this.workbookImageIds.size });
+                }
+            }
+
+            createXmlPart(body, skipHeader) {
+                const header = XmlFactory.createHeader({
+                    encoding: "UTF-8",
+                    standalone: "yes"
+                });
+                const xmlBody = XmlFactory.createXml(body);
+                if (skipHeader) {
+                    return xmlBody;
+                }
+                return `${header}${xmlBody}`;
+            }
+
+            generateWorksheetImages(zip, xl, data) {
+                const that = this;
+
+                this.images = new Map();
+                this.worksheetImages = new Map();
+                this.worksheetHeaderFooterImages = new Map();
+                this.workbookImageIds = new Map();
+                this.worksheetImageIds = new Map();
+                let drawingIndex = 0;
+                let imgCounter = 0;
+                let imgIndex = 0;
+                if (that.addImageToCell) {
+                    let offset = that.headerContent ? that.headerContent.length : 0;
+                    if (that.complexHeader) {
+                        offset += that.complexHeader.length - 1;
+                    }
+
+                    for (let i = 1 + offset; i < data.length; i++) {
+                        const row = data[i];
+                        for (let j = 0; j < that.datafields.length; j++) {
+                            const dataField = that.datafields[j];
+                            let value = row[dataField];
+
+                            if (value && Array.isArray(value)) {
+                                for (let m = 0; m < value.length; m++) {
+                                    const addedImage = that.addImageToCell(i + imgIndex++, dataField, value[m], value, row, m);
+                                    if (addedImage) {
+                                        row[dataField] = '';
+                                        this.addBodyImageToMap(
+                                            addedImage.image,
+                                            1 + i,
+                                            dataField,
+                                            that.datafields
+                                        );
+                                    }
+                                }
+                                continue;
+                            }
+
+                            const addedImage = that.addImageToCell(i + imgIndex++, dataField, value, value, row, 0);
+                            if (addedImage) {
+                                row[dataField] = '';
+                                if (addedImage.value && addedImage.value !== value) {
+                                    row[dataField] = addedImage.value;
+                                }
+                                this.addBodyImageToMap(
+                                    addedImage.image,
+                                    1 + i,
+                                    dataField,
+                                    that.datafields
+                                );
+                            }
+                        }
+                    }
+
+                    if (that.headerContent) {
+                        for (let m = 0; m < that.headerContent.length; m++) {
+                            const row = data[m];
+                            for (let j = 0; j < that.datafields.length; j++) {
+                                const dataField = that.datafields[j];
+                                const value = row[dataField];
+
+                                const addedImage = that.addImageToCell(m + 1, dataField, value, value, row, 0);
+                                if (addedImage) {
+                                    row[dataField] = '';
+                                    this.addBodyImageToMap(
+                                        addedImage.image,
+                                        1 + m,
+                                        dataField,
+                                        that.datafields
+                                    );
+                                }
+                            }
+                        }
+                    }
+
+                    this.images.forEach((value) => {
+                        const firstImage = value[0].image[0];
+                        const { base64, imageType } = firstImage;
+                        const ext = imageType === 'jpg' ? 'jpeg' : imageType;
+                        // Function to convert a base64 string to a Blob
+                        const base64ToBlob = (base64, mimeType) => {
+                            if (!base64) {
+                                base64 = '';
+                            }
+                            const byteCharacters = atob(base64);
+                            const byteNumbers = new Array(byteCharacters.length);
+                            for (let i = 0; i < byteCharacters.length; i++) {
+                                byteNumbers[i] = byteCharacters.charCodeAt(i);
+                            }
+                            const byteArray = new Uint8Array(byteNumbers);
+                            return new Blob([byteArray], { type: mimeType });
+                        }
+
+                        let imageBlob;
+                        // Convert the Base64 string to a PNG Blob
+                        if (base64 && Array.isArray(base64)) {
+                            imageBlob = base64ToBlob(base64[0].split(',')[1], 'image/' + ext);
+                        }
+                        else {
+                            imageBlob = base64ToBlob(base64.split(',')[1], 'image/' + ext);
+                        }
+
+                        zip.file(`xl/media/image${++imgCounter}.${ext}`, imageBlob, true);
+                    });
+                }
+
+                let imageRelationCounter = 0;
+
+                var INCH_TO_EMU = 9525;
+
+                var pixelsToEMU = (value) => {
+                    return Math.ceil(value * INCH_TO_EMU);
+                };
+
+                var getImageBoxSize = (image) => {
+                    image.fitCell = !!image.fitCell || !image.width || !image.height;
+                    const { position = {}, fitCell, width = 0, height = 0, totalHeight, totalWidth } = image;
+                    const { offsetX = 0, offsetY = 0, row = 1, rowSpan = 1, column = 1, colSpan = 1 } = position;
+                    return {
+                        from: {
+                            row: row - 1,
+                            col: column - 1,
+                            offsetX: pixelsToEMU(offsetX),
+                            offsetY: pixelsToEMU(offsetY)
+                        },
+                        to: {
+                            row: row - 1 + (fitCell ? 1 : rowSpan - 1),
+                            col: column - 1 + (fitCell ? 1 : colSpan - 1),
+                            offsetX: pixelsToEMU(width + offsetX),
+                            offsetY: pixelsToEMU(height + offsetY)
+                        },
+                        height: pixelsToEMU(totalHeight || height),
+                        width: pixelsToEMU(totalWidth || width)
+                    };
+                };
+                var getPicture = (image, currentIndex, worksheetImageIndex, imageBoxSize) => {
+                    return {
+                        name: "xdr:pic",
+                        children: [
+                            getNvPicPr(image, currentIndex + 1),
+                            getBlipFill(image, worksheetImageIndex + 1),
+                            getSpPr(image, imageBoxSize)
+                        ]
+                    };
+                };
+
+
+                var getBlipFill = (image, index) => {
+                    let blipChildren;
+                    if (image.transparency) {
+                        const transparency = Math.min(Math.max(image.transparency, 0), 100);
+                        blipChildren = [
+                            {
+                                name: "a:alphaModFix",
+                                properties: {
+                                    rawMap: {
+                                        amt: 1e5 - Math.round(transparency * 1e3)
+                                    }
+                                }
+                            }
+                        ];
+                    }
+                    if (image.recolor) {
+                        if (!blipChildren) {
+                            blipChildren = [];
+                        }
+                        switch (image.recolor.toLocaleLowerCase()) {
+                            case "grayscale":
+                                blipChildren.push({ name: "a:grayscl" });
+                                break;
+                            case "sepia":
+                                blipChildren.push(getDuoTone({ color: "black" }, { color: "D9C3A5", tint: 50, saturation: 180 }));
+                                break;
+                            case "washout":
+                                blipChildren.push({
+                                    name: "a:lum",
+                                    properties: {
+                                        rawMap: {
+                                            bright: "70000",
+                                            contrast: "-70000"
+                                        }
+                                    }
+                                });
+                                break;
+                            default:
+                        }
+                    }
+                    return {
+                        name: "xdr:blipFill",
+                        children: [
+                            {
+                                name: "a:blip",
+                                properties: {
+                                    rawMap: {
+                                        cstate: "print",
+                                        "r:embed": `rId${index}`,
+                                        "xmlns:r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+                                    }
+                                },
+                                children: blipChildren
+                            },
+                            {
+                                name: "a:stretch",
+                                children: [
+                                    {
+                                        name: "a:fillRect"
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                };
+                var getSpPr = (image, imageBoxSize) => {
+                    const xfrm = {
+                        name: "a:xfrm",
+                        children: [
+                            {
+                                name: "a:off",
+                                properties: {
+                                    rawMap: {
+                                        x: 0,
+                                        y: 0
+                                    }
+                                }
+                            },
+                            {
+                                name: "a:ext",
+                                properties: {
+                                    rawMap: {
+                                        cx: imageBoxSize.width,
+                                        cy: imageBoxSize.height
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    if (image.rotation) {
+                        const rotation = image.rotation;
+                        xfrm.properties = {
+                            rawMap: {
+                                rot: Math.min(Math.max(rotation, 0), 360) * 6e4
+                            }
+                        };
+                    }
+                    const prstGeom = {
+                        name: "a:prstGeom",
+                        properties: {
+                            rawMap: {
+                                prst: "rect"
+                            }
+                        },
+                        children: [{ name: "a:avLst" }]
+                    };
+                    const ret = {
+                        name: "xdr:spPr",
+                        children: [xfrm, prstGeom]
+                    };
+                    return ret;
+                };
+
+                var getExt = (image) => {
+                    const children = [
+                        {
+                            name: "a:ext",
+                            properties: {
+                                rawMap: {
+                                    uri: "{FF2B5EF4-FFF2-40B4-BE49-F238E27FC236}"
+                                }
+                            },
+                            children: [
+                                {
+                                    name: "a16:creationId",
+                                    properties: {
+                                        rawMap: {
+                                            id: "{822E6D20-D7BC-2841-A643-D49A6EF008A2}",
+                                            "xmlns:a16": "http://schemas.microsoft.com/office/drawing/2014/main"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ];
+                    const recolor = image.recolor && image.recolor.toLowerCase();
+                    switch (recolor) {
+                        case "grayscale":
+                        case "sepia":
+                        case "washout":
+                            children.push({
+                                name: "a:ext",
+                                properties: {
+                                    rawMap: {
+                                        uri: "{C183D7F6-B498-43B3-948B-1728B52AA6E4}"
+                                    }
+                                },
+                                children: [
+                                    {
+                                        name: "adec:decorative",
+                                        properties: {
+                                            rawMap: {
+                                                val: "0",
+                                                "xmlns:adec": "http://schemas.microsoft.com/office/drawing/2017/decorative"
+                                            }
+                                        }
+                                    }
+                                ]
+                            });
+                    }
+                    return {
+                        name: "a:extLst",
+                        children
+                    };
+                };
+
+                var getNvPicPr = (image, index) => ({
+                    name: "xdr:nvPicPr",
+                    children: [
+                        {
+                            name: "xdr:cNvPr",
+                            properties: {
+                                rawMap: {
+                                    id: index,
+                                    name: image.id,
+                                    descr: image.altText != null ? image.altText : void 0
+                                }
+                            },
+                            children: [getExt(image)]
+                        },
+                        {
+                            name: "xdr:cNvPicPr",
+                            properties: {
+                                rawMap: {
+                                    preferRelativeResize: "0"
+                                }
+                            },
+                            children: [
+                                {
+                                    name: "a:picLocks"
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+                var getAnchor = (name, imageAnchor) => ({
+                    name: `xdr:${name}`,
+                    children: [
+                        {
+                            name: "xdr:col",
+                            textNode: imageAnchor.col.toString()
+                        },
+                        {
+                            name: "xdr:colOff",
+                            textNode: imageAnchor.offsetX.toString()
+                        },
+                        {
+                            name: "xdr:row",
+                            textNode: imageAnchor.row.toString()
+                        },
+                        {
+                            name: "xdr:rowOff",
+                            textNode: imageAnchor.offsetY.toString()
+                        }
+                    ]
+                });
+
+                var drawingFactory = {
+                    getTemplate(config) {
+                        const { sheetIndex } = config;
+                        const sheetImages = that.worksheetImages.get(sheetIndex);
+                        const sheetImageIds = that.worksheetImageIds.get(sheetIndex);
+                        const children = sheetImages.map((image, idx) => {
+                            const boxSize = getImageBoxSize(image);
+                            return {
+                                name: "xdr:twoCellAnchor",
+                                properties: {
+                                    rawMap: {
+                                        editAs: "absolute"
+                                    }
+                                },
+                                children: [
+                                    getAnchor("from", boxSize.from),
+                                    getAnchor("to", boxSize.to),
+                                    getPicture(image, idx, sheetImageIds.get(image.id).index, boxSize),
+                                    { name: "xdr:clientData" }
+                                ]
+                            };
+                        });
+                        return {
+                            name: "xdr:wsDr",
+                            properties: {
+                                rawMap: {
+                                    "xmlns:xdr": "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing",
+                                    "xmlns:a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+                                }
+                            },
+                            children
+                        };
+                    }
+                };
+
+                const createDrawing = (sheetIndex) => {
+                    return this.createXmlPart(drawingFactory.getTemplate({ sheetIndex }));
+                }
+                // enterprise-modules/excel-export/src/excelExport/files/ooxml/relationship.ts
+                var relationshipFactory = {
+                    getTemplate(config) {
+                        const { Id, Type, Target } = config;
+                        return {
+                            name: "Relationship",
+                            properties: {
+                                rawMap: {
+                                    Id,
+                                    Type,
+                                    Target
+                                }
+                            }
+                        };
+                    }
+                };
+                var relationship_default = relationshipFactory;
+
+                // enterprise-modules/excel-export/src/excelExport/files/ooxml/relationships.ts
+                var relationshipsFactory = {
+                    getTemplate(c) {
+                        const children = c.map((relationship) => relationship_default.getTemplate(relationship));
+                        return {
+                            name: "Relationships",
+                            properties: {
+                                rawMap: {
+                                    xmlns: "http://schemas.openxmlformats.org/package/2006/relationships"
+                                }
+                            },
+                            children
+                        };
+                    }
+                };
+                var relationships_default = relationshipsFactory;
+
+                const createDrawingRel = (sheetIndex) => {
+                    const worksheetImageIds = this.worksheetImageIds.get(sheetIndex) || [];
+                    const XMLArr = [];
+                    for (const [key, value] of worksheetImageIds) {
+                        XMLArr.push({
+                            Id: `rId${value.index + 1}`,
+                            Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                            Target: `../media/image${this.workbookImageIds.get(key).index + 1}.${value.type}`
+                        });
+                    }
+                    return this.createXmlPart(relationshipsFactory.getTemplate(XMLArr));
+                }
+
+                var createExcelXmlDrawings = (sheetIndex, drawingIndex) => {
+                    const drawingFolder = 'xl/drawings';
+                    const drawingFileName = `${drawingFolder}/drawing${drawingIndex + 1}.xml`;
+                    const relFileName = `${drawingFolder}/_rels/drawing${drawingIndex + 1}.xml.rels`;
+                    zip.file(relFileName, createDrawingRel(sheetIndex));
+                    zip.file(drawingFileName, createDrawing(sheetIndex));
+                };
+
+                for (let i = 1; i < data.length; i++) {
+                    const hasImages = this.worksheetImages.has(i);
+                    if (hasImages) {
+                        createExcelXmlDrawings(i, imageRelationCounter);
+                        drawingIndex = imageRelationCounter;
+                        imageRelationCounter++;
+                    }
+                }
+
+                const createRelationships = ({
+                    drawingIndex,
+                    tableIndex
+                } = {}) => {
+                    if (drawingIndex === void 0 && tableIndex === void 0) {
+                        return '';
+                    }
+                    const config = [];
+
+                    if (drawingIndex !== null && imgCounter > 0) {
+                        config.push({
+                            Id: `rId${config.length + 1}`,
+                            Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/drawing",
+                            Target: `../drawings/drawing${drawingIndex + 1}.xml`
+                        });
+                    }
+                    if (tableIndex !== null) {
+                        config.push({
+                            Id: `rId${config.length + 1}`,
+                            Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/table",
+                            Target: `../tables/table1.xml`
+                        });
+                    }
+                    const rs = relationships_default.getTemplate(config);
+                    return this.createXmlPart(rs);
+                }
+
+                var tableIndex = this.exportAsTable ? 1 : 0;
+                const worksheetRelFile = `xl/worksheets/_rels/sheet1.xml.rels`;
+                zip.file(
+                    worksheetRelFile,
+                    createRelationships({
+                        tableIndex,
+                        drawingIndex
+                    })
+                );
+            }
+            /**
+             * Exports to XLSX.
+             */
+            exportToXLSX(data, fileName, callback) {
+                try {
+                    JSZip;
+                }
+                catch (error) {
+                    throw new Error('Missing reference to \'jszip.min.js\'.');
+                }
+
+                const that = this;
+                let style = that.style;
+
+                data = that.processGroupingInformation(data, true);
+                that.data = data;
+                that.getColumnsArray();
+
+                that.complexHeaderMergedCells = [];
+
+                if (that.complexHeaderMergeInfo) {
+                    for (let cell in that.complexHeaderMergeInfo) {
+                        if (Object.prototype.hasOwnProperty.call(that.complexHeaderMergeInfo, cell)) {
+                            const currentEntry = that.complexHeaderMergeInfo[cell];
+
+                            if (currentEntry.from[0] === currentEntry.to[0] &&
+                                currentEntry.from[1] === currentEntry.to[1]) {
+                                continue;
+                            }
+
+                            that.complexHeaderMergedCells.push({
+                                from: that.columnsArray[currentEntry.from[1]] + (currentEntry.from[0] + 1),
+                                to: that.columnsArray[currentEntry.to[1]] + (currentEntry.to[0] + 1)
+                            });
+                        }
+                    }
+                }
+
+                that.getConditionalFormatting();
+
+                if (!style) {
+                    style = that.generateDefaultStyle(data);
+                }
+
+                // eslint-disable-next-line
+                const zip = new JSZip(),
+                    _rels = zip.folder('_rels'),
+                    docProps = zip.folder('docProps'),
+                    xl = zip.folder('xl');
+
+                if (that.headerContent) {
+                    const rows = that.headerContent;
+                    const customRows = [];
+                    for (let i = 0; i < rows.length; i++) {
+                        const row = rows[i];
+                        const cells = row.cells;
+                        let customRow = {};
+                        for (let j = 0; j < that.datafields.length; j++) {
+                            const dataField = that.datafields[j];
+                            if (cells[dataField]) {
+                                customRow[dataField] = cells[dataField];
+                            }
+                            else {
+                                customRow[dataField] = null;
+                            }
+                        }
+                        customRows.push(customRow);
+                    }
+                    data = [...customRows, ...data];
+                }
+
+                if (that.footerContent) {
+                    const rows = that.footerContent;
+                    const customRows = [];
+                    for (let i = 0; i < rows.length; i++) {
+                        const row = rows[i];
+                        const cells = row.cells;
+                        let customRow = {};
+                        for (let j = 0; j < that.datafields.length; j++) {
+                            const dataField = that.datafields[j];
+                            if (cells[dataField]) {
+                                customRow[dataField] = cells[dataField];
+                            }
+                            else {
+                                customRow[dataField] = null;
+                            }
+                        }
+                        customRows.push(customRow);
+                    }
+                    data = [...data, ...customRows];
+                }
+
+                this.generateWorksheetImages(zip, xl, data);
+
+                const sharedStrings = that.generateSharedStrings(data),
+                    sharedStringsCollection = sharedStrings.collection,
+                    sharedStringsXML = sharedStrings.xml,
+                    stylesXML = that.generateStyles(style),
+                    sheet1XML = that.groupBy ? that.generateSheet1WithGrouping(data, sharedStringsCollection) :
+                        that.generateSheet1(data, sharedStringsCollection, that.datafields, that.columnsArray),
+                    auxiliaryFiles = that.generateAuxiliaryFiles();
+
+
+                let hasImages = false;
+                const worksheetImages = this.worksheetImages.get(1);
+                if (worksheetImages && worksheetImages.length) {
+                    hasImages = true;
+                }
+
+                const xl_rels = xl.folder('_rels'),
+                    theme = xl.folder('theme'),
+                    worksheets = xl.folder('worksheets');
+
+                if (hasImages) {
+                    const media = xl.folder('media'),
+                        drawings = xl.folder('drawings'),
+                        drawingsRels = xl.folder('drawings/_rels');
+                }
+
+                _rels.file('.rels', auxiliaryFiles._relsRels);
+                docProps.file('app.xml', auxiliaryFiles.docPropsAppXml);
+                docProps.file('core.xml', auxiliaryFiles.docPropsCoreXml);
+                xl_rels.file('workbook.xml.rels', auxiliaryFiles.xl_relsWorkbookXmlRels);
+                theme.file('theme1.xml', auxiliaryFiles.xlThemeTheme1Xml);
+                worksheets.file('sheet1.xml', sheet1XML);
+                xl.file('sharedStrings.xml', sharedStringsXML);
+                xl.file('styles.xml', stylesXML);
+                xl.file('workbook.xml', auxiliaryFiles.xlWorkbookXml);
+                zip.file('[Content_Types].xml', auxiliaryFiles.Content_TypesXml);
+
+
+                if (this.spreadsheets) {
+                    let sheetIndex = 2;
+                    for (let s = 0; s < this.spreadsheets.length; s++) {
+                        const sheet = this.spreadsheets[s];
+                        const dataFields = sheet.dataFields;
+                        let data = [...sheet.dataSource];
+
+                        let header = [];
+                        for (let i = 0; i < sheet.columns.length; i++) {
+                            const column = sheet.columns[i];
+                            if (typeof column === 'string') {
+                                header[column] = column;
+                            }
+                            else {
+                                header[column.dataField] = column.label || column.text;
+                            }
+                        }
+                        data.splice(0, 0, header);
+                        const sheet1XML = that.generateSheet1(data, sharedStringsCollection, dataFields, that.getColumnsArrayFromDataFields(dataFields), sheetIndex);
+                        worksheets.file('sheet' + sheetIndex++ + '.xml', sheet1XML);
+                    }
+                }
+
+                if (this.exportAsTable) {
+                    const columnNames = Object.values(that.data[0]);
+
+                    const createGUID = () => {
+                        function part() {
+                            return Math.floor((1 + Math.random()) * 0x10000)
+                                .toString(16)
+                                .substring(1);
+                        }
+
+                        return part() + part() + '-' + part() + '-' + part() + '-' + part() + '-' + part() + part() + part();
+                    }
+
+                    const dimensionEnd = (that.groupBy && that.groupBy.length) ? that.groupDimensionEnd : that.columnsArray[that.columnsArray.length - 1] + (data.length - 1);
+
+                    let table = `<table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" mc:Ignorable="xr xr3" id="1" name="Table1" displayName="Table1" ref="A${this.xlsxStartIndex}:${dimensionEnd}" totalsRowShown="0">
+    <autoFilter ref="A${this.xlsxStartIndex}:${dimensionEnd}">`;
+                    for (let i = 0; i < columnNames.length; i++) {
+                        table += `<filterColumn colId="${i}" hiddenButton="0"/>
+    `;
+                    }
+                    table += '</autoFilter>';
+                    let tableColumns = `
+    <tableColumns count="${columnNames.length}">`;
+
+                    for (let i = 0; i < columnNames.length; i++) {
+                        const column = columnNames[i];
+
+                        tableColumns += `<tableColumn id="${i + 1}" name="${column}" dataCellStyle="Normal"/>
+    `;
+                    }
+                    tableColumns += `
+    </tableColumns>`;
+
+                    table += tableColumns;
+                    table += `
+        <tableStyleInfo name="TableStyleLight1" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/>
+    </table>`;
+
+
+                    const tables = xl.folder('tables');
+                    tables.file('table1.xml', table);
+                }
+
+                zip.generateAsync({
+                    type: 'blob',
+                    mimeType:
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                })
+                    .then(function (content) {
+                        if (!fileName && callback) {
+                            callback(content);
+                        }
+                        return that.downloadFile(content, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName);
+                    });
+
+                delete that.conditionalFormattingXLSX;
+                delete that.complexHeaderMergeInfo;
+                delete that.defaultRowHeight;
+                delete that.rowHeight;
+            }
+
+            /**
+             * Processes grouping information.
+             */
+            processGroupingInformation(data, xlsx) {
+                const that = this;
+
+                if (!that.groupBy) {
+                    return data;
+                }
+
+                let header;
+
+                data = data.slice(0);
+
+                if (that.exportHeader) {
+                    if (xlsx && that.complexHeader) {
+                        header = data.slice(0, that.complexHeader.length);
+                        data.splice(0, that.complexHeader.length);
+                    }
+                    else {
+                        header = [data[0]];
+                        data.splice(0, 1);
+                    }
+                }
+
+                if (data.length > 1) {
+                    const getCompareFunction = function (a, knownDataType) {
+                        // gets data type of column (not necessary if the Grid provides this information)
+                        const dataType = knownDataType || typeof a;
+                        let compareFunction;
+
+                        switch (dataType) {
+                            case 'string':
+                                compareFunction = new Intl.Collator().compare;
+                                break;
+                            case 'number':
+                                compareFunction = function (a, b) {
+                                    return a - b;
+                                };
+                                break;
+                            case 'boolean':
+                            case 'bool':
+                                compareFunction = function (a, b) {
+                                    if (a === b) {
+                                        return 0;
+                                    }
+                                    else if (a === false) {
+                                        return -1;
+                                    }
+                                    else {
+                                        return 1;
+                                    }
+                                };
+                                break;
+                            case 'date':
+                            case 'time':
+                            case 'dateTime':
+                                if (a instanceof Date) {
+                                    compareFunction = function (a, b) {
+                                        return a.getTime() - b.getTime();
+                                    };
+                                }
+
+                                break;
+                            case 'object':
+                                if (a instanceof Date) {
+                                    compareFunction = function (a, b) {
+                                        return a.getTime() - b.getTime();
+                                    };
+                                }
+
+
+                                break;
+                        }
+
+                        return compareFunction;
+                    }
+
+                    const sortByMultipleColumns = function (dataSource, sortColumns, directions, customSortingCallback) {
+                        if (!dataSource || !(Array.isArray(dataSource)) || dataSource.length === 0 ||
+                            !sortColumns || Array.isArray(sortColumns) && sortColumns.length === 0) {
+                            return;
+                        }
+
+                        if (typeof sortColumns === 'string') {
+                            sortColumns = [sortColumns];
+                        }
+
+                        const directionCoefficients = [],
+                            compareFunctions = [];
+
+                        if (directions === undefined) {
+                            directions = [];
+                        }
+
+                        for (let i = 0; i < sortColumns.length; i++) {
+                            if (directions[i] === undefined || directions[i] === 'asc' || directions[i] === 'ascending') {
+                                directionCoefficients[i] = 1;
+                            }
+                            else {
+                                directionCoefficients[i] = -1;
+                            }
+
+                            compareFunctions[i] = getCompareFunction(dataSource[0][sortColumns[i]]);
+                        }
+
+                        if (customSortingCallback) {
+                            customSortingCallback(dataSource, sortColumns, directions, compareFunctions);
+                            return;
+                        }
+
+                        dataSource.sort(function (a, b) {
+                            for (let i = 0; i < sortColumns.length; i++) {
+                                const result = compareFunctions[i](a[sortColumns[i]], b[sortColumns[i]]);
+
+                                if (result === 0) {
+                                    if (sortColumns[i + 1]) {
+                                        continue;
+                                    }
+                                    else if (a._index !== undefined) {
+                                        // makes sorting stable
+                                        return (a._index - b._index) * directionCoefficients[i];
+                                    }
+
+                                    return 0;
+                                }
+
+                                return result * directionCoefficients[i];
+                            }
+                        });
+                    }
+
+                    sortByMultipleColumns(data, that.groupBy);
+                }
+
+                if (header) {
+                    data = header.concat(data);
+                }
+
+                that.getGroupLabels(data);
+
+                return data;
+            }
+
+            /**
+             * Exports to XML.
+             */
+            exportToXML(data, fileName) {
+                const datafields = this.datafields.slice(0);
+                let xmlContent = '<?xml version="1.0" encoding="UTF-8" ?>\n<table>\n';
+
+                if (datafields.indexOf('rows') === -1) {
+                    datafields.push('rows');
+                }
+
+                function recursion(records, indent) {
+                    let content = '';
+
+                    for (let i = 0; i < records.length; i++) {
+                        const currentRecord = records[i];
+
+                        content += indent + '<row>\n';
+
+                        for (let j = 0; j < datafields.length; j++) {
+                            const datafield = datafields[j];
+
+                            if (datafield === 'rows') {
+                                if (!currentRecord.rows) {
+                                    continue;
+                                }
+
+                                content += `${indent}    <rows>\n${recursion(currentRecord.rows, indent + '        ')}${indent}    </rows>\n`;
+                                continue;
+                            }
+
+                            content += indent + `    <${datafield}>${currentRecord[datafield]}</${datafield}>\n`;
+                        }
+
+                        content += indent + '</row>\n';
+                    }
+
+                    return content;
+                }
+
+                xmlContent += recursion(data, '    ') + '</table>';
+
+                if (!fileName) {
+                    return xmlContent;
+                }
+
+                return this.downloadFile(xmlContent, 'application/xml', fileName);
+            }
+
+            /**
+             * Formats a date.
+             */
+            formatDate(value, format) {
+                return value;
+            }
+
+            /**
+             * Formats a number.
+             */
+            formatNumber(value, format) {
+                return value;
+            }
+
+            /**
+             * Generates auxiliary files necessary for XLSX.
+             */
+            generateAuxiliaryFiles() {
+                // _rels\.rels
+                const _relsRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;
+
+                // docProps\app.xml
+                const docPropsAppXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>Microsoft Excel</Application><DocSecurity>0</DocSecurity><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size="2" baseType="variant"><vt:variant><vt:lpstr>Worksheets</vt:lpstr></vt:variant><vt:variant><vt:i4>1</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size="1" baseType="lpstr"><vt:lpstr>Sheet1</vt:lpstr></vt:vector></TitlesOfParts><Company></Company><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0300</AppVersion></Properties>`;
+
+                // docProps\core.xml
+                const now = new Date().toISOString(),
+                    docPropsCoreXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:creator>Smart HTML Elements</dc:creator><cp:lastModifiedBy>Smart HTML Elements</cp:lastModifiedBy><dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${now}</dcterms:modified></cp:coreProperties>`;
+
+                // xl\_rels\workbook.xml.rels
+                let relationShips = `<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>`;
+                let relationShipId = 1;
+                if (this.spreadsheets) {
+                    for (let s = 0; s < this.spreadsheets.length; s++) {
+                        const sheetId = 2 + s;
+                        relationShipId++;
+                        relationShips += `<Relationship Id="rId${sheetId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${sheetId}.xml"/>`;
+                    }
+                }
+
+                const xl_relsWorkbookXmlRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${relationShips}<Relationship Id="rId${++relationShipId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="theme/theme1.xml"/><Relationship Id="rId${++relationShipId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId${++relationShipId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>`;
+
+                // xl\theme\theme1.xml
+                const xlThemeTheme1Xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:sysClr val="windowText" lastClr="000000"/></a:dk1><a:lt1><a:sysClr val="window" lastClr="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="44546A"/></a:dk2><a:lt2><a:srgbClr val="E7E6E6"/></a:lt2><a:accent1><a:srgbClr val="4472C4"/></a:accent1><a:accent2><a:srgbClr val="ED7D31"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hlink><a:srgbClr val="0563C1"/></a:hlink><a:folHlink><a:srgbClr val="954F72"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Calibri Light" panose="020F0302020204030204"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="游ゴシック Light"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="等线 Light"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Times New Roman"/><a:font script="Hebr" typeface="Times New Roman"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="MoolBoran"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Times New Roman"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/><a:font script="Armn" typeface="Arial"/><a:font script="Bugi" typeface="Leelawadee UI"/><a:font script="Bopo" typeface="Microsoft JhengHei"/><a:font script="Java" typeface="Javanese Text"/><a:font script="Lisu" typeface="Segoe UI"/><a:font script="Mymr" typeface="Myanmar Text"/><a:font script="Nkoo" typeface="Ebrima"/><a:font script="Olck" typeface="Nirmala UI"/><a:font script="Osma" typeface="Ebrima"/><a:font script="Phag" typeface="Phagspa"/><a:font script="Syrn" typeface="Estrangelo Edessa"/><a:font script="Syrj" typeface="Estrangelo Edessa"/><a:font script="Syre" typeface="Estrangelo Edessa"/><a:font script="Sora" typeface="Nirmala UI"/><a:font script="Tale" typeface="Microsoft Tai Le"/><a:font script="Talu" typeface="Microsoft New Tai Lue"/><a:font script="Tfng" typeface="Ebrima"/></a:majorFont><a:minorFont><a:latin typeface="Calibri" panose="020F0502020204030204"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="游ゴシック"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="等线"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Arial"/><a:font script="Hebr" typeface="Arial"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="DaunPenh"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Arial"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/><a:font script="Armn" typeface="Arial"/><a:font script="Bugi" typeface="Leelawadee UI"/><a:font script="Bopo" typeface="Microsoft JhengHei"/><a:font script="Java" typeface="Javanese Text"/><a:font script="Lisu" typeface="Segoe UI"/><a:font script="Mymr" typeface="Myanmar Text"/><a:font script="Nkoo" typeface="Ebrima"/><a:font script="Olck" typeface="Nirmala UI"/><a:font script="Osma" typeface="Ebrima"/><a:font script="Phag" typeface="Phagspa"/><a:font script="Syrn" typeface="Estrangelo Edessa"/><a:font script="Syrj" typeface="Estrangelo Edessa"/><a:font script="Syre" typeface="Estrangelo Edessa"/><a:font script="Sora" typeface="Nirmala UI"/><a:font script="Tale" typeface="Microsoft Tai Le"/><a:font script="Talu" typeface="Microsoft New Tai Lue"/><a:font script="Tfng" typeface="Ebrima"/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:lumMod val="110000"/><a:satMod val="105000"/><a:tint val="67000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="103000"/><a:tint val="73000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="109000"/><a:tint val="81000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:satMod val="103000"/><a:lumMod val="102000"/><a:tint val="94000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:satMod val="110000"/><a:lumMod val="100000"/><a:shade val="100000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="99000"/><a:satMod val="120000"/><a:shade val="78000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:fillStyleLst><a:lnStyleLst><a:ln w="6350" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="12700" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="19050" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst><a:outerShdw blurRad="57150" dist="19050" dir="5400000" algn="ctr" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="63000"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"><a:tint val="95000"/><a:satMod val="170000"/></a:schemeClr></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="93000"/><a:satMod val="150000"/><a:shade val="98000"/><a:lumMod val="102000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:tint val="98000"/><a:satMod val="130000"/><a:shade val="90000"/><a:lumMod val="103000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="63000"/><a:satMod val="120000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/><a:extLst><a:ext uri="{05A4C25C-085E-4340-85A3-A5531E510DB2}"><thm15:themeFamily xmlns:thm15="http://schemas.microsoft.com/office/thememl/2012/main" name="Office Theme" id="{62F939B6-93AF-4DB8-9C6B-D6C7DFDC589F}" vid="{4A3C46E8-61CC-4603-A589-7422A47A8E4A}"/></a:ext></a:extLst></a:theme>`;
+
+                // xl\workbook.xml
+                let sheets = '<sheet name="Sheet1" sheetId="1" r:id="rId1"/>';
+                if (this.spreadsheets) {
+                    for (let s = 0; s < this.spreadsheets.length; s++) {
+                        const sheetId = 2 + s;
+                        const sheet = this.spreadsheets[s];
+                        sheets += `<sheet name="${sheet.label}" sheetId="${sheetId}" r:id="rId${sheetId}"/>`;
+                    }
+                }
+
+                const xlWorkbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x15 xr xr6 xr10 xr2" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr6="http://schemas.microsoft.com/office/spreadsheetml/2016/revision6" xmlns:xr10="http://schemas.microsoft.com/office/spreadsheetml/2016/revision10" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2"><fileVersion appName="xl" lastEdited="7" lowestEdited="7" rupBuild="20325"/><workbookPr defaultThemeVersion="166925"/><mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"><mc:Choice Requires="x15"><x15ac:absPath url="C:\Users\jqwidgets\Desktop\" xmlns:x15ac="http://schemas.microsoft.com/office/spreadsheetml/2010/11/ac"/></mc:Choice></mc:AlternateContent><xr:revisionPtr revIDLastSave="0" documentId="13_ncr:1_{0DEDCB6D-5403-4CD8-AAA5-59B6D238A8B6}" xr6:coauthVersionLast="34" xr6:coauthVersionMax="34" xr10:uidLastSave="{00000000-0000-0000-0000-000000000000}"/><bookViews><workbookView xWindow="0" yWindow="0" windowWidth="19200" windowHeight="6950" xr2:uid="{0CB664E6-3800-4A88-B158-B46A682E7484}"/></bookViews><sheets>${sheets}</sheets><calcPr calcId="179021"/><extLst><ext uri="{140A7094-0E35-4892-8432-C4D2E57EDEB5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:workbookPr chartTrackingRefBase="1"/></ext></extLst></workbook>`;
+
+                const worksheetImages = this.worksheetImages.get(1);
+                let drawings = '';
+                if (worksheetImages && worksheetImages.length) {
+                    drawings = '<Override PartName="/xl/drawings/drawing1.xml" ContentType="application/vnd.openxmlformats-officedocument.drawing+xml"/>';
+                }
+
+                let tables = '';
+                if (this.exportAsTable) {
+                    tables = '<Override PartName="/xl/tables/table1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml"/>';
+                }
+
+                // [Content_Types].xml
+                let sheetOverrides = `<Override PartName = "/xl/worksheets/sheet1.xml" ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml" />`;
+                if (this.spreadsheets) {
+                    for (let i = 0; i < this.spreadsheets.length; i++) {
+                        sheetOverrides += `<Override PartName = "/xl/worksheets/sheet${i + 2}.xml" ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml" />`;
+                    }
+                }
+                const Content_TypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="bin" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.printerSettings"/><Default Extension="jpeg" ContentType="image/jpeg"/><Default Extension="png" ContentType="image/png"/><Default Extension="svg" ContentType="image/svg"/><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>${sheetOverrides}<Override PartName="/xl/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>${tables}${drawings}<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`;
+
+                return {
+                    _relsRels: _relsRels,
+                    docPropsAppXml: docPropsAppXml,
+                    docPropsCoreXml: docPropsCoreXml,
+                    xl_relsWorkbookXmlRels: xl_relsWorkbookXmlRels,
+                    xlThemeTheme1Xml: xlThemeTheme1Xml,
+                    xlWorkbookXml: xlWorkbookXml,
+                    Content_TypesXml: Content_TypesXml
+                };
+            }
+
+            /**
+             * Generates default style object (for use in XLSX export).
+             */
+            generateDefaultStyle(data) {
+                const that = this,
+                    defaultStyle = {},
+                    datafields = that.datafields,
+                    firstRecord = that.complexHeader ? data[that.complexHeader.length] : data[+that.exportHeader];
+
+                if (!firstRecord) {
+                    return defaultStyle;
+                }
+
+                for (let i = 0; i < datafields.length; i++) {
+                    const sampleValue = firstRecord[datafields[i]];
+
+                    if (sampleValue instanceof Date) {
+                        if (!defaultStyle.columns) {
+                            defaultStyle.columns = [];
+                        }
+
+                        defaultStyle.columns[datafields[i]] = { format: 'd' };
+                    }
+                }
+
+                return defaultStyle;
+            }
+
+            /**
+             * Generates group row.
+             */
+            generateGroupRow(details) {
+                const rowNumber = details.rowNumber,
+                    from = 'A' + rowNumber,
+                    recordXML = `        <row r="${rowNumber}" outlineLevel="${details.outlineLevel}" spans="1:${details.numberOfColumns}"${this.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">
+                <c r="${from}" t="s" s="0">
+                    <v>${details.sharedStringIndex}</v>
+                </c>
+            </row>\n`;
+
+                details.mergedCells.push({ from: from, to: this.columnsArray[details.numberOfColumns - 1] + rowNumber });
+
+                return recordXML;
+            }
+
+            /**
+             * Generates sharedStrings.xml.
+             */
+            generateSharedStrings(data) {
+                const that = this,
+                    datafields = that.datafields,
+                    collection = [];
+                let xml = '',
+                    count = 0,
+                    uniqueCount = 0;
+
+                function addSharedString(currentValue) {
+                    count++;
+
+                    if (collection.indexOf(currentValue) === -1) {
+                        uniqueCount++;
+                        collection.push(currentValue);
+
+                        currentValue = currentValue.replace(/&(?!amp;)/g, '&amp;');
+                        currentValue = currentValue.replace(/'/g, '&apos;');
+                        currentValue = currentValue.replace(/"/g, '&quot;');
+                        currentValue = currentValue.replace(/>/g, '&gt;');
+                        currentValue = currentValue.replace(/</g, '&lt;');
+
+                        xml += `<si><t>${currentValue}</t></si>`;
+                    }
+                }
+
+                const addSharedStrings = (data, datafields) => {
+                    for (let i = 0; i < data.length; i++) {
+                        const currentRecord = data[i];
+
+                        for (let j = 0; j < datafields.length; j++) {
+                            let currentValue = currentRecord[datafields[j]];
+
+                            if (currentValue === null && !that.allowNull) {
+                                currentValue = '';
+                            }
+
+                            if (typeof currentValue !== 'string') {
+                                continue;
+                            }
+
+                            addSharedString(currentValue);
+                        }
+                    }
+                }
+
+                addSharedStrings(data, datafields);
+
+                if (that.spreadsheets) {
+                    for (let i = 0; i < that.spreadsheets.length; i++) {
+                        const sheet = that.spreadsheets[i];
+                        const datafields = sheet.dataFields;
+                        let data = [...sheet.dataSource];
+
+                        let header = [];
+                        for (let i = 0; i < sheet.columns.length; i++) {
+                            const column = sheet.columns[i];
+                            if (typeof column === 'string') {
+                                header[column] = column;
+                            }
+                            else {
+                                header[column.dataField] = column.label;
+                            }
+                        }
+                        data.splice(0, 0, header);
+                        addSharedStrings(data, datafields);
+                    }
+
+                }
+
+                if (that.groupLabels) {
+                    for (let i = 0; i < that.groupLabels.length; i++) {
+                        addSharedString(that.groupLabels[i]);
+                    }
+                }
+
+                xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${count}" uniqueCount="${uniqueCount}">${xml}</sst>`;
+
+                return { collection: collection, xml: xml };
+            }
+
+
+            /**
+             * Generates sheet1.xml.
+             */
+            generateSheet1(data, sharedStrings, datafields, columnsArray, sheetIndex) {
+                const that = this,
+                    numberOfColumns = columnsArray.length,
+                    numberOfRows = data.length,
+                    dimensionEnd = columnsArray[numberOfColumns - 1] + numberOfRows,
+                    autoFilter = that.getFilters(),
+                    mergedCells = [].concat(that.complexHeaderMergedCells);
+                let rIdCounter = 0;
+
+                const addDrawingRel = (currentSheet2) => {
+                    let xmlContent = '';
+
+                    const worksheetImages = this.worksheetImages.get(currentSheet2);
+                    if (worksheetImages && worksheetImages.length) {
+                        xmlContent += `<drawing r:id="rId${++rIdCounter}"/>`;
+                    }
+                    return xmlContent;
+                };
+                const addTableRel = () => {
+                    if (!that.exportAsTable) {
+                        return '';
+                    }
+
+                    let xmlContent = `<tableParts count="1">
+                    <tablePart r:id="rId${++rIdCounter}"/>
+                </tableParts>`;
+
+                    return xmlContent;
+                };
+
+                const freezeHeader = that.freezeHeader ? `<sheetView rightToLeft="0" workbookViewId="0">
+             <pane state="frozen" topLeftCell="A${that.xlsxStartIndex + 1}" ySplit="${that.xlsxStartIndex}"/>
+            </sheetView>` : '';
+
+                let cols = that.getCustomColumnWidths(columnsArray);
+
+                if (sheetIndex > 1) {
+                    let colsString = '<cols>';
+                    for (let i = 0; i < columnsArray.length; i++) {
+                        colsString += '<col min="1" max="1" width="25" hidden="0" bestFit="0" customWidth="1"/>';
+                    }
+                    colsString += '</cols>';
+
+                    cols = colsString;
+                }
+
+                const tabSelected = sheetIndex <= 1 ? 'tabSelected="1"' : '';
+
+                let xmlContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac xr xr2 xr3" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" xr:uid="{7F25248B-C640-4C64-AD47-C0EA0E5D90D0}">
+        <sheetPr filterMode="${autoFilter !== ''}" />
+        <dimension ref="A1:${dimensionEnd}" />
+        <sheetViews>
+            <sheetView ${tabSelected} workbookViewId="0" />
+            ${freezeHeader}
+        </sheetViews>
+        <sheetFormatPr defaultRowHeight="14.5" x14ac:dyDescent="0.35" />${cols}
+        <sheetData>\n`;
+
+                function r(col, row) {
+                    return columnsArray[col] + row;
+                }
+
+                for (let i = 0; i <= data.length; i++) {
+                    const currentRecord = data[i],
+                        rowNumber = i + 1;
+                    let collapsed = '';
+
+                    if (that.actualHierarchy) {
+                        const previousRecord = data[i - 1];
+
+                        if (previousRecord && previousRecord._collapsed &&
+                            (!currentRecord || previousRecord._level > currentRecord._level)) {
+                            collapsed = ' collapsed="true"';
+                        }
+                    }
+
+                    if (i === data.length) {
+                        if (collapsed) {
+                            xmlContent += `        <row r="${rowNumber}" outlineLevel="${Math.max(data[i - 1]._level - 2, 0)}" hidden="false" collapsed="true" />\n`;
+                        }
+
+                        break;
+                    }
+
+                    let recordXML = `        <row r="${rowNumber}"${that.getOutlineLevel(currentRecord)} hidden="${currentRecord._hidden || currentRecord._collapsed || false}"${collapsed} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} customHeight="1" x14ac:dyDescent="0.45">\n`;
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const s = that.getXLSXCellStyle(r(j, rowNumber));
+
+                        recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings, rowNumber, datafields[j]);
+                    }
+
+                    recordXML += '        </row>\n';
+                    xmlContent += recordXML;
+                }
+
+                if (that.headerContent) {
+                    for (let m = 0; m < that.headerContent.length; m++) {
+                        const row = that.headerContent[m];
+                        if (row.style && row.style.mergeAcross) {
+                            mergedCells.push({
+                                from: 'A' + (m + 1),
+                                to: columnsArray[numberOfColumns - 1] + (m + 1)
+                            });
+                        }
+                    }
+                }
+                if (that.footerContent) {
+                    for (let m = 0; m < that.footerContent.length; m++) {
+                        const row = that.footerContent[m];
+                        if (row.style && row.style.mergeAcross) {
+                            mergedCells.push({
+                                from: 'A' + (data.length - m),
+                                to: columnsArray[numberOfColumns - 1] + (data.length - m)
+                            });
+                        }
+                    }
+                }
+                xmlContent += `    </sheetData>${that.conditionalFormattingXLSX.conditions}${autoFilter}${that.getMergedCells(mergedCells)}
+        <pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3" />
+        <pageSetup paperSize="9" orientation="portrait" r:id="rId1" />
+        ${addDrawingRel(sheetIndex ? sheetIndex : 1)}
+        ${addTableRel()}
+    </worksheet>`;
+
+
+
+                return xmlContent;
+            }
+
+            /**
+             * Generates sheet1.xml with grouping.
+             */
+            generateSheet1WithGrouping(data, sharedStrings) {
+                const that = this,
+                    numberOfColumns = that.columnsArray.length,
+                    numberOfRows = data.length,
+                    dimensionEnd = that.columnsArray[numberOfColumns - 1] + numberOfRows,
+                    datafields = that.datafields,
+                    mergedCells = [].concat(that.complexHeaderMergedCells);
+                let rIdCounter = 0;
+
+                const addDrawingRel = (currentSheet2) => {
+                    let xmlContent = '';
+
+                    const worksheetImages = this.worksheetImages.get(currentSheet2);
+                    if (worksheetImages && worksheetImages.length) {
+                        xmlContent += `<drawing r:id="rId${++rIdCounter}"/>`;
+                    }
+                    return xmlContent;
+                };
+                const addTableRel = () => {
+                    if (!that.exportAsTable) {
+                        return '';
+                    }
+
+                    let xmlContent = `<tableParts count="1">
+                    <tablePart r:id="rId${++rIdCounter}"/>
+                </tableParts>`;
+
+                    return xmlContent;
+                };
+                const freezeHeader = that.freezeHeader ? `<sheetView rightToLeft="0" workbookViewId="0">
+             <pane state="frozen" topLeftCell="A${that.xlsxStartIndex + 1}" ySplit="${that.xlsxStartIndex}"/>
+            </sheetView>` : '';
+                let xmlContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac xr xr2 xr3" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" xr:uid="{7F25248B-C640-4C64-AD47-C0EA0E5D90D0}">
+        <dimension ref="A1:${dimensionEnd}" />
+        <sheetViews>
+            <sheetView tabSelected="1" workbookViewId="0" />
+            ${freezeHeader}
+        </sheetViews>
+        <sheetFormatPr defaultRowHeight="14.5" x14ac:dyDescent="0.35" />${that.getCustomColumnWidths()}
+        <sheetData>\n`,
+                    rowNumberCorrection = 0,
+                    groupsHandled = [];
+
+                function r(col, row) {
+                    return that.columnsArray[col] + row;
+                }
+
+                mainLoop:
+                for (let i = 0; i < data.length; i++) {
+                    const currentRecord = data[i],
+                        rowNumber = i + 1 + rowNumberCorrection;
+                    let outlineLevel = 0,
+                        outlineXML = '';
+
+                    if (!that.exportHeader ||
+                        (!that.complexHeader && i !== 0) ||
+                        (that.complexHeader && i >= that.complexHeader.length)) {
+                        let groupId = '';
+
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
+
+                            groupId += currentGroup;
+
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                let sharedStringIndex = sharedStrings.indexOf(currentGroupLabel);
+
+                                xmlContent += that.generateGroupRow({
+                                    rowNumber: rowNumber,
+                                    outlineLevel: outlineLevel,
+                                    numberOfColumns: numberOfColumns,
+                                    sharedStringIndex: sharedStringIndex,
+                                    mergedCells: mergedCells
+                                });
+                                groupsHandled.push(groupId);
+                                i--;
+                                rowNumberCorrection++;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
+                        }
+
+                        outlineXML = ` outlineLevel="${outlineLevel}"`;
+                    }
+
+                    let recordXML = `        <row r="${rowNumber}"${outlineXML} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} customHeight="1" x14ac:dyDescent="0.45">\n`;
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const s = that.getXLSXCellStyle(r(j, i + 1));
+
+                        recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings, rowNumber, datafields[j]);
+                    }
+
+                    recordXML += '        </row>\n';
+                    xmlContent += recordXML;
+                }
+
+                xmlContent += `    </sheetData>${!that.exportAsTable ? that.getMergedCells(mergedCells) : ''}
+        <pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3" />
+        <pageSetup paperSize="9" orientation="portrait" r:id="rId1" />
+        ${addDrawingRel(1)}
+        ${addTableRel()}
+    </worksheet>`;
+
+                that.groupDimensionEnd = that.columnsArray[numberOfColumns - 1] + (numberOfRows + rowNumberCorrection);
+                that.groupRowsCount = numberOfRows + rowNumberCorrection;
+                return xmlContent;
+            }
+
+            isFormula(value) {
+                if (value === null) {
+                    return false;
+                }
+                return this.autoConvertFormulas && value.toString().startsWith('=');
+            }
+
+            /**
+             * Gets actual spreadsheet cell data.
+             */
+            getActualCellData(currentValue, details, sharedStrings) {
+                const r = details.r,
+                    s = details.s || ' s="0"';
+
+                if (currentValue === null && !this.allowNull) {
+                    currentValue = '';
+                }
+
+                if (currentValue && this.isFormula(currentValue)) {
+                    return `            <c r="${r}" t="s"${s}>
+                    <f>${currentValue.slice(1)}</f>
+                </c>\n`;
+                }
+
+                if (typeof currentValue === 'string') {
+                    return `            <c r="${r}" t="s"${s}>
+                    <v>${sharedStrings.indexOf(currentValue)}</v>
+                </c>\n`;
+                }
+
+                if (typeof currentValue === 'boolean') {
+                    return `            <c r="${r}" t="b"${s}>
+                    <v>${+currentValue}</v>
+                </c>\n`;
+                }
+
+                if (currentValue instanceof Date) {
+                    //    const timeZoneOffset = currentValue.getTimezoneOffset() * 1000 * 60;
+                    //    const excelDate = (currentValue.getTime() + this.timeBetween1900And1970 - timeZoneOffset) / (1000 * 60 * 60 * 24) + 3;
+
+                    const timeBetweenJSandExcel = 2 + Math.round(this.timeBetween1900And1970 / (1000 * 60 * 60 * 24));
+                    const excelDateTime = timeBetweenJSandExcel + ((currentValue.getTime() - (currentValue.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
+
+                    return `            <c r="${r}"${s}>
+                    <v>${excelDateTime}</v>
+                </c>\n`;
+                }
+
+                // numeric cells
+                return `            <c r="${r}"${s}>
+                    <v>${currentValue}</v>
+                </c>\n`;
+            }
+
+            /**
+             * Gets column labels.
+             */
+            getColumnsArray() {
+                const that = this,
+                    numberOfColumns = that.datafields.length,
+                    columnsCollection = [];
+
+                function getIterator(i) {
+                    if (i < 26) {
+                        return '';
+                    }
+
+                    return String.fromCharCode(64 + Math.floor(i / 26));
+                }
+
+                for (let i = 0; i < numberOfColumns; i++) {
+                    columnsCollection.push(getIterator(i) + String.fromCharCode(65 + (i < 26 ? i : i % 26)));
+                }
+
+                that.columnsArray = columnsCollection;
+            }
+
+            /**
+           * Gets column labels.
+           */
+            getColumnsArrayFromDataFields(datafields) {
+                const that = this,
+                    numberOfColumns = datafields.length,
+                    columnsCollection = [];
+
+                function getIterator(i) {
+                    if (i < 26) {
+                        return '';
+                    }
+
+                    return String.fromCharCode(64 + Math.floor(i / 26));
+                }
+
+                for (let i = 0; i < numberOfColumns; i++) {
+                    columnsCollection.push(getIterator(i) + String.fromCharCode(65 + (i < 26 ? i : i % 26)));
+                }
+
+                return columnsCollection;
+            }
+
+            /**
+             * Gets column style.
+             */
+            getColumnStyle() {
+                const that = this,
+                    style = that.style;
+
+                if (!style) {
+                    return `        .header { border: 1px solid black; padding: 5px; }
+            .column { border: 1px solid black; padding: 5px; }
+            .group { background-color: #FFFFFF; color: #000000; font-weight: bold; }`;
+                }
+
+                let styles;
+
+                if (style.removeDefault) {
+                    styles = {
+                        header: '',
+                        column: '',
+                        group: ''
+                    };
+                }
+                else {
+                    styles = {
+                        header: 'border: 1px solid black; padding: 5px; ',
+                        column: 'white-space: nowrap; overflow: hidden; border: 1px solid black; padding: 5px; ',
+                        group: 'background-color: #FFFFFF; color: #000000; font-weight: bold; '
+                    };
+                }
+
+                const sampleRecord = that.data[0];
+                let generatedStyle = '';
+
+                const headerDefinition = style.header || {};
+
+                for (let prop in headerDefinition) {
+                    if (!Object.prototype.hasOwnProperty.call(headerDefinition, prop)) {
+                        continue;
+                    }
+
+                    const value = headerDefinition[prop];
+
+                    if (sampleRecord[prop]) {
+                        if (!styles['header' + prop]) {
+                            styles['header' + prop] = '';
+                        }
+
+                        for (let columnProp in value) {
+                            if (Object.prototype.hasOwnProperty.call(value, columnProp)) {
+                                const css = window.jqxToDash(columnProp) + ': ' + value[columnProp] + '; ';
+
+                                styles['header' + prop] += css;
+
+                                if (columnProp === 'width') {
+                                    if (!styles['column' + prop]) {
+                                        styles['column' + prop] = '';
+                                    }
+
+                                    styles['column' + prop] += css;
+                                }
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    if (prop === 'height' && that.complexHeader) {
+                        styles.header += 'height: ' + parseInt(headerDefinition[prop], 10) / that.complexHeader.length + 'px; ';
+                    }
+                    else {
+                        styles.header += window.jqxToDash(prop) + ': ' + headerDefinition[prop] + '; ';
+                    }
+                }
+
+                const columnsDefinition = style.columns || {};
+
+                for (let prop in columnsDefinition) {
+                    if (!Object.prototype.hasOwnProperty.call(columnsDefinition, prop)) {
+                        continue;
+                    }
+
+                    const value = columnsDefinition[prop];
+
+                    if (sampleRecord[prop]) {
+                        if (!styles['column' + prop]) {
+                            styles['column' + prop] = '';
+                        }
+
+                        for (let columnProp in value) {
+                            if (isNaN(columnProp) && Object.prototype.hasOwnProperty.call(value, columnProp) && columnProp !== 'format') {
+                                styles['column' + prop] += window.jqxToDash(columnProp) + ': ' + value[columnProp] + '; ';
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    styles.column += window.jqxToDash(prop) + ': ' + value + '; ';
+                }
+
+                for (let prop in styles) {
+                    if (Object.prototype.hasOwnProperty.call(styles, prop)) {
+                        generatedStyle += `        .${prop} { ${styles[prop]}}\n`;
+                    }
+                }
+
+                if (style.custom) {
+                    generatedStyle += `${style.custom}\n`;
+                }
+
+                return generatedStyle;
+            }
+
+            /**
+             * Gets custom column widths.
+             */
+            getCustomColumnWidths(columnsArray) {
+                const that = this;
+
+                if (columnsArray !== that.columnsArray) {
+                    return '';
+                }
+
+                if (!that.style || !that.columnWidth || that.columnWidth.length === 0) {
+                    return '';
+                }
+
+                let xml = '\n    <cols>\n';
+
+                for (let i = 0; i < that.columnWidth.length; i++) {
+                    let width = that.columnWidth[i];
+
+                    if (width !== undefined) {
+                        width = Math.round(parseFloat(width)) / 7;
+                        xml += `        <col min="${i + 1}" max="${i + 1}" width="${width}" customWidth="1" />\n`;
+                    }
+                }
+
+                xml += '    </cols>';
+
+                return xml;
+            }
+
+            /**
+             * Returns customFilter tag.
+             */
+            getCustomFilter(value, condition) {
+                let operator = 'equal',
+                    val;
+
+                if (value instanceof Date) {
+                    value = (value.getTime() + this.timeBetween1900And1970) / 86400000 + 2;
+                }
+
+                condition = condition.toUpperCase();
+
+                switch (condition) {
+                    case 'EMPTY':
+                        val = '';
+                        break;
+                    case 'NOT_EMPTY':
+                        val = '';
+                        operator = 'notEqual';
+                        break;
+                    case 'CONTAINS':
+                    case 'CONTAINS_CASE_SENSITIVE':
+                        val = `*${value}*`;
+                        break;
+                    case 'DOES_NOT_CONTAIN':
+                    case 'DOES_NOT_CONTAIN_CASE_SENSITIVE':
+                        val = `*${value}*`;
+                        operator = 'notEqual';
+                        break;
+                    case 'STARTS_WITH':
+                    case 'STARTS_WITH_CASE_SENSITIVE':
+                        val = `${value}*`;
+                        break;
+                    case 'ENDS_WITH':
+                    case 'ENDS_WITH_CASE_SENSITIVE':
+                        val = `*${value}`;
+                        break;
+                    case 'EQUAL':
+                    case 'EQUAL_CASE_SENSITIVE':
+                        val = value;
+                        break;
+                    case 'NULL':
+                        val = null;
+                        break;
+                    case 'NOT_NULL':
+                        val = null;
+                        operator = 'notEqual';
+                        break;
+                    case 'NOT_EQUAL':
+                        val = value;
+                        operator = 'notEqual';
+                        break;
+                    case 'LESS_THAN':
+                        val = value;
+                        operator = 'lessThan';
+                        break;
+                    case 'LESS_THAN_OR_EQUAL':
+                        val = value;
+                        operator = 'lessThanOrEqual';
+                        break;
+                    case 'GREATER_THAN':
+                        val = value;
+                        operator = 'greaterThan';
+                        break;
+                    case 'GREATER_THAN_OR_EQUAL':
+                        val = value;
+                        operator = 'greaterThanOrEqual';
+                        break;
+                }
+
+                return `                <customFilter val="${val}" operator="${operator}"/>\n`;
+            }
+
+            /**
+             * Gets custom row height.
+             */
+            getCustomRowHeight(row) {
+                const that = this;
+
+                if (that.style) {
+                    return that.rowHeight[row] || that.defaultRowHeight || '';
+                }
+
+                return '';
+            }
+
+            /**
+             * Gets datafields.
+             */
+            getDatafields(data) {
+                const that = this,
+                    sampleRecord = data[0],
+                    datafields = [];
+
+                for (let prop in sampleRecord) {
+                    if (Object.prototype.hasOwnProperty.call(sampleRecord, prop) && prop.charAt(0) !== '_') {
+                        datafields.push(prop);
+                    }
+                }
+
+                that.datafields = datafields;
+            }
+
+            /**
+             * Returns autoFilter XML.
+             */
+            getFilters() {
+                const that = this,
+                    filterBy = that.filterBy;
+
+                if (!filterBy) {
+                    return '';
+                }
+
+                let xml = '';
+
+                for (let datafield in filterBy) {
+                    if (Object.prototype.hasOwnProperty.call(filterBy, datafield)) {
+                        const colId = that.datafields.indexOf(datafield);
+
+                        if (colId === -1) {
+                            continue;
+                        }
+
+                        const filterDetails = filterBy[datafield],
+                            filters = filterDetails.filters;
+
+                        xml += `        <filterColumn colId="${colId}">
+                <customFilters and="${!filterDetails.operator}">\n`;
+
+                        for (let i = 0; i < filters.length; i++) {
+                            xml += that.getCustomFilter(filters[i].value, filters[i].condition);
+                        }
+
+                        xml += `            </customFilters>
+            </filterColumn>`;
+                    }
+                }
+
+                if (!xml) {
+                    return '';
+                }
+
+                xml = `\n    <autoFilter ref="A1:${that.columnsArray[that.columnsArray.length - 1] + that.data.length}">\n${xml}\n    </autoFilter>`;
+                return xml;
+            }
+
+            /**
+             * Gets group labels based on data.
+             */
+            getGroupLabels(data) {
+                const that = this,
+                    startIndex = that.xlsxStartIndex !== undefined ? that.xlsxStartIndex : +that.exportHeader,
+                    groups = {},
+                    groupLabels = [];
+
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = data[i];
+
+                    for (let j = 0; j < that.groupBy.length; j++) {
+                        const datafield = that.groupBy[j],
+                            currentValue = currentRecord[datafield];
+                        let group = groups[datafield];
+
+                        if (group === undefined) {
+                            groups[datafield] = {};
+                            group = groups[datafield];
+                        }
+
+                        if (group[currentValue] === undefined) {
+                            group[currentValue] = (that.exportHeader ? data[startIndex - 1][datafield] : datafield) + ': ' + currentValue;
+                            groupLabels.push(group[currentValue]);
+                        }
+                    }
+                }
+
+                that.groups = groups;
+                that.groupLabels = groupLabels;
+            }
+
+            /**
+             * Gets the header content when exporting to HTML.
+             */
+            getHTMLHeader(datafields, data) {
+                const that = this;
+                let header = '\n        <thead>\n';
+
+                if (!that.complexHeader) {
+                    header += '            <tr>\n';
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const datafield = datafields[j];
+
+                        header += `                <th class="header header${datafield}">${data[0][datafield]}</th>\n`;
+                    }
+
+                    header += '            </tr>\n        </thead>';
+                    return header;
+                }
+
+                for (let j = 0; j < that.complexDataFieldsHeader.length; j++) {
+                    const row = that.complexDataFieldsHeader[j];
+
+                    header += '            <tr>\n';
 
                     for (let k = 0; k < row.length; k++) {
                         const currentLabel = row[k];
                         let colspan = 1, rowspan = 1;
 
                         if ((row[k - 1] && row[k - 1] === currentLabel) ||
-                            (header[j - 1] && (header[j - 1][k] === currentLabel))) {
-                            tableRow.push({});
+                            (that.complexDataFieldsHeader[j - 1] && (that.complexDataFieldsHeader[j - 1][k] === currentLabel))) {
                             continue;
                         }
 
@@ -32433,2507 +34566,1657 @@ ${that.getRowStyle()}${that.getColumnStyle()}
 
                         iterator = j + 1;
 
-                        while (header[iterator] && header[iterator][k] === currentLabel) {
+                        while (that.complexDataFieldsHeader[iterator] && that.complexDataFieldsHeader[iterator][k] === currentLabel) {
                             rowspan++;
                             iterator++;
                         }
 
-                        const datafield = j === headerRows - 1 || rowspan + j === headerRows ?
-                            table.datafields[k] : null,
-                            entry = {
-                                text: currentLabel, colSpan: colspan, rowSpan: rowspan
-                            };
+                        const datafield = j === that.complexHeader.length - 1 || rowspan + j === that.complexHeader.length ?
+                            ' header' + datafields[k] : '';
 
-                        if (!datafield) {
-                            entry.alignment = 'center';
-                            entry.style = 'header';
-                        }
-                        else {
-                            entry.style = ['header', 'header' + datafield];
-                        }
-
-                        tableRow.push(entry);
+                        header += `                <th class="header${datafield}" colspan="${colspan}" rowspan="${rowspan}">${that.complexHeader[j][k]}</th>\n`;
                     }
 
-                    result.push(tableRow);
-                }
-            }
-
-            for (let i = 0; i < tables.length; i++) {
-                result = [];
-                processHeader(headers[i], result, tables[i]);
-                headerArray.push(result);
-            }
-
-            return headerArray;
-        }
-
-        /**
-         * Creates group header rows when exporting to PDF.
-         */
-        createGroupHeaderRow(tables, entryTemplate) {
-            for (let i = 0; i < tables.length; i++) {
-                const entry = Object.assign({}, entryTemplate),
-                    colspan = tables[i].datafields.length,
-                    tableRow = [entry];
-
-                entry.colSpan = colspan;
-                tableRow.length = colspan;
-                tableRow.fill({}, 1, colspan - 1);
-
-                tables[i].body.push(tableRow);
-            }
-        }
-
-        /**
-         * Gets unique cell style when exporting to PDF.
-         */
-        getUniqueStylePDF(entry, datafield, row) {
-            const style = this.style;
-
-            function toHex(background) {
-                const parts = /rgba\((\d+),(\d+),(\d+)\,(\d*.\d+|\d+)\)/gi.exec(background.replace(/\s/g, '')),
-                    r = parseFloat(parts[1]).toString(16).toUpperCase(),
-                    g = parseFloat(parts[2]).toString(16).toUpperCase(),
-                    b = parseFloat(parts[3]).toString(16).toUpperCase();
-
-                return '#' + ('0').repeat(2 - r.length) + r +
-                    ('0').repeat(2 - g.length) + g +
-                    ('0').repeat(2 - b.length) + b;
-            }
-
-            if (!style || !style.columns || !style.columns[datafield]) {
-                return;
-            }
-
-            const uniqueStyle = style.columns[datafield][row];
-
-            if (!uniqueStyle) {
-                return;
-            }
-
-            entry.fillColor = toHex(uniqueStyle.background);
-            entry.color = uniqueStyle.color.toLowerCase();
-        }
-
-        /**
-         * Sets the indentation of a PDF cell.
-         */
-        setIndentation(entry, details) {
-            if (details.j !== 0) {
-                return;
-            }
-
-            const that = this;
-
-            if (that.actualHierarchy) {
-                const currentRecord = details.currentRecord;
-
-                if (currentRecord._expanded !== undefined) {
-                    entry.marginLeft = 25 * (currentRecord._level - 1);
-                    entry.text = that.collapseChar + ' ' + details.value;
-                }
-                else {
-                    entry.marginLeft = 25 * (currentRecord._level - 1) + 6;
-                }
-            }
-            else if (details.outlineLevel > 1) {
-                entry.marginLeft = (details.outlineLevel - 1) * 7.5;
-            }
-        }
-
-        /**
-         * Exports to XLSX.
-         */
-        exportToXLSX(data, fileName) {
-            const that = this;
-            let style = that.style;
-
-            data = that.processGroupingInformation(data, true);
-            that.data = data;
-            that.getColumnsArray();
-
-            that.complexHeaderMergedCells = [];
-
-            if (that.complexHeaderMergeInfo) {
-                for (let cell in that.complexHeaderMergeInfo) {
-                    if (that.complexHeaderMergeInfo.hasOwnProperty(cell)) {
-                        const currentEntry = that.complexHeaderMergeInfo[cell];
-
-                        if (currentEntry.from[0] === currentEntry.to[0] &&
-                            currentEntry.from[1] === currentEntry.to[1]) {
-                            continue;
-                        }
-
-                        that.complexHeaderMergedCells.push({
-                            from: that.columnsArray[currentEntry.from[1]] + (currentEntry.from[0] + 1),
-                            to: that.columnsArray[currentEntry.to[1]] + (currentEntry.to[0] + 1)
-                        });
-                    }
-                }
-            }
-
-            that.getConditionalFormatting();
-
-            if (!style) {
-                style = that.generateDefaultStyle(data);
-            }
-
-            const sharedStrings = that.generateSharedStrings(data),
-                sharedStringsCollection = sharedStrings.collection,
-                sharedStringsXML = sharedStrings.xml,
-                stylesXML = that.generateStyles(style),
-                sheet1XML = that.groupBy ? that.generateSheet1WithGrouping(data, sharedStringsCollection) :
-                    that.generateSheet1(data, sharedStringsCollection),
-                auxiliaryFiles = that.generateAuxiliaryFiles(),
-
-                // eslint-disable-next-line
-                zip = new JSZip(),
-                _rels = zip.folder('_rels'),
-                docProps = zip.folder('docProps'),
-                xl = zip.folder('xl'),
-                xl_rels = xl.folder('_rels'),
-                theme = xl.folder('theme'),
-                worksheets = xl.folder('worksheets');
-
-            _rels.file('.rels', auxiliaryFiles._relsRels);
-            docProps.file('app.xml', auxiliaryFiles.docPropsAppXml);
-            docProps.file('core.xml', auxiliaryFiles.docPropsCoreXml);
-            xl_rels.file('workbook.xml.rels', auxiliaryFiles.xl_relsWorkbookXmlRels);
-            theme.file('theme1.xml', auxiliaryFiles.xlThemeTheme1Xml);
-            worksheets.file('sheet1.xml', sheet1XML);
-            xl.file('sharedStrings.xml', sharedStringsXML);
-            xl.file('styles.xml', stylesXML);
-            xl.file('workbook.xml', auxiliaryFiles.xlWorkbookXml);
-            zip.file('[Content_Types].xml', auxiliaryFiles.Content_TypesXml);
-
-            zip.generateAsync({
-                type: 'blob',
-                mimeType:
-                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            })
-                .then(function (content) {
-                    return that.downloadFile(content, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName);
-                });
-
-            delete that.conditionalFormattingXLSX;
-            delete that.complexHeaderMergeInfo;
-            delete that.defaultRowHeight;
-            delete that.rowHeight;
-        }
-
-        /**
-         * Processes grouping information.
-         */
-        processGroupingInformation(data, xlsx) {
-            const that = this;
-
-            if (!that.groupBy) {
-                return data;
-            }
-
-            let header;
-
-            data = data.slice(0);
-
-            if (that.exportHeader) {
-                if (xlsx && that.complexHeader) {
-                    header = data.slice(0, that.complexHeader.length);
-                    data.splice(0, that.complexHeader.length);
-                }
-                else {
-                    header = [data[0]];
-                    data.splice(0, 1);
-                }
-            }
-
-            if (data.length > 1) {
-                const getCompareFunction = function (a, knownDataType) {
-                    // gets data type of column (not necessary if the Grid provides this information)
-                    const dataType = knownDataType || typeof a;
-                    let compareFunction;
-
-                    switch (dataType) {
-                        case 'string':
-                            compareFunction = new Intl.Collator().compare;
-                            break;
-                        case 'number':
-                            compareFunction = function (a, b) {
-                                return a - b;
-                            };
-                            break;
-                        case 'boolean':
-                        case 'bool':
-                            compareFunction = function (a, b) {
-                                if (a === b) {
-                                    return 0;
-                                }
-                                else if (a === false) {
-                                    return -1;
-                                }
-                                else {
-                                    return 1;
-                                }
-                            };
-                            break;
-                        case 'date':
-                        case 'time':
-                        case 'dateTime':
-                            if (a instanceof Date) {
-                                compareFunction = function (a, b) {
-                                    return a.compare(b);
-                                };
-                            }
-                            break;
-                        case 'object':
-                            if (a instanceof Date) {
-                                compareFunction = function (a, b) {
-                                    return a.getTime() - b.getTime();
-                                };
-                            }
-
-
-                            break;
-                    }
-
-                    return compareFunction;
+                    header += '            </tr>\n';
                 }
 
-                const sortByMultipleColumns = function (dataSource, sortColumns, directions, customSortingCallback) {
-                    if (!dataSource || !(Array.isArray(dataSource)) || dataSource.length === 0 ||
-                        !sortColumns || Array.isArray(sortColumns) && sortColumns.length === 0) {
-                        return;
-                    }
-
-                    if (typeof sortColumns === 'string') {
-                        sortColumns = [sortColumns];
-                    }
-
-                    const directionCoefficients = [],
-                        compareFunctions = [];
-
-                    if (directions === undefined) {
-                        directions = [];
-                    }
-
-                    for (let i = 0; i < sortColumns.length; i++) {
-                        if (directions[i] === undefined || directions[i] === 'asc' || directions[i] === 'ascending') {
-                            directionCoefficients[i] = 1;
-                        }
-                        else {
-                            directionCoefficients[i] = -1;
-                        }
-
-                        compareFunctions[i] = getCompareFunction(dataSource[0][sortColumns[i]]);
-                    }
-
-                    if (customSortingCallback) {
-                        customSortingCallback(dataSource, sortColumns, directions, compareFunctions);
-                        return;
-                    }
-
-                    dataSource.sort(function (a, b) {
-                        for (let i = 0; i < sortColumns.length; i++) {
-                            const result = compareFunctions[i](a[sortColumns[i]], b[sortColumns[i]]);
-
-                            if (result === 0) {
-                                if (sortColumns[i + 1]) {
-                                    continue;
-                                }
-                                else if (a._index !== undefined) {
-                                    // makes sorting stable
-                                    return (a._index - b._index) * directionCoefficients[i];
-                                }
-
-                                return 0;
-                            }
-
-                            return result * directionCoefficients[i];
-                        }
-                    });
-                }
-
-                sortByMultipleColumns(data, that.groupBy);
-            }
-
-            if (header) {
-                data = header.concat(data);
-            }
-
-            that.getGroupLabels(data);
-
-            return data;
-        }
-
-        /**
-         * Exports to XML.
-         */
-        exportToXML(data, fileName) {
-            const datafields = this.datafields.slice(0);
-            let xmlContent = '<?xml version="1.0" encoding="UTF-8" ?>\n<table>\n';
-
-            if (datafields.indexOf('rows') === -1) {
-                datafields.push('rows');
-            }
-
-            function recursion(records, indent) {
-                let content = '';
-
-                for (let i = 0; i < records.length; i++) {
-                    const currentRecord = records[i];
-
-                    content += indent + '<row>\n';
-
-                    for (let j = 0; j < datafields.length; j++) {
-                        const datafield = datafields[j];
-
-                        if (datafield === 'rows') {
-                            if (!currentRecord.rows) {
-                                continue;
-                            }
-
-                            content += `${indent}    <rows>\n${recursion(currentRecord.rows, indent + '        ')}${indent}    </rows>\n`;
-                            continue;
-                        }
-
-                        content += indent + `    <${datafield}>${currentRecord[datafield]}</${datafield}>\n`;
-                    }
-
-                    content += indent + '</row>\n';
-                }
-
-                return content;
-            }
-
-            xmlContent += recursion(data, '    ') + '</table>';
-
-            return this.downloadFile(xmlContent, 'application/xml', fileName);
-        }
-
-        /**
-         * Formats a date.
-         */
-        formatDate(value, format) {
-            var date = $.jqx.formatDate(value, format);
-
-            return date;
-        }
-
-        /**
-         * Formats a number.
-         */
-        formatNumber(value, format) {
-            var number = $.jqx.formatNumber(value, format);
-
-            return number;
-        }
-
-        /**
-         * Generates auxiliary files necessary for XLSX.
-         */
-        generateAuxiliaryFiles() {
-            // _rels\.rels
-            const _relsRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;
-
-            // docProps\app.xml
-            const docPropsAppXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>Microsoft Excel</Application><DocSecurity>0</DocSecurity><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size="2" baseType="variant"><vt:variant><vt:lpstr>Worksheets</vt:lpstr></vt:variant><vt:variant><vt:i4>1</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size="1" baseType="lpstr"><vt:lpstr>Sheet1</vt:lpstr></vt:vector></TitlesOfParts><Company></Company><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0300</AppVersion></Properties>`;
-
-            // docProps\core.xml
-            const now = new Date().toISOString(),
-                docPropsCoreXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:creator>Smart HTML Elements</dc:creator><cp:lastModifiedBy>Smart HTML Elements</cp:lastModifiedBy><dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${now}</dcterms:modified></cp:coreProperties>`;
-
-            // xl\_rels\workbook.xml.rels
-            const xl_relsWorkbookXmlRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="theme/theme1.xml"/><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>`;
-
-            // xl\theme\theme1.xml
-            const xlThemeTheme1Xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme"><a:themeElements><a:clrScheme name="Office"><a:dk1><a:sysClr val="windowText" lastClr="000000"/></a:dk1><a:lt1><a:sysClr val="window" lastClr="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="44546A"/></a:dk2><a:lt2><a:srgbClr val="E7E6E6"/></a:lt2><a:accent1><a:srgbClr val="4472C4"/></a:accent1><a:accent2><a:srgbClr val="ED7D31"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hlink><a:srgbClr val="0563C1"/></a:hlink><a:folHlink><a:srgbClr val="954F72"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Calibri Light" panose="020F0302020204030204"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="游ゴシック Light"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="等线 Light"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Times New Roman"/><a:font script="Hebr" typeface="Times New Roman"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="MoolBoran"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Times New Roman"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/><a:font script="Armn" typeface="Arial"/><a:font script="Bugi" typeface="Leelawadee UI"/><a:font script="Bopo" typeface="Microsoft JhengHei"/><a:font script="Java" typeface="Javanese Text"/><a:font script="Lisu" typeface="Segoe UI"/><a:font script="Mymr" typeface="Myanmar Text"/><a:font script="Nkoo" typeface="Ebrima"/><a:font script="Olck" typeface="Nirmala UI"/><a:font script="Osma" typeface="Ebrima"/><a:font script="Phag" typeface="Phagspa"/><a:font script="Syrn" typeface="Estrangelo Edessa"/><a:font script="Syrj" typeface="Estrangelo Edessa"/><a:font script="Syre" typeface="Estrangelo Edessa"/><a:font script="Sora" typeface="Nirmala UI"/><a:font script="Tale" typeface="Microsoft Tai Le"/><a:font script="Talu" typeface="Microsoft New Tai Lue"/><a:font script="Tfng" typeface="Ebrima"/></a:majorFont><a:minorFont><a:latin typeface="Calibri" panose="020F0502020204030204"/><a:ea typeface=""/><a:cs typeface=""/><a:font script="Jpan" typeface="游ゴシック"/><a:font script="Hang" typeface="맑은 고딕"/><a:font script="Hans" typeface="等线"/><a:font script="Hant" typeface="新細明體"/><a:font script="Arab" typeface="Arial"/><a:font script="Hebr" typeface="Arial"/><a:font script="Thai" typeface="Tahoma"/><a:font script="Ethi" typeface="Nyala"/><a:font script="Beng" typeface="Vrinda"/><a:font script="Gujr" typeface="Shruti"/><a:font script="Khmr" typeface="DaunPenh"/><a:font script="Knda" typeface="Tunga"/><a:font script="Guru" typeface="Raavi"/><a:font script="Cans" typeface="Euphemia"/><a:font script="Cher" typeface="Plantagenet Cherokee"/><a:font script="Yiii" typeface="Microsoft Yi Baiti"/><a:font script="Tibt" typeface="Microsoft Himalaya"/><a:font script="Thaa" typeface="MV Boli"/><a:font script="Deva" typeface="Mangal"/><a:font script="Telu" typeface="Gautami"/><a:font script="Taml" typeface="Latha"/><a:font script="Syrc" typeface="Estrangelo Edessa"/><a:font script="Orya" typeface="Kalinga"/><a:font script="Mlym" typeface="Kartika"/><a:font script="Laoo" typeface="DokChampa"/><a:font script="Sinh" typeface="Iskoola Pota"/><a:font script="Mong" typeface="Mongolian Baiti"/><a:font script="Viet" typeface="Arial"/><a:font script="Uigh" typeface="Microsoft Uighur"/><a:font script="Geor" typeface="Sylfaen"/><a:font script="Armn" typeface="Arial"/><a:font script="Bugi" typeface="Leelawadee UI"/><a:font script="Bopo" typeface="Microsoft JhengHei"/><a:font script="Java" typeface="Javanese Text"/><a:font script="Lisu" typeface="Segoe UI"/><a:font script="Mymr" typeface="Myanmar Text"/><a:font script="Nkoo" typeface="Ebrima"/><a:font script="Olck" typeface="Nirmala UI"/><a:font script="Osma" typeface="Ebrima"/><a:font script="Phag" typeface="Phagspa"/><a:font script="Syrn" typeface="Estrangelo Edessa"/><a:font script="Syrj" typeface="Estrangelo Edessa"/><a:font script="Syre" typeface="Estrangelo Edessa"/><a:font script="Sora" typeface="Nirmala UI"/><a:font script="Tale" typeface="Microsoft Tai Le"/><a:font script="Talu" typeface="Microsoft New Tai Lue"/><a:font script="Tfng" typeface="Ebrima"/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:lumMod val="110000"/><a:satMod val="105000"/><a:tint val="67000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="103000"/><a:tint val="73000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="105000"/><a:satMod val="109000"/><a:tint val="81000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:satMod val="103000"/><a:lumMod val="102000"/><a:tint val="94000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:satMod val="110000"/><a:lumMod val="100000"/><a:shade val="100000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:lumMod val="99000"/><a:satMod val="120000"/><a:shade val="78000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:fillStyleLst><a:lnStyleLst><a:ln w="6350" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="12700" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln><a:ln w="19050" cap="flat" cmpd="sng" algn="ctr"><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:prstDash val="solid"/><a:miter lim="800000"/></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst><a:outerShdw blurRad="57150" dist="19050" dir="5400000" algn="ctr" rotWithShape="0"><a:srgbClr val="000000"><a:alpha val="63000"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"><a:tint val="95000"/><a:satMod val="170000"/></a:schemeClr></a:solidFill><a:gradFill rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="phClr"><a:tint val="93000"/><a:satMod val="150000"/><a:shade val="98000"/><a:lumMod val="102000"/></a:schemeClr></a:gs><a:gs pos="50000"><a:schemeClr val="phClr"><a:tint val="98000"/><a:satMod val="130000"/><a:shade val="90000"/><a:lumMod val="103000"/></a:schemeClr></a:gs><a:gs pos="100000"><a:schemeClr val="phClr"><a:shade val="63000"/><a:satMod val="120000"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements><a:objectDefaults/><a:extraClrSchemeLst/><a:extLst><a:ext uri="{05A4C25C-085E-4340-85A3-A5531E510DB2}"><thm15:themeFamily xmlns:thm15="http://schemas.microsoft.com/office/thememl/2012/main" name="Office Theme" id="{62F939B6-93AF-4DB8-9C6B-D6C7DFDC589F}" vid="{4A3C46E8-61CC-4603-A589-7422A47A8E4A}"/></a:ext></a:extLst></a:theme>`;
-
-            // xl\workbook.xml
-            const xlWorkbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x15 xr xr6 xr10 xr2" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr6="http://schemas.microsoft.com/office/spreadsheetml/2016/revision6" xmlns:xr10="http://schemas.microsoft.com/office/spreadsheetml/2016/revision10" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2"><fileVersion appName="xl" lastEdited="7" lowestEdited="7" rupBuild="20325"/><workbookPr defaultThemeVersion="166925"/><mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"><mc:Choice Requires="x15"><x15ac:absPath url="C:\Users\jqwidgets\Desktop\" xmlns:x15ac="http://schemas.microsoft.com/office/spreadsheetml/2010/11/ac"/></mc:Choice></mc:AlternateContent><xr:revisionPtr revIDLastSave="0" documentId="13_ncr:1_{0DEDCB6D-5403-4CD8-AAA5-59B6D238A8B6}" xr6:coauthVersionLast="34" xr6:coauthVersionMax="34" xr10:uidLastSave="{00000000-0000-0000-0000-000000000000}"/><bookViews><workbookView xWindow="0" yWindow="0" windowWidth="19200" windowHeight="6950" xr2:uid="{0CB664E6-3800-4A88-B158-B46A682E7484}"/></bookViews><sheets><sheet name="Sheet1" sheetId="1" r:id="rId1"/></sheets><calcPr calcId="179021"/><extLst><ext uri="{140A7094-0E35-4892-8432-C4D2E57EDEB5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:workbookPr chartTrackingRefBase="1"/></ext></extLst></workbook>`;
-
-            // [Content_Types].xml
-            const Content_TypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="bin" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.printerSettings"/><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`;
-
-            return {
-                _relsRels: _relsRels,
-                docPropsAppXml: docPropsAppXml,
-                docPropsCoreXml: docPropsCoreXml,
-                xl_relsWorkbookXmlRels: xl_relsWorkbookXmlRels,
-                xlThemeTheme1Xml: xlThemeTheme1Xml,
-                xlWorkbookXml: xlWorkbookXml,
-                Content_TypesXml: Content_TypesXml
-            };
-        }
-
-        /**
-         * Generates default style object (for use in XLSX export).
-         */
-        generateDefaultStyle(data) {
-            const that = this,
-                defaultStyle = {},
-                datafields = that.datafields,
-                firstRecord = that.complexHeader ? data[that.complexHeader.length] : data[+that.exportHeader];
-
-            if (!firstRecord) {
-                return defaultStyle;
-            }
-
-            for (let i = 0; i < datafields.length; i++) {
-                const sampleValue = firstRecord[datafields[i]];
-
-                if (sampleValue instanceof Date) {
-                    if (!defaultStyle.columns) {
-                        defaultStyle.columns = [];
-                    }
-
-                    defaultStyle.columns[datafields[i]] = { format: 'd' };
-                }
-            }
-
-            return defaultStyle;
-        }
-
-        /**
-         * Generates group row.
-         */
-        generateGroupRow(details) {
-            const rowNumber = details.rowNumber,
-                from = 'A' + rowNumber,
-                recordXML = `        <row r="${rowNumber}" outlineLevel="${details.outlineLevel}" spans="1:${details.numberOfColumns}"${this.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">
-            <c r="${from}" t="s" s="0">
-                <v>${details.sharedStringIndex}</v>
-            </c>
-        </row>\n`;
-
-            details.mergedCells.push({ from: from, to: this.columnsArray[details.numberOfColumns - 1] + rowNumber });
-
-            return recordXML;
-        }
-
-        /**
-         * Generates sharedStrings.xml.
-         */
-        generateSharedStrings(data) {
-            const that = this,
-                datafields = that.datafields,
-                collection = [];
-            let xml = '',
-                count = 0,
-                uniqueCount = 0;
-
-            function addSharedString(currentValue) {
-                count++;
-
-                if (collection.indexOf(currentValue) === -1) {
-                    uniqueCount++;
-                    collection.push(currentValue);
-
-                    currentValue = currentValue.replace(/&(?!amp;)/g, '&amp;');
-                    currentValue = currentValue.replace(/'/g, '&apos;');
-                    currentValue = currentValue.replace(/"/g, '&quot;');
-                    currentValue = currentValue.replace(/>/g, '&gt;');
-                    currentValue = currentValue.replace(/</g, '&lt;');
-
-                    xml += `<si><t>${currentValue}</t></si>`;
-                }
-            }
-
-            for (let i = 0; i < data.length; i++) {
-                const currentRecord = data[i];
-
-                for (let j = 0; j < datafields.length; j++) {
-                    let currentValue = currentRecord[datafields[j]];
-
-                    if (typeof currentValue !== 'string') {
-                        continue;
-                    }
-
-                    addSharedString(currentValue);
-                }
-            }
-
-            if (that.groupLabels) {
-                for (let i = 0; i < that.groupLabels.length; i++) {
-                    addSharedString(that.groupLabels[i]);
-                }
-            }
-
-            xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${count}" uniqueCount="${uniqueCount}">${xml}</sst>`;
-
-            return { collection: collection, xml: xml };
-        }
-
-        /**
-         * Generates sheet1.xml.
-         */
-        generateSheet1(data, sharedStrings) {
-            const that = this,
-                numberOfColumns = that.columnsArray.length,
-                numberOfRows = data.length,
-                dimensionEnd = that.columnsArray[numberOfColumns - 1] + numberOfRows,
-                datafields = that.datafields,
-                autoFilter = that.getFilters(),
-                mergedCells = [].concat(that.complexHeaderMergedCells);
-
-            let xmlContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac xr xr2 xr3" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" xr:uid="{7F25248B-C640-4C64-AD47-C0EA0E5D90D0}">
-    <sheetPr filterMode="${autoFilter !== ''}" />
-    <dimension ref="A1:${dimensionEnd}" />
-    <sheetViews>
-        <sheetView tabSelected="1" workbookViewId="0" />
-    </sheetViews>
-    <sheetFormatPr defaultRowHeight="14.5" x14ac:dyDescent="0.35" />${that.getCustomColumnWidths()}
-    <sheetData>\n`;
-
-            function r(col, row) {
-                return that.columnsArray[col] + row;
-            }
-
-            for (let i = 0; i <= data.length; i++) {
-                const currentRecord = data[i],
-                    rowNumber = i + 1;
-                let collapsed = '';
-
-                if (that.actualHierarchy) {
-                    const previousRecord = data[i - 1];
-
-                    if (previousRecord && previousRecord._collapsed &&
-                        (!currentRecord || previousRecord._level > currentRecord._level)) {
-                        collapsed = ' collapsed="true"';
-                    }
-                }
-
-                if (i === data.length) {
-                    if (collapsed) {
-                        xmlContent += `        <row r="${rowNumber}" outlineLevel="${Math.max(data[i - 1]._level - 2, 0)}" hidden="false" collapsed="true" />\n`;
-                    }
-
-                    break;
-                }
-
-                let recordXML = `        <row r="${rowNumber}"${that.getOutlineLevel(currentRecord)} hidden="${currentRecord._hidden || currentRecord._collapsed || false}"${collapsed} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">\n`;
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const s = that.getXLSXCellStyle(r(j, rowNumber));
-
-                    recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings);
-                }
-
-                recordXML += '        </row>\n';
-                xmlContent += recordXML;
-            }
-
-            xmlContent += `    </sheetData>${that.conditionalFormattingXLSX.conditions}${autoFilter}${that.getMergedCells(mergedCells)}
-    <pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3" />
-    <pageSetup paperSize="9" orientation="portrait" r:id="rId1" />
-</worksheet>`;
-
-            return xmlContent;
-        }
-
-        /**
-         * Generates sheet1.xml with grouping.
-         */
-        generateSheet1WithGrouping(data, sharedStrings) {
-            const that = this,
-                numberOfColumns = that.columnsArray.length,
-                numberOfRows = data.length,
-                dimensionEnd = that.columnsArray[numberOfColumns - 1] + numberOfRows,
-                datafields = that.datafields,
-                mergedCells = [].concat(that.complexHeaderMergedCells);
-
-            let xmlContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac xr xr2 xr3" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision" xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2" xmlns:xr3="http://schemas.microsoft.com/office/spreadsheetml/2016/revision3" xr:uid="{7F25248B-C640-4C64-AD47-C0EA0E5D90D0}">
-    <dimension ref="A1:${dimensionEnd}" />
-    <sheetViews>
-        <sheetView tabSelected="1" workbookViewId="0" />
-    </sheetViews>
-    <sheetFormatPr defaultRowHeight="14.5" x14ac:dyDescent="0.35" />${that.getCustomColumnWidths()}
-    <sheetData>\n`,
-                rowNumberCorrection = 0,
-                groupsHandled = [];
-
-            function r(col, row) {
-                return that.columnsArray[col] + row;
-            }
-
-            mainLoop:
-            for (let i = 0; i < data.length; i++) {
-                const currentRecord = data[i],
-                    rowNumber = i + 1 + rowNumberCorrection;
-                let outlineLevel = 0,
-                    outlineXML = '';
-
-                if (!that.exportHeader ||
-                    (!that.complexHeader && i !== 0) ||
-                    (that.complexHeader && i >= that.complexHeader.length)) {
-                    let groupId = '';
-
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
-
-                        groupId += currentGroup;
-
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            let sharedStringIndex = sharedStrings.indexOf(currentGroupLabel);
-
-                            xmlContent += that.generateGroupRow({
-                                rowNumber: rowNumber,
-                                outlineLevel: outlineLevel,
-                                numberOfColumns: numberOfColumns,
-                                sharedStringIndex: sharedStringIndex,
-                                mergedCells: mergedCells
-                            });
-                            groupsHandled.push(groupId);
-                            i--;
-                            rowNumberCorrection++;
-                            continue mainLoop;
-                        }
-
-                        outlineLevel++;
-                    }
-
-                    outlineXML = ` outlineLevel="${outlineLevel}"`;
-                }
-
-                let recordXML = `        <row r="${rowNumber}"${outlineXML} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">\n`;
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const s = that.getXLSXCellStyle(r(j, i + 1));
-
-                    recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings);
-                }
-
-                recordXML += '        </row>\n';
-                xmlContent += recordXML;
-            }
-
-            xmlContent += `    </sheetData>${that.getMergedCells(mergedCells)}
-    <pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3" />
-    <pageSetup paperSize="9" orientation="portrait" r:id="rId1" />
-</worksheet>`;
-
-            return xmlContent;
-        }
-
-        /**
-         * Gets actual spreadsheet cell data.
-         */
-        getActualCellData(currentValue, details, sharedStrings) {
-            const r = details.r,
-                s = details.s || ' s="0"';
-
-            if (typeof currentValue === 'string') {
-                return `            <c r="${r}" t="s"${s}>
-                <v>${sharedStrings.indexOf(currentValue)}</v>
-            </c>\n`;
-            }
-
-            if (typeof currentValue === 'boolean') {
-                return `            <c r="${r}" t="b"${s}>
-                <v>${+currentValue}</v>
-            </c>\n`;
-            }
-
-            if (currentValue instanceof Date) {
-                const excelDate = (currentValue.getTime() + this.timeBetween1900And1970) / 86400000 + 2;
-
-                return `            <c r="${r}"${s}>
-                <v>${excelDate}</v>
-            </c>\n`;
-            }
-
-            // numeric cells
-            return `            <c r="${r}"${s}>
-                <v>${currentValue}</v>
-            </c>\n`;
-        }
-
-        /**
-         * Gets column labels.
-         */
-        getColumnsArray() {
-            const that = this,
-                numberOfColumns = that.datafields.length,
-                columnsCollection = [];
-
-            function getIterator(i) {
-                if (i < 26) {
-                    return '';
-                }
-
-                return String.fromCharCode(64 + Math.floor(i / 26));
-            }
-
-            for (let i = 0; i < numberOfColumns; i++) {
-                columnsCollection.push(getIterator(i) + String.fromCharCode(65 + (i < 26 ? i : i % 26)));
-            }
-
-            that.columnsArray = columnsCollection;
-        }
-
-        /**
-         * Gets column style.
-         */
-        getColumnStyle() {
-            const that = this,
-                style = that.style;
-
-            if (!style) {
-                return `        .header { border: 1px solid black; padding: 5px; }
-        .column { border: 1px solid black; padding: 5px; }
-        .group { background-color: #FFFFFF; color: #000000; font-weight: bold; }`;
-            }
-
-            const styles = {
-                header: 'border: 1px solid black; padding: 5px; ',
-                column: 'white-space: nowrap; overflow: hidden; border: 1px solid black; padding: 5px; ',
-                group: 'background-color: #FFFFFF; color: #000000; font-weight: bold; '
-            },
-                sampleRecord = that.data[0];
-            let generatedStyle = '';
-
-            const headerDefinition = style.header || {};
-
-            for (let prop in headerDefinition) {
-                if (!headerDefinition.hasOwnProperty(prop)) {
-                    continue;
-                }
-
-                const value = headerDefinition[prop];
-
-                if (sampleRecord[prop]) {
-                    if (!styles['header' + prop]) {
-                        styles['header' + prop] = '';
-                    }
-
-                    for (let columnProp in value) {
-                        if (value.hasOwnProperty(columnProp)) {
-                            const css = window.jqxToDash(columnProp) + ': ' + value[columnProp] + '; ';
-
-                            styles['header' + prop] += css;
-
-                            if (columnProp === 'width') {
-                                if (!styles['column' + prop]) {
-                                    styles['column' + prop] = '';
-                                }
-
-                                styles['column' + prop] += css;
-                            }
-                        }
-                    }
-
-                    continue;
-                }
-
-                if (prop === 'height' && that.complexHeader) {
-                    styles.header += 'height: ' + parseInt(headerDefinition[prop], 10) / that.complexHeader.length + 'px; ';
-                }
-                else {
-                    styles.header += window.jqxToDash(prop) + ': ' + headerDefinition[prop] + '; ';
-                }
-            }
-
-            const columnsDefinition = style.columns || {};
-
-            for (let prop in columnsDefinition) {
-                if (!columnsDefinition.hasOwnProperty(prop)) {
-                    continue;
-                }
-
-                const value = columnsDefinition[prop];
-
-                if (sampleRecord[prop]) {
-                    if (!styles['column' + prop]) {
-                        styles['column' + prop] = '';
-                    }
-
-                    for (let columnProp in value) {
-                        if (isNaN(columnProp) && value.hasOwnProperty(columnProp) && columnProp !== 'format') {
-                            styles['column' + prop] += window.jqxToDash(columnProp) + ': ' + value[columnProp] + '; ';
-                        }
-                    }
-
-                    continue;
-                }
-
-                styles.column += window.jqxToDash(prop) + ': ' + value + '; ';
-            }
-
-            for (let prop in styles) {
-                if (styles.hasOwnProperty(prop)) {
-                    generatedStyle += `        .${prop} { ${styles[prop]}}\n`;
-                }
-            }
-
-            return generatedStyle;
-        }
-
-        /**
-         * Gets custom column widths.
-         */
-        getCustomColumnWidths() {
-            const that = this;
-
-            if (!that.style || !that.columnWidth || that.columnWidth.length === 0) {
-                return '';
-            }
-
-            let xml = '\n    <cols>\n';
-
-            for (let i = 0; i < that.columnWidth.length; i++) {
-                let width = that.columnWidth[i];
-
-                if (width !== undefined) {
-                    width = Math.round(parseFloat(width)) / 11;
-                    xml += `        <col min="${i + 1}" max="${i + 1}" width="${width}" customWidth="1" />\n`;
-                }
-            }
-
-            xml += '    </cols>';
-
-            return xml;
-        }
-
-        /**
-         * Returns customFilter tag.
-         */
-        getCustomFilter(value, condition) {
-            let operator = 'equal',
-                val;
-
-            if (value instanceof Date) {
-                value = (value.getTime() + this.timeBetween1900And1970) / 86400000 + 2;
-            }
-
-            condition = condition.toUpperCase();
-
-            switch (condition) {
-                case 'EMPTY':
-                    val = '';
-                    break;
-                case 'NOT_EMPTY':
-                    val = '';
-                    operator = 'notEqual';
-                    break;
-                case 'CONTAINS':
-                case 'CONTAINS_CASE_SENSITIVE':
-                    val = `*${value}*`;
-                    break;
-                case 'DOES_NOT_CONTAIN':
-                case 'DOES_NOT_CONTAIN_CASE_SENSITIVE':
-                    val = `*${value}*`;
-                    operator = 'notEqual';
-                    break;
-                case 'STARTS_WITH':
-                case 'STARTS_WITH_CASE_SENSITIVE':
-                    val = `${value}*`;
-                    break;
-                case 'ENDS_WITH':
-                case 'ENDS_WITH_CASE_SENSITIVE':
-                    val = `*${value}`;
-                    break;
-                case 'EQUAL':
-                case 'EQUAL_CASE_SENSITIVE':
-                    val = value;
-                    break;
-                case 'NULL':
-                    val = null;
-                    break;
-                case 'NOT_NULL':
-                    val = null;
-                    operator = 'notEqual';
-                    break;
-                case 'NOT_EQUAL':
-                    val = value;
-                    operator = 'notEqual';
-                    break;
-                case 'LESS_THAN':
-                    val = value;
-                    operator = 'lessThan';
-                    break;
-                case 'LESS_THAN_OR_EQUAL':
-                    val = value;
-                    operator = 'lessThanOrEqual';
-                    break;
-                case 'GREATER_THAN':
-                    val = value;
-                    operator = 'greaterThan';
-                    break;
-                case 'GREATER_THAN_OR_EQUAL':
-                    val = value;
-                    operator = 'greaterThanOrEqual';
-                    break;
-            }
-
-            return `                <customFilter val="${val}" operator="${operator}"/>\n`;
-        }
-
-        /**
-         * Gets custom row height.
-         */
-        getCustomRowHeight(row) {
-            const that = this;
-
-            if (that.style) {
-                return that.rowHeight[row] || that.defaultRowHeight || '';
-            }
-
-            return '';
-        }
-
-        /**
-         * Gets datafields.
-         */
-        getDatafields(data) {
-            const that = this,
-                sampleRecord = data[0],
-                datafields = [];
-
-            for (let prop in sampleRecord) {
-                if (sampleRecord.hasOwnProperty(prop) && prop.charAt(0) !== '_') {
-                    datafields.push(prop);
-                }
-            }
-
-            that.datafields = datafields;
-        }
-
-        /**
-         * Returns autoFilter XML.
-         */
-        getFilters() {
-            const that = this,
-                filterBy = that.filterBy;
-
-            if (!filterBy) {
-                return '';
-            }
-
-            let xml = '';
-
-            for (let datafield in filterBy) {
-                if (filterBy.hasOwnProperty(datafield)) {
-                    const colId = that.datafields.indexOf(datafield);
-
-                    if (colId === -1) {
-                        continue;
-                    }
-
-                    const filterDetails = filterBy[datafield],
-                        filters = filterDetails.filters;
-
-                    xml += `        <filterColumn colId="${colId}">
-            <customFilters and="${!filterDetails.operator}">\n`;
-
-                    for (let i = 0; i < filters.length; i++) {
-                        xml += that.getCustomFilter(filters[i].value, filters[i].condition);
-                    }
-
-                    xml += `            </customFilters>
-        </filterColumn>`;
-                }
-            }
-
-            if (!xml) {
-                return '';
-            }
-
-            xml = `\n    <autoFilter ref="A1:${that.columnsArray[that.columnsArray.length - 1] + that.data.length}">\n${xml}\n    </autoFilter>`;
-            return xml;
-        }
-
-        /**
-         * Gets group labels based on data.
-         */
-        getGroupLabels(data) {
-            const that = this,
-                startIndex = that.xlsxStartIndex !== undefined ? that.xlsxStartIndex : +that.exportHeader,
-                groups = {},
-                groupLabels = [];
-
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = data[i];
-
-                for (let j = 0; j < that.groupBy.length; j++) {
-                    const datafield = that.groupBy[j],
-                        currentValue = currentRecord[datafield];
-                    let group = groups[datafield];
-
-                    if (group === undefined) {
-                        groups[datafield] = {};
-                        group = groups[datafield];
-                    }
-
-                    if (group[currentValue] === undefined) {
-                        group[currentValue] = (that.exportHeader ? data[startIndex - 1][datafield] : datafield) + ': ' + currentValue;
-                        groupLabels.push(group[currentValue]);
-                    }
-                }
-            }
-
-            that.groups = groups;
-            that.groupLabels = groupLabels;
-        }
-
-        /**
-         * Gets the header content when exporting to HTML.
-         */
-        getHTMLHeader(datafields, data) {
-            const that = this;
-            let header = '\n        <thead>\n';
-
-            if (!that.complexHeader) {
-                header += '            <tr>\n';
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const datafield = datafields[j];
-
-                    header += `                <th class="header header${datafield}">${data[0][datafield]}</th>\n`;
-                }
-
-                header += '            </tr>\n        </thead>';
+                header += '        </thead>';
                 return header;
             }
 
-            for (let j = 0; j < that.complexHeader.length; j++) {
-                const row = that.complexHeader[j];
+            /**
+             * Gets conditional formatting XML.
+             */
+            getConditionalFormatting() {
+                const that = this,
+                    conditionalFormatting = that.conditionalFormatting;
 
-                header += '            <tr>\n';
+                if (!conditionalFormatting) {
+                    that.conditionalFormattingXLSX = { conditions: '', styles: '' };
+                    return;
+                }
 
-                for (let k = 0; k < row.length; k++) {
-                    const currentLabel = row[k];
-                    let colspan = 1, rowspan = 1;
+                const dxfCodes = [];
+                let conditionsXml = '',
+                    stylesXml = '';
 
-                    if ((row[k - 1] && row[k - 1] === currentLabel) ||
-                        (that.complexHeader[j - 1] && (that.complexHeader[j - 1][k] === currentLabel))) {
+                for (let i = conditionalFormatting.length - 1; i >= 0; i--) {
+                    const columnFormat = conditionalFormatting[i],
+                        columnLetter = that.columnsArray[that.datafields.indexOf(columnFormat.column)],
+                        startCell = columnLetter + (that.xlsxStartIndex + 1),
+                        sqref = startCell + ':' + columnLetter + (that.data.length),
+                        dxfCode = columnFormat.background + columnFormat.color,
+                        attr = that.getConditionalAttributes(columnFormat, startCell);
+                    let dxfId = dxfCodes.indexOf(dxfCode);
+
+                    if (dxfId === -1) {
+                        const newDxf = `        <dxf>
+                <font>
+                    <b val="0"/>
+                    <i val="0"/>
+                    <color rgb="${columnFormat.color === 'White' ? 'FFFFFFFF' : 'FF000000'}"/>
+                    <sz val="10"/>
+                </font>
+                <fill>
+                    <patternFill>
+                        <bgColor rgb="${that.toARGB(columnFormat.background)}"/>
+                    </patternFill>
+                </fill>
+            </dxf>\n`;
+
+                        stylesXml += newDxf;
+                        dxfId = dxfCodes.length;
+                        dxfCodes.push(dxfCode);
+                    }
+
+                    conditionsXml += `    <conditionalFormatting sqref="${sqref}">
+            <cfRule dxfId="${dxfId}" text="${attr.text}" rank="${attr.rank}" percent="${attr.percent}" bottom="${attr.bottom}" equalAverage="${attr.equalAverage}" aboveAverage="${attr.aboveAverage}"${attr.operator}${attr.timePeriod} priority="${i + 2}" type="${attr.type}">
+    ${attr.formula}        </cfRule>
+        </conditionalFormatting>\n`;
+                }
+
+                stylesXml = `    <dxfs count="${dxfCodes.length}">\n${stylesXml}    </dxfs>`;
+
+                that.conditionalFormattingXLSX = { conditions: conditionsXml, styles: stylesXml };
+            }
+
+            /**
+             * Gets conditional formatting XML attributes.
+             */
+            getConditionalAttributes(columnFormat, startCell) {
+                let condition = columnFormat.condition,
+                    comparator = columnFormat.comparator,
+                    text = '',
+                    rank = 0,
+                    percent = 0,
+                    bottom = 0,
+                    equalAverage = 0,
+                    aboveAverage = 0,
+                    operator = '',
+                    timePeriod = '',
+                    type = '',
+                    formula = '';
+
+                switch (condition) {
+                    case 'equal':
+                        operator = 'equal';
+                        type = 'cellIs';
+                        formula = `            <formula>${comparator}</formula>\n`;
+                        break;
+                    case 'lessThan':
+                        operator = 'lessThan';
+                        type = 'cellIs';
+                        formula = `            <formula>${comparator}</formula>\n`;
+                        break;
+                    case 'greaterThan':
+                        operator = 'greaterThan';
+                        type = 'cellIs';
+                        formula = `            <formula>${comparator}</formula>\n`;
+                        break;
+                    case 'notEqual':
+                        operator = 'notEqual';
+                        type = 'cellIs';
+                        formula = `            <formula>${comparator}</formula>\n`;
+                        break;
+                    case 'between':
+                        operator = 'between';
+                        type = 'cellIs';
+                        formula = `            <formula>${columnFormat.min}</formula>
+                <formula>${columnFormat.max}</formula>\n`;
+                        break;
+                    case 'duplicate':
+                        type = 'duplicateValues';
+                        formula = '            <formula>0</formula>\n';
+                        break;
+                    case 'topNItems':
+                        rank = comparator;
+                        type = 'top10';
+                        break;
+                    case 'bottomNItems':
+                        rank = comparator;
+                        bottom = 1;
+                        type = 'top10';
+                        break;
+                    case 'topNPercent':
+                        rank = comparator;
+                        percent = 1;
+                        type = 'top10';
+                        break;
+                    case 'bottomNPercent':
+                        rank = comparator;
+                        percent = 1;
+                        bottom = 1;
+                        type = 'top10';
+                        break;
+                    case 'aboveAverage':
+                        aboveAverage = 1;
+                        type = 'aboveAverage';
+                        formula = '            <formula>0</formula>\n';
+                        break;
+                    case 'belowAverage':
+                        type = 'aboveAverage';
+                        formula = '            <formula>0</formula>\n';
+                        break;
+                    case 'contains':
+                        text = comparator;
+                        operator = 'containsText';
+                        type = 'containsText';
+                        formula = `            <formula>NOT(ISERROR(SEARCH("${comparator}",${startCell})))</formula>\n`;
+                        break;
+                    case 'doesNotContain':
+                        text = comparator;
+                        operator = 'notContains';
+                        type = 'notContainsText';
+                        formula = `            <formula>ISERROR(SEARCH("${comparator}",${startCell}))</formula>\n`;
+                        break;
+                    case 'dateOccur':
+                        timePeriod = ` timePeriod="${comparator}"`;
+                        type = 'timePeriod';
+                        break;
+                }
+
+                if (operator) {
+                    operator = ` operator="${operator}" `;
+                }
+
+                return {
+                    text: text,
+                    rank: rank,
+                    percent: percent,
+                    bottom: bottom,
+                    equalAverage: equalAverage,
+                    aboveAverage: aboveAverage,
+                    operator: operator,
+                    timePeriod: timePeriod,
+                    type: type,
+                    formula: formula
+                }
+            }
+
+            /**
+             * Gets merged cells XML.
+             */
+            getMergedCells(mergedCells) {
+                const that = this;
+
+                let mergeCellsXml = '';
+
+                for (let i = 0; i < mergedCells.length; i++) {
+                    if (mergedCells[i].from === mergedCells[i].to) {
                         continue;
                     }
 
-                    let iterator = k + 1;
-
-                    while (row[iterator] && row[iterator] === row[iterator - 1]) {
-                        colspan++;
-                        iterator++;
-                    }
-
-                    iterator = j + 1;
-
-                    while (that.complexHeader[iterator] && that.complexHeader[iterator][k] === currentLabel) {
-                        rowspan++;
-                        iterator++;
-                    }
-
-                    const datafield = j === that.complexHeader.length - 1 || rowspan + j === that.complexHeader.length ?
-                        ' header' + datafields[k] : '';
-
-                    header += `                <th class="header${datafield}" colspan="${colspan}" rowspan="${rowspan}">${currentLabel}</th>\n`;
+                    mergeCellsXml += `\n        <mergeCell ref="${mergedCells[i].from}:${mergedCells[i].to}" />\n`;
                 }
 
-                header += '            </tr>\n';
-            }
-
-            header += '        </thead>';
-            return header;
-        }
-
-        /**
-         * Gets conditional formatting XML.
-         */
-        getConditionalFormatting() {
-            const that = this,
-                conditionalFormatting = that.conditionalFormatting;
-
-            if (!conditionalFormatting) {
-                that.conditionalFormattingXLSX = { conditions: '', styles: '' };
-                return;
-            }
-
-            const dxfCodes = [];
-            let conditionsXml = '',
-                stylesXml = '';
-
-            for (let i = conditionalFormatting.length - 1; i >= 0; i--) {
-                const columnFormat = conditionalFormatting[i],
-                    columnLetter = that.columnsArray[that.datafields.indexOf(columnFormat.column)],
-                    startCell = columnLetter + (that.xlsxStartIndex + 1),
-                    sqref = startCell + ':' + columnLetter + (that.data.length),
-                    dxfCode = columnFormat.background + columnFormat.color,
-                    attr = that.getConditionalAttributes(columnFormat, startCell);
-                let dxfId = dxfCodes.indexOf(dxfCode);
-
-                if (dxfId === -1) {
-                    const newDxf = `        <dxf>
-            <font>
-                <b val="0"/>
-                <i val="0"/>
-                <color rgb="${columnFormat.color === 'White' ? 'FFFFFFFF' : 'FF000000'}"/>
-                <sz val="10"/>
-            </font>
-            <fill>
-                <patternFill>
-                    <bgColor rgb="${that.toARGB(columnFormat.background)}"/>
-                </patternFill>
-            </fill>
-        </dxf>\n`;
-
-                    stylesXml += newDxf;
-                    dxfId = dxfCodes.length;
-                    dxfCodes.push(dxfCode);
-                }
-
-                conditionsXml += `    <conditionalFormatting sqref="${sqref}">
-        <cfRule dxfId="${dxfId}" text="${attr.text}" rank="${attr.rank}" percent="${attr.percent}" bottom="${attr.bottom}" equalAverage="${attr.equalAverage}" aboveAverage="${attr.aboveAverage}"${attr.operator}${attr.timePeriod} priority="${i + 2}" type="${attr.type}">
-${attr.formula}        </cfRule>
-    </conditionalFormatting>\n`;
-            }
-
-            stylesXml = `    <dxfs count="${dxfCodes.length}">\n${stylesXml}    </dxfs>`;
-
-            that.conditionalFormattingXLSX = { conditions: conditionsXml, styles: stylesXml };
-        }
-
-        /**
-         * Gets conditional formatting XML attributes.
-         */
-        getConditionalAttributes(columnFormat, startCell) {
-            let condition = columnFormat.condition,
-                comparator = columnFormat.comparator,
-                text = '',
-                rank = 0,
-                percent = 0,
-                bottom = 0,
-                equalAverage = 0,
-                aboveAverage = 0,
-                operator = '',
-                timePeriod = '',
-                type = '',
-                formula = '';
-
-            switch (condition) {
-                case 'equal':
-                    operator = 'equal';
-                    type = 'cellIs';
-                    formula = `            <formula>${comparator}</formula>\n`;
-                    break;
-                case 'lessThan':
-                    operator = 'lessThan';
-                    type = 'cellIs';
-                    formula = `            <formula>${comparator}</formula>\n`;
-                    break;
-                case 'greaterThan':
-                    operator = 'greaterThan';
-                    type = 'cellIs';
-                    formula = `            <formula>${comparator}</formula>\n`;
-                    break;
-                case 'notEqual':
-                    operator = 'notEqual';
-                    type = 'cellIs';
-                    formula = `            <formula>${comparator}</formula>\n`;
-                    break;
-                case 'between':
-                    operator = 'between';
-                    type = 'cellIs';
-                    formula = `            <formula>${columnFormat.min}</formula>
-            <formula>${columnFormat.max}</formula>\n`;
-                    break;
-                case 'duplicate':
-                    type = 'duplicateValues';
-                    formula = '            <formula>0</formula>\n';
-                    break;
-                case 'topNItems':
-                    rank = comparator;
-                    type = 'top10';
-                    break;
-                case 'bottomNItems':
-                    rank = comparator;
-                    bottom = 1;
-                    type = 'top10';
-                    break;
-                case 'topNPercent':
-                    rank = comparator;
-                    percent = 1;
-                    type = 'top10';
-                    break;
-                case 'bottomNPercent':
-                    rank = comparator;
-                    percent = 1;
-                    bottom = 1;
-                    type = 'top10';
-                    break;
-                case 'aboveAverage':
-                    aboveAverage = 1;
-                    type = 'aboveAverage';
-                    formula = '            <formula>0</formula>\n';
-                    break;
-                case 'belowAverage':
-                    type = 'aboveAverage';
-                    formula = '            <formula>0</formula>\n';
-                    break;
-                case 'contains':
-                    text = comparator;
-                    operator = 'containsText';
-                    type = 'containsText';
-                    formula = `            <formula>NOT(ISERROR(SEARCH("${comparator}",${startCell})))</formula>\n`;
-                    break;
-                case 'doesNotContain':
-                    text = comparator;
-                    operator = 'notContains';
-                    type = 'notContainsText';
-                    formula = `            <formula>ISERROR(SEARCH("${comparator}",${startCell}))</formula>\n`;
-                    break;
-                case 'dateOccur':
-                    timePeriod = ` timePeriod="${comparator}"`;
-                    type = 'timePeriod';
-                    break;
-            }
-
-            if (operator) {
-                operator = ` operator="${operator}" `;
-            }
-
-            return {
-                text: text,
-                rank: rank,
-                percent: percent,
-                bottom: bottom,
-                equalAverage: equalAverage,
-                aboveAverage: aboveAverage,
-                operator: operator,
-                timePeriod: timePeriod,
-                type: type,
-                formula: formula
-            }
-        }
-
-        /**
-         * Gets merged cells XML.
-         */
-        getMergedCells(mergedCells) {
-            const that = this;
-
-            let mergeCellsXml = '';
-
-            for (let i = 0; i < mergedCells.length; i++) {
-                if (mergedCells[i].from === mergedCells[i].to) {
-                    continue;
-                }
-
-                mergeCellsXml += `\n        <mergeCell ref="${mergedCells[i].from}:${mergedCells[i].to}" />\n`;
-            }
-
-            if (that.mergedCells) {
-                for (let i = 0; i < that.mergedCells.length; i++) {
-                    const cellDefinition = that.mergedCells[i];
-
-                    if (cellDefinition.rowspan < 2 && cellDefinition.colspan < 2) {
-                        continue;
-                    }
-
-                    const from = that.columnsArray[cellDefinition.cell[0]] + (cellDefinition.cell[1] + that.xlsxStartIndex + 1),
-                        to = that.columnsArray[cellDefinition.cell[0] + cellDefinition.colspan - 1] + (cellDefinition.cell[1] + that.xlsxStartIndex + cellDefinition.rowspan);
-
-                    mergeCellsXml += `\n        <mergeCell ref="${from}:${to}" />\n`;
-                }
-            }
-
-            if (mergeCellsXml) {
-                mergeCellsXml = `\n    <mergeCells count="${mergedCells.length}">${mergeCellsXml}    </mergeCells>`;
-            }
-
-            return mergeCellsXml;
-        }
-
-        /**
-         * Gets numFmt index.
-         */
-        getNumFmtIndex(format, numFmts) {
-            let index = numFmts.collection.indexOf(format);
-
-            if (index === -1) {
-                index = numFmts.collection.length + 100;
-                numFmts.collection.push(format);
-                numFmts.xml += `<numFmt numFmtId="${index}" formatCode="${format}"/>`;
-            }
-            else {
-                index += 100;
-            }
-
-            return index;
-        }
-
-        /**
-            * Returns outlineLevel.
-            */
-        getOutlineLevel(record) {
-            if (!this.actualHierarchy || record._level === 1) {
-                return '';
-            }
-
-            return ` outlineLevel="${record._level - 1}"`;
-        }
-
-        /**
-         * Gets row style.
-         */
-        getRowStyle() {
-            const that = this,
-                style = that.style;
-
-            if (!style) {
-                return '';
-            }
-
-            const rowsDefinition = style.rows;
-
-            if (!rowsDefinition) {
-                return '';
-            }
-
-            const styles = {
-                row: ''
-            };
-            let generatedStyle = '';
-
-            for (let prop in rowsDefinition) {
-                if (!rowsDefinition.hasOwnProperty(prop) ||
-                    prop === 'alternationCount' ||
-                    prop === 'alternationStart' ||
-                    prop === 'alternationEnd') {
-                    continue;
-                }
-
-                const value = rowsDefinition[prop];
-
-                if (prop.indexOf('alt') !== -1) {
-                    const i = prop.slice(16, 17),
-                        property = prop.slice(17);
-
-                    if (!styles['rowN' + i]) {
-                        styles['rowN' + i] = '';
-                    }
-
-                    if (property === 'Color') {
-                        styles['rowN' + i] += 'color : ' + value + '; ';
-                    }
-                    else if (property === 'BorderColor') {
-                        styles['rowN' + i] += 'border-color : ' + value + '; ';
-                    }
-                    else {
-                        styles['rowN' + i] += 'background-color : ' + value + '; ';
-                    }
-
-                    continue;
-                }
-
-                if (!isNaN(prop)) {
-                    if (!styles['row' + prop]) {
-                        styles['row' + prop] = '';
-                    }
-
-                    for (let rowProp in value) {
-                        if (value.hasOwnProperty(rowProp)) {
-                            styles['row' + prop] += window.jqxToDash(rowProp) + ': ' + value[rowProp] + '; ';
-                        }
-                    }
-
-                    continue;
-                }
-
-                styles.row += window.jqxToDash(prop) + ': ' + rowsDefinition[prop] + '; ';
-            }
-
-            let keys = Object.keys(styles);
-
-            keys.sort(function (a, b) {
-                if (a === 'row') {
-                    return -1;
-                }
-
-                if (b === 'row') {
-                    return 1;
-                }
-
-                const aIsNum = !isNaN(a.slice(3)),
-                    bIsNum = !isNaN(b.slice(3));
-
-                if (aIsNum && !bIsNum) {
-                    return 1;
-                }
-
-                if (!aIsNum && bIsNum) {
-                    return -1;
-                }
-
-                return +(a < b);
-            });
-
-            for (let i = 0; i < keys.length; i++) {
-                generatedStyle += `        .${keys[i]} { ${styles[keys[i]]}}\n`;
-            }
-
-            return generatedStyle;
-        }
-
-        /**
-         * Gets table style.
-         */
-        getTableStyle() {
-            const that = this,
-                style = that.style;
-
-            if (!style) {
-                return ' style="table-layout: fixed; border: 1px solid black; border-collapse: collapse;"';
-            }
-
-            let generatedStyle = 'table-layout: fixed; ';
-
-            for (let prop in style) {
-                if (style.hasOwnProperty(prop) && ['header', 'columns', 'rows'].indexOf(prop) === -1) {
-                    generatedStyle += window.jqxToDash(prop) + ': ' + style[prop] + '; ';
-                }
-            }
-
-            if (generatedStyle) {
-                generatedStyle = ' style="' + generatedStyle + '"';
-            }
-
-            return generatedStyle;
-        }
-
-        /**
-         * Gets the "s" (style) attribute of an XLSX cell.
-         */
-        getXLSXCellStyle(r) {
-            const that = this;
-
-            if (that.cellStyleMapping[r] !== undefined) {
-                return ` s="${that.cellStyleMapping[r]}"`;
-            }
-
-            return '';
-        }
-
-        /**
-         * Gets the "s" (style) attribute of an XLSX cell.
-         */
-        getXLSXFormat(format, cellValue) {
-            if (typeof cellValue === 'number') {
-                let precision = parseFloat(format.slice(1)) || 0,
-                    precisionCode = precision > 0 ? '.' + ('0').repeat(precision) : '';
-
-                format = format.slice(0, 1);
-
-                switch (format) {
-                    case 'C':
-                    case 'c':
-                        return '\$#,0' + precisionCode;
-                    case 'D':
-                    case 'd':
-                        if (precision) {
-                            return ('0').repeat(precision);
-                        }
-
-                        return '0';
-                    case 'E':
-                    case 'e':
-                        return '0' + precisionCode + format + '000';
-                    case 'F':
-                    case 'f':
-                        return '0' + precisionCode;
-                    case 'N':
-                    case 'n':
-                        return '#,0' + precisionCode;
-                    case 'P':
-                    case 'p':
-                        return '#,0' + precisionCode + ' %';
-                    default:
-                        return;
-                }
-            }
-            else if (cellValue instanceof Date) {
-                switch (format) {
-                    case 'd':
-                        return 'm/d/yyyy';
-                    case 'D':
-                        return 'nnnnmmmm dd, yyyy';
-                    case 't':
-                        return 'h:m AM/PM';
-                    case 'T':
-                        return 'h:mm:ss AM/PM';
-                    case 'f':
-                        return 'nnnnmmmm dd, yyyy h:m AM/PM';
-                    case 'F':
-                        return 'nnnnmmmm dd, yyyy h:mm:ss AM/PM';
-                    case 'M':
-                        return 'mmmm d';
-                    case 'Y':
-                        return 'yyyy mmmm';
-                    case 'FP':
-                    case 'PP':
-                        return 'yyyy-mm-dd hh:mm:ss';
-                    case 'FT':
-                    case 'PT':
-                        return 'hh:mm:ss';
-                }
-
-                format = format.replace(/f|u|n|p|e|a|x|o/gi, '');
-                format = format.replace(/tt/gi, 'AM/PM');
-                format = format.replace(/:{2,}|:\s|:$|\.$/g, '');
-                format = format.trim();
-                return format;
-            }
-        }
-
-        /**
-         * Processes column styles.
-         */
-        processColumnStyle(style) {
-            const that = this,
-                headerDefinition = style.header,
-                columnsDefinition = style.columns,
-                sampleRecord = that.data[0],
-                startIndex = that.xlsxStartIndex;
-
-            that.columnWidth = [];
-
-            if (startIndex && headerDefinition) {
-                for (let i = 0; i < that.columnsArray.length; i++) {
-                    const columnLetter = that.columnsArray[i],
-                        cell = columnLetter + startIndex,
-                        columnSpecific = headerDefinition[that.datafields[i]];
-
-                    for (let prop in headerDefinition) {
-                        if (headerDefinition.hasOwnProperty(prop) && sampleRecord[prop] === undefined) {
-                            if (that.complexHeader) {
-                                for (let j = 0; j < that.complexHeader.length; j++) {
-                                    if (prop === 'height') {
-                                        that.rowHeight[j] = ` ht="${(parseFloat(headerDefinition.height) / that.complexHeader.length) / 2}"`;
-                                        continue;
-                                    }
-                                    else {
-                                        that.storeCellStyle(columnLetter + (j + 1), prop, headerDefinition[prop]);
-                                    }
-                                }
-                            }
-                            else {
-                                if (prop === 'height') {
-                                    that.rowHeight[0] = ` ht="${parseFloat(headerDefinition.height) / 2}"`;
-                                    continue;
-                                }
-
-                                that.storeCellStyle(cell, prop, headerDefinition[prop]);
-                            }
-                        }
-                    }
-
-                    if (!columnSpecific) {
-                        continue;
-                    }
-
-                    for (let prop in columnSpecific) {
-                        if (columnSpecific.hasOwnProperty(prop)) {
-                            if (prop === 'width') {
-                                that.columnWidth[i] = columnSpecific.width;
-                                continue;
-                            }
-
-                            that.storeCellStyle(cell, prop, columnSpecific[prop]);
-                        }
-                    }
-                }
-            }
-            else if (headerDefinition) {
-                for (let i = 0; i < that.columnsArray.length; i++) {
-                    const columnSpecific = headerDefinition[that.datafields[i]];
-
-                    if (columnSpecific && columnSpecific.width !== undefined) {
-                        that.columnWidth[i] = columnSpecific.width;
-                    }
-                }
-            }
-
-            if (!columnsDefinition) {
-                return '';
-            }
-
-            for (let i = startIndex; i < that.data.length; i++) {
-                for (let j = 0; j < that.columnsArray.length; j++) {
-                    const columnLetter = that.columnsArray[j],
-                        cell = columnLetter + (i + 1),
-                        datafield = that.datafields[j],
-                        columnSpecific = columnsDefinition[datafield];
-
-                    for (let prop in columnsDefinition) {
-                        if (columnsDefinition.hasOwnProperty(prop) && sampleRecord[prop] === undefined) {
-                            that.storeCellStyle(cell, prop, columnsDefinition[prop]);
-                        }
-                    }
-
-                    if (!columnSpecific) {
-                        continue;
-                    }
-
-                    for (let prop in columnSpecific) {
-                        if (!isNaN(prop) || !columnSpecific.hasOwnProperty(prop)) {
+                if (that.mergedCells) {
+                    for (let i = 0; i < that.mergedCells.length; i++) {
+                        const cellDefinition = that.mergedCells[i];
+
+                        if (cellDefinition.rowspan < 2 && cellDefinition.colspan < 2) {
                             continue;
                         }
 
-                        that.storeCellStyle(cell, prop, columnSpecific[prop], that.data[i][datafield]);
+                        const from = that.columnsArray[cellDefinition.cell[0]] + (cellDefinition.cell[1] + that.xlsxStartIndex + 1),
+                            to = that.columnsArray[cellDefinition.cell[0] + cellDefinition.colspan - 1] + (cellDefinition.cell[1] + that.xlsxStartIndex + cellDefinition.rowspan);
+
+                        mergeCellsXml += `\n        <mergeCell ref="${from}:${to}" />\n`;
                     }
                 }
-            }
-        }
 
-        /**
-         * Processes complex header object.
-         */
-        processComplexHeader(header, data, format) {
-            const that = this,
-                flatHeader = {},
-                processGrouping = ['html', 'jpeg', 'pdf', 'png', 'xlsx'].indexOf(format) !== -1 && header.columngroups,
-                datafieldMapping = [],
-                columnGroupHierarchy = {},
-                complexHeader = [];
-            let headerDepth = 0;
-
-            function getColumnGroup(columnGroup) {
-                for (let i = 0; i < header.columngroups.length; i++) {
-                    const currentGroupDefinition = header.columngroups[i];
-
-                    if (currentGroupDefinition.name === columnGroup) {
-                        return currentGroupDefinition;
-                    }
+                if (mergeCellsXml) {
+                    mergeCellsXml = `\n    <mergeCells count="${mergedCells.length}">${mergeCellsXml}    </mergeCells>`;
                 }
+
+                return mergeCellsXml;
             }
 
-            function getColumnGroupHierarchy(groupDefinition) {
-                const columnGroups = [];
+            /**
+             * Gets numFmt index.
+             */
+            getNumFmtIndex(format, numFmts) {
+                let index = numFmts.collection.indexOf(format);
 
-                while (groupDefinition) {
-                    columnGroups.unshift(groupDefinition.label);
-
-                    if (groupDefinition.parentGroup) {
-                        groupDefinition = getColumnGroup(groupDefinition.parentGroup);
-                    }
-                    else {
-                        return columnGroups;
-                    }
-                }
-            }
-
-            if (processGrouping) {
-                for (let i = 0; i < header.columngroups.length; i++) {
-                    const currentGroupDefinition = header.columngroups[i],
-                        groupHierarchy = getColumnGroupHierarchy(currentGroupDefinition);
-
-                    columnGroupHierarchy[currentGroupDefinition.name] = groupHierarchy;
-                    headerDepth = Math.max(headerDepth, groupHierarchy.length);
-                }
-
-                headerDepth++;
-
-                for (let i = 0; i < headerDepth; i++) {
-                    complexHeader[i] = [];
-                }
-            }
-
-            for (let i = 0; i < header.columns.length; i++) {
-                const currentColumn = header.columns[i];
-
-                flatHeader[currentColumn.dataField] = currentColumn.label;
-
-                if (!processGrouping) {
-                    continue;
-                }
-
-                datafieldMapping[i] = currentColumn.dataField;
-                complexHeader[headerDepth - 1][i] = currentColumn.label;
-
-                if (!currentColumn.columnGroup) {
-                    continue;
-                }
-
-                const columnGroups = columnGroupHierarchy[currentColumn.columnGroup];
-
-                for (let j = 0; j < columnGroups.length; j++) {
-                    complexHeader[j][i] = columnGroups[j];
-                }
-            }
-
-            if (complexHeader.length > 1) {
-                const numberOfDatafields = Object.keys(flatHeader).length;
-
-                for (let i = 0; i < headerDepth - 1; i++) {
-                    const entry = {};
-
-                    for (let j = 0; j < numberOfDatafields; j++) {
-                        if (complexHeader[i][j] === undefined) {
-                            let iterator = i + 1;
-
-                            while (complexHeader[iterator][j] === undefined) {
-                                iterator++;
-                            }
-
-                            complexHeader[i][j] = complexHeader[iterator][j];
-                        }
-
-                        entry[datafieldMapping[j]] = complexHeader[i][j];
-                    }
-
-                    if (format === 'xlsx') {
-                        data.splice(i, 0, entry);
-                    }
-                }
-
-                that.complexHeader = complexHeader;
-
-                if (format !== 'xlsx') {
-                    data.unshift(flatHeader);
+                if (index === -1) {
+                    index = numFmts.collection.length + 100;
+                    numFmts.collection.push(format);
+                    numFmts.xml += `<numFmt numFmtId="${index}" formatCode="${format}"/>`;
                 }
                 else {
-                    data.splice(headerDepth - 1, 0, flatHeader);
-
-                    const toMerge = {};
-
-                    for (let i = 0; i < headerDepth; i++) {
-                        for (let j = 0; j < numberOfDatafields; j++) {
-                            const label = complexHeader[i][j];
-
-                            if (!toMerge[label]) {
-                                toMerge[label] = { from: [i, j] };
-                                toMerge[label].to = toMerge[label].from;
-                            }
-                            else {
-                                toMerge[label].to = [i, j];
-                            }
-                        }
-                    }
-
-                    that.complexHeaderMergeInfo = toMerge;
-                }
-            }
-            else {
-                data.unshift(flatHeader);
-            }
-        }
-
-        /**
-         * Processes hierarchical data.
-         */
-        processHierarchicalData(data, format) {
-            const that = this,
-                startIndex = format !== 'xlsx' ? +that.exportHeader : that.xlsxStartIndex,
-                siblingGroups = {},
-                processedData = [];
-            let maxLevel = 0,
-                actualHierarchy = false;
-
-            function process(parentKey, level, collapsed) {
-                const group = siblingGroups[parentKey];
-
-                maxLevel = Math.max(maxLevel, level);
-
-                if (group === undefined) {
-                    return;
+                    index += 100;
                 }
 
-                for (let i = 0; i < group.length; i++) {
-                    const currentRecord = group[i],
-                        keyDataField = currentRecord._keyDataField;
-
-                    currentRecord._collapsed = collapsed;
-                    currentRecord._level = level;
-                    processedData.push(currentRecord);
-
-                    if (siblingGroups[keyDataField]) {
-                        actualHierarchy = true;
-                        currentRecord._expanded = currentRecord._expanded !== undefined ? currentRecord._expanded : true;
-                        process(keyDataField, level + 1, collapsed || !currentRecord._expanded);
-                    }
-                }
+                return index;
             }
 
-            function processJSONXML(parentKey, level, parent) {
-                const group = siblingGroups[parentKey];
-
-                maxLevel = Math.max(maxLevel, level);
-
-                if (group === undefined) {
-                    return;
+            /**
+                * Returns outlineLevel.
+                */
+            getOutlineLevel(record) {
+                if (!this.actualHierarchy || record._level === 1) {
+                    return '';
                 }
 
-                for (let i = 0; i < group.length; i++) {
-                    const currentRecord = group[i],
-                        keyDataField = currentRecord._keyDataField;
-                    let cleanedRecord;
+                return ` outlineLevel="${record._level - 1}"`;
+            }
 
-                    if (format === 'json') {
-                        cleanedRecord = {};
+            /**
+             * Gets row style.
+             */
+            getRowStyle() {
+                const that = this,
+                    style = that.style;
 
-                        for (let prop in currentRecord) {
-                            if (currentRecord.hasOwnProperty(prop) && prop.charAt(0) !== '_') {
-                                cleanedRecord[prop] = currentRecord[prop];
-                            }
-                        }
-                    }
-                    else {
-                        cleanedRecord = Object.assign({}, currentRecord);
-                    }
-
-                    parent.push(cleanedRecord);
-
-                    if (siblingGroups[keyDataField]) {
-                        actualHierarchy = true;
-                        cleanedRecord.rows = [];
-                        processJSONXML(keyDataField, level + 1, cleanedRecord.rows);
-                    }
+                if (!style) {
+                    return '';
                 }
-            }
 
-            if (data[startIndex]._keyDataField === undefined) {
-                return that.processNestedData(data, format, startIndex);
-            }
+                const rowsDefinition = style.rows;
 
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = Object.assign({}, data[i]),
-                    parentKey = currentRecord._parentDataField;
-
-                if (siblingGroups[parentKey] === undefined) {
-                    siblingGroups[parentKey] = [currentRecord];
+                if (!rowsDefinition) {
+                    return '';
                 }
-                else {
-                    siblingGroups[parentKey].push(currentRecord);
-                }
-            }
 
-            if (startIndex) {
-                for (let i = 0; i < startIndex; i++) {
-                    processedData.push(Object.assign({}, data[i]));
-
-                    if (['json', 'pdf', 'xml'].indexOf(format) === -1) {
-                        processedData[i]._level = 1;
-                    }
-                }
-            }
-
-            if (format !== 'json' && format !== 'xml') {
-                process(null, 1, false);
-            }
-            else {
-                processJSONXML(null, 1, processedData);
-            }
-
-            if (!actualHierarchy) {
-                that.actualHierarchy = false;
-            }
-
-            that.maxLevel = maxLevel;
-            return processedData;
-        }
-
-        /**
-         * Processes nested hierarchical data.
-         */
-        processNestedData(data, format, startIndex) {
-            const that = this,
-                processedData = [];
-            let maxLevel = 0,
-                actualHierarchy = false;
-
-            function process(start, children, level, collapsed) {
-                maxLevel = Math.max(maxLevel, level);
-
-                for (let i = start; i < children.length; i++) {
-                    const currentRecord = Object.assign({}, children[i]);
-
-                    currentRecord._collapsed = collapsed;
-                    currentRecord._level = level;
-                    processedData.push(currentRecord);
-
-                    if (currentRecord.children && currentRecord.children.length > 0) {
-                        actualHierarchy = true;
-                        currentRecord._expanded = currentRecord._expanded !== undefined ? currentRecord._expanded : true;
-                        process(0, currentRecord.children, level + 1, collapsed || !currentRecord._expanded);
-                    }
-
-                    delete currentRecord.children;
-                }
-            }
-
-            function processJSONXML(start, children, rows, level) {
-                maxLevel = Math.max(maxLevel, level);
-
-                for (let i = start; i < children.length; i++) {
-                    const currentRecord = Object.assign({}, children[i]);
-
-                    if (level === 1) {
-                        processedData[i] = currentRecord;
-                    }
-                    else {
-                        rows[i] = currentRecord;
-                    }
-
-                    if (currentRecord.children && currentRecord.children.length > 0) {
-                        actualHierarchy = true;
-                        currentRecord.rows = [];
-                        processJSONXML(0, currentRecord.children, currentRecord.rows, level + 1);
-                    }
-
-                    delete currentRecord.children;
-                }
-            }
-
-            if (startIndex) {
-                for (let i = 0; i < startIndex; i++) {
-                    processedData.push(Object.assign({}, data[i]));
-
-                    if (['json', 'pdf', 'xml'].indexOf(format) === -1) {
-                        processedData[i]._level = 1;
-                    }
-                }
-            }
-
-            if (format !== 'json' && format !== 'xml') {
-                process(startIndex, data, 1, false);
-            }
-            else {
-                processJSONXML(startIndex, data, undefined, 1);
-            }
-
-            if (!actualHierarchy) {
-                that.actualHierarchy = false;
-            }
-
-            that.maxLevel = maxLevel;
-            return processedData;
-        }
-
-        /**
-         * Processes row styles.
-         */
-        processRowStyle(style) {
-            const that = this,
-                rowsDefinition = style.rows;
-
-            that.rowHeight = [];
-
-            if (!rowsDefinition) {
-                return;
-            }
-
-            const startIndex = that.xlsxStartIndex;
-
-            function applyToRowCells(row, prop, value) {
-                for (let j = 0; j < that.columnsArray.length; j++) {
-                    const currentCell = that.columnsArray[j] + (row + 1 + startIndex);
-
-                    that.storeCellStyle(currentCell, prop, value);
-                }
-            }
-
-            if (rowsDefinition.height) {
-                that.defaultRowHeight = ` ht="${parseFloat(rowsDefinition.height) / 2}"`;
-            }
-
-            for (let i = startIndex; i < that.data.length; i++) {
-                const row = i - startIndex;
+                const styles = {
+                    row: ''
+                };
+                let generatedStyle = '';
 
                 for (let prop in rowsDefinition) {
-                    if (rowsDefinition.hasOwnProperty(prop) &&
-                        prop.indexOf('alt') === -1 &&
-                        isNaN(prop) &&
-                        prop !== 'height') {
-                        applyToRowCells(row, prop, rowsDefinition[prop]);
-                    }
-                }
-
-                if (rowsDefinition.alternationCount &&
-                    (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
-                        (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
-                        rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
-                    const start = rowsDefinition.alternationStart || 0,
-                        i = (row - start) % rowsDefinition.alternationCount;
-
-                    if (rowsDefinition[`alternationIndex${i}Color`]) {
-                        applyToRowCells(row, 'color', rowsDefinition[`alternationIndex${i}Color`]);
-                    }
-
-                    if (rowsDefinition[`alternationIndex${i}BorderColor`]) {
-                        applyToRowCells(row, 'borderColor', rowsDefinition[`alternationIndex${i}BorderColor`]);
-                    }
-
-                    if (rowsDefinition[`alternationIndex${i}BackgroundColor`]) {
-                        applyToRowCells(row, 'backgroundColor', rowsDefinition[`alternationIndex${i}BackgroundColor`]);
-                    }
-                }
-
-                if (rowsDefinition[row]) {
-                    for (let prop in rowsDefinition[row]) {
-                        if (rowsDefinition[row].hasOwnProperty(prop)) {
-                            if (prop === 'height') {
-                                that.rowHeight[i] = ` ht="${parseFloat(rowsDefinition[row].height) / 2}"`;
-                                continue;
-                            }
-
-                            applyToRowCells(row, prop, rowsDefinition[row][prop]);
-                        }
-                    }
-                }
-            }
-        }
-
-        /**
-         * Stores cell style in "styleMap" object.
-         */
-        storeCellStyle(cell, prop, value) {
-            const that = this,
-                cellMap = that.styleMap[cell];
-
-            switch (prop) {
-                case 'backgroundColor':
-                    cellMap.fills.fgColor = value;
-                    break;
-                case 'color':
-                    cellMap.fonts.color = value;
-                    break;
-                case 'fontFamily':
-                    cellMap.fonts.name = value.replace(/"/g, '\'');
-                    break;
-                case 'fontSize':
-                    cellMap.fonts.sz = parseFloat(value);
-                    break;
-                case 'fontStyle':
-                    if (value === 'italic') {
-                        cellMap.fonts.i = true;
-                    }
-                    else {
-                        delete cellMap.fonts.i;
-                    }
-
-                    break;
-                case 'fontWeight':
-                    if (value === 'bold') {
-                        cellMap.fonts.b = true;
-                    }
-                    else {
-                        delete cellMap.fonts.b;
-                    }
-
-                    break;
-                case 'numFmt': {
-                    cellMap.numFmt = value;
-                    break;
-                }
-                case 'textAlign':
-                    cellMap.alignment.horizontal = value;
-                    break;
-                case 'textDecoration':
-                    if (value === 'underline') {
-                        cellMap.fonts.u = true;
-                    }
-                    else {
-                        delete cellMap.fonts.u;
-                    }
-
-                    break;
-                case 'verticalAlign':
-                    if (value === 'middle') {
-                        value = 'center';
-                    }
-
-                    cellMap.alignment.vertical = value;
-                    break;
-            }
-        }
-
-        /**
-         * Returns an Alpha Red Green Blue color value.
-         */
-        toARGB(color) {
-            color = color.replace(/\s/g, '');
-
-            const rgbResult = /rgb\((\d+),(\d+),(\d+)\)/gi.exec(color);
-
-            if (rgbResult !== null) {
-                const r = parseFloat(rgbResult[1]).toString(16).toUpperCase(),
-                    g = parseFloat(rgbResult[2]).toString(16).toUpperCase(),
-                    b = parseFloat(rgbResult[3]).toString(16).toUpperCase();
-
-                return 'FF' + ('0').repeat(2 - r.length) + r +
-                    ('0').repeat(2 - g.length) + g +
-                    ('0').repeat(2 - b.length) + b;
-            }
-
-            const rgbaResult = /rgba\((\d+),(\d+),(\d+)\,(\d*.\d+|\d+)\)/gi.exec(color);
-
-            if (rgbaResult !== null) {
-                const a = Math.round(parseFloat(rgbaResult[4]) * 255).toString(16).toUpperCase(),
-                    r = parseFloat(rgbaResult[1]).toString(16).toUpperCase(),
-                    g = parseFloat(rgbaResult[2]).toString(16).toUpperCase(),
-                    b = parseFloat(rgbaResult[3]).toString(16).toUpperCase();
-
-                return ('0').repeat(2 - a.length) + a +
-                    ('0').repeat(2 - r.length) + r +
-                    ('0').repeat(2 - g.length) + g +
-                    ('0').repeat(2 - b.length) + b;
-            }
-
-            const shortHexResult = /^#(.)(.)(.)$/gi.exec(color);
-
-            if (shortHexResult !== null) {
-                const r = shortHexResult[1].toUpperCase(),
-                    g = shortHexResult[2].toUpperCase(),
-                    b = shortHexResult[3].toUpperCase();
-
-                return 'FF' + r + r + g + g + b + b;
-            }
-
-            return 'FF' + color.toUpperCase().slice(1);
-        }
-
-        /**
-         * Adds toggleable functionality.
-         */
-        toggleableFunctionality() {
-            const that = this;
-
-            if (!that.actualHierarchy) {
-                return '';
-            }
-
-            return `\n    <style type="text/css">
-        .toggle-element {
-            width: 5px;
-            height: 1px;
-            padding-right: 5px;
-            float: left;
-            text-align: right;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .collapsed {
-            display: none;
-        }
-    </style>
-    <script type="text/javascript">
-        window.onload = function () {
-            var expandChar = '${that.expandChar}',
-                collapseChar = '${that.collapseChar}',
-                toggleElements = document.getElementsByClassName('toggle-element');
-
-            function getParent(child) {
-                var prevSibling = child.previousElementSibling;
-
-                while (prevSibling) {
-                    if (child.getAttribute('level') > prevSibling.getAttribute('level')) {
-                        return prevSibling;
-                    }
-
-                    prevSibling = prevSibling.previousElementSibling;
-                }
-
-            }
-
-            function getFirstCollapsedAncestor(child) {
-                var parent = getParent(child);
-
-                while (parent) {
-                    if (parent.firstElementChild.firstElementChild.innerHTML === expandChar) {
-                        return parent;
-                    }
-
-                    parent = getParent(parent);
-                }
-            }
-
-            for (var i = 0; i < toggleElements.length; i++) {
-                toggleElements[i].addEventListener('click', function (event) {
-                    var expanded = this.innerHTML === collapseChar,
-                        row = this.parentElement.parentElement,
-                        sibling = row.nextElementSibling;
-
-                    if (expanded) {
-                        this.innerHTML = expandChar;
-                    }
-                    else {
-                        this.innerHTML = collapseChar;
-                    }
-
-                    while (sibling && row.getAttribute('level') < sibling.getAttribute('level')) {
-                        if (expanded) {
-                            sibling.style.display = 'none';
-                        }
-                        else {
-                            var firstCollapsedAncestor = getFirstCollapsedAncestor(sibling);
-
-                            if (!firstCollapsedAncestor || firstCollapsedAncestor === row) {
-                                sibling.classList.remove('collapsed');
-                                sibling.style.display = null;
-                            }
-
-                        }
-
-                        sibling = sibling.nextElementSibling;
-                    }
-                });
-            }
-        }
-    </script>`;
-        }
-
-        /**
-         * Generates styles.xml.
-         */
-        generateStyles(style) {
-            const that = this;
-
-            that.cellStyleMapping = {};
-
-            if (Object.keys(style).length === 0 && !that.complexHeader) {
-                // default style
-                return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac x16r2 xr" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:x16r2="http://schemas.microsoft.com/office/spreadsheetml/2015/02/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision"><fonts count="1" x14ac:knownFonts="1"><font><sz val="11"/><color theme="1"/><name val="Calibri"/><family val="2"/><charset val="204"/><scheme val="minor"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>${that.conditionalFormattingXLSX.styles || '<dxfs count="0"/>'}<tableStyles count="0" defaultTableStyle="TableStyleMedium2" defaultPivotStyle="PivotStyleLight16"/><extLst><ext uri="{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}" xmlns:x14="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"><x14:slicerStyles defaultSlicerStyle="SlicerStyleLight1"/></ext><ext uri="{9260A510-F301-46a8-8635-F512D64BE5F5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:timelineStyles defaultTimelineStyle="TimeSlicerStyleLight1"/></ext></extLst></styleSheet>`;
-            }
-
-            that.styleMap = {};
-
-            for (let i = 0; i < that.data.length; i++) {
-                for (let j = 0; j < that.columnsArray.length; j++) {
-                    that.styleMap[that.columnsArray[j] + (i + 1)] = {
-                        numFmts: {}, fonts: {}, fills: {}, borders: {}, alignment: {}
-                    }
-                }
-            }
-
-            if (style && style.columns) {
-                for (let i = 0; i < that.columnsArray.length; i++) {
-                    const datafield = that.datafields[i];
-
-                    if (!style.columns[datafield] || !style.columns[datafield].format) {
+                    if (!Object.prototype.hasOwnProperty.call(rowsDefinition, prop) ||
+                        prop === 'alternationCount' ||
+                        prop === 'alternationStart' ||
+                        prop === 'alternationEnd') {
                         continue;
                     }
 
-                    if (that.data[that.data.length - 1][datafield]) {
+                    const value = rowsDefinition[prop];
+
+                    if (prop.indexOf('alt') !== -1) {
+                        const i = prop.slice(16, 17),
+                            property = prop.slice(17);
+
+                        if (!styles['rowN' + i]) {
+                            styles['rowN' + i] = '';
+                        }
+
+                        if (property === 'Color') {
+                            styles['rowN' + i] += 'color : ' + value + '; ';
+                        }
+                        else if (property === 'BorderColor') {
+                            styles['rowN' + i] += 'border-color : ' + value + '; ';
+                        }
+                        else {
+                            styles['rowN' + i] += 'background-color : ' + value + '; ';
+                        }
+
+                        continue;
+                    }
+
+                    if (!isNaN(prop)) {
+                        if (!styles['row' + prop]) {
+                            styles['row' + prop] = '';
+                        }
+
+                        for (let rowProp in value) {
+                            if (Object.prototype.hasOwnProperty.call(value, rowProp)) {
+                                styles['row' + prop] += window.jqxToDash(rowProp) + ': ' + value[rowProp] + '; ';
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    styles.row += window.jqxToDash(prop) + ': ' + rowsDefinition[prop] + '; ';
+                }
+
+                let keys = Object.keys(styles);
+
+                keys.sort(function (a, b) {
+                    if (a === 'row') {
+                        return -1;
+                    }
+
+                    if (b === 'row') {
+                        return 1;
+                    }
+
+                    const aIsNum = !isNaN(a.slice(3)),
+                        bIsNum = !isNaN(b.slice(3));
+
+                    if (aIsNum && !bIsNum) {
+                        return 1;
+                    }
+
+                    if (!aIsNum && bIsNum) {
+                        return -1;
+                    }
+
+                    return +(a < b);
+                });
+
+                for (let i = 0; i < keys.length; i++) {
+                    generatedStyle += `        .${keys[i]} { ${styles[keys[i]]}}\n`;
+                }
+
+                return generatedStyle;
+            }
+
+            /**
+             * Gets table style.
+             */
+            getTableStyle() {
+                const that = this,
+                    style = that.style;
+
+                if (!style) {
+                    return ' style="table-layout: fixed; border: 1px solid black; border-collapse: collapse;"';
+                }
+
+                let generatedStyle = 'table-layout: fixed; ';
+
+                for (let prop in style) {
+                    if (Object.prototype.hasOwnProperty.call(style, prop) &&
+                        ['header', 'columns', 'rows', 'removeDefault', 'custom'].indexOf(prop) === -1) {
+                        generatedStyle += window.jqxToDash(prop) + ': ' + style[prop] + '; ';
+                    }
+                }
+
+                if (generatedStyle) {
+                    generatedStyle = ' style="' + generatedStyle + '"';
+                }
+
+                return generatedStyle;
+            }
+
+            /**
+             * Gets the "s" (style) attribute of an XLSX cell.
+             */
+            getXLSXCellStyle(r) {
+                const that = this;
+
+                if (that.cellStyleMapping[r] !== undefined) {
+                    return ` s="${that.cellStyleMapping[r]}"`;
+                }
+
+                return '';
+            }
+
+            /**
+             * Gets the "s" (style) attribute of an XLSX cell.
+             */
+            getXLSXFormat(format, cellValue) {
+                if (typeof cellValue === 'number') {
+                    let currencySign = '$';
+                    if (format && typeof (format) === 'string' && format.indexOf('c') >= 0 && format.indexOf('x') >= 0) {
+                        currencySign = format.substring(0, format.indexOf('x'));
+                        format = format.substring(1 + format.indexOf('x'));
+                    }
+
+                    if (!/^([a-zA-Z]\d*)$/g.test(format)) {
+                        return format;
+                    }
+
+                    let precision = parseFloat(format.slice(1)) || 0,
+                        precisionCode = precision > 0 ? '.' + ('0').repeat(precision) : '';
+
+                    format = format.slice(0, 1);
+
+                    switch (format) {
+                        case 'C':
+                        case 'c':
+                            if (currencySign !== '$') {
+                                return '\#,0' + precisionCode + ' ' + currencySign;
+                            }
+                            return currencySign + '\#,0' + precisionCode;
+                        case 'D':
+                        case 'd':
+                            if (precision) {
+                                return ('0').repeat(precision);
+                            }
+
+                            return '0';
+                        case 'E':
+                        case 'e':
+                            return '0' + precisionCode + format + '000';
+                        case 'F':
+                        case 'f':
+                            return '0' + precisionCode;
+                        case 'N':
+                        case 'n':
+                            return '#,0' + precisionCode;
+                        case 'P':
+                        case 'p':
+                            return '#,0' + precisionCode + ' %';
+                        default:
+                            return;
+                    }
+                }
+                else if (cellValue instanceof Date) {
+                    switch (format) {
+                        case 'd':
+                            return 'm/d/yyyy';
+                        case 'D':
+                            return 'nnnnmmmm dd, yyyy';
+                        case 't':
+                            return 'h:m AM/PM';
+                        case 'T':
+                            return 'h:mm:ss AM/PM';
+                        case 'f':
+                            return 'nnnnmmmm dd, yyyy h:m AM/PM';
+                        case 'F':
+                            return 'nnnnmmmm dd, yyyy h:mm:ss AM/PM';
+                        case 'M':
+                            return 'mmmm d';
+                        case 'Y':
+                            return 'yyyy mmmm';
+                        case 'FP':
+                        case 'PP':
+                            return 'yyyy-mm-dd hh:mm:ss';
+                        case 'FT':
+                        case 'PT':
+                            return 'hh:mm:ss';
+                    }
+
+                    format = format.replace(/f|u|n|p|e|a|x|o/gi, '');
+                    format = format.replace(/tt/gi, 'AM/PM');
+                    format = format.replace(/:{2,}|:\s|:$|\.$/g, '');
+                    format = format.trim();
+                    return format;
+                }
+            }
+
+            /**
+             * Processes column styles.
+             */
+            processColumnStyle(style) {
+                const that = this,
+                    headerDefinition = style.header,
+                    columnsDefinition = style.columns,
+                    sampleRecord = that.data[0],
+                    startIndex = that.xlsxStartIndex;
+
+                that.columnWidth = [];
+
+                if (startIndex && headerDefinition) {
+                    for (let i = 0; i < that.columnsArray.length; i++) {
+                        const columnLetter = that.columnsArray[i],
+                            cell = columnLetter + startIndex,
+                            columnSpecific = headerDefinition[that.datafields[i]];
+
+                        for (let prop in headerDefinition) {
+                            if (Object.prototype.hasOwnProperty.call(headerDefinition, prop) && sampleRecord[prop] === undefined) {
+                                if (that.complexHeader) {
+                                    for (let j = 0; j < that.complexHeader.length; j++) {
+                                        if (prop === 'height') {
+                                            that.rowHeight[j] = ` ht="${(parseFloat(headerDefinition.height) / 1) / 2}"`;
+                                            continue;
+                                        }
+                                        else {
+                                            that.storeCellStyle(columnLetter + (j + 1), prop, headerDefinition[prop]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (prop === 'height') {
+                                        that.rowHeight[startIndex - 1] = ` ht="${parseFloat(headerDefinition.height) / 2}"`;
+                                        continue;
+                                    }
+
+                                    that.storeCellStyle(cell, prop, headerDefinition[prop]);
+                                }
+                            }
+                        }
+
+                        if (!columnSpecific) {
+                            continue;
+                        }
+
+                        for (let prop in columnSpecific) {
+                            if (Object.prototype.hasOwnProperty.call(columnSpecific, prop)) {
+                                if (prop === 'width') {
+                                    that.columnWidth[i] = columnSpecific.width;
+                                    continue;
+                                }
+
+                                that.storeCellStyle(cell, prop, columnSpecific[prop]);
+                            }
+                        }
+                    }
+                }
+                else if (headerDefinition) {
+                    for (let i = 0; i < that.columnsArray.length; i++) {
+                        const columnSpecific = headerDefinition[that.datafields[i]];
+
+                        if (columnSpecific && columnSpecific.width !== undefined) {
+                            that.columnWidth[i] = columnSpecific.width;
+                        }
+                    }
+                }
+
+                if (!columnsDefinition) {
+                    return '';
+                }
+
+                for (let i = startIndex; i < that.data.length; i++) {
+                    for (let j = 0; j < that.columnsArray.length; j++) {
+                        const columnLetter = that.columnsArray[j],
+                            cell = columnLetter + (i + 1),
+                            datafield = that.datafields[j],
+                            columnSpecific = columnsDefinition[datafield];
+
+                        for (let prop in columnsDefinition) {
+                            if (Object.prototype.hasOwnProperty.call(columnsDefinition, prop) && sampleRecord[prop] === undefined) {
+                                that.storeCellStyle(cell, prop, columnsDefinition[prop]);
+                            }
+                        }
+
+                        if (!columnSpecific) {
+                            continue;
+                        }
+
+                        for (let prop in columnSpecific) {
+                            if (!isNaN(prop) || !Object.prototype.hasOwnProperty.call(columnSpecific, prop)) {
+                                continue;
+                            }
+
+                            that.storeCellStyle(cell, prop, columnSpecific[prop], that.data[i][datafield]);
+                        }
+
+                        if (columnSpecific[i]) {
+                            const cellProperties = columnSpecific[i];
+                            for (let prop in cellProperties) {
+                                if (!isNaN(prop) || !Object.prototype.hasOwnProperty.call(cellProperties, prop)) {
+                                    continue;
+                                }
+                                if (!cellProperties[prop]) {
+                                    continue;
+                                }
+
+                                that.storeCellStyle(cell, prop, cellProperties[prop], that.data[i][datafield]);
+                            }
+                        }
+                    }
+                }
+
+                // prepend
+
+                if (that.headerContent && that.headerContent.length) {
+                    for (let m = 0; m < that.headerContent.length; m++) {
+                        const applyToRowCells = (row, prop, value) => {
+                            for (let j = 0; j < that.columnsArray.length; j++) {
+                                const currentCell = that.columnsArray[j] + (row);
+
+                                that.storeCellStyle(currentCell, prop, value);
+                            }
+                        }
+
+                        const row = m + 1;
+
+                        if (that.headerContent[m].style) {
+                            const contentStyle = that.headerContent[m].style;
+
+                            const hexDigits = new Array
+                                ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+
+                            const hex = (x) => {
+                                return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+                            }
+
+                            //Function to convert rgb color to hex format
+                            const toHex = (rgb) => {
+                                if (!rgb.startsWith('#')) {
+                                    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+
+                                    if (!rgb) {
+                                        return null;
+                                    }
+                                }
+                                else {
+                                    return rgb.toUpperCase();
+                                }
+
+                                return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]).toUpperCase();
+                            }
+
+
+
+                            for (let prop in contentStyle) {
+                                let value = contentStyle[prop];
+
+                                if (prop === 'height') {
+                                    that.rowHeight[row - 1] = ` ht="${parseFloat(value)}"`;
+                                    continue;
+                                }
+                                if (prop === 'color' || prop === 'backgroundColor') {
+                                    value = toHex(value);
+                                }
+
+                                applyToRowCells(row, prop, value);
+                            }
+                        }
+                    }
+                }
+
+
+
+
+                // append
+                if (that.footerContent && that.footerContent.length) {
+                    for (let m = 0; m < that.footerContent.length; m++) {
+                        const applyToRowCells = (row, prop, value) => {
+                            for (let j = 0; j < that.columnsArray.length; j++) {
+                                const currentCell = that.columnsArray[j] + (row);
+
+                                that.storeCellStyle(currentCell, prop, value);
+                            }
+                        }
+
+                        let prefix = (that.headerContent && that.headerContent.length) ? that.headerContent.length : 0;
+
+                        const row = 1 + that.data.length + m + prefix;
+
+                        if (that.footerContent[m].style) {
+                            const contentStyle = that.footerContent[m].style;
+
+                            const hexDigits = new Array
+                                ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+
+                            const hex = (x) => {
+                                return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+                            }
+
+                            //Function to convert rgb color to hex format
+                            const toHex = (rgb) => {
+                                if (!rgb.startsWith('#')) {
+                                    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+
+                                    if (!rgb) {
+                                        return null;
+                                    }
+                                }
+                                else {
+                                    return rgb.toUpperCase();
+                                }
+
+                                return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]).toUpperCase();
+                            }
+
+
+
+                            for (let prop in contentStyle) {
+                                let value = contentStyle[prop];
+
+                                if (prop === 'height') {
+                                    that.rowHeight[row - 1] = ` ht="${parseFloat(value)}"`;
+                                    continue;
+                                }
+                                if (prop === 'color' || prop === 'backgroundColor') {
+                                    value = toHex(value);
+                                }
+
+                                applyToRowCells(row, prop, value);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Processes complex header object.
+             */
+            processComplexHeader(header, data, format) {
+                const that = this,
+                    flatHeader = {},
+                    processGrouping = ['html', 'jpeg', 'pdf', 'png', 'xlsx'].indexOf(format) !== -1 && header.columngroups,
+                    datafieldMapping = [],
+                    columnGroupHierarchy = {},
+                    columnGroupNameHierarchy = {},
+                    complexHeader = [],
+                    complexDataFieldsHeader = [];
+                let headerDepth = 0;
+
+                function getColumnGroup(columnGroup) {
+                    for (let i = 0; i < header.columngroups.length; i++) {
+                        const currentGroupDefinition = header.columngroups[i];
+
+                        if (currentGroupDefinition.name === columnGroup) {
+                            return currentGroupDefinition;
+                        }
+                    }
+                }
+
+                function getColumnGroupHierarchy(groupDefinition, property) {
+                    const columnGroups = [];
+
+                    while (groupDefinition) {
+                        columnGroups.unshift(groupDefinition[property]);
+
+                        if (groupDefinition.parentGroup) {
+                            groupDefinition = getColumnGroup(groupDefinition.parentGroup);
+                        }
+                        else {
+                            return columnGroups;
+                        }
+                    }
+                }
+
+                if (processGrouping) {
+                    for (let i = 0; i < header.columngroups.length; i++) {
+                        const currentGroupDefinition = header.columngroups[i],
+                            groupHierarchy = getColumnGroupHierarchy(currentGroupDefinition, 'label');
+
+                        columnGroupHierarchy[currentGroupDefinition.name] = groupHierarchy;
+                        columnGroupNameHierarchy[currentGroupDefinition.name] = getColumnGroupHierarchy(currentGroupDefinition, 'name');
+                        headerDepth = Math.max(headerDepth, groupHierarchy.length);
+                    }
+
+                    headerDepth++;
+
+                    for (let i = 0; i < headerDepth; i++) {
+                        complexHeader[i] = [];
+                        complexDataFieldsHeader[i] = [];
+                    }
+                }
+
+                for (let i = 0; i < header.columns.length; i++) {
+                    const currentColumn = header.columns[i];
+
+                    flatHeader[currentColumn.dataField] = currentColumn.label;
+
+                    if (!processGrouping) {
+                        continue;
+                    }
+
+                    datafieldMapping[i] = currentColumn.dataField;
+                    complexHeader[headerDepth - 1][i] = currentColumn.label;
+                    complexDataFieldsHeader[headerDepth - 1][i] = currentColumn.dataField;
+
+                    if (!currentColumn.columnGroup) {
+                        continue;
+                    }
+
+                    const columnGroups = columnGroupHierarchy[currentColumn.columnGroup],
+                        columnGroupNames = columnGroupNameHierarchy[currentColumn.columnGroup];
+
+                    if (columnGroups) {
+                        for (let j = 0; j < columnGroups.length; j++) {
+                            complexHeader[j][i] = columnGroups[j];
+                            complexDataFieldsHeader[j][i] = columnGroupNames[j];
+                        }
+                    }
+                }
+
+                if (complexHeader.length > 1) {
+                    const numberOfDatafields = Object.keys(flatHeader).length;
+
+                    for (let i = 0; i < headerDepth - 1; i++) {
+                        const entry = {};
+
+                        for (let j = 0; j < numberOfDatafields; j++) {
+                            if (complexHeader[i][j] === undefined) {
+                                let iterator = i + 1;
+
+                                while (complexHeader[iterator][j] === undefined) {
+                                    iterator++;
+                                }
+
+                                complexHeader[i][j] = complexHeader[iterator][j];
+                                complexDataFieldsHeader[i][j] = complexDataFieldsHeader[iterator][j];
+                            }
+
+                            entry[datafieldMapping[j]] = complexHeader[i][j];
+                        }
+
+                        if (format === 'xlsx') {
+                            data.splice(i, 0, entry);
+                        }
+                    }
+
+                    that.complexHeader = complexHeader;
+                    that.complexDataFieldsHeader = complexDataFieldsHeader;
+
+                    if (format !== 'xlsx') {
+                        data.unshift(flatHeader);
+                    }
+                    else {
+                        data.splice(headerDepth - 1, 0, flatHeader);
+
+                        const toMerge = {};
+
+                        for (let i = 0; i < headerDepth; i++) {
+                            for (let j = 0; j < numberOfDatafields; j++) {
+                                const dataField = complexDataFieldsHeader[i][j];
+
+                                if (!toMerge[dataField]) {
+                                    toMerge[dataField] = { from: [i, j] };
+                                    toMerge[dataField].to = toMerge[dataField].from;
+                                }
+                                else {
+                                    const oldMergeTo = toMerge[dataField].to;
+
+                                    if (i - oldMergeTo[0] > 1 || j - oldMergeTo[1] > 1) {
+                                        toMerge[dataField + Math.random().toString(36)] = toMerge[dataField];
+                                        toMerge[dataField] = { from: [i, j], to: [i, j] };
+                                        continue;
+                                    }
+
+                                    toMerge[dataField].to = [i, j];
+                                }
+                            }
+                        }
+
+                        that.complexHeaderMergeInfo = toMerge;
+                    }
+                }
+                else {
+                    data.unshift(flatHeader);
+                }
+            }
+
+            /**
+             * Processes hierarchical data.
+             */
+            processHierarchicalData(data, format) {
+                const that = this,
+                    startIndex = format !== 'xlsx' ? +that.exportHeader : that.xlsxStartIndex,
+                    siblingGroups = {},
+                    processedData = [];
+                let maxLevel = 0,
+                    actualHierarchy = false;
+
+                function process(parentKey, level, collapsed) {
+                    const group = siblingGroups[parentKey];
+
+                    maxLevel = Math.max(maxLevel, level);
+
+                    if (group === undefined) {
+                        return;
+                    }
+
+                    for (let i = 0; i < group.length; i++) {
+                        const currentRecord = group[i],
+                            keyDataField = currentRecord._keyDataField;
+
+                        currentRecord._collapsed = collapsed;
+                        currentRecord._level = level;
+                        processedData.push(currentRecord);
+
+                        if (siblingGroups[keyDataField]) {
+                            actualHierarchy = true;
+                            currentRecord._expanded = currentRecord._expanded !== undefined ? currentRecord._expanded : true;
+                            process(keyDataField, level + 1, collapsed || !currentRecord._expanded);
+                        }
+                    }
+                }
+
+                function processJSONXML(parentKey, level, parent) {
+                    const group = siblingGroups[parentKey];
+
+                    maxLevel = Math.max(maxLevel, level);
+
+                    if (group === undefined) {
+                        return;
+                    }
+
+                    for (let i = 0; i < group.length; i++) {
+                        const currentRecord = group[i],
+                            keyDataField = currentRecord._keyDataField;
+                        let cleanedRecord;
+
+                        if (format === 'json') {
+                            cleanedRecord = {};
+
+                            for (let prop in currentRecord) {
+                                if (Object.prototype.hasOwnProperty.call(currentRecord, prop) && prop.charAt(0) !== '_') {
+                                    cleanedRecord[prop] = currentRecord[prop];
+                                }
+                            }
+                        }
+                        else {
+                            cleanedRecord = Object.assign({}, currentRecord);
+                        }
+
+                        parent.push(cleanedRecord);
+
+                        if (siblingGroups[keyDataField]) {
+                            actualHierarchy = true;
+                            cleanedRecord.rows = [];
+                            processJSONXML(keyDataField, level + 1, cleanedRecord.rows);
+                        }
+                    }
+                }
+
+                if (data[startIndex]._keyDataField === undefined) {
+                    return that.processNestedData(data, format, startIndex);
+                }
+
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = Object.assign({}, data[i]);
+                    let parentKey = currentRecord._parentDataField;
+
+                    if (parentKey === undefined) {
+                        parentKey = null;
+                    }
+
+                    if (siblingGroups[parentKey] === undefined) {
+                        siblingGroups[parentKey] = [currentRecord];
+                    }
+                    else {
+                        siblingGroups[parentKey].push(currentRecord);
+                    }
+                }
+
+                if (startIndex) {
+                    for (let i = 0; i < startIndex; i++) {
+                        processedData.push(Object.assign({}, data[i]));
+
+                        if (['json', 'pdf', 'xml'].indexOf(format) === -1) {
+                            processedData[i]._level = 1;
+                        }
+                    }
+                }
+
+                if (format !== 'json' && format !== 'xml') {
+                    process(null, 1, false);
+                }
+                else {
+                    processJSONXML(null, 1, processedData);
+                }
+
+                if (!actualHierarchy) {
+                    that.actualHierarchy = false;
+                }
+
+                that.maxLevel = maxLevel;
+                return processedData;
+            }
+
+            /**
+             * Processes nested hierarchical data.
+             */
+            processNestedData(data, format, startIndex) {
+                const that = this,
+                    processedData = [];
+                let maxLevel = 0,
+                    actualHierarchy = false;
+
+                function process(start, children, level, collapsed) {
+                    maxLevel = Math.max(maxLevel, level);
+
+                    for (let i = start; i < children.length; i++) {
+                        const currentRecord = Object.assign({}, children[i]);
+
+                        currentRecord._collapsed = collapsed;
+                        currentRecord._level = level;
+                        processedData.push(currentRecord);
+
+                        if (currentRecord.children && currentRecord.children.length > 0) {
+                            actualHierarchy = true;
+                            currentRecord._expanded = currentRecord._expanded !== undefined ? currentRecord._expanded : true;
+                            process(0, currentRecord.children, level + 1, collapsed || !currentRecord._expanded);
+                        }
+
+                        delete currentRecord.children;
+                    }
+                }
+
+                function processJSONXML(start, children, rows, level) {
+                    maxLevel = Math.max(maxLevel, level);
+
+                    for (let i = start; i < children.length; i++) {
+                        const currentRecord = Object.assign({}, children[i]);
+
+                        if (level === 1) {
+                            processedData[i] = currentRecord;
+                        }
+                        else {
+                            rows[i] = currentRecord;
+                        }
+
+                        if (currentRecord.children && currentRecord.children.length > 0) {
+                            actualHierarchy = true;
+                            currentRecord.rows = [];
+                            processJSONXML(0, currentRecord.children, currentRecord.rows, level + 1);
+                        }
+
+                        delete currentRecord.children;
+                    }
+                }
+
+                if (startIndex) {
+                    for (let i = 0; i < startIndex; i++) {
+                        processedData.push(Object.assign({}, data[i]));
+
+                        if (['json', 'pdf', 'xml'].indexOf(format) === -1) {
+                            processedData[i]._level = 1;
+                        }
+                    }
+                }
+
+                if (format !== 'json' && format !== 'xml') {
+                    process(startIndex, data, 1, false);
+                }
+                else {
+                    processJSONXML(startIndex, data, undefined, 1);
+                }
+
+                if (!actualHierarchy) {
+                    that.actualHierarchy = false;
+                }
+
+                that.maxLevel = maxLevel;
+                return processedData;
+            }
+
+            /**
+             * Processes row styles.
+             */
+            processRowStyle(style) {
+                const that = this,
+                    rowsDefinition = style.rows;
+
+                that.rowHeight = [];
+
+                if (!rowsDefinition) {
+                    return;
+                }
+
+                const startIndex = that.xlsxStartIndex;
+
+                function applyToRowCells(row, prop, value) {
+                    for (let j = 0; j < that.columnsArray.length; j++) {
+                        const currentCell = that.columnsArray[j] + (row + 1 + startIndex);
+
+                        that.storeCellStyle(currentCell, prop, value);
+                    }
+                }
+
+                if (rowsDefinition.height) {
+                    if (!rowsDefinition.height) {
+                        rowsDefinition.height = 15;
+                    }
+                    that.defaultRowHeight = ` ht="${parseFloat(rowsDefinition.height) / 2}"`;
+                }
+
+                for (let i = startIndex; i < that.data.length; i++) {
+                    const row = i - startIndex;
+
+                    for (let prop in rowsDefinition) {
+                        if (Object.prototype.hasOwnProperty.call(rowsDefinition, prop) &&
+                            prop.indexOf('alt') === -1 &&
+                            isNaN(prop) &&
+                            prop !== 'height') {
+                            applyToRowCells(row, prop, rowsDefinition[prop]);
+                        }
+                    }
+
+                    if (rowsDefinition.alternationCount &&
+                        (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
+                            (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
+                            rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
+                        const start = rowsDefinition.alternationStart || 0,
+                            i = (row - start) % rowsDefinition.alternationCount;
+
+                        if (rowsDefinition[`alternationIndex${i}Color`]) {
+                            applyToRowCells(row, 'color', rowsDefinition[`alternationIndex${i}Color`]);
+                        }
+
+                        if (rowsDefinition[`alternationIndex${i}BorderColor`]) {
+                            applyToRowCells(row, 'borderColor', rowsDefinition[`alternationIndex${i}BorderColor`]);
+                        }
+
+                        if (rowsDefinition[`alternationIndex${i}BackgroundColor`]) {
+                            applyToRowCells(row, 'backgroundColor', rowsDefinition[`alternationIndex${i}BackgroundColor`]);
+                        }
+                    }
+
+                    if (that.setRowHeight) {
+                        const rowHeight = that.setRowHeight(row);
+                        if (rowHeight) {
+                            that.rowHeight[i] = ` ht="${parseFloat(rowHeight)}"`;
+                            continue;
+                        }
+                    }
+
+                    if (rowsDefinition[row]) {
+                        for (let prop in rowsDefinition[row]) {
+                            if (Object.prototype.hasOwnProperty.call(rowsDefinition[row], prop)) {
+                                if (prop === 'height') {
+                                    that.rowHeight[i] = ` ht="${parseFloat(rowsDefinition[row].height) / 2}"`;
+                                    continue;
+                                }
+
+                                if (that.data[i] && that.data[i][prop]) {
+                                    function applyToRowCell(row, prop, value, dataField) {
+                                        const j = that.datafields ? that.datafields.indexOf(dataField) : -1;
+                                        if (j >= 0) {
+                                            const currentCell = that.columnsArray[j] + (row + 1 + startIndex);
+
+                                            that.storeCellStyle(currentCell, prop, value);
+                                        }
+                                    }
+                                    for (let styleProp in rowsDefinition[row][prop]) {
+                                        applyToRowCell(row, styleProp, rowsDefinition[row][prop][styleProp], prop);
+                                    }
+                                    continue;
+                                }
+
+                                applyToRowCells(row, prop, rowsDefinition[row][prop]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Stores cell style in "styleMap" object.
+             */
+            storeCellStyle(cell, prop, value) {
+                const that = this,
+                    cellMap = that.styleMap[cell];
+
+                switch (prop) {
+                    case 'backgroundColor':
+                        cellMap.fills.fgColor = value;
+                        break;
+                    case 'color':
+                        cellMap.fonts.color = value;
+                        break;
+                    case 'fontFamily':
+                        cellMap.fonts.name = value.replace(/"/g, '\'');
+                        break;
+                    case 'fontSize':
+                        cellMap.fonts.sz = Math.round(parseFloat(value) / (96 / 72));
+                        break;
+                    case 'fontStyle':
+                        if (value === 'italic') {
+                            cellMap.fonts.i = true;
+                        }
+                        else {
+                            delete cellMap.fonts.i;
+                        }
+
+                        break;
+                    case 'fontWeight':
+                        if (value === 'bold') {
+                            cellMap.fonts.b = true;
+                        }
+                        else {
+                            delete cellMap.fonts.b;
+                        }
+
+                        break;
+                    case 'numFmt': {
+                        cellMap.numFmt = value;
+                        break;
+                    }
+                    case 'textAlign':
+                        cellMap.alignment.horizontal = value;
+                        break;
+                    case 'textDecoration':
+                        if (value === 'underline') {
+                            cellMap.fonts.u = true;
+                        }
+                        else {
+                            delete cellMap.fonts.u;
+                        }
+
+                        break;
+                    case 'verticalAlign':
+                        if (value === 'middle') {
+                            value = 'center';
+                        }
+
+                        cellMap.alignment.vertical = value;
+                        break;
+                }
+            }
+
+            /**
+             * Returns an Alpha Red Green Blue color value.
+             */
+            toARGB(color) {
+                color = color.replace(/\s/g, '');
+
+                const rgbResult = /rgb\((\d+),(\d+),(\d+)\)/gi.exec(color);
+
+                if (rgbResult !== null) {
+                    const r = parseFloat(rgbResult[1]).toString(16).toUpperCase(),
+                        g = parseFloat(rgbResult[2]).toString(16).toUpperCase(),
+                        b = parseFloat(rgbResult[3]).toString(16).toUpperCase();
+
+                    return 'FF' + ('0').repeat(2 - r.length) + r +
+                        ('0').repeat(2 - g.length) + g +
+                        ('0').repeat(2 - b.length) + b;
+                }
+
+                const rgbaResult = /rgba\((\d+),(\d+),(\d+)\,(\d*.\d+|\d+)\)/gi.exec(color);
+
+                if (rgbaResult !== null) {
+                    const a = Math.round(parseFloat(rgbaResult[4]) * 255).toString(16).toUpperCase(),
+                        r = parseFloat(rgbaResult[1]).toString(16).toUpperCase(),
+                        g = parseFloat(rgbaResult[2]).toString(16).toUpperCase(),
+                        b = parseFloat(rgbaResult[3]).toString(16).toUpperCase();
+
+                    return ('0').repeat(2 - a.length) + a +
+                        ('0').repeat(2 - r.length) + r +
+                        ('0').repeat(2 - g.length) + g +
+                        ('0').repeat(2 - b.length) + b;
+                }
+
+                const shortHexResult = /^#(.)(.)(.)$/gi.exec(color);
+
+                if (shortHexResult !== null) {
+                    const r = shortHexResult[1].toUpperCase(),
+                        g = shortHexResult[2].toUpperCase(),
+                        b = shortHexResult[3].toUpperCase();
+
+                    return 'FF' + r + r + g + g + b + b;
+                }
+
+                return 'FF' + color.toUpperCase().slice(1);
+            }
+
+            /**
+             * Adds toggleable functionality.
+             */
+            toggleableFunctionality() {
+                const that = this;
+
+                if (!that.actualHierarchy) {
+                    return '';
+                }
+
+                return `\n    <style type="text/css">
+            .toggle-element {
+                width: 5px;
+                height: 1px;
+                padding-right: 5px;
+                float: left;
+                text-align: right;
+                cursor: pointer;
+                user-select: none;
+            }
+    
+            .collapsed {
+                display: none;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function () {
+                var expandChar = '${that.expandChar}',
+                    collapseChar = '${that.collapseChar}',
+                    toggleElements = document.getElementsByClassName('toggle-element');
+    
+                function getParent(child) {
+                    var prevSibling = child.previousElementSibling;
+    
+                    while (prevSibling) {
+                        if (child.getAttribute('level') > prevSibling.getAttribute('level')) {
+                            return prevSibling;
+                        }
+    
+                        prevSibling = prevSibling.previousElementSibling;
+                    }
+    
+                }
+    
+                function getFirstCollapsedAncestor(child) {
+                    var parent = getParent(child);
+    
+                    while (parent) {
+                        if (parent.firstElementChild.firstElementChild.innerHTML === expandChar) {
+                            return parent;
+                        }
+    
+                        parent = getParent(parent);
+                    }
+                }
+    
+                for (var i = 0; i < toggleElements.length; i++) {
+                    toggleElements[i].addEventListener('click', function (event) {
+                        var expanded = this.innerHTML === collapseChar,
+                            row = this.parentElement.parentElement,
+                            sibling = row.nextElementSibling;
+    
+                        if (expanded) {
+                            this.innerHTML = expandChar;
+                        }
+                        else {
+                            this.innerHTML = collapseChar;
+                        }
+    
+                        while (sibling && row.getAttribute('level') < sibling.getAttribute('level')) {
+                            if (expanded) {
+                                sibling.style.display = 'none';
+                            }
+                            else {
+                                var firstCollapsedAncestor = getFirstCollapsedAncestor(sibling);
+    
+                                if (!firstCollapsedAncestor || firstCollapsedAncestor === row) {
+                                    sibling.classList.remove('collapsed');
+                                    sibling.style.display = null;
+                                }
+    
+                            }
+    
+                            sibling = sibling.nextElementSibling;
+                        }
+                    });
+                }
+            }
+        </script>`;
+            }
+
+            /**
+             * Generates styles.xml.
+             */
+            generateStyles(style) {
+                const that = this;
+
+                that.cellStyleMapping = {};
+
+                if (Object.keys(style).length === 0 && !that.complexHeader) {
+                    // default style
+                    return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac x16r2 xr" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:x16r2="http://schemas.microsoft.com/office/spreadsheetml/2015/02/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision"><fonts count="1" x14ac:knownFonts="1"><font><sz val="11"/><color theme="1"/><name val="Calibri"/><family val="2"/><charset val="204"/><scheme val="minor"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>${that.conditionalFormattingXLSX.styles || '<dxfs count="0"/>'}<tableStyles count="0" defaultTableStyle="TableStyleMedium2" defaultPivotStyle="PivotStyleLight16"/><extLst><ext uri="{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}" xmlns:x14="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"><x14:slicerStyles defaultSlicerStyle="SlicerStyleLight1"/></ext><ext uri="{9260A510-F301-46a8-8635-F512D64BE5F5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:timelineStyles defaultTimelineStyle="TimeSlicerStyleLight1"/></ext></extLst></styleSheet>`;
+                }
+
+                that.styleMap = {};
+
+                let offset = that.headerContent ? that.headerContent.length : 0;
+                offset += that.footerContent ? that.footerContent.length : 0;
+
+                let count = that.data.length + offset;
+
+                if (that.groupBy && that.groupBy.length) {
+                    count += 50;
+                }
+
+                for (let i = 0; i < count; i++) {
+                    for (let j = 0; j < that.columnsArray.length; j++) {
+                        that.styleMap[that.columnsArray[j] + (i + 1)] = {
+                            numFmts: {}, fonts: {}, fills: {}, borders: {}, alignment: {}
+                        }
+                    }
+                }
+
+                if (style && style.columns) {
+                    for (let i = 0; i < that.columnsArray.length; i++) {
+                        const datafield = that.datafields[i];
+
+                        if (!style.columns[datafield] || !style.columns[datafield].format) {
+                            continue;
+                        }
+
+                        const XLSXFormatFirst = that.getXLSXFormat(style.columns[datafield].format, that.data[1][datafield]);
                         const XLSXFormat = that.getXLSXFormat(style.columns[datafield].format, that.data[that.data.length - 1][datafield]);
 
                         if (XLSXFormat) {
                             style.columns[datafield].numFmt = XLSXFormat;
                         }
-                    }
-                    else {
-                        const XLSXFormat2 = that.getXLSXFormat(style.columns[datafield].format, that.data[1][datafield]);
+                        else if (XLSXFormatFirst) {
+                            style.columns[datafield].numFmt = XLSXFormatFirst;
+                        }
+                        else if (style.columns[datafield].format && (datafield.toLowerCase().indexOf('date') >= 0 || style.columns[datafield].format.indexOf('d/') >= 0)) {
+                            let format = style.columns[datafield].format;
+                            switch (format) {
+                                case 'd':
+                                    format = 'm/d/yyyy';
+                                    break;
+                                case 'D':
+                                    format = 'nnnnmmmm dd, yyyy';
+                                    break;
+                                case 't':
+                                    format = 'h:m AM/PM';
+                                    break;
+                                case 'T':
+                                    format = 'h:mm:ss AM/PM';
+                                    break;
+                                case 'f':
+                                    format = 'nnnnmmmm dd, yyyy h:m AM/PM';
+                                    break;
+                                case 'F':
+                                    format = 'nnnnmmmm dd, yyyy h:mm:ss AM/PM';
+                                    break;
+                                case 'M':
+                                    format = 'mmmm d';
+                                    break;
+                                case 'Y':
+                                    format = 'yyyy mmmm';
+                                    break;
+                                case 'FP':
+                                case 'PP':
+                                    format = 'yyyy-mm-dd hh:mm:ss';
+                                    break;
+                                case 'FT':
+                                case 'PT':
+                                    format = 'hh:mm:ss';
+                                    break;
+                            }
 
-                        if (XLSXFormat2) {
-                            style.columns[datafield].numFmt = XLSXFormat2;
+                            format = format.replace(/f|u|n|p|e|a|x|o/gi, '');
+                            format = format.replace(/tt/gi, 'AM/PM');
+                            format = format.replace(/:{2,}|:\s|:$|\.$/g, '');
+                            format = format.trim();
+                            style.columns[datafield].numFmt = format;
                         }
                     }
                 }
-            }
 
-            that.processRowStyle(style);
-            that.processColumnStyle(style);
+                that.processRowStyle(style);
+                that.processColumnStyle(style);
 
-            const cellAliases = {};
+                const cellAliases = {};
 
-            for (let i = 0; i < that.complexHeaderMergedCells.length; i++) {
-                const currentCell = that.complexHeaderMergedCells[i];
+                for (let i = 0; i < that.complexHeaderMergedCells.length; i++) {
+                    const currentCell = that.complexHeaderMergedCells[i];
 
-                if (parseFloat(currentCell.to[1]) === that.complexHeader.length) {
-                    cellAliases[currentCell.to] = currentCell.from;
-                    continue;
+                    if (parseFloat(currentCell.to[1]) === that.complexHeader.length) {
+                        cellAliases[currentCell.to] = currentCell.from;
+                        continue;
+                    }
+
+                    that.styleMap[currentCell.from].alignment.horizontal = 'center';
+                    that.styleMap[currentCell.from].alignment.vertical = 'center';
                 }
 
-                that.styleMap[currentCell.from].alignment.horizontal = 'center';
-                that.styleMap[currentCell.from].alignment.vertical = 'center';
-            }
-
-            const fonts = {
-                xml: '<font><sz val="11" /><color theme="1" /><name val="Calibri" /><family val="2" /><charset val="204" /><scheme val="minor" /></font>',
-                collection: ['default']
-            },
-                fills = {
-                    xml: '<fill><patternFill patternType="none" /></fill><fill><patternFill patternType="gray125" /></fill>',
-                    collection: ['default', 'gray125']
-                },
-                numFmts = {
-                    xml: '',
-                    collection: []
-                },
-                cellXfs = {
-                    xml: '<xf fontId="0" fillId="0" borderId="1"/>',
+                const fonts = {
+                    xml: '<font><sz val="11" /><color theme="1" /><name val="Calibri" /><family val="2" /><charset val="204" /><scheme val="minor" /></font>',
                     collection: ['default']
-                };
+                },
+                    fills = {
+                        xml: '<fill><patternFill patternType="none" /></fill><fill><patternFill patternType="gray125" /></fill>',
+                        collection: ['default', 'gray125']
+                    },
+                    numFmts = {
+                        xml: '',
+                        collection: []
+                    },
+                    cellXfs = {
+                        xml: '<xf fontId="0" fillId="0" borderId="1"/>',
+                        collection: ['default']
+                    };
 
-            for (let i = 0; i < that.data.length; i++) { // iterate rows
-                for (let j = 0; j < that.columnsArray.length; j++) { // iterate columns
-                    const currentCell = that.columnsArray[j] + (i + 1),
-                        currentCellStyle = that.styleMap[currentCell];
-                    let currentFont = '', currentFill = '', currentAlignment = '',
-                        currentFontCode = [], currentFillCode = [], currentAlignmentCode = [], xf = [];
+                for (let i = 0; i < count; i++) { // iterate rows
+                    for (let j = 0; j < that.columnsArray.length; j++) { // iterate columns
+                        const currentCell = that.columnsArray[j] + (i + 1),
+                            currentCellStyle = that.styleMap[currentCell];
+                        let currentFont = '', currentFill = '', currentAlignment = '',
+                            currentFontCode = [], currentFillCode = [], currentAlignmentCode = [], xf = [];
 
-                    for (let prop in currentCellStyle.fonts) {
-                        if (currentCellStyle.fonts.hasOwnProperty(prop)) {
-                            const value = currentCellStyle.fonts[prop];
+                        for (let prop in currentCellStyle.fonts) {
+                            if (Object.prototype.hasOwnProperty.call(currentCellStyle.fonts, prop)) {
+                                const value = currentCellStyle.fonts[prop];
 
-                            switch (prop) {
-                                case 'color':
-                                    currentFontCode[0] = value;
-                                    currentFont += `<color rgb="${that.toARGB(value)}" />`;
-                                    break;
-                                case 'name':
-                                    currentFontCode[1] = value;
-                                    currentFont += `<name val="${value}" />`;
-                                    break;
-                                case 'sz':
-                                    currentFontCode[2] = value;
-                                    currentFont += `<sz val="${value}" />`;
-                                    break;
-                                case 'i':
-                                    currentFontCode[3] = value;
-                                    currentFont += '<i />';
-                                    break;
-                                case 'b':
-                                    currentFontCode[4] = value;
-                                    currentFont += '<b />';
-                                    break;
-                                case 'u':
-                                    currentFontCode[5] = value;
-                                    currentFont += '<u />';
-                                    break;
+                                switch (prop) {
+                                    case 'color':
+                                        currentFontCode[0] = value;
+                                        currentFont += `<color rgb="${that.toARGB(value)}" />`;
+                                        break;
+                                    case 'name':
+                                        currentFontCode[1] = value;
+                                        currentFont += `<name val="${value}" />`;
+                                        break;
+                                    case 'sz':
+                                        currentFontCode[2] = value;
+                                        currentFont += `<sz val="${value}" />`;
+                                        break;
+                                    case 'i':
+                                        currentFontCode[3] = value;
+                                        currentFont += '<i />';
+                                        break;
+                                    case 'b':
+                                        currentFontCode[4] = value;
+                                        currentFont += '<b />';
+                                        break;
+                                    case 'u':
+                                        currentFontCode[5] = value;
+                                        currentFont += '<u />';
+                                        break;
+                                }
                             }
                         }
-                    }
 
-                    for (let prop in currentCellStyle.fills) {
-                        if (currentCellStyle.fills.hasOwnProperty(prop)) {
-                            const value = currentCellStyle.fills[prop];
+                        for (let prop in currentCellStyle.fills) {
+                            if (Object.prototype.hasOwnProperty.call(currentCellStyle.fills, prop)) {
+                                const value = currentCellStyle.fills[prop];
 
-                            switch (prop) {
-                                case 'fgColor':
-                                    currentFillCode[0] = value;
-                                    currentFill += `<fgColor rgb="${that.toARGB(value)}" />`;
-                                    break;
+                                switch (prop) {
+                                    case 'fgColor':
+                                        currentFillCode[0] = value;
+                                        currentFill += `<fgColor rgb="${that.toARGB(value)}" />`;
+                                        break;
+                                }
                             }
                         }
-                    }
 
-                    for (let prop in currentCellStyle.alignment) {
-                        if (currentCellStyle.alignment.hasOwnProperty(prop)) {
-                            const value = currentCellStyle.alignment[prop];
+                        for (let prop in currentCellStyle.alignment) {
+                            if (Object.prototype.hasOwnProperty.call(currentCellStyle.alignment, prop)) {
+                                const value = currentCellStyle.alignment[prop];
 
-                            switch (prop) {
-                                case 'horizontal':
-                                    currentAlignmentCode[0] = value;
-                                    currentAlignment += `horizontal="${value}" `;
-                                    break;
-                                case 'vertical':
-                                    currentAlignmentCode[1] = value;
-                                    currentAlignment += `vertical="${value}" `;
-                                    break;
+                                switch (prop) {
+                                    case 'horizontal':
+                                        currentAlignmentCode[0] = value;
+                                        currentAlignment += `horizontal="${value}" `;
+                                        break;
+                                    case 'vertical':
+                                        currentAlignmentCode[1] = value;
+                                        currentAlignment += `vertical="${value}" `;
+                                        break;
+                                }
                             }
                         }
-                    }
 
-                    currentFontCode = currentFontCode.toString();
-                    currentFillCode = currentFillCode.toString();
+                        currentFontCode = currentFontCode.toString();
+                        currentFillCode = currentFillCode.toString();
 
-                    if (currentFont !== '') {
-                        let fontIndex = fonts.collection.indexOf(currentFontCode);
+                        if (currentFont !== '') {
+                            let fontIndex = fonts.collection.indexOf(currentFontCode);
 
-                        if (fontIndex === -1) {
-                            fontIndex = fonts.collection.length;
+                            if (fontIndex === -1) {
+                                fontIndex = fonts.collection.length;
 
-                            fonts.xml += '<font>' + currentFont + '</font>';
-                            fonts.collection.push(currentFontCode);
+                                fonts.xml += '<font>' + currentFont + '</font>';
+                                fonts.collection.push(currentFontCode);
+                            }
+
+                            xf[0] = fontIndex;
                         }
 
-                        xf[0] = fontIndex;
-                    }
+                        if (currentFill !== '') {
+                            let fillIndex = fills.collection.indexOf(currentFillCode);
 
-                    if (currentFill !== '') {
-                        let fillIndex = fills.collection.indexOf(currentFillCode);
+                            if (fillIndex === -1) {
+                                fillIndex = fills.collection.length;
 
-                        if (fillIndex === -1) {
-                            fillIndex = fills.collection.length;
+                                fills.xml += '<fill><patternFill patternType="solid">' + currentFill + '</patternFill></fill>';
+                                fills.collection.push(currentFillCode);
+                            }
 
-                            fills.xml += '<fill><patternFill patternType="solid">' + currentFill + '</patternFill></fill>';
-                            fills.collection.push(currentFillCode);
+                            xf[1] = fillIndex;
                         }
 
-                        xf[1] = fillIndex;
-                    }
-
-                    if (currentAlignmentCode.length > 0) {
-                        xf[2] = currentAlignment;
-                    }
-
-                    if (currentCellStyle.numFmt !== undefined) {
-                        xf[3] = that.getNumFmtIndex(currentCellStyle.numFmt, numFmts);
-                    }
-
-                    const xfCode = xf.toString();
-
-                    if (xfCode !== '') {
-                        let xfIndex = cellXfs.collection.indexOf(xfCode);
-
-                        if (xfIndex === -1) {
-                            let newXfXML = '<xf ';
-
-                            xfIndex = cellXfs.collection.length;
-
-                            if (xf[0] !== undefined) {
-                                newXfXML += `fontId="${xf[0]}" `;
-                            }
-
-                            if (xf[1] !== undefined) {
-                                newXfXML += `fillId="${xf[1]}" `;
-                            }
-
-                            if (xf[3] !== undefined) {
-                                newXfXML += `numFmtId="${xf[3]}" `;
-                            }
-
-                            if (xf[2] !== undefined) {
-                                newXfXML += `applyAlignment="1" borderId="1"><alignment ${currentAlignment}/></xf>`;
-                            }
-                            else {
-                                newXfXML += ' borderId="1"/>';
-                            }
-
-                            cellXfs.xml += newXfXML;
-                            cellXfs.collection.push(xfCode);
+                        if (currentAlignmentCode.length > 0) {
+                            xf[2] = currentAlignment;
                         }
 
-                        that.cellStyleMapping[cellAliases[currentCell] || currentCell] = xfIndex;
+                        if (currentCellStyle.numFmt !== undefined) {
+                            xf[3] = that.getNumFmtIndex(currentCellStyle.numFmt, numFmts);
+                        }
+
+                        const xfCode = xf.toString();
+
+                        if (xfCode !== '') {
+                            let xfIndex = cellXfs.collection.indexOf(xfCode);
+
+                            if (xfIndex === -1) {
+                                let newXfXML = '<xf ';
+
+                                xfIndex = cellXfs.collection.length;
+
+                                if (xf[0] !== undefined) {
+                                    newXfXML += `fontId="${xf[0]}" `;
+                                }
+
+                                if (xf[1] !== undefined) {
+                                    newXfXML += `fillId="${xf[1]}" `;
+                                }
+
+                                if (xf[3] !== undefined) {
+                                    newXfXML += `numFmtId="${xf[3]}" `;
+                                }
+
+                                if (xf[2] !== undefined) {
+                                    newXfXML += `applyAlignment="1" borderId="1"><alignment ${currentAlignment}/></xf>`;
+                                }
+                                else {
+                                    newXfXML += ' borderId="1"/>';
+                                }
+
+                                cellXfs.xml += newXfXML;
+                                cellXfs.collection.push(xfCode);
+                            }
+
+                            that.cellStyleMapping[cellAliases[currentCell] || currentCell] = xfIndex;
+                        }
                     }
                 }
-            }
 
-            if (numFmts.collection.length) {
-                numFmts.xml = `<numFmts count="${numFmts.collection.length}">${numFmts.xml}</numFmts>`;
-            }
+                if (numFmts.collection.length) {
+                    numFmts.xml = `<numFmts count="${numFmts.collection.length}">${numFmts.xml}</numFmts>`;
+                }
 
-            return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac x16r2 xr" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:x16r2="http://schemas.microsoft.com/office/spreadsheetml/2015/02/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision">${numFmts.xml}<fonts count="${fonts.collection.length}" x14ac:knownFonts="1">${fonts.xml}</fonts><fills count="${fills.collection.length}">${fills.xml}</fills><borders count="2"><border><left/><right/><top/><bottom/></border><border><left style="hair"/><right style="hair"/><top style="hair"/><bottom style="hair"/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="${cellXfs.collection.length}">${cellXfs.xml}</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>${that.conditionalFormattingXLSX.styles}<dxfs count="0"/><tableStyles count="0" defaultTableStyle="TableStyleMedium2" defaultPivotStyle="PivotStyleLight16"/><extLst><ext uri="{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}" xmlns:x14="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"><x14:slicerStyles defaultSlicerStyle="SlicerStyleLight1"/></ext><ext uri="{9260A510-F301-46a8-8635-F512D64BE5F5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:timelineStyles defaultTimelineStyle="TimeSlicerStyleLight1"/></ext></extLst></styleSheet>`;
+                return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac x16r2 xr" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:x16r2="http://schemas.microsoft.com/office/spreadsheetml/2015/02/main" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision">${numFmts.xml}<fonts count="${fonts.collection.length}" x14ac:knownFonts="1">${fonts.xml}</fonts><fills count="${fills.collection.length}">${fills.xml}</fills><borders count="2"><border><left/><right/><top/><bottom/></border><border><left style="hair"/><right style="hair"/><top style="hair"/><bottom style="hair"/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="${cellXfs.collection.length}">${cellXfs.xml}</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles>${that.conditionalFormattingXLSX.styles}<dxfs count="0"/><tableStyles count="0" defaultTableStyle="TableStyleMedium2" defaultPivotStyle="PivotStyleLight16"/><extLst><ext uri="{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}" xmlns:x14="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"><x14:slicerStyles defaultSlicerStyle="SlicerStyleLight1"/></ext><ext uri="{9260A510-F301-46a8-8635-F512D64BE5F5}" xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"><x15:timelineStyles defaultTimelineStyle="TimeSlicerStyleLight1"/></ext></extLst></styleSheet>`;
+            }
         }
-    }
 
-    if ($.jqx && $.jqx.dataAdapter) {
-        $.jqx.dataAdapter.DataExporter = DataExporter;
-    }
-})(jqxBaseFramework);
+        if ($.jqx && $.jqx.dataAdapter) {
+            $.jqx.dataAdapter.DataExporter = DataExporter;
+        }
+    })(jqxBaseFramework);
 })();
 
 /***/ }),
@@ -37170,20 +38453,6 @@ ${attr.formula}        </cfRule>
     });
 })(jqxBaseFramework); //ignore jslint
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -42127,20 +43396,6 @@ ${attr.formula}        </cfRule>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 1610:
@@ -45111,20 +46366,6 @@ ${attr.formula}        </cfRule>
     }; //
 })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -49086,20 +50327,6 @@ ${attr.formula}        </cfRule>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 4240:
@@ -50691,20 +51918,6 @@ ${attr.formula}        </cfRule>
     }); // jqxScrollBar
 })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

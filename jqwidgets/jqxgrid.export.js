@@ -1,9 +1,839 @@
 /*
-jQWidgets v20.0.0 (2024-Sep)
-Copyright (c) 2011-2024 jQWidgets.
+jQWidgets v22.0.0 (2025-Jan)
+Copyright (c) 2011-2025 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
 
-(function(){if(typeof document==="undefined"){return}(function(b){b.extend(b.jqx._jqxGrid.prototype,{_exportData:function(R,L,I){var Z=this;var P=typeof L==="string"?L:L.fileName;if(!P){P="jqxGrid"}if(!L||typeof L==="string"){L={header:true,filterBy:null,groupBy:null,style:null,fileName:P,pageOrientation:"portrait",expandChart:"+",collapseChar:"-"}}var ag=new b.jqx.dataAdapter.DataExporter({exportHeader:L.header});var V=[];ag.expandChar=L.expandChar;ag.collapseChar=L.collapseChar;ag.pageOrientation=L.pageOrientation;ag.style=L.style;ag.filterBy=L.filterBy;ag.groupBy=L.groupBy;var N=[];var X=Z.columngroups||[];var aa=0;for(var W=0;W<Z.columns.records.length;W++){var af=Z.columns.records[W];if(!af.exportable){continue}if(Z.columns.records[W].datafield!==null){N[aa++]={label:Z.columns.records[W].text,dataField:Z.columns.records[W].datafield}}}ag.header={columns:N,columngroups:X};if(!L.style){var ac=window.getComputedStyle(Z.element);var J=window.getComputedStyle(Z.columns.records.length>0&&Z.columns.records[0].element?Z.columns.records[0].element:Z.host.find(".jqx-grid-header")[0]);var j=window.getComputedStyle(Z.host.find(".jqx-grid-header")[0]);var ad=Z.offsetWidth===0||Z.offsetHeight===0;if(!ad){var ae=function(h){var g="Helvetica";var e=h.fontSize;var m=h.borderRightColor;var f=h.backgroundColor;var k=h.color;var d=new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");var l=function(n){return isNaN(n)?"00":d[(n-n%16)/16]+d[n%16]};var c=function(r){if(r.toString().indexOf("rgba")!=-1){var t=k.split(",");var p=parseInt(t[0].substring(5));var q=parseInt(t[1]);var u=parseInt(t[2]);if(t[3]){var s=parseFloat(t[3].substring(1,4))}else{var s=1}var o={r:p,g:q,b:u};var n=Z._rgbToHex(o);if(p==0&&q==0&&u==0&&s==0){return"#ffffff"}return"#"+n}r=r.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);if(!r){return"#ffffff"}return"#"+l(r[1])+l(r[2])+l(r[3]).toUpperCase()};return{borderColor:c(m),fontSize:e,fontFamily:g,color:c(k),backgroundColor:c(f)}};var T=ae(ac);var Y=ae(J);var O=ae(j);var a={height:"30px",border:"1px solid "+T.borderColor,fontFamily:O.fontFamily,fontSize:O.fontSize,color:O.color,backgroundColor:Y.backgroundColor,fontWeight:"400"};var ai={border:"1px solid "+T.borderColor,fontFamily:T.fontFamily,fontSize:T.fontSize};var Q={height:Z.rowsheight+"px"};for(var W=0;W<Z.columns.records.length;W++){var af=Z.columns.records[W];if(!af.exportable){continue}a[af.datafield]={textAlign:af.align,width:af.width+"px",format:af.cellsformat||""};var aj=af.cellsformat||"";if(af.dataType==="date"){aj="d"}else{if(af.dataType==="dateTime"){aj="D"}else{if(af.dataType==="time"){aj="t"}}}var U={textAlign:af.cellsalign,format:aj};ai[af.datafield]=U}if(Z.altrows){Q.alternationCount=2;Q.alternationStart=0;Q.alternationEnd=0;Q.alternationIndex0Color=T.color;Q.alternationIndex0BackgroundColor=T.backgroundColor;Q.alternationIndex1Color=T.color;Q.alternationIndex1BackgroundColor="#F5F5F5"}ag.style={border:"1px solid "+T.borderColor,borderCollapse:"collapse",header:a,columns:ai,rows:Q}}}var ah=I||this.getrows();var M=[];for(var W=0;W<ah.length;W++){var ab=ah[W];if(ab.hidden){continue}var K={};for(var i=0;i<Z.columns.records.length;i++){var af=Z.columns.records[i];if(!af.exportable){continue}K[af.datafield]=ab[af.datafield]}M.push(K)}if(!L.groupBy&&Z.groups){ag.groupBy=Z.groups.slice(0)}var S=ag.exportData(M,R,L.fileName,null);return S},exportview:function(h,a,f){var g=this;g._exportData(h,a,f)},exportdata:function(Z,ab,ac,ad,X,T,al){if(!b.jqx.dataAdapter.ArrayExporter){throw"jqxGrid: Missing reference to jqxdata.export.js!"}if(Z==="xlsx"){this._exportData("xlsx",ab);return}if(ac==undefined){ac=true}var a=this;if(ad==undefined){var ad=this.getrows();if(ad.length==0){throw"No data to export."}}this.exporting=true;if(!this.pageable){this.loadondemand=true}if(this.altrows){this._renderrows(this.virtualsizeinfo)}var ae=this.hScrollInstance.value;this.hScrollInstance.setPosition(0);this._renderrows(this.virtualsizeinfo);var M=X!=undefined?X:false;var R={};var af={};var P=[];var ah=this.host.find(".jqx-grid-cell:first");var N=this.host.find(".jqx-grid-cell-alt:first");ah.removeClass(this.toThemeProperty("jqx-grid-cell-selected"));ah.removeClass(this.toThemeProperty("jqx-fill-state-pressed"));N.removeClass(this.toThemeProperty("jqx-grid-cell-selected"));N.removeClass(this.toThemeProperty("jqx-fill-state-pressed"));ah.removeClass(this.toThemeProperty("jqx-grid-cell-hover"));ah.removeClass(this.toThemeProperty("jqx-fill-state-hover"));N.removeClass(this.toThemeProperty("jqx-grid-cell-hover"));N.removeClass(this.toThemeProperty("jqx-fill-state-hover"));var ak="cell";var am=1;var O="column";var ao=1;var aj=[];for(var W=0;W<this.columns.records.length;W++){var an=this.columns.records[W];if(an.cellclassname!=""){an.customCellStyles=new Array();if(typeof an.cellclassname=="string"){for(var V=0;V<ad.length;V++){an.customCellStyles[V]=an.cellclassname}}else{for(var V=0;V<ad.length;V++){var Q=this.getrowboundindex(V);var ap=an.cellclassname(Q,an.displayfield,ad[V][an.displayfield],ad[V]);if(ap){an.customCellStyles[V]=ap}}}}}var j=new Array();var i=null;var aq=null;var ar=null;b.each(this.columns.records,function(l){var d=b(a.table[0].rows[0].cells[l]);if(a.table[0].rows.length>1){var e=b(a.table[0].rows[1].cells[l]);if(!ar){ar=e}}if(!aq){aq=d}var m=this;var k=function(p){p.removeClass(a.toThemeProperty("jqx-grid-cell-selected"));p.removeClass(a.toThemeProperty("jqx-fill-state-pressed"));p.removeClass(a.toThemeProperty("jqx-grid-cell-hover"));p.removeClass(a.toThemeProperty("jqx-fill-state-hover"));if(m.customCellStyles){for(var o in m.customCellStyles){p.removeClass(m.customCellStyles[o])}}};k(d);if(e){k(e)}if(this.displayfield==null){return true}if(a.showaggregates){if(a.getcolumnaggregateddata){aj.push(a.getcolumnaggregateddata(this.displayfield,this.aggregates,true,ad))}}var g=a._getexportcolumntype(this);if(this.exportable&&(!this.hidden||M)){R[this.displayfield]={};R[this.displayfield].text=this.text;R[this.displayfield].width=parseInt(this.width);if(isNaN(R[this.displayfield].width)){R[this.displayfield].width=60}R[this.displayfield].formatString=this.cellsformat;R[this.displayfield].localization=a.gridlocalization;R[this.displayfield].type=g;R[this.displayfield].cellsAlign=this.cellsalign;R[this.displayfield].hidden=!ac;R[this.displayfield].displayfield=this.displayfield;j.push(R[this.displayfield])}ak="cell"+am;var c=b(this.element);if(this.element==undefined){c=b(this.uielement)}if(!i){i=c}else{if(!m._rendered){c=i;d=aq;e=ar;var h=a.toTP("jqx-grid-cell")+" "+a.toTP("jqx-item");d[0].className=h;h+=a.toTP("jqx-grid-cell-alt");if(e){e[0].className=h}}}O="column"+ao;if(Z=="html"||Z=="xls"||Z=="pdf"){var f=function(u,v,w,t,o,r,s,q,p){af[u]={};if(v==undefined){return}if(v[0].offsetWidth==0||v[0].offsetHeight==0){if(!w){af[u]["dataType"]=g}return}af[u]["font-size"]=v.css("font-size");af[u]["font-weight"]=v.css("font-weight");af[u]["font-style"]=v.css("font-style");af[u]["background-color"]=r._getexportcolor(v.css("background-color"));af[u]["color"]=r._getexportcolor(v.css("color"));af[u]["border-color"]=r._getexportcolor(v.css("border-top-color"));if(w){af[u]["text-align"]=o.align}else{af[u]["text-align"]=o.cellsalign;af[u]["formatString"]=o.cellsformat;af[u]["dataType"]=g}if(Z=="html"||Z=="pdf"){af[u]["border-top-width"]=v.css("border-top-width");af[u]["border-left-width"]=v.css("border-left-width");af[u]["border-right-width"]=v.css("border-right-width");af[u]["border-bottom-width"]=v.css("border-bottom-width");af[u]["border-top-style"]=v.css("border-top-style");af[u]["border-left-style"]=v.css("border-left-style");af[u]["border-right-style"]=v.css("border-right-style");af[u]["border-bottom-style"]=v.css("border-bottom-style");if(w){if(s==0){af[u]["border-left-width"]=v.css("border-right-width")}af[u]["border-top-width"]=v.css("border-right-width");af[u]["border-bottom-width"]=v.css("border-bottom-width")}else{if(s==0){af[u]["border-left-width"]=v.css("border-right-width")}}af[u]["height"]=v.css("height")}if(o.exportable&&(!o.hidden||M)){if(q==true){if(!R[o.displayfield].customCellStyles){R[o.displayfield].customCellStyles=new Array()}R[o.displayfield].customCellStyles[p]=u}else{if(w){R[o.displayfield].style=u}else{if(!t){R[o.displayfield].cellStyle=u}else{R[o.displayfield].cellAltStyle=u}}}}};f(O,c,true,false,this,a,l);ao++;f(ak,d,false,false,this,a,l);if(a.altrows){ak="cellalt"+am;f(ak,e,false,true,this,a,l)}if(this.customCellStyles){for(var n in m.customCellStyles){d.removeClass(m.customCellStyles[n])}for(var n in m.customCellStyles){d.addClass(m.customCellStyles[n]);f(ak+m.customCellStyles[n],d,false,false,this,a,l,true,n);d.removeClass(m.customCellStyles[n])}}am++}});b.each(this.columns.records,function(c){if(R[this.displayfield]){R[this.displayfield].columnsDataFields=j}});if(this.showaggregates){var S=[];var Y=Z=="xls"?"_AG":"";var ai=this.groupable?this.groups.length:0;if(this.rowdetails){ai++}if(this.selectionmode==="checkbox"){ai++}if(aj.length>0){b.each(this.columns.records,function(c){if(this.aggregates){for(var f=0;f<this.aggregates.length;f++){if(!S[f]){S[f]={}}if(S[f]){var e=a._getaggregatename(this.aggregates[f]);var d=a._getaggregatetype(this.aggregates[f]);var g=aj[c-ai];if(g){S[f][this.displayfield]=Y+e+": "+g[d]}}}}});b.each(this.columns.records,function(c){for(var d=0;d<S.length;d++){if(S[d][this.displayfield]==undefined){S[d][this.displayfield]=Y}}})}b.each(S,function(){ad.push(this)})}var ag=this;var U=b.jqx.dataAdapter.ArrayExporter(ad,R,af);if(ab==undefined){this._renderrows(this.virtualsizeinfo);var aa=U.exportTo(Z);if(this.showaggregates){b.each(S,function(){ad.pop(this)})}setTimeout(function(){ag.exporting=false},50);this.hScrollInstance.setPosition(ae);this._renderrows(this.virtualsizeinfo);return aa}else{U.exportToFile(Z,ab,T,al)}if(this.showaggregates){b.each(S,function(){ad.pop(this)})}this._renderrows(this.virtualsizeinfo);setTimeout(function(){ag.exporting=false},50);this.hScrollInstance.setPosition(ae);this._renderrows(this.virtualsizeinfo)},_getexportcolor:function(g){var r=g;if(g=="transparent"){r="#FFFFFF"}if(!r||!r.toString()){r="#FFFFFF"}if(r.toString().indexOf("rgb")!=-1){var p=r.split(",");if(r.toString().indexOf("rgba")!=-1){var t=parseInt(p[0].substring(5));var q=parseInt(p[1]);var o=parseInt(p[2]);var n=parseFloat(p[3].substring(1,4));var a={r:t,g:q,b:o};var s=this._rgbToHex(a);if(t==0&&q==0&&o==0&&n==0){return"#ffffff"}return"#"+s}var t=parseInt(p[0].substring(4));var q=parseInt(p[1]);var o=parseInt(p[2].substring(1,4));var a={r:t,g:q,b:o};var s=this._rgbToHex(a);return"#"+s}else{if(r.toString().indexOf("#")!=-1){if(r.toString().length==4){var u=r.toString().substring(1,4);r+=u}}}return r},_rgbToHex:function(a){return this._intToHex(a.r)+this._intToHex(a.g)+this._intToHex(a.b)},_intToHex:function(d){var a=(parseInt(d).toString(16));if(a.length==1){a=("0"+a)}return a.toUpperCase()},_getexportcolumntype:function(m){var l=this;var n="string";var o=l.source.datafields||((l.source._source)?l.source._source.datafields:null);if(o){var j="";b.each(o,function(){if(this.name==m.displayfield){if(this.type){j=this.type}return false}});if(j){return j}}if(m!=null){if(this.dataview.cachedrecords==undefined){return n}var a=null;if(!this.virtualmode){if(this.dataview.cachedrecords.length==0){return n}a=this.dataview.cachedrecords[0][m.displayfield];if(a!=null&&a.toString()==""){return"string"}}else{b.each(this.dataview.cachedrecords,function(){a=this[m.displayfield];return false})}if(a!=null){if(m.cellsformat.indexOf("c")!=-1){return"number"}if(m.cellsformat.indexOf("n")!=-1){return"number"}if(m.cellsformat.indexOf("p")!=-1){return"number"}if(m.cellsformat.indexOf("d")!=-1){return"date"}if(m.cellsformat.indexOf("y")!=-1){return"date"}if(m.cellsformat.indexOf("M")!=-1){return"date"}if(m.cellsformat.indexOf("m")!=-1){return"date"}if(m.cellsformat.indexOf("t")!=-1){return"date"}if(typeof a=="boolean"){n="boolean"}else{if(b.jqx.dataFormat.isNumber(a)){n="number"}else{var k=new Date(a);if(k.toString()=="NaN"||k.toString()=="Invalid Date"){if(b.jqx.dataFormat){k=b.jqx.dataFormat.tryparsedate(a);if(k!=null){if(k&&k.getFullYear()){if(k.getFullYear()==1970&&k.getMonth()==0&&k.getDate()==1){var p=new Number(a);if(!isNaN(p)){return"number"}return"string"}}return"date"}else{n="string"}}else{n="string"}}else{n="date"}}}}}return n}})})(jqxBaseFramework)})();
+/* tslint:disable */
+/* eslint-disable */
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
+
+    (function ($) {
+        $.extend($.jqx._jqxGrid.prototype, {
+
+            _exportData: function (dataFormat, dataExport, dataRows, settings) {
+                var that = this;
+
+                var fileName = typeof dataExport === 'string' ? dataExport : dataExport.fileName;
+
+                if (!fileName) {
+                    fileName = 'jqxGrid';
+                }
+
+                if (!dataExport || typeof dataExport === 'string') {
+                    dataExport =
+                    {
+                        header: true,
+                        filterBy: null,
+                        groupBy: null,
+                        style: null,
+                        fileName: fileName,
+                        pageOrientation: 'portrait',
+                        expandChart: '+',
+                        collapseChar: '-'
+                    }
+                }
+
+
+                var dataExporter = new $.jqx.dataAdapter.DataExporter({ exportHeader: dataExport.header });
+                var formattedRows = [];
+
+                dataExporter.expandChar = dataExport.expandChar;
+                dataExporter.collapseChar = dataExport.collapseChar;
+                dataExporter.pageOrientation = dataExport.pageOrientation;
+                dataExporter.style = dataExport.style;
+                dataExporter.filterBy = dataExport.filterBy;
+                dataExporter.groupBy = dataExport.groupBy;
+
+                if (settings) {
+                    dataExporter.addImageToCell = settings.addImageToCell;
+                    dataExporter.headerContent = settings.headerContent;
+                    dataExporter.footerContent = settings.footerContent;
+                    dataExporter.setRowHeight = settings.setRowHeight;
+                    dataExporter.cellFormatFunction = settings.cellFormatFunction;
+                    dataExporter.freezeHeader = settings.freezeHeader;
+                    dataExporter.exportAsTable = settings.exportAsTable;
+                    dataExporter.onlySelected = settings.onlySelected;
+                    dataExporter.autoConvertFormulas = settings.autoConvertFormulas;
+
+                }
+
+                var cols = [];
+                var colGroups = that.columngroups || [];
+                var index = 0;
+
+                if (colGroups) {
+                    for (var i = 0; i < colGroups.length; i++) {
+                        var column = colGroups[i];
+
+                        column.label = column.text;
+                    }
+                }
+
+                for (var i = 0; i < that.columns.records.length; i++) {
+                    var column = that.columns.records[i];
+
+                    if (!column.exportable) {
+                        continue;
+                    }
+
+                    if (that.columns.records[i].datafield !== null) {
+                        cols[index++] = { label: that.columns.records[i].text, width: that.columns.records[i].width ? that.columns.records[i].width + 'px' : '100px', dataField: that.columns.records[i].datafield, columnGroup: that.columns.records[i].columnGroup || that.columns.records[i].columngroup };
+                    }
+                }
+
+                dataExporter.header = {
+                    columns: cols,
+                    columngroups: colGroups
+                }
+
+                if (!dataExport.style) {
+                    var computedStyle = window.getComputedStyle(that.element);
+                    var columnComputedStyle = window.getComputedStyle(that.columns.records.length > 0 && that.columns.records[0].element ? that.columns.records[0].element : that.host.find('.jqx-grid-header')[0]);
+                    var headerComputedStyle = window.getComputedStyle(that.host.find('.jqx-grid-header')[0]);
+                    var isHidden = that.offsetWidth === 0 || that.offsetHeight === 0;
+
+                    if (!isHidden) {
+                        var getStyle = function (computedStyle) {
+                            var fontFamily = 'Helvetica';
+                            var fontSize = computedStyle.fontSize;
+                            var borderColor = computedStyle.borderRightColor;
+                            var backgroundColor = computedStyle.backgroundColor;
+                            var color = computedStyle.color;
+
+                            var hexDigits = new Array
+                                ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+
+                            var hex = function (x) {
+                                return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+                            }
+                            //Function to convert rgb color to hex format
+                            var toHex = function (rgb) {
+                                if (rgb.toString().indexOf('rgba') != -1) {
+                                    var rgbValue = color.split(',');
+                                    var r = parseInt(rgbValue[0].substring(5));
+                                    var g = parseInt(rgbValue[1]);
+                                    var b = parseInt(rgbValue[2]);
+                                    if (rgbValue[3]) {
+                                        var a = parseFloat(rgbValue[3].substring(1, 4));
+                                    }
+                                    else {
+                                        var a = 1;
+                                    }
+
+                                    var rgbObj = { r: r, g: g, b: b };
+                                    var hexValue = that._rgbToHex(rgbObj);
+                                    if (r == 0 && g == 0 && b == 0 && a == 0) {
+                                        return "#ffffff";
+                                    }
+
+                                    return "#" + hexValue;
+                                }
+
+                                rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+
+                                if (!rgb) {
+                                    return '#ffffff';
+                                }
+
+                                return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]).toUpperCase();
+                            }
+
+                            return {
+                                borderColor: toHex(borderColor),
+                                fontSize: fontSize,
+                                fontFamily: fontFamily,
+                                color: toHex(color),
+                                backgroundColor: toHex(backgroundColor)
+                            }
+                        }
+
+                        var gridStyle = getStyle(computedStyle);
+                        var columnStyle = getStyle(columnComputedStyle);
+                        var headerStyle = getStyle(headerComputedStyle);
+
+                        var header = {
+                            height: '30px',
+                            border: '1px solid ' + gridStyle.borderColor,
+                            fontFamily: headerStyle.fontFamily,
+                            fontSize: headerStyle.fontSize,
+                            color: headerStyle.color,
+                            backgroundColor: columnStyle.backgroundColor,
+                            fontWeight: '400'
+                        };
+
+                        var columns = {
+                            border: '1px solid ' + gridStyle.borderColor,
+                            fontFamily: gridStyle.fontFamily,
+                            fontSize: gridStyle.fontSize
+                        };
+
+                        var rows = {
+                            height: that.rowsheight + 'px'
+                        };
+
+                        for (var i = 0; i < that.columns.records.length; i++) {
+                            var column = that.columns.records[i];
+
+                            if (!column.exportable) {
+                                continue;
+                            }
+
+                            header[column.datafield] = {
+                                textAlign: column.align,
+                                width: column.width + 'px',
+                                format: column.cellsformat || ''
+                            };
+
+                            var cellsFormat = column.cellsformat || '';
+
+                            if (column.dataType === 'date') {
+                                cellsFormat = 'd';
+                            }
+                            else if (column.dataType === 'dateTime') {
+                                cellsFormat = 'D';
+                            }
+                            else if (column.dataType === 'time') {
+                                cellsFormat = 't';
+                            }
+
+                            var columnStyleObject = {
+                                textAlign: column.cellsalign,
+                                format: cellsFormat
+                            };
+
+                            columns[column.datafield] = columnStyleObject;
+                        }
+
+                        if (that.altrows) {
+                            rows.alternationCount = 2;
+                            rows.alternationStart = 0;
+                            rows.alternationEnd = 0;
+                            rows.alternationIndex0Color = gridStyle.color;
+                            rows.alternationIndex0BackgroundColor = gridStyle.backgroundColor;
+                            rows.alternationIndex1Color = gridStyle.color;
+                            rows.alternationIndex1BackgroundColor = '#F5F5F5';
+                        }
+                        dataExporter.style = {
+                            border: '1px solid ' + gridStyle.borderColor,
+                            borderCollapse: 'collapse',
+                            header: header,
+                            columns: columns,
+                            rows: rows
+                        }
+                    }
+                }
+
+                if (settings) {
+                    if (settings.getSpreadsheets) {
+                        const spreadsheets = settings.getSpreadsheets();
+                        if (spreadsheets) {
+                            dataExporter.spreadsheets = spreadsheets;
+
+                            const header = dataExporter.style.header;
+                            const columns = dataExporter.style.columns;
+                            for (let p = 0; p < spreadsheets.length; p++) {
+                                const sheet = spreadsheets[p];
+                                const sheetColumns = sheet.columns;
+                                for (let i = 0; i < sheetColumns.length; i++) {
+                                    let column = sheetColumns[i];
+
+                                    if (typeof column === 'string') {
+                                        column = {
+                                            label: column,
+                                            dataField: column,
+                                            allowExport: true,
+                                            visible: true
+                                        }
+                                    }
+
+                                    if (column.allowExport !== undefined && !column.allowExport) {
+                                        continue;
+                                    }
+
+                                    if (column.visible !== undefined && !column.visible) {
+                                        continue;
+                                    }
+
+                                    column.label = column.text;
+
+                                    header[column.dataField] = {
+                                        textAlign: column.align || 'left',
+                                        verticalAlign: 'center',
+                                        width: column.computedWidth ? column.computedWidth + 'px' : '100px',
+                                        format: column.cellsFormat || ''
+                                    };
+
+                                    let cellsFormat = column.cellsFormat || '';
+
+                                    if (!cellsFormat) {
+                                        if (column.dataType === 'date') {
+                                            cellsFormat = 'd';
+                                        }
+                                        else if (column.dataType === 'dateTime') {
+                                            cellsFormat = 'D';
+                                        }
+                                        else if (column.dataType === 'time') {
+                                            cellsFormat = 't';
+                                        }
+                                    }
+
+                                    if (that.locale && cellsFormat && cellsFormat.indexOf('c') >= 0 && dataFormat === 'xlsx') {
+                                        if (that.locale !== '' && that.locale !== 'en') {
+                                            const currencySign = that._getCurrencyByLocale(that.locale);
+                                            cellsFormat = currencySign + 'x' + cellsFormat;
+                                        }
+                                    }
+
+                                    const columnStyleObject = {
+                                        textAlign: column.cellsAlign || 'left',
+                                        format: cellsFormat
+                                    };
+
+                                    columns[column.dataField] = columnStyleObject;
+                                }
+                            }
+                        }
+                    }
+                }
+                var viewRows = dataRows || this.getrows();
+                var data = [];
+
+                for (var i = 0; i < viewRows.length; i++) {
+                    var row = viewRows[i];
+
+                    if (row.hidden) {
+                        continue;
+                    }
+
+                    var rowObject = {};
+
+                    for (var j = 0; j < that.columns.records.length; j++) {
+                        var column = that.columns.records[j];
+
+                        if (!column.exportable) {
+                            continue;
+                        }
+
+                        rowObject[column.datafield] = row[column.datafield];
+                    }
+
+                    data.push(rowObject);
+                }
+
+                if (!dataExport.groupBy && that.groups && that.groups.length) {
+                    dataExporter.groupBy = that.groups.slice(0);
+                }
+
+
+                if (settings && settings.formatData) {
+                    const formatDataCallback = (formattedData) => {
+                        dataExporter.exportData(formattedData, dataFormat, dataExport.fileName, null);
+                    }
+                    settings.formatData([...data], cols, data, formatDataCallback);
+                }
+                else {
+                    var output = dataExporter.exportData(data, dataFormat, dataExport.fileName, null);
+                }
+
+                return output;
+            },
+
+            exportview: function (datatype, filename, rows, settings) {
+                var that = this;
+
+                that._exportData(datatype, filename, rows, settings);
+            },
+
+            exportdata: function (datatype, filename, exportHeader, rows, exportHiddenColumns, exportServer, charset) {
+                if (!$.jqx.dataAdapter.ArrayExporter) {
+                    throw 'jqxGrid: Missing reference to jqxdata.export.js!';
+                }
+
+                if (datatype === 'xlsx') {
+                    this._exportData('xlsx', filename);
+                    return;
+                }
+
+                if (exportHeader == undefined) {
+                    exportHeader = true;
+                }
+
+                var me = this;
+
+                if (rows == undefined) {
+                    var rows = this.getrows();
+                    if (rows.length == 0) {
+                        throw 'No data to export.';
+                    }
+                }
+
+                this.exporting = true;
+                if (!this.pageable) {
+                    this.loadondemand = true;
+                }
+
+                if (this.altrows) {
+                    this._renderrows(this.virtualsizeinfo);
+                }
+
+                var hValue = this.hScrollInstance.value;
+
+                this.hScrollInstance.setPosition(0);
+                this._renderrows(this.virtualsizeinfo);
+
+                var addhiddencolumns = exportHiddenColumns != undefined ? exportHiddenColumns : false;
+                var dataFields = {};
+                var styles = {};
+                var alignments = [];
+                var $cell = this.host.find('.jqx-grid-cell:first');
+                var $cellalt = this.host.find('.jqx-grid-cell-alt:first');
+                $cell.removeClass(this.toThemeProperty('jqx-grid-cell-selected'));
+                $cell.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                $cellalt.removeClass(this.toThemeProperty('jqx-grid-cell-selected'));
+                $cellalt.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                $cell.removeClass(this.toThemeProperty('jqx-grid-cell-hover'));
+                $cell.removeClass(this.toThemeProperty('jqx-fill-state-hover'));
+                $cellalt.removeClass(this.toThemeProperty('jqx-grid-cell-hover'));
+                $cellalt.removeClass(this.toThemeProperty('jqx-fill-state-hover'));
+
+                var styleName = 'cell';
+                var styleIndex = 1;
+                var columnStyleName = 'column';
+                var columnStyleIndex = 1;
+                var aggregates = [];
+
+                for (var j = 0; j < this.columns.records.length; j++) {
+                    var column = this.columns.records[j];
+                    if (column.cellclassname != "") {
+                        column.customCellStyles = new Array();
+                        if (typeof column.cellclassname == "string") {
+                            for (var i = 0; i < rows.length; i++) {
+                                column.customCellStyles[i] = column.cellclassname;
+                            }
+                        }
+                        else {
+                            for (var i = 0; i < rows.length; i++) {
+                                var boundIndex = this.getrowboundindex(i);
+                                var className = column.cellclassname(boundIndex, column.displayfield, rows[i][column.displayfield], rows[i]);
+                                if (className) {
+                                    column.customCellStyles[i] = className;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                var fields = new Array();
+                var firstColumn = null;
+                var firstCell = null;
+                var firstAltCell = null;
+                $.each(this.columns.records, function (index) {
+                    var $cell = $(me.table[0].rows[0].cells[index]);
+                    if (me.table[0].rows.length > 1) {
+                        var $cellalt = $(me.table[0].rows[1].cells[index]);
+                        if (!firstAltCell)
+                            firstAltCell = $cellalt;
+                    }
+                    if (!firstCell) firstCell = $cell;
+
+                    var column = this;
+                    var removeClassFunc = function (cell) {
+                        cell.removeClass(me.toThemeProperty('jqx-grid-cell-selected'));
+                        cell.removeClass(me.toThemeProperty('jqx-fill-state-pressed'));
+                        cell.removeClass(me.toThemeProperty('jqx-grid-cell-hover'));
+                        cell.removeClass(me.toThemeProperty('jqx-fill-state-hover'));
+                        if (column.customCellStyles) {
+                            for (var o in column.customCellStyles) {
+                                cell.removeClass(column.customCellStyles[o]);
+                            }
+                        }
+                    }
+                    removeClassFunc($cell);
+                    if ($cellalt) {
+                        removeClassFunc($cellalt);
+                    }
+
+                    if (this.displayfield == null) return true;
+
+                    if (me.showaggregates) {
+                        if (me.getcolumnaggregateddata) {
+                            aggregates.push(me.getcolumnaggregateddata(this.displayfield, this.aggregates, true, rows));
+                        }
+                    }
+
+                    var type = me._getexportcolumntype(this);
+                    if (this.exportable && (!this.hidden || addhiddencolumns)) {
+                        dataFields[this.displayfield] = {};
+                        dataFields[this.displayfield].text = this.text;
+                        dataFields[this.displayfield].width = parseInt(this.width);
+                        if (isNaN(dataFields[this.displayfield].width)) dataFields[this.displayfield].width = 60;
+                        dataFields[this.displayfield].formatString = this.cellsformat;
+                        dataFields[this.displayfield].localization = me.gridlocalization;
+                        dataFields[this.displayfield].type = type;
+                        dataFields[this.displayfield].cellsAlign = this.cellsalign;
+                        dataFields[this.displayfield].hidden = !exportHeader;
+                        dataFields[this.displayfield].displayfield = this.displayfield;
+                        fields.push(dataFields[this.displayfield]);
+                    }
+
+                    styleName = 'cell' + styleIndex;
+
+                    var $element = $(this.element);
+                    if (this.element == undefined) $element = $(this.uielement);
+                    if (!firstColumn) {
+                        firstColumn = $element;
+                    }
+                    else if (!column._rendered) {
+                        $element = firstColumn;
+                        $cell = firstCell;
+                        $cellalt = firstAltCell;
+                        var cellclass = me.toTP('jqx-grid-cell') + ' ' + me.toTP('jqx-item');
+                        $cell[0].className = cellclass;
+                        cellclass += me.toTP('jqx-grid-cell-alt');
+                        if ($cellalt) {
+                            $cellalt[0].className = cellclass;
+                        }
+                    }
+
+                    columnStyleName = 'column' + columnStyleIndex;
+                    if (datatype == 'html' || datatype == 'xls' || datatype == 'pdf') {
+                        var buildStyle = function (styleName, $element, isColumn, altStyle, meColumn, me, index, customStyle, rowIndex) {
+                            styles[styleName] = {};
+                            if ($element == undefined)
+                                return;
+
+                            if ($element[0].offsetWidth == 0 || $element[0].offsetHeight == 0) {
+                                if (!isColumn) {
+                                    styles[styleName]['dataType'] = type;
+                                }
+                                return;
+                            }
+
+                            styles[styleName]['font-size'] = $element.css('font-size');
+                            styles[styleName]['font-weight'] = $element.css('font-weight');
+                            styles[styleName]['font-style'] = $element.css('font-style');
+                            styles[styleName]['background-color'] = me._getexportcolor($element.css('background-color'));
+                            styles[styleName]['color'] = me._getexportcolor($element.css('color'));
+                            styles[styleName]['border-color'] = me._getexportcolor($element.css('border-top-color'));
+                            if (isColumn) {
+                                styles[styleName]['text-align'] = meColumn.align;
+                            }
+                            else {
+                                styles[styleName]['text-align'] = meColumn.cellsalign;
+                                styles[styleName]['formatString'] = meColumn.cellsformat;
+                                styles[styleName]['dataType'] = type;
+                            }
+
+                            if (datatype == 'html' || datatype == 'pdf') {
+                                styles[styleName]['border-top-width'] = $element.css('border-top-width');
+                                styles[styleName]['border-left-width'] = $element.css('border-left-width');
+                                styles[styleName]['border-right-width'] = $element.css('border-right-width');
+                                styles[styleName]['border-bottom-width'] = $element.css('border-bottom-width');
+                                styles[styleName]['border-top-style'] = $element.css('border-top-style');
+                                styles[styleName]['border-left-style'] = $element.css('border-left-style');
+                                styles[styleName]['border-right-style'] = $element.css('border-right-style');
+                                styles[styleName]['border-bottom-style'] = $element.css('border-bottom-style');
+                                if (isColumn) {
+                                    if (index == 0) {
+                                        styles[styleName]['border-left-width'] = $element.css('border-right-width');
+                                    }
+                                    styles[styleName]['border-top-width'] = $element.css('border-right-width');
+                                    styles[styleName]['border-bottom-width'] = $element.css('border-bottom-width');
+                                }
+                                else {
+                                    if (index == 0) {
+                                        styles[styleName]['border-left-width'] = $element.css('border-right-width');
+                                    }
+                                }
+                                styles[styleName]['height'] = $element.css('height');
+                            }
+
+                            if (meColumn.exportable && (!meColumn.hidden || addhiddencolumns)) {
+                                if (customStyle == true) {
+                                    if (!dataFields[meColumn.displayfield].customCellStyles) {
+                                        dataFields[meColumn.displayfield].customCellStyles = new Array();
+                                    }
+
+                                    dataFields[meColumn.displayfield].customCellStyles[rowIndex] = styleName;
+                                }
+                                else {
+                                    if (isColumn) {
+                                        dataFields[meColumn.displayfield].style = styleName;
+                                    }
+                                    else if (!altStyle) {
+                                        dataFields[meColumn.displayfield].cellStyle = styleName;
+                                    }
+                                    else dataFields[meColumn.displayfield].cellAltStyle = styleName;
+                                }
+                            }
+                        }
+                        buildStyle(columnStyleName, $element, true, false, this, me, index);
+                        columnStyleIndex++;
+                        buildStyle(styleName, $cell, false, false, this, me, index);
+                        if (me.altrows) {
+                            styleName = 'cellalt' + styleIndex;
+                            buildStyle(styleName, $cellalt, false, true, this, me, index);
+                        }
+                        if (this.customCellStyles) {
+                            for (var o in column.customCellStyles) {
+                                $cell.removeClass(column.customCellStyles[o]);
+                            }
+                            for (var o in column.customCellStyles) {
+                                $cell.addClass(column.customCellStyles[o]);
+                                buildStyle(styleName + column.customCellStyles[o], $cell, false, false, this, me, index, true, o);
+                                $cell.removeClass(column.customCellStyles[o]);
+                            }
+                        }
+
+                        styleIndex++;
+                    }
+                });
+                $.each(this.columns.records, function (index) {
+                    if (dataFields[this.displayfield]) {
+                        dataFields[this.displayfield].columnsDataFields = fields;
+                    }
+                });
+
+                if (this.showaggregates) {
+                    var aggregatedrows = [];
+                    var prefix = datatype == 'xls' ? "_AG" : "";
+                    var offset = this.groupable ? this.groups.length : 0;
+                    if (this.rowdetails) offset++;
+                    if (this.selectionmode === "checkbox") offset++;
+                    if (aggregates.length > 0) {
+                        $.each(this.columns.records, function (index) {
+                            if (this.aggregates) {
+                                for (var i = 0; i < this.aggregates.length; i++) {
+                                    if (!aggregatedrows[i]) aggregatedrows[i] = {};
+                                    if (aggregatedrows[i]) {
+                                        var aggregatename = me._getaggregatename(this.aggregates[i]);
+                                        var aggregatetype = me._getaggregatetype(this.aggregates[i]);
+                                        var aggregate = aggregates[index - offset];
+                                        if (aggregate) {
+                                            aggregatedrows[i][this.displayfield] = prefix + aggregatename + ": " + aggregate[aggregatetype];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        $.each(this.columns.records, function (index) {
+                            for (var i = 0; i < aggregatedrows.length; i++) {
+                                if (aggregatedrows[i][this.displayfield] == undefined) {
+                                    aggregatedrows[i][this.displayfield] = prefix;
+                                }
+                            }
+                        });
+                    }
+                    $.each(aggregatedrows, function () {
+                        rows.push(this);
+                    });
+                }
+
+                var that = this;
+                var exporter = $.jqx.dataAdapter.ArrayExporter(rows, dataFields, styles);
+                if (filename == undefined) {
+                    // update ui
+                    this._renderrows(this.virtualsizeinfo);
+                    var result = exporter.exportTo(datatype);
+                    if (this.showaggregates) {
+                        $.each(aggregatedrows, function () {
+                            rows.pop(this);
+                        });
+                    }
+
+                    setTimeout(function () {
+                        that.exporting = false;
+                    }, 50);
+                    this.hScrollInstance.setPosition(hValue);
+                    this._renderrows(this.virtualsizeinfo);
+                    return result;
+                }
+                else {
+                    exporter.exportToFile(datatype, filename, exportServer, charset);
+                }
+                // update ui
+                if (this.showaggregates) {
+                    $.each(aggregatedrows, function () {
+                        rows.pop(this);
+                    });
+                }
+                this._renderrows(this.virtualsizeinfo);
+                setTimeout(function () {
+                    that.exporting = false;
+                }, 50);
+                this.hScrollInstance.setPosition(hValue);
+                this._renderrows(this.virtualsizeinfo);
+
+            },
+
+            _getexportcolor: function (value) {
+                var color = value;
+                if (value == 'transparent') color = "#FFFFFF";
+                if (!color || !color.toString()) {
+                    color = "#FFFFFF";
+                }
+
+                if (color.toString().indexOf('rgb') != -1) {
+                    var rgb = color.split(',');
+                    if (color.toString().indexOf('rgba') != -1) {
+                        var r = parseInt(rgb[0].substring(5));
+                        var g = parseInt(rgb[1]);
+                        var b = parseInt(rgb[2]);
+                        var a = parseFloat(rgb[3].substring(1, 4));
+                        var rgbObj = { r: r, g: g, b: b };
+                        var hex = this._rgbToHex(rgbObj);
+                        if (r == 0 && g == 0 && b == 0 && a == 0) {
+                            return "#ffffff";
+                        }
+
+                        return "#" + hex;
+                    }
+
+                    var r = parseInt(rgb[0].substring(4));
+                    var g = parseInt(rgb[1]);
+                    var b = parseInt(rgb[2].substring(1, 4));
+                    var rgbObj = { r: r, g: g, b: b };
+                    var hex = this._rgbToHex(rgbObj);
+                    return "#" + hex;
+                }
+                else if (color.toString().indexOf('#') != -1) {
+                    if (color.toString().length == 4) {
+                        var colorPart = color.toString().substring(1, 4);
+                        color += colorPart;
+                    }
+                }
+
+                return color;
+            },
+
+            _rgbToHex: function (rgb) {
+                return this._intToHex(rgb.r) + this._intToHex(rgb.g) + this._intToHex(rgb.b);
+            },
+
+            _intToHex: function (dec) {
+                var result = (parseInt(dec).toString(16));
+                if (result.length == 1)
+                    result = ("0" + result);
+                return result.toUpperCase();
+            },
+
+            _getexportcolumntype: function (column) {
+                var me = this;
+                var type = 'string';
+                var datafields = me.source.datafields || ((me.source._source) ? me.source._source.datafields : null);
+
+                if (datafields) {
+                    var foundType = "";
+                    $.each(datafields, function () {
+                        if (this.name == column.displayfield) {
+                            if (this.type) {
+                                foundType = this.type;
+                            }
+                            return false;
+                        }
+                    });
+                    if (foundType)
+                        return foundType;
+                }
+
+                if (column != null) {
+                    if (this.dataview.cachedrecords == undefined) {
+                        return type;
+                    }
+
+                    var cell = null;
+
+                    if (!this.virtualmode) {
+                        if (this.dataview.cachedrecords.length == 0)
+                            return type;
+
+                        cell = this.dataview.cachedrecords[0][column.displayfield];
+                        if (cell != null && cell.toString() == "") {
+                            return "string";
+                        }
+                    }
+                    else {
+                        $.each(this.dataview.cachedrecords, function () {
+                            cell = this[column.displayfield];
+                            return false;
+                        });
+                    }
+
+                    if (cell != null) {
+                        if (column.cellsformat.indexOf('c') != -1) {
+                            return 'number';
+                        }
+                        if (column.cellsformat.indexOf('n') != -1) {
+                            return 'number';
+                        }
+                        if (column.cellsformat.indexOf('p') != -1) {
+                            return 'number';
+                        }
+                        if (column.cellsformat.indexOf('d') != -1) {
+                            return 'date';
+                        }
+                        if (column.cellsformat.indexOf('y') != -1) {
+                            return 'date';
+                        }
+                        if (column.cellsformat.indexOf('M') != -1) {
+                            return 'date';
+                        }
+                        if (column.cellsformat.indexOf('m') != -1) {
+                            return 'date';
+                        }
+                        if (column.cellsformat.indexOf('t') != -1) {
+                            return 'date';
+                        }
+
+                        if (typeof cell == 'boolean') {
+                            type = 'boolean';
+                        }
+                        else if ($.jqx.dataFormat.isNumber(cell)) {
+                            type = 'number';
+                        }
+                        else {
+                            var tmpvalue = new Date(cell);
+                            if (tmpvalue.toString() == 'NaN' || tmpvalue.toString() == "Invalid Date") {
+                                if ($.jqx.dataFormat) {
+                                    tmpvalue = $.jqx.dataFormat.tryparsedate(cell);
+                                    if (tmpvalue != null) {
+                                        if (tmpvalue && tmpvalue.getFullYear()) {
+                                            if (tmpvalue.getFullYear() == 1970 && tmpvalue.getMonth() == 0 && tmpvalue.getDate() == 1) {
+                                                var num = new Number(cell);
+                                                if (!isNaN(num))
+                                                    return 'number';
+
+                                                return 'string';
+                                            }
+                                        }
+
+                                        return 'date';
+                                    }
+                                    else {
+                                        type = 'string';
+                                    }
+                                }
+                                else type = 'string';
+                            }
+                            else {
+                                type = 'date';
+                            }
+                        }
+                    }
+                }
+                return type;
+            }
+
+        });
+    })(jqxBaseFramework);
+})();
+
+
+
+
 

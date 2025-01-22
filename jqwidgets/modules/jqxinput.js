@@ -12,11 +12,11 @@ License: https://jqwidgets.com/license/ */
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -8209,6 +8209,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
+			if (window.jQuery.fn.extend) {
+				window.jQuery.fn.stop = window.JQXLite.fn.stop;
+				window.jQuery.fn.animate = window.JQXLite.fn.animate;
+
+				var keys = Object.keys(window.JQXLite.fn);
+				for (var index in keys) {
+					var key = keys[index];
+					if (window.jQuery.fn[key] == undefined) {
+						window.jQuery.fn[key] = window.JQXLite.fn[key];
+					}
+				}
+			}
+
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -9830,7 +9843,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -10323,12 +10336,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -11024,6 +11037,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
+		if (!$.easing) {
+			$.easing = {};
+		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -11367,20 +11383,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 4993:
@@ -11642,10 +11644,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                         ],
                     aria:
                     {
-                        "aria-valuenow": { name: "getDate", type: "date" },
+                        //      "aria-valuenow": { name: "getDate", type: "date" },
                         "aria-valuetext": { name: "getText", type: "string" },
-                        "aria-valuemin": { name: "min", type: "date" },
-                        "aria-valuemax": { name: "max", type: "date" },
+                        //     "aria-valuemin": { name: "min", type: "date" },
+                        //      "aria-valuemax": { name: "max", type: "date" },
                         "aria-disabled": { name: "disabled", type: "boolean" }
                     }
                 };
@@ -12016,7 +12018,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                 that.element.innerHTML = "";
                 that.host
                     .attr({
-                        role: "textbox"
+                        role: "spinbutton"
                     });
                 that.id = $.jqx.utilities.createId();
                 var id = $.jqx.utilities.createId();
@@ -12031,7 +12033,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                 that.touch = $.jqx.mobile.isTouchDevice();
 
                 var wrapper = $("<div class='jqx-max-size jqx-position-relative'></div>").appendTo(that.host);
-                that.dateTimeInput = $("<input style='border: none; padding-left: 3px; padding-right: 3px;' class='jqx-position-absolute' id='" + "input" + that.element.id + "' autocomplete='off' type='textarea'/>").appendTo(wrapper);
+                that.dateTimeInput = $("<input role='textbox' style='border: none; padding-left: 3px; padding-right: 3px;' class='jqx-position-absolute' id='" + "input" + that.element.id + "' autocomplete='off' type='textarea'/>").appendTo(wrapper);
                 that.dateTimeInput.addClass(that.toThemeProperty("jqx-reset"));
                 that.dateTimeInput.addClass(that.toThemeProperty("jqx-clear"));
                 that.dateTimeInput.addClass(that.toThemeProperty("jqx-input-content"));
@@ -12139,6 +12141,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                         if (oldContainer.length > 0) {
                             oldContainer.remove();
                         }
+
+                        $.jqx.aria(this, "aria-roledescription", "Date Picker");
                         $.jqx.aria(this, "aria-owns", calendarID);
                         $.jqx.aria(this, "aria-haspopup", true);
                         $.jqx.aria(this, "aria-readonly", that.selectionMode == 'range' ? true : false);
@@ -12985,7 +12989,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                     if (this.getDate() != null && this.getDate() > date) {
                         this.setDate(date);
                     }
-                    $.jqx.aria(this, "aria-valuemax", date);
+                    //  $.jqx.aria(this, "aria-valuemax", date);
                     this._refreshValue();
                     this._updateText();
                 }
@@ -13017,7 +13021,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                     if (this.getDate() != null && this.getDate() < date) {
                         this.setDate(date);
                     }
-                    $.jqx.aria(this, "aria-valuemin", date);
+                    // $.jqx.aria(this, "aria-valuemin", date);
                     this._refreshValue();
                     this._updateText();
                 }
@@ -15403,7 +15407,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                             }
                         }
 
-                        $.jqx.aria(this, "aria-valuenow", this.getDate());
+                        //      $.jqx.aria(this, "aria-valuenow", this.getDate());
                         $.jqx.aria(this, "aria-valuetext", this.getText());
                         if (this.getDate() != null) {
                             $.jqx.aria(this, "aria-label", "Current focused date is " + this.getDate().toLocaleString());
@@ -15451,7 +15455,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                             if (to == null) to = "";
                             else to = to.toString();
 
-                            $.jqx.aria(this, "aria-valuenow", from + "-" + to);
+                            //  $.jqx.aria(this, "aria-valuenow", from + "-" + to);
                             $.jqx.aria(this, "aria-valuetext", this.getText());
                             if (from && to) {
                                 $.jqx.aria(this, "aria-label", "Current focused range is " + from.toLocaleString() + "-" + to.toLocaleString());
@@ -17851,20 +17855,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 5875:
@@ -17909,6 +17899,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                     events: ['select', 'open', 'close', 'change'],
                     popupZIndex: 1000,
                     items: 8,
+                    query: '',
                     minLength: 1,
                     maxLength: null,
                     aiKey: ''
@@ -18179,8 +18170,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                 that.input.setAttribute('autocomplete', 'off');
                 that.input.setAttribute('autocorrect', 'off');
                 that.input.setAttribute('spellcheck', false);
+                that.input.setAttribute('aria-label', 'Text Box');
 
                 that.element.setAttribute('role', 'textbox');
+                that.element.setAttribute('aria-label', 'Input');
                 $.jqx.aria(this, 'aria-autocomplete', 'both');
                 $.jqx.aria(this, 'aria-disabled', this.disabled);
                 $.jqx.aria(this, 'aria-readonly', false);
@@ -19266,20 +19259,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
         });
     })(jqxBaseFramework); //ignore jslint
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -20836,20 +20815,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     } );
 } )( jqxBaseFramework );
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

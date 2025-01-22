@@ -941,20 +941,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 5459:
@@ -962,11 +948,11 @@ License: https://jqwidgets.com/license/ */
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -9159,6 +9145,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
+			if (window.jQuery.fn.extend) {
+				window.jQuery.fn.stop = window.JQXLite.fn.stop;
+				window.jQuery.fn.animate = window.JQXLite.fn.animate;
+
+				var keys = Object.keys(window.JQXLite.fn);
+				for (var index in keys) {
+					var key = keys[index];
+					if (window.jQuery.fn[key] == undefined) {
+						window.jQuery.fn[key] = window.JQXLite.fn[key];
+					}
+				}
+			}
+
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -10780,7 +10779,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -11273,12 +11272,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -11974,6 +11973,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
+		if (!$.easing) {
+			$.easing = {};
+		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -12313,20 +12315,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -18480,20 +18468,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 3899:
@@ -19464,20 +19438,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     });
 })(jqxBaseFramework); //ignore jslint
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

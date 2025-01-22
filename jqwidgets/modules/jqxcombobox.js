@@ -12,1197 +12,1184 @@ License: https://jqwidgets.com/license/ */
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
-
-(function ($) {
-    $.jqx.cssroundedcorners = function (value) {
-        var cssMap = {
-            'all': 'jqx-rc-all',
-            'top': 'jqx-rc-t',
-            'bottom': 'jqx-rc-b',
-            'left': 'jqx-rc-l',
-            'right': 'jqx-rc-r',
-            'top-right': 'jqx-rc-tr',
-            'top-left': 'jqx-rc-tl',
-            'bottom-right': 'jqx-rc-br',
-            'bottom-left': 'jqx-rc-bl'
-        };
-
-        for (var prop in cssMap) {
-            if (!cssMap.hasOwnProperty(prop))
-                continue;
-
-            if (value == prop)
-                return cssMap[prop];
-        }
+(function () {
+    if (typeof document === 'undefined') {
+        return;
     }
 
-    $.jqx.jqxWidget("jqxButton", "", {});
+    (function ($) {
+        $.jqx.cssroundedcorners = function (value) {
+            var cssMap = {
+                'all': 'jqx-rc-all',
+                'top': 'jqx-rc-t',
+                'bottom': 'jqx-rc-b',
+                'left': 'jqx-rc-l',
+                'right': 'jqx-rc-r',
+                'top-right': 'jqx-rc-tr',
+                'top-left': 'jqx-rc-tl',
+                'bottom-right': 'jqx-rc-br',
+                'bottom-left': 'jqx-rc-bl'
+            };
 
-    $.extend($.jqx._jqxButton.prototype, {
-        defineInstance: function () {
-            var settings = {
-                type: '',
-                cursor: 'arrow',
-                // rounds the button corners.
-                roundedCorners: 'all',
-                // enables / disables the button
-                disabled: false,
-                // sets height to the button.
-                height: null,
-                // sets width to the button.
-                width: null,
-                overrideTheme: false,
-                enableHover: true,
-                enableDefault: true,
-                enablePressed: true,
-                imgPosition: "center",
-                imgSrc: "",
-                imgWidth: 16,
-                imgHeight: 16,
-                value: null,
-                textPosition: "",
-                textImageRelation: "overlay",
-                rtl: false,
-                _ariaDisabled: false,
-                _scrollAreaButton: false,
-                // "primary", "inverse", "danger", "info", "success", "warning", "link"
-                template: "default",
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
+            for (var prop in cssMap) {
+                if (!cssMap.hasOwnProperty(prop))
+                    continue;
+
+                if (value == prop)
+                    return cssMap[prop];
+            }
+        }
+
+        $.jqx.jqxWidget("jqxButton", "", {});
+
+        $.extend($.jqx._jqxButton.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    type: '',
+                    cursor: 'arrow',
+                    // rounds the button corners.
+                    roundedCorners: 'all',
+                    // enables / disables the button
+                    disabled: false,
+                    // sets height to the button.
+                    height: null,
+                    // sets width to the button.
+                    width: null,
+                    overrideTheme: false,
+                    enableHover: true,
+                    enableDefault: true,
+                    enablePressed: true,
+                    imgPosition: "center",
+                    imgSrc: "",
+                    imgWidth: 16,
+                    imgHeight: 16,
+                    value: null,
+                    textPosition: "",
+                    textImageRelation: "overlay",
+                    rtl: false,
+                    _ariaDisabled: false,
+                    _scrollAreaButton: false,
+                    // "primary", "inverse", "danger", "info", "success", "warning", "link"
+                    template: "default",
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    }
                 }
-            }
-            if (this === $.jqx._jqxButton.prototype) {
+                if (this === $.jqx._jqxButton.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
                 return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
+            },
 
-        _addImage: function (name) {
-            var that = this;
-            if (that.element.nodeName.toLowerCase() == "input" || that.element.nodeName.toLowerCase() == "button" || that.element.nodeName.toLowerCase() == "div") {
-                if (!that._img) {
-                    that.field = that.element;
-                    if (that.field.className) {
-                        that._className = that.field.className;
-                    }
+            _addImage: function (name) {
+                var that = this;
+                if (that.element.nodeName.toLowerCase() == "input" || that.element.nodeName.toLowerCase() == "button" || that.element.nodeName.toLowerCase() == "div") {
+                    if (!that._img) {
+                        that.field = that.element;
+                        if (that.field.className) {
+                            that._className = that.field.className;
+                        }
 
-                    var properties = {
-                        'title': that.field.title
-                    };
+                        var properties = {
+                            'title': that.field.title
+                        };
 
-                    var value = null;
-                    if (that.field.getAttribute('value')) {
-                        var value = that.field.getAttribute('value');
-                    }
-                    else if (that.element.nodeName.toLowerCase() != "input") {
-                        var value = that.element.innerHTML;
-                    }
-                    if (that.value) {
-                        value = that.value;
-                    }
-                    if (that.field.id.length) {
-                        properties.id = that.field.id.replace(/[^\w]/g, '_') + "_" + name;
+                        var value = null;
+                        if (that.field.getAttribute('value')) {
+                            var value = that.field.getAttribute('value');
+                        }
+                        else if (that.element.nodeName.toLowerCase() != "input") {
+                            var value = that.element.innerHTML;
+                        }
+                        if (that.value) {
+                            value = that.value;
+                        }
+                        if (that.field.id.length) {
+                            properties.id = that.field.id.replace(/[^\w]/g, '_') + "_" + name;
+                        }
+                        else {
+                            properties.id = $.jqx.utilities.createId() + "_" + name;
+                        }
+
+
+                        var wrapper = document.createElement('div');
+                        wrapper.id = properties.id;
+                        wrapper.title = properties.title;
+                        wrapper.style.cssText = that.field.style.cssText;
+                        wrapper.style.boxSizing = 'border-box';
+
+                        var img = document.createElement("img");
+                        img.setAttribute('src', that.imgSrc);
+                        img.setAttribute('width', that.imgWidth);
+                        img.setAttribute('height', that.imgHeight);
+                        wrapper.appendChild(img);
+                        that._img = img;
+
+                        var text = document.createElement('span');
+                        if (value) {
+                            text.innerHTML = value;
+                            that.value = value;
+                        }
+                        wrapper.appendChild(text);
+                        that._text = text;
+
+                        that.field.style.display = "none";
+                        if (that.field.parentNode) {
+                            that.field.parentNode.insertBefore(wrapper, that.field.nextSibling);
+                        }
+
+                        var data = that.host.data();
+                        that.host = $(wrapper);
+                        that.host.data(data);
+                        that.element = wrapper;
+                        that.element.id = that.field.id;
+                        that.field.id = properties.id;
+                        var elementObj = new $(that.element);
+                        var fieldObj = new $(that.field);
+                        if (that._className) {
+                            elementObj.addClass(that._className);
+                            fieldObj.removeClass(that._className);
+                        }
+
+                        if (that.field.tabIndex) {
+                            var tabIndex = that.field.tabIndex;
+                            that.field.tabIndex = -1;
+                            that.element.tabIndex = tabIndex;
+                        }
                     }
                     else {
-                        properties.id = $.jqx.utilities.createId() + "_" + name;
+                        that._img.setAttribute('src', that.imgSrc);
+                        that._img.setAttribute('width', that.imgWidth);
+                        that._img.setAttribute('height', that.imgHeight);
+                        that._text.innerHTML = that.value;
+                    }
+                    if (!that.imgSrc) {
+                        that._img.style.display = "none";
+                    }
+                    else {
+                        that._img.style.display = "inline";
                     }
 
-
-                    var wrapper = document.createElement('div');
-                    wrapper.id = properties.id;
-                    wrapper.title = properties.title;
-                    wrapper.style.cssText = that.field.style.cssText;
-                    wrapper.style.boxSizing = 'border-box';
-
-                    var img = document.createElement("img");
-                    img.setAttribute('src', that.imgSrc);
-                    img.setAttribute('width', that.imgWidth);
-                    img.setAttribute('height', that.imgHeight);
-                    wrapper.appendChild(img);
-                    that._img = img;
-
-                    var text = document.createElement('span');
-                    if (value) {
-                        text.innerHTML = value;
-                        that.value = value;
+                    if (!that.value) {
+                        that._text.style.display = "none";
                     }
-                    wrapper.appendChild(text);
-                    that._text = text;
-
-                    that.field.style.display = "none";
-                    if (that.field.parentNode) {
-                        that.field.parentNode.insertBefore(wrapper, that.field.nextSibling);
+                    else {
+                        that._text.style.display = "inline";
                     }
 
-                    var data = that.host.data();
-                    that.host = $(wrapper);
-                    that.host.data(data);
-                    that.element = wrapper;
-                    that.element.id = that.field.id;
-                    that.field.id = properties.id;
-                    var elementObj = new $(that.element);
-                    var fieldObj = new $(that.field);
-                    if (that._className) {
-                        elementObj.addClass(that._className);
-                        fieldObj.removeClass(that._className);
-                    }
+                    that._positionTextAndImage();
+                }
+            },
 
-                    if (that.field.tabIndex) {
-                        var tabIndex = that.field.tabIndex;
-                        that.field.tabIndex = -1;
-                        that.element.tabIndex = tabIndex;
-                    }
-                }
-                else {
-                    that._img.setAttribute('src', that.imgSrc);
-                    that._img.setAttribute('width', that.imgWidth);
-                    that._img.setAttribute('height', that.imgHeight);
-                    that._text.innerHTML = that.value;
-                }
-                if (!that.imgSrc) {
-                    that._img.style.display = "none";
-                }
-                else {
-                    that._img.style.display = "inline";
+            _positionTextAndImage: function () {
+                var that = this;
+                var width = that.element.offsetWidth;
+                var height = that.element.offsetHeight;
+
+                var imgWidth = that.imgWidth;
+                var imgHeight = that.imgHeight;
+                if (that.imgSrc == "") {
+                    imgWidth = 0;
+                    imgHeight = 0;
                 }
 
-                if (!that.value) {
-                    that._text.style.display = "none";
-                }
-                else {
-                    that._text.style.display = "inline";
-                }
-
-                that._positionTextAndImage();
-            }
-        },
-
-        _positionTextAndImage: function () {
-            var that = this;
-            var width = that.element.offsetWidth;
-            var height = that.element.offsetHeight;
-
-            var imgWidth = that.imgWidth;
-            var imgHeight = that.imgHeight;
-            if (that.imgSrc == "") {
-                imgWidth = 0;
-                imgHeight = 0;
-            }
-
-            var textWidth = that._text.offsetWidth;
-            var textHeight = that._text.offsetHeight;
-            var offset = 4;
-            var edgeOffset = 4;
-            var factorIncrease = 4;
-            var w = 0;
-            var h = 0;
-            switch (that.textImageRelation) {
-                case "imageBeforeText":
-                case "textBeforeImage":
-                    w = imgWidth + textWidth + 2 * factorIncrease + offset + 2 * edgeOffset;
-                    h = Math.max(imgHeight, textHeight) + 2 * factorIncrease + offset + 2 * edgeOffset;
-                    break;
-                case "imageAboveText":
-                case "textAboveImage":
-                    w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
-                    h = imgHeight + textHeight + offset + 2 * factorIncrease + 2 * edgeOffset;
-                    break;
-                case "overlay":
-                    w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
-                    h = Math.max(imgHeight, textHeight) + 2 * factorIncrease;
-                    break;
-            }
-
-            if (!that.width) {
-                that.element.style.width = w + "px";
-                width = w;
-            }
-
-            if (!that.height) {
-                that.element.style.height = h + "px";
-                height = h;
-            }
-
-            that._img.style.position = 'absolute';
-            that._text.style.position = 'absolute';
-            that.element.style.position = 'relative';
-            that.element.style.overflow = 'hidden';
-
-            var textRect = {};
-            var imageRect = {};
-
-            var drawElement = function (element, drawArea, pos, w, h) {
-                if (drawArea.width < w) drawArea.width = w;
-                if (drawArea.height < h) drawArea.height = h;
-
-                switch (pos) {
-                    case "left":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                var textWidth = that._text.offsetWidth;
+                var textHeight = that._text.offsetHeight;
+                var offset = 4;
+                var edgeOffset = 4;
+                var factorIncrease = 4;
+                var w = 0;
+                var h = 0;
+                switch (that.textImageRelation) {
+                    case "imageBeforeText":
+                    case "textBeforeImage":
+                        w = imgWidth + textWidth + 2 * factorIncrease + offset + 2 * edgeOffset;
+                        h = Math.max(imgHeight, textHeight) + 2 * factorIncrease + offset + 2 * edgeOffset;
                         break;
-                    case "topLeft":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + "px";
+                    case "imageAboveText":
+                    case "textAboveImage":
+                        w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
+                        h = imgHeight + textHeight + offset + 2 * factorIncrease + 2 * edgeOffset;
                         break;
-                    case "bottomLeft":
-                        element.style.left = drawArea.left + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
+                    case "overlay":
+                        w = Math.max(imgWidth, textWidth) + 2 * factorIncrease;
+                        h = Math.max(imgHeight, textHeight) + 2 * factorIncrease;
                         break;
+                }
+
+                if (!that.width) {
+                    that.element.style.width = w + "px";
+                    width = w;
+                }
+
+                if (!that.height) {
+                    that.element.style.height = h + "px";
+                    height = h;
+                }
+
+                that._img.style.position = 'absolute';
+                that._text.style.position = 'absolute';
+                that.element.style.position = 'relative';
+                that.element.style.overflow = 'hidden';
+
+                var textRect = {};
+                var imageRect = {};
+
+                var drawElement = function (element, drawArea, pos, w, h) {
+                    if (drawArea.width < w) drawArea.width = w;
+                    if (drawArea.height < h) drawArea.height = h;
+
+                    switch (pos) {
+                        case "left":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                            break;
+                        case "topLeft":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottomLeft":
+                            element.style.left = drawArea.left + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                        default:
+                        case "center":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";
+                            break;
+                        case "top":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottom":
+                            element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                        case "right":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
+                            break;
+                        case "topRight":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + "px";
+                            break;
+                        case "bottomRight":
+                            element.style.left = drawArea.left + drawArea.width - w + "px";
+                            element.style.top = drawArea.top + drawArea.height - h + "px";
+                            break;
+                    }
+                }
+
+                var left = 0;
+                var top = 0;
+                var right = width;
+                var bottom = height;
+                var middle = (right - left) / 2;
+                var center = (bottom - top) / 2;
+                var img = that._img;
+                var text = that._text;
+                var rectHeight = bottom - top;
+                var rectWidth = right - left;
+                left += edgeOffset;
+                top += edgeOffset;
+                right = right - edgeOffset - 2;
+                rectWidth = rectWidth - 2 * edgeOffset - 2;
+                rectHeight = rectHeight - 2 * edgeOffset - 2;
+
+                switch (that.textImageRelation) {
+                    case "imageBeforeText":
+
+                        switch (that.imgPosition) {
+                            case "left":
+                            case "topLeft":
+                            case "bottomLeft":
+                                imageRect = { left: left, top: top, width: left + imgWidth, height: rectHeight };
+                                textRect = { left: left + imgWidth + offset, top: top, width: rectWidth - imgWidth - offset, height: rectHeight };
+                                break;
+                            case "center":
+                            case "top":
+                            case "bottom":
+                                imageRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: imgWidth, height: rectHeight };
+                                textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
+                                break;
+                            case "right":
+                            case "topRight":
+                            case "bottomRight":
+                                imageRect = { left: right - textWidth - imgWidth - offset, top: top, width: imgWidth, height: rectHeight };
+                                textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "textBeforeImage":
+
+                        switch (that.textPosition) {
+                            case "left":
+                            case "topLeft":
+                            case "bottomLeft":
+                                textRect = { left: left, top: top, width: left + textWidth, height: rectHeight };
+                                imageRect = { left: left + textWidth + offset, top: top, width: rectWidth - textWidth - offset, height: rectHeight };
+                                break;
+                            case "center":
+                            case "top":
+                            case "bottom":
+                                textRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: textWidth, height: rectHeight };
+                                imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
+                                break;
+                            case "right":
+                            case "topRight":
+                            case "bottomRight":
+                                textRect = { left: right - textWidth - imgWidth - offset, top: top, width: textWidth, height: rectHeight };
+                                imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "imageAboveText":
+
+                        switch (that.imgPosition) {
+                            case "topRight":
+                            case "top":
+                            case "topLeft":
+                                imageRect = { left: left, top: top, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: top + imgHeight + offset, width: rectWidth, height: rectHeight - imgHeight - offset };
+                                break;
+                            case "left":
+                            case "center":
+                            case "right":
+                                imageRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: rectHeight - imageRect.top - offset - imgHeight };
+                                break;
+                            case "bottomLeft":
+                            case "bottom":
+                            case "bottomRight":
+                                imageRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: imgHeight };
+                                textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: textHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+                        break;
+                    case "textAboveImage":
+                        switch (that.textPosition) {
+                            case "topRight":
+                            case "top":
+                            case "topLeft":
+                                textRect = { left: left, top: top, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: top + textHeight + offset, width: rectWidth, height: rectHeight - textHeight - offset };
+                                break;
+                            case "left":
+                            case "center":
+                            case "right":
+                                textRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: rectHeight - textRect.top - offset - textHeight };
+                                break;
+                            case "bottomLeft":
+                            case "bottom":
+                            case "bottomRight":
+                                textRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: textHeight };
+                                imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: imgHeight };
+                                break;
+
+                        }
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
+                        break;
+                    case "overlay":
                     default:
-                    case "center":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";
-                        break;
-                    case "top":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + "px";
-                        break;
-                    case "bottom":
-                        element.style.left = drawArea.left + drawArea.width / 2 - w / 2 + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
-                        break;
-                    case "right":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + drawArea.height / 2 - h / 2 + "px";;
-                        break;
-                    case "topRight":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + "px";
-                        break;
-                    case "bottomRight":
-                        element.style.left = drawArea.left + drawArea.width - w + "px";
-                        element.style.top = drawArea.top + drawArea.height - h + "px";
+                        textRect = { left: left, top: top, width: rectWidth, height: rectHeight };
+                        imageRect = { left: left, top: top, width: rectWidth, height: rectHeight };
+
+                        drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
+                        drawElement(text, textRect, that.textPosition, textWidth, textHeight);
+
                         break;
                 }
-            }
+            },
 
-            var left = 0;
-            var top = 0;
-            var right = width;
-            var bottom = height;
-            var middle = (right - left) / 2;
-            var center = (bottom - top) / 2;
-            var img = that._img;
-            var text = that._text;
-            var rectHeight = bottom - top;
-            var rectWidth = right - left;
-            left += edgeOffset;
-            top += edgeOffset;
-            right = right - edgeOffset - 2;
-            rectWidth = rectWidth - 2 * edgeOffset - 2;
-            rectHeight = rectHeight - 2 * edgeOffset - 2;
+            createInstance: function (args) {
+                var that = this;
+                that._setSize();
 
-            switch (that.textImageRelation) {
-                case "imageBeforeText":
+                var isMaterial = that.isMaterialized();
 
-                    switch (that.imgPosition) {
-                        case "left":
-                        case "topLeft":
-                        case "bottomLeft":
-                            imageRect = { left: left, top: top, width: left + imgWidth, height: rectHeight };
-                            textRect = { left: left + imgWidth + offset, top: top, width: rectWidth - imgWidth - offset, height: rectHeight };
-                            break;
-                        case "center":
-                        case "top":
-                        case "bottom":
-                            imageRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: imgWidth, height: rectHeight };
-                            textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
-                            break;
-                        case "right":
-                        case "topRight":
-                        case "bottomRight":
-                            imageRect = { left: right - textWidth - imgWidth - offset, top: top, width: imgWidth, height: rectHeight };
-                            textRect = { left: imageRect.left + imgWidth + offset, top: top, width: right - imageRect.left - imgWidth - offset, height: rectHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "textBeforeImage":
-
-                    switch (that.textPosition) {
-                        case "left":
-                        case "topLeft":
-                        case "bottomLeft":
-                            textRect = { left: left, top: top, width: left + textWidth, height: rectHeight };
-                            imageRect = { left: left + textWidth + offset, top: top, width: rectWidth - textWidth - offset, height: rectHeight };
-                            break;
-                        case "center":
-                        case "top":
-                        case "bottom":
-                            textRect = { left: middle - textWidth / 2 - imgWidth / 2 - offset / 2, top: top, width: textWidth, height: rectHeight };
-                            imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
-                            break;
-                        case "right":
-                        case "topRight":
-                        case "bottomRight":
-                            textRect = { left: right - textWidth - imgWidth - offset, top: top, width: textWidth, height: rectHeight };
-                            imageRect = { left: textRect.left + textWidth + offset, top: top, width: right - textRect.left - textWidth - offset, height: rectHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "imageAboveText":
-
-                    switch (that.imgPosition) {
-                        case "topRight":
-                        case "top":
-                        case "topLeft":
-                            imageRect = { left: left, top: top, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: top + imgHeight + offset, width: rectWidth, height: rectHeight - imgHeight - offset };
-                            break;
-                        case "left":
-                        case "center":
-                        case "right":
-                            imageRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: rectHeight - imageRect.top - offset - imgHeight };
-                            break;
-                        case "bottomLeft":
-                        case "bottom":
-                        case "bottomRight":
-                            imageRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: imgHeight };
-                            textRect = { left: left, top: imageRect.top + offset + imgHeight, width: rectWidth, height: textHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-                    break;
-                case "textAboveImage":
-                    switch (that.textPosition) {
-                        case "topRight":
-                        case "top":
-                        case "topLeft":
-                            textRect = { left: left, top: top, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: top + textHeight + offset, width: rectWidth, height: rectHeight - textHeight - offset };
-                            break;
-                        case "left":
-                        case "center":
-                        case "right":
-                            textRect = { left: left, top: center - imgHeight / 2 - textHeight / 2 - offset / 2, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: rectHeight - textRect.top - offset - textHeight };
-                            break;
-                        case "bottomLeft":
-                        case "bottom":
-                        case "bottomRight":
-                            textRect = { left: left, top: bottom - imgHeight - textHeight - offset, width: rectWidth, height: textHeight };
-                            imageRect = { left: left, top: textRect.top + offset + textHeight, width: rectWidth, height: imgHeight };
-                            break;
-
-                    }
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-                case "overlay":
-                default:
-                    textRect = { left: left, top: top, width: rectWidth, height: rectHeight };
-                    imageRect = { left: left, top: top, width: rectWidth, height: rectHeight };
-
-                    drawElement(img, imageRect, that.imgPosition, imgWidth, imgHeight);
-                    drawElement(text, textRect, that.textPosition, textWidth, textHeight);
-
-                    break;
-            }
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            that._setSize();
-
-            var isMaterial = that.isMaterialized();
-
-            that.buttonObj = new $(that.element);
-
-            if (that.imgSrc != "" || that.textPosition != "" || (that.element.value && that.element.value.indexOf("<") >= 0) || that.value != null) {
-                that.refresh();
-                that._addImage("jqxButton");
                 that.buttonObj = new $(that.element);
-            }
 
-            if (!that._ariaDisabled) {
-                that.element.setAttribute('role', 'button');
-            }
-            if (that.type !== '') {
-                that.element.setAttribute('type', that.type);
-            }
-            if (!that.overrideTheme) {
-                that.buttonObj.addClass(that.toThemeProperty($.jqx.cssroundedcorners(that.roundedCorners)));
-                if (that.enableDefault) {
-                    that.buttonObj.addClass(that.toThemeProperty('jqx-button'));
-                }
-                that.buttonObj.addClass(that.toThemeProperty('jqx-widget'));
-            }
-
-            that.isTouchDevice = $.jqx.mobile.isTouchDevice();
-            if (!that._ariaDisabled) {
-                $.jqx.aria(this);
-            }
-
-            if (that.cursor != 'arrow') {
-                if (!that.disabled) {
-                    that.element.style.cursor = that.cursor;
-                }
-                else {
-                    that.element.style.cursor = "arrow";
-                }
-            }
-
-            var eventNames = 'mouseenter mouseleave mousedown focus blur';
-            if (that._scrollAreaButton) {
-                var eventNames = 'mousedown';
-            }
-
-            if (that.isTouchDevice) {
-                that.addHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'), function (event) {
-                    that.isPressed = true;
+                if (that.imgSrc != "" || that.textPosition != "" || (that.element.value && that.element.value.indexOf("<") >= 0) || that.value != null) {
                     that.refresh();
-                });
-                that.addHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id, function (event) {
-                    that.isPressed = false;
-                    that.refresh();
-                });
-            }
-
-            that.addHandler(that.host, eventNames, function (event) {
-                switch (event.type) {
-                    case 'mouseenter':
-                        if (!that.isTouchDevice) {
-                            if (!that.disabled && that.enableHover) {
-                                that.isMouseOver = true;
-                                that.refresh();
-                            }
-                        }
-                        break;
-                    case 'mouseleave':
-                        if (!that.isTouchDevice) {
-                            if (!that.disabled && that.enableHover) {
-                                that.isMouseOver = false;
-                                that.refresh();
-                            }
-                        }
-                        break;
-                    case 'mousedown':
-                        if (!that.disabled) {
-                            that.isPressed = true;
-                            that.refresh();
-                        }
-                        break;
-                    case 'focus':
-                        if (!that.disabled) {
-                            that.isFocused = true;
-                            that.refresh();
-                        }
-                        break;
-                    case 'blur':
-                        if (!that.disabled) {
-                            that.isFocused = false;
-                            that.refresh();
-                        }
-                        break;
+                    that._addImage("jqxButton");
+                    that.buttonObj = new $(that.element);
                 }
-            });
 
-            that.mouseupfunc = function (event) {
-                if (!that.disabled) {
-                    if (that.isPressed || that.isMouseOver) {
+                if (!that._ariaDisabled) {
+                    that.element.setAttribute('role', 'button');
+                }
+                if (that.type !== '') {
+                    that.element.setAttribute('type', that.type);
+                }
+                if (!that.overrideTheme) {
+                    that.buttonObj.addClass(that.toThemeProperty($.jqx.cssroundedcorners(that.roundedCorners)));
+                    if (that.enableDefault) {
+                        that.buttonObj.addClass(that.toThemeProperty('jqx-button'));
+                    }
+                    that.buttonObj.addClass(that.toThemeProperty('jqx-widget'));
+                }
+
+                that.isTouchDevice = $.jqx.mobile.isTouchDevice();
+                if (!that._ariaDisabled) {
+                    $.jqx.aria(this);
+                }
+
+                if (that.cursor != 'arrow') {
+                    if (!that.disabled) {
+                        that.element.style.cursor = that.cursor;
+                    }
+                    else {
+                        that.element.style.cursor = "arrow";
+                    }
+                }
+
+                var eventNames = 'mouseenter mouseleave mousedown focus blur';
+                if (that._scrollAreaButton) {
+                    var eventNames = 'mousedown';
+                }
+
+                if (that.isTouchDevice) {
+                    that.addHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'), function (event) {
+                        that.isPressed = true;
+                        that.refresh();
+                    });
+                    that.addHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id, function (event) {
                         that.isPressed = false;
                         that.refresh();
+                    });
+                }
+
+                that.addHandler(that.host, eventNames, function (event) {
+                    switch (event.type) {
+                        case 'mouseenter':
+                            if (!that.isTouchDevice) {
+                                if (!that.disabled && that.enableHover) {
+                                    that.isMouseOver = true;
+                                    that.refresh();
+                                }
+                            }
+                            break;
+                        case 'mouseleave':
+                            if (!that.isTouchDevice) {
+                                if (!that.disabled && that.enableHover) {
+                                    that.isMouseOver = false;
+                                    that.refresh();
+                                }
+                            }
+                            break;
+                        case 'mousedown':
+                            if (!that.disabled) {
+                                that.isPressed = true;
+                                that.refresh();
+                            }
+                            break;
+                        case 'focus':
+                            if (!that.disabled) {
+                                that.isFocused = true;
+                                that.refresh();
+                            }
+                            break;
+                        case 'blur':
+                            if (!that.disabled) {
+                                that.isFocused = false;
+                                that.refresh();
+                            }
+                            break;
+                    }
+                });
+
+                that.mouseupfunc = function (event) {
+                    if (!that.disabled) {
+                        if (that.isPressed || that.isMouseOver) {
+                            that.isPressed = false;
+                            that.refresh();
+                        }
                     }
                 }
-            }
 
-            that.addHandler(document, 'mouseup.button' + that.element.id, that.mouseupfunc);
+                that.addHandler(document, 'mouseup.button' + that.element.id, that.mouseupfunc);
 
-            try {
-                if (document.referrer != "" || window.frameElement) {
-                    if (window.top != null && window.top != window.that) {
-                        var parentLocation = '';
-                        if (window.parent && document.referrer) {
-                            parentLocation = document.referrer;
-                        }
+                try {
+                    if (document.referrer != "" || window.frameElement) {
+                        if (window.top != null && window.top != window.that) {
+                            var parentLocation = '';
+                            if (window.parent && document.referrer) {
+                                parentLocation = document.referrer;
+                            }
 
-                        if (parentLocation.indexOf(document.location.host) != -1) {
-                            if (window.top.document) {
-                                window.top.document.addEventListener('mouseup', that._topDocumentMouseupHandler);
+                            if (parentLocation.indexOf(document.location.host) != -1) {
+                                if (window.top.document) {
+                                    window.top.document.addEventListener('mouseup', that._topDocumentMouseupHandler);
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (error) {
-            }
+                catch (error) {
+                }
 
-            that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
-                instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
-                instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
-            };
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
-                    instance.refresh();
-                    instance.element.setAttribute('disabled', value);
-                    instance.element.disabled = value;
-                    if (!value) {
-                        instance.element.style.cursor = instance.cursor;
+                that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
+                    instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
+                    instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
+                };
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.refresh();
+                        instance.element.setAttribute('disabled', value);
+                        instance.element.disabled = value;
+                        if (!value) {
+                            instance.element.style.cursor = instance.cursor;
+                        }
+                        else {
+                            instance.element.style.cursor = 'default';
+                        }
+
+                        $.jqx.aria(instance, "aria-disabled", instance.disabled);
                     }
-                    else {
-                        instance.element.style.cursor = 'default';
+                };
+                that.propertyChangeMap['rtl'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.refresh();
+                    }
+                };
+                that.propertyChangeMap['template'] = function (instance, key, oldVal, value) {
+                    if (oldVal != value) {
+                        instance.buttonObj.removeClass(instance.toThemeProperty("jqx-" + oldVal));
+                        instance.refresh();
+                    }
+                };
+                that.propertyChangeMap['theme'] = function (instance, key, oldVal, value) {
+                    instance.buttonObj.removeClass(instance.element);
+
+                    if (oldVal) {
+                        instance.buttonObj.removeClass('jqx-button-' + oldVal);
+                        instance.buttonObj.removeClass('jqx-widget-' + oldVal);
+                        instance.buttonObj.removeClass('jqx-fill-state-normal-' + oldVal);
+                        instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)) + '-' + oldVal);
                     }
 
-                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
-                }
-            };
-            that.propertyChangeMap['rtl'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
+                    if (instance.enableDefault) {
+                        instance.buttonObj.addClass(instance.toThemeProperty('jqx-button'));
+                    }
+                    instance.buttonObj.addClass(instance.toThemeProperty('jqx-widget'));
+                    if (!instance.overrideTheme) {
+                        instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)));
+                    }
+                    instance._oldCSSCurrent = null;
                     instance.refresh();
-                }
-            };
-            that.propertyChangeMap['template'] = function (instance, key, oldVal, value) {
-                if (oldVal != value) {
-                    instance.buttonObj.removeClass(instance.toThemeProperty("jqx-" + oldVal));
-                    instance.refresh();
-                }
-            };
-            that.propertyChangeMap['theme'] = function (instance, key, oldVal, value) {
-                instance.buttonObj.removeClass(instance.element);
+                };
 
-                if (oldVal) {
-                    instance.buttonObj.removeClass('jqx-button-' + oldVal);
-                    instance.buttonObj.removeClass('jqx-widget-' + oldVal);
-                    instance.buttonObj.removeClass('jqx-fill-state-normal-' + oldVal);
-                    instance.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)) + '-' + oldVal);
+                if (that.disabled) {
+                    that.element.disabled = true;
+                    that.element.setAttribute('disabled', 'true');
                 }
 
-                if (instance.enableDefault) {
-                    instance.buttonObj.addClass(instance.toThemeProperty('jqx-button'));
+                if (that.textPosition) {
+                    $.jqx.utilities.resize(this.host, function () {
+                        that._positionTextAndImage();
+                    });
                 }
-                instance.buttonObj.addClass(instance.toThemeProperty('jqx-widget'));
-                if (!instance.overrideTheme) {
-                    instance.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(instance.roundedCorners)));
-                }
-                instance._oldCSSCurrent = null;
-                instance.refresh();
-            };
+            }, // createInstance
 
-            if (that.disabled) {
-                that.element.disabled = true;
-                that.element.setAttribute('disabled', 'true');
-            }
-			
-			if (that.textPosition){
-			  $.jqx.utilities.resize(this.host, function () {
-				that._positionTextAndImage();
-			  });
-			}
-        }, // createInstance
+            resize: function (width, height) {
+                this.width = width;
+                this.height = height;
+                this._setSize();
+            },
 
-        resize: function (width, height) {
-            this.width = width;
-            this.height = height;
-            this._setSize();
-        },
-
-        val: function (value) {
-            var that = this;
-            var input = that.host.find('input');
-            if (input.length > 0) {
-                if (arguments.length == 0 || typeof (value) == "object") {
+            val: function (value) {
+                var that = this;
+                var input = that.host.find('input');
+                if (input.length > 0) {
+                    if (arguments.length == 0 || typeof (value) == "object") {
+                        return input.val();
+                    }
+                    input.val(value);
+                    that.refresh();
                     return input.val();
                 }
-                input.val(value);
-                that.refresh();
-                return input.val();
-            }
 
-            if (arguments.length == 0 || typeof (value) == "object") {
+                if (arguments.length == 0 || typeof (value) == "object") {
+                    if (that.element.nodeName.toLowerCase() == "button") {
+                        return $(that.element).text();
+                    }
+                    return that.element.value;
+                }
+
+                if (arguments.length > 0 && that._text) {
+                    that._text.innerHTML = arguments[0];
+                    that.refresh();
+
+                    return;
+                }
+                else if (arguments.length > 0 && that.element.nodeName === 'DIV') {
+                    that.element.innerHTML = arguments[0];
+                    that.refresh();
+                }
+
+                that.element.value = arguments[0];
                 if (that.element.nodeName.toLowerCase() == "button") {
-                    return $(that.element).text();
+                    $(that.element).html(arguments[0]);
                 }
-                return that.element.value;
-            }
 
-            if (arguments.length > 0 && that._text) {
-                that._text.innerHTML = arguments[0];
                 that.refresh();
+            },
 
-                return;
-            }
-            else if (arguments.length > 0 && that.element.nodeName === 'DIV') {
-                that.element.innerHTML = arguments[0];
-                that.refresh();
-            }
+            _setSize: function () {
+                var that = this;
+                var height = that.height;
+                var width = that.width;
 
-            that.element.value = arguments[0];
-            if (that.element.nodeName.toLowerCase() == "button") {
-                $(that.element).html(arguments[0]);
-            }
-
-            that.refresh();
-        },
-
-        _setSize: function () {
-            var that = this;
-            var height = that.height;
-            var width = that.width;
-
-            if (height) {
-                if (!isNaN(height)) {
-                    height = height + "px";
+                if (height) {
+                    if (!isNaN(height)) {
+                        height = height + "px";
+                    }
+                    that.element.style.height = height;
                 }
-                that.element.style.height = height;
-            }
 
-            if (width) {
-                if (!isNaN(width)) {
-                    width = width + "px";
+                if (width) {
+                    if (!isNaN(width)) {
+                        width = width + "px";
+                    }
+                    that.element.style.width = width;
                 }
-                that.element.style.width = width;
-            }
-        },
+            },
 
-        _removeHandlers: function () {
-            var that = this;
-            that.removeHandler(that.host, 'selectstart');
-            that.removeHandler(that.host, 'click');
-            that.removeHandler(that.host, 'focus');
-            that.removeHandler(that.host, 'blur');
-            that.removeHandler(that.host, 'mouseenter');
-            that.removeHandler(that.host, 'mouseleave');
-            that.removeHandler(that.host, 'mousedown');
-            that.removeHandler($(document), 'mouseup.button' + that.element.id, that.mouseupfunc);
-            if (that.isTouchDevice) {
-                that.removeHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'));
-                that.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id);
-            }
-            that.mouseupfunc = null;
-            delete that.mouseupfunc;
-        },
-
-        focus: function () {
-            this.host.focus();
-        },
-
-        destroy: function () {
-            var that = this;
-            that._removeHandlers();
-            var vars = $.data(that.element, "jqxButton");
-            if (vars) {
-                delete vars.instance;
-            }
-            that.host.removeClass();
-            that.host.removeData();
-            that.host.remove();
-            delete that.set;
-            delete that.get;
-            delete that.call;
-            delete that.element;
-            delete that.host;
-        },
-
-        render: function () {
-            this.refresh();
-        },
-
-        propertiesChangedHandler: function (object, oldValues, newValues) {
-            if (newValues && newValues.width && newValues.height && Object.keys(newValues).length == 2) {
-                object._setSize();
-                object.refresh();
-            }
-        },
-
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (this.isInitialized == undefined || this.isInitialized == false)
-                return;
-
-            if (value == oldvalue) {
-                return;
-            }
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key === "type") {
-                object.element.setAttribute('type', value);
-            }
-            if (key == "textImageRelation" || key == "textPosition" || key == "imgPosition") {
-                if (object._img) {
-                    object._positionTextAndImage();
+            _removeHandlers: function () {
+                var that = this;
+                that.removeHandler(that.host, 'selectstart');
+                that.removeHandler(that.host, 'click');
+                that.removeHandler(that.host, 'focus');
+                that.removeHandler(that.host, 'blur');
+                that.removeHandler(that.host, 'mouseenter');
+                that.removeHandler(that.host, 'mouseleave');
+                that.removeHandler(that.host, 'mousedown');
+                that.removeHandler($(document), 'mouseup.button' + that.element.id, that.mouseupfunc);
+                if (that.isTouchDevice) {
+                    that.removeHandler(that.host, $.jqx.mobile.getTouchEventName('touchstart'));
+                    that.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchend') + "." + that.element.id);
                 }
-                else object._addImage("jqxButton");
-            }
-            if (key == "imgSrc" || key == "imgWidth" || key == "imgHeight") {
-                object._addImage("jqxButton");
-            }
+                that.mouseupfunc = null;
+                delete that.mouseupfunc;
+            },
 
-            if (key === "value") {
-                object.val(value);
-            }
+            focus: function () {
+                this.host.focus();
+            },
 
-            if (key == "width" || key == "height") {
-                object._setSize();
-                object.refresh();
-            }
-        },
-
-        refresh: function () {
-            var that = this;
-            if (that.overrideTheme)
-                return;
-
-            var cssFocused = that.toThemeProperty('jqx-fill-state-focus');
-            var cssDisabled = that.toThemeProperty('jqx-fill-state-disabled');
-            var cssNormal = that.toThemeProperty('jqx-fill-state-normal');
-
-            if (!that.enableDefault) {
-                cssNormal = "";
-            }
-
-            var cssHover = that.toThemeProperty('jqx-fill-state-hover');
-            var cssPressed = that.toThemeProperty('jqx-fill-state-pressed');
-            var cssPressedHover = that.toThemeProperty('jqx-fill-state-pressed');
-            if (!that.enablePressed) {
-                cssPressed = "";
-            }
-            var cssCurrent = '';
-
-            if (!that.host) {
-                return;
-            }
-
-            that.element.disabled = that.disabled;
-
-            if (that.disabled) {
-                if (that._oldCSSCurrent) {
-                    that.buttonObj.removeClass(that._oldCSSCurrent);
+            destroy: function () {
+                var that = this;
+                that._removeHandlers();
+                var vars = $.data(that.element, "jqxButton");
+                if (vars) {
+                    delete vars.instance;
                 }
-                cssCurrent = cssNormal + " " + cssDisabled;
+                that.host.removeClass();
+                that.host.removeData();
+                that.host.remove();
+                delete that.set;
+                delete that.get;
+                delete that.call;
+                delete that.element;
+                delete that.host;
+            },
+
+            render: function () {
+                this.refresh();
+            },
+
+            propertiesChangedHandler: function (object, oldValues, newValues) {
+                if (newValues && newValues.width && newValues.height && Object.keys(newValues).length == 2) {
+                    object._setSize();
+                    object.refresh();
+                }
+            },
+
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (this.isInitialized == undefined || this.isInitialized == false)
+                    return;
+
+                if (value == oldvalue) {
+                    return;
+                }
+
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key === "type") {
+                    object.element.setAttribute('type', value);
+                }
+                if (key == "textImageRelation" || key == "textPosition" || key == "imgPosition") {
+                    if (object._img) {
+                        object._positionTextAndImage();
+                    }
+                    else object._addImage("jqxButton");
+                }
+                if (key == "imgSrc" || key == "imgWidth" || key == "imgHeight") {
+                    object._addImage("jqxButton");
+                }
+
+                if (key === "value") {
+                    object.val(value);
+                }
+
+                if (key == "width" || key == "height") {
+                    object._setSize();
+                    object.refresh();
+                }
+            },
+
+            refresh: function () {
+                var that = this;
+                if (that.overrideTheme)
+                    return;
+
+                var cssFocused = that.toThemeProperty('jqx-fill-state-focus');
+                var cssDisabled = that.toThemeProperty('jqx-fill-state-disabled');
+                var cssNormal = that.toThemeProperty('jqx-fill-state-normal');
+
+                if (!that.enableDefault) {
+                    cssNormal = "";
+                }
+
+                var cssHover = that.toThemeProperty('jqx-fill-state-hover');
+                var cssPressed = that.toThemeProperty('jqx-fill-state-pressed');
+                var cssPressedHover = that.toThemeProperty('jqx-fill-state-pressed');
+                if (!that.enablePressed) {
+                    cssPressed = "";
+                }
+                var cssCurrent = '';
+
+                if (!that.host) {
+                    return;
+                }
+
+                that.element.disabled = that.disabled;
+
+                if (that.disabled) {
+                    if (that._oldCSSCurrent) {
+                        that.buttonObj.removeClass(that._oldCSSCurrent);
+                    }
+                    cssCurrent = cssNormal + " " + cssDisabled;
+                    if (that.template !== "default" && that.template !== "") {
+                        cssCurrent += " " + "jqx-" + that.template;
+                        if (that.theme != "") {
+                            cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
+                        }
+                    }
+                    that.buttonObj.addClass(cssCurrent);
+                    that._oldCSSCurrent = cssCurrent;
+                    return;
+                }
+                else {
+                    if (that.isMouseOver && !that.isTouchDevice) {
+                        if (that.isPressed)
+                            cssCurrent = cssPressedHover;
+                        else
+                            cssCurrent = cssHover;
+                    }
+                    else {
+                        if (that.isPressed)
+                            cssCurrent = cssPressed;
+                        else
+                            cssCurrent = cssNormal;
+                    }
+                }
+
+                if (that.isFocused) {
+                    cssCurrent += " " + cssFocused;
+                }
+
                 if (that.template !== "default" && that.template !== "") {
                     cssCurrent += " " + "jqx-" + that.template;
                     if (that.theme != "") {
                         cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
                     }
                 }
-                that.buttonObj.addClass(cssCurrent);
-                that._oldCSSCurrent = cssCurrent;
-                return;
+
+                if (cssCurrent != that._oldCSSCurrent) {
+                    if (that._oldCSSCurrent) {
+                        that.buttonObj.removeClass(that._oldCSSCurrent);
+                    }
+                    that.buttonObj.addClass(cssCurrent);
+                    that._oldCSSCurrent = cssCurrent;
+                }
+                if (that.rtl) {
+                    that.buttonObj.addClass(that.toThemeProperty('jqx-rtl'));
+                    that.element.style.direction = 'rtl';
+                }
+
+
+                if (that.isMaterialized()) {
+                    that.host.addClass('buttonRipple');
+                }
             }
-            else {
-                if (that.isMouseOver && !that.isTouchDevice) {
-                    if (that.isPressed)
-                        cssCurrent = cssPressedHover;
-                    else
-                        cssCurrent = cssHover;
+        });
+
+        //// LinkButton
+        $.jqx.jqxWidget("jqxLinkButton", "", {});
+
+        $.extend($.jqx._jqxLinkButton.prototype, {
+            defineInstance: function () {
+                // enables / disables the button
+                this.disabled = false;
+                // sets height to the button.
+                this.height = null;
+                // sets width to the button.
+                this.width = null;
+                this.rtl = false;
+                this.href = null;
+            },
+
+            createInstance: function (args) {
+                var that = this;
+                this.host.onselectstart = function () { return false; };
+                this.host.attr('role', 'button');
+
+                var height = this.height || this.element.offsetHeight;
+                var width = this.width || this.element.offsetWidth;
+                this.href = this.element.getAttribute('href');
+                this.target = this.element.getAttribute('target');
+                this.content = this.host.text();
+                this.element.innerHTML = "";
+                var wrapElement = document.createElement('input');
+                wrapElement.type = "button";
+                wrapElement.className = "jqx-wrapper " + this.toThemeProperty('jqx-reset');
+
+                this._setSize(wrapElement, width, height);
+
+                wrapElement.value = this.content;
+                var helper = new $(this.element);
+                helper.addClass(this.toThemeProperty('jqx-link'));
+                this.element.style.color = 'inherit';
+                this.element.appendChild(wrapElement);
+                this._setSize(wrapElement, width, height);
+
+                var param = args == undefined ? {} : args[0] || {};
+                $(wrapElement).jqxButton(param);
+                this.wrapElement = wrapElement;
+                if (this.disabled) {
+                    this.element.disabled = true;
+                }
+
+                this.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    instance.element.disabled = value;
+                    instance.wrapElement.jqxButton({ disabled: value });
+                }
+
+                this.addHandler($(wrapElement), 'click', function (event) {
+                    if (!this.disabled) {
+                        that.onclick(event);
+                    }
+                    return false;
+                });
+            },
+
+            _setSize: function (element, width, height) {
+                var that = this;
+
+                if (height) {
+                    if (!isNaN(height)) {
+                        height = height + "px";
+                    }
+                    element.style.height = height;
+                }
+
+                if (width) {
+                    if (!isNaN(width)) {
+                        width = width + "px";
+                    }
+                    element.style.width = width;
+                }
+            },
+
+
+            onclick: function (event) {
+                if (this.target != null) {
+                    window.open(this.href, this.target);
                 }
                 else {
-                    if (that.isPressed)
-                        cssCurrent = cssPressed;
-                    else
-                        cssCurrent = cssNormal;
+                    window.location = this.href;
                 }
             }
+        });
+        //// End of LinkButton
 
-            if (that.isFocused) {
-                cssCurrent += " " + cssFocused;
-            }
+        //// RepeatButton
+        $.jqx.jqxWidget("jqxRepeatButton", "jqxButton", {});
 
-            if (that.template !== "default" && that.template !== "") {
-                cssCurrent += " " + "jqx-" + that.template;
-                if (that.theme != "") {
-                    cssCurrent += " " + "jqx-" + that.template + "-" + that.theme;
-                }
-            }
+        $.extend($.jqx._jqxRepeatButton.prototype, {
+            defineInstance: function () {
+                this.delay = 50;
+            },
 
-            if (cssCurrent != that._oldCSSCurrent) {
-                if (that._oldCSSCurrent) {
-                    that.buttonObj.removeClass(that._oldCSSCurrent);
-                }
-                that.buttonObj.addClass(cssCurrent);
-                that._oldCSSCurrent = cssCurrent;
-            }
-            if (that.rtl) {
-                that.buttonObj.addClass(that.toThemeProperty('jqx-rtl'));
-                that.element.style.direction = 'rtl';
-            }
+            createInstance: function (args) {
+                var that = this;
 
+                var isTouchDevice = $.jqx.mobile.isTouchDevice();
 
-            if (that.isMaterialized()) {
-                that.host.addClass('buttonRipple');
-            }
-        }
-    });
+                var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
+                var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
 
-    //// LinkButton
-    $.jqx.jqxWidget("jqxLinkButton", "", {});
+                this.addHandler($(document), up, function (event) {
+                    if (that.timeout != null) {
+                        clearTimeout(that.timeout);
+                        that.timeout = null;
+                        that.refresh();
+                    }
+                    if (that.timer != undefined) {
+                        clearInterval(that.timer);
+                        that.timer = null;
+                        that.refresh();
+                    }
+                });
 
-    $.extend($.jqx._jqxLinkButton.prototype, {
-        defineInstance: function () {
-            // enables / disables the button
-            this.disabled = false;
-            // sets height to the button.
-            this.height = null;
-            // sets width to the button.
-            this.width = null;
-            this.rtl = false;
-            this.href = null;
-        },
+                this.addHandler(this.base.host, down, function (event) {
+                    if (that.timer != null) {
+                        clearInterval(that.timer);
+                    }
 
-        createInstance: function (args) {
-            var that = this;
-            this.host.onselectstart = function () { return false; };
-            this.host.attr('role', 'button');
+                    that.timeout = setTimeout(function () {
+                        clearInterval(that.timer);
+                        that.timer = setInterval(function (event) { that.ontimer(event); }, that.delay);
+                    }, 150);
+                });
 
-            var height = this.height || this.element.offsetHeight;
-            var width = this.width || this.element.offsetWidth;
-            this.href = this.element.getAttribute('href');
-            this.target = this.element.getAttribute('target');
-            this.content = this.host.text();
-            this.element.innerHTML = "";
-            var wrapElement = document.createElement('input');
-            wrapElement.type = "button";
-            wrapElement.className = "jqx-wrapper " + this.toThemeProperty('jqx-reset');
-
-            this._setSize(wrapElement, width, height);
-
-            wrapElement.value = this.content;
-            var helper = new $(this.element);
-            helper.addClass(this.toThemeProperty('jqx-link'));
-            this.element.style.color = 'inherit';
-            this.element.appendChild(wrapElement);
-            this._setSize(wrapElement, width, height);
-
-            var param = args == undefined ? {} : args[0] || {};
-            $(wrapElement).jqxButton(param);
-            this.wrapElement = wrapElement;
-            if (this.disabled) {
-                this.element.disabled = true;
-            }
-
-            this.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                instance.element.disabled = value;
-                instance.wrapElement.jqxButton({ disabled: value });
-            }
-
-            this.addHandler($(wrapElement), 'click', function (event) {
-                if (!this.disabled) {
-                    that.onclick(event);
-                }
-                return false;
-            });
-        },
-
-        _setSize: function (element, width, height) {
-            var that = this;
-
-            if (height) {
-                if (!isNaN(height)) {
-                    height = height + "px";
-                }
-                element.style.height = height;
-            }
-
-            if (width) {
-                if (!isNaN(width)) {
-                    width = width + "px";
-                }
-                element.style.width = width;
-            }
-        },
-
-
-        onclick: function (event) {
-            if (this.target != null) {
-                window.open(this.href, this.target);
-            }
-            else {
-                window.location = this.href;
-            }
-        }
-    });
-    //// End of LinkButton
-
-    //// RepeatButton
-    $.jqx.jqxWidget("jqxRepeatButton", "jqxButton", {});
-
-    $.extend($.jqx._jqxRepeatButton.prototype, {
-        defineInstance: function () {
-            this.delay = 50;
-        },
-
-        createInstance: function (args) {
-            var that = this;
-
-            var isTouchDevice = $.jqx.mobile.isTouchDevice();
-
-            var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
-            var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
-
-            this.addHandler($(document), up, function (event) {
-                if (that.timeout != null) {
-                    clearTimeout(that.timeout);
-                    that.timeout = null;
-                    that.refresh();
-                }
-                if (that.timer != undefined) {
-                    clearInterval(that.timer);
-                    that.timer = null;
-                    that.refresh();
-                }
-            });
-
-            this.addHandler(this.base.host, down, function (event) {
-                if (that.timer != null) {
-                    clearInterval(that.timer);
-                }
-
-                that.timeout = setTimeout(function () {
-                    clearInterval(that.timer);
-                    that.timer = setInterval(function (event) { that.ontimer(event); }, that.delay);
-                }, 150);
-            });
-
-            this.mousemovefunc = function (event) {
-                if (!isTouchDevice) {
-                    if (event.which == 0) {
-                        if (that.timer != null) {
-                            clearInterval(that.timer);
-                            that.timer = null;
+                this.mousemovefunc = function (event) {
+                    if (!isTouchDevice) {
+                        if (event.which == 0) {
+                            if (that.timer != null) {
+                                clearInterval(that.timer);
+                                that.timer = null;
+                            }
                         }
                     }
                 }
-            }
 
-            this.addHandler(this.base.host, 'mousemove', this.mousemovefunc);
-        },
+                this.addHandler(this.base.host, 'mousemove', this.mousemovefunc);
+            },
 
-        destroy: function () {
-            var isTouchDevice = $.jqx.mobile.isTouchDevice();
-            var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
-            var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
-            this.removeHandler(this.base.host, 'mousemove', this.mousemovefunc);
-            this.removeHandler(this.base.host, down);
-            this.removeHandler($(document), up);
-            this.timer = null;
-            delete this.mousemovefunc;
-            delete this.timer;
-            var vars = $.data(this.base.element, "jqxRepeatButton");
-            if (vars) {
-                delete vars.instance;
-            }
-            $(this.base.element).removeData();
-            this.base.destroy();
-            delete this.base;
-
-        },
-
-        stop: function () {
-            clearInterval(this.timer);
-            this.timer = null;
-        },
-
-        ontimer: function (event) {
-            var event = new $.Event('click');
-            if (this.base != null && this.base.host != null) {
-                this.base.host.trigger(event);
-            }
-        }
-    });
-    //// End of RepeatButton
-    //// ToggleButton
-    $.jqx.jqxWidget("jqxToggleButton", "jqxButton", {});
-
-    $.extend($.jqx._jqxToggleButton.prototype, {
-        defineInstance: function () {
-            this.toggled = false;
-            this.uiToggle = true;
-            this.aria =
-            {
-                "aria-checked": { name: "toggled", type: "boolean" },
-                "aria-disabled": { name: "disabled", type: "boolean" }
-            };
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            that.base.overrideTheme = true;
-            that.isTouchDevice = $.jqx.mobile.isTouchDevice();
-            $.jqx.aria(this);
-
-            that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
-                instance.base.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
-                instance.base.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
-            };
-
-            that.propertyChangeMap['toggled'] = function (instance, key, oldVal, value) {
-                instance.refresh();
-            };
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                instance.base.disabled = value;
-                instance.refresh();
-            };
-
-            that.addHandler(that.base.host, 'click', function (event) {
-                if (!that.base.disabled && that.uiToggle) {
-                    that.toggle();
+            destroy: function () {
+                var isTouchDevice = $.jqx.mobile.isTouchDevice();
+                var up = !isTouchDevice ? 'mouseup.' + this.base.element.id : 'touchend.' + this.base.element.id;
+                var down = !isTouchDevice ? 'mousedown.' + this.base.element.id : 'touchstart.' + this.base.element.id;
+                this.removeHandler(this.base.host, 'mousemove', this.mousemovefunc);
+                this.removeHandler(this.base.host, down);
+                this.removeHandler($(document), up);
+                this.timer = null;
+                delete this.mousemovefunc;
+                delete this.timer;
+                var vars = $.data(this.base.element, "jqxRepeatButton");
+                if (vars) {
+                    delete vars.instance;
                 }
-            });
+                $(this.base.element).removeData();
+                this.base.destroy();
+                delete this.base;
 
-            if (!that.isTouchDevice) {
-                that.addHandler(that.base.host, 'mouseenter', function (event) {
+            },
+
+            stop: function () {
+                clearInterval(this.timer);
+                this.timer = null;
+            },
+
+            ontimer: function (event) {
+                var event = new $.Event('click');
+                if (this.base != null && this.base.host != null) {
+                    this.base.host.trigger(event);
+                }
+            }
+        });
+        //// End of RepeatButton
+        //// ToggleButton
+        $.jqx.jqxWidget("jqxToggleButton", "jqxButton", {});
+
+        $.extend($.jqx._jqxToggleButton.prototype, {
+            defineInstance: function () {
+                this.toggled = false;
+                this.uiToggle = true;
+                this.aria =
+                {
+                    "aria-checked": { name: "toggled", type: "boolean" },
+                    "aria-disabled": { name: "disabled", type: "boolean" }
+                };
+            },
+
+            createInstance: function (args) {
+                var that = this;
+                that.base.overrideTheme = true;
+                that.isTouchDevice = $.jqx.mobile.isTouchDevice();
+                $.jqx.aria(this);
+                that.base.host.attr('role', 'checkbox');
+
+                that.propertyChangeMap['roundedCorners'] = function (instance, key, oldVal, value) {
+                    instance.base.buttonObj.removeClass(instance.toThemeProperty($.jqx.cssroundedcorners(oldVal)));
+                    instance.base.buttonObj.addClass(instance.toThemeProperty($.jqx.cssroundedcorners(value)));
+                };
+
+                that.propertyChangeMap['toggled'] = function (instance, key, oldVal, value) {
+                    instance.refresh();
+                };
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    instance.base.disabled = value;
+                    instance.refresh();
+                };
+
+                that.addHandler(that.base.host, 'click', function (event) {
+                    if (!that.base.disabled && that.uiToggle) {
+                        that.toggle();
+                    }
+                });
+
+                if (!that.isTouchDevice) {
+                    that.addHandler(that.base.host, 'mouseenter', function (event) {
+                        if (!that.base.disabled) {
+                            that.refresh();
+                        }
+                    });
+
+                    that.addHandler(that.base.host, 'mouseleave', function (event) {
+                        if (!that.base.disabled) {
+                            that.refresh();
+                        }
+                    });
+                }
+
+                that.addHandler(that.base.host, 'mousedown', function (event) {
                     if (!that.base.disabled) {
                         that.refresh();
                     }
                 });
 
-                that.addHandler(that.base.host, 'mouseleave', function (event) {
+                that.addHandler($(document), 'mouseup.togglebutton' + that.base.element.id, function (event) {
                     if (!that.base.disabled) {
                         that.refresh();
                     }
                 });
-            }
+            },
 
-            that.addHandler(that.base.host, 'mousedown', function (event) {
-                if (!that.base.disabled) {
-                    that.refresh();
+            destroy: function () {
+                this._removeHandlers();
+                this.base.destroy();
+            },
+
+            _removeHandlers: function () {
+                this.removeHandler(this.base.host, 'click');
+                this.removeHandler(this.base.host, 'mouseenter');
+                this.removeHandler(this.base.host, 'mouseleave');
+                this.removeHandler(this.base.host, 'mousedown');
+                this.removeHandler($(document), 'mouseup.togglebutton' + this.base.element.id);
+            },
+
+            toggle: function () {
+                this.toggled = !this.toggled;
+                this.refresh();
+                $.jqx.aria(this, "aria-checked", this.toggled);
+            },
+
+            unCheck: function () {
+                this.toggled = false;
+                this.refresh();
+            },
+
+            check: function () {
+                this.toggled = true;
+                this.refresh();
+            },
+
+            refresh: function () {
+                var that = this;
+                var cssDisabled = that.base.toThemeProperty('jqx-fill-state-disabled');
+                var cssNormal = that.base.toThemeProperty('jqx-fill-state-normal');
+                if (!that.base.enableDefault) {
+                    cssNormal = "";
                 }
-            });
+                var cssHover = that.base.toThemeProperty('jqx-fill-state-hover');
+                var cssPressed = that.base.toThemeProperty('jqx-fill-state-pressed');
+                var cssPressedHover = that.base.toThemeProperty('jqx-fill-state-pressed');
+                var cssCurrent = '';
+                that.base.element.disabled = that.base.disabled;
 
-            that.addHandler($(document), 'mouseup.togglebutton' + that.base.element.id, function (event) {
-                if (!that.base.disabled) {
-                    that.refresh();
-                }
-            });
-        },
-
-        destroy: function () {
-            this._removeHandlers();
-            this.base.destroy();
-        },
-
-        _removeHandlers: function () {
-            this.removeHandler(this.base.host, 'click');
-            this.removeHandler(this.base.host, 'mouseenter');
-            this.removeHandler(this.base.host, 'mouseleave');
-            this.removeHandler(this.base.host, 'mousedown');
-            this.removeHandler($(document), 'mouseup.togglebutton' + this.base.element.id);
-        },
-
-        toggle: function () {
-            this.toggled = !this.toggled;
-            this.refresh();
-            $.jqx.aria(this, "aria-checked", this.toggled);
-        },
-
-        unCheck: function () {
-            this.toggled = false;
-            this.refresh();
-        },
-
-        check: function () {
-            this.toggled = true;
-            this.refresh();
-        },
-
-        refresh: function () {
-            var that = this;
-            var cssDisabled = that.base.toThemeProperty('jqx-fill-state-disabled');
-            var cssNormal = that.base.toThemeProperty('jqx-fill-state-normal');
-            if (!that.base.enableDefault) {
-                cssNormal = "";
-            }
-            var cssHover = that.base.toThemeProperty('jqx-fill-state-hover');
-            var cssPressed = that.base.toThemeProperty('jqx-fill-state-pressed');
-            var cssPressedHover = that.base.toThemeProperty('jqx-fill-state-pressed');
-            var cssCurrent = '';
-            that.base.element.disabled = that.base.disabled;
-
-            if (that.base.disabled) {
-                cssCurrent = cssNormal + " " + cssDisabled;
-                that.base.buttonObj.addClass(cssCurrent);
-                return;
-            }
-            else {
-                if (that.base.isMouseOver && !that.isTouchDevice) {
-                    if (that.base.isPressed || that.toggled)
-                        cssCurrent = cssPressedHover;
-                    else
-                        cssCurrent = cssHover;
+                if (that.base.disabled) {
+                    cssCurrent = cssNormal + " " + cssDisabled;
+                    that.base.buttonObj.addClass(cssCurrent);
+                    return;
                 }
                 else {
-                    if (that.base.isPressed || that.toggled)
-                        cssCurrent = cssPressed;
-                    else
-                        cssCurrent = cssNormal;
+                    if (that.base.isMouseOver && !that.isTouchDevice) {
+                        if (that.base.isPressed || that.toggled)
+                            cssCurrent = cssPressedHover;
+                        else
+                            cssCurrent = cssHover;
+                    }
+                    else {
+                        if (that.base.isPressed || that.toggled)
+                            cssCurrent = cssPressed;
+                        else
+                            cssCurrent = cssNormal;
+                    }
                 }
-            }
 
-            if (that.base.template !== "default" && that.base.template !== "") {
-                cssCurrent += " " + "jqx-" + that.base.template;
-                if (that.base.theme != "") {
-                    cssCurrent += " " + "jqx-" + that.template + "-" + that.base.theme;
+                if (that.base.template !== "default" && that.base.template !== "") {
+                    cssCurrent += " " + "jqx-" + that.base.template;
+                    if (that.base.theme != "") {
+                        cssCurrent += " " + "jqx-" + that.template + "-" + that.base.theme;
+                    }
                 }
+
+                if (that.base.buttonObj.hasClass(cssDisabled) && cssDisabled != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssDisabled);
+                }
+
+                if (that.base.buttonObj.hasClass(cssNormal) && cssNormal != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssNormal);
+                }
+
+                if (that.base.buttonObj.hasClass(cssHover) && cssHover != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssHover);
+                }
+
+                if (that.base.buttonObj.hasClass(cssPressed) && cssPressed != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssPressed);
+                }
+
+                if (that.base.buttonObj.hasClass(cssPressedHover) && cssPressedHover != cssCurrent) {
+                    that.base.buttonObj.removeClass(cssPressedHover);
+                }
+
+                if (!that.base.buttonObj.hasClass(cssCurrent)) {
+                    that.base.buttonObj.addClass(cssCurrent);
+                }
+            },
+
+            _topDocumentMouseupHandler: function (event) {
+                var that = this;
+                that.isPressed = false;
+                that.refresh();
             }
+        });
+        //// End of ToggleButton
 
-            if (that.base.buttonObj.hasClass(cssDisabled) && cssDisabled != cssCurrent) {
-                that.base.buttonObj.removeClass(cssDisabled);
-            }
-
-            if (that.base.buttonObj.hasClass(cssNormal) && cssNormal != cssCurrent) {
-                that.base.buttonObj.removeClass(cssNormal);
-            }
-
-            if (that.base.buttonObj.hasClass(cssHover) && cssHover != cssCurrent) {
-                that.base.buttonObj.removeClass(cssHover);
-            }
-
-            if (that.base.buttonObj.hasClass(cssPressed) && cssPressed != cssCurrent) {
-                that.base.buttonObj.removeClass(cssPressed);
-            }
-
-            if (that.base.buttonObj.hasClass(cssPressedHover) && cssPressedHover != cssCurrent) {
-                that.base.buttonObj.removeClass(cssPressedHover);
-            }
-
-            if (!that.base.buttonObj.hasClass(cssCurrent)) {
-                that.base.buttonObj.addClass(cssCurrent);
-            }
-        },
-
-        _topDocumentMouseupHandler: function (event) {
-            var that = this;
-            that.isPressed = false;
-            that.refresh();
-        }
-    });
-    //// End of ToggleButton
-
-})(jqxBaseFramework);
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1213,837 +1200,1755 @@ License: https://jqwidgets.com/license/ */
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
-(function ($) {
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
+    (function ($) {
 
-    $.jqx.jqxWidget("jqxComboBox", "", {});
+        $.jqx.jqxWidget("jqxComboBox", "", {});
 
-    $.extend($.jqx._jqxComboBox.prototype, {
-        defineInstance: function () {
-            var settings = {
-                // enables/disables the combobox.
-                disabled: false,
-                // gets or sets the listbox width.
-                width: 200,
-                // gets or sets the listbox height.
-                height: 25,
-                // Represents the collection of list items.
-                items: new Array(),
-                // Gets or sets the selected index.
-                selectedIndex: -1,
-                selectedItems: new Array(),
-                _selectedItems: new Array(),
-                // data source.
-                source: null,
-                autoItemsHeight: false,
-                // gets or sets the scrollbars size.
-                scrollBarSize: $.jqx.utilities.scrollBarSize,
-                // gets or sets the scrollbars size.
-                arrowSize: 17,
-                // enables/disables the hover state.
-                enableHover: true,
-                // enables/disables the selection.
-                enableSelection: true,
-                // gets the visible items. // this property is internal for the combobox.
-                visualItems: new Array(),
-                // gets the groups. // this property is internal for the combobox.
-                groups: new Array(),
-                // gets or sets whether the items width should be equal to the combobox's width.
-                equalItemsWidth: true,
-                // gets or sets the height of the ListBox Items. When the itemHeight:= - 1, each item's height is equal to its desired height.
-                itemHeight: -1,
-                // represents the combobox's events.
-                visibleItems: new Array(),
-                // emptry group's text.
-                hint: true,
-                emptyGroupText: 'Group',
-                emptyString: "",
-                ready: null,
-                // Type: Number
-                // Default: 100
-                // Showing Popup Animation's delay.
-                openDelay: 250,
-                // Type: Number
-                // Default: 200
-                // Hiding Popup Animation's delay.
-                closeDelay: 300,
-                // default, none
-                // Type: String.
-                // enables or disables the animation.
-                animationType: 'default',
-                // Type: String
-                // Default: auto ( the drop down takes the combobox's width.)
-                // Sets the popup's width.
-                dropDownWidth: 'auto',
-                // Type: String
-                // Default: 200px ( the height is 200px )
-                // Sets the popup's height.
-                dropDownHeight: '200px',
-                // Type: Boolean
-                // Default: false
-                // Sets the popup's height to be equal to the items summary height,
-                autoDropDownHeight: false,
-                // Type: Boolean
-                // Default: false
-                // Enables or disables the browser detection.
-                enableBrowserBoundsDetection: false,
-                dropDownHorizontalAlignment: 'left',
-                dropDownVerticalAlignment: 'bottom',
-                dropDownContainer: "default",
-                // Type: String
-                // Default: startswithignorecase
-                // Possible Values: 'none, 'contains', 'containsignorecase', 'equals', 'equalsignorecase', 'startswithignorecase', 'startswith', 'endswithignorecase', 'endswith'
-                searchMode: 'startswithignorecase',
-                autoComplete: false,
-                remoteAutoComplete: false,
-                remoteAutoCompleteDelay: 500,
-                selectionMode: "default",
-                minLength: 2,
-                displayMember: "",
-                valueMember: "",
-                groupMember: "",
-                searchMember: "",
-                keyboardSelection: true,
-                renderer: null,
-                autoOpen: false,
-                template: "",
-                checkboxes: false,
-                promptText: "",
-                placeHolder: "",
-                rtl: false,
-                listBox: null,
-                validateSelection: null,
-                showCloseButtons: true,
-                renderSelectedItem: null,
-                search: null,
-                popupZIndex: 2000,
-                searchString: null,
-                multiSelect: false,
-                showArrow: true,
-                _disabledItems: new Array(),
-                touchMode: 'auto',
-                autoBind: true,
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
-                },
-                events:
-                    [
-                        // occurs when the combobox is opened.
-                        'open',
-                        // occurs when the combobox is closed.
-                        'close',
-                        // occurs when an item is selected.
-                        'select',
-                        // occurs when an item is unselected.
-                        'unselect',
-                        // occurs when the selection is changed.
-                        'change',
-                        // triggered when the user checks or unchecks an item.
-                        'checkChange',
-                        // triggered when the binding is completed.
-                        'bindingComplete',
-                        // triggered when a new item is added.
-                        'itemAdd',
-                        // triggered when a new item is removed.
-                        'itemRemove',
-                        // triggered when a new item is updated.
-                        'itemUpdate'
-                    ]
-            };
-            if (this === $.jqx._jqxComboBox.prototype) {
-                return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
-
-        createInstance: function (args) {
-            var that = this;
-            this.host.attr('role', 'combobox');
-            $.jqx.aria(this, "aria-autocomplete", "both");
-
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw new Error("jqxComboBox: Missing reference to jqxlistbox.js.");
-            }
-            $.jqx.aria(this);
-
-            if (that.isMaterialized()) {
-                var elementStyle = window.getComputedStyle(this.element);
-                var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
-                var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
-                var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
-
-                if (arrowSize) {
-                    this.arrowSize = parseInt(arrowSize);
-                }
-                else {
-                    this.arrowSize = 25;
-                }
-
-                if (animation && this.animationType == "default") {
-                    this.animationType = animation.trim();
-                }
-
-                if (rowHeight && this.itemHeight === -1) {
-                    this.itemHeight = parseInt(rowHeight);
-                }
-            }
-
-            // prompt text is deprecated.
-            if (this.promptText != "") {
-                this.placeHolder = this.promptText;
-            }
-
-            this.render();
-        },
-
-        render: function () {
-            var that = this;
-            var nodeName = that.element.nodeName.toLowerCase();
-            if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
-                that.field = that.element;
-                if (that.field.className) {
-                    that._className = that.field.className;
-                }
-
-                var properties = {
-                    'title': that.field.title
+        $.extend($.jqx._jqxComboBox.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    // enables/disables the combobox.
+                    disabled: false,
+                    // gets or sets the listbox width.
+                    width: 200,
+                    // gets or sets the listbox height.
+                    height: 25,
+                    // Represents the collection of list items.
+                    items: new Array(),
+                    // Gets or sets the selected index.
+                    selectedIndex: -1,
+                    selectedItems: new Array(),
+                    _selectedItems: new Array(),
+                    // data source.
+                    source: null,
+                    autoItemsHeight: false,
+                    // gets or sets the scrollbars size.
+                    scrollBarSize: $.jqx.utilities.scrollBarSize,
+                    // gets or sets the scrollbars size.
+                    arrowSize: 17,
+                    // enables/disables the hover state.
+                    enableHover: true,
+                    // enables/disables the selection.
+                    enableSelection: true,
+                    // gets the visible items. // this property is internal for the combobox.
+                    visualItems: new Array(),
+                    // gets the groups. // this property is internal for the combobox.
+                    groups: new Array(),
+                    // gets or sets whether the items width should be equal to the combobox's width.
+                    equalItemsWidth: true,
+                    // gets or sets the height of the ListBox Items. When the itemHeight:= - 1, each item's height is equal to its desired height.
+                    itemHeight: -1,
+                    // represents the combobox's events.
+                    visibleItems: new Array(),
+                    // emptry group's text.
+                    hint: true,
+                    emptyGroupText: 'Group',
+                    emptyString: "",
+                    ready: null,
+                    // Type: Number
+                    // Default: 100
+                    // Showing Popup Animation's delay.
+                    openDelay: 250,
+                    // Type: Number
+                    // Default: 200
+                    // Hiding Popup Animation's delay.
+                    closeDelay: 300,
+                    // default, none
+                    // Type: String.
+                    // enables or disables the animation.
+                    animationType: 'default',
+                    // Type: String
+                    // Default: auto ( the drop down takes the combobox's width.)
+                    // Sets the popup's width.
+                    dropDownWidth: 'auto',
+                    // Type: String
+                    // Default: 200px ( the height is 200px )
+                    // Sets the popup's height.
+                    dropDownHeight: '200px',
+                    // Type: Boolean
+                    // Default: false
+                    // Sets the popup's height to be equal to the items summary height,
+                    autoDropDownHeight: false,
+                    // Type: Boolean
+                    // Default: false
+                    // Enables or disables the browser detection.
+                    enableBrowserBoundsDetection: false,
+                    dropDownHorizontalAlignment: 'left',
+                    dropDownVerticalAlignment: 'bottom',
+                    dropDownContainer: "default",
+                    // Type: String
+                    // Default: startswithignorecase
+                    // Possible Values: 'none, 'contains', 'containsignorecase', 'equals', 'equalsignorecase', 'startswithignorecase', 'startswith', 'endswithignorecase', 'endswith'
+                    searchMode: 'startswithignorecase',
+                    autoComplete: false,
+                    remoteAutoComplete: false,
+                    remoteAutoCompleteDelay: 500,
+                    selectionMode: "default",
+                    minLength: 2,
+                    displayMember: "",
+                    valueMember: "",
+                    groupMember: "",
+                    searchMember: "",
+                    keyboardSelection: true,
+                    renderer: null,
+                    autoOpen: false,
+                    template: "",
+                    checkboxes: false,
+                    promptText: "",
+                    placeHolder: "",
+                    rtl: false,
+                    listBox: null,
+                    validateSelection: null,
+                    showCloseButtons: true,
+                    renderSelectedItem: null,
+                    search: null,
+                    popupZIndex: 2000,
+                    searchString: null,
+                    multiSelect: false,
+                    showArrow: true,
+                    _disabledItems: new Array(),
+                    touchMode: 'auto',
+                    autoBind: true,
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    },
+                    events:
+                        [
+                            // occurs when the combobox is opened.
+                            'open',
+                            // occurs when the combobox is closed.
+                            'close',
+                            // occurs when an item is selected.
+                            'select',
+                            // occurs when an item is unselected.
+                            'unselect',
+                            // occurs when the selection is changed.
+                            'change',
+                            // triggered when the user checks or unchecks an item.
+                            'checkChange',
+                            // triggered when the binding is completed.
+                            'bindingComplete',
+                            // triggered when a new item is added.
+                            'itemAdd',
+                            // triggered when a new item is removed.
+                            'itemRemove',
+                            // triggered when a new item is updated.
+                            'itemUpdate'
+                        ]
                 };
+                if (this === $.jqx._jqxComboBox.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
+                return settings;
+            },
 
-                if (that.field.id.length) {
-                    properties.id = that.field.id.replace(/[^\w]/g, '_') + "_jqxComboBox";
+            createInstance: function (args) {
+                var that = this;
+                this.host.attr('role', 'combobox');
+                this.host.attr('aria-expanded', 'false');
+                $.jqx.aria(this, "aria-autocomplete", "both");
+
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw new Error("jqxComboBox: Missing reference to jqxlistbox.js.");
+                }
+                $.jqx.aria(this);
+
+                if (that.isMaterialized()) {
+                    var elementStyle = window.getComputedStyle(this.element);
+                    var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
+                    var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
+                    var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
+
+                    if (arrowSize) {
+                        this.arrowSize = parseInt(arrowSize);
+                    }
+                    else {
+                        this.arrowSize = 25;
+                    }
+
+                    if (animation && this.animationType == "default") {
+                        this.animationType = animation.trim();
+                    }
+
+                    if (rowHeight && this.itemHeight === -1) {
+                        this.itemHeight = parseInt(rowHeight);
+                    }
+                }
+
+                // prompt text is deprecated.
+                if (this.promptText != "") {
+                    this.placeHolder = this.promptText;
+                }
+
+                this.render();
+            },
+
+            render: function () {
+                var that = this;
+                var nodeName = that.element.nodeName.toLowerCase();
+                if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
+                    that.field = that.element;
+                    if (that.field.className) {
+                        that._className = that.field.className;
+                    }
+
+                    var properties = {
+                        'title': that.field.title
+                    };
+
+                    if (that.field.id.length) {
+                        properties.id = that.field.id.replace(/[^\w]/g, '_') + "_jqxComboBox";
+                    }
+                    else {
+                        properties.id = $.jqx.utilities.createId() + "_jqxComboBox";
+                    }
+
+                    var wrapper = $("<div></div>", properties);
+                    if (!that.width) {
+                        that.width = $(that.field).width();
+                    }
+                    if (!that.height) {
+                        that.height = $(that.field).outerHeight();
+                    }
+
+                    that.element.style.cssText = that.field.style.cssText;
+                    $(that.field).hide().after(wrapper);
+                    var data = that.host.data();
+                    that.host = wrapper;
+                    that.host.data(data);
+                    that.element = wrapper[0];
+                    that.element.id = that.field.id;
+                    that.field.id = properties.id;
+                    if (that._className) {
+                        that.host.addClass(that._className);
+                        $(that.field).removeClass(that._className);
+                    }
+
+                    if (that.field.tabIndex) {
+                        var tabIndex = that.field.tabIndex;
+                        that.field.tabIndex = -1;
+                        that.element.tabIndex = tabIndex;
+                    }
+                    if (that.field.innerHTML != "") {
+                        var result = $.jqx.parseSourceTag(that.field);
+                        that.source = result.items;
+                        if (that.selectedIndex == -1)
+                            that.selectedIndex = result.index;
+                    }
                 }
                 else {
-                    properties.id = $.jqx.utilities.createId() + "_jqxComboBox";
-                }
-
-                var wrapper = $("<div></div>", properties);
-                if (!that.width) {
-                    that.width = $(that.field).width();
-                }
-                if (!that.height) {
-                    that.height = $(that.field).outerHeight();
-                }
-
-                that.element.style.cssText = that.field.style.cssText;
-                $(that.field).hide().after(wrapper);
-                var data = that.host.data();
-                that.host = wrapper;
-                that.host.data(data);
-                that.element = wrapper[0];
-                that.element.id = that.field.id;
-                that.field.id = properties.id;
-                if (that._className) {
-                    that.host.addClass(that._className);
-                    $(that.field).removeClass(that._className);
-                }
-
-                if (that.field.tabIndex) {
-                    var tabIndex = that.field.tabIndex;
-                    that.field.tabIndex = -1;
-                    that.element.tabIndex = tabIndex;
-                }
-                if (that.field.innerHTML != "") {
-                    var result = $.jqx.parseSourceTag(that.field);
-                    that.source = result.items;
-                    if (that.selectedIndex == -1)
-                        that.selectedIndex = result.index;
-                }
-            }
-            else {
-                if (that.host.find('li').length > 0 || that.host.find('option').length > 0) {
-                    var result = $.jqx.parseSourceTag(that.element);
-                    that.source = result.items;
-                }
-            }
-            that.removeHandlers();
-            that.isanimating = false;
-            that.id = $.jqx.utilities.createId();
-            that.element.innerHTML = "";
-            var comboStructure = $("<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
-                "<div id='dropdownlistWrapper' style='padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;'>" +
-                "<div id='dropdownlistContent' style='padding: 0; margin: 0; border-top: none; border-bottom: none; float: left; position: absolute;'></div>" +
-                "<div id='dropdownlistArrow' role='button' style='padding: 0; margin: 0; border-left-width: 1px; border-bottom-width: 0px; border-top-width: 0px; border-right-width: 0px; float: right; position: absolute;'></div>" +
-                "</div>" +
-                "</div>");
-            that.comboStructure = comboStructure;
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw "jqxComboBox: Missing reference to jqxlistbox.js.";
-            }
-
-            that.touch = $.jqx.mobile.isTouchDevice();
-            if (that.touchMode === true) {
-                that.touch = true;
-            }
-
-            that.host.append(comboStructure);
-
-            that.dropdownlistWrapper = that.host.find('#dropdownlistWrapper');
-            that.dropdownlistArrow = that.host.find('#dropdownlistArrow');
-            that.dropdownlistContent = that.host.find('#dropdownlistContent');
-            that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content'));
-            that.dropdownlistContent.addClass(that.toThemeProperty('jqx-widget-content'));
-            that.dropdownlistWrapper[0].id = "dropdownlistWrapper" + that.element.id;
-            that.dropdownlistArrow[0].id = "dropdownlistArrow" + that.element.id;
-            that.dropdownlistContent[0].id = "dropdownlistContent" + that.element.id;
-            if (that.template) {
-                that.dropdownlistArrow.addClass(that.toThemeProperty("jqx-" + that.template + ""));
-            }
-            that.dropdownlistContent.append($('<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0; padding: 0; padding-left: 3px; padding-right: 3px; border: 0;" type="textarea"/>'));
-            that.input = that.dropdownlistContent.find('input');
-            that.input.addClass(that.toThemeProperty('jqx-combobox-input'));
-            that.input.addClass(that.toThemeProperty('jqx-widget-content'));
-
-            if (that.host.attr('tabindex')) {
-                that.input.attr('tabindex', that.host.attr('tabindex'));
-                that.host.removeAttr('tabindex');
-            }
-
-
-            var label = $("<label></label>");
-            if (this.hint) {
-                label[0].innerHTML = this.placeHolder;
-            }
-
-            label.addClass(that.toThemeProperty('jqx-input-label'));
-            that.dropdownlistWrapper.append(label);
-            that.label = label;
-
-            var bar = $("<span></span>");
-            that.dropdownlistWrapper.append(bar);
-            bar.addClass(that.toThemeProperty('jqx-input-bar'));
-            that.bar = bar;
-
-            var that = this;
-
-            if (that.template) {
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-            }
-
-            that._addInput();
-            if (that.rtl) {
-                that.input.css({ direction: "rtl" });
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-rtl'));
-            }
-
-            try {
-                var listBoxID = 'listBox' + that.id;
-                var oldContainer = $($.find('#' + listBoxID));
-                if (oldContainer.length > 0) {
-                    oldContainer.remove();
-                }
-                $.jqx.aria(this, "aria-owns", listBoxID);
-                $.jqx.aria(this, "aria-haspopup", true);
-                $.jqx.aria(this, "aria-multiline", false);
-                if (that.listBoxContainer) that.listBoxContainer.jqxListBox('destroy');
-                if (that.container) that.container.remove();
-                var container = $("<div style='overflow: hidden; border: none; background-color: transparent; position: absolute;' id='listBox" + that.id + "'><div id='innerListBox" + that.id + "'></div></div>");
-                container.hide();
-                if (that.dropDownContainer == "element") {
-                    container.appendTo(that.host);
-                }
-                else {
-                    container.appendTo(document.body);
-                }
-                container.addClass(that.toThemeProperty('jqx-listbox-container'));
-
-                that.container = container;
-                that.listBoxContainer = $($.find('#innerListBox' + that.id));
-
-                var width = that.width;
-                if (that.dropDownWidth != 'auto') {
-                    width = that.dropDownWidth;
-                }
-
-                if (that.dropDownHeight == null) {
-                    that.dropDownHeight = 200;
-                }
-
-                that.container.width(parseInt(width) + 25);
-                that.container.height(parseInt(that.dropDownHeight) + 25);
-                that._ready = false;
-
-                that.addHandler(that.listBoxContainer, 'bindingComplete', function (event) {
-                    if (!that.listBox) {
-                        that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                    if (that.host.find('li').length > 0 || that.host.find('option').length > 0) {
+                        var result = $.jqx.parseSourceTag(that.element);
+                        that.source = result.items;
                     }
-                    if (!that._ready) {
-                        if (that.ready) {
-                            that.ready();
-                        }
-                        that._ready = true;
-                    }
-                    that._raiseEvent('6');
-                });
-                that.addHandler(that.listBoxContainer, 'itemAdd', function (event) {
-                    that._raiseEvent('7', event.args);
-                });
-                that.addHandler(that.listBoxContainer, 'itemRemove', function (event) {
-                    that._raiseEvent('8', event.args);
-                });
-                that.addHandler(that.listBoxContainer, 'itemUpdate', function (event) {
-                    that._raiseEvent('9', event.args);
-                });
-
-                var initializing = true;
-                that.listBoxContainer.jqxListBox({
-                    autoItemsHeight: that.autoItemsHeight,
-                    _checkForHiddenParent: false, allowDrop: false, allowDrag: false,
-                    checkboxes: that.checkboxes, emptyString: that.emptyString, autoBind: !that.remoteAutoComplete && that.autoBind,
-                    renderer: that.renderer, rtl: that.rtl, itemHeight: that.itemHeight, selectedIndex: that.selectedIndex, incrementalSearch: false, width: width, scrollBarSize: that.scrollBarSize, autoHeight: that.autoDropDownHeight, height: that.dropDownHeight, groupMember: that.groupMember, searchMember: that.searchMember, displayMember: that.displayMember, valueMember: that.valueMember, source: that.source, theme: that.theme,
-                    rendered: function () {
-                        that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
-                        if (that.remoteAutoComplete) {
-                            if (that.autoDropDownHeight) {
-                                that.container.height(that.listBox.virtualSize.height + 25);
-                                that.listBoxContainer.height(that.listBox.virtualSize.height);
-                                that.listBox._arrange();
-                            }
-                            else {
-                                that.listBox._arrange();
-                                that.listBox.ensureVisible(0);
-                                that.listBox._renderItems();
-                                that.container.height(that.listBoxContainer.height() + 25);
-                            }
-
-                            if (that.searchString != undefined && that.searchString.length >= that.minLength) {
-                                var items = that.listBoxContainer.jqxListBox('items');
-                                if (items) {
-                                    if (items.length > 0) {
-                                        if (!that.isOpened()) {
-                                            that.open();
-                                        }
-                                    }
-                                    else that.close();
-                                } else that.close();
-                            }
-                            else {
-                                that.close();
-                            }
-                        }
-                        else {
-                            that.renderSelection('mouse');
-                            if (that.multiSelect) {
-                                that.doMultiSelect(false);
-                            }
-                        }
-
-                        if (that.rendered) {
-                            that.rendered();
-                        }
-                    }
-                });
-
-                if (that.dropDownContainer == "element") {
-                    that.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
                 }
-                else {
-                    that.listBoxContainer.css({ position: 'absolute', zIndex: that.popupZIndex, top: 0, left: 0 });
+                that.removeHandlers();
+                that.isanimating = false;
+                that.id = $.jqx.utilities.createId();
+                that.element.innerHTML = "";
+                var comboStructure = $("<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
+                    "<div id='dropdownlistWrapper' style='padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;'>" +
+                    "<div id='dropdownlistContent' style='padding: 0; margin: 0; border-top: none; border-bottom: none; float: left; position: absolute;'></div>" +
+                    "<div id='dropdownlistArrow' role='button' style='padding: 0; margin: 0; border-left-width: 1px; border-bottom-width: 0px; border-top-width: 0px; border-right-width: 0px; float: right; position: absolute;'></div>" +
+                    "</div>" +
+                    "</div>");
+                that.comboStructure = comboStructure;
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw "jqxComboBox: Missing reference to jqxlistbox.js.";
                 }
-                that.listBoxContainer.css('border-top-width', '1px');
-                that.listBoxContainer.addClass(that.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    that.listBoxContainer.addClass(that.toThemeProperty('jqx-noshadow'));
+
+                that.touch = $.jqx.mobile.isTouchDevice();
+                if (that.touchMode === true) {
+                    that.touch = true;
                 }
+
+                that.host.append(comboStructure);
+
+                that.dropdownlistWrapper = that.host.find('#dropdownlistWrapper');
+                that.dropdownlistArrow = that.host.find('#dropdownlistArrow');
+                that.dropdownlistContent = that.host.find('#dropdownlistContent');
+                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content'));
+                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.dropdownlistWrapper[0].id = "dropdownlistWrapper" + that.element.id;
+                that.dropdownlistArrow[0].id = "dropdownlistArrow" + that.element.id;
+                that.dropdownlistContent[0].id = "dropdownlistContent" + that.element.id;
                 if (that.template) {
-                    that.listBoxContainer.addClass(that.toThemeProperty("jqx-" + that.template + "-item"));
+                    that.dropdownlistArrow.addClass(that.toThemeProperty("jqx-" + that.template + ""));
+                }
+                that.dropdownlistContent.append($('<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0; padding: 0; padding-left: 3px; padding-right: 3px; border: 0;" type="textarea"/>'));
+                that.input = that.dropdownlistContent.find('input');
+                that.input.addClass(that.toThemeProperty('jqx-combobox-input'));
+                that.input.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.input[0].setAttribute('aria-label', 'input');
+
+                if (that.host.attr('tabindex')) {
+                    that.input.attr('tabindex', that.host.attr('tabindex'));
+                    that.host.removeAttr('tabindex');
                 }
 
-                that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
-                that.listBox.enableSelection = that.enableSelection;
-                that.listBox.enableHover = that.enableHover;
-                that.listBox.equalItemsWidth = that.equalItemsWidth;
-                that.listBox._arrange();
-                that.addHandler(that.listBoxContainer, 'unselect', function (event) {
-                    if (!that.multiSelect) {
-                        that._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+
+                var label = $("<label></label>");
+                if (this.hint) {
+                    label[0].innerHTML = this.placeHolder;
+                }
+
+                label.addClass(that.toThemeProperty('jqx-input-label'));
+                that.dropdownlistWrapper.append(label);
+                that.label = label;
+
+                var bar = $("<span></span>");
+                that.dropdownlistWrapper.append(bar);
+                bar.addClass(that.toThemeProperty('jqx-input-bar'));
+                that.bar = bar;
+
+                var that = this;
+
+                if (that.template) {
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+                }
+
+                that._addInput();
+                if (that.rtl) {
+                    that.input.css({ direction: "rtl" });
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-rtl'));
+                }
+
+                try {
+                    var listBoxID = 'listBox' + that.id;
+                    var oldContainer = $($.find('#' + listBoxID));
+                    if (oldContainer.length > 0) {
+                        oldContainer.remove();
                     }
-                });
-
-                that.addHandler(that.listBoxContainer, 'change', function (event) {
-                    if (!that.multiSelect) {
-                        that.selectedIndex = that.listBox.selectedIndex;
-                        that._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
-                    }
-                });
-
-                if (that.animationType == 'none') {
-                    that.container.css('display', 'none');
-                }
-                else {
-                    that.container.hide();
-                }
-                initializing = false;
-            }
-            catch (e) {
-                throw e;
-            }
-
-
-            var that = this;
-            that.input.attr('disabled', that.disabled);
-            var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
-            if (!ie7) {
-                if (that.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = that.placeHolder;
-                }
-                else {
-                    that.input.attr('placeholder', that.placeHolder);
-                }
-            }
-
-            that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (value) {
-                    instance.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                    instance.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-                }
-                else {
-                    instance.host.removeClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                    instance.host.removeClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-                }
-                instance.input.attr('disabled', instance.disabled);
-                $.jqx.aria(instance, "aria-disabled", instance.disabled);
-                instance.input.attr('disabled', instance.disabled);
-            }
-
-            if (that.disabled) {
-                that.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
-                that.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
-            }
-
-            that.host.addClass(that.toThemeProperty('jqx-combobox-state-normal'));
-            that.host.addClass(that.toThemeProperty('jqx-combobox'));
-            that.host.addClass(that.toThemeProperty('jqx-rc-all'));
-            that.host.addClass(that.toThemeProperty('jqx-widget'));
-            that.host.addClass(that.toThemeProperty('jqx-widget-content'));
-            that.dropdownlistArrowIcon = $("<div></div>");
-            if (that.dropDownVerticalAlignment == "top") {
-                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
-            }
-            else {
-                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down'));
-            }
-            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon'));
-            that.dropdownlistArrow.append(that.dropdownlistArrowIcon);
-            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-normal'));
-            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-normal'));
-            if (!that.rtl) {
-                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-r'));
-            }
-            else {
-                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-l'));
-            }
-
-            that._setSize();
-            that._updateHandlers();
-
-            that.addHandler(that.input, 'keyup.textchange', function (event) {
-                if (that._writeTimer) clearTimeout(that._writeTimer);
-                that._writeTimer = setTimeout(function () {
-                    var foundMatch = that._search(event);
-                    if (that.cinput && that.input) {
-                        if (!that.displayMember) {
-                            that.cinput[0].value = that.input[0].value;
-                        }
-                        else {
-                            that._updateInputSelection();
-                        }
-                    }
-                }, 50);
-            });
-
-            // fix for IE7
-            if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                if (that.host.parents('.jqx-window').length > 0) {
-                    var zIndex = that.host.parents('.jqx-window').css('z-index');
-                    container.css('z-index', zIndex + 10);
-                    that.listBoxContainer.css('z-index', zIndex + 10);
-                }
-            }
-
-            if (that.checkboxes) {
-                that.input.attr('readonly', true);
-                $.jqx.aria(this, "aria-readonly", true);
-            }
-            else {
-                $.jqx.aria(this, "aria-readonly", false);
-            }
-            if (!that.remoteAutoComplete) {
-                that.searchString = "";
-            }
-
-            this.bar.css('top', this.host.height());
-        },
-
-        _addInput: function () {
-            var name = this.host.attr('name');
-            this.cinput = $("<input type='hidden'/>");
-            this.host.append(this.cinput);
-            if (name) {
-                this.cinput.attr('name', name);
-            }
-        },
-
-        _updateInputSelection: function () {
-            if (this.cinput) {
-                var selectedValues = new Array();
-                if (this.selectedIndex == -1) {
-                    this.cinput.val("");
-                }
-                else {
-                    var selectedItem = this.getSelectedItem();
-                    if (selectedItem != null) {
-                        this.cinput.val(selectedItem.value);
-                        selectedValues.push(selectedItem.value);
+                    $.jqx.aria(this, "aria-owns", listBoxID);
+                    $.jqx.aria(this, "aria-haspopup", true);
+                    if (that.listBoxContainer) that.listBoxContainer.jqxListBox('destroy');
+                    if (that.container) that.container.remove();
+                    var container = $("<div style='overflow: hidden; border: none; background-color: transparent; position: absolute;' id='listBox" + that.id + "'><div id='innerListBox" + that.id + "'></div></div>");
+                    container.hide();
+                    if (that.dropDownContainer == "element") {
+                        container.appendTo(that.host);
                     }
                     else {
-                        this.cinput.val(this.dropdownlistContent.text());
+                        container.appendTo(document.body);
                     }
-                }
+                    container.addClass(that.toThemeProperty('jqx-listbox-container'));
 
-                if (this.checkboxes || this.multiSelect) {
-                    if (!this.multiSelect) {
-                        var items = this.getCheckedItems();
-                    }
-                    else {
-                        var items = this.getSelectedItems();
+                    that.container = container;
+                    that.listBoxContainer = $($.find('#innerListBox' + that.id));
+
+                    var width = that.width;
+                    if (that.dropDownWidth != 'auto') {
+                        width = that.dropDownWidth;
                     }
 
-                    var str = "";
-                    if (items != null) {
-                        for (var i = 0; i < items.length; i++) {
-                            if (i == items.length - 1) {
-                                str += items[i].value;
+                    if (that.dropDownHeight == null) {
+                        that.dropDownHeight = 200;
+                    }
+
+                    that.container.width(parseInt(width) + 25);
+                    that.container.height(parseInt(that.dropDownHeight) + 25);
+                    that._ready = false;
+
+                    that.addHandler(that.listBoxContainer, 'bindingComplete', function (event) {
+                        if (!that.listBox) {
+                            that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                        }
+                        if (!that._ready) {
+                            if (that.ready) {
+                                that.ready();
+                            }
+                            that._ready = true;
+                        }
+                        that._raiseEvent('6');
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemAdd', function (event) {
+                        that._raiseEvent('7', event.args);
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemRemove', function (event) {
+                        that._raiseEvent('8', event.args);
+                    });
+                    that.addHandler(that.listBoxContainer, 'itemUpdate', function (event) {
+                        that._raiseEvent('9', event.args);
+                    });
+
+                    var initializing = true;
+                    that.listBoxContainer.jqxListBox({
+                        autoItemsHeight: that.autoItemsHeight,
+                        _checkForHiddenParent: false, allowDrop: false, allowDrag: false,
+                        checkboxes: that.checkboxes, emptyString: that.emptyString, autoBind: !that.remoteAutoComplete && that.autoBind,
+                        renderer: that.renderer, rtl: that.rtl, itemHeight: that.itemHeight, selectedIndex: that.selectedIndex, incrementalSearch: false, width: width, scrollBarSize: that.scrollBarSize, autoHeight: that.autoDropDownHeight, height: that.dropDownHeight, groupMember: that.groupMember, searchMember: that.searchMember, displayMember: that.displayMember, valueMember: that.valueMember, source: that.source, theme: that.theme,
+                        rendered: function () {
+                            that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                            if (that.remoteAutoComplete) {
+                                if (that.autoDropDownHeight) {
+                                    that.container.height(that.listBox.virtualSize.height + 25);
+                                    that.listBoxContainer.height(that.listBox.virtualSize.height);
+                                    that.listBox._arrange();
+                                }
+                                else {
+                                    that.listBox._arrange();
+                                    that.listBox.ensureVisible(0);
+                                    that.listBox._renderItems();
+                                    that.container.height(that.listBoxContainer.height() + 25);
+                                }
+
+                                if (that.searchString != undefined && that.searchString.length >= that.minLength) {
+                                    var items = that.listBoxContainer.jqxListBox('items');
+                                    if (items) {
+                                        if (items.length > 0) {
+                                            if (!that.isOpened()) {
+                                                that.open();
+                                            }
+                                        }
+                                        else that.close();
+                                    } else that.close();
+                                }
+                                else {
+                                    that.close();
+                                }
                             }
                             else {
-                                str += items[i].value + ",";
+                                that.renderSelection('mouse');
+                                if (that.multiSelect) {
+                                    that.doMultiSelect(false);
+                                }
                             }
-                            selectedValues.push(items[i].value);
+
+                            if (that.rendered) {
+                                that.rendered();
+                            }
                         }
-                    }
-                    this.cinput.val(str);
-                }
-                if (this.field && this.cinput) {
-                    if (this.field.nodeName.toLowerCase() == "select") {
-                        $.each(this.field, function (index, value) {
-                            $(this).removeAttr('selected');
-                            this.selected = selectedValues.indexOf(this.value) >= 0;
-                            if (this.selected) {
-                                $(this).attr('selected', true);
-                            }
-                        });
+                    });
+
+                    if (that.dropDownContainer == "element") {
+                        that.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
                     }
                     else {
-                        $.each(this.items, function (index, value) {
-                            $(this.originalItem.originalItem).removeAttr('data-selected');
-                            this.selected = selectedValues.indexOf(this.value) >= 0;
-                            if (this.selected) {
-                                $(this.originalItem.originalItem).attr('data-selected', true);
-                            }
-                        });
+                        that.listBoxContainer.css({ position: 'absolute', zIndex: that.popupZIndex, top: 0, left: 0 });
                     }
+                    that.listBoxContainer.css('border-top-width', '1px');
+                    that.listBoxContainer.addClass(that.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        that.listBoxContainer.addClass(that.toThemeProperty('jqx-noshadow'));
+                    }
+                    if (that.template) {
+                        that.listBoxContainer.addClass(that.toThemeProperty("jqx-" + that.template + "-item"));
+                    }
+
+                    that.listBox = $.data(that.listBoxContainer[0], "jqxListBox").instance;
+                    that.listBox.enableSelection = that.enableSelection;
+                    that.listBox.enableHover = that.enableHover;
+                    that.listBox.equalItemsWidth = that.equalItemsWidth;
+                    that.listBox._arrange();
+                    that.addHandler(that.listBoxContainer, 'unselect', function (event) {
+                        if (!that.multiSelect) {
+                            that._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+                        }
+                    });
+
+                    that.addHandler(that.listBoxContainer, 'change', function (event) {
+                        if (!that.multiSelect) {
+                            that.selectedIndex = that.listBox.selectedIndex;
+                            that._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
+                        }
+                    });
+
+                    if (that.animationType == 'none') {
+                        that.container.css('display', 'none');
+                    }
+                    else {
+                        that.container.hide();
+                    }
+                    initializing = false;
                 }
-            }
-        },
-
-        _search: function (event) {
-            var that = this;
-
-            if (event.keyCode == 9)
-                return;
-
-            if (that.searchMode == 'none' || that.searchMode == null || that.searchMode == 'undefined') {
-                return;
-            }
-
-            if (event.keyCode == 16 || event.keyCode == 17 || event.keyCode == 20)
-                return;
-
-            if (that.checkboxes) {
-                return;
-            }
-
-            if (that.multiSelect) {
-                var span = $("<span style='visibility: hidden; white-space: nowrap;'>" + document.createTextNode(that.input.val()) + "</span>");
-                span.addClass(that.toThemeProperty('jqx-widget'));
-                $(document.body).append(span);
-                var width = span.width() + 15;
-                span.remove();
-
-                if (width > that.host.width()) {
-                    width = that.host.width();
-                }
-                if (width < 25) {
-                    width = 25;
+                catch (e) {
+                    throw e;
                 }
 
-                that.input.css('width', width + 'px');
-                if (that.selectedItems.length == 0) {
-                    that.input.css('width', '100%');
 
-                    if (!that.isMaterialized()) {
+                var that = this;
+                that.input.attr('disabled', that.disabled);
+                var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
+                if (!ie7) {
+                    if (that.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = that.placeHolder;
+                    }
+                    else {
                         that.input.attr('placeholder', that.placeHolder);
                     }
                 }
+
+                that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (value) {
+                        instance.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                        instance.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                    }
+                    else {
+                        instance.host.removeClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                        instance.host.removeClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                    }
+                    instance.input.attr('disabled', instance.disabled);
+                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
+                    instance.input.attr('disabled', instance.disabled);
+                }
+
+                if (that.disabled) {
+                    that.host.addClass(that.toThemeProperty('jqx-combobox-state-disabled'));
+                    that.host.addClass(that.toThemeProperty('jqx-fill-state-disabled'));
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-disabled'));
+                }
+
+                that.host.addClass(that.toThemeProperty('jqx-combobox-state-normal'));
+                that.host.addClass(that.toThemeProperty('jqx-combobox'));
+                that.host.addClass(that.toThemeProperty('jqx-rc-all'));
+                that.host.addClass(that.toThemeProperty('jqx-widget'));
+                that.host.addClass(that.toThemeProperty('jqx-widget-content'));
+                that.dropdownlistArrowIcon = $("<div></div>");
+                if (that.dropDownVerticalAlignment == "top") {
+                    that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
+                }
                 else {
-                    if (!that.isMaterialized()) {
-                        that.input.attr('placeholder', "");
-                    }
+                    that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down'));
+                }
+                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon'));
+                that.dropdownlistArrow.append(that.dropdownlistArrowIcon);
+                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-normal'));
+                that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-normal'));
+                that.dropdownlistArrow[0].setAttribute('aria-label', 'expand');
+
+                if (!that.rtl) {
+                    that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-r'));
+                }
+                else {
+                    that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-rc-l'));
                 }
 
-                var top = parseInt(this._findPos(that.host[0])[1]) + parseInt(that.host.outerHeight()) - 1 + 'px';
-                var isMobileBrowser = false;// $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
-                if ((isMobileBrowser != null && isMobileBrowser)) {
-                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(that.host.outerHeight());
-                    if ($('body').css('border-top-width') != '0px') {
-                        top = parseInt(top) - this._getBodyOffset().top + 'px';
-                    }
-                }
+                that._setSize();
+                that._updateHandlers();
 
-                that.container.css('top', top);
-                var height = parseInt(that.host.height());
-                that.dropdownlistArrow.height(height);
-            }
+                that.addHandler(that.input, 'paste.textchange', function (event) {
+                    if (that._writeTimer) clearTimeout(that._writeTimer);
+                    that._writeTimer = setTimeout(function () {
+                        that.ctrlKey = false;
 
-            if (!that.isanimating) {
-                if (event.altKey && event.keyCode == 38) {
-                    that.hideListBox('altKey');
-                    return false;
-                }
-
-                if (event.altKey && event.keyCode == 40) {
-                    if (!that.isOpened()) {
-                        that.showListBox('altKey');
-                    }
-                    return false;
-                }
-            }
-
-            if (event.keyCode == 37 || event.keyCode == 39)
-                return false;
-
-            if (event.altKey || event.keyCode == 18)
-                return;
-
-            if (event.keyCode >= 33 && event.keyCode <= 40) {
-                return;
-            }
-
-            if (event.ctrlKey || that.ctrlKey) {
-                if (event.keyCode != 88 && event.keyCode != 86) {
-                    return;
-                }
-            }
-
-            var value = that.input.val();
-            if (value.length == 0 && !that.autoComplete) {
-                that.listBox.searchString = that.input.val();
-                that.listBox.clearSelection();
-                that.hideListBox('search');
-                that.searchString = that.input.val();
-                return;
-            }
-
-            if (that.remoteAutoComplete) {
-                var that = this;
-                var clearListSelection = function () {
-                    that.listBox.vScrollInstance.value = 0;
-                }
-
-                if (value.length >= that.minLength) {
-                    if (!event.ctrlKey && !event.altKey) {
-                        if (that.searchString != value) {
-                            var source = that.listBoxContainer.jqxListBox('source');
-                            if (source == null) {
-                                that.listBoxContainer.jqxListBox({ source: that.source });
+                        var foundMatch = that._search(event);
+                        if (that.cinput && that.input) {
+                            if (!that.displayMember) {
+                                that.cinput[0].value = that.input[0].value;
                             }
-                            if (that._searchTimer) {
-                                clearTimeout(that._searchTimer);
-                            }
-                            if (event.keyCode != 13 && event.keyCode != 27) {
-                                that._searchTimer = setTimeout(function () {
-                                    clearListSelection();
-                                    if (that.autoDropDownHeight) {
-                                        that.listBox.autoHeight = true;
-                                    }
-                                    that.searchString = that.input.val();
-                                    if (that.search != null) {
-                                        that.search(that.input.val());
-                                    }
-                                    else {
-                                        throw "'search' function is not defined";
-                                    }
-
-                                }, that.remoteAutoCompleteDelay);
+                            else {
+                                that._updateInputSelection();
                             }
                         }
-                        that.searchString = value;
+                    }, 50);
+                });
+
+                that.addHandler(that.input, 'keyup.textchange', function (event) {
+                    if (that._writeTimer) clearTimeout(that._writeTimer);
+                    that._writeTimer = setTimeout(function () {
+                        var foundMatch = that._search(event);
+                        if (that.cinput && that.input) {
+                            if (!that.displayMember) {
+                                that.cinput[0].value = that.input[0].value;
+                            }
+                            else {
+                                that._updateInputSelection();
+                            }
+                        }
+                    }, 50);
+                });
+
+                // fix for IE7
+                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                    if (that.host.parents('.jqx-window').length > 0) {
+                        var zIndex = that.host.parents('.jqx-window').css('z-index');
+                        container.css('z-index', zIndex + 10);
+                        that.listBoxContainer.css('z-index', zIndex + 10);
                     }
                 }
+
+                if (that.checkboxes) {
+                    that.input.attr('readonly', true);
+                    $.jqx.aria(this, "aria-readonly", true);
+                }
                 else {
-                    if (that._searchTimer) clearTimeout(that._searchTimer);
-                    clearListSelection();
+                    $.jqx.aria(this, "aria-readonly", false);
+                }
+                if (!that.remoteAutoComplete) {
                     that.searchString = "";
-                    that.search("");
-                    that.listBoxContainer.jqxListBox({ source: null });
                 }
-                return;
-            }
 
-            var that = this;
-            if (value === that.searchString) {
-                return;
-            }
+                this.bar.css('top', this.host.height());
+            },
 
-            if (!(event.keyCode == '27' || event.keyCode == '13')) {
-                var currentValue = that.input[0].value;
-                var matches = that._updateItemsVisibility(value);
-                var matchItems = matches.matchItems;
-                if (that.autoComplete && that.autoItemsHeight) {
-                    that.input[0].value = currentValue;
+            _addInput: function () {
+                var name = this.host.attr('name');
+                this.cinput = $("<input type='hidden'/>");
+                this.host.append(this.cinput);
+                if (name) {
+                    this.cinput.attr('name', name);
                 }
-                var index = matches.index;
-                if (!that.autoComplete && !that.remoteAutoComplete) {
-                    if (!that.multiSelect || (that.multiSelect && index >= 0)) {
-                        that.listBox.selectIndex(index);
-                        var isInView = that.listBox.isIndexInView(index);
-                        if (!isInView) {
-                            that.listBox.ensureVisible(index);
+            },
+
+            _updateInputSelection: function () {
+                if (this.cinput) {
+                    var selectedValues = new Array();
+                    if (this.selectedIndex == -1) {
+                        this.cinput.val("");
+                    }
+                    else {
+                        var selectedItem = this.getSelectedItem();
+                        if (selectedItem != null) {
+                            this.cinput.val(selectedItem.value);
+                            selectedValues.push(selectedItem.value);
                         }
                         else {
-                            that.listBox._renderItems();
+                            this.cinput.val(this.dropdownlistContent.text());
+                        }
+                    }
+
+                    if (this.checkboxes || this.multiSelect) {
+                        if (!this.multiSelect) {
+                            var items = this.getCheckedItems();
+                        }
+                        else {
+                            var items = this.getSelectedItems();
+                        }
+
+                        var str = "";
+                        if (items != null) {
+                            for (var i = 0; i < items.length; i++) {
+                                if (i == items.length - 1) {
+                                    str += items[i].value;
+                                }
+                                else {
+                                    str += items[i].value + ",";
+                                }
+                                selectedValues.push(items[i].value);
+                            }
+                        }
+                        this.cinput.val(str);
+                    }
+                    if (this.field && this.cinput) {
+                        if (this.field.nodeName.toLowerCase() == "select") {
+                            $.each(this.field, function (index, value) {
+                                $(this).removeAttr('selected');
+                                this.selected = selectedValues.indexOf(this.value) >= 0;
+                                if (this.selected) {
+                                    $(this).attr('selected', true);
+                                }
+                            });
+                        }
+                        else {
+                            $.each(this.items, function (index, value) {
+                                $(this.originalItem.originalItem).removeAttr('data-selected');
+                                this.selected = selectedValues.indexOf(this.value) >= 0;
+                                if (this.selected) {
+                                    $(this.originalItem.originalItem).attr('data-selected', true);
+                                }
+                            });
+                        }
+                    }
+                }
+            },
+
+            _search: function (event) {
+                var that = this;
+
+                if (event.keyCode == 9)
+                    return;
+
+                if (that.searchMode == 'none' || that.searchMode == null || that.searchMode == 'undefined') {
+                    return;
+                }
+
+                if (event.keyCode == 16 || event.keyCode == 17 || event.keyCode == 20)
+                    return;
+
+                if (that.checkboxes) {
+                    return;
+                }
+
+                if (that.multiSelect) {
+                    var span = $("<span style='visibility: hidden; white-space: nowrap;'>" + document.createTextNode(that.input.val()) + "</span>");
+                    span.addClass(that.toThemeProperty('jqx-widget'));
+                    $(document.body).append(span);
+                    var width = span.width() + 15;
+                    span.remove();
+
+                    if (width > that.host.width()) {
+                        width = that.host.width();
+                    }
+                    if (width < 25) {
+                        width = 25;
+                    }
+
+                    that.input.css('width', width + 'px');
+                    if (that.selectedItems.length == 0) {
+                        that.input.css('width', '100%');
+
+                        if (!that.isMaterialized()) {
+                            that.input.attr('placeholder', that.placeHolder);
+                        }
+                    }
+                    else {
+                        if (!that.isMaterialized()) {
+                            that.input.attr('placeholder', "");
+                        }
+                    }
+
+                    var top = parseInt(this._findPos(that.host[0])[1]) + parseInt(that.host.outerHeight()) - 1 + 'px';
+                    var isMobileBrowser = false;// $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+                    if ((isMobileBrowser != null && isMobileBrowser)) {
+                        top = $.jqx.mobile.getTopPos(this.element) + parseInt(that.host.outerHeight());
+                        if ($('body').css('border-top-width') != '0px') {
+                            top = parseInt(top) - this._getBodyOffset().top + 'px';
+                        }
+                    }
+
+                    that.container.css('top', top);
+                    var height = parseInt(that.host.height());
+                    that.dropdownlistArrow.height(height);
+                }
+
+                if (!that.isanimating) {
+                    if (event.altKey && event.keyCode == 38) {
+                        that.hideListBox('altKey');
+                        return false;
+                    }
+
+                    if (event.altKey && event.keyCode == 40) {
+                        if (!that.isOpened()) {
+                            that.showListBox('altKey');
+                        }
+                        return false;
+                    }
+                }
+
+                if (event.keyCode == 37 || event.keyCode == 39)
+                    return false;
+
+                if (event.altKey || event.keyCode == 18)
+                    return;
+
+                if (event.keyCode >= 33 && event.keyCode <= 40) {
+                    return;
+                }
+
+                if (event.ctrlKey || that.ctrlKey) {
+                    if (event.keyCode != 88 && event.keyCode != 86) {
+                        return;
+                    }
+                }
+
+                var value = that.input.val();
+                if (value.length == 0 && !that.autoComplete) {
+                    that.listBox.searchString = that.input.val();
+                    that.listBox.clearSelection();
+                    that.hideListBox('search');
+                    that.searchString = that.input.val();
+                    return;
+                }
+
+                if (that.remoteAutoComplete) {
+                    var that = this;
+                    var clearListSelection = function () {
+                        that.listBox.vScrollInstance.value = 0;
+                    }
+
+                    if (value.length >= that.minLength) {
+                        if (!event.ctrlKey && !event.altKey) {
+                            if (that.searchString != value) {
+                                var source = that.listBoxContainer.jqxListBox('source');
+                                if (source == null) {
+                                    that.listBoxContainer.jqxListBox({ source: that.source });
+                                }
+                                if (that._searchTimer) {
+                                    clearTimeout(that._searchTimer);
+                                }
+                                if (event.keyCode != 13 && event.keyCode != 27) {
+                                    that._searchTimer = setTimeout(function () {
+                                        clearListSelection();
+                                        if (that.autoDropDownHeight) {
+                                            that.listBox.autoHeight = true;
+                                        }
+                                        that.searchString = that.input.val();
+                                        if (that.search != null) {
+                                            that.search(that.input.val());
+                                        }
+                                        else {
+                                            throw "'search' function is not defined";
+                                        }
+
+                                    }, that.remoteAutoCompleteDelay);
+                                }
+                            }
+                            that.searchString = value;
+                        }
+                    }
+                    else {
+                        if (that._searchTimer) clearTimeout(that._searchTimer);
+                        clearListSelection();
+                        that.searchString = "";
+                        that.search("");
+                        that.listBoxContainer.jqxListBox({ source: null });
+                    }
+                    return;
+                }
+
+                var that = this;
+                if (value === that.searchString) {
+                    return;
+                }
+
+                if (!(event.keyCode == '27' || event.keyCode == '13')) {
+                    var currentValue = that.input[0].value;
+                    var matches = that._updateItemsVisibility(value);
+                    var matchItems = matches.matchItems;
+                    if (that.autoComplete && that.autoItemsHeight) {
+                        that.input[0].value = currentValue;
+                    }
+                    var index = matches.index;
+                    if (!that.autoComplete && !that.remoteAutoComplete) {
+                        if (!that.multiSelect || (that.multiSelect && index >= 0)) {
+                            that.listBox.selectIndex(index);
+                            var isInView = that.listBox.isIndexInView(index);
+                            if (!isInView) {
+                                that.listBox.ensureVisible(index);
+                            }
+                            else {
+                                that.listBox._renderItems();
+                            }
+                        }
+                    }
+
+                    if (that.autoComplete && matchItems.length === 0) {
+                        that.hideListBox('search');
+                    }
+                }
+
+                if (event.keyCode == '13') {
+                    var isOpen = that.container.css('display') == 'block';
+                    if (isOpen && !that.isanimating) {
+                        that.hideListBox('keyboard');
+                        that._oldvalue = that.listBox.selectedValue;
+                        return;
+                    }
+                }
+                else if (event.keyCode == '27') {
+                    var isOpen = that.container.css('display') == 'block';
+                    if (isOpen && !that.isanimating) {
+                        if (!that.multiSelect) {
+                            var item = that.listBox.getVisibleItem(that._oldvalue);
+                            if (item) {
+                                var that = this;
+                                setTimeout(
+                                    function () {
+                                        if (that.autoComplete) {
+                                            that._updateItemsVisibility("");
+                                        }
+                                        that.listBox.selectIndex(item.index);
+                                        that.renderSelection('api');
+                                    }, that.closeDelay);
+                            }
+                            else {
+                                that.clearSelection();
+                            }
+                        }
+                        else {
+                            that.input.val("");
+                            that.listBox.selectedValue = null;
+                        }
+
+                        that.hideListBox('keyboard');
+                        that.renderSelection('api');
+                        event.preventDefault();
+                        return false;
+                    }
+                }
+                else {
+                    if (!that.isOpened() && !that.opening && !event.ctrlKey) {
+                        if (that.listBox.visibleItems && that.listBox.visibleItems.length > 0) {
+                            if (that.input.val() != that.searchString && that.searchString != undefined && index != -1) {
+                                that.showListBox('search');
+                            }
+                        }
+                    }
+                    that.searchString = that.input.val();
+
+                    if (that.searchString == "") {
+                        if (!that.listBox.itemsByValue[""]) {
+                            index = -1;
+                            if (!that.multiSelect) {
+                                that.clearSelection();
+                            }
+                        }
+                    }
+
+                    var item = that.listBox.getVisibleItem(index);
+
+                    if (item != undefined) {
+                        that._updateInputSelection();
+                    }
+                }
+            },
+
+            val: function (value) {
+                if (!this.input) return "";
+                var isEmpty = function (obj) {
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key))
+                            return false;
+                    }
+
+                    if (typeof value == "number")
+                        return false;
+                    if (typeof value == "date")
+                        return false;
+                    if (typeof value == "boolean")
+                        return false;
+                    if (typeof value == "string")
+                        return false;
+
+                    return true;
+                }
+
+                if (isEmpty(value) || arguments.length == 0) {
+                    var item = this.getSelectedItem();
+                    if (item) {
+                        return item.value;
+                    }
+
+
+                    return this.input.val();
+                }
+                else {
+                    var item = this.getItemByValue(value);
+                    if (item != null) {
+                        this.selectItem(item);
+                    }
+                    else {
+                        this.input.val(value);
+                    }
+                    return this.input.val();
+                }
+            },
+
+            focus: function () {
+                var that = this;
+                var doFocus = function () {
+                    that.input.focus();
+                    var val = that.input.val();
+                    that._setSelection(0, val.length);
+                }
+                doFocus();
+                setTimeout(function () {
+                    doFocus();
+                }, 10);
+            },
+
+            _setSelection: function (start, end) {
+                try {
+                    if ('selectionStart' in this.input[0]) {
+                        this.input[0].focus();
+                        this.input[0].setSelectionRange(start, end);
+                    }
+                    else {
+                        var range = this.input[0].createTextRange();
+                        range.collapse(true);
+                        range.moveEnd('character', end);
+                        range.moveStart('character', start);
+                        range.select();
+                    }
+                }
+                catch (error) {
+                }
+            },
+
+            setContent: function (value) {
+                this.input.val(value);
+            },
+
+            // get all matches of a searched value.
+            _updateItemsVisibility: function (value) {
+                var items = this.getItems();
+                if (items == undefined) {
+                    return { index: -1, matchItem: new Array() }
+                }
+
+                var that = this;
+                var index = -1;
+                var matchItems = new Array();
+                var newItemsIndex = 0;
+
+                $.each(items, function (i) {
+                    var itemValue = '';
+                    if (!this.isGroup) {
+                        if (this.searchLabel) {
+                            itemValue = this.searchLabel;
+                        }
+                        else if (this.label) {
+                            itemValue = this.label;
+                        }
+                        else if (this.value) {
+                            itemValue = this.value;
+                        }
+                        else if (this.title) {
+                            itemValue = this.title;
+                        }
+                        else itemValue = 'jqxItem';
+                        itemValue = itemValue.toString();
+                        var matches = false;
+                        switch (that.searchMode) {
+                            case 'containsignorecase':
+                                matches = $.jqx.string.containsIgnoreCase(itemValue, value);
+                                break;
+                            case 'contains':
+                                matches = $.jqx.string.contains(itemValue, value);
+                                break;
+                            case 'equals':
+                                matches = $.jqx.string.equals(itemValue, value);
+                                break;
+                            case 'equalsignorecase':
+                                matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
+                                break;
+                            case 'startswith':
+                                matches = $.jqx.string.startsWith(itemValue, value);
+                                break;
+                            case 'startswithignorecase':
+                                matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
+                                break;
+                            case 'endswith':
+                                matches = $.jqx.string.endsWith(itemValue, value);
+                                break;
+                            case 'endswithignorecase':
+                                matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
+                                break;
+                        }
+
+                        if (that.autoComplete && !matches) {
+                            this.visible = false;
+                        }
+
+                        if (matches && that.autoComplete) {
+                            matchItems[newItemsIndex++] = this;
+                            this.visible = true;
+                            index = this.visibleIndex;
+                        }
+
+                        if (value == '' && that.autoComplete) {
+                            this.visible = true;
+                            matches = false;
+                        }
+
+                        if (that.multiSelect) {
+                            this.disabled = false;
+                            if (that.selectedItems.indexOf(this.value) >= 0 || that._disabledItems.indexOf(this.value) >= 0) {
+                                this.disabled = true;
+                                matches = false;
+                            }
+                        }
+
+                        if (!that.multiSelect) {
+                            if (matches && !that.autoComplete) {
+                                index = this.visibleIndex;
+                                return false;
+                            }
+                        }
+                        else {
+                            if (matches && !that.autoComplete) {
+                                if (index === -1) {
+                                    index = this.visibleIndex;
+                                }
+                                return true;
+                            }
+                        }
+                    }
+                });
+                this.listBox.searchString = value;
+                var that = this;
+                var selectFirstItem = function () {
+                    if (that.multiSelect) return;
+                    var nonDisabledIndex = 0;
+                    var foundIndex = false;
+                    var item = null;
+                    for (var indx = 0; indx < that.listBox.items.length; indx++) {
+                        that.listBox.selectedIndexes[indx] = -1;
+                        if (!that.listBox.items[indx].disabled) {
+                            if (foundIndex == false) {
+                                item = that.listBox.items[indx];
+                                nonDisabledIndex = item.visibleIndex;
+                                foundIndex = true;
+                            }
+                        }
+                    }
+                    that.listBox.selectedIndex = -1;
+                    that.listBox.selectedIndex = nonDisabledIndex;
+                    that.listBox.selectedIndexes[nonDisabledIndex] = nonDisabledIndex;
+                    if (that.listBox.visibleItems.length > 0) {
+                        if (item) {
+                            that.listBox.selectedValue = item.value;
+                        }
+                        else {
+                            that.listBox.selectedValue = null;
+                        }
+                    }
+                    else {
+                        that.listBox.selectedValue = null;
+                    }
+                    that.listBox.ensureVisible(0);
+                }
+
+                if (!this.autoComplete) {
+                    selectFirstItem();
+                    return { index: index, matchItems: matchItems };
+                }
+
+                this.listBox.renderedVisibleItems = new Array();
+                var vScrollValue = this.listBox.vScrollInstance.value;
+                this.listBox.vScrollInstance.value = 0;
+                this.listBox.visibleItems = new Array();
+                this.listBox._renderItems();
+                var selectedValue = this.listBox.selectedValue;
+                var item = this.listBox.getItemByValue(selectedValue);
+                if (!this.multiSelect) {
+                    if (item) {
+                        if (item.visible) {
+                            this.listBox.selectedIndex = item.visibleIndex;
+                            for (var indx = 0; indx < this.listBox.items.length; indx++) {
+                                this.listBox.selectedIndexes[indx] = -1;
+                            }
+                            this.listBox.selectedIndexes[item.visibleIndex] = item.visibleIndex;
+                        }
+                        else {
+                            for (var indx = 0; indx < this.listBox.items.length; indx++) {
+                                this.listBox.selectedIndexes[indx] = -1;
+                            }
+                            this.listBox.selectedIndex = -1;
+                        }
+                    }
+                }
+                else {
+                    selectFirstItem();
+                }
+
+                this.listBox._renderItems();
+                var height = this.listBox._calculateVirtualSize().height;
+                if (height < vScrollValue) {
+                    vScrollValue = 0;
+                    this.listBox.vScrollInstance.refresh();
+                }
+                if (this.autoDropDownHeight) {
+                    this._disableSelection = true;
+                    if (this.listBox.autoHeight != this.autoDropDownHeight) {
+                        this.listBoxContainer.jqxListBox({ autoHeight: this.autoDropDownHeight });
+                    }
+                    this.container.height(height + 25);
+                    this.listBox.invalidate();
+                    this._disableSelection = false;
+                }
+                else {
+                    if (height < parseInt(this.dropDownHeight)) {
+                        var scrollOffset = this.listBox.hScrollBar[0].style.visibility == "hidden" ? 0 : 20;
+                        this.listBox.height = scrollOffset + height;
+                        this.container.height(height + 25 + scrollOffset);
+                        this.listBox.invalidate();
+                    }
+                    else {
+                        this.listBox.height = parseInt(this.dropDownHeight);
+                        this.container.height(parseInt(this.dropDownHeight) + 25);
+                        this.listBox.invalidate();
+                    }
+                }
+
+                this.listBox.vScrollInstance.setPosition(vScrollValue);
+                return { index: index, matchItems: matchItems };
+            },
+
+            // gets all items that match to a search value.
+            findItems: function (value) {
+                var items = this.getItems();
+                var that = this;
+                var index = 0;
+                var matchItems = new Array();
+
+                $.each(items, function (i) {
+                    var itemValue = '';
+                    if (!this.isGroup) {
+                        if (this.label) {
+                            itemValue = this.label;
+                        }
+                        else if (this.value) {
+                            itemValue = this.value;
+                        }
+                        else if (this.title) {
+                            itemValue = this.title;
+                        }
+                        else itemValue = 'jqxItem';
+
+                        var matches = false;
+                        switch (that.searchMode) {
+                            case 'containsignorecase':
+                                matches = $.jqx.string.containsIgnoreCase(itemValue, value);
+                                break;
+                            case 'contains':
+                                matches = $.jqx.string.contains(itemValue, value);
+                                break;
+                            case 'equals':
+                                matches = $.jqx.string.equals(itemValue, value);
+                                break;
+                            case 'equalsignorecase':
+                                matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
+                                break;
+                            case 'startswith':
+                                matches = $.jqx.string.startsWith(itemValue, value);
+                                break;
+                            case 'startswithignorecase':
+                                matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
+                                break;
+                            case 'endswith':
+                                matches = $.jqx.string.endsWith(itemValue, value);
+                                break;
+                            case 'endswithignorecase':
+                                matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
+                                break;
+                        }
+
+                        if (matches) {
+                            matchItems[index++] = this;
+                        }
+                    }
+                });
+
+                return matchItems;
+            },
+
+            //[optimize]
+            _resetautocomplete: function () {
+                $.each(this.listBox.items, function (i) {
+                    this.visible = true;
+                });
+                this.listBox.vScrollInstance.value = 0;
+                this.listBox._addItems();
+                this.listBox.autoHeight = false;
+
+                this.listBox.height = this.dropDownHeight;
+                this.container.height(parseInt(this.dropDownHeight) + 25);
+                this.listBoxContainer.height(parseInt(this.dropDownHeight));
+                this.listBox._arrange();
+
+                this.listBox._addItems();
+                this.listBox._renderItems();
+            },
+
+            // gets all items.
+            getItems: function () {
+                var item = this.listBox.items;
+                return item;
+            },
+
+            getVisibleItems: function () {
+                return this.listBox.getVisibleItems();
+            },
+
+            _setSize: function () {
+                var computedStyle = window.getComputedStyle(this.element);
+                var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
+                var boxSizing = computedStyle.boxSizing;
+
+                if (boxSizing === 'border-box' || isNaN(borderSize)) {
+                    borderSize = 0;
+                }
+
+                if (this.width != null && this.width.toString().indexOf("px") != -1) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+                else if (this.width != undefined && !isNaN(this.width)) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+
+                if (this.height != null && this.height.toString().indexOf("px") != -1) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                }
+                else if (this.height != undefined && !isNaN(this.height)) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                };
+
+                var isPercentage = false;
+                if (this.width != null && this.width.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.width = this.width;
+
+                    if (borderSize > 0) {
+                        this.host.css('box-sizing', 'border-box');
+                    }
+                }
+
+                if (this.height != null && this.height.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.height = this.height;
+                }
+
+                if (isPercentage) {
+                    var that = this;
+                    var width = this.host.width();
+                    if (this.dropDownWidth != 'auto') {
+                        width = this.dropDownWidth;
+                    }
+                    this.listBoxContainer.jqxListBox({ width: width });
+                    this.container.width(parseInt(width) + 25);
+                    this._arrange();
+                }
+                var that = this;
+
+                var resizeFunc = function () {
+                    if (that.multiSelect) {
+                        that.host.height(that.height);
+                    }
+
+                    that._arrange();
+                    if (that.multiSelect) {
+                        that.host.height('auto');
+                    }
+                }
+
+                that.oldWidth = that.host.width();
+                that.oldHeight = that.host.height();
+                $.jqx.utilities.resize(this.host, function () {
+                    var w = that.host.width();
+                    var h = that.host.height();
+
+                    if (w != that.oldWidth || h != that.oldHeight) {
+                        resizeFunc();
+                        that.hideListBox('api');
+                    }
+
+                    that.oldWidth = w;
+                    that.oldHeight = h;
+                });
+            },
+
+            // returns true when the listbox is opened, otherwise returns false.
+            isOpened: function () {
+                var that = this;
+                var openedListBox = $.data(document.body, "openedCombojqxListBox" + this.element.id);
+
+                if (this.container.css('display') != 'block')
+                    return false;
+
+                if (openedListBox != null && openedListBox == that.listBoxContainer) {
+                    return true;
+                }
+
+                return false;
+            },
+
+            _updateHandlers: function () {
+                var that = this;
+                var hovered = false;
+                this.removeHandlers();
+
+                if (this.multiSelect) {
+                    this.addHandler(this.dropdownlistContent, 'click', function (event) {
+                        if (event.target.href) return false;
+
+                        that.input.focus();
+                        setTimeout(function () {
+                            that.input.focus();
+                        }, 10);
+                    });
+                    this.addHandler(this.dropdownlistContent, 'focus', function (event) {
+                        if (event.target.href) return false;
+
+                        that.input.focus();
+                        setTimeout(function () {
+                            that.input.focus();
+                        }, 10);
+                    });
+                }
+
+                if (!this.touch) {
+                    if (this.host.parents()) {
+                        this.addHandler(this.host.parents(), 'scroll.combobox' + this.element.id, function (event) {
+                            var opened = that.isOpened();
+                            if (opened) {
+                                that.close();
+                            }
+                        });
+                    }
+
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        if (!that.disabled && that.enableHover) {
+                            hovered = true;
+                            that.host.addClass(that.toThemeProperty('jqx-combobox-state-hover'));
+                            if (that.dropDownVerticalAlignment == "top") {
+                                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
+                            }
+                            else {
+                                that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            }
+                            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
+                            that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-hover'));
+                        }
+                    });
+                    this.addHandler(this.host, 'mouseleave', function () {
+                        if (!that.disabled && that.enableHover) {
+                            that.host.removeClass(that.toThemeProperty('jqx-combobox-state-hover'));
+                            that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
+                            that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-fill-state-hover'));
+                            hovered = false;
+                        }
+                    });
+                }
+
+                if (that.autoOpen) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        var isOpened = that.isOpened();
+                        if (!isOpened && that.autoOpen) {
+                            that.open();
+                            that.host.focus();
+                        }
+                    });
+
+                    this.addHandler($(document), 'mousemove.' + that.id, function (event) {
+                        var isOpened = that.isOpened();
+                        if (isOpened && that.autoOpen) {
+                            var offset = that.host.coord();
+                            var top = offset.top;
+                            var left = offset.left;
+                            var popupOffset = that.container.coord();
+                            var popupLeft = popupOffset.left;
+                            var popupTop = popupOffset.top;
+
+                            var canClose = true;
+
+                            if (event.pageY >= top && event.pageY <= top + that.host.height() + 2) {
+                                if (event.pageX >= left && event.pageX < left + that.host.width())
+                                    canClose = false;
+                            }
+                            if (event.pageY >= popupTop && event.pageY <= popupTop + that.container.height() - 20) {
+                                if (event.pageX >= popupLeft && event.pageX < popupLeft + that.container.width())
+                                    canClose = false;
+                            }
+
+                            if (canClose) {
+                                that.close();
+                            }
+                        }
+                    });
+                }
+
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+
+                var dropDownButtonClicked = function (event) {
+                    if (!that.disabled) {
+                        var isOpen = that.container.css('display') == 'block';
+                        if (!that.isanimating) {
+                            if (isOpen) {
+                                that.hideListBox('api');
+                                if (!$.jqx.mobile.isTouchDevice()) {
+                                    that.input.focus();
+                                    setTimeout(function () {
+                                        that.input.focus();
+                                    }, 10);
+                                }
+                                return true;
+                            }
+                            else {
+                                if (that.autoDropDownHeight) {
+                                    that.container.height(that.listBoxContainer.height() + 25);
+                                    var autoheight = that.listBoxContainer.jqxListBox('autoHeight');
+                                    if (!autoheight) {
+                                        that.listBoxContainer.jqxListBox({ autoHeight: that.autoDropDownHeight })
+                                        that.listBox._arrange();
+                                        that.listBox.ensureVisible(0);
+                                        that.listBox._renderItems();
+                                        that.container.height(that.listBoxContainer.height() + 25);
+                                    }
+                                }
+                                that.showListBox('api');
+                                if (!$.jqx.mobile.isTouchDevice()) {
+                                    setTimeout(function () {
+                                        that.input.focus();
+                                    }, 10);
+                                }
+                                else {
+                                    return true;
+                                }
+                            }
                         }
                     }
                 }
 
-                if (that.autoComplete && matchItems.length === 0) {
-                    that.hideListBox('search');
-                }
-            }
+                this.addHandler(this.dropdownlistArrow, eventName,
+                    function (event) {
+                        dropDownButtonClicked(event);
+                        //       return false;
+                    });
+                this.addHandler(this.dropdownlistArrowIcon, eventName,
+                    function (event) {
 
-            if (event.keyCode == '13') {
-                var isOpen = that.container.css('display') == 'block';
-                if (isOpen && !that.isanimating) {
-                    that.hideListBox('keyboard');
-                    that._oldvalue = that.listBox.selectedValue;
-                    return;
+                        //   dropDownButtonClicked(event);
+                        //     return false;
+                    });
+
+                this.addHandler(this.host, 'focus', function () {
+                    that.focus();
+                });
+
+                this.addHandler(this.input, 'focus', function (event) {
+                    that.focused = true;
+                    that.host.addClass(that.toThemeProperty('jqx-combobox-state-focus'));
+                    that.host.addClass(that.toThemeProperty('jqx-fill-state-focus'));
+                    that.bar.addClass('focused');
+                    that.label.addClass('focused');
+
+                    that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-focus'));
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+
+                });
+                this.addHandler(this.input, 'blur', function () {
+                    that.focused = false;
+                    that.bar.removeClass('focused');
+                    that.label.removeClass('focused');
+
+                    if (!that.isOpened() && !that.opening) {
+                        if (that.selectionMode == "dropDownList") {
+                            that._selectOldValue();
+                        }
+
+                        that.host.removeClass(that.toThemeProperty('jqx-combobox-state-focus'));
+                        that.host.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
+                        that.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-focus'));
+                    }
+                    if (that._searchTimer) clearTimeout(that._searchTimer);
+                });
+                this.addHandler($(document), 'mousedown.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
+                if (this.touch) {
+                    this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
                 }
-            }
-            else if (event.keyCode == '27') {
-                var isOpen = that.container.css('display') == 'block';
-                if (isOpen && !that.isanimating) {
+
+                this.addHandler(this.host, 'keydown', function (event) {
+                    var isOpen = that.container.css('display') == 'block';
+                    that.ctrlKey = event.ctrlKey;
+                    if (that.host.css('display') == 'none') {
+                        return true;
+                    }
+
+                    if (event.keyCode == '13' || event.keyCode == '9') {
+                        if (isOpen && !that.isanimating) {
+                            if (that.listBox.selectedIndex != -1) {
+                                that.renderSelection('mouse');
+                                var index = that.listBox.selectedIndex;
+                                var item = that.listBox.getVisibleItem(index);
+                                if (item) {
+                                    that.listBox.selectedValue = item.value;
+                                }
+                                that._setSelection(that.input.val().length, that.input.val().length);
+                                that.hideListBox('keyboard');
+                            }
+                            if (event.keyCode == '13') {
+                                that._oldvalue = that.listBox.selectedValue;
+                            }
+                            if (!that.keyboardSelection) {
+                                that._raiseEvent('2', { index: that.selectedIndex, type: 'keyboard', item: that.getItem(that.selectedIndex) });
+                            }
+
+                            if (event.keyCode == '9') return true;
+                            return false;
+                        }
+                    }
+
+                    if (event.keyCode == 115) {
+                        if (!that.isanimating) {
+                            if (!that.isOpened()) {
+                                that.showListBox('keyboard');
+                            }
+                            else if (that.isOpened()) {
+                                that.hideListBox('keyboard');
+                            }
+                        }
+                        return false;
+                    }
+
+                    if (event.altKey) {
+                        if (that.host.css('display') == 'block') {
+                            if (!that.isanimating) {
+                                if (event.keyCode == 38) {
+                                    if (that.isOpened()) {
+                                        that.hideListBox('altKey');
+                                    }
+                                }
+                                else if (event.keyCode == 40) {
+                                    if (!that.isOpened()) {
+                                        that.showListBox('altKey');
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (event.keyCode == '27' || event.keyCode == '9') {
+                        if (that.isOpened() && !that.isanimating) {
+
+                            if (event.keyCode == '27') {
+                                if (!that.multiSelect) {
+                                    var item = that.listBox.getItemByValue(that._oldvalue);
+                                    if (item) {
+                                        setTimeout(
+                                            function () {
+                                                if (that.autoComplete) {
+                                                    that._updateItemsVisibility("");
+                                                }
+                                                that.listBox.selectIndex(item.index);
+                                                that.renderSelection('api');
+                                            }, that.closeDelay);
+                                    }
+                                    else {
+                                        that.clearSelection();
+                                    }
+                                }
+                                else {
+                                    that.listBox.selectedValue = null;
+                                    that.input.val("");
+                                }
+                            }
+                            that.hideListBox('keyboard');
+
+
+                            if (event.keyCode == '9')
+                                return true;
+
+                            that.renderSelection('api');
+                            event.preventDefault();
+
+                            return false;
+                        }
+                    }
+
+                    var key = event.keyCode;
+
+                    if (isOpen && !that.disabled && key != 8) {
+                        return that.listBox._handleKeyDown(event);
+                    }
+                    else if (!that.disabled && !isOpen) {
+                        var key = event.keyCode;
+                        // arrow keys.
+                        if (key == 33 || key == 34 || key == 35 || key == 36 || key == 38 || key == 40) {
+                            return that.listBox._handleKeyDown(event);
+                        }
+                    }
+                    if (key === 8 && that.multiSelect) {
+                        if (that.input.val().length === 0) {
+                            var lastItem = that.selectedItems[that.selectedItems.length - 1];
+                            that.selectedItems.pop();
+                            that._selectedItems.pop();
+                            if (lastItem) {
+                                that._raiseEvent('3', { index: lastItem.index, type: 'keyboard', item: lastItem });
+                                that._raiseEvent('4', { index: lastItem.index, type: 'keyboard', item: lastItem });
+                            }
+
+                            that.listBox.selectedValue = null;
+                            that.doMultiSelect();
+                            return false;
+                        }
+                    }
+
+
+                    if (that.isMaterialized() && that.hint) {
+                        setTimeout(function () {
+                            if (that.input[0].value.length === 0) {
+                                that.element.removeAttribute('hint');
+                                that.label[0].innerHTML = that.placeHolder;
+                            }
+                            else if (that.hint) {
+                                that.element.setAttribute('hint', true);
+                            }
+                        });
+                    }
+                });
+
+                this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
+                    that.renderSelection('mouse');
+                    that._updateInputSelection();
+                    that._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
+                });
+
+                this.addHandler(this.listBoxContainer, 'select', function (event) {
+                    if (!that.disabled) {
+                        if (event.args.type != 'keyboard' || that.keyboardSelection) {
+                            that.renderSelection(event.args.type);
+                            if (!that.multiSelect) {
+                                that._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item });
+                            }
+                            if (event.args.type == 'mouse') {
+                                that._oldvalue = that.listBox.selectedValue;
+
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                    if (!that.touch) {
+                                        that.input.focus();
+                                    }
+                                    else {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                if (this.listBox != null && this.listBox.content != null) {
+                    this.addHandler(this.listBox.content, 'click', function (event) {
+                        if (!that.disabled) {
+                            if (that.listBox.itemswrapper) {
+                                if (event.target === that.listBox.itemswrapper[0])
+                                    return true;
+                            }
+
+                            if (event.target && event.target.className) {
+                                if (event.target.className.indexOf('jqx-fill-state-disabled') >= 0) {
+                                    return true;
+                                }
+                            }
+
+                            that.renderSelection('mouse');
+                            that._oldvalue = that.listBox.selectedValue;
+                            if (!that.touch && !that.ishiding) {
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                    that.input.focus();
+                                }
+                            }
+                            if (that.touch === true) {
+                                if (!that.checkboxes) {
+                                    that.hideListBox('mouse');
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+
+            _selectOldValue: function () {
+                var that = this;
+                if (that.listBox.selectedIndex == -1) {
                     if (!that.multiSelect) {
-                        var item = that.listBox.getVisibleItem(that._oldvalue);
+                        var item = that.listBox.getItemByValue(that._oldvalue);
                         if (item) {
-                            var that = this;
                             setTimeout(
                                 function () {
                                     if (that.autoComplete) {
@@ -2055,2447 +2960,1535 @@ License: https://jqwidgets.com/license/ */
                         }
                         else {
                             that.clearSelection();
+                            that.listBox.selectIndex(0);
+                            that.renderSelection('api');
                         }
                     }
                     else {
+                        that.listBox.selectedValue = null;
                         that.input.val("");
-                        that.listBox.selectedValue = null;
                     }
-
-                    that.hideListBox('keyboard');
+                }
+                else {
                     that.renderSelection('api');
-                    event.preventDefault();
-                    return false;
                 }
-            }
-            else {
-                if (!that.isOpened() && !that.opening && !event.ctrlKey) {
-                    if (that.listBox.visibleItems && that.listBox.visibleItems.length > 0) {
-                        if (that.input.val() != that.searchString && that.searchString != undefined && index != -1) {
-                            that.showListBox('search');
-                        }
-                    }
-                }
-                that.searchString = that.input.val();
+            },
 
-                if (that.searchString == "") {
-                    if (!that.listBox.itemsByValue[""]) {
-                        index = -1;
-                        if (!that.multiSelect) {
-                            that.clearSelection();
-                        }
-                    }
-                }
-
-                var item = that.listBox.getVisibleItem(index);
-
-                if (item != undefined) {
-                    that._updateInputSelection();
-                }
-            }
-        },
-
-        val: function (value) {
-            if (!this.input) return "";
-            var isEmpty = function (obj) {
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key))
-                        return false;
-                }
-
-                if (typeof value == "number")
-                    return false;
-                if (typeof value == "date")
-                    return false;
-                if (typeof value == "boolean")
-                    return false;
-                if (typeof value == "string")
-                    return false;
-
-                return true;
-            }
-
-            if (isEmpty(value) || arguments.length == 0) {
-                var item = this.getSelectedItem();
-                if (item) {
-                    return item.value;
-                }
-
-
-                return this.input.val();
-            }
-            else {
-                var item = this.getItemByValue(value);
-                if (item != null) {
-                    this.selectItem(item);
-                }
-                else {
-                    this.input.val(value);
-                }
-                return this.input.val();
-            }
-        },
-
-        focus: function () {
-            var that = this;
-            var doFocus = function () {
-                that.input.focus();
-                var val = that.input.val();
-                that._setSelection(0, val.length);
-            }
-            doFocus();
-            setTimeout(function () {
-                doFocus();
-            }, 10);
-        },
-
-        _setSelection: function (start, end) {
-            try {
-                if ('selectionStart' in this.input[0]) {
-                    this.input[0].focus();
-                    this.input[0].setSelectionRange(start, end);
-                }
-                else {
-                    var range = this.input[0].createTextRange();
-                    range.collapse(true);
-                    range.moveEnd('character', end);
-                    range.moveStart('character', start);
-                    range.select();
-                }
-            }
-            catch (error) {
-            }
-        },
-
-        setContent: function (value) {
-            this.input.val(value);
-        },
-
-        // get all matches of a searched value.
-        _updateItemsVisibility: function (value) {
-            var items = this.getItems();
-            if (items == undefined) {
-                return { index: -1, matchItem: new Array() }
-            }
-
-            var that = this;
-            var index = -1;
-            var matchItems = new Array();
-            var newItemsIndex = 0;
-
-            $.each(items, function (i) {
-                var itemValue = '';
-                if (!this.isGroup) {
-                    if (this.searchLabel) {
-                        itemValue = this.searchLabel;
-                    }
-                    else if (this.label) {
-                        itemValue = this.label;
-                    }
-                    else if (this.value) {
-                        itemValue = this.value;
-                    }
-                    else if (this.title) {
-                        itemValue = this.title;
-                    }
-                    else itemValue = 'jqxItem';
-                    itemValue = itemValue.toString();
-                    var matches = false;
-                    switch (that.searchMode) {
-                        case 'containsignorecase':
-                            matches = $.jqx.string.containsIgnoreCase(itemValue, value);
-                            break;
-                        case 'contains':
-                            matches = $.jqx.string.contains(itemValue, value);
-                            break;
-                        case 'equals':
-                            matches = $.jqx.string.equals(itemValue, value);
-                            break;
-                        case 'equalsignorecase':
-                            matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
-                            break;
-                        case 'startswith':
-                            matches = $.jqx.string.startsWith(itemValue, value);
-                            break;
-                        case 'startswithignorecase':
-                            matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
-                            break;
-                        case 'endswith':
-                            matches = $.jqx.string.endsWith(itemValue, value);
-                            break;
-                        case 'endswithignorecase':
-                            matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
-                            break;
-                    }
-
-                    if (that.autoComplete && !matches) {
-                        this.visible = false;
-                    }
-
-                    if (matches && that.autoComplete) {
-                        matchItems[newItemsIndex++] = this;
-                        this.visible = true;
-                        index = this.visibleIndex;
-                    }
-
-                    if (value == '' && that.autoComplete) {
-                        this.visible = true;
-                        matches = false;
-                    }
-
-                    if (that.multiSelect) {
-                        this.disabled = false;
-                        if (that.selectedItems.indexOf(this.value) >= 0 || that._disabledItems.indexOf(this.value) >= 0) {
-                            this.disabled = true;
-                            matches = false;
-                        }
-                    }
-
-                    if (!that.multiSelect) {
-                        if (matches && !that.autoComplete) {
-                            index = this.visibleIndex;
-                            return false;
-                        }
-                    }
-                    else {
-                        if (matches && !that.autoComplete) {
-                            if (index === -1) {
-                                index = this.visibleIndex;
-                            }
-                            return true;
-                        }
-                    }
-                }
-            });
-            this.listBox.searchString = value;
-            var that = this;
-            var selectFirstItem = function () {
-                if (that.multiSelect) return;
-                var nonDisabledIndex = 0;
-                var foundIndex = false;
-                var item = null;
-                for (var indx = 0; indx < that.listBox.items.length; indx++) {
-                    that.listBox.selectedIndexes[indx] = -1;
-                    if (!that.listBox.items[indx].disabled) {
-                        if (foundIndex == false) {
-                            item = that.listBox.items[indx];
-                            nonDisabledIndex = item.visibleIndex;
-                            foundIndex = true;
-                        }
-                    }
-                }
-                that.listBox.selectedIndex = -1;
-                that.listBox.selectedIndex = nonDisabledIndex;
-                that.listBox.selectedIndexes[nonDisabledIndex] = nonDisabledIndex;
-                if (that.listBox.visibleItems.length > 0) {
-                    if (item) {
-                        that.listBox.selectedValue = item.value;
-                    }
-                    else {
-                        that.listBox.selectedValue = null;
-                    }
-                }
-                else {
-                    that.listBox.selectedValue = null;
-                }
-                that.listBox.ensureVisible(0);
-            }
-
-            if (!this.autoComplete) {
-                selectFirstItem();
-                return { index: index, matchItems: matchItems };
-            }
-
-            this.listBox.renderedVisibleItems = new Array();
-            var vScrollValue = this.listBox.vScrollInstance.value;
-            this.listBox.vScrollInstance.value = 0;
-            this.listBox.visibleItems = new Array();
-            this.listBox._renderItems();
-            var selectedValue = this.listBox.selectedValue;
-            var item = this.listBox.getItemByValue(selectedValue);
-            if (!this.multiSelect) {
-                if (item) {
-                    if (item.visible) {
-                        this.listBox.selectedIndex = item.visibleIndex;
-                        for (var indx = 0; indx < this.listBox.items.length; indx++) {
-                            this.listBox.selectedIndexes[indx] = -1;
-                        }
-                        this.listBox.selectedIndexes[item.visibleIndex] = item.visibleIndex;
-                    }
-                    else {
-                        for (var indx = 0; indx < this.listBox.items.length; indx++) {
-                            this.listBox.selectedIndexes[indx] = -1;
-                        }
-                        this.listBox.selectedIndex = -1;
-                    }
-                }
-            }
-            else {
-                selectFirstItem();
-            }
-
-            this.listBox._renderItems();
-            var height = this.listBox._calculateVirtualSize().height;
-            if (height < vScrollValue) {
-                vScrollValue = 0;
-                this.listBox.vScrollInstance.refresh();
-            }
-            if (this.autoDropDownHeight) {
-                this._disableSelection = true;
-                if (this.listBox.autoHeight != this.autoDropDownHeight) {
-                    this.listBoxContainer.jqxListBox({ autoHeight: this.autoDropDownHeight });
-                }
-                this.container.height(height + 25);
-                this.listBox.invalidate();
-                this._disableSelection = false;
-            }
-            else {
-                if (height < parseInt(this.dropDownHeight)) {
-                    var scrollOffset = this.listBox.hScrollBar[0].style.visibility == "hidden" ? 0 : 20;
-                    this.listBox.height = scrollOffset + height;
-                    this.container.height(height + 25 + scrollOffset);
-                    this.listBox.invalidate();
-                }
-                else {
-                    this.listBox.height = parseInt(this.dropDownHeight);
-                    this.container.height(parseInt(this.dropDownHeight) + 25);
-                    this.listBox.invalidate();
-                }
-            }
-
-            this.listBox.vScrollInstance.setPosition(vScrollValue);
-            return { index: index, matchItems: matchItems };
-        },
-
-        // gets all items that match to a search value.
-        findItems: function (value) {
-            var items = this.getItems();
-            var that = this;
-            var index = 0;
-            var matchItems = new Array();
-
-            $.each(items, function (i) {
-                var itemValue = '';
-                if (!this.isGroup) {
-                    if (this.label) {
-                        itemValue = this.label;
-                    }
-                    else if (this.value) {
-                        itemValue = this.value;
-                    }
-                    else if (this.title) {
-                        itemValue = this.title;
-                    }
-                    else itemValue = 'jqxItem';
-
-                    var matches = false;
-                    switch (that.searchMode) {
-                        case 'containsignorecase':
-                            matches = $.jqx.string.containsIgnoreCase(itemValue, value);
-                            break;
-                        case 'contains':
-                            matches = $.jqx.string.contains(itemValue, value);
-                            break;
-                        case 'equals':
-                            matches = $.jqx.string.equals(itemValue, value);
-                            break;
-                        case 'equalsignorecase':
-                            matches = $.jqx.string.equalsIgnoreCase(itemValue, value);
-                            break;
-                        case 'startswith':
-                            matches = $.jqx.string.startsWith(itemValue, value);
-                            break;
-                        case 'startswithignorecase':
-                            matches = $.jqx.string.startsWithIgnoreCase(itemValue, value);
-                            break;
-                        case 'endswith':
-                            matches = $.jqx.string.endsWith(itemValue, value);
-                            break;
-                        case 'endswithignorecase':
-                            matches = $.jqx.string.endsWithIgnoreCase(itemValue, value);
-                            break;
-                    }
-
-                    if (matches) {
-                        matchItems[index++] = this;
-                    }
-                }
-            });
-
-            return matchItems;
-        },
-
-        //[optimize]
-        _resetautocomplete: function () {
-            $.each(this.listBox.items, function (i) {
-                this.visible = true;
-            });
-            this.listBox.vScrollInstance.value = 0;
-            this.listBox._addItems();
-            this.listBox.autoHeight = false;
-
-            this.listBox.height = this.dropDownHeight;
-            this.container.height(parseInt(this.dropDownHeight) + 25);
-            this.listBoxContainer.height(parseInt(this.dropDownHeight));
-            this.listBox._arrange();
-
-            this.listBox._addItems();
-            this.listBox._renderItems();
-        },
-
-        // gets all items.
-        getItems: function () {
-            var item = this.listBox.items;
-            return item;
-        },
-
-        getVisibleItems: function () {
-            return this.listBox.getVisibleItems();
-        },
-
-        _setSize: function () {
-            var computedStyle = window.getComputedStyle(this.element);
-            var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
-            var boxSizing = computedStyle.boxSizing;
-
-            if (boxSizing === 'border-box' || isNaN(borderSize)) {
-                borderSize = 0;
-            }
-
-            if (this.width != null && this.width.toString().indexOf("px") != -1) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-            else if (this.width != undefined && !isNaN(this.width)) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-
-            if (this.height != null && this.height.toString().indexOf("px") != -1) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            }
-            else if (this.height != undefined && !isNaN(this.height)) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            };
-
-            var isPercentage = false;
-            if (this.width != null && this.width.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.width = this.width;
-
-                if (borderSize > 0) {
-                    this.host.css('box-sizing', 'border-box');
-                }
-            }
-
-            if (this.height != null && this.height.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.height = this.height;
-            }
-
-            if (isPercentage) {
+            removeHandlers: function () {
                 var that = this;
-                var width = this.host.width();
-                if (this.dropDownWidth != 'auto') {
-                    width = this.dropDownWidth;
-                }
-                this.listBoxContainer.jqxListBox({ width: width });
-                this.container.width(parseInt(width) + 25);
-                this._arrange();
-            }
-            var that = this;
-
-            var resizeFunc = function () {
-                if (that.multiSelect) {
-                    that.host.height(that.height);
+                if (this.dropdownlistWrapper != null) {
+                    this.removeHandler(this.dropdownlistWrapper, 'mousedown');
                 }
 
-                that._arrange();
-                if (that.multiSelect) {
-                    that.host.height('auto');
+                if (this.dropdownlistContent) {
+                    this.removeHandler(this.dropdownlistContent, 'click');
+                    this.removeHandler(this.dropdownlistContent, 'focus');
                 }
-            }
-
-            that.oldWidth = that.host.width();
-            that.oldHeight = that.host.height();
-            $.jqx.utilities.resize(this.host, function () {
-                var w = that.host.width();
-                var h = that.host.height();
-
-                if (w != that.oldWidth || h != that.oldHeight) {
-                    resizeFunc();
-                    that.hideListBox('api');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.host, 'focus');
+                if (this.input != null) {
+                    this.removeHandler(this.input, 'focus');
+                    this.removeHandler(this.input, 'blur');
                 }
-
-                that.oldWidth = w;
-                that.oldHeight = h;
-            });
-        },
-
-        // returns true when the listbox is opened, otherwise returns false.
-        isOpened: function () {
-            var that = this;
-            var openedListBox = $.data(document.body, "openedCombojqxListBox" + this.element.id);
-
-            if (this.container.css('display') != 'block')
-                return false;
-
-            if (openedListBox != null && openedListBox == that.listBoxContainer) {
-                return true;
-            }
-
-            return false;
-        },
-
-        _updateHandlers: function () {
-            var that = this;
-            var hovered = false;
-            this.removeHandlers();
-
-            if (this.multiSelect) {
-                this.addHandler(this.dropdownlistContent, 'click', function (event) {
-                    if (event.target.href) return false;
-
-                    that.input.focus();
-                    setTimeout(function () {
-                        that.input.focus();
-                    }, 10);
-                });
-                this.addHandler(this.dropdownlistContent, 'focus', function (event) {
-                    if (event.target.href) return false;
-
-                    that.input.focus();
-                    setTimeout(function () {
-                        that.input.focus();
-                    }, 10);
-                });
-            }
-
-            if (!this.touch) {
+                this.removeHandler(this.host, 'mouseenter');
+                this.removeHandler(this.host, 'mouseleave');
+                this.removeHandler($(document), 'mousemove.' + that.id);
+                if (this.listBoxContainer) {
+                    this.removeHandler(this.listBoxContainer, 'checkChange');
+                    this.removeHandler(this.listBoxContainer, 'select');
+                }
                 if (this.host.parents()) {
-                    this.addHandler(this.host.parents(), 'scroll.combobox' + this.element.id, function (event) {
-                        var opened = that.isOpened();
-                        if (opened) {
-                            that.close();
-                        }
-                    });
+                    this.removeHandler(this.host.parents(), 'scroll.combobox' + this.element.id);
+                }
+                if (this.dropdownlistArrowIcon && this.dropdownlistArrow) {
+                    var eventName = 'mousedown';
+                    if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                    this.removeHandler(this.dropdownlistArrowIcon, eventName);
+                    this.removeHandler(this.dropdownlistArrow, eventName);
+                }
+            },
+
+            // gets an item by index.
+            getItem: function (index) {
+                var item = this.listBox.getItem(index);
+                return item;
+            },
+
+            getItemByValue: function (value) {
+                var item = this.listBox.getItemByValue(value);
+                return item;
+            },
+
+            getVisibleItem: function (index) {
+                var item = this.listBox.getVisibleItem(index);
+                return item;
+            },
+
+            // renders the selection.
+            renderSelection: function (type) {
+                if (type == undefined || type == 'none') {
+                    return;
                 }
 
-                this.addHandler(this.host, 'mouseenter', function () {
-                    if (!that.disabled && that.enableHover) {
-                        hovered = true;
-                        that.host.addClass(that.toThemeProperty('jqx-combobox-state-hover'));
-                        if (that.dropDownVerticalAlignment == "top") {
-                            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-up'));
-                        }
-                        else {
-                            that.dropdownlistArrowIcon.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        }
-                        that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
-                        that.dropdownlistArrow.addClass(that.toThemeProperty('jqx-fill-state-hover'));
-                    }
-                });
-                this.addHandler(this.host, 'mouseleave', function () {
-                    if (!that.disabled && that.enableHover) {
-                        that.host.removeClass(that.toThemeProperty('jqx-combobox-state-hover'));
-                        that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        that.dropdownlistArrowIcon.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-combobox-arrow-hover'));
-                        that.dropdownlistArrow.removeClass(that.toThemeProperty('jqx-fill-state-hover'));
-                        hovered = false;
-                    }
-                });
-            }
+                if (this._disableSelection === true)
+                    return;
 
-            if (that.autoOpen) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    var isOpened = that.isOpened();
-                    if (!isOpened && that.autoOpen) {
-                        that.open();
-                        that.host.focus();
-                    }
-                });
+                if (this.listBox == null)
+                    return;
 
-                this.addHandler($(document), 'mousemove.' + that.id, function (event) {
-                    var isOpened = that.isOpened();
-                    if (isOpened && that.autoOpen) {
-                        var offset = that.host.coord();
-                        var top = offset.top;
-                        var left = offset.left;
-                        var popupOffset = that.container.coord();
-                        var popupLeft = popupOffset.left;
-                        var popupTop = popupOffset.top;
-
-                        var canClose = true;
-
-                        if (event.pageY >= top && event.pageY <= top + that.host.height() + 2) {
-                            if (event.pageX >= left && event.pageX < left + that.host.width())
-                                canClose = false;
-                        }
-                        if (event.pageY >= popupTop && event.pageY <= popupTop + that.container.height() - 20) {
-                            if (event.pageX >= popupLeft && event.pageX < popupLeft + that.container.width())
-                                canClose = false;
-                        }
-
-                        if (canClose) {
-                            that.close();
-                        }
-                    }
-                });
-            }
-
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-
-            var dropDownButtonClicked = function (event) {
-                if (!that.disabled) {
-                    var isOpen = that.container.css('display') == 'block';
-                    if (!that.isanimating) {
-                        if (isOpen) {
-                            that.hideListBox('api');
-                            if (!$.jqx.mobile.isTouchDevice()) {
-                                that.input.focus();
-                                setTimeout(function () {
-                                    that.input.focus();
-                                }, 10);
-                            }
-                            return true;
-                        }
-                        else {
-                            if (that.autoDropDownHeight) {
-                                that.container.height(that.listBoxContainer.height() + 25);
-                                var autoheight = that.listBoxContainer.jqxListBox('autoHeight');
-                                if (!autoheight) {
-                                    that.listBoxContainer.jqxListBox({ autoHeight: that.autoDropDownHeight })
-                                    that.listBox._arrange();
-                                    that.listBox.ensureVisible(0);
-                                    that.listBox._renderItems();
-                                    that.container.height(that.listBoxContainer.height() + 25);
-                                }
-                            }
-                            that.showListBox('api');
-                            if (!$.jqx.mobile.isTouchDevice()) {
-                                setTimeout(function () {
-                                    that.input.focus();
-                                }, 10);
-                            }
-                            else {
-                                return true;
-                            }
-                        }
-                    }
+                if (this.multiSelect) {
+                    return;
                 }
-            }
+                var item = this.listBox.visibleItems[this.listBox.selectedIndex];
 
-            this.addHandler(this.dropdownlistArrow, eventName,
-                function (event) {
-                    dropDownButtonClicked(event);
-                    //       return false;
-                });
-            this.addHandler(this.dropdownlistArrowIcon, eventName,
-                function (event) {
-
-                    //   dropDownButtonClicked(event);
-                    //     return false;
-                });
-
-            this.addHandler(this.host, 'focus', function () {
-                that.focus();
-            });
-
-            this.addHandler(this.input, 'focus', function (event) {
-                that.focused = true;
-                that.host.addClass(that.toThemeProperty('jqx-combobox-state-focus'));
-                that.host.addClass(that.toThemeProperty('jqx-fill-state-focus'));
-                that.bar.addClass('focused');
-                that.label.addClass('focused');
-
-                that.dropdownlistContent.addClass(that.toThemeProperty('jqx-combobox-content-focus'));
-                if (event.stopPropagation) {
-                    event.stopPropagation();
-                }
-
-            });
-            this.addHandler(this.input, 'blur', function () {
-                that.focused = false;
-                that.bar.removeClass('focused');
-                that.label.removeClass('focused');
-
-                if (!that.isOpened() && !that.opening) {
-                    if (that.selectionMode == "dropDownList") {
-                        that._selectOldValue();
-                    }
-
-                    that.host.removeClass(that.toThemeProperty('jqx-combobox-state-focus'));
-                    that.host.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
-                    that.dropdownlistContent.removeClass(that.toThemeProperty('jqx-combobox-content-focus'));
-                }
-                if (that._searchTimer) clearTimeout(that._searchTimer);
-            });
-            this.addHandler($(document), 'mousedown.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
-            if (this.touch) {
-                this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, that.closeOpenedListBox, { that: this, listbox: this.listBox, id: this.id });
-            }
-
-            this.addHandler(this.host, 'keydown', function (event) {
-                var isOpen = that.container.css('display') == 'block';
-                that.ctrlKey = event.ctrlKey;
-                if (that.host.css('display') == 'none') {
-                    return true;
-                }
-
-                if (event.keyCode == '13' || event.keyCode == '9') {
-                    if (isOpen && !that.isanimating) {
-                        if (that.listBox.selectedIndex != -1) {
-                            that.renderSelection('mouse');
-                            var index = that.listBox.selectedIndex;
-                            var item = that.listBox.getVisibleItem(index);
-                            if (item) {
-                                that.listBox.selectedValue = item.value;
-                            }
-                            that._setSelection(that.input.val().length, that.input.val().length);
-                            that.hideListBox('keyboard');
-                        }
-                        if (event.keyCode == '13') {
-                            that._oldvalue = that.listBox.selectedValue;
-                        }
-                        if (!that.keyboardSelection) {
-                            that._raiseEvent('2', { index: that.selectedIndex, type: 'keyboard', item: that.getItem(that.selectedIndex) });
-                        }
-
-                        if (event.keyCode == '9') return true;
-                        return false;
+                if (this.autoComplete && !this.checkboxes) {
+                    if (this.listBox.selectedValue !== undefined) {
+                        var item = this.getItemByValue(this.listBox.selectedValue);
                     }
                 }
 
-                if (event.keyCode == 115) {
-                    if (!that.isanimating) {
-                        if (!that.isOpened()) {
-                            that.showListBox('keyboard');
-                        }
-                        else if (that.isOpened()) {
-                            that.hideListBox('keyboard');
-                        }
+                if (this.checkboxes) {
+                    var checkedItems = this.getCheckedItems();
+                    if (checkedItems != null && checkedItems.length > 0) {
+                        item = checkedItems[0];
                     }
-                    return false;
+                    else item = null;
                 }
 
-                if (event.altKey) {
-                    if (that.host.css('display') == 'block') {
-                        if (!that.isanimating) {
-                            if (event.keyCode == 38) {
-                                if (that.isOpened()) {
-                                    that.hideListBox('altKey');
-                                }
-                            }
-                            else if (event.keyCode == 40) {
-                                if (!that.isOpened()) {
-                                    that.showListBox('altKey');
-                                }
-                            }
-                        }
-                    }
+                if (this.hint) {
+                    this.label[0].innerHTML = this.placeHolder;
                 }
 
-                if (event.keyCode == '27' || event.keyCode == '9') {
-                    if (that.isOpened() && !that.isanimating) {
-
-                        if (event.keyCode == '27') {
-                            if (!that.multiSelect) {
-                                var item = that.listBox.getItemByValue(that._oldvalue);
-                                if (item) {
-                                    setTimeout(
-                                        function () {
-                                            if (that.autoComplete) {
-                                                that._updateItemsVisibility("");
-                                            }
-                                            that.listBox.selectIndex(item.index);
-                                            that.renderSelection('api');
-                                        }, that.closeDelay);
-                                }
-                                else {
-                                    that.clearSelection();
-                                }
-                            }
-                            else {
-                                that.listBox.selectedValue = null;
-                                that.input.val("");
-                            }
-                        }
-                        that.hideListBox('keyboard');
-
-
-                        if (event.keyCode == '9')
-                            return true;
-
-                        that.renderSelection('api');
-                        event.preventDefault();
-
-                        return false;
-                    }
-                }
-
-                var key = event.keyCode;
-
-                if (isOpen && !that.disabled && key != 8) {
-                    return that.listBox._handleKeyDown(event);
-                }
-                else if (!that.disabled && !isOpen) {
-                    var key = event.keyCode;
-                    // arrow keys.
-                    if (key == 33 || key == 34 || key == 35 || key == 36 || key == 38 || key == 40) {
-                        return that.listBox._handleKeyDown(event);
-                    }
-                }
-                if (key === 8 && that.multiSelect) {
-                    if (that.input.val().length === 0) {
-                        var lastItem = that.selectedItems[that.selectedItems.length - 1];
-                        that.selectedItems.pop();
-                        that._selectedItems.pop();
-                        if (lastItem) {
-                            that._raiseEvent('3', { index: lastItem.index, type: 'keyboard', item: lastItem });
-                            that._raiseEvent('4', { index: lastItem.index, type: 'keyboard', item: lastItem });
-                        }
-
-                        that.listBox.selectedValue = null;
-                        that.doMultiSelect();
-                        return false;
-                    }
-                }
-
-
-                if (that.isMaterialized() && that.hint) {
-                    setTimeout(function () {
-                        if (that.input[0].value.length === 0) {
-                            that.element.removeAttribute('hint');
-                            that.label[0].innerHTML = that.placeHolder;
-                        }
-                        else if (that.hint) {
-                            that.element.setAttribute('hint', true);
-                        }
-                    });
-                }
-            });
-
-            this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
-                that.renderSelection('mouse');
-                that._updateInputSelection();
-                that._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
-            });
-
-            this.addHandler(this.listBoxContainer, 'select', function (event) {
-                if (!that.disabled) {
-                    if (event.args.type != 'keyboard' || that.keyboardSelection) {
-                        that.renderSelection(event.args.type);
-                        if (!that.multiSelect) {
-                            that._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item });
-                        }
-                        if (event.args.type == 'mouse') {
-                            that._oldvalue = that.listBox.selectedValue;
-
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                                if (!that.touch) {
-                                    that.input.focus();
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            if (this.listBox != null && this.listBox.content != null) {
-                this.addHandler(this.listBox.content, 'click', function (event) {
-                    if (!that.disabled) {
-                        if (that.listBox.itemswrapper) {
-                            if (event.target === that.listBox.itemswrapper[0])
-                                return true;
-                        }
-
-                        if (event.target && event.target.className) {
-                            if (event.target.className.indexOf('jqx-fill-state-disabled') >= 0) {
-                                return true;
-                            }
-                        }
-
-                        that.renderSelection('mouse');
-                        that._oldvalue = that.listBox.selectedValue;
-                        if (!that.touch && !that.ishiding) {
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                                that.input.focus();
-                            }
-                        }
-                        if (that.touch === true) {
-                            if (!that.checkboxes) {
-                                that.hideListBox('mouse');
-                            }
-                        }
-                    }
-                });
-            }
-        },
-
-        _selectOldValue: function () {
-            var that = this;
-            if (that.listBox.selectedIndex == -1) {
-                if (!that.multiSelect) {
-                    var item = that.listBox.getItemByValue(that._oldvalue);
-                    if (item) {
-                        setTimeout(
-                            function () {
-                                if (that.autoComplete) {
-                                    that._updateItemsVisibility("");
-                                }
-                                that.listBox.selectIndex(item.index);
-                                that.renderSelection('api');
-                            }, that.closeDelay);
-                    }
-                    else {
-                        that.clearSelection();
-                        that.listBox.selectIndex(0);
-                        that.renderSelection('api');
+                if (item != null) {
+                    if (this.hint) {
+                        this.element.setAttribute('hint', true);
                     }
                 }
                 else {
-                    that.listBox.selectedValue = null;
-                    that.input.val("");
+                    this.element.removeAttribute('hint');
                 }
-            }
-            else {
-                that.renderSelection('api');
-            }
-        },
 
-        removeHandlers: function () {
-            var that = this;
-            if (this.dropdownlistWrapper != null) {
-                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            }
+                this.bar.css('top', this.host.height());
 
-            if (this.dropdownlistContent) {
-                this.removeHandler(this.dropdownlistContent, 'click');
-                this.removeHandler(this.dropdownlistContent, 'focus');
-            }
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.host, 'focus');
-            if (this.input != null) {
-                this.removeHandler(this.input, 'focus');
-                this.removeHandler(this.input, 'blur');
-            }
-            this.removeHandler(this.host, 'mouseenter');
-            this.removeHandler(this.host, 'mouseleave');
-            this.removeHandler($(document), 'mousemove.' + that.id);
-            if (this.listBoxContainer) {
-                this.removeHandler(this.listBoxContainer, 'checkChange');
-                this.removeHandler(this.listBoxContainer, 'select');
-            }
-            if (this.host.parents()) {
-                this.removeHandler(this.host.parents(), 'scroll.combobox' + this.element.id);
-            }
-            if (this.dropdownlistArrowIcon && this.dropdownlistArrow) {
-                var eventName = 'mousedown';
-                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-                this.removeHandler(this.dropdownlistArrowIcon, eventName);
-                this.removeHandler(this.dropdownlistArrow, eventName);
-            }
-        },
-
-        // gets an item by index.
-        getItem: function (index) {
-            var item = this.listBox.getItem(index);
-            return item;
-        },
-
-        getItemByValue: function (value) {
-            var item = this.listBox.getItemByValue(value);
-            return item;
-        },
-
-        getVisibleItem: function (index) {
-            var item = this.listBox.getVisibleItem(index);
-            return item;
-        },
-
-        // renders the selection.
-        renderSelection: function (type) {
-            if (type == undefined || type == 'none') {
-                return;
-            }
-
-            if (this._disableSelection === true)
-                return;
-
-            if (this.listBox == null)
-                return;
-
-            if (this.multiSelect) {
-                return;
-            }
-            var item = this.listBox.visibleItems[this.listBox.selectedIndex];
-
-            if (this.autoComplete && !this.checkboxes) {
-                if (this.listBox.selectedValue !== undefined) {
-                    var item = this.getItemByValue(this.listBox.selectedValue);
-                }
-            }
-
-            if (this.checkboxes) {
-                var checkedItems = this.getCheckedItems();
-                if (checkedItems != null && checkedItems.length > 0) {
-                    item = checkedItems[0];
-                }
-                else item = null;
-            }
-
-            if (this.hint) {
-                this.label[0].innerHTML = this.placeHolder;
-            }
-
-            if (item != null) {
-                if (this.hint) {
-                    this.element.setAttribute('hint', true);
-                }
-            }
-            else {
-                this.element.removeAttribute('hint');
-            }
-
-            this.bar.css('top', this.host.height());
-
-            if (item == null) {
-                var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
-                this.input.val("");
-                this.input.attr('value', '');
-                if (!ie7) {
-                    if (this.isMaterialized()) {
-                        this.label[0].innerHTML = this.placeHolder;
-                        this.input.removeAttr('placeholder');
-                    }
-                    else {
-                        this.input.attr('placeholder', this.placeHolder);
-                    }
-                }
-                this._updateInputSelection();
-                return;
-            }
-
-            this.selectedIndex = this.listBox.selectedIndex;
-            var spanElement = $('<span></span>');
-
-            if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.label);
-            }
-            else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.value);
-            }
-            else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
-                $.jqx.utilities.html(spanElement, item.title);
-            }
-            else {
-                $.jqx.utilities.html(spanElement, this.emptyString);
-            }
-            var spanHeight = spanElement.outerHeight();
-            if (this.checkboxes) {
-                var items = this.getCheckedItems();
-                var str = "";
-                for (var i = 0; i < items.length; i++) {
-                    if (i == items.length - 1) {
-                        str += items[i].label;
-                    }
-                    else {
-                        str += items[i].label + ", ";
-                    }
-                }
-                this.input.val(str);
-            }
-            else {
-                this.input.val(spanElement.text());
-            }
-            spanElement.remove();
-            this._updateInputSelection();
-            if (this.renderSelectedItem) {
-                var result = this.renderSelectedItem(this.listBox.selectedIndex, item);
-                if (result != undefined) {
-                    this.input[0].value = result;
-                }
-            }
-            this.input.attr('value', this.input.val());
-            if (this.listBox && this.listBox._activeElement) {
-                $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
-            }
-        },
-
-        dataBind: function () {
-            this.listBoxContainer.jqxListBox({ source: this.source });
-            this.renderSelection('mouse');
-            if (this.source == null) {
-                this.clearSelection();
-            }
-        },
-
-        clear: function () {
-            this.listBoxContainer.jqxListBox({ source: null });
-            this.clearSelection();
-        },
-
-        // clears the selection.
-        clearSelection: function (render) {
-            this.selectedIndex = -1;
-            this.listBox.clearSelection();
-            this.input.val("");
-            if (this.multiSelect) {
-                this.listBox.selectedValue = "";
-                this.selectedItems = new Array();
-                this._selectedItems = new Array();
-                this.doMultiSelect(false);
-            }
-        },
-
-        // unselects an item at specific index.
-        // @param Number
-        unselectIndex: function (index, render) {
-            if (isNaN(index))
-                return;
-
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            this.listBox.unselectIndex(index, render);
-            this.renderSelection('mouse');
-            if (this.multiSelect) {
-                if (index >= 0) {
-                    var multiItem = this.getItem(index);
-
-                    var indx = this.selectedItems.indexOf(multiItem.value);
-                    if (indx >= 0) {
-                        if (multiItem.value === this.listBox.selectedValue) {
-                            this.listBox.selectedValue = null;
+                if (item == null) {
+                    var ie7 = $.jqx.browser.msie && $.jqx.browser.version < 8;
+                    this.input.val("");
+                    this.input.attr('value', '');
+                    if (!ie7) {
+                        if (this.isMaterialized()) {
+                            this.label[0].innerHTML = this.placeHolder;
+                            this.input.removeAttr('placeholder');
                         }
+                        else {
+                            this.input.attr('placeholder', this.placeHolder);
+                        }
+                    }
+                    this._updateInputSelection();
+                    return;
+                }
 
-                        this.selectedItems.splice(indx, 1);
-                        this._selectedItems.splice(indx, 1);
+                this.selectedIndex = this.listBox.selectedIndex;
+                var spanElement = $('<span></span>');
+
+                if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.label);
+                }
+                else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.value);
+                }
+                else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
+                    $.jqx.utilities.html(spanElement, item.title);
+                }
+                else {
+                    $.jqx.utilities.html(spanElement, this.emptyString);
+                }
+                var spanHeight = spanElement.outerHeight();
+                if (this.checkboxes) {
+                    var items = this.getCheckedItems();
+                    var str = "";
+                    for (var i = 0; i < items.length; i++) {
+                        if (i == items.length - 1) {
+                            str += items[i].label;
+                        }
+                        else {
+                            str += items[i].label + ", ";
+                        }
+                    }
+                    this.input.val(str);
+                }
+                else {
+                    this.input.val(spanElement.text());
+                }
+                spanElement.remove();
+                this._updateInputSelection();
+                if (this.renderSelectedItem) {
+                    var result = this.renderSelectedItem(this.listBox.selectedIndex, item);
+                    if (result != undefined) {
+                        this.input[0].value = result;
                     }
                 }
-                this.doMultiSelect(false);
-            }
-        },
+                this.input.attr('value', this.input.val());
+                if (this.listBox && this.listBox._activeElement) {
+                    $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
+                }
+            },
 
-        // selects an item at specific index.
-        // @param Number
-        selectIndex: function (index, ensureVisible, render, forceSelect) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            this.listBox.selectIndex(index, ensureVisible, render, forceSelect);
-            this.renderSelection('mouse');
-            this.selectedIndex = index;
-            if (this.multiSelect) {
-                this.doMultiSelect();
-            }
-        },
-
-        selectItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.selectedIndex = -1;
-                this.listBox.selectItem(item);
-                this.selectedIndex = this.listBox.selectedIndex;
+            dataBind: function () {
+                this.listBoxContainer.jqxListBox({ source: this.source });
                 this.renderSelection('mouse');
+                if (this.source == null) {
+                    this.clearSelection();
+                }
+            },
+
+            clear: function () {
+                this.listBoxContainer.jqxListBox({ source: null });
+                this.clearSelection();
+            },
+
+            // clears the selection.
+            clearSelection: function (render) {
+                this.selectedIndex = -1;
+                this.listBox.clearSelection();
+                this.input.val("");
                 if (this.multiSelect) {
+                    this.listBox.selectedValue = "";
+                    this.selectedItems = new Array();
+                    this._selectedItems = new Array();
                     this.doMultiSelect(false);
                 }
-            }
-        },
+            },
 
-        unselectItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
+            // unselects an item at specific index.
+            // @param Number
+            unselectIndex: function (index, render) {
+                if (isNaN(index))
+                    return;
 
-            if (this.listBox != undefined) {
-                this.listBox.unselectItem(item);
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                this.listBox.unselectIndex(index, render);
                 this.renderSelection('mouse');
                 if (this.multiSelect) {
-                    var multiItem = this.getItemByValue(item);
-                    if (multiItem) {
-                        var index = this.selectedItems.indexOf(multiItem.value);
-                        if (index >= 0) {
+                    if (index >= 0) {
+                        var multiItem = this.getItem(index);
+
+                        var indx = this.selectedItems.indexOf(multiItem.value);
+                        if (indx >= 0) {
                             if (multiItem.value === this.listBox.selectedValue) {
                                 this.listBox.selectedValue = null;
                             }
 
-                            this.selectedItems.splice(index, 1);
-                            this._selectedItems.splice(index, 1);
+                            this.selectedItems.splice(indx, 1);
+                            this._selectedItems.splice(indx, 1);
                         }
                     }
-
                     this.doMultiSelect(false);
                 }
-            }
-        },
+            },
 
-        checkItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.checkItem(item);
-            }
-        },
-
-        uncheckItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.uncheckItem(item);
-            }
-        },
-
-        indeterminateItem: function (item) {
-            if (this.autoComplete) {
-                this._updateItemsVisibility("");
-            }
-
-            if (this.listBox != undefined) {
-                this.listBox.indeterminateItem(item);
-            }
-        },
-
-        getSelectedValue: function () {
-            return this.listBox.selectedValue;
-        },
-
-        // gets the selected index.
-        getSelectedIndex: function () {
-            if (!this.multiSelect) {
-                return this.listBox.selectedIndex;
-            }
-            else {
-                if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
-                    return this.getSelectedItems()[0].index;
-
-                if (this._selectedItems && this._selectedItems.length > 0) {
-                    return this.getSelectedItems()[0].index;
+            // selects an item at specific index.
+            // @param Number
+            selectIndex: function (index, ensureVisible, render, forceSelect) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
                 }
-            }
-        },
 
-        // gets the selected item.
-        getSelectedItem: function () {
-            if (!this.multiSelect) {
-                return this.getVisibleItem(this.listBox.selectedIndex);
-            }
-            else {
-                if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
-                    return this.getSelectedItems()[0];
-
-                if (this._selectedItems && this._selectedItems.length > 0) {
-                    return this.getSelectedItems()[0];
+                this.listBox.selectIndex(index, ensureVisible, render, forceSelect);
+                this.renderSelection('mouse');
+                this.selectedIndex = index;
+                if (this.multiSelect) {
+                    this.doMultiSelect();
                 }
-                return null;
-            }
-        },
+            },
 
-        // gets the selected items when multiselect is enabled.
-        getSelectedItems: function () {
-            if (this.remoteAutoComplete && this.multiSelect)
-                return this._selectedItems;
+            selectItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
 
-            var array = new Array();
-            var that = this;
-            $.each(this.selectedItems, function () {
-                var item = that.getItemByValue(this);
-                if (item) {
-                    array.push(item);
+                if (this.listBox != undefined) {
+                    this.listBox.selectedIndex = -1;
+                    this.listBox.selectItem(item);
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    this.renderSelection('mouse');
+                    if (this.multiSelect) {
+                        this.doMultiSelect(false);
+                    }
+                }
+            },
+
+            unselectItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.unselectItem(item);
+                    this.renderSelection('mouse');
+                    if (this.multiSelect) {
+                        var multiItem = this.getItemByValue(item);
+                        if (multiItem) {
+                            var index = this.selectedItems.indexOf(multiItem.value);
+                            if (index >= 0) {
+                                if (multiItem.value === this.listBox.selectedValue) {
+                                    this.listBox.selectedValue = null;
+                                }
+
+                                this.selectedItems.splice(index, 1);
+                                this._selectedItems.splice(index, 1);
+                            }
+                        }
+
+                        this.doMultiSelect(false);
+                    }
+                }
+            },
+
+            checkItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.checkItem(item);
+                }
+            },
+
+            uncheckItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.uncheckItem(item);
+                }
+            },
+
+            indeterminateItem: function (item) {
+                if (this.autoComplete) {
+                    this._updateItemsVisibility("");
+                }
+
+                if (this.listBox != undefined) {
+                    this.listBox.indeterminateItem(item);
+                }
+            },
+
+            getSelectedValue: function () {
+                return this.listBox.selectedValue;
+            },
+
+            // gets the selected index.
+            getSelectedIndex: function () {
+                if (!this.multiSelect) {
+                    return this.listBox.selectedIndex;
                 }
                 else {
-                    var item = that._selectedItems[this];
+                    if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
+                        return this.getSelectedItems()[0].index;
+
+                    if (this._selectedItems && this._selectedItems.length > 0) {
+                        return this.getSelectedItems()[0].index;
+                    }
+                }
+            },
+
+            // gets the selected item.
+            getSelectedItem: function () {
+                if (!this.multiSelect) {
+                    return this.getVisibleItem(this.listBox.selectedIndex);
+                }
+                else {
+                    if (this.remoteAutoComplete && this.multiSelect && this._selectedItems.length > 0)
+                        return this.getSelectedItems()[0];
+
+                    if (this._selectedItems && this._selectedItems.length > 0) {
+                        return this.getSelectedItems()[0];
+                    }
+                    return null;
+                }
+            },
+
+            // gets the selected items when multiselect is enabled.
+            getSelectedItems: function () {
+                if (this.remoteAutoComplete && this.multiSelect)
+                    return this._selectedItems;
+
+                var array = new Array();
+                var that = this;
+                $.each(this.selectedItems, function () {
+                    var item = that.getItemByValue(this);
                     if (item) {
                         array.push(item);
                     }
+                    else {
+                        var item = that._selectedItems[this];
+                        if (item) {
+                            array.push(item);
+                        }
+                    }
+                });
+                return array;
+            },
+
+            getCheckedItems: function () {
+                return this.listBox.getCheckedItems();
+            },
+
+            checkIndex: function (index) {
+                this.listBox.checkIndex(index);
+            },
+
+            uncheckIndex: function (index) {
+                this.listBox.uncheckIndex(index);
+            },
+
+            indeterminateIndex: function (index) {
+                this.listBox.indeterminateIndex(index);
+            },
+            checkAll: function () {
+                this.listBox.checkAll();
+                this.renderSelection("mouse");
+            },
+
+            uncheckAll: function () {
+                this.listBox.uncheckAll();
+                this.renderSelection("mouse");
+            },
+
+            insertAt: function (item, index) {
+                if (item == null)
+                    return false;
+
+                return this.listBox.insertAt(item, index);
+            },
+
+            addItem: function (item) {
+                return this.listBox.addItem(item);
+            },
+
+            removeAt: function (index) {
+                var result = this.listBox.removeAt(index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            removeItem: function (item) {
+                var result = this.listBox.removeItem(item);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateItem: function (item, oldItem) {
+                var result = this.listBox.updateItem(item, oldItem);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateAt: function (item, index) {
+                var result = this.listBox.updateAt(item, index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            ensureVisible: function (index) {
+                return this.listBox.ensureVisible(index);
+            },
+
+            disableAt: function (index) {
+                var item = this.getVisibleItem(index);
+                if (item) {
+                    this._disabledItems.push(item.value);
                 }
-            });
-            return array;
-        },
+                return this.listBox.disableAt(index);
+            },
 
-        getCheckedItems: function () {
-            return this.listBox.getCheckedItems();
-        },
-
-        checkIndex: function (index) {
-            this.listBox.checkIndex(index);
-        },
-
-        uncheckIndex: function (index) {
-            this.listBox.uncheckIndex(index);
-        },
-
-        indeterminateIndex: function (index) {
-            this.listBox.indeterminateIndex(index);
-        },
-        checkAll: function () {
-            this.listBox.checkAll();
-            this.renderSelection("mouse");
-        },
-
-        uncheckAll: function () {
-            this.listBox.uncheckAll();
-            this.renderSelection("mouse");
-        },
-
-        insertAt: function (item, index) {
-            if (item == null)
-                return false;
-
-            return this.listBox.insertAt(item, index);
-        },
-
-        addItem: function (item) {
-            return this.listBox.addItem(item);
-        },
-
-        removeAt: function (index) {
-            var result = this.listBox.removeAt(index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        removeItem: function (item) {
-            var result = this.listBox.removeItem(item);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateItem: function (item, oldItem) {
-            var result = this.listBox.updateItem(item, oldItem);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateAt: function (item, index) {
-            var result = this.listBox.updateAt(item, index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        ensureVisible: function (index) {
-            return this.listBox.ensureVisible(index);
-        },
-
-        disableAt: function (index) {
-            var item = this.getVisibleItem(index);
-            if (item) {
-                this._disabledItems.push(item.value);
-            }
-            return this.listBox.disableAt(index);
-        },
-
-        enableAt: function (index) {
-            var item = this.getVisibleItem(index);
-            if (item) {
-                this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
-            }
-            return this.listBox.enableAt(index);
-        },
-
-        disableItem: function (item) {
-            var item = this.getVisibleItem(item);
-            if (item) {
-                this._disabledItems.push(item.value);
-            }
-            return this.listBox.disableItem(item);
-        },
-
-        enableItem: function (item) {
-            var item = this.getVisibleItem(item);
-            if (item) {
-                this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
-            }
-            return this.listBox.enableItem(item);
-        },
-
-        _findPos: function (obj) {
-            while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
-                obj = obj['nextSibling'];
-            }
-            if (obj) {
-                var position = $(obj).coord(true);
-                return [position.left, position.top];
-            }
-        },
-
-        testOffset: function (element, offset, inputHeight) {
-            var dpWidth = element.outerWidth();
-            var dpHeight = element.outerHeight();
-            var viewWidth = $(window).width() + $(window).scrollLeft();
-            var viewHeight = $(window).height() + $(window).scrollTop();
-
-            if (offset.left + dpWidth > viewWidth) {
-                if (dpWidth > this.host.width()) {
-                    var hostLeft = this.host.coord().left;
-                    var hOffset = dpWidth - this.host.width();
-                    offset.left = hostLeft - hOffset + 2;
+            enableAt: function (index) {
+                var item = this.getVisibleItem(index);
+                if (item) {
+                    this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
                 }
-            }
-            if (offset.left < 0) {
-                offset.left = parseInt(this.host.coord().left) + 'px'
-            }
+                return this.listBox.enableAt(index);
+            },
 
-            offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-                Math.abs(dpHeight + inputHeight + 23) : 0);
-
-            return offset;
-        },
-
-        open: function () {
-            if (!this.isOpened() && !this.opening) {
-                this.showListBox('api');
-            }
-        },
-
-        close: function () {
-            if (this.isOpened()) {
-                this.hideListBox('api');
-            }
-        },
-
-        _getBodyOffset: function () {
-            var top = 0;
-            var left = 0;
-            if ($('body').css('border-top-width') != '0px') {
-                top = parseInt($('body').css('border-top-width'));
-                if (isNaN(top)) top = 0;
-            }
-            if ($('body').css('border-left-width') != '0px') {
-                left = parseInt($('body').css('border-left-width'));
-                if (isNaN(left)) left = 0;
-            }
-            return { left: left, top: top };
-        },
-
-        // shows the listbox.
-        showListBox: function (mode) {
-            if (this.listBox.items && this.listBox.items.length == 0)
-                return;
-
-            if (mode == "search" && !this.autoComplete && !this.remoteAutoComplete) {
-                if (this.autoDropDownHeight) {
-                    this.container.height(this.listBoxContainer.height() + 25);
+            disableItem: function (item) {
+                var item = this.getVisibleItem(item);
+                if (item) {
+                    this._disabledItems.push(item.value);
                 }
-            }
-            this.element.setAttribute('opened', true);
+                return this.listBox.disableItem(item);
+            },
 
-            if (this.autoComplete || this.multiSelect && !this.remoteAutoComplete) {
-                if (mode != 'search') {
-                    this._updateItemsVisibility("");
+            enableItem: function (item) {
+                var item = this.getVisibleItem(item);
+                if (item) {
+                    this._disabledItems.splice(this._disabledItems.indexOf(item.value), 1);
+                }
+                return this.listBox.enableItem(item);
+            },
 
-                    if (this.multiSelect) {
-                        var visibleItems = this.getVisibleItems();
-                        for (var i = 0; i < visibleItems.length; i++) {
-                            if (!visibleItems[i].disabled) {
-                                this.ensureVisible(i);
-                                break;
+            _findPos: function (obj) {
+                while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
+                    obj = obj['nextSibling'];
+                }
+                if (obj) {
+                    var position = $(obj).coord(true);
+                    return [position.left, position.top];
+                }
+            },
+
+            testOffset: function (element, offset, inputHeight) {
+                var dpWidth = element.outerWidth();
+                var dpHeight = element.outerHeight();
+                var viewWidth = $(window).width() + $(window).scrollLeft();
+                var viewHeight = $(window).height() + $(window).scrollTop();
+
+                if (offset.left + dpWidth > viewWidth) {
+                    if (dpWidth > this.host.width()) {
+                        var hostLeft = this.host.coord().left;
+                        var hOffset = dpWidth - this.host.width();
+                        offset.left = hostLeft - hOffset + 2;
+                    }
+                }
+                if (offset.left < 0) {
+                    offset.left = parseInt(this.host.coord().left) + 'px'
+                }
+
+                offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
+                    Math.abs(dpHeight + inputHeight + 23) : 0);
+
+                return offset;
+            },
+
+            open: function () {
+                if (!this.isOpened() && !this.opening) {
+                    this.showListBox('api');
+                }
+            },
+
+            close: function () {
+                if (this.isOpened()) {
+                    this.hideListBox('api');
+                }
+            },
+
+            _getBodyOffset: function () {
+                var top = 0;
+                var left = 0;
+                if ($('body').css('border-top-width') != '0px') {
+                    top = parseInt($('body').css('border-top-width'));
+                    if (isNaN(top)) top = 0;
+                }
+                if ($('body').css('border-left-width') != '0px') {
+                    left = parseInt($('body').css('border-left-width'));
+                    if (isNaN(left)) left = 0;
+                }
+                return { left: left, top: top };
+            },
+
+            // shows the listbox.
+            showListBox: function (mode) {
+                if (this.listBox.items && this.listBox.items.length == 0)
+                    return;
+
+                if (mode == "search" && !this.autoComplete && !this.remoteAutoComplete) {
+                    if (this.autoDropDownHeight) {
+                        this.container.height(this.listBoxContainer.height() + 25);
+                    }
+                }
+                this.element.setAttribute('opened', true);
+
+                if (this.autoComplete || this.multiSelect && !this.remoteAutoComplete) {
+                    if (mode != 'search') {
+                        this._updateItemsVisibility("");
+
+                        if (this.multiSelect) {
+                            var visibleItems = this.getVisibleItems();
+                            for (var i = 0; i < visibleItems.length; i++) {
+                                if (!visibleItems[i].disabled) {
+                                    this.ensureVisible(i);
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
-            if (this.remoteAutoComplete) {
-                this.listBox.clearSelection();
-            }
+                if (this.remoteAutoComplete) {
+                    this.listBox.clearSelection();
+                }
 
-            if (mode != 'search') {
-                this._oldvalue = this.listBox.selectedValue;
-            }
+                if (mode != 'search') {
+                    this._oldvalue = this.listBox.selectedValue;
+                }
 
-            $.jqx.aria(this, "aria-expanded", true);
+                $.jqx.aria(this, "aria-expanded", true);
 
-            if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && this.width.indexOf('%') != -1) {
-                if (this.listBox.host.width() != this.host.width()) {
+                if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && this.width.indexOf('%') != -1) {
+                    if (this.listBox.host.width() != this.host.width()) {
+                        var width = this.element.offsetWidth;
+                        this.listBoxContainer.jqxListBox({ width: width });
+                        this.listBoxContainer[0].style.width = width + "px";
+                        this.container.width(parseInt(width) + 25);
+                    }
+                }
+                if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
                     var width = this.element.offsetWidth;
-                    this.listBoxContainer.jqxListBox({ width: width });
-                    this.listBoxContainer[0].style.width = width + "px";
+                    this.listBoxContainer.jqxListBox({ width: width + 1 });
                     this.container.width(parseInt(width) + 25);
                 }
-            }
-            if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
-                var width = this.element.offsetWidth;
-                this.listBoxContainer.jqxListBox({ width: width + 1 });
-                this.container.width(parseInt(width) + 25);
-            }
 
 
-            var that = this;
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var scrollPosition = $(window).scrollTop();
-            var scrollLeftPosition = $(window).scrollLeft();
-            var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
-            var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
-            left = leftPos + 'px';
-            if (this.dropDownContainer === 'element') {
-                top = parseInt(this.host.outerHeight()) - 1 + 'px';
-                left = 0;
-            }
-            var isMobileBrowser = $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
-            this.ishiding = false;
-
-            var hasTransform = $.jqx.utilities.hasTransform(this.host);
-
-            if (hasTransform || (isMobileBrowser != null && isMobileBrowser)) {
-                left = $.jqx.mobile.getLeftPos(this.element);
-                top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
-                if ($('body').css('border-top-width') != '0px') {
-                    top = parseInt(top) - this._getBodyOffset().top + 'px';
+                var that = this;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var scrollPosition = $(window).scrollTop();
+                var scrollLeftPosition = $(window).scrollLeft();
+                var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
+                var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
+                left = leftPos + 'px';
+                if (this.dropDownContainer === 'element') {
+                    top = parseInt(this.host.outerHeight()) - 1 + 'px';
+                    left = 0;
                 }
-                if ($('body').css('border-left-width') != '0px') {
-                    left = parseInt(left) - this._getBodyOffset().left + 'px';
+                var isMobileBrowser = $.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+                this.ishiding = false;
+
+                var hasTransform = $.jqx.utilities.hasTransform(this.host);
+
+                if (hasTransform || (isMobileBrowser != null && isMobileBrowser)) {
+                    left = $.jqx.mobile.getLeftPos(this.element);
+                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+                    if ($('body').css('border-top-width') != '0px') {
+                        top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    }
+                    if ($('body').css('border-left-width') != '0px') {
+                        left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    }
                 }
-            }
 
-            this.host.addClass(this.toThemeProperty('jqx-combobox-state-selected'));
-            if (this.dropDownVerticalAlignment == "top") {
-                this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            }
-            else {
-                this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            }
-            this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
-            this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            this.host.addClass(this.toThemeProperty('jqx-combobox-state-focus'));
-            this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.dropdownlistContent.addClass(this.toThemeProperty('jqx-combobox-content-focus'));
-
-            this.container.css('left', left);
-            this.container.css('top', top);
-            listBoxInstance._arrange();
-
-            var closeAfterSelection = true;
-
-            var positionChanged = false;
-
-            if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
-                var containerWidth = this.container.outerWidth();
-                var containerLeftOffset = Math.abs(containerWidth - this.host.width());
-
-                if (containerWidth > this.host.width()) {
-                    this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
-                }
-                else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
-            }
-
-            if (this.dropDownVerticalAlignment == "top") {
-                var dpHeight = listBox.height();
-                positionChanged = true;
-
-                listBox.css('top', 23);
-                listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                var inputHeight = parseInt(this.host.outerHeight());
-                var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
-
-                this.container.css('top', t);
-            }
-
-            if (this.enableBrowserBoundsDetection) {
-                var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
-                if (parseInt(this.container.css('top')) != newOffset.top) {
-                    positionChanged = true;
-                    listBox.css('top', 23);
-                    listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                }
-                else listBox.css('top', 0);
-
-                this.container.css('top', newOffset.top);
-                this.container.css('top', newOffset.top);
-                if (parseInt(this.container.css('left')) != newOffset.left) {
-                    this.container.css('left', newOffset.left);
-                }
-            }
-
-            if (this.animationType == 'none' || this.animationType === 'transform') {
-                this.container.css('display', 'block');
-                $.data(document.body, "openedCombojqxListBoxParent", that);
-                $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                listBox.css('margin-top', 0);
-                listBox.css('opacity', 1);
-            }
-            else {
-                this.container.css('display', 'block');
-                var height = listBox.outerHeight();
-                listBox.stop();
-                if (this.animationType == 'fade') {
-                    listBox.css('margin-top', 0);
-                    listBox.css('opacity', 0);
-                    listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
-                        that.isanimating = false;
-                        that.opening = false;
-                        $.data(document.body, "openedCombojqxListBoxParent", that);
-                        $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                    });
+                this.host.addClass(this.toThemeProperty('jqx-combobox-state-selected'));
+                if (this.dropDownVerticalAlignment == "top") {
+                    this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
                 }
                 else {
+                    this.dropdownlistArrowIcon.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                }
+                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
+                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                this.host.addClass(this.toThemeProperty('jqx-combobox-state-focus'));
+                this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.dropdownlistContent.addClass(this.toThemeProperty('jqx-combobox-content-focus'));
+
+                this.container.css('left', left);
+                this.container.css('top', top);
+                listBoxInstance._arrange();
+
+                var closeAfterSelection = true;
+
+                var positionChanged = false;
+
+                if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
+                    var containerWidth = this.container.outerWidth();
+                    var containerLeftOffset = Math.abs(containerWidth - this.host.width());
+
+                    if (containerWidth > this.host.width()) {
+                        this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
+                    }
+                    else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
+                }
+
+                if (this.dropDownVerticalAlignment == "top") {
+                    var dpHeight = listBox.height();
+                    positionChanged = true;
+
+                    listBox.css('top', 23);
+                    listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    var inputHeight = parseInt(this.host.outerHeight());
+                    var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
+
+                    this.container.css('top', t);
+                }
+
+                if (this.enableBrowserBoundsDetection) {
+                    var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
+                    if (parseInt(this.container.css('top')) != newOffset.top) {
+                        positionChanged = true;
+                        listBox.css('top', 23);
+                        listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    }
+                    else listBox.css('top', 0);
+
+                    this.container.css('top', newOffset.top);
+                    this.container.css('top', newOffset.top);
+                    if (parseInt(this.container.css('left')) != newOffset.left) {
+                        this.container.css('left', newOffset.left);
+                    }
+                }
+
+                if (this.animationType == 'none' || this.animationType === 'transform') {
+                    this.container.css('display', 'block');
+                    $.data(document.body, "openedCombojqxListBoxParent", that);
+                    $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                    listBox.css('margin-top', 0);
                     listBox.css('opacity', 1);
-                    if (positionChanged) {
-                        listBox.css('margin-top', height);
+                }
+                else {
+                    this.container.css('display', 'block');
+                    var height = listBox.outerHeight();
+                    listBox.stop();
+                    if (this.animationType == 'fade') {
+                        listBox.css('margin-top', 0);
+                        listBox.css('opacity', 0);
+                        listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
+                            that.isanimating = false;
+                            that.opening = false;
+                            $.data(document.body, "openedCombojqxListBoxParent", that);
+                            $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                        });
                     }
                     else {
-                        listBox.css('margin-top', -height);
+                        listBox.css('opacity', 1);
+                        if (positionChanged) {
+                            listBox.css('margin-top', height);
+                        }
+                        else {
+                            listBox.css('margin-top', -height);
+                        }
+                        this.isanimating = true;
+                        this.opening = true;
+                        listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
+                            that.isanimating = false;
+                            that.opening = false;
+                            $.data(document.body, "openedCombojqxListBoxParent", that);
+                            $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
+                        });
                     }
-                    this.isanimating = true;
-                    this.opening = true;
-                    listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
-                        that.isanimating = false;
-                        that.opening = false;
-                        $.data(document.body, "openedCombojqxListBoxParent", that);
-                        $.data(document.body, "openedCombojqxListBox" + that.element.id, listBox);
-                    });
                 }
-            }
-            listBoxInstance._renderItems();
-            if (!positionChanged) {
-                this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            }
-            else {
-                this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            }
-            listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                listBoxInstance._renderItems();
+                if (!positionChanged) {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                }
+                else {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    this.dropdownlistArrow.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                }
+                listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
 
-            this._raiseEvent('0', listBoxInstance);
-            listBox.addClass(this.toThemeProperty('jqx-popup-show'));
-        },
+                this._raiseEvent('0', listBoxInstance);
+                listBox.addClass(this.toThemeProperty('jqx-popup-show'));
+            },
 
-        doMultiSelect: function (setFocus) {
-            if (this.checkboxes) {
-                this.multiSelect = false;
-            }
+            doMultiSelect: function (setFocus) {
+                if (this.checkboxes) {
+                    this.multiSelect = false;
+                }
 
-            var that = this;
-            if (!this.multiSelect) {
-                var buttons = that.dropdownlistContent.find('.jqx-button');
+                var that = this;
+                if (!this.multiSelect) {
+                    var buttons = that.dropdownlistContent.find('.jqx-button');
+                    var eventName = 'mousedown';
+                    if (this.touch) {
+                        eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                    }
+                    this.removeHandler(buttons, eventName);
+                    this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
+                    buttons.remove();
+                    var items = this.listBox.items;
+                    if (!items) return;
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].disabled = false;
+                    }
+                    this.listBox._renderItems();
+
+                    this.selectedItems = new Array();
+                    this._selectedItems = new Array();
+                    return;
+                }
+
+                if (this.validateSelection) {
+                    var result = this.validateSelection(this.listBox.selectedValue);
+                    if (!result) {
+                        return;
+                    }
+                }
+
+                var oldItems = this.selectedItems;
+                if (this.listBox.selectedValue) {
+                    if (this.selectedItems.indexOf(this.listBox.selectedValue) === -1) {
+                        var item = this.getItemByValue(this.listBox.selectedValue);
+                        if (item && item.visible) {
+                            this.selectedItems.push(this.listBox.selectedValue);
+                            this._selectedItems.push(item);
+                            this._raiseEvent('2', { index: item.index, item: item });
+                            this._raiseEvent('4', { index: item.index, item: item });
+                        }
+                    }
+                    this.listBox.selectedIndex = -1;
+                }
+
+                var items = this.listBox.items;
+                if (!items) return;
+                for (var i = 0; i < items.length; i++) {
+                    items[i].disabled = false;
+                    if (this.selectedItems.indexOf(items[i].value) >= 0 || this._disabledItems.indexOf(this.value) >= 0) {
+                        items[i].disabled = true;
+                    }
+                }
+                this.listBox._renderItems();
+
+                this.searchString = "";
+                this.input.val("");
+                var items = "";
                 var eventName = 'mousedown';
+
+                var buttons = that.dropdownlistContent.find('.jqx-button');
                 if (this.touch) {
                     eventName = $.jqx.mobile.getTouchEventName('touchstart');
                 }
                 this.removeHandler(buttons, eventName);
                 this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
                 buttons.remove();
-                var items = this.listBox.items;
-                if (!items) return;
-                for (var i = 0; i < items.length; i++) {
-                    items[i].disabled = false;
-                }
-                this.listBox._renderItems();
 
-                this.selectedItems = new Array();
-                this._selectedItems = new Array();
-                return;
-            }
-
-            if (this.validateSelection) {
-                var result = this.validateSelection(this.listBox.selectedValue);
-                if (!result) {
-                    return;
-                }
-            }
-
-            var oldItems = this.selectedItems;
-            if (this.listBox.selectedValue) {
-                if (this.selectedItems.indexOf(this.listBox.selectedValue) === -1) {
-                    var item = this.getItemByValue(this.listBox.selectedValue);
-                    if (item && item.visible) {
-                        this.selectedItems.push(this.listBox.selectedValue);
-                        this._selectedItems.push(item);
-                        this._raiseEvent('2', { index: item.index, item: item });
-                        this._raiseEvent('4', { index: item.index, item: item });
+                that.input.detach();
+                if (this.selectedItems.length > 0) {
+                    that.input.css('width', '25px');
+                    if (this.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = this.placeHolder;
+                    }
+                    else {
+                        that.input.attr('placeholder', "");
                     }
                 }
-                this.listBox.selectedIndex = -1;
-            }
-
-            var items = this.listBox.items;
-            if (!items) return;
-            for (var i = 0; i < items.length; i++) {
-                items[i].disabled = false;
-                if (this.selectedItems.indexOf(items[i].value) >= 0 || this._disabledItems.indexOf(this.value) >= 0) {
-                    items[i].disabled = true;
-                }
-            }
-            this.listBox._renderItems();
-
-            this.searchString = "";
-            this.input.val("");
-            var items = "";
-            var eventName = 'mousedown';
-
-            var buttons = that.dropdownlistContent.find('.jqx-button');
-            if (this.touch) {
-                eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            }
-            this.removeHandler(buttons, eventName);
-            this.removeHandler(buttons.find('.jqx-icon-close'), eventName);
-            buttons.remove();
-
-            that.input.detach();
-            if (this.selectedItems.length > 0) {
-                that.input.css('width', '25px');
-                if (this.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = this.placeHolder;
-                }
                 else {
-                    that.input.attr('placeholder', "");
+                    that.input.css('width', '100%');
+                    if (that.isMaterialized() && that.hint) {
+                        that.label[0].innerHTML = this.placeHolder;
+                    }
+                    else {
+                        that.input.attr('placeholder', this.placeHolder);
+                    }
                 }
-            }
-            else {
-                that.input.css('width', '100%');
-                if (that.isMaterialized() && that.hint) {
-                    that.label[0].innerHTML = this.placeHolder;
-                }
-                else {
-                    that.input.attr('placeholder', this.placeHolder);
-                }
-            }
 
-            if (that.isMaterialized()) {
-                if (that.hint) {
-                    setTimeout(function () {
-                        if (that.selectedItems.length === 0) {
-                            that.element.removeAttribute('hint');
-                            that.label[0].innerHTML = that.placeHolder;
-                        }
-                        else {
-                            if (that.hint) {
-                                that.element.setAttribute('hint', true);
+                if (that.isMaterialized()) {
+                    if (that.hint) {
+                        setTimeout(function () {
+                            if (that.selectedItems.length === 0) {
+                                that.element.removeAttribute('hint');
+                                that.label[0].innerHTML = that.placeHolder;
                             }
+                            else {
+                                if (that.hint) {
+                                    that.element.setAttribute('hint', true);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                $.each(this.selectedItems, function (index) {
+                    var item = that.getItemByValue(this);
+                    if (!item || that.remoteAutoComplete) {
+                        item = that._selectedItems[index];
+                    }
+
+                    var group = $('<div style="overflow: hidden; float: left;"></div>');
+                    group.addClass(that.toThemeProperty('jqx-button'));
+                    group.addClass(that.toThemeProperty('jqx-combobox-multi-item'));
+                    group.addClass(that.toThemeProperty('jqx-fill-state-normal'));
+                    group.addClass(that.toThemeProperty('jqx-rc-all'));
+                    if (item) {
+                        var text = item.label;
+                        if (that.renderSelectedItem) {
+                            var result = that.renderSelectedItem(index, item);
+                            if (result) text = result;
                         }
-                    });
-                }
-            }
 
-            $.each(this.selectedItems, function (index) {
-                var item = that.getItemByValue(this);
-                if (!item || that.remoteAutoComplete) {
-                    item = that._selectedItems[index];
-                }
-
-                var group = $('<div style="overflow: hidden; float: left;"></div>');
-                group.addClass(that.toThemeProperty('jqx-button'));
-                group.addClass(that.toThemeProperty('jqx-combobox-multi-item'));
-                group.addClass(that.toThemeProperty('jqx-fill-state-normal'));
-                group.addClass(that.toThemeProperty('jqx-rc-all'));
-                if (item) {
-                    var text = item.label;
-                    if (that.renderSelectedItem) {
-                        var result = that.renderSelectedItem(index, item);
-                        if (result) text = result;
-                    }
-
-                    if (group[0].innerHTML == '') {
-                        group[0].innerHTML = '<a data-value="' + item.value + '" style="float: left;" href="#">' + text + '</a>';
-                    }
-                    if (that.rtl) {
-                        group[0].innerHTML = '<a data-value="' + item.value + '" style="float: right;" href="#">' + text + '</a>';
-                    }
-                    var fl = !that.rtl ? 'right' : 'left';
-
-                    if (that.showCloseButtons) {
-                        var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
-                        if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                            closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                        if (group[0].innerHTML == '') {
+                            group[0].innerHTML = '<a data-value="' + item.value + '" style="float: left;" href="#">' + text + '</a>';
                         }
                         if (that.rtl) {
-                            var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                            group[0].innerHTML = '<a data-value="' + item.value + '" style="float: right;" href="#">' + text + '</a>';
+                        }
+                        var fl = !that.rtl ? 'right' : 'left';
+
+                        if (that.showCloseButtons) {
+                            var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
                             if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                                closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 100%; top: 50%; margin-left: -18px; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
                             }
-                        }
+                            if (that.rtl) {
+                                var closebutton = '<div style="position: relative; overflow: hidden; float: ' + fl + '; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                                    closebutton = '<div style="position: relative; overflow: hidden; float: left; min-height: 16px; min-width: 18px;"><div style="position: absolute; left: 0px; top: 50%; margin-top: -7px; float: none; width: 16px; height: 16px;" class="' + that.toThemeProperty('jqx-icon-close') + '"></div></div>';
+                                }
+                            }
 
-                        group[0].innerHTML += closebutton;
+                            group[0].innerHTML += closebutton;
+                        }
                     }
-                }
-                else {
-                    if (group[0].innerHTML == '') {
-                        group[0].innerHTML = '<a href="#"></a>';
+                    else {
+                        if (group[0].innerHTML == '') {
+                            group[0].innerHTML = '<a href="#"></a>';
+                        }
                     }
-                }
-                that.dropdownlistContent.append(group);
-            });
-            that.dropdownlistContent.append(that.input);
-            that.input.val("");
-            if (setFocus !== false) {
-                that.input.focus();
-                setTimeout(function () {
+                    that.dropdownlistContent.append(group);
+                });
+                that.dropdownlistContent.append(that.input);
+                that.input.val("");
+                if (setFocus !== false) {
                     that.input.focus();
-                }, 10);
-            }
-            var buttons = that.dropdownlistContent.find('.jqx-button');
-
-            if (this.touchMode === true) eventName = "mousedown";
-            this.addHandler(buttons, eventName, function (event) {
-                if (event.target.className.indexOf('jqx-icon-close') >= 0)
-                    return true;
-
-                if (that.disabled) {
-                    return true;
+                    setTimeout(function () {
+                        that.input.focus();
+                    }, 10);
                 }
+                var buttons = that.dropdownlistContent.find('.jqx-button');
 
-                var text = $(event.target).attr('data-value');
-                var item = that.getItemByValue(text);
-                if (item) {
-                    that.listBox.selectedValue = null;
-                    that.listBox.clearSelection();
-                }
-                that.listBox.scrollTo(0, 0);
-                that.open();
-                if (event.preventDefault) {
-                    event.preventDefault();
-                }
-                if (event.stopPropagation) {
-                    event.stopPropagation();
-                }
-                return false;
-            });
-            this.addHandler(buttons.find('.jqx-icon-close'), eventName, function (event) {
-                if (that.disabled) {
-                    return;
-                }
+                if (this.touchMode === true) eventName = "mousedown";
+                this.addHandler(buttons, eventName, function (event) {
+                    if (event.target.className.indexOf('jqx-icon-close') >= 0)
+                        return true;
 
-                var text = $(event.target).parent().parent().find('a').attr('data-value');
-                var item = that.getItemByValue(text);
-                if (item || (that.remoteAutoComplete && !item && that.selectedItems.indexOf(text) >= 0)) {
-                    that.listBox.selectedValue = null;
-                    var index = that.selectedItems.indexOf(text);
-                    var indx = item && item.index >= 0 ? item.index : index;
-                    if (index >= 0) {
-                        that.selectedItems.splice(index, 1);
-                        var selectedItem = that._selectedItems[index];
-                        if (!selectedItem) {
-                            selectedItem = item;
-                        }
-                        that._selectedItems.splice(index, 1);
-
-                        that._raiseEvent('3', { index: indx, type: 'mouse', item: selectedItem });
-                        that._raiseEvent('4', { index: indx, type: 'mouse', item: selectedItem });
-                        that.doMultiSelect();
+                    if (that.disabled) {
+                        return true;
                     }
-                    else {
-                        for (var i = 0; i < that.selectedItems.length; i++) {
-                            var selectedItem = that.selectedItems[i];
-                            if (selectedItem == text) {
-                                that.selectedItems.splice(i, 1);
-                                that._selectedItems.splice(i, 1);
-                                that._raiseEvent('3', { index: indx, type: 'mouse', item: item });
-                                that._raiseEvent('4', { index: indx, type: 'mouse', item: item });
-                                that.doMultiSelect();
-                                break;
+
+                    var text = $(event.target).attr('data-value');
+                    var item = that.getItemByValue(text);
+                    if (item) {
+                        that.listBox.selectedValue = null;
+                        that.listBox.clearSelection();
+                    }
+                    that.listBox.scrollTo(0, 0);
+                    that.open();
+                    if (event.preventDefault) {
+                        event.preventDefault();
+                    }
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    }
+                    return false;
+                });
+                this.addHandler(buttons.find('.jqx-icon-close'), eventName, function (event) {
+                    if (that.disabled) {
+                        return;
+                    }
+
+                    var text = $(event.target).parent().parent().find('a').attr('data-value');
+                    var item = that.getItemByValue(text);
+                    if (item || (that.remoteAutoComplete && !item && that.selectedItems.indexOf(text) >= 0)) {
+                        that.listBox.selectedValue = null;
+                        var index = that.selectedItems.indexOf(text);
+                        var indx = item && item.index >= 0 ? item.index : index;
+                        if (index >= 0) {
+                            that.selectedItems.splice(index, 1);
+                            var selectedItem = that._selectedItems[index];
+                            if (!selectedItem) {
+                                selectedItem = item;
+                            }
+                            that._selectedItems.splice(index, 1);
+
+                            that._raiseEvent('3', { index: indx, type: 'mouse', item: selectedItem });
+                            that._raiseEvent('4', { index: indx, type: 'mouse', item: selectedItem });
+                            that.doMultiSelect();
+                        }
+                        else {
+                            for (var i = 0; i < that.selectedItems.length; i++) {
+                                var selectedItem = that.selectedItems[i];
+                                if (selectedItem == text) {
+                                    that.selectedItems.splice(i, 1);
+                                    that._selectedItems.splice(i, 1);
+                                    that._raiseEvent('3', { index: indx, type: 'mouse', item: item });
+                                    that._raiseEvent('4', { index: indx, type: 'mouse', item: item });
+                                    that.doMultiSelect();
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-            });
-
-            if (this.isMaterialized()) {
-                this.host.height(this.dropdownlistContent.height());
-            }
-
-            this.bar.css('top', this.host.height());
-            that.dropdownlistArrow.height(this.host.height());
-            that._updateInputSelection();
-        },
-
-        // hides the listbox.
-        hideListBox: function (mode) {
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var container = this.container;
-            if (this.container[0].style.display == 'none')
-                return;
-
-            this.element.setAttribute('opened', false);
-
-            $.jqx.aria(this, "aria-expanded", false);
-
-            if (mode == "keyboard" || mode == "mouse") {
-                this.listBox.searchString = "";
-            }
-            listBox.removeClass('jqx-popup-show');
-
-            if (mode == "keyboard" || mode == "mouse" && this.multiSelect) {
-                this.doMultiSelect();
-            }
-
-            var that = this;
-            $.data(document.body, "openedCombojqxListBox" + this.element.id, null);
-            if (this.animationType == 'none') {
-                this.opening = false;
-                this.container.css('display', 'none');
-            }
-            else if (this.animationType === 'transform') {
-                setTimeout(function () {
-                    container.css('display', 'none');
-                }, this.closeDelay);
-            }
-            else {
-                if (!this.ishiding) {
-                    var height = listBox.outerHeight();
-                    listBox.css('margin-top', 0);
-                    listBox.stop();
-                    this.opening = false;
-                    this.isanimating = true;
-                    var animationValue = -height;
-                    if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
-                        animationValue = height;
-                    }
-                    if (this.animationType == 'fade') {
-                        listBox.css({ 'opacity': 1 });
-                        listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
-                            that.isanimating = false;
-                            container.css('display', 'none');
-                            that.ishiding = false;
-                        });
-                    }
-                    else {
-                        listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
-                            that.isanimating = false;
-                            container.css('display', 'none'); that.ishiding = false;
-                        });
-                    }
-                }
-            }
-
-            this.ishiding = true;
-            this.host.removeClass(this.toThemeProperty('jqx-combobox-state-selected'));
-            this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            if (!this.focused) {
-                this.host.removeClass(this.toThemeProperty('jqx-combobox-state-focus'));
-                this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-                this.dropdownlistContent.removeClass(this.toThemeProperty('jqx-combobox-content-focus'));
-            }
-            this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-
-            this._raiseEvent('1', listBoxInstance);
-        },
-
-        /* Close popup if clicked elsewhere. */
-        closeOpenedListBox: function (event) {
-            var that = event.data.that;
-            var $target = $(event.target);
-            var openedListBox = event.data.listbox;
-            if (openedListBox == null)
-                return true;
-
-            if ($(event.target).ischildof(that.host)) {
-                return;
-            }
-
-            var dropdownlistInstance = that;
-
-            var isListBox = false;
-            $.each($target.parents(), function () {
-                if (this.className != 'undefined') {
-                    if (this.className.indexOf) {
-                        if (this.className.indexOf('jqx-listbox') != -1) {
-                            isListBox = true;
-                            return false;
-                        }
-                        if (this.className.indexOf('jqx-combobox') != -1) {
-                            if (that.element.id == this.id) {
-                                isListBox = true;
-                            }
-                            return false;
-                        }
-                    }
-                }
-            });
-
-            if (openedListBox != null && !isListBox) {
-                if (that.isOpened()) {
-                    that.hideListBox('api');
-                    that.input.blur();
-                }
-            }
-
-            return true;
-        },
-
-        loadFromSelect: function (id) {
-            this.listBox.loadFromSelect(id);
-            this.clearSelection();
-        },
-
-        refresh: function (initialRefresh) {
-            this._setSize();
-            this._arrange();
-            if (this.listBox) {
-                this.renderSelection();
-            }
-        },
-
-        resize: function () {
-            this._setSize();
-            this._arrange();
-        },
-
-        _arrange: function () {
-            var width = parseInt(this.host.width());
-            var height = parseInt(this.host.height());
-
-            var arrowHeight = this.arrowSize;
-            var arrowWidth = this.arrowSize;
-
-            var rightOffset = 1;
-            if (!this.showArrow) {
-                arrowWidth = 0;
-                arrowHeight = 0;
-                this.dropdownlistArrow.hide();
-                rightOffset = 0;
-                this.host.css('cursor', 'arrow');
-                if (this.theme === "fluent") {
-                    rightOffset = 1;
-                }
-            }
-            else {
-                if (this.dropdownlistArrow[0].style.display === "none") {
-                    this.dropdownlistArrow.show();
-                }
-            }
-            var contentWidth = width - arrowWidth - 1 * rightOffset;
-            if (contentWidth > 0) {
-                this.dropdownlistContent[0].style.width = contentWidth + 'px';
-            }
-            if (this.rtl) {
-                this.dropdownlistContent[0].style.width = (-1 + contentWidth + 'px');
-            }
-
-            this.dropdownlistContent[0].style.height = height + 'px';
-            this.dropdownlistContent[0].style.left = '0px';
-            this.dropdownlistContent[0].style.top = '0px';
-            this.dropdownlistArrow[0].style.width = arrowWidth + 'px';
-            this.dropdownlistArrow[0].style.height = height + 'px';
-            this.dropdownlistArrow[0].style.left = 1 + contentWidth + 'px';
-
-            this.input[0].style.width = '100%';
-
-            if (!this.multiSelect) {
-                this.input.height(height);
-            }
-
-            var inputHeight = this.input.height();
-            if (inputHeight == 0) {
-                inputHeight = parseInt(this.input.css('font-size')) + 3;
-            }
-
-            if (this.input[0].className.indexOf('jqx-rc-all') == -1) {
-                this.input.addClass(this.toThemeProperty('jqx-rc-all'));
-            }
-
-            var top = parseInt(height) / 2 - parseInt(inputHeight) / 2;
-            if (top > 0) {
-                //      this.input[0].style.marginTop = parseInt(top) + "px";
-            }
-
-            if (this.rtl) {
-                this.dropdownlistArrow.css('left', '0px');
-                this.dropdownlistContent.css('left', this.dropdownlistArrow.width());
-                if ($.jqx.browser.msie && $.jqx.browser.version <= 8) {
-                    this.dropdownlistContent.css('left', 1 + this.dropdownlistArrow.width());
-                }
-            }
-            if (this.multiSelect) {
-                this.input.css('float', 'left');
-                this.input.width(25);
-                this.dropdownlistWrapper.parent().css('height', 'auto');
-                this.dropdownlistContent.css('height', 'auto');
-                this.dropdownlistWrapper.css('height', 'auto');
-                this.dropdownlistContent.css('position', 'relative');
-                this.dropdownlistContent.css('cursor', 'text');
-                this.host.css('height', 'auto');
-                this.host.css('min-height', this.height);
-                this.dropdownlistContent.css('min-height', this.height);
-                var height = parseInt(this.host.height());
-                this.dropdownlistArrow.height(height);
-                var initialHeight = parseInt(this.host.css('min-height'));
-                var top = parseInt(initialHeight) / 2 - parseInt(inputHeight) / 2;
-                if (top > 0) {
-                    this.input.css('margin-top', top);
-                }
-
+                });
 
                 if (this.isMaterialized()) {
                     this.host.height(this.dropdownlistContent.height());
                 }
 
                 this.bar.css('top', this.host.height());
-                this.dropdownlistArrow.height(this.host.height());
-            }
-        },
+                that.dropdownlistArrow.height(this.host.height());
+                that._updateInputSelection();
+            },
 
-        destroy: function () {
-            if (this.source && this.source.unbindBindingUpdate) {
-                this.source.unbindBindingUpdate(this.element.id);
-                this.source.unbindBindingUpdate(this.listBoxContainer[0].id);
-                this.source.unbindDownloadComplete(this.element.id);
-                this.source.unbindDownloadComplete(this.listBoxContainer[0].id);
-            }
-            $.jqx.utilities.resize(this.host, null, true);
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBoxContainer, 'unselect');
-            this.removeHandler(this.listBoxContainer, 'change');
-            this.removeHandler(this.listBoxContainer, 'bindingComplete');
-            this.removeHandler(this.dropdownlistWrapper, 'selectstart');
-            this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBox.content, 'click');
-            this.removeHandlers();
-            this.removeHandler(this.input, 'keyup.textchange');
+            // hides the listbox.
+            hideListBox: function (mode) {
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var container = this.container;
+                if (this.container[0].style.display == 'none')
+                    return;
 
-            this.listBoxContainer.jqxListBox('destroy');
-            this.listBoxContainer.remove();
-            this.host.removeClass();
-            this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
-            if (this.touch) {
-                this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
-            }
-            this.cinput.remove();
-            delete this.cinput;
-            this.dropdownlistArrow.remove();
-            delete this.dropdownlistArrow;
-            this.dropdownlistArrowIcon.remove();
-            delete this.dropdownlistArrowIcon;
-            delete this.dropdownlistWrapper;
-            delete this.listBoxContainer;
-            delete this.input;
-            delete this.dropdownlistContent;
-            delete this.comboStructure;
-            this.container.remove();
-            delete this.listBox;
-            delete this.container;
-            var vars = $.data(this.element, "jqxComboBox");
-            if (vars) {
-                delete vars.instance;
-            }
-            this.host.removeData();
-            this.host.remove();
-            delete this.host;
-            delete this.set;
-            delete this.get;
-            delete this.call;
-            delete this.element;
-        },
+                this.element.setAttribute('opened', false);
 
-        //[optimize]
-        _raiseEvent: function (id, arg) {
-            if (arg == undefined)
-                arg = { owner: null };
+                $.jqx.aria(this, "aria-expanded", false);
 
-            var evt = this.events[id];
-            var args = arg;
-            args.owner = this;
-
-            var event = new $.Event(evt);
-            event.owner = this;
-            if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
-                event.args = arg;
-            }
-
-            var result = this.host.trigger(event);
-            return result;
-        },
-
-        propertiesChangedHandler: function (object, key, value) {
-            if (value.width && value.height && Object.keys(value).length == 2) {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
-                    }
+                if (mode == "keyboard" || mode == "mouse") {
+                    this.listBox.searchString = "";
                 }
-                object._arrange();
-                object.close();
-            }
-        },
+                listBox.removeClass('jqx-popup-show');
 
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (object.isInitialized == undefined || object.isInitialized == false)
-                return;
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key == "template") {
-                object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
-                object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
-                object.dropDownListArrow.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
-                object.dropDownListArrow.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+                if (mode == "keyboard" || mode == "mouse" && this.multiSelect) {
+                    this.doMultiSelect();
+                }
 
                 var that = this;
-
-                that.bar.removeClass(that.toThemeProperty("jqx-" + oldvalue));
-                that.label.removeClass(that.toThemeProperty("jqx-" + oldvalue));
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-
-            }
-
-            if (key == "dropDownVerticalAlignment") {
-                object.close();
-                object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
-                object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                if (object.dropDownVerticalAlignment == "top") {
-                    object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                $.data(document.body, "openedCombojqxListBox" + this.element.id, null);
+                if (this.animationType == 'none') {
+                    this.opening = false;
+                    this.container.css('display', 'none');
+                }
+                else if (this.animationType === 'transform') {
+                    setTimeout(function () {
+                        container.css('display', 'none');
+                    }, this.closeDelay);
                 }
                 else {
-                    object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                }
-                object.listBoxContainer.css('top', 0);
-                object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
-            }
-
-            if (key == "autoItemsHeight") {
-                object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
-            }
-
-            if (key == "itemHeight") {
-                object.listBoxContainer.jqxListBox({ itemHeight: value });
-            }
-
-            if (key == "renderSelectedItem") {
-                object.renderSelection('mouse');
-            }
-
-            if (key == "renderer") {
-                object.listBoxContainer.jqxListBox({ renderer: value });
-            }
-
-            if (key == "enableSelection") {
-                object.listBoxContainer.jqxListBox({ enableSelection: value });
-            }
-            if (key == "enableHover") {
-                object.listBoxContainer.jqxListBox({ enableHover: value });
-            }
-
-            if (key === "touchMode") {
-                object.listBoxContainer.jqxListBox({ touchMode: value });
-                object.touch = $.jqx.mobile.isTouchDevice();
-                if (object.touchMode === true) {
-                    object.touch = true;
-                }
-                object._updateHandlers();
-            }
-
-            if (key == "multiSelect") {
-                if (value) {
-                    object.doMultiSelect(false);
-                }
-                else {
-                    var items = object.listBox.items;
-                    var selectedIndex = -1;
-                    for (var i = 0; i < items.length; i++) {
-                        items[i].disabled = false;
-                        if (object.selectedItems.indexOf(items[i].value) >= 0 || object._disabledItems.indexOf(object.value) >= 0) {
-                            items[i].disabled = true;
-                            selectedIndex = items[i].index;
+                    if (!this.ishiding) {
+                        var height = listBox.outerHeight();
+                        listBox.css('margin-top', 0);
+                        listBox.stop();
+                        this.opening = false;
+                        this.isanimating = true;
+                        var animationValue = -height;
+                        if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
+                            animationValue = height;
+                        }
+                        if (this.animationType == 'fade') {
+                            listBox.css({ 'opacity': 1 });
+                            listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
+                                that.isanimating = false;
+                                container.css('display', 'none');
+                                that.ishiding = false;
+                            });
+                        }
+                        else {
+                            listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
+                                that.isanimating = false;
+                                container.css('display', 'none'); that.ishiding = false;
+                            });
                         }
                     }
-                    object.doMultiSelect(false);
-                    object.listBox._renderItems();
-                    if (!items) return;
-                    object.listBox.selectedIndex = selectedIndex;
-                    object.renderSelection('mouse');
-                    object.dropdownlistWrapper.parent().css('height', '100%');
-                    object.dropdownlistContent.css('height', '100');
-                    object.dropdownlistWrapper.css('height', '100');
-                    object.dropdownlistContent.css('position', 'relative');
-                    object.host.css('min-height', null);
-                    object._setSize();
-                    object._arrange();
-                }
-            }
-
-            if (key == "showArrow") {
-                object._arrange();
-                if (object.multiSelect) {
-                    object.doMultiSelect(false);
-                }
-            }
-
-            if (key == "placeHolder") {
-                if (object.isMaterialized()) {
-                    object.label.innerHTML = object.placeHolder;
-                }
-                else {
-                    object.input.attr('placeholder', object.placeHolder);
-                }
-            }
-
-            if (key == 'popupZIndex') {
-                object.listBoxContainer.css({ zIndex: object.popupZIndex });
-            }
-
-            if (key == 'promptText') {
-                object.placeHolder = value;
-            }
-
-            if (key == 'autoOpen') {
-                object._updateHandlers();
-            }
-
-            if (key == 'renderer') {
-                object.listBox.renderer = object.renderer;
-            }
-            if (key == 'itemHeight') {
-                object.listBox.itemHeight = value;
-            }
-
-            if (key == 'source') {
-                object.input.val("");
-                object.listBoxContainer.jqxListBox({ source: object.source });
-                object.renderSelection('mouse');
-                if (object.source == null) {
-                    object.clearSelection();
-                }
-                if (object.multiSelect) {
-                    object.selectedItems = new Array();
-                    object._selectedItems = new Array();
-                    object.doMultiSelect(false);
-                }
-            }
-            if (key == "rtl") {
-                if (value) {
-                    object.dropdownlistArrow.css('float', 'left');
-                    object.dropdownlistContent.css('float', 'right');
-                }
-                else {
-                    object.dropdownlistArrow.css('float', 'right');
-                    object.dropdownlistContent.css('float', 'left');
-                }
-                object.listBoxContainer.jqxListBox({ rtl: object.rtl });
-            }
-            if (key == "displayMember" || key == "valueMember") {
-                object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
-                object.renderSelection('mouse');
-            }
-
-            if (key == "autoDropDownHeight") {
-                object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
-                if (object.autoDropDownHeight) {
-                    object.container.height(object.listBoxContainer.height() + 25);
-                }
-                else {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
                 }
 
-                object.listBox._arrange();
-                object.listBox._updatescrollbars();
-            }
-
-            if (key == "dropDownHeight") {
-                if (!object.autoDropDownHeight) {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                this.ishiding = true;
+                this.host.removeClass(this.toThemeProperty('jqx-combobox-state-selected'));
+                this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                this.dropdownlistArrowIcon.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-combobox-arrow-selected'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                if (!this.focused) {
+                    this.host.removeClass(this.toThemeProperty('jqx-combobox-state-focus'));
+                    this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                    this.dropdownlistContent.removeClass(this.toThemeProperty('jqx-combobox-content-focus'));
                 }
-            }
+                this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.dropdownlistArrow.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
 
-            if (key == "dropDownWidth" || key == "scrollBarSize") {
-                var width = object.width;
-                if (object.dropDownWidth != 'auto') {
-                    width = object.dropDownWidth;
+                this._raiseEvent('1', listBoxInstance);
+            },
+
+            /* Close popup if clicked elsewhere. */
+            closeOpenedListBox: function (event) {
+                var that = event.data.that;
+                var $target = $(event.target);
+                var openedListBox = event.data.listbox;
+                if (openedListBox == null)
+                    return true;
+
+                if ($(event.target).ischildof(that.host)) {
+                    return;
                 }
 
-                object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
-                object.container.width(parseInt(width) + 25);
-            }
+                var dropdownlistInstance = that;
 
-            if (key == 'autoComplete') {
-                object._resetautocomplete();
-            }
+                var isListBox = false;
+                $.each($target.parents(), function () {
+                    if (this.className != 'undefined') {
+                        if (this.className.indexOf) {
+                            if (this.className.indexOf('jqx-listbox') != -1) {
+                                isListBox = true;
+                                return false;
+                            }
+                            if (this.className.indexOf('jqx-combobox') != -1) {
+                                if (that.element.id == this.id) {
+                                    isListBox = true;
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                });
 
-            if (key == "checkboxes") {
-                object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
-                if (object.checkboxes) {
-                    object.input.attr('readonly', true);
-                    $.jqx.aria(object, "aria-readonly", true);
-                }
-                else {
-                    $.jqx.aria(object, "aria-readonly", false);
-                }
-            }
-
-            if (key == 'theme' && value != null) {
-                object.listBoxContainer.jqxListBox({ theme: value });
-                object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-noshadow'));
-                }
-                $.jqx.utilities.setTheme(oldvalue, value, object.host);
-            }
-
-            if (key == 'rtl') {
-                object.render();
-                object.refresh();
-            }
-
-            if (key == 'width' || key == 'height') {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
+                if (openedListBox != null && !isListBox) {
+                    if (that.isOpened()) {
+                        that.hideListBox('api');
+                        that.input.blur();
                     }
                 }
-                object._arrange();
-                object.close();
-            }
 
-            if (key == 'selectedIndex') {
-                object.listBox.selectIndex(value);
-                object.renderSelection('mouse');
+                return true;
+            },
+
+            loadFromSelect: function (id) {
+                this.listBox.loadFromSelect(id);
+                this.clearSelection();
+            },
+
+            refresh: function (initialRefresh) {
+                this._setSize();
+                this._arrange();
+                if (this.listBox) {
+                    this.renderSelection();
+                }
+            },
+
+            resize: function () {
+                this._setSize();
+                this._arrange();
+            },
+
+            _arrange: function () {
+                var width = parseInt(this.host.width());
+                var height = parseInt(this.host.height());
+
+                var arrowHeight = this.arrowSize;
+                var arrowWidth = this.arrowSize;
+
+                var rightOffset = 1;
+                if (!this.showArrow) {
+                    arrowWidth = 0;
+                    arrowHeight = 0;
+                    this.dropdownlistArrow.hide();
+                    rightOffset = 0;
+                    this.host.css('cursor', 'arrow');
+                    if (this.theme === "fluent") {
+                        rightOffset = 1;
+                    }
+                }
+                else {
+                    if (this.dropdownlistArrow[0].style.display === "none") {
+                        this.dropdownlistArrow.show();
+                    }
+                }
+                var contentWidth = width - arrowWidth - 1 * rightOffset;
+                if (contentWidth > 0) {
+                    this.dropdownlistContent[0].style.width = contentWidth + 'px';
+                }
+                if (this.rtl) {
+                    this.dropdownlistContent[0].style.width = (-1 + contentWidth + 'px');
+                }
+
+                this.dropdownlistContent[0].style.height = height + 'px';
+                this.dropdownlistContent[0].style.left = '0px';
+                this.dropdownlistContent[0].style.top = '0px';
+                this.dropdownlistArrow[0].style.width = arrowWidth + 'px';
+                this.dropdownlistArrow[0].style.height = height + 'px';
+                this.dropdownlistArrow[0].style.left = 1 + contentWidth + 'px';
+
+                this.input[0].style.width = '100%';
+
+                if (!this.multiSelect) {
+                    this.input.height(height);
+                }
+
+                var inputHeight = this.input.height();
+                if (inputHeight == 0) {
+                    inputHeight = parseInt(this.input.css('font-size')) + 3;
+                }
+
+                if (this.input[0].className.indexOf('jqx-rc-all') == -1) {
+                    this.input.addClass(this.toThemeProperty('jqx-rc-all'));
+                }
+
+                var top = parseInt(height) / 2 - parseInt(inputHeight) / 2;
+                if (top > 0) {
+                    //      this.input[0].style.marginTop = parseInt(top) + "px";
+                }
+
+                if (this.rtl) {
+                    this.dropdownlistArrow.css('left', '0px');
+                    this.dropdownlistContent.css('left', this.dropdownlistArrow.width());
+                    if ($.jqx.browser.msie && $.jqx.browser.version <= 8) {
+                        this.dropdownlistContent.css('left', 1 + this.dropdownlistArrow.width());
+                    }
+                }
+                if (this.multiSelect) {
+                    this.input.css('float', 'left');
+                    this.input.width(25);
+                    this.dropdownlistWrapper.parent().css('height', 'auto');
+                    this.dropdownlistContent.css('height', 'auto');
+                    this.dropdownlistWrapper.css('height', 'auto');
+                    this.dropdownlistContent.css('position', 'relative');
+                    this.dropdownlistContent.css('cursor', 'text');
+                    this.host.css('height', 'auto');
+                    this.host.css('min-height', this.height);
+                    this.dropdownlistContent.css('min-height', this.height);
+                    var height = parseInt(this.host.height());
+                    this.dropdownlistArrow.height(height);
+                    var initialHeight = parseInt(this.host.css('min-height'));
+                    var top = parseInt(initialHeight) / 2 - parseInt(inputHeight) / 2;
+                    if (top > 0) {
+                        this.input.css('margin-top', top);
+                    }
+
+
+                    if (this.isMaterialized()) {
+                        this.host.height(this.dropdownlistContent.height());
+                    }
+
+                    this.bar.css('top', this.host.height());
+                    this.dropdownlistArrow.height(this.host.height());
+                }
+            },
+
+            destroy: function () {
+                if (this.source && this.source.unbindBindingUpdate) {
+                    this.source.unbindBindingUpdate(this.element.id);
+                    this.source.unbindBindingUpdate(this.listBoxContainer[0].id);
+                    this.source.unbindDownloadComplete(this.element.id);
+                    this.source.unbindDownloadComplete(this.listBoxContainer[0].id);
+                }
+                $.jqx.utilities.resize(this.host, null, true);
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBoxContainer, 'unselect');
+                this.removeHandler(this.listBoxContainer, 'change');
+                this.removeHandler(this.listBoxContainer, 'bindingComplete');
+                this.removeHandler(this.dropdownlistWrapper, 'selectstart');
+                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBox.content, 'click');
+                this.removeHandlers();
+                this.removeHandler(this.input, 'keyup.textchange');
+
+                this.listBoxContainer.jqxListBox('destroy');
+                this.listBoxContainer.remove();
+                this.host.removeClass();
+                this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
+                if (this.touch) {
+                    this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
+                }
+                this.cinput.remove();
+                delete this.cinput;
+                this.dropdownlistArrow.remove();
+                delete this.dropdownlistArrow;
+                this.dropdownlistArrowIcon.remove();
+                delete this.dropdownlistArrowIcon;
+                delete this.dropdownlistWrapper;
+                delete this.listBoxContainer;
+                delete this.input;
+                delete this.dropdownlistContent;
+                delete this.comboStructure;
+                this.container.remove();
+                delete this.listBox;
+                delete this.container;
+                var vars = $.data(this.element, "jqxComboBox");
+                if (vars) {
+                    delete vars.instance;
+                }
+                this.host.removeData();
+                this.host.remove();
+                delete this.host;
+                delete this.set;
+                delete this.get;
+                delete this.call;
+                delete this.element;
+            },
+
+            //[optimize]
+            _raiseEvent: function (id, arg) {
+                if (arg == undefined)
+                    arg = { owner: null };
+
+                var evt = this.events[id];
+                var args = arg;
+                args.owner = this;
+
+                var event = new $.Event(evt);
+                event.owner = this;
+                if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
+                    event.args = arg;
+                }
+
+                var result = this.host.trigger(event);
+                return result;
+            },
+
+            propertiesChangedHandler: function (object, key, value) {
+                if (value.width && value.height && Object.keys(value).length == 2) {
+                    object._setSize();
+                    if (key == 'width') {
+                        if (object.dropDownWidth == 'auto') {
+                            var width = object.host.width();
+                            object.listBoxContainer.jqxListBox({ width: width });
+                            object.container.width(parseInt(width) + 25);
+                        }
+                    }
+                    object._arrange();
+                    object.close();
+                }
+            },
+
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (object.isInitialized == undefined || object.isInitialized == false)
+                    return;
+
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key == "template") {
+                    object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
+                    object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
+                    object.dropDownListArrow.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
+                    object.dropDownListArrow.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+
+                    var that = this;
+
+                    that.bar.removeClass(that.toThemeProperty("jqx-" + oldvalue));
+                    that.label.removeClass(that.toThemeProperty("jqx-" + oldvalue));
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+
+                }
+
+                if (key == "dropDownVerticalAlignment") {
+                    object.close();
+                    object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    object.dropdownlistArrowIcon.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    if (object.dropDownVerticalAlignment == "top") {
+                        object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    }
+                    else {
+                        object.dropdownlistArrowIcon.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    }
+                    object.listBoxContainer.css('top', 0);
+                    object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
+                }
+
+                if (key == "autoItemsHeight") {
+                    object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
+                }
+
+                if (key == "itemHeight") {
+                    object.listBoxContainer.jqxListBox({ itemHeight: value });
+                }
+
+                if (key == "renderSelectedItem") {
+                    object.renderSelection('mouse');
+                }
+
+                if (key == "renderer") {
+                    object.listBoxContainer.jqxListBox({ renderer: value });
+                }
+
+                if (key == "enableSelection") {
+                    object.listBoxContainer.jqxListBox({ enableSelection: value });
+                }
+                if (key == "enableHover") {
+                    object.listBoxContainer.jqxListBox({ enableHover: value });
+                }
+
+                if (key === "touchMode") {
+                    object.listBoxContainer.jqxListBox({ touchMode: value });
+                    object.touch = $.jqx.mobile.isTouchDevice();
+                    if (object.touchMode === true) {
+                        object.touch = true;
+                    }
+                    object._updateHandlers();
+                }
+
+                if (key == "multiSelect") {
+                    if (value) {
+                        object.doMultiSelect(false);
+                    }
+                    else {
+                        var items = object.listBox.items;
+                        var selectedIndex = -1;
+                        for (var i = 0; i < items.length; i++) {
+                            items[i].disabled = false;
+                            if (object.selectedItems.indexOf(items[i].value) >= 0 || object._disabledItems.indexOf(object.value) >= 0) {
+                                items[i].disabled = true;
+                                selectedIndex = items[i].index;
+                            }
+                        }
+                        object.doMultiSelect(false);
+                        object.listBox._renderItems();
+                        if (!items) return;
+                        object.listBox.selectedIndex = selectedIndex;
+                        object.renderSelection('mouse');
+                        object.dropdownlistWrapper.parent().css('height', '100%');
+                        object.dropdownlistContent.css('height', '100');
+                        object.dropdownlistWrapper.css('height', '100');
+                        object.dropdownlistContent.css('position', 'relative');
+                        object.host.css('min-height', null);
+                        object._setSize();
+                        object._arrange();
+                    }
+                }
+
+                if (key == "showArrow") {
+                    object._arrange();
+                    if (object.multiSelect) {
+                        object.doMultiSelect(false);
+                    }
+                }
+
+                if (key == "placeHolder") {
+                    if (object.isMaterialized()) {
+                        object.label.innerHTML = object.placeHolder;
+                    }
+                    else {
+                        object.input.attr('placeholder', object.placeHolder);
+                    }
+                }
+
+                if (key == 'popupZIndex') {
+                    object.listBoxContainer.css({ zIndex: object.popupZIndex });
+                }
+
+                if (key == 'promptText') {
+                    object.placeHolder = value;
+                }
+
+                if (key == 'autoOpen') {
+                    object._updateHandlers();
+                }
+
+                if (key == 'renderer') {
+                    object.listBox.renderer = object.renderer;
+                }
+                if (key == 'itemHeight') {
+                    object.listBox.itemHeight = value;
+                }
+
+                if (key == 'source') {
+                    object.input.val("");
+                    object.listBoxContainer.jqxListBox({ source: object.source });
+                    object.renderSelection('mouse');
+                    if (object.source == null) {
+                        object.clearSelection();
+                    }
+                    if (object.multiSelect) {
+                        object.selectedItems = new Array();
+                        object._selectedItems = new Array();
+                        object.doMultiSelect(false);
+                    }
+                }
+                if (key == "rtl") {
+                    if (value) {
+                        object.dropdownlistArrow.css('float', 'left');
+                        object.dropdownlistContent.css('float', 'right');
+                    }
+                    else {
+                        object.dropdownlistArrow.css('float', 'right');
+                        object.dropdownlistContent.css('float', 'left');
+                    }
+                    object.listBoxContainer.jqxListBox({ rtl: object.rtl });
+                }
+                if (key == "displayMember" || key == "valueMember") {
+                    object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
+                    object.renderSelection('mouse');
+                }
+
+                if (key == "autoDropDownHeight") {
+                    object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
+                    if (object.autoDropDownHeight) {
+                        object.container.height(object.listBoxContainer.height() + 25);
+                    }
+                    else {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+
+                    object.listBox._arrange();
+                    object.listBox._updatescrollbars();
+                }
+
+                if (key == "dropDownHeight") {
+                    if (!object.autoDropDownHeight) {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+                }
+
+                if (key == "dropDownWidth" || key == "scrollBarSize") {
+                    var width = object.width;
+                    if (object.dropDownWidth != 'auto') {
+                        width = object.dropDownWidth;
+                    }
+
+                    object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
+                    object.container.width(parseInt(width) + 25);
+                }
+
+                if (key == 'autoComplete') {
+                    object._resetautocomplete();
+                }
+
+                if (key == "checkboxes") {
+                    object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
+                    if (object.checkboxes) {
+                        object.input.attr('readonly', true);
+                        $.jqx.aria(object, "aria-readonly", true);
+                    }
+                    else {
+                        $.jqx.aria(object, "aria-readonly", false);
+                    }
+                }
+
+                if (key == 'theme' && value != null) {
+                    object.listBoxContainer.jqxListBox({ theme: value });
+                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        object.listBoxContainer.addClass(object.toThemeProperty('jqx-noshadow'));
+                    }
+                    $.jqx.utilities.setTheme(oldvalue, value, object.host);
+                }
+
+                if (key == 'rtl') {
+                    object.render();
+                    object.refresh();
+                }
+
+                if (key == 'width' || key == 'height') {
+                    object._setSize();
+                    if (key == 'width') {
+                        if (object.dropDownWidth == 'auto') {
+                            var width = object.host.width();
+                            object.listBoxContainer.jqxListBox({ width: width });
+                            object.container.width(parseInt(width) + 25);
+                        }
+                    }
+                    object._arrange();
+                    object.close();
+                }
+
+                if (key == 'selectedIndex') {
+                    object.listBox.selectIndex(value);
+                    object.renderSelection('mouse');
+                }
             }
-        }
-    });
-})(jqxBaseFramework);
+        });
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4506,11 +4499,11 @@ License: https://jqwidgets.com/license/ */
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -12703,6 +12696,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
+			if (window.jQuery.fn.extend) {
+				window.jQuery.fn.stop = window.JQXLite.fn.stop;
+				window.jQuery.fn.animate = window.JQXLite.fn.animate;
+
+				var keys = Object.keys(window.JQXLite.fn);
+				for (var index in keys) {
+					var key = keys[index];
+					if (window.jQuery.fn[key] == undefined) {
+						window.jQuery.fn[key] = window.JQXLite.fn[key];
+					}
+				}
+			}
+
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -14324,7 +14330,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -14817,12 +14823,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -15518,6 +15524,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
+		if (!$.easing) {
+			$.easing = {};
+		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -15857,20 +15866,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -22024,20 +22019,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 5868:
@@ -22045,382 +22026,351 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
 
-(function ($) {
+    (function ($) {
 
-    $.jqx.jqxWidget("jqxDropDownList", "", {});
+        $.jqx.jqxWidget("jqxDropDownList", "", {});
 
-    $.extend($.jqx._jqxDropDownList.prototype, {
-        defineInstance: function () {
-            var settings = {
-                // enables/disables the dropdownlist.
-                disabled: false,
-                // gets or sets the listbox width.
-                width: null,
-                // gets or sets the listbox height.
-                height: null,
-                // Represents the collection of list items.
-                items: new Array(),
-                // Gets or sets the selected index.
-                selectedIndex: -1,
-                // data source.
-                source: null,
-                // gets or sets the scrollbars size.
-                scrollBarSize: 15,
-                // gets or sets the scrollbars size.
-                arrowSize: 17,
-                // enables/disables the hover state.
-                enableHover: true,
-                // enables/disables the selection.
-                enableSelection: true,
-                autoItemsHeight: false,
-                // gets the visible items. // this property is internal for the dropdownlist.
-                visualItems: new Array(),
-                // gets the groups. // this property is internal for the dropdownlist.
-                groups: new Array(),
-                // gets or sets whether the items width should be equal to the dropdownlist's width.
-                equalItemsWidth: true,
-                // gets or sets the height of the ListBox Items. When the itemHeight == - 1, each item's height is equal to its desired height.
-                itemHeight: -1,
-                // represents the dropdownlist's events.
-                visibleItems: new Array(),
-                // emptry group's text.
-                emptyGroupText: 'Group',
-                checkboxes: false,
-                // Type: Number
-                // Default: 100
-                // Showing Popup Animation's delay.
-                openDelay: 250,
-                // Type: Number
-                // Default: 200
-                // Hiding Popup Animation's delay.
-                closeDelay: 300,
-                dropDownContainer: "default",
-                // default, none
-                // Type: String.
-                // enables or disables the animation.
-                animationType: 'default',
-                autoOpen: false,
-                // Type: String
-                // Default: auto ( the drop down takes the dropdownlist's width.)
-                // Sets the popup's width.
-                dropDownWidth: 'auto',
-                // Type: String
-                // Default: 200px ( the height is 200px )
-                // Sets the popup's height.
-                dropDownHeight: '200px',
-                // Type: Boolean
-                // Default: false
-                // Sets the popup's height to be equal to the items summary height,
-                autoDropDownHeight: false,
-                keyboardSelection: true,
-                // Type: Boolean
-                // Default: false
-                // Enables or disables the browser detection.
-                enableBrowserBoundsDetection: false,
-                dropDownHorizontalAlignment: 'left',
-                dropDownVerticalAlignment: 'bottom',
-                displayMember: "",
-                valueMember: "",
-                groupMember: "",
-                searchMember: "",
-                searchMode: 'startswithignorecase',
-                incrementalSearch: true,
-                incrementalSearchDelay: 700,
-                renderer: null,
-                placeHolder: "",
-                promptText: "Please Choose:",
-                emptyString: "",
-                rtl: false,
-                selectionRenderer: null,
-                listBox: null,
-                popupZIndex: 3001,
-                renderMode: "default",
-                touchMode: "auto",
-                _checkForHiddenParent: true,
-                autoBind: true,
-                ready: null,
-                focusable: true,
-                filterable: false,
-                filterHeight: 27,
-                filterPlaceHolder: "Looking for",
-                filterDelay: 100,
-                hint: true,
-                // "primary", "inverse", "danger", "info", "success", "warning", "link"
-                template: "default",
-                aria:
-                {
-                    "aria-disabled": { name: "disabled", type: "boolean" }
-                },
-                events:
-                    [
-                        // occurs when the dropdownlist is opened.
-                        'open',
-                        // occurs when the dropdownlist is closed.
-                        'close',
-                        // occurs when an item is selected.
-                        'select',
-                        // occurs when an item is unselected.
-                        'unselect',
-                        // occurs when the selection is changed.
-                        'change',
-                        // triggered when the user checks or unchecks an item.
-                        'checkChange',
-                        // triggered when the binding operation is completed.
-                        'bindingComplete',
-                        // triggered when a new item is added.
-                        'itemAdd',
-                        // triggered when a new item is removed.
-                        'itemRemove',
-                        // triggered when a new item is updated.
-                        'itemUpdate'
-                    ]
-            }
-            if (this === $.jqx._jqxDropDownList.prototype) {
+        $.extend($.jqx._jqxDropDownList.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    // enables/disables the dropdownlist.
+                    disabled: false,
+                    // gets or sets the listbox width.
+                    width: null,
+                    // gets or sets the listbox height.
+                    height: null,
+                    // Represents the collection of list items.
+                    items: new Array(),
+                    // Gets or sets the selected index.
+                    selectedIndex: -1,
+                    // data source.
+                    source: null,
+                    // gets or sets the scrollbars size.
+                    scrollBarSize: 15,
+                    // gets or sets the scrollbars size.
+                    arrowSize: 17,
+                    // enables/disables the hover state.
+                    enableHover: true,
+                    // enables/disables the selection.
+                    enableSelection: true,
+                    autoItemsHeight: false,
+                    // gets the visible items. // this property is internal for the dropdownlist.
+                    visualItems: new Array(),
+                    // gets the groups. // this property is internal for the dropdownlist.
+                    groups: new Array(),
+                    // gets or sets whether the items width should be equal to the dropdownlist's width.
+                    equalItemsWidth: true,
+                    // gets or sets the height of the ListBox Items. When the itemHeight == - 1, each item's height is equal to its desired height.
+                    itemHeight: -1,
+                    // represents the dropdownlist's events.
+                    visibleItems: new Array(),
+                    // emptry group's text.
+                    emptyGroupText: 'Group',
+                    checkboxes: false,
+                    // Type: Number
+                    // Default: 100
+                    // Showing Popup Animation's delay.
+                    openDelay: 250,
+                    // Type: Number
+                    // Default: 200
+                    // Hiding Popup Animation's delay.
+                    closeDelay: 300,
+                    dropDownContainer: "default",
+                    // default, none
+                    // Type: String.
+                    // enables or disables the animation.
+                    animationType: 'default',
+                    autoOpen: false,
+                    // Type: String
+                    // Default: auto ( the drop down takes the dropdownlist's width.)
+                    // Sets the popup's width.
+                    dropDownWidth: 'auto',
+                    // Type: String
+                    // Default: 200px ( the height is 200px )
+                    // Sets the popup's height.
+                    dropDownHeight: '200px',
+                    // Type: Boolean
+                    // Default: false
+                    // Sets the popup's height to be equal to the items summary height,
+                    autoDropDownHeight: false,
+                    keyboardSelection: true,
+                    // Type: Boolean
+                    // Default: false
+                    // Enables or disables the browser detection.
+                    enableBrowserBoundsDetection: false,
+                    dropDownHorizontalAlignment: 'left',
+                    dropDownVerticalAlignment: 'bottom',
+                    displayMember: "",
+                    valueMember: "",
+                    groupMember: "",
+                    searchMember: "",
+                    searchMode: 'startswithignorecase',
+                    incrementalSearch: true,
+                    incrementalSearchDelay: 700,
+                    renderer: null,
+                    placeHolder: "",
+                    promptText: "Please Choose:",
+                    emptyString: "",
+                    rtl: false,
+                    selectionRenderer: null,
+                    listBox: null,
+                    popupZIndex: 3001,
+                    renderMode: "default",
+                    touchMode: "auto",
+                    _checkForHiddenParent: true,
+                    autoBind: true,
+                    ready: null,
+                    focusable: true,
+                    filterable: false,
+                    filterHeight: 27,
+                    filterPlaceHolder: "Looking for",
+                    filterDelay: 100,
+                    hint: true,
+                    // "primary", "inverse", "danger", "info", "success", "warning", "link"
+                    template: "default",
+                    aria:
+                    {
+                        "aria-disabled": { name: "disabled", type: "boolean" }
+                    },
+                    events:
+                        [
+                            // occurs when the dropdownlist is opened.
+                            'open',
+                            // occurs when the dropdownlist is closed.
+                            'close',
+                            // occurs when an item is selected.
+                            'select',
+                            // occurs when an item is unselected.
+                            'unselect',
+                            // occurs when the selection is changed.
+                            'change',
+                            // triggered when the user checks or unchecks an item.
+                            'checkChange',
+                            // triggered when the binding operation is completed.
+                            'bindingComplete',
+                            // triggered when a new item is added.
+                            'itemAdd',
+                            // triggered when a new item is removed.
+                            'itemRemove',
+                            // triggered when a new item is updated.
+                            'itemUpdate'
+                        ]
+                }
+                if (this === $.jqx._jqxDropDownList.prototype) {
+                    return settings;
+                }
+                $.extend(true, this, settings);
                 return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
+            },
 
-        createInstance: function (args) {
-            var that = this;
+            createInstance: function (args) {
+                var that = this;
 
-            if (that.isMaterialized()) {
-                var elementStyle = window.getComputedStyle(this.element);
-                var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
-                var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
-                var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
+                if (that.isMaterialized()) {
+                    var elementStyle = window.getComputedStyle(this.element);
+                    var animation = elementStyle.getPropertyValue('--jqx-dropdown-animation');
+                    var rowHeight = elementStyle.getPropertyValue('--jqx-list-item-height');
+                    var arrowSize = elementStyle.getPropertyValue('--jqx-action-button-size');
 
-                if (arrowSize) {
-                    this.arrowSize = parseInt(arrowSize);
-                }
-                else {
-                    this.arrowSize = 25;
-                }
+                    if (arrowSize) {
+                        this.arrowSize = parseInt(arrowSize);
+                    }
+                    else {
+                        this.arrowSize = 25;
+                    }
 
-                if (animation && this.animationType == "default") {
-                    this.animationType = animation.trim();
-                }
+                    if (animation && this.animationType == "default") {
+                        this.animationType = animation.trim();
+                    }
 
-                if (rowHeight && this.itemHeight === -1) {
-                    this.itemHeight = parseInt(rowHeight);
-                }
-            }
-
-            this.render();
-        },
-
-        render: function () {
-            var self = this;
-            if (!self.width) self.width = 200;
-            if (!self.height) self.height = 25;
-
-            self.host.addClass(self.toThemeProperty('jqx-dropdownlist'));
-
-            var nodeName = self.element.nodeName.toLowerCase();
-            if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
-                self.field = self.element;
-                if (self.field.className) {
-                    self._className = self.field.className;
+                    if (rowHeight && this.itemHeight === -1) {
+                        this.itemHeight = parseInt(rowHeight);
+                    }
                 }
 
-                var properties = {
-                    'title': self.field.title
-                };
+                this.render();
+            },
 
-                if (self.field.id.length) {
-                    properties.id = self.field.id.replace(/[^\w]/g, '_') + "_jqxDropDownList";
-                }
-                else {
-                    properties.id = $.jqx.utilities.createId() + "_jqxDropDownList";
-                }
+            render: function () {
+                var self = this;
+                if (!self.width) self.width = 200;
+                if (!self.height) self.height = 25;
 
-                var wrapper = $("<div></div>", properties);
-                if (!self.width) {
-                    self.width = $(self.field).width();
-                }
-                if (!self.height) {
-                    self.height = $(self.field).outerHeight();
-                }
-                wrapper[0].style.cssText = self.field.style.cssText;
-                $(self.field).hide().after(wrapper);
-                var data = self.host.data();
-                self.host = wrapper;
-                self.host.data(data);
-                self.element = wrapper[0];
-                self.element.id = self.field.id;
-                self.field.id = properties.id;
-                if (self._className) {
-                    self.host.addClass(self._className);
-                    $(self.field).removeClass(self._className);
-                }
+                self.host.addClass(self.toThemeProperty('jqx-dropdownlist'));
 
-                if (self.field.tabIndex) {
-                    var tabIndex = self.field.tabIndex;
-                    self.field.tabIndex = -1;
-                    self.element.tabIndex = tabIndex;
-                }
-                var result = $.jqx.parseSourceTag(self.field);
-                self.source = result.items;
-                if (self.selectedIndex == -1)
-                    self.selectedIndex = result.index;
-            }
-            else {
-                if (self.host.find('li').length > 0 || self.host.find('option').length > 0) {
-                    var result = $.jqx.parseSourceTag(self.element);
+                var nodeName = self.element.nodeName.toLowerCase();
+                if (nodeName == "select" || nodeName == "ul" || nodeName == "ol") {
+                    self.field = self.element;
+                    if (self.field.className) {
+                        self._className = self.field.className;
+                    }
+
+                    var properties = {
+                        'title': self.field.title
+                    };
+
+                    if (self.field.id.length) {
+                        properties.id = self.field.id.replace(/[^\w]/g, '_') + "_jqxDropDownList";
+                    }
+                    else {
+                        properties.id = $.jqx.utilities.createId() + "_jqxDropDownList";
+                    }
+
+                    var wrapper = $("<div></div>", properties);
+                    if (!self.width) {
+                        self.width = $(self.field).width();
+                    }
+                    if (!self.height) {
+                        self.height = $(self.field).outerHeight();
+                    }
+                    wrapper[0].style.cssText = self.field.style.cssText;
+                    $(self.field).hide().after(wrapper);
+                    var data = self.host.data();
+                    self.host = wrapper;
+                    self.host.data(data);
+                    self.element = wrapper[0];
+                    self.element.id = self.field.id;
+                    self.field.id = properties.id;
+                    if (self._className) {
+                        self.host.addClass(self._className);
+                        $(self.field).removeClass(self._className);
+                    }
+
+                    if (self.field.tabIndex) {
+                        var tabIndex = self.field.tabIndex;
+                        self.field.tabIndex = -1;
+                        self.element.tabIndex = tabIndex;
+                    }
+                    var result = $.jqx.parseSourceTag(self.field);
                     self.source = result.items;
-                }
-            }
-            self.element.innerHTML = "";
-            self.isanimating = false;
-            self.id = self.element.id || $.jqx.utilities.createId();
-            self.host.attr('role', 'combobox');
-            $.jqx.aria(self, "aria-autocomplete", "both");
-            $.jqx.aria(self, "aria-readonly", false);
-
-            var comboStructure = "<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
-                "<div id='dropdownlistWrapper' style='overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;'>" +
-                "<div id='dropdownlistContent' unselectable='on' style='outline: none; background-color: transparent; border: none; float: left; position: relative;'></div>" +
-                "<div id='dropdownlistArrow' unselectable='on' style='background-color: transparent; border: none; float: right; position: relative;'><div unselectable='on'></div></div>" +
-                "</div>" +
-                "</div>";
-
-            if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
-                throw new Error("jqxDropDownList: Missing reference to jqxlistbox.js.");
-            }
-
-            if (self.host.attr('tabindex')) {
-            }
-            else {
-                self.host.attr('tabindex', 0);
-            }
-
-            var me = self;
-
-            self.touch = $.jqx.mobile.isTouchDevice();
-            self.comboStructure = comboStructure;
-            self.element.innerHTML = comboStructure;
-
-            self.dropdownlistWrapper = $(self.element.firstChild.firstChild);
-            self.dropdownlistArrow = $(self.dropdownlistWrapper[0].firstChild.nextSibling);
-            self.arrow = $(self.dropdownlistArrow[0].firstChild);
-            self.dropdownlistContent = $(self.dropdownlistWrapper[0].firstChild);
-            self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content jqx-disableselect'));
-            if (self.rtl) {
-                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-rtl jqx-dropdownlist-content-rtl'));
-            }
-            self.addHandler(self.dropdownlistWrapper, 'selectstart', function () { return false; });
-            self.dropdownlistWrapper[0].id = "dropdownlistWrapper" + self.element.id;
-            self.dropdownlistArrow[0].id = "dropdownlistArrow" + self.element.id;
-            self.dropdownlistContent[0].id = "dropdownlistContent" + self.element.id;
-            self._addInput();
-
-            var label = $("<label></label");
-            if (this.hint) {
-                label[0].innerHTML = this.placeHolder;
-            }
-            label.addClass(self.toThemeProperty('jqx-input-label'));
-            self.dropdownlistWrapper.append(label);
-            self.label = label;
-
-            var bar = $("<span></span>");
-            self.dropdownlistWrapper.append(bar);
-            bar.addClass(self.toThemeProperty('jqx-input-bar'));
-            self.bar = bar;
-            self.bar.css('top', this.host.height());
-
-            var that = this;
-
-            if (that.template) {
-                that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
-                that.label.addClass(that.toThemeProperty("jqx-" + that.template));
-            }
-
-            if (self.promptText != "Please Choose:") self.placeHolder = self.promptText;
-            var hostClassName = self.toThemeProperty('jqx-widget') + " " + self.toThemeProperty('jqx-dropdownlist-state-normal') + " " + self.toThemeProperty('jqx-rc-all') + " " + self.toThemeProperty('jqx-fill-state-normal');
-            self.element.className += " " + hostClassName;
-            self._firstDiv = $(self.element.firstChild);
-
-            try {
-                var listBoxID = 'listBox' + self.id;
-                var oldContainer = $($.find('#' + listBoxID));
-                if (oldContainer.length > 0) {
-                    oldContainer.remove();
-                }
-                $.jqx.aria(self, "aria-owns", listBoxID);
-                $.jqx.aria(self, "aria-haspopup", true);
-
-                var container = $("<div style='overflow: hidden; background-color: transparent; border: none; position: absolute;' id='listBox" + self.id + "'><div id='innerListBox" + self.id + "'></div></div>");
-                container.hide();
-                container.addClass(self.toThemeProperty('jqx-listbox-container'));
-                if (self.dropDownContainer == "element") {
-                    container.appendTo(self.host);
+                    if (self.selectedIndex == -1)
+                        self.selectedIndex = result.index;
                 }
                 else {
-                    container.appendTo(document.body);
+                    if (self.host.find('li').length > 0 || self.host.find('option').length > 0) {
+                        var result = $.jqx.parseSourceTag(self.element);
+                        self.source = result.items;
+                    }
                 }
-                self.container = container;
-                self.listBoxContainer = $($.find('#innerListBox' + self.id));
+                self.element.innerHTML = "";
+                self.isanimating = false;
+                self.id = self.element.id || $.jqx.utilities.createId();
+                self.host.attr('role', 'combobox');
+                self.host.attr('aria-label', 'DropDownList');
+                self.host.attr('aria-expanded', 'false');
 
-                var width = self.width;
-                if (self.dropDownWidth != 'auto') {
-                    width = self.dropDownWidth;
-                }
-                if (width == null) {
-                    width = self.host.width();
-                    if (width == 0) width = self.dropDownWidth;
+                $.jqx.aria(self, "aria-autocomplete", "both");
+                $.jqx.aria(self, "aria-readonly", false);
+
+                var comboStructure = "<div style='background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;'>" +
+                    "<div id='dropdownlistWrapper' style='overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;'>" +
+                    "<div id='dropdownlistContent' unselectable='on' style='outline: none; background-color: transparent; border: none; float: left; position: relative;'></div>" +
+                    "<div id='dropdownlistArrow' unselectable='on' style='background-color: transparent; border: none; float: right; position: relative;'><div unselectable='on'></div></div>" +
+                    "</div>" +
+                    "</div>";
+
+                if ($.jqx._jqxListBox == null || $.jqx._jqxListBox == undefined) {
+                    throw new Error("jqxDropDownList: Missing reference to jqxlistbox.js.");
                 }
 
-                if (self.dropDownHeight == null) {
-                    self.dropDownHeight = 200;
+                if (self.host.attr('tabindex')) {
                 }
+                else {
+                    self.host.attr('tabindex', 0);
+                }
+
                 var me = self;
-                self.container.width(parseInt(width) + 25);
-                self.container.height(parseInt(self.dropDownHeight) + 25);
-                self._ready = false;
-                self.addHandler(self.listBoxContainer, 'bindingComplete', function (event) {
-                    if (!self.listBox) {
-                        self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                    }
-                    if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
-                        self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                        self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
-                        self.renderSelection('mouse');
-                    } else {
-                        self.renderSelection('mouse');
-                    }
-                    if (!self._ready) {
-                        if (self.ready) {
-                            self.ready();
-                        }
-                        self._ready = true;
-                    }
-                    self._raiseEvent('6');
-                });
-                self.addHandler(self.listBoxContainer, 'itemAdd', function (event) {
-                    self._raiseEvent('7', event.args);
-                });
-                self.addHandler(self.listBoxContainer, 'itemRemove', function (event) {
-                    self._raiseEvent('8', event.args);
-                });
-                self.addHandler(self.listBoxContainer, 'itemUpdate', function (event) {
-                    self._raiseEvent('9', event.args);
-                });
 
-                self.listBoxContainer.jqxListBox({
-                    filterHeight: self.filterHeight,
-                    filterPlaceHolder: self.filterPlaceHolder,
-                    filterDelay: self.filterDelay,
-                    autoItemsHeight: self.autoItemsHeight,
-                    filterable: self.filterable, allowDrop: false, allowDrag: false,
-                    autoBind: self.autoBind, _checkForHiddenParent: false, focusable: self.focusable,
-                    touchMode: self.touchMode, checkboxes: self.checkboxes, rtl: self.rtl, _renderOnDemand: true, emptyString: self.emptyString, itemHeight: self.itemHeight, width: width, searchMode: self.searchMode, incrementalSearch: self.incrementalSearch, incrementalSearchDelay: self.incrementalSearchDelay, groupMember: self.groupMember, searchMember: self.searchMember, displayMember: self.displayMember, valueMember: self.valueMember, height: self.dropDownHeight, autoHeight: self.autoDropDownHeight, scrollBarSize: self.scrollBarSize, selectedIndex: self.selectedIndex, source: self.source, theme: self.theme,
-                    rendered: function () {
+                self.touch = $.jqx.mobile.isTouchDevice();
+                self.comboStructure = comboStructure;
+                self.element.innerHTML = comboStructure;
+
+                self.dropdownlistWrapper = $(self.element.firstChild.firstChild);
+                self.dropdownlistArrow = $(self.dropdownlistWrapper[0].firstChild.nextSibling);
+                self.arrow = $(self.dropdownlistArrow[0].firstChild);
+                self.dropdownlistContent = $(self.dropdownlistWrapper[0].firstChild);
+                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content jqx-disableselect'));
+                if (self.rtl) {
+                    self.dropdownlistContent.addClass(self.toThemeProperty('jqx-rtl jqx-dropdownlist-content-rtl'));
+                }
+                self.addHandler(self.dropdownlistWrapper, 'selectstart', function () { return false; });
+                self.dropdownlistWrapper[0].id = "dropdownlistWrapper" + self.element.id;
+                self.dropdownlistArrow[0].id = "dropdownlistArrow" + self.element.id;
+                self.dropdownlistContent[0].id = "dropdownlistContent" + self.element.id;
+                self._addInput();
+
+                var label = $("<label></label");
+                if (this.hint) {
+                    label[0].innerHTML = this.placeHolder;
+                }
+                label.addClass(self.toThemeProperty('jqx-input-label'));
+                self.dropdownlistWrapper.append(label);
+                self.label = label;
+
+                var bar = $("<span></span>");
+                self.dropdownlistWrapper.append(bar);
+                bar.addClass(self.toThemeProperty('jqx-input-bar'));
+                self.bar = bar;
+                self.bar.css('top', this.host.height());
+
+                var that = this;
+
+                if (that.template) {
+                    that.bar.addClass(that.toThemeProperty("jqx-" + that.template));
+                    that.label.addClass(that.toThemeProperty("jqx-" + that.template));
+                }
+
+                if (self.promptText != "Please Choose:") self.placeHolder = self.promptText;
+                var hostClassName = self.toThemeProperty('jqx-widget') + " " + self.toThemeProperty('jqx-dropdownlist-state-normal') + " " + self.toThemeProperty('jqx-rc-all') + " " + self.toThemeProperty('jqx-fill-state-normal');
+                self.element.className += " " + hostClassName;
+                self._firstDiv = $(self.element.firstChild);
+
+                try {
+                    var listBoxID = 'listBox' + self.id;
+                    var oldContainer = $($.find('#' + listBoxID));
+                    if (oldContainer.length > 0) {
+                        oldContainer.remove();
+                    }
+                    $.jqx.aria(self, "aria-owns", listBoxID);
+                    $.jqx.aria(self, "aria-haspopup", true);
+
+                    var container = $("<div style='overflow: hidden; background-color: transparent; border: none; position: absolute;' id='listBox" + self.id + "'><div id='innerListBox" + self.id + "'></div></div>");
+                    container.hide();
+                    container.addClass(self.toThemeProperty('jqx-listbox-container'));
+                    if (self.dropDownContainer == "element") {
+                        container.appendTo(self.host);
+                    }
+                    else {
+                        container.appendTo(document.body);
+                    }
+                    self.container = container;
+                    self.listBoxContainer = $($.find('#innerListBox' + self.id));
+
+                    var width = self.width;
+                    if (self.dropDownWidth != 'auto') {
+                        width = self.dropDownWidth;
+                    }
+                    if (width == null) {
+                        width = self.host.width();
+                        if (width == 0) width = self.dropDownWidth;
+                    }
+
+                    if (self.dropDownHeight == null) {
+                        self.dropDownHeight = 200;
+                    }
+                    var me = self;
+                    self.container.width(parseInt(width) + 25);
+                    self.container.height(parseInt(self.dropDownHeight) + 25);
+                    self._ready = false;
+                    self.addHandler(self.listBoxContainer, 'bindingComplete', function (event) {
+                        if (!self.listBox) {
+                            self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                        }
                         if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
                             self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
                             self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
@@ -22428,705 +22378,900 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                         } else {
                             self.renderSelection('mouse');
                         }
-                    }, renderer: self.renderer,
-                    filterChange: function (value) {
-                        if (self.autoDropDownHeight) {
-                            self.container.height(self.listBoxContainer.height() + 25);
-                        }
-                    }
-                });
-                if (self.dropDownContainer === "element") {
-                    self.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
-                }
-                else {
-                    self.listBoxContainer.css({ position: 'absolute', zIndex: self.popupZIndex, top: 0, left: 0 });
-                }
-                if (self.template) {
-                    self.listBoxContainer.addClass(self.toThemeProperty("jqx-" + self.template + "-item"));
-                }
-
-                self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
-                self.listBox.enableSelection = self.enableSelection;
-                self.listBox.enableHover = self.enableHover;
-                self.listBox.equalItemsWidth = self.equalItemsWidth;
-                self.listBox.selectIndex(self.selectedIndex);
-                self.listBox._arrange();
-                self.listBoxContainer.addClass(self.toThemeProperty('jqx-popup'));
-                if ($.jqx.browser.msie) {
-                    self.listBoxContainer.addClass(self.toThemeProperty('jqx-noshadow'));
-                }
-
-                self.addHandler(self.listBoxContainer, 'unselect', function (event) {
-                    self._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
-                });
-
-                self.addHandler(self.listBoxContainer, 'change', function (event) {
-                    if (event.args) {
-                        if (event.args.type != "keyboard") {
-                            self._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
-                        }
-                        else if (event.args.type == "keyboard") {
-                            if (!self.isOpened()) {
-                                self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                        if (!self._ready) {
+                            if (self.ready) {
+                                self.ready();
                             }
-                            else {
-                                if (event.args.item && event.args.oldItem && event.args.item.label !== event.args.oldItem.label) {
+                            self._ready = true;
+                        }
+                        self._raiseEvent('6');
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemAdd', function (event) {
+                        self._raiseEvent('7', event.args);
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemRemove', function (event) {
+                        self._raiseEvent('8', event.args);
+                    });
+                    self.addHandler(self.listBoxContainer, 'itemUpdate', function (event) {
+                        self._raiseEvent('9', event.args);
+                    });
+
+                    self.listBoxContainer.jqxListBox({
+                        filterHeight: self.filterHeight,
+                        filterPlaceHolder: self.filterPlaceHolder,
+                        filterDelay: self.filterDelay,
+                        autoItemsHeight: self.autoItemsHeight,
+                        filterable: self.filterable, allowDrop: false, allowDrag: false,
+                        autoBind: self.autoBind, _checkForHiddenParent: false, focusable: self.focusable,
+                        touchMode: self.touchMode, checkboxes: self.checkboxes, rtl: self.rtl, _renderOnDemand: true, emptyString: self.emptyString, itemHeight: self.itemHeight, width: width, searchMode: self.searchMode, incrementalSearch: self.incrementalSearch, incrementalSearchDelay: self.incrementalSearchDelay, groupMember: self.groupMember, searchMember: self.searchMember, displayMember: self.displayMember, valueMember: self.valueMember, height: self.dropDownHeight, autoHeight: self.autoDropDownHeight, scrollBarSize: self.scrollBarSize, selectedIndex: self.selectedIndex, source: self.source, theme: self.theme,
+                        rendered: function () {
+                            if (self.selectedIndex != self.listBoxContainer.jqxListBox('selectedIndex')) {
+                                self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                                self.listBoxContainer.jqxListBox({ selectedIndex: self.selectedIndex });
+                                self.renderSelection('mouse');
+                            } else {
+                                self.renderSelection('mouse');
+                            }
+                        }, renderer: self.renderer,
+                        filterChange: function (value) {
+                            if (self.autoDropDownHeight) {
+                                self.container.height(self.listBoxContainer.height() + 25);
+                            }
+                        }
+                    });
+                    if (self.dropDownContainer === "element") {
+                        self.listBoxContainer.css({ position: 'absolute', top: 0, left: 0 });
+                    }
+                    else {
+                        self.listBoxContainer.css({ position: 'absolute', zIndex: self.popupZIndex, top: 0, left: 0 });
+                    }
+                    if (self.template) {
+                        self.listBoxContainer.addClass(self.toThemeProperty("jqx-" + self.template + "-item"));
+                    }
+
+                    self.listBox = $.data(self.listBoxContainer[0], "jqxListBox").instance;
+                    self.listBox.enableSelection = self.enableSelection;
+                    self.listBox.enableHover = self.enableHover;
+                    self.listBox.equalItemsWidth = self.equalItemsWidth;
+                    self.listBox.selectIndex(self.selectedIndex);
+                    self.listBox._arrange();
+                    self.listBoxContainer.addClass(self.toThemeProperty('jqx-popup'));
+                    if ($.jqx.browser.msie) {
+                        self.listBoxContainer.addClass(self.toThemeProperty('jqx-noshadow'));
+                    }
+
+                    self.addHandler(self.listBoxContainer, 'unselect', function (event) {
+                        self._raiseEvent('3', { index: event.args.index, type: event.args.type, item: event.args.item });
+                    });
+
+                    self.addHandler(self.listBoxContainer, 'change', function (event) {
+                        if (event.args) {
+                            if (event.args.type != "keyboard") {
+                                self._raiseEvent('4', { index: event.args.index, type: event.args.type, item: event.args.item });
+                            }
+                            else if (event.args.type == "keyboard") {
+                                if (!self.isOpened()) {
                                     self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
                                 }
-                            }
-                        }
-                    }
-                });
-
-                if (self.animationType == 'none') {
-                    self.container.css('display', 'none');
-                }
-                else {
-                    self.container.hide();
-                }
-            }
-            catch (e) {
-                if (console)
-                    console.log(e);
-            }
-
-            var self = self;
-            self.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
-                if (value) {
-                    instance.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                    instance.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-                }
-                else {
-                    instance.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                    instance.host.removeClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                    instance.dropdownlistContent.removeClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-                }
-                $.jqx.aria(instance, "aria-disabled", instance.disabled);
-            }
-
-            if (self.disabled) {
-                self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
-                self.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
-                self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
-            }
-
-            if (self.dropDownVerticalAlignment == "top") {
-                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up'));
-            }
-            else {
-                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down'));
-            }
-            self.arrow.addClass(self.toThemeProperty('jqx-icon'));
-
-            if (self.renderMode === "simple") {
-                self.arrow.remove();
-                self.host.removeClass(self.toThemeProperty('jqx-fill-state-normal'));
-                self.host.removeClass(self.toThemeProperty('jqx-rc-all'));
-            }
-            if (self.template) {
-                self.host.addClass(self.toThemeProperty("jqx-" + self.template))
-            }
-
-            self._updateHandlers();
-            self._setSize();
-            self._arrange();
-            if (self.listBox) {
-                self.renderSelection();
-            }
-
-            // fix for IE7
-            if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                if (self.host.parents('.jqx-window').length > 0) {
-                    var zIndex = self.host.parents('.jqx-window').css('z-index');
-                    container.css('z-index', zIndex + 10);
-                    self.listBoxContainer.css('z-index', zIndex + 10);
-                }
-            }
-        },
-
-        resize: function (width, height) {
-            this.width = width;
-            this.height = height;
-            this._setSize();
-            this._arrange();
-        },
-
-        val: function (value) {
-            if (!this.dropdownlistContent) return "";
-
-            var isEmpty = function (obj) {
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key))
-                        return false;
-                }
-
-                if (typeof value == "number")
-                    return false;
-                if (typeof value == "date")
-                    return false;
-                if (typeof value == "boolean")
-                    return false;
-                if (typeof value == "string")
-                    return false;
-
-                return true;
-            }
-
-            if (this.input && (isEmpty(value) || arguments.length == 0)) {
-                return this.input.val();
-            }
-
-            var item = this.getItemByValue(value);
-            if (item != null) {
-                this.selectItem(item);
-            }
-
-            if (this.input) {
-                return this.input.val();
-            }
-        },
-
-        focus: function () {
-            try {
-                var me = this;
-                var doFocus = function () {
-                    if (me.host) {
-                        me.host.focus();
-                        if (me._firstDiv) {
-                            me._firstDiv.focus();
-                        }
-                    }
-                }
-                doFocus();
-                setTimeout(function () {
-                    doFocus();
-                }, 10);
-            }
-            catch (error) {
-            }
-        },
-
-        _addInput: function () {
-            var name = this.host.attr('name');
-            this.input = $("<input type='hidden'/>");
-            this.host.append(this.input);
-            if (name) {
-                this.input.attr('name', name);
-            }
-        },
-
-        getItems: function () {
-            if (!this.listBox) {
-                return new Array();
-            }
-
-            return this.listBox.items;
-        },
-
-        getVisibleItems: function () {
-            return this.listBox.getVisibleItems();
-        },
-
-
-        _setSize: function () {
-            var computedStyle = window.getComputedStyle(this.element);
-            var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
-            var boxSizing = computedStyle.boxSizing;
-
-            if (this.element.offsetWidth === 0) {
-                borderSize = 2;
-            }
-
-            if (boxSizing === 'border-box' || isNaN(borderSize)) {
-                borderSize = 0;
-            }
-
-            if (this.width != null && this.width.toString().indexOf("px") != -1) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-            else if (this.width != undefined && !isNaN(this.width)) {
-                this.element.style.width = parseInt(this.width) - borderSize + 'px';
-            }
-
-            if (this.height != null && this.height.toString().indexOf("px") != -1) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            }
-            else if (this.height != undefined && !isNaN(this.height)) {
-                this.element.style.height = parseInt(this.height) - borderSize + 'px';
-            };
-
-            var isPercentage = false;
-            if (this.width != null && this.width.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.width = this.width;
-
-                if (borderSize > 0) {
-                    this.host.css('box-sizing', 'border-box');
-                    this.listBoxContainer.css('box-sizing', 'border-box');
-                }
-            }
-
-            if (this.height != null && this.height.toString().indexOf("%") != -1) {
-                isPercentage = true;
-                this.element.style.height = this.height;
-            }
-
-            var me = this;
-            var resizeFunc = function () {
-                me._arrange();
-                if (me.dropDownWidth == 'auto') {
-                    var width = me.host.width() + 2;
-                    me.listBoxContainer.jqxListBox({ width: width });
-                    me.container.width(parseInt(width) + 25);
-                }
-            }
-
-            if (isPercentage) {
-                var width = this.host.width() + 2;
-                if (this.dropDownWidth != 'auto') {
-                    width = this.dropDownWidth;
-                }
-                this.listBoxContainer.jqxListBox({ width: width });
-                this.container.width(parseInt(width) + 25);
-            }
-            $.jqx.utilities.resize(this.host, function () {
-                resizeFunc();
-            }, false, this._checkForHiddenParent);
-        },
-
-        // returns true when the listbox is opened, otherwise returns false.
-        isOpened: function () {
-            var me = this;
-            var openedListBox = $.data(document.body, "openedJQXListBox" + this.id);
-            if (openedListBox != null && openedListBox == me.listBoxContainer) {
-                return true;
-            }
-
-            return false;
-        },
-
-        _updateHandlers: function () {
-            var self = this;
-            var hovered = false;
-            this.removeHandlers();
-            if (!this.touch) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
-                        hovered = true;
-                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
-                        if (self.dropDownVerticalAlignment == "top") {
-                            self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        }
-                        else {
-                            self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        }
-                        self.host.addClass(self.toThemeProperty('jqx-fill-state-hover'));
-                    }
-                });
-
-                this.addHandler(this.host, 'mouseleave', function () {
-                    if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
-                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
-                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-hover'));
-                        self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
-                        self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
-                        hovered = false;
-                    }
-                });
-            }
-
-            if (this.host.parents()) {
-                this.addHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id, function (event) {
-                    var opened = self.isOpened();
-                    if (opened) {
-                        self.close();
-                    }
-                });
-            }
-
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            this.addHandler(this.dropdownlistWrapper, eventName,
-                function (event) {
-                    if (!self.disabled) {
-                        var isOpen = self.container.css('display') == 'block';
-                        if (!self.isanimating) {
-                            if (isOpen) {
-                                self.hideListBox();
-                                return false;
-                            }
-                            else {
-                                self.showListBox();
-                                if (!self.focusable) {
-                                    if (event.preventDefault) {
-                                        event.preventDefault();
+                                else {
+                                    if (event.args.item && event.args.oldItem && event.args.item.label !== event.args.oldItem.label) {
+                                        self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
                                     }
-                                }
-                                else self.focus();
-
-                            //    event.stopPropagation();
-                            }
-                        }
-                    }
-                });
-
-            if (self.autoOpen) {
-                this.addHandler(this.host, 'mouseenter', function () {
-                    var isOpened = self.isOpened();
-                    if (!isOpened && self.autoOpen) {
-                        self.open();
-                        self.host.focus();
-                    }
-                });
-
-                $(document).on('mousemove.' + self.id, function (event) {
-                    var isOpened = self.isOpened();
-                    if (isOpened && self.autoOpen) {
-                        var offset = self.host.coord();
-                        var top = offset.top;
-                        var left = offset.left;
-                        var popupOffset = self.container.coord();
-                        var popupLeft = popupOffset.left;
-                        var popupTop = popupOffset.top;
-
-                        var canClose = true;
-
-                        if (event.pageY >= top && event.pageY <= top + self.host.height()) {
-                            if (event.pageX >= left && event.pageX < left + self.host.width())
-                                canClose = false;
-                        }
-                        if (event.pageY >= popupTop && event.pageY <= popupTop + self.container.height()) {
-                            if (event.pageX >= popupLeft && event.pageX < popupLeft + self.container.width())
-                                canClose = false;
-                        }
-
-                        if (canClose) {
-                            self.close();
-                        }
-                    }
-                });
-            }
-
-            if (this.touch) {
-                this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
-            }
-            else this.addHandler($(document), 'mousedown.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
-
-            this.addHandler(this.host, 'keydown', function (event) {
-                var isOpen = self.container.css('display') == 'block';
-
-                if (self.host.css('display') == 'none') {
-                    return true;
-                }
-
-                if (event.keyCode == '13' || event.keyCode == '9') {
-                    if (!self.isanimating) {
-                        if (isOpen) {
-                            self.renderSelection();
-                            if (event.keyCode == '13' && self.focusable) {
-                                self._firstDiv.focus();
-                            }
-                            self.hideListBox();
-                            if (!self.keyboardSelection) {
-                                self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                            }
-                            if (event.keyCode == "13") {
-                                self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                            }
-                        }
-                        if (isOpen && event.keyCode != '9') {
-                            return false;
-                        }
-                        return true;
-                    }
-                }
-
-                if (event.keyCode == 115) {
-                    if (!self.isanimating) {
-                        if (!self.isOpened()) {
-                            self.showListBox();
-                        }
-                        else if (self.isOpened()) {
-                            self.hideListBox();
-                        }
-                    }
-                    return false;
-                }
-
-                if (event.altKey) {
-                    if (self.host.css('display') == 'block') {
-                        if (event.keyCode == 38) {
-                            if (self.isOpened()) {
-                                self.hideListBox();
-                                return true;
-                            }
-                        }
-                        else if (event.keyCode == 40) {
-                            if (!self.isOpened()) {
-                                self.showListBox();
-                                return true;
-                            }
-                        }
-                    }
-                }
-
-                if (event.keyCode == '27') {
-                    if (!self.ishiding) {
-                        if (self.isOpened()) {
-                            self.hideListBox();
-                            if (self.tempSelectedIndex != undefined) {
-                                self.selectIndex(self.tempSelectedIndex);
-                            }
-                        }
-
-                        return true;
-                    }
-                }
-
-                if (!self.disabled) {
-                    self._kbnavigated = self.listBox._handleKeyDown(event);
-                    return self._kbnavigated;
-                }
-            });
-            this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
-                self.renderSelection();
-                self._updateInputSelection();
-                self._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
-            });
-
-            this.addHandler(this.listBoxContainer, 'select', function (event) {
-                if (!self.disabled) {
-                    if (!event.args)
-                        return;
-
-                    if (event.args.type == 'keyboard' && !self.isOpened()) {
-                        self.renderSelection();
-                    }
-
-                    if (event.args.type != 'keyboard' || self.keyboardSelection) {
-                        self.renderSelection();
-                        self._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item, originalEvent: event.args.originalEvent });
-                        if (event.args.type == 'mouse') {
-                            if (!self.checkboxes) {
-                                self.hideListBox();
-                                if (self._firstDiv && self.focusable) {
-                                    self._firstDiv.focus();
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            if (this.listBox) {
-                if (this.listBox.content) {
-                    this.addHandler(this.listBox.content, 'click', function (event) {
-                        if (!self.disabled) {
-                            if (self.listBox.itemswrapper && event.target === self.listBox.itemswrapper[0])
-                                return true;
-
-                            self.renderSelection('mouse');
-                            if (!self.touch) {
-                                if (!self.ishiding) {
-                                    if (!self.checkboxes) {
-                                        self.hideListBox();
-                                        if (self._firstDiv && self.focusable) {
-                                            self._firstDiv.focus();
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (!self.keyboardSelection) {
-                                if (self._kbnavigated === false) {
-                                    if (self.tempSelectedIndex != self.selectedIndex) {
-                                        self._raiseEvent('4', { index: self.selectedIndex, type: "mouse", item: self.getItem(self.selectedIndex) });
-                                    }
-                                    self._kbnavigated = true;
-                                }
-
-                                if (self._oldSelectedInd == undefined) self._oldSelectedIndx = self.selectedIndex;
-
-                                if (self.selectedIndex != self._oldSelectedIndx) {
-                                    self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
-                                    self._oldSelectedIndx = self.selectedIndex;
                                 }
                             }
                         }
                     });
+
+                    if (self.animationType == 'none') {
+                        self.container.css('display', 'none');
+                    }
+                    else {
+                        self.container.hide();
+                    }
                 }
-            }
-
-            this.addHandler(this.host, 'focus', function (event) {
-                if (self.renderMode !== 'simple') {
-                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                catch (e) {
+                    if (console)
+                        console.log(e);
                 }
-                self.bar.addClass('focused');
-                self.label.addClass('focused');
-            });
-            this.addHandler(this.host, 'blur', function () {
-                if (self.renderMode !== 'simple') {
-                    self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                var self = self;
+                self.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
+                    if (value) {
+                        instance.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                        instance.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
+                    }
+                    else {
+                        instance.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                        instance.host.removeClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                        instance.dropdownlistContent.removeClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
+                    }
+                    $.jqx.aria(instance, "aria-disabled", instance.disabled);
                 }
-                self.bar.removeClass('focused');
-                self.label.removeClass('focused');
-            });
-            this.addHandler(this._firstDiv, 'focus', function (event) {
-                if (self.renderMode !== 'simple') {
-                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                if (self.disabled) {
+                    self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-disabled'));
+                    self.host.addClass(self.toThemeProperty('jqx-fill-state-disabled'));
+                    self.dropdownlistContent.addClass(self.toThemeProperty('jqx-dropdownlist-content-disabled'));
                 }
-                self.bar.addClass('focused');
-                self.label.addClass('focused');
-            });
-            this.addHandler(this._firstDiv, 'blur', function () {
-                if (self.renderMode !== 'simple') {
-                    self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
-                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+
+                if (self.dropDownVerticalAlignment == "top") {
+                    self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up'));
                 }
-                self.bar.removeClass('focused');
-                self.label.removeClass('focused');
-            });
-        },
-
-        removeHandlers: function () {
-            var self = this;
-            var eventName = 'mousedown';
-            if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
-            this.removeHandler(this.dropdownlistWrapper, eventName);
-            if (this.listBox) {
-                if (this.listBox.content) {
-                    this.removeHandler(this.listBox.content, 'click');
+                else {
+                    self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down'));
                 }
-            }
+                self.arrow.addClass(self.toThemeProperty('jqx-icon'));
 
-            this.removeHandler(this.host, 'loadContent');
-            this.removeHandler(this.listBoxContainer, 'checkChange');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.host, 'focus');
-            this.removeHandler(this.host, 'blur');
-            this.removeHandler(this._firstDiv, 'focus');
-            this.removeHandler(this._firstDiv, 'blur');
-            this.removeHandler(this.host, 'mouseenter');
-            this.removeHandler(this.host, 'mouseleave');
-            this.removeHandler($(document), 'mousemove.' + self.id);
-        },
+                if (self.renderMode === "simple") {
+                    self.arrow.remove();
+                    self.host.removeClass(self.toThemeProperty('jqx-fill-state-normal'));
+                    self.host.removeClass(self.toThemeProperty('jqx-rc-all'));
+                }
+                if (self.template) {
+                    self.host.addClass(self.toThemeProperty("jqx-" + self.template))
+                }
 
-        // gets an item by index.
-        getItem: function (index) {
-            var item = this.listBox.getItem(index);
-            return item;
-        },
+                self._updateHandlers();
+                self._setSize();
+                self._arrange();
+                if (self.listBox) {
+                    self.renderSelection();
+                }
 
-        getItemByValue: function (value) {
-            var item = this.listBox.getItemByValue(value);
-            return item;
-        },
+                // fix for IE7
+                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                    if (self.host.parents('.jqx-window').length > 0) {
+                        var zIndex = self.host.parents('.jqx-window').css('z-index');
+                        container.css('z-index', zIndex + 10);
+                        self.listBoxContainer.css('z-index', zIndex + 10);
+                    }
+                }
+            },
 
-        selectItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.selectItem(item);
-                this.selectedIndex = this.listBox.selectedIndex;
-                this.renderSelection('mouse');
-            }
-        },
-
-        unselectItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.unselectItem(item);
-                this.renderSelection('mouse');
-            }
-        },
-
-        checkItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.checkItem(item);
-            }
-        },
-
-        uncheckItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.uncheckItem(item);
-            }
-        },
-
-        indeterminateItem: function (item) {
-            if (this.listBox != undefined) {
-                this.listBox.indeterminateItem(item);
-            }
-        },
-
-
-        // renders the selection.
-        renderSelection: function () {
-            if (this.listBox == null)
-                return;
-
-            if (this.height && this.height.toString().indexOf('%') != -1) {
+            resize: function (width, height) {
+                this.width = width;
+                this.height = height;
+                this._setSize();
                 this._arrange();
-            }
+            },
 
-            var item = this.listBox.visibleItems[this.listBox.selectedIndex];
-            if (this.filterable) {
-                if (this.listBox.selectedIndex == -1) {
-                    for (var selectedValue in this.listBox.selectedValues) {
-                        var value = this.listBox.selectedValues[selectedValue];
-                        var selectedItem = this.listBox.getItemByValue(value);
-                        if (selectedItem) {
-                            item = selectedItem;
+            val: function (value) {
+                if (!this.dropdownlistContent) return "";
+
+                var isEmpty = function (obj) {
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key))
+                            return false;
+                    }
+
+                    if (typeof value == "number")
+                        return false;
+                    if (typeof value == "date")
+                        return false;
+                    if (typeof value == "boolean")
+                        return false;
+                    if (typeof value == "string")
+                        return false;
+
+                    return true;
+                }
+
+                if (this.input && (isEmpty(value) || arguments.length == 0)) {
+                    return this.input.val();
+                }
+
+                var item = this.getItemByValue(value);
+                if (item != null) {
+                    this.selectItem(item);
+                }
+
+                if (this.input) {
+                    return this.input.val();
+                }
+            },
+
+            focus: function () {
+                try {
+                    var me = this;
+                    var doFocus = function () {
+                        if (me.host) {
+                            me.host.focus();
+                            if (me._firstDiv) {
+                                me._firstDiv.focus();
+                            }
+                        }
+                    }
+                    doFocus();
+                    setTimeout(function () {
+                        doFocus();
+                    }, 10);
+                }
+                catch (error) {
+                }
+            },
+
+            _addInput: function () {
+                var name = this.host.attr('name');
+                this.input = $("<input type='hidden'/>");
+                this.host.append(this.input);
+                if (name) {
+                    this.input.attr('name', name);
+                }
+            },
+
+            getItems: function () {
+                if (!this.listBox) {
+                    return new Array();
+                }
+
+                return this.listBox.items;
+            },
+
+            getVisibleItems: function () {
+                return this.listBox.getVisibleItems();
+            },
+
+
+            _setSize: function () {
+                var computedStyle = window.getComputedStyle(this.element);
+                var borderSize = parseInt(computedStyle.borderLeftWidth) * 2;
+                var boxSizing = computedStyle.boxSizing;
+
+                if (this.element.offsetWidth === 0) {
+                    borderSize = 2;
+                }
+
+                if (boxSizing === 'border-box' || isNaN(borderSize)) {
+                    borderSize = 0;
+                }
+
+                if (this.width != null && this.width.toString().indexOf("px") != -1) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+                else if (this.width != undefined && !isNaN(this.width)) {
+                    this.element.style.width = parseInt(this.width) - borderSize + 'px';
+                }
+
+                if (this.height != null && this.height.toString().indexOf("px") != -1) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                }
+                else if (this.height != undefined && !isNaN(this.height)) {
+                    this.element.style.height = parseInt(this.height) - borderSize + 'px';
+                };
+
+                var isPercentage = false;
+                if (this.width != null && this.width.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.width = this.width;
+
+                    if (borderSize > 0) {
+                        this.host.css('box-sizing', 'border-box');
+                        this.listBoxContainer.css('box-sizing', 'border-box');
+                    }
+                }
+
+                if (this.height != null && this.height.toString().indexOf("%") != -1) {
+                    isPercentage = true;
+                    this.element.style.height = this.height;
+                }
+
+                var me = this;
+                var resizeFunc = function () {
+                    me._arrange();
+                    if (me.dropDownWidth == 'auto') {
+                        var width = me.host.width() + 2;
+                        me.listBoxContainer.jqxListBox({ width: width });
+                        me.container.width(parseInt(width) + 25);
+                    }
+                }
+
+                if (isPercentage) {
+                    var width = this.host.width() + 2;
+                    if (this.dropDownWidth != 'auto') {
+                        width = this.dropDownWidth;
+                    }
+                    this.listBoxContainer.jqxListBox({ width: width });
+                    this.container.width(parseInt(width) + 25);
+                }
+                $.jqx.utilities.resize(this.host, function () {
+                    resizeFunc();
+                }, false, this._checkForHiddenParent);
+            },
+
+            // returns true when the listbox is opened, otherwise returns false.
+            isOpened: function () {
+                var me = this;
+                var openedListBox = $.data(document.body, "openedJQXListBox" + this.id);
+                if (openedListBox != null && openedListBox == me.listBoxContainer) {
+                    return true;
+                }
+
+                return false;
+            },
+
+            _updateHandlers: function () {
+                var self = this;
+                var hovered = false;
+                this.removeHandlers();
+                if (!this.touch) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
+                            hovered = true;
+                            self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
+                            if (self.dropDownVerticalAlignment == "top") {
+                                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            }
+                            else {
+                                self.arrow.addClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            }
+                            self.host.addClass(self.toThemeProperty('jqx-fill-state-hover'));
+                        }
+                    });
+
+                    this.addHandler(this.host, 'mouseleave', function () {
+                        if (!self.disabled && self.enableHover && self.renderMode !== 'simple') {
+                            self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-hover'));
+                            self.host.removeClass(self.toThemeProperty('jqx-fill-state-hover'));
+                            self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-down-hover'));
+                            self.arrow.removeClass(self.toThemeProperty('jqx-icon-arrow-up-hover'));
+                            hovered = false;
+                        }
+                    });
+                }
+
+                if (this.host.parents()) {
+                    this.addHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id, function (event) {
+                        var opened = self.isOpened();
+                        if (opened) {
+                            self.close();
+                        }
+                    });
+                }
+
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                this.addHandler(this.dropdownlistWrapper, eventName,
+                    function (event) {
+                        if (!self.disabled) {
+                            var isOpen = self.container.css('display') == 'block';
+                            if (!self.isanimating) {
+                                if (isOpen) {
+                                    self.hideListBox();
+                                    return false;
+                                }
+                                else {
+                                    self.showListBox();
+                                    if (!self.focusable) {
+                                        if (event.preventDefault) {
+                                            event.preventDefault();
+                                        }
+                                    }
+                                    else self.focus();
+
+                                    //    event.stopPropagation();
+                                }
+                            }
+                        }
+                    });
+
+                if (self.autoOpen) {
+                    this.addHandler(this.host, 'mouseenter', function () {
+                        var isOpened = self.isOpened();
+                        if (!isOpened && self.autoOpen) {
+                            self.open();
+                            self.host.focus();
+                        }
+                    });
+
+                    $(document).on('mousemove.' + self.id, function (event) {
+                        var isOpened = self.isOpened();
+                        if (isOpened && self.autoOpen) {
+                            var offset = self.host.coord();
+                            var top = offset.top;
+                            var left = offset.left;
+                            var popupOffset = self.container.coord();
+                            var popupLeft = popupOffset.left;
+                            var popupTop = popupOffset.top;
+
+                            var canClose = true;
+
+                            if (event.pageY >= top && event.pageY <= top + self.host.height()) {
+                                if (event.pageX >= left && event.pageX < left + self.host.width())
+                                    canClose = false;
+                            }
+                            if (event.pageY >= popupTop && event.pageY <= popupTop + self.container.height()) {
+                                if (event.pageX >= popupLeft && event.pageX < popupLeft + self.container.width())
+                                    canClose = false;
+                            }
+
+                            if (canClose) {
+                                self.close();
+                            }
+                        }
+                    });
+                }
+
+                if (this.touch) {
+                    this.addHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
+                }
+                else this.addHandler($(document), 'mousedown.' + this.id, self.closeOpenedListBox, { me: this, listbox: this.listBox, id: this.id });
+
+                this.addHandler(this.host, 'keydown', function (event) {
+                    var isOpen = self.container.css('display') == 'block';
+
+                    if (self.host.css('display') == 'none') {
+                        return true;
+                    }
+
+                    if (event.keyCode == '13' || event.keyCode == '9') {
+                        if (!self.isanimating) {
+                            if (isOpen) {
+                                self.renderSelection();
+                                if (event.keyCode == '13' && self.focusable) {
+                                    self._firstDiv.focus();
+                                }
+                                self.hideListBox();
+                                if (!self.keyboardSelection) {
+                                    self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                }
+                                if (event.keyCode == "13") {
+                                    self._raiseEvent('4', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                }
+                            }
+                            if (isOpen && event.keyCode != '9') {
+                                return false;
+                            }
+                            return true;
+                        }
+                    }
+
+                    if (event.keyCode == 115) {
+                        if (!self.isanimating) {
+                            if (!self.isOpened()) {
+                                self.showListBox();
+                            }
+                            else if (self.isOpened()) {
+                                self.hideListBox();
+                            }
+                        }
+                        return false;
+                    }
+
+                    if (event.altKey) {
+                        if (self.host.css('display') == 'block') {
+                            if (event.keyCode == 38) {
+                                if (self.isOpened()) {
+                                    self.hideListBox();
+                                    return true;
+                                }
+                            }
+                            else if (event.keyCode == 40) {
+                                if (!self.isOpened()) {
+                                    self.showListBox();
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (event.keyCode == '27') {
+                        if (!self.ishiding) {
+                            if (self.isOpened()) {
+                                self.hideListBox();
+                                if (self.tempSelectedIndex != undefined) {
+                                    self.selectIndex(self.tempSelectedIndex);
+                                }
+                            }
+
+                            return true;
+                        }
+                    }
+
+                    if (!self.disabled) {
+                        self._kbnavigated = self.listBox._handleKeyDown(event);
+                        return self._kbnavigated;
+                    }
+                });
+                this.addHandler(this.listBoxContainer, 'checkChange', function (event) {
+                    self.renderSelection();
+                    self._updateInputSelection();
+                    self._raiseEvent(5, { label: event.args.label, value: event.args.value, checked: event.args.checked, item: event.args.item });
+                });
+
+                this.addHandler(this.listBoxContainer, 'select', function (event) {
+                    if (!self.disabled) {
+                        if (!event.args)
+                            return;
+
+                        if (event.args.type == 'keyboard' && !self.isOpened()) {
+                            self.renderSelection();
+                        }
+
+                        if (event.args.type != 'keyboard' || self.keyboardSelection) {
+                            self.renderSelection();
+                            self._raiseEvent('2', { index: event.args.index, type: event.args.type, item: event.args.item, originalEvent: event.args.originalEvent });
+                            if (event.args.type == 'mouse') {
+                                if (!self.checkboxes) {
+                                    self.hideListBox();
+                                    if (self._firstDiv && self.focusable) {
+                                        self._firstDiv.focus();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                if (this.listBox) {
+                    if (this.listBox.content) {
+                        this.addHandler(this.listBox.content, 'click', function (event) {
+                            if (!self.disabled) {
+                                if (self.listBox.itemswrapper && event.target === self.listBox.itemswrapper[0])
+                                    return true;
+
+                                self.renderSelection('mouse');
+                                if (!self.touch) {
+                                    if (!self.ishiding) {
+                                        if (!self.checkboxes) {
+                                            self.hideListBox();
+                                            if (self._firstDiv && self.focusable) {
+                                                self._firstDiv.focus();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (!self.keyboardSelection) {
+                                    if (self._kbnavigated === false) {
+                                        if (self.tempSelectedIndex != self.selectedIndex) {
+                                            self._raiseEvent('4', { index: self.selectedIndex, type: "mouse", item: self.getItem(self.selectedIndex) });
+                                        }
+                                        self._kbnavigated = true;
+                                    }
+
+                                    if (self._oldSelectedInd == undefined) self._oldSelectedIndx = self.selectedIndex;
+
+                                    if (self.selectedIndex != self._oldSelectedIndx) {
+                                        self._raiseEvent('2', { index: self.selectedIndex, type: 'keyboard', item: self.getItem(self.selectedIndex) });
+                                        self._oldSelectedIndx = self.selectedIndex;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                this.addHandler(this.host, 'focus', function (event) {
+                    if (self.renderMode !== 'simple') {
+                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.addClass('focused');
+                    self.label.addClass('focused');
+                });
+                this.addHandler(this.host, 'blur', function () {
+                    if (self.renderMode !== 'simple') {
+                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.removeClass('focused');
+                    self.label.removeClass('focused');
+                });
+                this.addHandler(this._firstDiv, 'focus', function (event) {
+                    if (self.renderMode !== 'simple') {
+                        self.host.addClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.addClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.addClass('focused');
+                    self.label.addClass('focused');
+                });
+                this.addHandler(this._firstDiv, 'blur', function () {
+                    if (self.renderMode !== 'simple') {
+                        self.host.removeClass(self.toThemeProperty('jqx-dropdownlist-state-focus'));
+                        self.host.removeClass(self.toThemeProperty('jqx-fill-state-focus'));
+                    }
+                    self.bar.removeClass('focused');
+                    self.label.removeClass('focused');
+                });
+            },
+
+            removeHandlers: function () {
+                var self = this;
+                var eventName = 'mousedown';
+                if (this.touch) eventName = $.jqx.mobile.getTouchEventName('touchstart');
+                this.removeHandler(this.dropdownlistWrapper, eventName);
+                if (this.listBox) {
+                    if (this.listBox.content) {
+                        this.removeHandler(this.listBox.content, 'click');
+                    }
+                }
+
+                this.removeHandler(this.host, 'loadContent');
+                this.removeHandler(this.listBoxContainer, 'checkChange');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.host, 'focus');
+                this.removeHandler(this.host, 'blur');
+                this.removeHandler(this._firstDiv, 'focus');
+                this.removeHandler(this._firstDiv, 'blur');
+                this.removeHandler(this.host, 'mouseenter');
+                this.removeHandler(this.host, 'mouseleave');
+                this.removeHandler($(document), 'mousemove.' + self.id);
+            },
+
+            // gets an item by index.
+            getItem: function (index) {
+                var item = this.listBox.getItem(index);
+                return item;
+            },
+
+            getItemByValue: function (value) {
+                var item = this.listBox.getItemByValue(value);
+                return item;
+            },
+
+            selectItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.selectItem(item);
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    this.renderSelection('mouse');
+                }
+            },
+
+            unselectItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.unselectItem(item);
+                    this.renderSelection('mouse');
+                }
+            },
+
+            checkItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.checkItem(item);
+                }
+            },
+
+            uncheckItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.uncheckItem(item);
+                }
+            },
+
+            indeterminateItem: function (item) {
+                if (this.listBox != undefined) {
+                    this.listBox.indeterminateItem(item);
+                }
+            },
+
+
+            // renders the selection.
+            renderSelection: function () {
+                if (this.listBox == null)
+                    return;
+
+                if (this.height && this.height.toString().indexOf('%') != -1) {
+                    this._arrange();
+                }
+
+                var item = this.listBox.visibleItems[this.listBox.selectedIndex];
+                if (this.filterable) {
+                    if (this.listBox.selectedIndex == -1) {
+                        for (var selectedValue in this.listBox.selectedValues) {
+                            var value = this.listBox.selectedValues[selectedValue];
+                            var selectedItem = this.listBox.getItemByValue(value);
+                            if (selectedItem) {
+                                item = selectedItem;
+                            }
                         }
                     }
                 }
-            }
 
-            var me = this;
-            if (this.checkboxes) {
-                var checkedItems = this.getCheckedItems();
-                if (checkedItems != null && checkedItems.length > 0) {
-                    item = checkedItems[0];
-                }
-                else item = null;
-            }
-
-            if (this.hint) {
-                if (this.label) {
-                    this.label[0].innerHTML = this.placeHolder;
+                var me = this;
+                if (this.checkboxes) {
+                    var checkedItems = this.getCheckedItems();
+                    if (checkedItems != null && checkedItems.length > 0) {
+                        item = checkedItems[0];
+                    }
+                    else item = null;
                 }
 
-                if (item != null) {
-                    this.element.setAttribute('hint', true);
-                }
-                else {
-                    this.element.removeAttribute('hint');
-                }
-            }
-
-            this.bar.css('top', this.host.height());
-            if (item == null) {
-                var spanElement = $('<span unselectable="on" style="color: inherit; border: none; background-color: transparent;"></span>');
-                spanElement.appendTo($(document.body));
-                spanElement.addClass(this.toThemeProperty('jqx-widget'));
-                spanElement.addClass(this.toThemeProperty('jqx-listitem-state-normal'));
-                spanElement.addClass(this.toThemeProperty('jqx-item'));
-
-                $.jqx.utilities.html(spanElement, this.placeHolder);
-                if (this.isMaterialized() && !this.element.getAttribute('default-placeholder') && this.hint) {
-                    spanElement[0].innerHTML = "";
-
+                if (this.hint) {
                     if (this.label) {
                         this.label[0].innerHTML = this.placeHolder;
                     }
+
+                    if (item != null) {
+                        this.element.setAttribute('hint', true);
+                    }
+                    else {
+                        this.element.removeAttribute('hint');
+                    }
                 }
-                var topPadding = this.dropdownlistContent.css('padding-top');
-                var bottomPadding = this.dropdownlistContent.css('padding-bottom');
-                spanElement.css('padding-top', topPadding);
-                spanElement.css('padding-bottom', bottomPadding);
+
+                this.bar.css('top', this.host.height());
+                if (item == null) {
+                    var spanElement = $('<span unselectable="on" style="color: inherit; border: none; background-color: transparent;"></span>');
+                    spanElement.appendTo($(document.body));
+                    spanElement.addClass(this.toThemeProperty('jqx-widget'));
+                    spanElement.addClass(this.toThemeProperty('jqx-listitem-state-normal'));
+                    spanElement.addClass(this.toThemeProperty('jqx-item'));
+
+                    $.jqx.utilities.html(spanElement, this.placeHolder);
+                    if (this.isMaterialized() && !this.element.getAttribute('default-placeholder') && this.hint) {
+                        spanElement[0].innerHTML = "";
+
+                        if (this.label) {
+                            this.label[0].innerHTML = this.placeHolder;
+                        }
+                    }
+                    var topPadding = this.dropdownlistContent.css('padding-top');
+                    var bottomPadding = this.dropdownlistContent.css('padding-bottom');
+                    spanElement.css('padding-top', topPadding);
+                    spanElement.css('padding-bottom', bottomPadding);
+                    var spanHeight = spanElement.outerHeight();
+                    spanElement.remove();
+                    spanElement.removeClass();
+                    $.jqx.utilities.html(this.dropdownlistContent, spanElement);
+                    var height = this.host.height();
+                    if (this.height != null && this.height != undefined) {
+                        if (this.height.toString().indexOf('%') === -1) {
+                            height = parseInt(this.height);
+                        }
+                    }
+
+                    var top = parseInt((parseInt(height) - parseInt(spanHeight)) / 2);
+
+                    if (this.host.css('box-sizing') === 'border-box') {
+                        top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
+                    }
+
+                    if (top > 0) {
+                        this.dropdownlistContent.css('margin-top', top + 'px');
+                        this.dropdownlistContent.css('margin-bottom', top + 'px');
+                    }
+                    if (this.selectionRenderer) {
+                        $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, -1, "", ""));
+                        this.dropdownlistContent.css('margin-top', '0px');
+                        this.dropdownlistContent.css('margin-bottom', '0px');
+                        this._updateInputSelection();
+                    }
+                    else this._updateInputSelection();
+                    this.selectedIndex = this.listBox.selectedIndex;
+                    if (this.width === "auto") {
+                        this._arrange();
+                    }
+                    if (this.focusable && this.isOpened()) {
+                        this.focus();
+                    }
+                    return;
+                }
+
+                this.selectedIndex = this.listBox.selectedIndex;
+                var spanElement = $(document.createElement('span'));
+                spanElement[0].setAttribute('unselectable', 'on');
+                try {
+                    spanElement[0].style.color = "inherit";
+                }
+                catch (er) {
+                }
+
+                spanElement[0].style.borderWidth = '0px';
+                spanElement[0].style.backgroundColor = "transparent";
+                spanElement.appendTo($(document.body));
+                spanElement.addClass(this.toThemeProperty('jqx-widget jqx-listitem-state-normal jqx-item'));
+
+                var emptyItem = false;
+                try {
+                    if (item.html != undefined && item.html != null && item.html.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.html);
+                    }
+                    else if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.label);
+                    }
+                    else if (item.label === null || item.label === "") {
+                        emptyItem = true;
+                        $.jqx.utilities.html(spanElement, "");
+                    }
+                    else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.value);
+
+                    }
+                    else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
+                        $.jqx.utilities.html(spanElement, item.title);
+                    }
+                    else if (item.label == "" || item.label == null) {
+                        emptyItem = true;
+                        $.jqx.utilities.html(spanElement, "");
+                    }
+                }
+                catch (error) {
+                    var errorMessage = error;
+                }
+
+                var topPadding = this.dropdownlistContent[0].style.paddingTop;
+                var bottomPadding = this.dropdownlistContent[0].style.paddingBottom;
+                if (topPadding === "") topPadding = "0px";
+                if (bottomPadding === "") bottomPadding = "0px";
+
+                spanElement[0].style.paddingTop = topPadding;
+                spanElement[0].style.paddingBottom = bottomPadding;
+
                 var spanHeight = spanElement.outerHeight();
+                if (spanHeight === 0) {
+                    spanHeight = 16;
+                }
+
+                if ((item.label == "" || item.label == null) && emptyItem) {
+                    $.jqx.utilities.html(spanElement, "");
+                }
+                var notPercentageWidth = this.width && this.width.toString().indexOf('%') <= 0;
+
                 spanElement.remove();
                 spanElement.removeClass();
-                $.jqx.utilities.html(this.dropdownlistContent, spanElement);
+                if (this.selectionRenderer) {
+                    $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, item.index, item.label, item.value));
+                    if (this.focusable && this.isOpened()) {
+                        this.focus();
+                    }
+                }
+                else {
+                    if (this.checkboxes) {
+                        var items = this.getCheckedItems();
+                        var str = "";
+                        for (var i = 0; i < items.length; i++) {
+                            if (i == items.length - 1) {
+                                str += items[i].label;
+                            }
+                            else {
+                                str += items[i].label + ",";
+                            }
+                        }
+                        spanElement.text(str);
+                        if (notPercentageWidth) {
+                            spanElement.css('max-width', this.host.width() - 30);
+                        }
+                        spanElement.css('overflow', 'hidden');
+                        spanElement.css('display', 'block');
+                        if (!this.rtl) {
+                            if (notPercentageWidth) {
+                                spanElement.css('width', this.host.width() - 30);
+                            }
+                        }
+                        spanElement.css('text-overflow', 'ellipsis');
+                        spanElement.css('padding-bottom', 1 + parseInt(bottomPadding));
+
+                        this.dropdownlistContent.html(spanElement);
+                        if (this.focusable && this.isOpened()) {
+                            this.focus();
+                        }
+                    }
+                    else {
+                        var w = this.host.width() - this.arrowSize - 1;
+                        if (this.width && this.width !== 'auto') {
+                            if (notPercentageWidth) {
+                                if (!this.rtl) {
+                                    spanElement.css('max-width', w + "px");
+                                }
+                            }
+
+                            spanElement[0].style.overflow = "hidden";
+                            spanElement[0].style.display = "block";
+                            spanElement[0].style.paddingTop = (1 + parseInt(bottomPadding)) + "px";
+                            if (!this.rtl) {
+                                if (notPercentageWidth) {
+                                    if (w < 0) w = 0;
+                                    spanElement[0].style.width = w + "px";
+                                }
+                            }
+                            spanElement[0].style.textOverflow = 'ellipsis';
+                        }
+
+                        this.dropdownlistContent[0].innerHTML = spanElement[0].innerHTML;
+                        if (this.focusable && this.isOpened()) {
+                            this.focus();
+                        }
+                    }
+                }
+
                 var height = this.host.height();
                 if (this.height != null && this.height != undefined) {
                     if (this.height.toString().indexOf('%') === -1) {
@@ -23140,1058 +23285,883 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                     top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
                 }
 
-                if (top > 0) {
-                    this.dropdownlistContent.css('margin-top', top + 'px');
-                    this.dropdownlistContent.css('margin-bottom', top + 'px');
+                if (top >= 0) {
+                    this.dropdownlistContent[0].style.marginTop = top + 'px';
+                    this.dropdownlistContent[0].style.marginBottom = top + 'px';
                 }
                 if (this.selectionRenderer) {
-                    $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, -1, "", ""));
-                    this.dropdownlistContent.css('margin-top', '0px');
-                    this.dropdownlistContent.css('margin-bottom', '0px');
+                    this.dropdownlistContent[0].style.marginTop = '0px';
+                    this.dropdownlistContent[0].style.marginBottom = '0px';
+                }
+                if (this.dropdownlistContent && this.input) {
                     this._updateInputSelection();
                 }
-                else this._updateInputSelection();
-                this.selectedIndex = this.listBox.selectedIndex;
+                if (this.listBox && this.listBox._activeElement) {
+                    $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
+                }
                 if (this.width === "auto") {
                     this._arrange();
                 }
-                if (this.focusable && this.isOpened()) {
-                    this.focus();
-                }
-                return;
-            }
+            },
 
-            this.selectedIndex = this.listBox.selectedIndex;
-            var spanElement = $(document.createElement('span'));
-            spanElement[0].setAttribute('unselectable', 'on');
-            try {
-                spanElement[0].style.color = "inherit";
-            }
-            catch (er) {
-            }
-
-            spanElement[0].style.borderWidth = '0px';
-            spanElement[0].style.backgroundColor = "transparent";
-            spanElement.appendTo($(document.body));
-            spanElement.addClass(this.toThemeProperty('jqx-widget jqx-listitem-state-normal jqx-item'));
-
-            var emptyItem = false;
-            try {
-                if (item.html != undefined && item.html != null && item.html.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.html);
-                }
-                else if (item.label != undefined && item.label != null && item.label.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.label);
-                }
-                else if (item.label === null || item.label === "") {
-                    emptyItem = true;
-                    $.jqx.utilities.html(spanElement, "");
-                }
-                else if (item.value != undefined && item.value != null && item.value.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.value);
-
-                }
-                else if (item.title != undefined && item.title != null && item.title.toString().length > 0) {
-                    $.jqx.utilities.html(spanElement, item.title);
-                }
-                else if (item.label == "" || item.label == null) {
-                    emptyItem = true;
-                    $.jqx.utilities.html(spanElement, "");
-                }
-            }
-            catch (error) {
-                var errorMessage = error;
-            }
-
-            var topPadding = this.dropdownlistContent[0].style.paddingTop;
-            var bottomPadding = this.dropdownlistContent[0].style.paddingBottom;
-            if (topPadding === "") topPadding = "0px";
-            if (bottomPadding === "") bottomPadding = "0px";
-
-            spanElement[0].style.paddingTop = topPadding;
-            spanElement[0].style.paddingBottom = bottomPadding;
-
-            var spanHeight = spanElement.outerHeight();
-            if (spanHeight === 0) {
-                spanHeight = 16;
-            }
-
-            if ((item.label == "" || item.label == null) && emptyItem) {
-                $.jqx.utilities.html(spanElement, "");
-            }
-            var notPercentageWidth = this.width && this.width.toString().indexOf('%') <= 0;
-
-            spanElement.remove();
-            spanElement.removeClass();
-            if (this.selectionRenderer) {
-                $.jqx.utilities.html(this.dropdownlistContent, this.selectionRenderer(spanElement, item.index, item.label, item.value));
-                if (this.focusable && this.isOpened()) {
-                    this.focus();
-                }
-            }
-            else {
-                if (this.checkboxes) {
-                    var items = this.getCheckedItems();
-                    var str = "";
-                    for (var i = 0; i < items.length; i++) {
-                        if (i == items.length - 1) {
-                            str += items[i].label;
+            _updateInputSelection: function () {
+                if (this.input) {
+                    var selectedValues = new Array();
+                    if (this.selectedIndex == -1) {
+                        this.input.val("");
+                    }
+                    else {
+                        var selectedItem = this.getSelectedItem();
+                        if (selectedItem != null) {
+                            this.input.val(selectedItem.value);
+                            selectedValues.push(selectedItem.value);
                         }
                         else {
-                            str += items[i].label + ",";
+                            this.input.val(this.dropdownlistContent.text());
                         }
                     }
-                    spanElement.text(str);
-                    if (notPercentageWidth) {
-                        spanElement.css('max-width', this.host.width() - 30);
-                    }
-                    spanElement.css('overflow', 'hidden');
-                    spanElement.css('display', 'block');
-                    if (!this.rtl) {
-                        if (notPercentageWidth) {
-                            spanElement.css('width', this.host.width() - 30);
-                        }
-                    }
-                    spanElement.css('text-overflow', 'ellipsis');
-                    spanElement.css('padding-bottom', 1 + parseInt(bottomPadding));
-
-                    this.dropdownlistContent.html(spanElement);
-                    if (this.focusable && this.isOpened()) {
-                        this.focus();
-                    }
-                }
-                else {
-                    var w = this.host.width() - this.arrowSize - 1;
-                    if (this.width && this.width !== 'auto') {
-                        if (notPercentageWidth) {
-                            if (!this.rtl) {
-                                spanElement.css('max-width', w + "px");
+                    if (this.checkboxes) {
+                        var items = this.getCheckedItems();
+                        var str = "";
+                        if (items != null) {
+                            for (var i = 0; i < items.length; i++) {
+                                var value = items[i].value;
+                                if (value == undefined) continue;
+                                if (i == items.length - 1) {
+                                    str += value;
+                                }
+                                else {
+                                    str += value + ",";
+                                }
+                                selectedValues.push(value);
                             }
                         }
-
-                        spanElement[0].style.overflow = "hidden";
-                        spanElement[0].style.display = "block";
-                        spanElement[0].style.paddingTop = (1 + parseInt(bottomPadding)) + "px";
-                        if (!this.rtl) {
-                            if (notPercentageWidth) {
-                                if (w < 0) w = 0;
-                                spanElement[0].style.width = w + "px";
+                        this.input.val(str);
+                    }
+                }
+                if (this.field && this.input) {
+                    if (this.field.nodeName.toLowerCase() == "select") {
+                        $.each(this.field, function (index, value) {
+                            $(this).removeAttr('selected');
+                            this.selected = selectedValues.indexOf(this.value) >= 0;
+                            if (this.selected) {
+                                $(this).attr('selected', true);
                             }
-                        }
-                        spanElement[0].style.textOverflow = 'ellipsis';
-                    }
-
-                    this.dropdownlistContent[0].innerHTML = spanElement[0].innerHTML;
-                    if (this.focusable && this.isOpened()) {
-                        this.focus();
-                    }
-                }
-            }
-
-            var height = this.host.height();
-            if (this.height != null && this.height != undefined) {
-                if (this.height.toString().indexOf('%') === -1) {
-                    height = parseInt(this.height);
-                }
-            }
-
-            var top = parseInt((parseInt(height) - parseInt(spanHeight)) / 2);
-
-            if (this.host.css('box-sizing') === 'border-box') {
-                top = parseInt((parseInt(height - 2) - parseInt(spanHeight)) / 2);
-            }
-
-            if (top >= 0) {
-                this.dropdownlistContent[0].style.marginTop = top + 'px';
-                this.dropdownlistContent[0].style.marginBottom = top + 'px';
-            }
-            if (this.selectionRenderer) {
-                this.dropdownlistContent[0].style.marginTop = '0px';
-                this.dropdownlistContent[0].style.marginBottom = '0px';
-            }
-            if (this.dropdownlistContent && this.input) {
-                this._updateInputSelection();
-            }
-            if (this.listBox && this.listBox._activeElement) {
-                $.jqx.aria(this, "aria-activedescendant", this.listBox._activeElement.id);
-            }
-            if (this.width === "auto") {
-                this._arrange();
-            }
-        },
-
-        _updateInputSelection: function () {
-            if (this.input) {
-                var selectedValues = new Array();
-                if (this.selectedIndex == -1) {
-                    this.input.val("");
-                }
-                else {
-                    var selectedItem = this.getSelectedItem();
-                    if (selectedItem != null) {
-                        this.input.val(selectedItem.value);
-                        selectedValues.push(selectedItem.value);
+                        });
                     }
                     else {
-                        this.input.val(this.dropdownlistContent.text());
+                        $.each(this.items, function (index, value) {
+                            $(this.originalItem.originalItem).removeAttr('data-selected');
+                            this.selected = selectedValues.indexOf(this.value) >= 0;
+                            if (this.selected) {
+                                $(this.originalItem.originalItem).attr('data-selected', true);
+                            }
+                        });
                     }
                 }
-                if (this.checkboxes) {
-                    var items = this.getCheckedItems();
-                    var str = "";
-                    if (items != null) {
-                        for (var i = 0; i < items.length; i++) {
-                            var value = items[i].value;
-                            if (value == undefined) continue;
-                            if (i == items.length - 1) {
-                                str += value;
-                            }
-                            else {
-                                str += value + ",";
-                            }
-                            selectedValues.push(value);
-                        }
-                    }
-                    this.input.val(str);
-                }
-            }
-            if (this.field && this.input) {
-                if (this.field.nodeName.toLowerCase() == "select") {
-                    $.each(this.field, function (index, value) {
-                        $(this).removeAttr('selected');
-                        this.selected = selectedValues.indexOf(this.value) >= 0;
-                        if (this.selected) {
-                            $(this).attr('selected', true);
-                        }
-                    });
-                }
-                else {
-                    $.each(this.items, function (index, value) {
-                        $(this.originalItem.originalItem).removeAttr('data-selected');
-                        this.selected = selectedValues.indexOf(this.value) >= 0;
-                        if (this.selected) {
-                            $(this.originalItem.originalItem).attr('data-selected', true);
-                        }
-                    });
-                }
-            }
-        },
+            },
 
-        setContent: function (content) {
-            $.jqx.utilities.html(this.dropdownlistContent, content);
-            this._updateInputSelection();
-        },
+            setContent: function (content) {
+                $.jqx.utilities.html(this.dropdownlistContent, content);
+                this._updateInputSelection();
+            },
 
-        dataBind: function () {
-            this.listBoxContainer.jqxListBox({ source: this.source });
-            this.renderSelection('mouse');
-            if (this.source == null) {
+            dataBind: function () {
+                this.listBoxContainer.jqxListBox({ source: this.source });
+                this.renderSelection('mouse');
+                if (this.source == null) {
+                    this.clearSelection();
+                }
+            },
+
+            clear: function () {
+                this.listBoxContainer.jqxListBox({ source: null });
                 this.clearSelection();
-            }
-        },
+            },
 
-        clear: function () {
-            this.listBoxContainer.jqxListBox({ source: null });
-            this.clearSelection();
-        },
-
-        // clears the selection.
-        clearSelection: function (render) {
-            this.selectedIndex = -1;
-            this._updateInputSelection();
-            this.listBox.clearSelection();
-            this.renderSelection();
-            if (!this.selectionRenderer && !this.hint && !this.isMaterialized()) {
-                $.jqx.utilities.html(this.dropdownlistContent, this.placeHolder);
-            }
-        },
-
-        // unselects an item at specific index.
-        // @param Number
-        unselectIndex: function (index, render) {
-            if (isNaN(index))
-                return;
-
-            this.listBox.unselectIndex(index, render);
-            this.renderSelection();
-        },
-
-        // selects an item at specific index.
-        // @param Number
-        selectIndex: function (index, ensureVisible, render, forceSelect) {
-            this.listBox.selectIndex(index, ensureVisible, render, forceSelect, 'api');
-        },
-
-        // gets the selected index.
-        getSelectedIndex: function () {
-            return this.selectedIndex;
-        },
-
-        // gets the selected item.
-        getSelectedItem: function () {
-            return this.listBox.getVisibleItem(this.selectedIndex);
-        },
-
-        getCheckedItems: function () {
-            return this.listBox.getCheckedItems();
-        },
-
-        checkIndex: function (index) {
-            this.listBox.checkIndex(index);
-        },
-
-        uncheckIndex: function (index) {
-            this.listBox.uncheckIndex(index);
-        },
-
-        indeterminateIndex: function (index) {
-            this.listBox.indeterminateIndex(index);
-        },
-        checkAll: function () {
-            this.listBox.checkAll();
-            this.renderSelection('mouse');
-        },
-
-        uncheckAll: function () {
-            this.listBox.uncheckAll();
-            this.renderSelection('mouse');
-        },
-
-        addItem: function (item) {
-            return this.listBox.addItem(item);
-        },
-
-        insertAt: function (item, index) {
-            if (item == null)
-                return false;
-
-            return this.listBox.insertAt(item, index);
-        },
-
-        removeAt: function (index) {
-            var result = this.listBox.removeAt(index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        removeItem: function (item) {
-            var result = this.listBox.removeItem(item);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateItem: function (item, oldItem) {
-            var result = this.listBox.updateItem(item, oldItem);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        updateAt: function (item, index) {
-            var result = this.listBox.updateAt(item, index);
-            this.renderSelection('mouse');
-            return result;
-        },
-
-        ensureVisible: function (index) {
-            return this.listBox.ensureVisible(index);
-        },
-
-        disableAt: function (index) {
-            return this.listBox.disableAt(index);
-        },
-
-        enableAt: function (index) {
-            return this.listBox.enableAt(index);
-        },
-
-        disableItem: function (item) {
-            return this.listBox.disableItem(item);
-        },
-
-        enableItem: function (item) {
-            return this.listBox.enableItem(item);
-        },
-
-        _findPos: function (obj) {
-            while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
-                obj = obj['nextSibling'];
-            }
-            var position = $(obj).coord(true);
-            return [position.left, position.top];
-        },
-
-        testOffset: function (element, offset, inputHeight) {
-            var dpWidth = element.outerWidth();
-            var dpHeight = element.outerHeight();
-            var viewWidth = $(window).width() + $(window).scrollLeft();
-            var viewHeight = $(window).height() + $(window).scrollTop();
-
-            if (offset.left + dpWidth > viewWidth) {
-                if (dpWidth > this.host.width()) {
-                    var hostLeft = this.host.coord().left;
-                    var hOffset = dpWidth - this.host.width();
-                    offset.left = hostLeft - hOffset + 2;
+            // clears the selection.
+            clearSelection: function (render) {
+                this.selectedIndex = -1;
+                this._updateInputSelection();
+                this.listBox.clearSelection();
+                this.renderSelection();
+                if (!this.selectionRenderer && !this.hint && !this.isMaterialized()) {
+                    $.jqx.utilities.html(this.dropdownlistContent, this.placeHolder);
                 }
-            }
-            if (offset.left < 0) {
-                offset.left = parseInt(this.host.coord().left) + 'px'
-            }
+            },
 
-            offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-                Math.abs(dpHeight + inputHeight + 22) : 0);
+            // unselects an item at specific index.
+            // @param Number
+            unselectIndex: function (index, render) {
+                if (isNaN(index))
+                    return;
 
-            return offset;
-        },
+                this.listBox.unselectIndex(index, render);
+                this.renderSelection();
+            },
 
-        open: function () {
-            this.showListBox();
-        },
+            // selects an item at specific index.
+            // @param Number
+            selectIndex: function (index, ensureVisible, render, forceSelect) {
+                this.listBox.selectIndex(index, ensureVisible, render, forceSelect, 'api');
+            },
 
-        close: function () {
-            this.hideListBox();
-        },
+            // gets the selected index.
+            getSelectedIndex: function () {
+                return this.selectedIndex;
+            },
 
-        _getBodyOffset: function () {
-            var top = 0;
-            var left = 0;
-            if ($('body').css('border-top-width') != '0px') {
-                top = parseInt($('body').css('border-top-width'));
-                if (isNaN(top)) top = 0;
-            }
-            if ($('body').css('border-left-width') != '0px') {
-                left = parseInt($('body').css('border-left-width'));
-                if (isNaN(left)) left = 0;
-            }
-            return { left: left, top: top };
-        },
+            // gets the selected item.
+            getSelectedItem: function () {
+                return this.listBox.getVisibleItem(this.selectedIndex);
+            },
 
-        // shows the listbox.
-        showListBox: function () {
-            $.jqx.aria(this, "aria-expanded", true);
-            if (this.listBox._renderOnDemand) {
-                this.listBoxContainer.jqxListBox({ _renderOnDemand: false });
-            }
+            getCheckedItems: function () {
+                return this.listBox.getCheckedItems();
+            },
 
-            if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && (this.width.indexOf('%') != -1 || this.width.indexOf('auto') != -1)) {
-                if (this.listBox.host.width() != this.host.width()) {
-                    var width = this.element.offsetWidth;
-                    this.listBoxContainer.jqxListBox({ width: width });
-                    this.container.width(parseInt(width) + 25);
+            checkIndex: function (index) {
+                this.listBox.checkIndex(index);
+            },
+
+            uncheckIndex: function (index) {
+                this.listBox.uncheckIndex(index);
+            },
+
+            indeterminateIndex: function (index) {
+                this.listBox.indeterminateIndex(index);
+            },
+            checkAll: function () {
+                this.listBox.checkAll();
+                this.renderSelection('mouse');
+            },
+
+            uncheckAll: function () {
+                this.listBox.uncheckAll();
+                this.renderSelection('mouse');
+            },
+
+            addItem: function (item) {
+                return this.listBox.addItem(item);
+            },
+
+            insertAt: function (item, index) {
+                if (item == null)
+                    return false;
+
+                return this.listBox.insertAt(item, index);
+            },
+
+            removeAt: function (index) {
+                var result = this.listBox.removeAt(index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            removeItem: function (item) {
+                var result = this.listBox.removeItem(item);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateItem: function (item, oldItem) {
+                var result = this.listBox.updateItem(item, oldItem);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            updateAt: function (item, index) {
+                var result = this.listBox.updateAt(item, index);
+                this.renderSelection('mouse');
+                return result;
+            },
+
+            ensureVisible: function (index) {
+                return this.listBox.ensureVisible(index);
+            },
+
+            disableAt: function (index) {
+                return this.listBox.disableAt(index);
+            },
+
+            enableAt: function (index) {
+                return this.listBox.enableAt(index);
+            },
+
+            disableItem: function (item) {
+                return this.listBox.disableItem(item);
+            },
+
+            enableItem: function (item) {
+                return this.listBox.enableItem(item);
+            },
+
+            _findPos: function (obj) {
+                while (obj && (obj.type == 'hidden' || obj.nodeType != 1 || $.expr.filters.hidden(obj))) {
+                    obj = obj['nextSibling'];
                 }
-            }
-            if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
-                var width = this.element.offsetWidth;
-                this.listBoxContainer.jqxListBox({ width: width + 1 });
-                this.container.width(parseInt(width) + 25);
-            }
+                var position = $(obj).coord(true);
+                return [position.left, position.top];
+            },
 
-            var self = this;
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var scrollPosition = $(window).scrollTop();
-            var scrollLeftPosition = $(window).scrollLeft();
-            var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
-            //var left = parseInt(Math.round(this.host.coord(true).left)) + 'px';
-            var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
-            left = leftPos + 'px';
+            testOffset: function (element, offset, inputHeight) {
+                var dpWidth = element.outerWidth();
+                var dpHeight = element.outerHeight();
+                var viewWidth = $(window).width() + $(window).scrollLeft();
+                var viewHeight = $(window).height() + $(window).scrollTop();
 
+                if (offset.left + dpWidth > viewWidth) {
+                    if (dpWidth > this.host.width()) {
+                        var hostLeft = this.host.coord().left;
+                        var hOffset = dpWidth - this.host.width();
+                        offset.left = hostLeft - hOffset + 2;
+                    }
+                }
+                if (offset.left < 0) {
+                    offset.left = parseInt(this.host.coord().left) + 'px'
+                }
 
-            if (this.dropDownContainer === 'element') {
-                top = parseInt(this.host.outerHeight()) - 1 + 'px';
-                left = 0;
-            }
+                offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
+                    Math.abs(dpHeight + inputHeight + 22) : 0);
 
+                return offset;
+            },
 
-            var isMobileBrowser = false;//$.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+            open: function () {
+                this.showListBox();
+            },
 
-            if (this.listBox == null)
-                return;
+            close: function () {
+                this.hideListBox();
+            },
 
-            this.ishiding = false;
-            if (!this.keyboardSelection) {
-                this.listBox.selectIndex(this.selectedIndex);
-                this.listBox.ensureVisible(this.selectedIndex);
-            }
-
-            this.tempSelectedIndex = this.selectedIndex;
-
-            if (this.autoDropDownHeight) {
-                this.container.height(this.listBoxContainer.height() + 25);
-            }
-
-            if ((isMobileBrowser != null && isMobileBrowser)) {
-                left = $.jqx.mobile.getLeftPos(this.element);
-                top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+            _getBodyOffset: function () {
+                var top = 0;
+                var left = 0;
                 if ($('body').css('border-top-width') != '0px') {
-                    top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    top = parseInt($('body').css('border-top-width'));
+                    if (isNaN(top)) top = 0;
                 }
                 if ($('body').css('border-left-width') != '0px') {
-                    left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    left = parseInt($('body').css('border-left-width'));
+                    if (isNaN(left)) left = 0;
                 }
-            }
+                return { left: left, top: top };
+            },
 
-            listBox.stop();
-            if (this.renderMode !== 'simple') {
-                this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
-                this.host.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+            // shows the listbox.
+            showListBox: function () {
+                $.jqx.aria(this, "aria-expanded", true);
+                if (this.listBox._renderOnDemand) {
+                    this.listBoxContainer.jqxListBox({ _renderOnDemand: false });
+                }
+
+                if (this.dropDownWidth == 'auto' && this.width != null && this.width.indexOf && (this.width.indexOf('%') != -1 || this.width.indexOf('auto') != -1)) {
+                    if (this.listBox.host.width() != this.host.width()) {
+                        var width = this.element.offsetWidth;
+                        this.listBoxContainer.jqxListBox({ width: width });
+                        this.container.width(parseInt(width) + 25);
+                    }
+                }
+                if (this.dropDownWidth == 'auto' && this.host.css('border-left-width') === "0px") {
+                    var width = this.element.offsetWidth;
+                    this.listBoxContainer.jqxListBox({ width: width + 1 });
+                    this.container.width(parseInt(width) + 25);
+                }
+
+                var self = this;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var scrollPosition = $(window).scrollTop();
+                var scrollLeftPosition = $(window).scrollLeft();
+                var top = parseInt(this._findPos(this.host[0])[1]) + parseInt(this.host.outerHeight()) - 1 + 'px';
+                //var left = parseInt(Math.round(this.host.coord(true).left)) + 'px';
+                var left, leftPos = parseInt(Math.round(this.host.coord(true).left));
+                left = leftPos + 'px';
+
+
+                if (this.dropDownContainer === 'element') {
+                    top = parseInt(this.host.outerHeight()) - 1 + 'px';
+                    left = 0;
+                }
+
+
+                var isMobileBrowser = false;//$.jqx.mobile.isSafariMobileBrowser() || $.jqx.mobile.isWindowsPhone();
+
+                if (this.listBox == null)
+                    return;
+
+                this.ishiding = false;
+                if (!this.keyboardSelection) {
+                    this.listBox.selectIndex(this.selectedIndex);
+                    this.listBox.ensureVisible(this.selectedIndex);
+                }
+
+                this.tempSelectedIndex = this.selectedIndex;
+
+                if (this.autoDropDownHeight) {
+                    this.container.height(this.listBoxContainer.height() + 25);
+                }
+
+                if ((isMobileBrowser != null && isMobileBrowser)) {
+                    left = $.jqx.mobile.getLeftPos(this.element);
+                    top = $.jqx.mobile.getTopPos(this.element) + parseInt(this.host.outerHeight());
+                    if ($('body').css('border-top-width') != '0px') {
+                        top = parseInt(top) - this._getBodyOffset().top + 'px';
+                    }
+                    if ($('body').css('border-left-width') != '0px') {
+                        left = parseInt(left) - this._getBodyOffset().left + 'px';
+                    }
+                }
+
+                listBox.stop();
+                if (this.renderMode !== 'simple') {
+                    this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
+                    this.host.addClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                    if (this.dropDownVerticalAlignment == "top") {
+                        this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                    }
+                    else {
+                        this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                    }
+                }
+
+
+                this.container.css('left', left);
+                this.container.css('top', top);
+                listBoxInstance._arrange();
+
+                var closeAfterSelection = true;
+                var positionChanged = false;
+
+                if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
+                    var containerWidth = this.container.outerWidth();
+                    var containerLeftOffset = -2 + Math.abs(containerWidth - this.host.width());
+
+                    if (containerWidth > this.host.width()) {
+                        this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
+                    }
+                    else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
+                }
+
                 if (this.dropDownVerticalAlignment == "top") {
-                    this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-                }
-                else {
-                    this.arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-                }
-            }
-
-
-            this.container.css('left', left);
-            this.container.css('top', top);
-            listBoxInstance._arrange();
-
-            var closeAfterSelection = true;
-            var positionChanged = false;
-
-            if (this.dropDownHorizontalAlignment == 'right' || this.rtl) {
-                var containerWidth = this.container.outerWidth();
-                var containerLeftOffset = -2 + Math.abs(containerWidth - this.host.width());
-
-                if (containerWidth > this.host.width()) {
-                    this.container.css('left', 25 + parseInt(Math.round(leftPos)) - containerLeftOffset + "px");
-                }
-                else this.container.css('left', 25 + parseInt(Math.round(leftPos)) + containerLeftOffset + "px");
-            }
-
-            if (this.dropDownVerticalAlignment == "top") {
-                var dpHeight = listBox.height();
-                positionChanged = true;
-
-                listBox.css('top', 23);
-                listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                var inputHeight = parseInt(this.host.outerHeight());
-                var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
-
-                this.container.css('top', t);
-            }
-
-            if (this.enableBrowserBoundsDetection) {
-                var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
-                if (parseInt(this.container.css('top')) != newOffset.top) {
+                    var dpHeight = listBox.height();
                     positionChanged = true;
+
                     listBox.css('top', 23);
                     listBox.addClass(this.toThemeProperty('jqx-popup-up'));
-                }
-                else listBox.css('top', 0);
+                    var inputHeight = parseInt(this.host.outerHeight());
+                    var t = parseInt(top) - Math.abs(dpHeight + inputHeight + 23);
 
-                this.container.css('top', newOffset.top);
-                if (parseInt(this.container.css('left')) != newOffset.left) {
-                    this.container.css('left', newOffset.left);
+                    this.container.css('top', t);
                 }
-            }
 
-            if (this.animationType == 'none' || this.animationType === 'transform') {
-                this.container.css('display', 'block');
-                $.data(document.body, "openedJQXListBoxParent", self);
-                $.data(document.body, "openedJQXListBox" + this.id, listBox);
-                listBox.css('margin-top', 0);
-                listBox.css('opacity', 1);
-                listBoxInstance._renderItems();
-                self._raiseEvent('0', listBoxInstance);
-            }
-            else {
-                this.container.css('display', 'block');
-                self.isanimating = true;
-                if (this.animationType == 'fade') {
+                if (this.enableBrowserBoundsDetection) {
+                    var newOffset = this.testOffset(listBox, { left: parseInt(this.container.css('left')), top: parseInt(top) }, parseInt(this.host.outerHeight()));
+                    if (parseInt(this.container.css('top')) != newOffset.top) {
+                        positionChanged = true;
+                        listBox.css('top', 23);
+                        listBox.addClass(this.toThemeProperty('jqx-popup-up'));
+                    }
+                    else listBox.css('top', 0);
+
+                    this.container.css('top', newOffset.top);
+                    if (parseInt(this.container.css('left')) != newOffset.left) {
+                        this.container.css('left', newOffset.left);
+                    }
+                }
+
+                if (this.animationType == 'none' || this.animationType === 'transform') {
+                    this.container.css('display', 'block');
+                    $.data(document.body, "openedJQXListBoxParent", self);
+                    $.data(document.body, "openedJQXListBox" + this.id, listBox);
                     listBox.css('margin-top', 0);
-                    listBox.css('opacity', 0);
-                    listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
-                        $.data(document.body, "openedJQXListBoxParent", self);
-                        $.data(document.body, "openedJQXListBox" + self.id, listBox);
-                        self.ishiding = false;
-                        self.isanimating = false;
-                        listBoxInstance._renderItems();
-                        self._raiseEvent('0', listBoxInstance);
-                    });
-                }
-                else {
                     listBox.css('opacity', 1);
-                    var height = listBox.outerHeight();
-                    if (positionChanged) {
-                        listBox.css('margin-top', height);
-                    }
-                    else {
-                        listBox.css('margin-top', -height);
-                    }
-
-                    listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
-                        $.data(document.body, "openedJQXListBoxParent", self);
-                        $.data(document.body, "openedJQXListBox" + self.id, listBox);
-                        self.ishiding = false;
-                        self.isanimating = false;
-                        listBoxInstance._renderItems();
-                        self._raiseEvent('0', listBoxInstance);
-                    });
+                    listBoxInstance._renderItems();
+                    self._raiseEvent('0', listBoxInstance);
                 }
-            }
-            if (!positionChanged) {
-                this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            }
-            else {
-                this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
-                listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            }
-            if (this.renderMode !== 'simple') {
-                listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-                this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
-                this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
-            }
-
-            this.element.setAttribute('opened', true);
-            listBox.addClass(this.toThemeProperty('jqx-popup-show'));
-        },
-
-        // hides the listbox.
-        hideListBox: function () {
-            $.jqx.aria(this, "aria-expanded", false);
-
-            var listBox = this.listBoxContainer;
-            var listBoxInstance = this.listBox;
-            var container = this.container;
-            var me = this;
-            this.element.removeAttribute('opened');
-
-            listBox.removeClass('jqx-popup-show');
-
-            $.data(document.body, "openedJQXListBox" + this.id, null);
-            if (this.animationType == 'none') {
-                this.container.css('display', 'none');
-            }
-            else if (this.animationType === 'transform') {
-                setTimeout(function () {
-                    container.css('display', 'none');
-                }, this.closeDelay);
-            }
-            else {
-                if (!me.ishiding) {
-                    listBox.stop();
-                    var height = listBox.outerHeight();
-                    listBox.css('margin-top', 0);
-                    me.isanimating = true;
-
-                    var animationValue = -height;
-                    if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
-                        animationValue = height;
-                    }
-
+                else {
+                    this.container.css('display', 'block');
+                    self.isanimating = true;
                     if (this.animationType == 'fade') {
-                        listBox.css({ 'opacity': 1 });
-                        listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
-                            container.css('display', 'none');
-                            me.isanimating = false;
-                            me.ishiding = false;
+                        listBox.css('margin-top', 0);
+                        listBox.css('opacity', 0);
+                        listBox.animate({ 'opacity': 1 }, this.openDelay, function () {
+                            $.data(document.body, "openedJQXListBoxParent", self);
+                            $.data(document.body, "openedJQXListBox" + self.id, listBox);
+                            self.ishiding = false;
+                            self.isanimating = false;
+                            listBoxInstance._renderItems();
+                            self._raiseEvent('0', listBoxInstance);
                         });
                     }
                     else {
-                        listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
-                            container.css('display', 'none');
-                            me.isanimating = false;
-                            me.ishiding = false;
+                        listBox.css('opacity', 1);
+                        var height = listBox.outerHeight();
+                        if (positionChanged) {
+                            listBox.css('margin-top', height);
+                        }
+                        else {
+                            listBox.css('margin-top', -height);
+                        }
+
+                        listBox.animate({ 'margin-top': 0 }, this.openDelay, function () {
+                            $.data(document.body, "openedJQXListBoxParent", self);
+                            $.data(document.body, "openedJQXListBox" + self.id, listBox);
+                            self.ishiding = false;
+                            self.isanimating = false;
+                            listBoxInstance._renderItems();
+                            self._raiseEvent('0', listBoxInstance);
                         });
                     }
                 }
-            }
+                if (!positionChanged) {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                }
+                else {
+                    this.host.addClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                    listBox.addClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                }
+                if (this.renderMode !== 'simple') {
+                    listBox.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                    this.host.addClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
+                    this.host.addClass(this.toThemeProperty('jqx-fill-state-focus'));
+                }
 
-            this.ishiding = true;
-            this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
-            this.host.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
-            this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
-            this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
-            listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
-            this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
-            this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.element.setAttribute('opened', true);
+                listBox.addClass(this.toThemeProperty('jqx-popup-show'));
+            },
 
-            this._raiseEvent('1', listBoxInstance);
-        },
+            // hides the listbox.
+            hideListBox: function () {
+                $.jqx.aria(this, "aria-expanded", false);
 
-        /* Close popup if clicked elsewhere. */
-        closeOpenedListBox: function (event) {
-            var self = event.data.me;
-            var $target = $(event.target);
-            var openedListBox = event.data.listbox;
-            if (openedListBox == null)
-                return true;
+                var listBox = this.listBoxContainer;
+                var listBoxInstance = this.listBox;
+                var container = this.container;
+                var me = this;
+                this.element.removeAttribute('opened');
 
-            if ($(event.target).ischildof(event.data.me.host)) {
-                return true;
-            }
+                listBox.removeClass('jqx-popup-show');
 
-            if (!self.isOpened()) {
-                return true;
-            }
+                $.data(document.body, "openedJQXListBox" + this.id, null);
+                if (this.animationType == 'none') {
+                    this.container.css('display', 'none');
+                }
+                else if (this.animationType === 'transform') {
+                    setTimeout(function () {
+                        container.css('display', 'none');
+                    }, this.closeDelay);
+                }
+                else {
+                    if (!me.ishiding) {
+                        listBox.stop();
+                        var height = listBox.outerHeight();
+                        listBox.css('margin-top', 0);
+                        me.isanimating = true;
 
-            if ($(event.target).ischildof(self.listBoxContainer)) {
-                return true;
-            }
-
-            var dropdownlistInstance = self;
-
-            var isListBox = false;
-            $.each($target.parents(), function () {
-                if (this.className != 'undefined') {
-                    if (this.className.indexOf) {
-                        if (this.className.indexOf('jqx-listbox') != -1) {
-                            isListBox = true;
-                            return false;
+                        var animationValue = -height;
+                        if (parseInt(this.container.coord().top) < parseInt(this.host.coord().top)) {
+                            animationValue = height;
                         }
-                        if (this.className.indexOf('jqx-dropdownlist') != -1) {
-                            if (self.element.id == this.id) {
+
+                        if (this.animationType == 'fade') {
+                            listBox.css({ 'opacity': 1 });
+                            listBox.animate({ 'opacity': 0 }, this.closeDelay, function () {
+                                container.css('display', 'none');
+                                me.isanimating = false;
+                                me.ishiding = false;
+                            });
+                        }
+                        else {
+                            listBox.animate({ 'margin-top': animationValue }, this.closeDelay, function () {
+                                container.css('display', 'none');
+                                me.isanimating = false;
+                                me.ishiding = false;
+                            });
+                        }
+                    }
+                }
+
+                this.ishiding = true;
+                this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-selected'));
+                this.host.removeClass(this.toThemeProperty('jqx-fill-state-pressed'));
+                this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected'));
+                this.arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up-selected'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                this.host.removeClass(this.toThemeProperty('jqx-rc-t-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-rc-b-expanded'));
+                listBox.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+                this.host.removeClass(this.toThemeProperty('jqx-dropdownlist-state-focus'));
+                this.host.removeClass(this.toThemeProperty('jqx-fill-state-focus'));
+
+                this._raiseEvent('1', listBoxInstance);
+            },
+
+            /* Close popup if clicked elsewhere. */
+            closeOpenedListBox: function (event) {
+                var self = event.data.me;
+                var $target = $(event.target);
+                var openedListBox = event.data.listbox;
+                if (openedListBox == null)
+                    return true;
+
+                if ($(event.target).ischildof(event.data.me.host)) {
+                    return true;
+                }
+
+                if (!self.isOpened()) {
+                    return true;
+                }
+
+                if ($(event.target).ischildof(self.listBoxContainer)) {
+                    return true;
+                }
+
+                var dropdownlistInstance = self;
+
+                var isListBox = false;
+                $.each($target.parents(), function () {
+                    if (this.className != 'undefined') {
+                        if (this.className.indexOf) {
+                            if (this.className.indexOf('jqx-listbox') != -1) {
                                 isListBox = true;
+                                return false;
                             }
-                            return false;
+                            if (this.className.indexOf('jqx-dropdownlist') != -1) {
+                                if (self.element.id == this.id) {
+                                    isListBox = true;
+                                }
+                                return false;
+                            }
                         }
                     }
+                });
+
+                if (openedListBox != null && !isListBox && self.isOpened()) {
+                    self.hideListBox();
                 }
-            });
 
-            if (openedListBox != null && !isListBox && self.isOpened()) {
-                self.hideListBox();
-            }
+                return true;
+            },
 
-            return true;
-        },
+            clearFilter: function () {
+                this.listBox.clearFilter();
+            },
 
-        clearFilter: function () {
-            this.listBox.clearFilter();
-        },
+            loadFromSelect: function (id) {
+                this.listBox.loadFromSelect(id);
+            },
 
-        loadFromSelect: function (id) {
-            this.listBox.loadFromSelect(id);
-        },
-
-        refresh: function (initialRefresh) {
-            if (initialRefresh !== true) {
-                this._setSize();
-                this._arrange();
-                if (this.listBox) {
-                    this.renderSelection();
-                }
-            }
-        },
-
-        _arrange: function () {
-            var that = this;
-            var width = parseInt(that.host.width());
-            var height = parseInt(that.host.height());
-            var arrowHeight = that.arrowSize;
-            var arrowWidth = that.arrowSize;
-            var rightOffset = 3;
-            var contentWidth = width - arrowWidth - 2 * rightOffset;
-            if (contentWidth > 0 && that.width !== "auto") {
-                that.dropdownlistContent[0].style.width = contentWidth + "px";
-            }
-            else if (contentWidth <= 0) {
-                that.dropdownlistContent[0].style.width = "0px";
-            }
-
-            if (that.width === "auto") {
-                that.dropdownlistContent.css('width', 'auto');
-                width = 2 + that.dropdownlistContent.width() + arrowWidth + 2 * rightOffset;
-                if (width < 47) {
-                    width = 47;
-                }
-                that.host.width(width);
-            }
-            that.dropdownlistContent[0].style.height = height + "px";
-            that.dropdownlistContent[0].style.left = "0px";
-            that.dropdownlistContent[0].style.top = "0px";
-
-            that.dropdownlistArrow[0].style.width = arrowWidth + "px";
-            if (that.width && that.width.toString().indexOf('%') >= 0) {
-                var arrowPercentage = (arrowWidth * 100) / width;
-                var contentPercentage = (contentWidth * 100) / width;
-                that.dropdownlistArrow[0].style.width = arrowPercentage + '%';
-                that.dropdownlistContent[0].style.width = contentPercentage + '%';
-            }
-            that.dropdownlistArrow[0].style.height = height + "px";
-
-            if (that.rtl) {
-                that.dropdownlistArrow.css('float', 'left');
-                that.dropdownlistContent.css('float', 'right');
-            }
-        },
-
-        destroy: function () {
-            $.jqx.utilities.resize(this.host, null, true);
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBoxContainer, 'unselect');
-            this.removeHandler(this.listBoxContainer, 'change');
-            this.removeHandler(this.dropdownlistWrapper, 'selectstart');
-            this.removeHandler(this.dropdownlistWrapper, 'mousedown');
-            this.removeHandler(this.host, 'keydown');
-            this.removeHandler(this.listBoxContainer, 'select');
-            this.removeHandler(this.listBox.content, 'click');
-            this.removeHandler(this.listBoxContainer, 'bindingComplete');
-
-            if (this.host.parents()) {
-                this.removeHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id);
-            }
-
-            this.removeHandlers();
-
-            this.listBoxContainer.jqxListBox('destroy');
-            this.listBoxContainer.remove();
-            this.host.removeClass();
-            this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
-            if (this.touch) {
-                this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
-            }
-
-            this.dropdownlistArrow.remove();
-            delete this.dropdownlistArrow;
-            delete this.dropdownlistWrapper;
-            delete this.listBoxContainer;
-            delete this.input;
-            delete this.arrow;
-            delete this.dropdownlistContent;
-            delete this.listBox;
-            delete this._firstDiv;
-            this.container.remove();
-            delete this.container;
-            var vars = $.data(this.element, "jqxDropDownList");
-            if (vars) {
-                delete vars.instance;
-            }
-            this.host.removeData();
-            this.host.remove();
-            delete this.comboStructure;
-            delete this.host;
-            delete this.element;
-        },
-
-        _raiseEvent: function (id, arg) {
-            if (arg == undefined)
-                arg = { owner: null };
-
-            var evt = this.events[id];
-            var args = arg;
-            args.owner = this;
-
-            var event = new $.Event(evt);
-            event.owner = this;
-            if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
-                event.args = arg;
-            }
-
-            var result = this.host.trigger(event);
-            return result;
-        },
-
-
-        propertiesChangedHandler: function (object, key, value) {
-            if (value.width && value.height && Object.keys(value).length == 2) {
-                object._setSize();
-                if (key == 'width') {
-                    if (object.dropDownWidth == 'auto') {
-                        var width = object.host.width();
-                        object.listBoxContainer.jqxListBox({ width: width });
-                        object.container.width(parseInt(width) + 25);
+            refresh: function (initialRefresh) {
+                if (initialRefresh !== true) {
+                    this._setSize();
+                    this._arrange();
+                    if (this.listBox) {
+                        this.renderSelection();
                     }
                 }
-                object._arrange();
-                object.close();
-            }
-        },
+            },
 
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (object.isInitialized == undefined || object.isInitialized == false)
-                return;
-
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key == "template") {
-                object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
-                object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
-                object.host.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
-                object.host.addClass(object.toThemeProperty("jqx-" + object.template + ""));
-            }
-
-            if (key == "dropDownVerticalAlignment") {
-                object.close();
-                object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
-                object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                if (object.dropDownVerticalAlignment == "top") {
-                    object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+            _arrange: function () {
+                var that = this;
+                var width = parseInt(that.host.width());
+                var height = parseInt(that.host.height());
+                var arrowHeight = that.arrowSize;
+                var arrowWidth = that.arrowSize;
+                var rightOffset = 3;
+                var contentWidth = width - arrowWidth - 2 * rightOffset;
+                if (contentWidth > 0 && that.width !== "auto") {
+                    that.dropdownlistContent[0].style.width = contentWidth + "px";
                 }
-                else {
-                    object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
-                }
-                object.listBoxContainer.css('top', 0);
-                object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
-            }
-
-            if (key == "autoItemsHeight") {
-                object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
-            }
-
-            if (key == "filterable") {
-                object.listBoxContainer.jqxListBox({ filterable: value });
-            }
-            if (key == "filterHeight") {
-                object.listBoxContainer.jqxListBox({ filterHeight: value });
-            }
-            if (key == "filterPlaceHolder") {
-                object.listBoxContainer.jqxListBox({ filterPlaceHolder: value });
-            }
-            if (key == "filterDelay") {
-                object.listBoxContainer.jqxListBox({ filterDelay: value });
-            }
-
-            if (key == "enableSelection") {
-                object.listBoxContainer.jqxListBox({ enableSelection: value });
-            }
-            if (key == "enableHover") {
-                object.listBoxContainer.jqxListBox({ enableHover: value });
-            }
-
-            if (key == 'autoOpen') {
-                object._updateHandlers();
-            }
-            if (key == 'emptyString') {
-                object.listBox.emptyString = object.emptyString;
-            }
-            if (key == "itemHeight") {
-                object.listBoxContainer.jqxListBox({ itemHeight: value });
-            }
-
-            if (key == "renderer") {
-                object.listBoxContainer.jqxListBox({ renderer: value });
-            }
-
-            if (key == "rtl") {
-                if (value) {
-                    object.dropdownlistArrow.css('float', 'left');
-                    object.dropdownlistContent.css('float', 'right');
-                }
-                else {
-                    object.dropdownlistArrow.css('float', 'right');
-                    object.dropdownlistContent.css('float', 'left');
-                }
-                object.listBoxContainer.jqxListBox({ rtl: object.rtl });
-            }
-            if (key == 'source') {
-                object.listBoxContainer.jqxListBox({ source: object.source });
-                object.listBox.selectedIndex = -1;
-                object.listBox.selectIndex(this.selectedIndex);
-                object.renderSelection();
-                if (value == null) {
-                    object.clear();
-                }
-            }
-
-            if (key == "displayMember" || key == "valueMember") {
-                object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
-                object.renderSelection();
-            }
-            if (key == "placeHolder") {
-                object.renderSelection();
-            }
-
-            if (key == 'theme' && value != null) {
-                object.listBoxContainer.jqxListBox({ theme: value });
-                object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
-                $.jqx.utilities.setTheme(oldvalue, value, object.host);
-            }
-
-            if (key == "autoDropDownHeight") {
-                object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
-                if (object.autoDropDownHeight) {
-                    object.container.height(object.listBoxContainer.height() + 25);
-                }
-                else {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                else if (contentWidth <= 0) {
+                    that.dropdownlistContent[0].style.width = "0px";
                 }
 
-                object.listBox._arrange();
-                object.listBox._updatescrollbars();
-            }
-
-            if (key == "searchMode") {
-                object.listBoxContainer.jqxListBox({ searchMode: object.searchMode });
-            }
-
-            if (key == "incrementalSearch") {
-                object.listBoxContainer.jqxListBox({ incrementalSearch: object.incrementalSearch });
-            }
-
-            if (key == "incrementalSearchDelay") {
-                object.listBoxContainer.jqxListBox({ incrementalSearchDelay: object.incrementalSearchDelay });
-            }
-
-            if (key == "dropDownHeight") {
-                if (!object.autoDropDownHeight) {
-                    object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
-                    object.container.height(parseInt(object.dropDownHeight) + 25);
+                if (that.width === "auto") {
+                    that.dropdownlistContent.css('width', 'auto');
+                    width = 2 + that.dropdownlistContent.width() + arrowWidth + 2 * rightOffset;
+                    if (width < 47) {
+                        width = 47;
+                    }
+                    that.host.width(width);
                 }
-            }
+                that.dropdownlistContent[0].style.height = height + "px";
+                that.dropdownlistContent[0].style.left = "0px";
+                that.dropdownlistContent[0].style.top = "0px";
 
-            if (key == "dropDownWidth" || key == "scrollBarSize") {
-                var width = object.width;
-                if (object.dropDownWidth != 'auto') {
-                    width = object.dropDownWidth;
+                that.dropdownlistArrow[0].style.width = arrowWidth + "px";
+                if (that.width && that.width.toString().indexOf('%') >= 0) {
+                    var arrowPercentage = (arrowWidth * 100) / width;
+                    var contentPercentage = (contentWidth * 100) / width;
+                    that.dropdownlistArrow[0].style.width = arrowPercentage + '%';
+                    that.dropdownlistContent[0].style.width = contentPercentage + '%';
+                }
+                that.dropdownlistArrow[0].style.height = height + "px";
+
+                if (that.rtl) {
+                    that.dropdownlistArrow.css('float', 'left');
+                    that.dropdownlistContent.css('float', 'right');
+                }
+            },
+
+            destroy: function () {
+                $.jqx.utilities.resize(this.host, null, true);
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBoxContainer, 'unselect');
+                this.removeHandler(this.listBoxContainer, 'change');
+                this.removeHandler(this.dropdownlistWrapper, 'selectstart');
+                this.removeHandler(this.dropdownlistWrapper, 'mousedown');
+                this.removeHandler(this.host, 'keydown');
+                this.removeHandler(this.listBoxContainer, 'select');
+                this.removeHandler(this.listBox.content, 'click');
+                this.removeHandler(this.listBoxContainer, 'bindingComplete');
+
+                if (this.host.parents()) {
+                    this.removeHandler(this.host.parents(), 'scroll.dropdownlist' + this.element.id);
                 }
 
-                object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
-                object.container.width(parseInt(width) + 25);
-            }
+                this.removeHandlers();
 
-            if (key == 'width' || key == 'height') {
-                if (value != oldvalue) {
-                    this.refresh();
+                this.listBoxContainer.jqxListBox('destroy');
+                this.listBoxContainer.remove();
+                this.host.removeClass();
+                this.removeHandler($(document), 'mousedown.' + this.id, this.closeOpenedListBox);
+                if (this.touch) {
+                    this.removeHandler($(document), $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.id);
+                }
+
+                this.dropdownlistArrow.remove();
+                delete this.dropdownlistArrow;
+                delete this.dropdownlistWrapper;
+                delete this.listBoxContainer;
+                delete this.input;
+                delete this.arrow;
+                delete this.dropdownlistContent;
+                delete this.listBox;
+                delete this._firstDiv;
+                this.container.remove();
+                delete this.container;
+                var vars = $.data(this.element, "jqxDropDownList");
+                if (vars) {
+                    delete vars.instance;
+                }
+                this.host.removeData();
+                this.host.remove();
+                delete this.comboStructure;
+                delete this.host;
+                delete this.element;
+            },
+
+            _raiseEvent: function (id, arg) {
+                if (arg == undefined)
+                    arg = { owner: null };
+
+                var evt = this.events[id];
+                var args = arg;
+                args.owner = this;
+
+                var event = new $.Event(evt);
+                event.owner = this;
+                if (id == 2 || id == 3 || id == 4 || id == 5 || id == 6 || id == 7 || id == 8 || id == 9) {
+                    event.args = arg;
+                }
+
+                var result = this.host.trigger(event);
+                return result;
+            },
+
+
+            propertiesChangedHandler: function (object, key, value) {
+                if (value.width && value.height && Object.keys(value).length == 2) {
+                    object._setSize();
                     if (key == 'width') {
                         if (object.dropDownWidth == 'auto') {
-                            var width = 2 + object.host.width();
+                            var width = object.host.width();
                             object.listBoxContainer.jqxListBox({ width: width });
                             object.container.width(parseInt(width) + 25);
                         }
                     }
+                    object._arrange();
                     object.close();
                 }
-            }
+            },
 
-            if (key == "checkboxes") {
-                object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
-            }
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (object.isInitialized == undefined || object.isInitialized == false)
+                    return;
 
-            if (key == 'selectedIndex') {
-                if (object.listBox != null) {
-                    object.listBox.selectIndex(parseInt(value));
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key == "template") {
+                    object.listBoxContainer.removeClass(object.toThemeProperty("jqx-" + oldvalue + "-item"));
+                    object.listBoxContainer.addClass(object.toThemeProperty("jqx-" + object.template + "-item"));
+                    object.host.removeClass(object.toThemeProperty("jqx-" + oldvalue + ""));
+                    object.host.addClass(object.toThemeProperty("jqx-" + object.template + ""));
+                }
+
+                if (key == "dropDownVerticalAlignment") {
+                    object.close();
+                    object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    object.arrow.removeClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    if (object.dropDownVerticalAlignment == "top") {
+                        object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-up'));
+                    }
+                    else {
+                        object.arrow.addClass(object.toThemeProperty('jqx-icon-arrow-down'));
+                    }
+                    object.listBoxContainer.css('top', 0);
+                    object.listBoxContainer.removeClass(this.toThemeProperty('jqx-popup-up'));
+                }
+
+                if (key == "autoItemsHeight") {
+                    object.listBoxContainer.jqxListBox({ autoItemsHeight: value });
+                }
+
+                if (key == "filterable") {
+                    object.listBoxContainer.jqxListBox({ filterable: value });
+                }
+                if (key == "filterHeight") {
+                    object.listBoxContainer.jqxListBox({ filterHeight: value });
+                }
+                if (key == "filterPlaceHolder") {
+                    object.listBoxContainer.jqxListBox({ filterPlaceHolder: value });
+                }
+                if (key == "filterDelay") {
+                    object.listBoxContainer.jqxListBox({ filterDelay: value });
+                }
+
+                if (key == "enableSelection") {
+                    object.listBoxContainer.jqxListBox({ enableSelection: value });
+                }
+                if (key == "enableHover") {
+                    object.listBoxContainer.jqxListBox({ enableHover: value });
+                }
+
+                if (key == 'autoOpen') {
+                    object._updateHandlers();
+                }
+                if (key == 'emptyString') {
+                    object.listBox.emptyString = object.emptyString;
+                }
+                if (key == "itemHeight") {
+                    object.listBoxContainer.jqxListBox({ itemHeight: value });
+                }
+
+                if (key == "renderer") {
+                    object.listBoxContainer.jqxListBox({ renderer: value });
+                }
+
+                if (key == "rtl") {
+                    if (value) {
+                        object.dropdownlistArrow.css('float', 'left');
+                        object.dropdownlistContent.css('float', 'right');
+                    }
+                    else {
+                        object.dropdownlistArrow.css('float', 'right');
+                        object.dropdownlistContent.css('float', 'left');
+                    }
+                    object.listBoxContainer.jqxListBox({ rtl: object.rtl });
+                }
+                if (key == 'source') {
+                    object.listBoxContainer.jqxListBox({ source: object.source });
+                    object.listBox.selectedIndex = -1;
+                    object.listBox.selectIndex(this.selectedIndex);
+                    object.renderSelection();
+                    if (value == null) {
+                        object.clear();
+                    }
+                }
+
+                if (key == "displayMember" || key == "valueMember") {
+                    object.listBoxContainer.jqxListBox({ displayMember: object.displayMember, valueMember: object.valueMember });
                     object.renderSelection();
                 }
+                if (key == "placeHolder") {
+                    object.renderSelection();
+                }
+
+                if (key == 'theme' && value != null) {
+                    object.listBoxContainer.jqxListBox({ theme: value });
+                    object.listBoxContainer.addClass(object.toThemeProperty('jqx-popup'));
+                    $.jqx.utilities.setTheme(oldvalue, value, object.host);
+                }
+
+                if (key == "autoDropDownHeight") {
+                    object.listBoxContainer.jqxListBox({ autoHeight: object.autoDropDownHeight });
+                    if (object.autoDropDownHeight) {
+                        object.container.height(object.listBoxContainer.height() + 25);
+                    }
+                    else {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+
+                    object.listBox._arrange();
+                    object.listBox._updatescrollbars();
+                }
+
+                if (key == "searchMode") {
+                    object.listBoxContainer.jqxListBox({ searchMode: object.searchMode });
+                }
+
+                if (key == "incrementalSearch") {
+                    object.listBoxContainer.jqxListBox({ incrementalSearch: object.incrementalSearch });
+                }
+
+                if (key == "incrementalSearchDelay") {
+                    object.listBoxContainer.jqxListBox({ incrementalSearchDelay: object.incrementalSearchDelay });
+                }
+
+                if (key == "dropDownHeight") {
+                    if (!object.autoDropDownHeight) {
+                        object.listBoxContainer.jqxListBox({ height: object.dropDownHeight });
+                        object.container.height(parseInt(object.dropDownHeight) + 25);
+                    }
+                }
+
+                if (key == "dropDownWidth" || key == "scrollBarSize") {
+                    var width = object.width;
+                    if (object.dropDownWidth != 'auto') {
+                        width = object.dropDownWidth;
+                    }
+
+                    object.listBoxContainer.jqxListBox({ width: width, scrollBarSize: object.scrollBarSize });
+                    object.container.width(parseInt(width) + 25);
+                }
+
+                if (key == 'width' || key == 'height') {
+                    if (value != oldvalue) {
+                        this.refresh();
+                        if (key == 'width') {
+                            if (object.dropDownWidth == 'auto') {
+                                var width = 2 + object.host.width();
+                                object.listBoxContainer.jqxListBox({ width: width });
+                                object.container.width(parseInt(width) + 25);
+                            }
+                        }
+                        object.close();
+                    }
+                }
+
+                if (key == "checkboxes") {
+                    object.listBoxContainer.jqxListBox({ checkboxes: object.checkboxes });
+                }
+
+                if (key == 'selectedIndex') {
+                    if (object.listBox != null) {
+                        object.listBox.selectIndex(parseInt(value));
+                        object.renderSelection();
+                    }
+                }
             }
-        }
-    });
-})(jqxBaseFramework);
+        });
+    })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -29135,20 +29105,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 
 /***/ 4240:
@@ -30740,20 +30696,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     }); // jqxScrollBar
 })(jqxBaseFramework);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
