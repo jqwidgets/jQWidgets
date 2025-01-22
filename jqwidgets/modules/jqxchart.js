@@ -5,6 +5,14 @@ License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Sep-17-2024 
+Copyright (c) 2011-2024 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 675:
@@ -11904,7 +11912,7 @@ License: https://jqwidgets.com/license/ */
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nested_webpack_require_518559__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
@@ -20084,7 +20092,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if ( true && __webpack_require__.amdO.JQXLite) {
+			if (  true && __nested_webpack_require_518559__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -37306,7 +37314,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/ 	function __nested_webpack_require_1450743__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -37320,7 +37328,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1450743__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -37329,17 +37337,17 @@ var saveAs = window.jqxSaveAs = saveAs
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__webpack_require__.amdO = {};
+/******/ 		__nested_webpack_require_1450743__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
+/******/ 		__nested_webpack_require_1450743__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_1450743__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -37347,9 +37355,9 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_1450743__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_1450743__.o(definition, key) && !__nested_webpack_require_1450743__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -37358,7 +37366,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_1450743__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -37366,24 +37374,24 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3907);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3159);
-/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_jqxdraw__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7848);
-/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_jqxchart_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9815);
-/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_jqxchart_api__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(675);
-/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2306);
-/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2462);
-/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1450743__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1450743__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1450743__(3907);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1450743__(3159);
+/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdraw__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1450743__(7848);
+/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1450743__(9815);
+/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_api__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1450743__(675);
+/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1450743__(2306);
+/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_1450743__(2462);
+/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -37395,5 +37403,7 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
 /******/ })()
 ;

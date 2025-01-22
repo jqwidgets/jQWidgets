@@ -5,6 +5,14 @@ License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Sep-17-2024 
+Copyright (c) 2011-2024 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 2497:
@@ -12758,7 +12766,7 @@ document.Globalize = Globalize;
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nested_webpack_require_536060__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
@@ -20938,7 +20946,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if ( true && __webpack_require__.amdO.JQXLite) {
+			if (  true && __nested_webpack_require_536060__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -61635,7 +61643,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/ 	function __nested_webpack_require_2580572__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -61649,7 +61657,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2580572__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -61658,17 +61666,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__webpack_require__.amdO = {};
+/******/ 		__nested_webpack_require_2580572__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
+/******/ 		__nested_webpack_require_2580572__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_2580572__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -61676,9 +61684,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_2580572__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_2580572__.o(definition, key) && !__nested_webpack_require_2580572__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -61687,7 +61695,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_2580572__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -61695,44 +61703,44 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7196);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4240);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1610);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1062);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5868);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4720);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7995);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4545);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(2497);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(5725);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(4993);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(7762);
-/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_jqxwindow__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _jqxtooltip__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(3899);
-/* harmony import */ var _jqxtooltip__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_jqxtooltip__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(3960);
-/* harmony import */ var _jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(5905);
-/* harmony import */ var _jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _jqxeditor__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(3440);
-/* harmony import */ var _jqxeditor__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_jqxeditor__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2580572__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2580572__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2580572__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_2580572__(7196);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_2580572__(4240);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_2580572__(1610);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_2580572__(1062);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_2580572__(5868);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_2580572__(4720);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_2580572__(7995);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_2580572__(4545);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_2580572__(2497);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_2580572__(5725);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_2580572__(4993);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_2580572__(7762);
+/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxwindow__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _jqxtooltip__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_2580572__(3899);
+/* harmony import */ var _jqxtooltip__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxtooltip__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_2580572__(3960);
+/* harmony import */ var _jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxcolorpicker__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17__ = __nested_webpack_require_2580572__(5905);
+/* harmony import */ var _jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxdropdownbutton__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _jqxeditor__WEBPACK_IMPORTED_MODULE_18__ = __nested_webpack_require_2580572__(3440);
+/* harmony import */ var _jqxeditor__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__nested_webpack_require_2580572__.n(_jqxeditor__WEBPACK_IMPORTED_MODULE_18__);
 
 
 
@@ -61755,5 +61763,7 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
 /******/ })()
 ;
