@@ -19,8 +19,10 @@ declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
     collapseAll(): void;
     collapseItem(item: any): void;
     destroy(): void;
+    disableCheckbox(item: any): void;
     disableItem(item: any): void;
     ensureVisible(item: object): void;
+    enableCheckbox(item: any): void;
     enableItem(item: any): void;
     enableAll(): void;
     expandAll(): void;

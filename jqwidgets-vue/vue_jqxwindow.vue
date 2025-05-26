@@ -140,6 +140,12 @@
             open: function() {
                 JQXLite(this.componentSelector).jqxWindow('open');  
             },
+            openConfirm: function() {
+                JQXLite(this.componentSelector).jqxWindow('openConfirm');  
+            },
+            openAlert: function() {
+                JQXLite(this.componentSelector).jqxWindow('openAlert');  
+            },
             hide: function() {
                 JQXLite(this.componentSelector).jqxWindow('hide');  
             },

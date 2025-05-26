@@ -30,6 +30,12 @@
             borderColor: String,
             value: Object,
             template: Array,
+            enableSmartPaste: {
+                default: ,
+                type: Boolean
+            },
+            aiKey: String,
+            aiUrl: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -121,6 +127,27 @@
                     return JQXLite(this.componentSelector).jqxForm('template');
                 }
             },
+            _enableSmartPaste: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxForm('enableSmartPaste', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxForm('enableSmartPaste');
+                }
+            },
+            _aiKey: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxForm('aiKey', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxForm('aiKey');
+                }
+            },
+            _aiUrl: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxForm('aiUrl', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxForm('aiUrl');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -129,7 +156,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['padding','backgroundColor','borderColor','value','template'];
+                const widgetProps = ['padding','backgroundColor','borderColor','value','template','enableSmartPaste','aiKey','aiUrl'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -189,6 +216,36 @@
                     },
                     set: function(newValue) {
                         that._template(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableSmartPaste', {
+                    get: function() {
+                        return that._enableSmartPaste();
+                    },
+                    set: function(newValue) {
+                        that._enableSmartPaste(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiKey', {
+                    get: function() {
+                        return that._aiKey();
+                    },
+                    set: function(newValue) {
+                        that._aiKey(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiUrl', {
+                    get: function() {
+                        return that._aiUrl();
+                    },
+                    set: function(newValue) {
+                        that._aiUrl(newValue);
                     },
                     enumerable: true,
                     configurable: true

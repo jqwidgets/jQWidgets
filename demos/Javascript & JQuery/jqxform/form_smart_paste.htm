@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="keywords" content="JavaScript Form, HTML Form, jQuery Forms widget" />
+    <meta name="description"
+        content="The jqxForm widget helps you build interactive HTML JSON forms. It offers rich functionality and layout options." />
+    <title id='Description'>jQuery Form Widget Component</title>
+    <link rel="stylesheet" href="../../../jqwidgets-src/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxform.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var template = [
+                {
+                    bind: 'firstName',
+                    type: 'text',
+                    label: 'First name',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    info: 'Enter first name',
+                    infoPosition: 'right'
+                },
+                {
+                    bind: 'lastName',
+                    type: 'text',
+                    label: 'Last name',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    info: 'Enter last name'
+                },
+                {
+                    bind: 'company',
+                    type: 'text',
+                    label: 'Company',
+                    required: false,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'address',
+                    type: 'text',
+                    label: 'Address',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'city',
+                    type: 'text',
+                    label: 'City',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'state',
+                    type: 'option',
+                    label: 'State',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    component: 'jqxDropDownList',
+                    options: [
+                        { value: 'CA' },
+                        { value: 'NY' },
+                        { value: 'OR' },
+                        { value: 'IL' },
+                        { value: 'TX' }
+                    ]
+                },
+                {
+                    bind: 'zip',
+                    type: 'text',
+                    label: 'Zip code',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    type: 'blank',
+                    rowHeight: '10px'
+                },
+                {
+                    columns: [
+                        {
+                            type: 'button',
+                            text: 'Sign up',
+                            width: '90px',
+                            height: '30px',
+                            rowHeight: '40px',
+                            columnWidth: '50%',
+                            align: 'right'
+                        },
+                        {
+                            type: 'button',
+                            text: 'Cancel',
+                            width: '90px',
+                            height: '30px',
+                            rowHeight: '40px',
+                            columnWidth: '50%'
+                        }
+                    ]
+                }
+            ];
+
+
+            var sampleValue = {
+                firstName: 'John',
+                lastName: 'Scott',
+                address: '1st Ave SW',
+                company: 'N/A',
+                city: 'San Antonio',
+                state: 'Texas',
+                zip: '78209'
+            };
+
+            $('#sampleForm').jqxForm({
+                template: template,
+                value: sampleValue,
+                enableSmartPaste: true,
+                padding: { left: 10, top: 10, right: 10, bottom: 10 }
+            });
+
+
+            $('#sampleForm').jqxForm('hideComponent', 'zip');
+        });
+    </script>
+</head>
+
+<body class='default'>
+    <div class="example-description">
+        <div style="width: 800px;">
+            <h2>Smart Paste in jqxForm</h2>
+            Smart Paste lets users quickly fill out forms by pasting structured data—like from spreadsheets or<br />
+            tables—directly into the form. It intelligently maps the pasted content to matching fields, saving time
+            and<br />
+            reducing errors.<br /><br />
+
+            To enable this feature, set the following properties:<br />
+
+            enableSmartPaste: true<br />
+            aiKey: 'your-openai-api-key'<br />
+            aiUrl: 'https://your-server-endpoint'<br /><br />
+
+            Smart Paste uses AI to understand and align data with form fields automatically, making form completion
+            faster and smarter.<br /><br />Select the text below and paste it into the form to see how it
+            works.<br /><br />
+            <p>
+                Emily Jackson Skyline Media 234 Oak Street San Francisco CA<br />
+                Michael Thompson NextGen Tech 412 Maple Ave Austin TX<br />
+                Sophia Ramirez BlueSky Corp 89 Pine Blvd Seattle WA<br />
+                Daniel Williams Quantum Dynamics 15 Sunset Road Chicago IL<br />
+                Olivia Nguyen Visionary Studio 720 Birch Lane Denver CO<br />
+                James Patel Northwind Inc. 63 Walnut Ave Miami FL <br />
+            </p>
+        </div>
+    </div>
+    <div id='sampleForm' style="width: 400px; height: auto;"></div>
+
+
+
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

@@ -118,11 +118,17 @@
             destroy: function() {
                 JQXLite(this.componentSelector).jqxTree('destroy');  
             },
+            disableCheckbox: function(item) {
+                JQXLite(this.componentSelector).jqxTree('disableCheckbox', item);  
+            },
             disableItem: function(item) {
                 JQXLite(this.componentSelector).jqxTree('disableItem', item);  
             },
             ensureVisible: function(item) {
                 JQXLite(this.componentSelector).jqxTree('ensureVisible', item);  
+            },
+            enableCheckbox: function(item) {
+                JQXLite(this.componentSelector).jqxTree('enableCheckbox', item);  
             },
             enableItem: function(item) {
                 JQXLite(this.componentSelector).jqxTree('enableItem', item);  

@@ -120,6 +120,12 @@ require('../../jqwidgets/jqxwindow');
         JqxWindow.prototype.open = function () {
             this._jqx(this._componentSelector).jqxWindow('open');
         };
+        JqxWindow.prototype.openConfirm = function () {
+            this._jqx(this._componentSelector).jqxWindow('openConfirm');
+        };
+        JqxWindow.prototype.openAlert = function () {
+            this._jqx(this._componentSelector).jqxWindow('openAlert');
+        };
         JqxWindow.prototype.hide = function () {
             this._jqx(this._componentSelector).jqxWindow('hide');
         };

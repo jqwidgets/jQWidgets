@@ -1,14 +1,86 @@
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
@@ -2262,8 +2334,6 @@ document.Globalize = Globalize;
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 7351:
@@ -3449,8 +3519,6 @@ document.Globalize = Globalize;
 
     })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -7292,8 +7360,6 @@ document.Globalize = Globalize;
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 4545:
@@ -8139,8 +8205,6 @@ document.Globalize = Globalize;
     });
 })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -11439,20 +11503,18 @@ document.Globalize = Globalize;
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_484139__) => {
+/***/ ((module, exports, __nested_webpack_require_484119__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function () {
-	if (typeof document === 'undefined') {
+(function(){
+	if (typeof document === 'undefined') { 
 		return;
 	}
-
+		
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -19624,7 +19686,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (  true && __nested_webpack_require_484139__.amdO.JQXLite) {
+			if (           true && __nested_webpack_require_484119__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -19645,19 +19707,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
-			if (window.jQuery.fn.extend) {
-				window.jQuery.fn.stop = window.JQXLite.fn.stop;
-				window.jQuery.fn.animate = window.JQXLite.fn.animate;
-
-				var keys = Object.keys(window.JQXLite.fn);
-				for (var index in keys) {
-					var key = keys[index];
-					if (window.jQuery.fn[key] == undefined) {
-						window.jQuery.fn[key] = window.JQXLite.fn[key];
-					}
-				}
-			}
-
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -21279,7 +21328,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {
+					try {	
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -21772,12 +21821,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							return returnValue;
-							//       return returnValue + $(window).scrollTop();
+							 return returnValue;
+					//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-							//        return returnValue + $(window).scrollTop();
+					//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -22473,9 +22522,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
-		if (!$.easing) {
-			$.easing = {};
-		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -22815,8 +22861,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
 
 
 /***/ }),
@@ -27762,8 +27806,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 })(pdfDataExport.API)
 })();
-
-
 
 /***/ }),
 
@@ -33911,8 +33953,6 @@ var saveAs = window.jqxSaveAs = saveAs
     }
 } )( jqxBaseFramework );
 })();
-
-
 
 /***/ }),
 
@@ -40384,8 +40424,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 
 
-
-
 /***/ }),
 
 /***/ 5868:
@@ -42530,8 +42568,6 @@ var saveAs = window.jqxSaveAs = saveAs
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 714:
@@ -42774,7 +42810,7 @@ var saveAs = window.jqxSaveAs = saveAs
                 let output = null;
                 switch (format) {
                     case 'csv':
-                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv', toRemove: 2 }, fileName);
+                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv;charset=utf-8;', toRemove: 2 }, fileName);
                         break;
                     case 'html':
                         output = that.exportToHTML(data, fileName);
@@ -42842,7 +42878,10 @@ var saveAs = window.jqxSaveAs = saveAs
                 if (!fileName) {
                     return stringResult;
                 }
-                return this.downloadFile(stringResult, formatOptions.MIME, fileName);
+
+                const bom = '\uFEFF';
+                const csvContent = bom + stringResult;
+                return this.downloadFile(csvContent, formatOptions.MIME, fileName);
             }
 
             /**
@@ -46162,7 +46201,7 @@ var saveAs = window.jqxSaveAs = saveAs
                         case 'D':
                         case 'd':
                             if (precision) {
-                                return ('0').repeat(precision);
+                                return '\#,0' + precisionCode;
                             }
 
                             return '0';
@@ -47396,1285 +47435,1445 @@ var saveAs = window.jqxSaveAs = saveAs
 
 /* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
 
-(function ($) {
+    (function ($) {
 
-    $.jqx.jqxWidget("jqxForm", "", {});
+        $.jqx.jqxWidget("jqxForm", "", {});
 
-    $.extend($.jqx._jqxForm.prototype, {
-        defineInstance: function () {
-            var settings = {
-                padding: { left: 5, top: 5, right: 5, bottom: 5 },
-                backgroundColor: '#F5F5F5',
-                borderColor: '#E5E5E5',
-                value: {},
-                template: [
-                    {
-                        type: 'text',
-                        label: 'TextBox 1'
-                    },
-                    {
-                        type: 'text',
-                        label: 'TextBox 2'
-                    },
-                ]
-            };
+        $.extend($.jqx._jqxForm.prototype, {
+            defineInstance: function () {
+                var settings = {
+                    padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    backgroundColor: '#F5F5F5',
+                    borderColor: '#E5E5E5',
+                    value: {},
+                    enableSmartPaste: false,
+                    aiUrl: "",
+                    aiKey: "",
+                    aiModel: "gpt-35-turbo",
+                    pasteSuccess: '✅ Auto-filled {{value}} fields',
+                    pasteError: '❌ No fields updated.',
+                    pasteProgress: 'Smart Paste in progress...',
+                    template: [
+                        {
+                            type: 'text',
+                            label: 'TextBox 1'
+                        },
+                        {
+                            type: 'text',
+                            label: 'TextBox 2'
+                        },
+                    ]
+                };
 
-            $.extend(true, this, settings);
-        },
+                $.extend(true, this, settings);
+            },
 
-        createInstance: function (args) {
-            var self = this;
-            self._isInitialized = false;
+            createInstance: function (args) {
+                var self = this;
+                self._isInitialized = false;
 
-            var host = self.host;
-            host.addClass(self.toThemeProperty('jqx-widget'));
-            host.addClass(self.toThemeProperty('jqx-form'));
+                var host = self.host;
+                host.addClass(self.toThemeProperty('jqx-widget'));
+                host.addClass(self.toThemeProperty('jqx-form'));
 
-            self._renderAndInit();
+                self._renderAndInit();
 
-            this._setValue(this.value);
-            this._prevValue = this._getValue();
+                this._setValue(this.value);
+                this._prevValue = this._getValue();
 
-            self._isInitialized = true;
-        }, // createInstance
+                self._isInitialized = true;
+            }, // createInstance
 
-        destroy: function () {
-            this._destroyElements();
+            destroy: function () {
+                this._destroyElements();
 
-            this.host.removeData();
-            this.host.remove();
-            delete this.host;
-            delete this.set;
-            delete this.get;
-            delete this.call;
-            delete this.element;
-        },
+                this.host.removeData();
+                this.host.remove();
+                delete this.host;
+                delete this.set;
+                delete this.get;
+                delete this.call;
+                delete this.element;
+            },
 
-        _destroyElements: function () {
-            for (var i = 0; i < this.template.length; i++) {
-                if ($.isArray(this.template[i].columns)) {
-                    for (var j = 0; j < this.template[i].columns.length; j++) {
-                        var id = i + "_" + j;
-                        this._getComponentById(id).off();
-                        this.host.find('#rowWrap_el_' + id).remove();
+            _destroyElements: function () {
+                for (var i = 0; i < this.template.length; i++) {
+                    if ($.isArray(this.template[i].columns)) {
+                        for (var j = 0; j < this.template[i].columns.length; j++) {
+                            var id = i + "_" + j;
+                            this._getComponentById(id).off();
+                            this.host.find('#rowWrap_el_' + id).remove();
+                        }
+                    }
+
+                    this._getComponentById(i).off();
+                    this._getComponentLabelById(i).off();
+                    this._getComponentLabelById(i).removeData();
+                    this.host.find('#rowWrap_el_' + i).remove();
+                }
+
+                this.host.find('#formWrap').remove();
+            },
+
+            val: function (newVal) {
+                if (undefined == newVal)
+                    return this._getValue();
+                else
+                    this._setValue(newVal);
+            },
+
+            _onChangeHandler: function (e) {
+                if (!this.isInitialized || this._suppressEvents)
+                    return;
+
+                var newVal = this._getValue();
+
+                if (this._prevValue && JSON.stringify(newVal) == JSON.stringify(this._prevValue))
+                    return;
+
+                var event = new $.Event('formDataChange');
+
+                event.args = {
+                    value: newVal,
+                    previousValue: this._prevValue
+                };
+
+                event.owner = this;
+                var result = this.host.trigger(event);
+
+                if (event.cancel)
+                    this._setValue(this._prevValue);
+                else {
+                    this._prevValue = newVal;
+                }
+
+                return result;
+            },
+
+            _onButtonClick: function (owner, tool) {
+                if (!this.isInitialized)
+                    return;
+
+                var event = new $.Event('buttonClick');
+
+                event.args = {
+                    name: tool.name,
+                    text: owner.val()
+                };
+
+                event.owner = this;
+                var result = this.host.trigger(event);
+
+                return result;
+            },
+
+            submit: function (action, target, method) {
+                var self = this;
+
+                var submitValue = self._getValue(true);
+
+                var html = "<form id='jqx_fromToSubmit'";
+                if (action) {
+                    html += ' action="' + action + '"';
+                }
+                if (target) {
+                    html += ' target="' + target + '"';
+                }
+
+                if (method && method.toString().toLowerCase() === 'get')
+                    html += ' method="GET"';
+                else
+                    html += ' method="POST"';
+
+                html += ">";
+                for (var i = 0; i < submitValue.length; i++) {
+                    var inputValue = submitValue[i].value;
+                    var tool = submitValue[i].tool;
+
+                    var submitName = tool.name;
+                    if (submitName == undefined)
+                        submitName = tool.id;
+                    if (submitName == undefined)
+                        submitName = tool.bind;
+
+
+                    if (tool.type == 'button' || tool.type == 'label') {
+                        if (!tool.submit || tool.submit == false)
+                            continue;
+                    }
+
+                    if (tool.submit == false)
+                        continue;
+
+                    if (submitName !== undefined) {
+                        html += '<input type="hidden" ';
+
+                        html += ' name="' + submitName + '"';
+
+                        html += ' value="' + inputValue + '"';
+
+                        html += ">";
                     }
                 }
 
-                this._getComponentById(i).off();
-                this._getComponentLabelById(i).off();
-                this._getComponentLabelById(i).removeData();
-                this.host.find('#rowWrap_el_' + i).remove();
-            }
+                html += "</form>";
 
-            this.host.find('#formWrap').remove();
-        },
+                self.host.find('#formSubmit').html(html);
 
-        val: function (newVal) {
-            if (undefined == newVal)
-                return this._getValue();
-            else
-                this._setValue(newVal);
-        },
+                self.host.find('#jqx_fromToSubmit').submit();
+            },
 
-        _onChangeHandler: function (e) {
-            if (!this.isInitialized || this._suppressEvents)
-                return;
+            _getValue: function (getSubmitFields) {
+                var val = {};
+                var submitValue = [];
 
-            var newVal = this._getValue();
+                for (var i = 0; i < this.template.length; i++) {
+                    var tool = this.template[i];
+                    var toolId = "el_" + this.element.id + i;
 
-            if (this._prevValue && JSON.stringify(newVal) == JSON.stringify(this._prevValue))
-                return;
+                    if ($.isArray(tool.columns)) {
+                        for (var j = 0; j < tool.columns.length; j++) {
+                            var childTool = tool.columns[j];
+                            var childToolId = toolId + "." + j;
 
-            var event = new $.Event('formDataChange');
+                            if (childTool.type == 'option' && childTool.component != 'jqxDropDownList') {
+                                var currentPropertyValue = this._radioGroupGetValue(childTool, childToolId);
+                                if (childTool.bind == undefined) {
+                                }
+                                else
+                                    this._setObjectProperty(val, childTool.bind, currentPropertyValue);
 
-            event.args = {
-                value: newVal,
-                previousValue: this._prevValue
-            };
+                                if (getSubmitFields)
+                                    submitValue.push({ tool: childTool, value: currentPropertyValue });
+                                continue;
+                            }
 
-            event.owner = this;
-            var result = this.host.trigger(event);
+                            var childComponent = this._getComponentById(i + "_" + j);
+                            var currentValue = childComponent.val();
+                            if (currentValue === undefined)
+                                currentValue = null;
 
-            if (event.cancel)
-                this._setValue(this._prevValue);
-            else {
-                this._prevValue = newVal;
-            }
-
-            return result;
-        },
-
-        _onButtonClick: function (owner, tool) {
-            if (!this.isInitialized)
-                return;
-
-            var event = new $.Event('buttonClick');
-
-            event.args = {
-                name: tool.name,
-                text: owner.val()
-            };
-
-            event.owner = this;
-            var result = this.host.trigger(event);
-
-            return result;
-        },
-
-        submit: function (action, target, method) {
-            var self = this;
-
-            var submitValue = self._getValue(true);
-
-            var html = "<form id='jqx_fromToSubmit'";
-            if (action) {
-                html += ' action="' + action + '"';
-            }
-            if (target) {
-                html += ' target="' + target + '"';
-            }
-
-            if (method && method.toString().toLowerCase() === 'get')
-                html += ' method="GET"';
-            else
-                html += ' method="POST"';
-
-            html += ">";
-            for (var i = 0; i < submitValue.length; i++) {
-                var inputValue = submitValue[i].value;
-                var tool = submitValue[i].tool;
-
-                var submitName = tool.name;
-                if (submitName == undefined)
-                    submitName = tool.id;
-                if (submitName == undefined)
-                    submitName = tool.bind;
-
-
-                if (tool.type == 'button' || tool.type == 'label') {
-                    if (!tool.submit || tool.submit == false)
-                        continue;
-                }
-
-                if (tool.submit == false)
-                    continue;
-
-                if (submitName !== undefined) {
-                    html += '<input type="hidden" ';
-
-                    html += ' name="' + submitName + '"';
-
-                    html += ' value="' + inputValue + '"';
-
-                    html += ">";
-                }
-            }
-
-            html += "</form>";
-
-            self.host.find('#formSubmit').html(html);
-
-            self.host.find('#jqx_fromToSubmit').submit();
-        },
-
-        _getValue: function (getSubmitFields) {
-            var val = {};
-            var submitValue = [];
-
-            for (var i = 0; i < this.template.length; i++) {
-                var tool = this.template[i];
-                var toolId = "el_" + this.element.id + i;
-
-                if ($.isArray(tool.columns)) {
-                    for (var j = 0; j < tool.columns.length; j++) {
-                        var childTool = tool.columns[j];
-                        var childToolId = toolId + "." + j;
-
-                        if (childTool.type == 'option' && childTool.component != 'jqxDropDownList') {
-                            var currentPropertyValue = this._radioGroupGetValue(childTool, childToolId);
                             if (childTool.bind == undefined) {
                             }
                             else
-                                this._setObjectProperty(val, childTool.bind, currentPropertyValue);
+                                this._setObjectProperty(val, childTool.bind, currentValue);
 
                             if (getSubmitFields)
-                                submitValue.push({ tool: childTool, value: currentPropertyValue });
-                            continue;
+                                submitValue.push({ tool: childTool, value: currentValue });
                         }
+                        continue;
+                    }
 
-                        var childComponent = this._getComponentById(i + "_" + j);
-                        var currentValue = childComponent.val();
-                        if (currentValue === undefined)
-                            currentValue = null;
+                    if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
+                        var currentPropertyValue = this._radioGroupGetValue(tool, toolId);
 
-                        if (childTool.bind == undefined) {
+                        if (tool.bind == undefined) {
                         }
-                        else
-                            this._setObjectProperty(val, childTool.bind, currentValue);
+                        else {
+                            this._setObjectProperty(val, tool.bind, currentPropertyValue);
+                        }
 
                         if (getSubmitFields)
-                            submitValue.push({ tool: childTool, value: currentValue });
-                    }
-                    continue;
-                }
+                            submitValue.push({ tool: tool, value: currentPropertyValue });
 
-                if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
-                    var currentPropertyValue = this._radioGroupGetValue(tool, toolId);
+                        continue;
+                    }
+
+                    var component = this._getComponentById(i);
+                    var currentValue = component.val();
+                    if (currentValue === undefined)
+                        currentValue = null;
 
                     if (tool.bind == undefined) {
                     }
                     else {
-                        this._setObjectProperty(val, tool.bind, currentPropertyValue);
+                        this._setObjectProperty(val, tool.bind, currentValue);
                     }
 
                     if (getSubmitFields)
-                        submitValue.push({ tool: tool, value: currentPropertyValue });
+                        submitValue.push({ tool: tool, value: currentValue });
 
-                    continue;
-                }
-
-                var component = this._getComponentById(i);
-                var currentValue = component.val();
-                if (currentValue === undefined)
-                    currentValue = null;
-
-                if (tool.bind == undefined) {
-                }
-                else {
-                    this._setObjectProperty(val, tool.bind, currentValue);
                 }
 
                 if (getSubmitFields)
-                    submitValue.push({ tool: tool, value: currentValue });
+                    return submitValue;
 
-            }
+                return $.extend({}, this._prevValue, val);
+            },
 
-            if (getSubmitFields)
-                return submitValue;
+            _getObjectProperty: function (obj, propertyName) {
+                if (typeof (obj) !== 'object' || obj === undefined || propertyName === undefined || propertyName == '')
+                    return obj;
 
-            return $.extend({}, this._prevValue, val);
-        },
+                var parts = propertyName.split('.');
 
-        _getObjectProperty: function (obj, propertyName) {
-            if (typeof (obj) !== 'object' || obj === undefined || propertyName === undefined || propertyName == '')
-                return obj;
-
-            var parts = propertyName.split('.');
-
-            var val = obj;
-            for (var b = 0; b < parts.length; b++) {
-                val = val[parts[b]];
-            }
-
-            return val;
-        },
-
-        _setObjectProperty: function (obj, propertyName, value) {
-            if (undefined === obj)
-                return;
-
-            if (undefined == propertyName || propertyName == '') {
-                obj = value;
-                return;
-            }
-
-            var parts = propertyName.split('.');
-
-            var b = 0;
-
-            while (b < parts.length - 1) {
-                if (undefined == obj[parts[b]]) {
-                    obj[parts[b]] = {};
+                var val = obj;
+                for (var b = 0; b < parts.length; b++) {
+                    val = val[parts[b]];
                 }
-                b++;
-            }
 
-            obj[parts[b]] = value;
-        },
+                return val;
+            },
 
-        _setValue: function (val) {
-            this._suppressEvents = true;
+            _setObjectProperty: function (obj, propertyName, value) {
+                if (undefined === obj)
+                    return;
 
-            for (var i = 0; i < this.template.length; i++) {
-                var tool = this.template[i];
-                var toolId = "el_" + this.element.id + i;
+                if (undefined == propertyName || propertyName == '') {
+                    obj = value;
+                    return;
+                }
 
-                var boundValue = undefined;
+                var parts = propertyName.split('.');
 
-                if ($.isArray(tool.columns)) {
-                    for (var j = 0; j < tool.columns.length; j++) {
-                        var childTool = tool.columns[j];
-                        var childToolId = toolId + "." + j;
+                var b = 0;
 
-                        if (!childTool.bind)
-                            continue;
+                while (b < parts.length - 1) {
+                    if (undefined == obj[parts[b]]) {
+                        obj[parts[b]] = {};
+                    }
+                    b++;
+                }
 
-                        boundValue = this._getObjectProperty(val, childTool.bind);
-                        if (childTool.type == 'option' && childTool.component != 'jqxDropDownList') {
-                            this._radioGroupSetValue(childTool, childToolId, boundValue);
-                            continue;
+                obj[parts[b]] = value;
+            },
+
+            _setValue: function (val) {
+                this._suppressEvents = true;
+
+                for (var i = 0; i < this.template.length; i++) {
+                    var tool = this.template[i];
+                    var toolId = "el_" + this.element.id + i;
+
+                    var boundValue = undefined;
+
+                    if ($.isArray(tool.columns)) {
+                        for (var j = 0; j < tool.columns.length; j++) {
+                            var childTool = tool.columns[j];
+                            var childToolId = toolId + "." + j;
+
+                            if (!childTool.bind)
+                                continue;
+
+                            boundValue = this._getObjectProperty(val, childTool.bind);
+                            if (childTool.type == 'option' && childTool.component != 'jqxDropDownList') {
+                                this._radioGroupSetValue(childTool, childToolId, boundValue);
+                                continue;
+                            }
+
+                            var childComponent = this._getComponentById(i + "_" + j);
+                            if (val !== undefined)
+                                childComponent.val(boundValue);
                         }
-
-                        var childComponent = this._getComponentById(i + "_" + j);
-                        if (val !== undefined)
-                            childComponent.val(boundValue);
-                    }
-                    continue;
-                }
-
-                if (!tool.bind)
-                    continue;
-
-                boundValue = this._getObjectProperty(val, tool.bind);
-
-                if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
-                    this._radioGroupSetValue(tool, toolId, boundValue);
-                    continue;
-                }
-
-                var component = this._getComponentById(i);
-
-                if (tool.type == 'label') {
-                    component.html(boundValue);
-                    continue;
-                }
-
-                if (val !== undefined)
-                    component.val(boundValue);
-            }
-
-            this._prevValue = val;
-
-            this._suppressEvents = false;
-        },
-
-        _radioGroupGetValue: function (tool, toolId) {
-            for (var i = 0; i < tool.options.length; i++) {
-                var optionId = toolId + "_option_" + i;
-                var el = this.host.find("#" + optionId);
-                if (el.length > 0) {
-                    var val = el.jqxRadioButton('val');
-                    if (val == true) {
-                        if (tool.options[i].value !== undefined)
-                            return tool.options[i].value;
-
-                        return tool.options[i].label;
-                    }
-                }
-            }
-
-            return undefined;
-        },
-
-        _radioGroupSetValue: function (tool, toolId, val) {
-            for (var i = 0; i < tool.options.length; i++) {
-                if (tool.options[i].value !== undefined) {
-                    if (val !== tool.options[i].value)
                         continue;
-                }
-                else {
-                    if (val !== tool.options[i].label)
-                        continue;
-                }
-
-                var optionId = toolId + "_option_" + i;
-                var el = this.host.find("#" + optionId);
-                if (el.length > 0)
-                    el.jqxRadioButton('val', true);
-            }
-        },
-
-        _getToolStyle: function (tool) {
-            var style = 'display: block;';
-            var pos = ['left', 'right', 'top', 'bottom'];
-
-            if (tool.height)
-                style += 'height: ' + tool.height + ';';
-
-            if (tool.valign !== undefined)
-                style += 'vertical-align: ' + tool.valign + ';';
-            else
-                style += 'vertical-align: middle;'
-
-            return style;
-        },
-
-        _getAlignMargin: function (tool, property) {
-            if (!tool || !tool[property])
-                return '';
-
-            var pos = ['left', 'right', 'top', 'bottom'];
-            var margin = {};
-            var style = '';
-
-
-            if (tool[property]) {
-                margin = {};
-
-                if (tool[property] == 'left') {
-                    margin.left = '0px';
-                    margin.right = 'auto';
-                }
-                else if (tool[property] == 'right') {
-                    margin.left = 'auto';
-                    margin.right = '0px';
-                }
-                else {
-                    margin.left = 'auto';
-                    margin.right = 'auto';
-                }
-            }
-
-            if (margin) {
-                for (var i in pos) {
-                    if (margin[pos[i]])
-                        style += 'margin-' + pos[i] + ': ' + margin[pos[i]] + ';';
-                }
-            }
-
-            return style;
-        },
-
-        _getPaddingAndMarginStyle: function (tool, isLabel) {
-            var style = '';
-            var pos = ['left', 'right', 'top', 'bottom'];
-
-            var paddingPropertyName = isLabel ? 'labelpadding' : 'padding';
-            var marginPropertyName = isLabel ? 'labelmargin' : 'margin';
-
-            var padding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool[paddingPropertyName]);
-            for (var i in padding)
-                padding[i] = !isNaN(padding[i]) ? padding[i] : parseFloat(padding[i].toString());
-
-            var margin = tool[marginPropertyName];
-
-            if (padding) {
-                for (var i in pos) {
-                    if (padding[pos[i]])
-                        style += 'padding-' + pos[i] + ': ' + padding[pos[i]] + 'px;';
-                }
-            }
-            if (margin) {
-                for (var i in pos) {
-                    if (margin[pos[i]])
-                        style += 'margin-' + pos[i] + ': ' + margin[pos[i]] + ';';
-                }
-            }
-
-            return style;
-        },
-
-
-        _getToolLabelStyle: function (tool) {
-            var style = 'display:block;';
-            var pos = ['left', 'right', 'top', 'bottom'];
-
-            if (tool.labelheight !== undefined)
-                style += 'height: ' + tool.labelheight + ';';
-            else
-                style += 'height: 100%;';
-
-            if (tool.labelvalign !== undefined)
-                style += 'vertical-align: ' + tool.labelvalign + ';';
-            else if (tool.valign !== undefined)
-                style += 'vertical-align: ' + tool.valign + ';';
-            else
-                style += 'vertical-align: middle;'
-
-            return style;
-        },
-
-        _renderAndInit: function () {
-            var html = this._createTemplateHtml();
-            this.host.append(html);
-
-            this._initTools();
-        },
-
-        refresh: function (initialRefresh) {
-            var self = this;
-            if (!self._isInitialized || initialRefresh === true)
-                return;
-
-            var val = self.val();
-            self._destroyElements();
-
-            self._renderAndInit();
-
-            self._prevValue = val;
-
-            self.val(val);
-        },
-
-        _createTemplateHtml: function () {
-            var groups = this.groups;
-
-            var paddingStyle =
-                'padding-left: ' + parseFloat(this.padding.left) + 'px;' +
-                'padding-right: ' + parseFloat(this.padding.right) + 'px;' +
-                'padding-top: ' + parseFloat(this.padding.top) + 'px;' +
-                'padding-bottom: ' + parseFloat(this.padding.bottom) + 'px;';
-
-            // begin form
-            var html = "<table id='formWrap' style='background-color: " + this.backgroundColor + "; width: 100%; white-space: nowrap; border: 1px solid " + this.borderColor + ";" + paddingStyle + "' cellpadding='0' cellspacing='0'><div id='formSubmit' style='display:hidden;'><div>";
-
-            var tools = this.template;
-
-            for (var i = 0; i < tools.length; i++) {
-                var toolId = "el_" + this.element.id + i;
-                var tool = this.template[i];
-                var template = this._getToolTemplate(tool, toolId);
-
-                html += template;
-            }
-
-            // end form
-            html += "</table>";
-
-            return html;
-        },
-
-        _beginRow: function (id, height, valign) {
-            if (undefined === height)
-                height = 'auto';
-
-            if (valign)
-                valign = "valign='" + valign + "'";
-            else
-                valign = "";
-
-            var row = "<tr style='width: 100%; height: " + height + ";' id='rowWrap_" + id + "'" + " " + valign + ">";
-            row += "<td style='width: 100%;'><table style='width: 100%; white-space: nowrap; border: 0px;' cellspacing='0' cellpadding='0'><tr style='width: 100%'>";
-            return row;
-        },
-
-        _endRow: function () {
-            return "<td style='width: auto; background: transparent;'> </tr></table></td></tr>";
-        },
-
-        _beginColumn: function (width, style) {
-            if (!style)
-                style = '';
-
-            if (undefined === width)
-                width = 'auto';
-
-            var template = "<td style='width:" + width + "; background: transparent;'>";
-            template += "<div style='display:block; overflow: visible; width: 100%; background: transparent;'>";
-
-            return template;
-        },
-
-        _endColumn: function () {
-            return "</div></td>";
-        },
-
-        _splitLabelToolWidth: function (tool, isInsideColumn) {
-            var toolWidth = isInsideColumn ? 'auto' : tool.columnwidth;
-            var labelWidth = tool.labelwidth;
-
-            var toolPadding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool.padding);
-            var labelPadding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool.labelpadding);
-            for (var i in toolPadding)
-                toolPadding[i] = !isNaN(toolPadding[i]) ? toolPadding[i] : parseFloat(toolPadding[i].toString());
-
-            for (var i in labelPadding)
-                labelPadding[i] = !isNaN(labelPadding[i]) ? labelPadding[i] : parseFloat(labelPadding[i].toString());
-
-            if (tool.label == '' || tool.label == undefined) {
-                labelWidth = 0;
-                labelPadding = { left: 0, right: 0, top: 0, bottom: 0 };
-            }
-
-            if (tool.labelposition == 'top' || tool.labelposition == 'bottom') {
-                if (undefined === labelWidth)
-                    labelWidth = toolWidth;
-                if (undefined === toolWidth)
-                    toolWidth = labelWidth;
-
-                if (toolWidth && toolWidth.toString().indexOf('%') != -1 && labelWidth && labelWidth.toString().indexOf('%') != -1) {
-                    toolWidth = labelWidth = Math.max(parseFloat(toolWidth), parseFloat(labelWidth)) + '%';
-                }
-                if (toolWidth && toolWidth.toString().indexOf('%') == -1 && labelWidth && labelWidth.toString().indexOf('%') == -1) {
-                    toolWidth = labelWidth = Math.max(parseFloat(toolWidth), parseFloat(labelWidth)) + 'px';
-                }
-
-                return [labelWidth, toolWidth]
-            }
-
-            // handle left/right positioning
-            if (labelWidth === undefined) {
-                if (toolWidth !== undefined && toolWidth !== 'auto') {
-                    return ['auto', toolWidth];
-                }
-                else {
-                    if (tool.labelposition == 'right') {
-                        if (tool.align == 'right' || tool.align == 'center' || tool.align == 'middle')
-                            return ['auto', '100%'];
-
-                        return ['100%', 'auto'];
                     }
 
-                    return ['auto', '100%'];
+                    if (!tool.bind)
+                        continue;
+
+                    boundValue = this._getObjectProperty(val, tool.bind);
+
+                    if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
+                        this._radioGroupSetValue(tool, toolId, boundValue);
+                        continue;
+                    }
+
+                    var component = this._getComponentById(i);
+
+                    if (tool.type == 'label') {
+                        component.html(boundValue);
+                        continue;
+                    }
+
+                    if (val !== undefined)
+                        component.val(boundValue);
                 }
-            }
-            else if (labelWidth.toString().indexOf('%') !== -1) {
-                labelWidth = parseFloat(labelWidth);
-                if (toolWidth !== undefined) {
-                    if (toolWidth.toString().indexOf('%') !== -1) {
-                        toolWidth = parseFloat(toolWidth);
-                        return [Math.min(100, labelWidth) + '%', Math.min(toolWidth, 100 - labelWidth) + '%'];
+
+                this._prevValue = val;
+
+                this._suppressEvents = false;
+            },
+
+            _radioGroupGetValue: function (tool, toolId) {
+                for (var i = 0; i < tool.options.length; i++) {
+                    var optionId = toolId + "_option_" + i;
+                    var el = this.host.find("#" + optionId);
+                    if (el.length > 0) {
+                        var val = el.jqxRadioButton('val');
+                        if (val == true) {
+                            if (tool.options[i].value !== undefined)
+                                return tool.options[i].value;
+
+                            return tool.options[i].label;
+                        }
+                    }
+                }
+
+                return undefined;
+            },
+
+            _radioGroupSetValue: function (tool, toolId, val) {
+                for (var i = 0; i < tool.options.length; i++) {
+                    if (tool.options[i].value !== undefined) {
+                        if (val !== tool.options[i].value)
+                            continue;
                     }
                     else {
-                        toolWidth = parseFloat(toolWidth);
-                        return [Math.min(100, labelWidth) + '%', toolWidth];
+                        if (val !== tool.options[i].label)
+                            continue;
+                    }
+
+                    var optionId = toolId + "_option_" + i;
+                    var el = this.host.find("#" + optionId);
+                    if (el.length > 0)
+                        el.jqxRadioButton('val', true);
+                }
+            },
+
+            _getToolStyle: function (tool) {
+                var style = 'display: block;';
+                var pos = ['left', 'right', 'top', 'bottom'];
+
+                if (tool.height)
+                    style += 'height: ' + tool.height + ';';
+
+                if (tool.valign !== undefined)
+                    style += 'vertical-align: ' + tool.valign + ';';
+                else
+                    style += 'vertical-align: middle;'
+
+                return style;
+            },
+
+            _getAlignMargin: function (tool, property) {
+                if (!tool || !tool[property])
+                    return '';
+
+                var pos = ['left', 'right', 'top', 'bottom'];
+                var margin = {};
+                var style = '';
+
+
+                if (tool[property]) {
+                    margin = {};
+
+                    if (tool[property] == 'left') {
+                        margin.left = '0px';
+                        margin.right = 'auto';
+                    }
+                    else if (tool[property] == 'right') {
+                        margin.left = 'auto';
+                        margin.right = '0px';
+                    }
+                    else {
+                        margin.left = 'auto';
+                        margin.right = 'auto';
                     }
                 }
 
-                return [Math.min(100, labelWidth) + '%', Math.max(0, 100 - labelWidth) + '%'];
-            }
-            else {
-                labelWidth = parseFloat(labelWidth) + labelPadding.left + labelPadding.right;
-                if (toolWidth == undefined)
-                    return [labelWidth + 'px', 'calc(100% - ' + labelWidth + 'px)'];
-
-                return [labelWidth + 'px', toolWidth];
-            }
-        },
-
-        _getToolTemplate: function (toolObject, id, optionIndex, isInsideColumn) {
-            var tool = {};
-            for (var p in toolObject)
-                tool[p.toLowerCase()] = toolObject[p];
-
-            if ($.isArray(tool.columns) && isNaN(optionIndex)) {
-
-                var str = this._beginRow(id, tool.rowheight || 'auto');
-
-                for (var i = 0; i < tool.columns.length; i++) {
-                    var innerTemplate = this._getToolTemplate(tool.columns[i], (id + "_" + i), undefined, true);
-
-                    var width = 'auto';
-                    if (tool.columns[i].columnWidth !== undefined)
-                        width = tool.columns[i].columnWidth;
-                    else if (tool.columns[i].width !== undefined)
-                        width = tool.columns[i].width;
-
-                    str += this._beginColumn(width);
-                    str += "<table cellspacing='0' cellpadding='0' style='width: 100%; white-space: nowrap; border: 0px;'>" + innerTemplate + "</table>";
-                    str += this._endColumn();
+                if (margin) {
+                    for (var i in pos) {
+                        if (margin[pos[i]])
+                            style += 'margin-' + pos[i] + ': ' + margin[pos[i]] + ';';
+                    }
                 }
-                str += this._endRow();
-                return str;
-            }
 
-            if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
-                if (isNaN(optionIndex)) {
-                    var template = this._beginRow(id, tool.rowheight || 'auto', tool.valign);
+                return style;
+            },
 
-                    for (var i = 0; i < tool.options.length; i++) {
-                        var innerTemplate = this._getToolTemplate(tool, (id + "_option_" + i), i, true);
+            _getPaddingAndMarginStyle: function (tool, isLabel) {
+                var style = '';
+                var pos = ['left', 'right', 'top', 'bottom'];
 
-                        if (tool.optionslayout == 'horizontal') {
-                            var width = 100 / Math.max(1, tool.options.length) + '%';
-                            if (tool.columnwidth)
-                                width = tool.columnwidth;
+                var paddingPropertyName = isLabel ? 'labelpadding' : 'padding';
+                var marginPropertyName = isLabel ? 'labelmargin' : 'margin';
 
-                            template += this._beginColumn(width);
-                            template += "<table cellspacing='0' cellpadding='0' style='width: 100%; white-space: nowrap; border: 0px;'>" + innerTemplate + "</table>";
-                            template += this._endColumn();
+                var padding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool[paddingPropertyName]);
+                for (var i in padding)
+                    padding[i] = !isNaN(padding[i]) ? padding[i] : parseFloat(padding[i].toString());
+
+                var margin = tool[marginPropertyName];
+
+                if (padding) {
+                    for (var i in pos) {
+                        if (padding[pos[i]])
+                            style += 'padding-' + pos[i] + ': ' + padding[pos[i]] + 'px;';
+                    }
+                }
+                if (margin) {
+                    for (var i in pos) {
+                        if (margin[pos[i]])
+                            style += 'margin-' + pos[i] + ': ' + margin[pos[i]] + ';';
+                    }
+                }
+
+                return style;
+            },
+
+
+            _getToolLabelStyle: function (tool) {
+                var style = 'display:block;';
+                var pos = ['left', 'right', 'top', 'bottom'];
+
+                if (tool.labelheight !== undefined)
+                    style += 'height: ' + tool.labelheight + ';';
+                else
+                    style += 'height: 100%;';
+
+                if (tool.labelvalign !== undefined)
+                    style += 'vertical-align: ' + tool.labelvalign + ';';
+                else if (tool.valign !== undefined)
+                    style += 'vertical-align: ' + tool.valign + ';';
+                else
+                    style += 'vertical-align: middle;'
+
+                return style;
+            },
+
+            _renderAndInit: function () {
+                var html = this._createTemplateHtml();
+                this.host.append(html);
+
+                this._initTools();
+                this._smartPaste();
+            },
+
+            refresh: function (initialRefresh) {
+                var self = this;
+                if (!self._isInitialized || initialRefresh === true)
+                    return;
+
+                var val = self.val();
+                self._destroyElements();
+
+                self._renderAndInit();
+
+                self._prevValue = val;
+
+                self.val(val);
+            },
+
+            _createTemplateHtml: function () {
+                var groups = this.groups;
+
+                var paddingStyle =
+                    'padding-left: ' + parseFloat(this.padding.left) + 'px;' +
+                    'padding-right: ' + parseFloat(this.padding.right) + 'px;' +
+                    'padding-top: ' + parseFloat(this.padding.top) + 'px;' +
+                    'padding-bottom: ' + parseFloat(this.padding.bottom) + 'px;';
+
+                // begin form
+                var html = "<table id='formWrap' style='background-color: " + this.backgroundColor + "; width: 100%; white-space: nowrap; border: 1px solid " + this.borderColor + ";" + paddingStyle + "' cellpadding='0' cellspacing='0'><div id='formSubmit' style='display:hidden;'><div>";
+
+                var tools = this.template;
+
+                for (var i = 0; i < tools.length; i++) {
+                    var toolId = "el_" + this.element.id + i;
+                    var tool = this.template[i];
+                    var template = this._getToolTemplate(tool, toolId);
+
+                    html += template;
+                }
+
+                // end form
+                html += "</table>";
+
+                return html;
+            },
+
+            _beginRow: function (id, height, valign) {
+                if (undefined === height)
+                    height = 'auto';
+
+                if (valign)
+                    valign = "valign='" + valign + "'";
+                else
+                    valign = "";
+
+                var row = "<tr style='width: 100%; height: " + height + ";' id='rowWrap_" + id + "'" + " " + valign + ">";
+                row += "<td style='width: 100%;'><table style='width: 100%; white-space: nowrap; border: 0px;' cellspacing='0' cellpadding='0'><tr style='width: 100%'>";
+                return row;
+            },
+
+            _endRow: function () {
+                return "<td style='width: auto; background: transparent;'> </tr></table></td></tr>";
+            },
+
+            _beginColumn: function (width, style) {
+                if (!style)
+                    style = '';
+
+                if (undefined === width)
+                    width = 'auto';
+
+                var template = "<td style='width:" + width + "; background: transparent;'>";
+                template += "<div style='display:block; overflow: visible; width: 100%; background: transparent;'>";
+
+                return template;
+            },
+
+            _endColumn: function () {
+                return "</div></td>";
+            },
+
+            _splitLabelToolWidth: function (tool, isInsideColumn) {
+                var toolWidth = isInsideColumn ? 'auto' : tool.columnwidth;
+                var labelWidth = tool.labelwidth;
+
+                var toolPadding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool.padding);
+                var labelPadding = $.extend({ left: 5, top: 5, right: 5, bottom: 5 }, tool.labelpadding);
+                for (var i in toolPadding)
+                    toolPadding[i] = !isNaN(toolPadding[i]) ? toolPadding[i] : parseFloat(toolPadding[i].toString());
+
+                for (var i in labelPadding)
+                    labelPadding[i] = !isNaN(labelPadding[i]) ? labelPadding[i] : parseFloat(labelPadding[i].toString());
+
+                if (tool.label == '' || tool.label == undefined) {
+                    labelWidth = 0;
+                    labelPadding = { left: 0, right: 0, top: 0, bottom: 0 };
+                }
+
+                if (tool.labelposition == 'top' || tool.labelposition == 'bottom') {
+                    if (undefined === labelWidth)
+                        labelWidth = toolWidth;
+                    if (undefined === toolWidth)
+                        toolWidth = labelWidth;
+
+                    if (toolWidth && toolWidth.toString().indexOf('%') != -1 && labelWidth && labelWidth.toString().indexOf('%') != -1) {
+                        toolWidth = labelWidth = Math.max(parseFloat(toolWidth), parseFloat(labelWidth)) + '%';
+                    }
+                    if (toolWidth && toolWidth.toString().indexOf('%') == -1 && labelWidth && labelWidth.toString().indexOf('%') == -1) {
+                        toolWidth = labelWidth = Math.max(parseFloat(toolWidth), parseFloat(labelWidth)) + 'px';
+                    }
+
+                    return [labelWidth, toolWidth]
+                }
+
+                // handle left/right positioning
+                if (labelWidth === undefined) {
+                    if (toolWidth !== undefined && toolWidth !== 'auto') {
+                        return ['auto', toolWidth];
+                    }
+                    else {
+                        if (tool.labelposition == 'right') {
+                            if (tool.align == 'right' || tool.align == 'center' || tool.align == 'middle')
+                                return ['auto', '100%'];
+
+                            return ['100%', 'auto'];
                         }
-                        else
-                            template += innerTemplate;
+
+                        return ['auto', '100%'];
+                    }
+                }
+                else if (labelWidth.toString().indexOf('%') !== -1) {
+                    labelWidth = parseFloat(labelWidth);
+                    if (toolWidth !== undefined) {
+                        if (toolWidth.toString().indexOf('%') !== -1) {
+                            toolWidth = parseFloat(toolWidth);
+                            return [Math.min(100, labelWidth) + '%', Math.min(toolWidth, 100 - labelWidth) + '%'];
+                        }
+                        else {
+                            toolWidth = parseFloat(toolWidth);
+                            return [Math.min(100, labelWidth) + '%', toolWidth];
+                        }
                     }
 
-                    template += this._endRow();
-                    return template;
+                    return [Math.min(100, labelWidth) + '%', Math.max(0, 100 - labelWidth) + '%'];
                 }
-            }
+                else {
+                    labelWidth = parseFloat(labelWidth) + labelPadding.left + labelPadding.right;
+                    if (toolWidth == undefined)
+                        return [labelWidth + 'px', 'calc(100% - ' + labelWidth + 'px)'];
 
-            var labelPosition = tool.labelposition
-            var label = tool.label;
+                    return [labelWidth + 'px', toolWidth];
+                }
+            },
 
-            var optionLabel = '';
+            _getToolTemplate: function (toolObject, id, optionIndex, isInsideColumn) {
+                var tool = {};
+                for (var p in toolObject)
+                    tool[p.toLowerCase()] = toolObject[p];
 
-            if (tool.type == 'option' && tool.component != 'jqxDropDownList' && !isNaN(optionIndex)) {
-                var optionLabel = tool.options[optionIndex].label;
-                label = optionLabel;
-            }
+                if ($.isArray(tool.columns) && isNaN(optionIndex)) {
 
-            if (label === undefined)
-                label = '';
+                    var str = this._beginRow(id, tool.rowheight || 'auto');
 
-            var template = '';
+                    for (var i = 0; i < tool.columns.length; i++) {
+                        var innerTemplate = this._getToolTemplate(tool.columns[i], (id + "_" + i), undefined, true);
 
-            var labelStyle = this._getToolLabelStyle(tool) + this._getPaddingAndMarginStyle(tool, true);
-            var toolstyle = this._getToolStyle(tool) + this._getPaddingAndMarginStyle(tool, false);
+                        var width = 'auto';
+                        if (tool.columns[i].columnWidth !== undefined)
+                            width = tool.columns[i].columnWidth;
+                        else if (tool.columns[i].width !== undefined)
+                            width = tool.columns[i].width;
 
-            var className = '';
+                        str += this._beginColumn(width);
+                        str += "<table cellspacing='0' cellpadding='0' style='width: 100%; white-space: nowrap; border: 0px;'>" + innerTemplate + "</table>";
+                        str += this._endColumn();
+                    }
+                    str += this._endRow();
+                    return str;
+                }
 
-            var align = this._getAlignMargin(tool, 'align');
+                if (tool.type == 'option' && tool.component != 'jqxDropDownList') {
+                    if (isNaN(optionIndex)) {
+                        var template = this._beginRow(id, tool.rowheight || 'auto', tool.valign);
 
-            var labelAlign = 'text-align: left;';
-            if (tool.labelalign == 'center' || tool.labelalign == 'middle')
-                labelAlign = 'text-align: center';
-            else if (tool.labelalign == 'right')
-                labelAlign = 'text-align: right';
+                        for (var i = 0; i < tool.options.length; i++) {
+                            var innerTemplate = this._getToolTemplate(tool, (id + "_option_" + i), i, true);
 
-            var inputAlign = 'text-align: left;';
-            if (tool.align == 'center' || tool.align == 'middle')
-                inputAlign = 'text-align: center';
-            else if (tool.align == 'right')
-                inputAlign = 'text-align: right';
+                            if (tool.optionslayout == 'horizontal') {
+                                var width = 100 / Math.max(1, tool.options.length) + '%';
+                                if (tool.columnwidth)
+                                    width = tool.columnwidth;
 
-            // get the label and tool width portions
-            var widths = this._splitLabelToolWidth(tool, isInsideColumn);
+                                template += this._beginColumn(width);
+                                template += "<table cellspacing='0' cellpadding='0' style='width: 100%; white-space: nowrap; border: 0px;'>" + innerTemplate + "</table>";
+                                template += this._endColumn();
+                            }
+                            else
+                                template += innerTemplate;
+                        }
+
+                        template += this._endRow();
+                        return template;
+                    }
+                }
+
+                var labelPosition = tool.labelposition
+                var label = tool.label;
+
+                var optionLabel = '';
+
+                if (tool.type == 'option' && tool.component != 'jqxDropDownList' && !isNaN(optionIndex)) {
+                    var optionLabel = tool.options[optionIndex].label;
+                    label = optionLabel;
+                }
+
+                if (label === undefined)
+                    label = '';
+
+                var template = '';
+
+                var labelStyle = this._getToolLabelStyle(tool) + this._getPaddingAndMarginStyle(tool, true);
+                var toolstyle = this._getToolStyle(tool) + this._getPaddingAndMarginStyle(tool, false);
+
+                var className = '';
+
+                var align = this._getAlignMargin(tool, 'align');
+
+                var labelAlign = 'text-align: left;';
+                if (tool.labelalign == 'center' || tool.labelalign == 'middle')
+                    labelAlign = 'text-align: center';
+                else if (tool.labelalign == 'right')
+                    labelAlign = 'text-align: right';
+
+                var inputAlign = 'text-align: left;';
+                if (tool.align == 'center' || tool.align == 'middle')
+                    inputAlign = 'text-align: center';
+                else if (tool.align == 'right')
+                    inputAlign = 'text-align: right';
+
+                // get the label and tool width portions
+                var widths = this._splitLabelToolWidth(tool, isInsideColumn);
 
 
-            var labelContent = label;
+                var labelContent = label;
 
-            if (tool.required) {
-                var required = "<span class='" + className + "' style='color:red;'>*</span>";
-                if (tool.requiredposition) {
-                    if (tool.requiredposition.toLowerCase() == 'left')
-                        labelContent = required + ' ' + label;
+                if (tool.required) {
+                    var required = "<span class='" + className + "' style='color:red;'>*</span>";
+                    if (tool.requiredposition) {
+                        if (tool.requiredposition.toLowerCase() == 'left')
+                            labelContent = required + ' ' + label;
+                        else
+                            labelContent = label + ' ' + required;
+                    }
                     else
                         labelContent = label + ' ' + required;
                 }
-                else
-                    labelContent = label + ' ' + required;
-            }
 
-            var labelCursor = '';
-            if (tool.type == 'boolean' || (tool.type == 'option' && !isNaN(optionIndex))) {
-                labelCursor += '; cursor: pointer;';
-            }
-
-            var tdLabel = "<div class='" + className + "' style='" + labelStyle + "'><div style='" + labelAlign + labelCursor + ";' id='" + 'label_' + id + "'>" + labelContent + "</div></div>";
-
-            var tdStyle = (tool.info !== undefined && tool.infoposition != 'left') ? 'margin-left: -3px;' : 'margin-right: -3px;'
-            var tdInfo = "<div style='" + tdStyle + "' class='" + this.toThemeProperty('jqx-info-icon') + "' title='" + tool.info + "'></div>";
-
-            var tdComponent = "<div style='background: transparent;" + toolstyle + "'><div style='width: auto; height: auto; " + align + "' id='" + id + "'></div></div>";
-
-            if (tool.type == 'text' || tool.type == 'button')
-                tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input style='width: auto; height: auto; " + align + "' id='" + id + "' type='" + tool.type + "'/></div>";
-            //tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input id='" + id + "' type='" + tool.type + "'/></div>";
-            else if (tool.type == 'password')
-                tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input type='password' style='width: auto; height: auto; " + align + "' id='" + id + "'/></div>";
-            if (tool.type == 'option' && tool.component != 'jqxDropDownList' && !isNaN(optionIndex)) {
-                var width = tool.width;
-                if (width === undefined)
-                    width = '15px';
-
-                widths = [tool.labelwidth || 'auto', width];
-                if (tool.labelposition && (tool.labelposition == 'top' || tool.labelposition == 'bottom')) {
-                    widths = ['100%', '100%'];
+                var labelCursor = '';
+                if (tool.type == 'boolean' || (tool.type == 'option' && !isNaN(optionIndex))) {
+                    labelCursor += '; cursor: pointer;';
                 }
 
-                tdComponent = "<div style='background: transparent;" + toolstyle + align + inputAlign + "'><div style='width: " + width + "; height: 100%; " + align + inputAlign + ";' id='" + id + "'></div></div>";
-            }
+                var tdLabel = "<div class='" + className + "' style='" + labelStyle + "'><div style='" + labelAlign + labelCursor + ";' id='" + 'label_' + id + "'>" + labelContent + "</div></div>";
 
-            if (tool.info !== undefined && tool.info !== '') {
-                if (tool.infoposition == 'left')
-                    tdComponent = "<table cellspacing='0' cellpadding='0' style='border: 0px; white-space: nowrap;" + align + "'><tr><td>" + tdInfo + "</td><td>" + tdComponent + "</td></tr></table>";
-                else
-                    tdComponent = "<table cellspacing='0' cellpadding='0' style='border: 0px; white-space: nowrap;" + align + "'><tr><td>" + tdComponent + "</td><td>" + tdInfo + "</td></tr></table>";
-            }
+                var tdStyle = (tool.info !== undefined && tool.infoposition != 'left') ? 'margin-left: -3px;' : 'margin-right: -3px;'
+                var tdInfo = "<div style='" + tdStyle + "' class='" + this.toThemeProperty('jqx-info-icon') + "' title='" + tool.info + "'></div>";
 
-            if (labelPosition == 'right') {
-                template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
-                template += this._beginColumn(widths[1]);
-                template += tdComponent;
-                if (label != '') {
+                var tdComponent = "<div style='background: transparent;" + toolstyle + "'><div style='width: auto; height: auto; " + align + "' id='" + id + "'></div></div>";
+
+                if (tool.type == 'text' || tool.type == 'button')
+                    tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input style='width: auto; height: auto; " + align + "' id='" + id + "' type='" + tool.type + "'/></div>";
+                //tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input id='" + id + "' type='" + tool.type + "'/></div>";
+                else if (tool.type == 'password')
+                    tdComponent = "<div style='background: transparent;" + toolstyle + inputAlign + "'><input type='password' style='width: auto; height: auto; " + align + "' id='" + id + "'/></div>";
+                if (tool.type == 'option' && tool.component != 'jqxDropDownList' && !isNaN(optionIndex)) {
+                    var width = tool.width;
+                    if (width === undefined)
+                        width = '15px';
+
+                    widths = [tool.labelwidth || 'auto', width];
+                    if (tool.labelposition && (tool.labelposition == 'top' || tool.labelposition == 'bottom')) {
+                        widths = ['100%', '100%'];
+                    }
+
+                    tdComponent = "<div style='background: transparent;" + toolstyle + align + inputAlign + "'><div style='width: " + width + "; height: 100%; " + align + inputAlign + ";' id='" + id + "'></div></div>";
+                }
+
+                if (tool.info !== undefined && tool.info !== '') {
+                    if (tool.infoposition == 'left')
+                        tdComponent = "<table cellspacing='0' cellpadding='0' style='border: 0px; white-space: nowrap;" + align + "'><tr><td>" + tdInfo + "</td><td>" + tdComponent + "</td></tr></table>";
+                    else
+                        tdComponent = "<table cellspacing='0' cellpadding='0' style='border: 0px; white-space: nowrap;" + align + "'><tr><td>" + tdComponent + "</td><td>" + tdInfo + "</td></tr></table>";
+                }
+
+                if (labelPosition == 'right') {
+                    template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
+                    template += this._beginColumn(widths[1]);
+                    template += tdComponent;
+                    if (label != '') {
+                        template += this._endColumn();
+                        template += this._beginColumn(widths[0]);
+                        template += tdLabel;
+                    }
                     template += this._endColumn();
-                    template += this._beginColumn(widths[0]);
-                    template += tdLabel;
+                    template += this._endRow();
                 }
-                template += this._endColumn();
-                template += this._endRow();
-            }
-            else if (labelPosition == 'top') {
-                template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
-                template += this._beginColumn(tool.columnwidth);
-                if (label != '') {
-                    template += tdLabel;
-                }
-                template += tdComponent;
-                template += this._endColumn();
-                template += this._endRow();
-            }
-            else if (labelPosition == 'bottom') {
-                template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
-                template += this._beginColumn(tool.columnwidth);
-                template += tdComponent;
-                if (label != '') {
-                    template += tdLabel;
-                }
-                template += this._endColumn();
-                template += this._endRow();
-            }
-            else {
-                template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
-                if (label != '') {
-                    template += this._beginColumn(widths[0]);
-                    template += tdLabel;
+                else if (labelPosition == 'top') {
+                    template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
+                    template += this._beginColumn(tool.columnwidth);
+                    if (label != '') {
+                        template += tdLabel;
+                    }
+                    template += tdComponent;
                     template += this._endColumn();
+                    template += this._endRow();
                 }
-
-                template += this._beginColumn(widths[1]);
-                template += tdComponent;
-                template += this._endColumn();
-                template += this._endRow();
-            }
-
-
-
-            return template;
-        },
-
-        _initTools: function (tools, idPrefix) {
-            var template = tools || this.template;
-
-            if (undefined == idPrefix)
-                idPrefix = '';
-
-            for (var i = 0; i < template.length; i++) {
-                var tool = template[i];
-                if ($.isArray(tool.columns)) {
-                    this._initTools(tool.columns, i + "_");
-                    continue;
-                }
-
-                var id = idPrefix + i;
-
-                switch (tool.type) {
-                    case 'color':
-                        this._initColorTool(id);
-                        break;
-                    case 'option':
-                        if (tool.component == 'jqxDropDownList')
-                            this._initOptionToolDropDownList(id);
-                        else
-                            this._initOptionTool(id);
-                        break;
-                    case 'dropdownlist':
-                        this._initOptionToolDropDownList(id);
-                        break;
-                    case 'number':
-                        this._initNumberTool(id);
-                        break;
-                    case 'boolean': case 'checkbox':
-                        this._initBooleanTool(id);
-                        break;
-                    case 'text':
-                        this._initTextTool(id);
-                        break;
-                    case 'password':
-                        this._initPasswordTool(id);
-                        break;
-                    case 'label':
-                        this._initLabelTool(id);
-                        break;
-                    case 'date': case 'time': case 'datetime':
-                        this._initDateTimeTool(id);
-                        break;
-                    case 'button':
-                        this._initButtonTool(id);
-                        break;
-                    case 'custom':
-                        this._initCustomTool(id);
-                        break;
-                }
-
-                if (tool.visible === false)
-                    this._showhideComponent(undefined, id, false);
-
-                if (tool.theme)
-                    this._setToolTheme(tool, id);
-            }
-        },
-
-        _setToolTheme: function (tool, id) {
-            var component = this._getComponentById(id);
-
-            var theme = tool.theme || this.theme;
-
-            switch (tool.type) {
-                case 'option':
-                    if (tool.component == 'jqxDropDownList')
-                        component.jqxDropDownList('theme', theme);
-                    break;
-                case 'number':
-                    component.jqxNumberInput('theme', theme);
-                    break;
-                case 'text':
-                    component.jqxInput('theme', theme);
-                    break;
-                case 'password':
-                    component.jqxPasswordInput('theme', theme);
-                    break;
-            }
-        },
-
-        _initOptionTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            for (var i = 0; i < tool.options.length; i++) {
-                var optionId = id + "_option_" + i;
-                var el = self.host.find("#" + optionId);
-                if (el.length > 0)
-                    el.jqxRadioButton({ width: 25, theme: self.theme, groupName: 'group_' + toolId }).on('change', function (event) { self._onChangeHandler(event); });
-
-                var inputLabel = self.host.find('#label_' + optionId);
-                inputLabel.data('el', el);
-                inputLabel.on('mousedown', function (event) {
-                    var el = $(this).data('el');
-                    el.jqxRadioButton('toggle');
-                });
-
-            }
-        },
-
-        _initOptionToolDropDownList: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var dropDownList = this.host.find("#" + id);
-
-            var itemTemplateStart = "<div style=\"height: 20px;\"></div>";
-
-            var source = [];
-			
-			if (tool.source) {
-				source = tool.source;
-			}
-            else if (tool.options && $.isArray(tool.options)) {
-                for (var i = 0; i < tool.options.length; i++)
-                    source.push(tool.options[i]);
-            }
-
-            if (tool.init)
-                tool.init(dropDownList);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-
-                if (tool.width && tool.width.toString().indexOf('%') != -1 && tool.columnwidth === undefined)
-                    width = '100%';
-
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-                dropDownList.jqxDropDownList({ theme: self.theme, width: width || 'auto', autoDropDownHeight: true, height: height, enableBrowserBoundsDetection: true, source: source, selectedIndex: 0 });
-            }
-
-
-            dropDownList.on('change', function (event) {
-                self._onChangeHandler(event);
-            });
-        },
-
-        _initNumberTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var numberInput = this.host.find("#" + id);
-
-            if (tool.init)
-                tool.init(numberInput);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-
-                numberInput.jqxNumberInput({ theme: self.theme, width: width, height: height, inputMode: 'simple' });
-            }
-
-            numberInput.on('change', function (event) { self._onChangeHandler(event); });
-        },
-
-        _initBooleanTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var booleanInput = this.host.find("#" + id);
-
-            if (tool.init)
-                tool.init(booleanInput);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-
-                var isThreeState = tool.isThreeState == true;
-
-                if (tool.component === undefined || tool.component == 'jqxCheckBox') {
-                    booleanInput.jqxCheckBox({ theme: self.theme, width: width, height: height, hasThreeStates: isThreeState });
+                else if (labelPosition == 'bottom') {
+                    template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
+                    template += this._beginColumn(tool.columnwidth);
+                    template += tdComponent;
+                    if (label != '') {
+                        template += tdLabel;
+                    }
+                    template += this._endColumn();
+                    template += this._endRow();
                 }
                 else {
-                    return;
-                }
-            }
-
-            booleanInput.on('change', function (event) { self._onChangeHandler(event); });
-
-            var booleanInputLabel = self.host.find('#label_' + id);
-            booleanInputLabel.on('mousedown', function (event) {
-                var val = self.host.find('#' + id).val();
-                self.host.find('#' + id).val(!val);
-            });
-        },
-
-
-
-        _initTextTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var input = this.host.find("#" + id);
-
-            if (tool.init)
-                tool.init(input);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-
-                input.jqxInput({ theme: self.theme, width: width, height: height });
-            }
-
-            input.on('change', function (event) { self._onChangeHandler(event); });
-        },
-
-        _initLabelTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var element = this.host.find("#" + id);
-
-            if (tool.render && $.isFunction(tool.render)) {
-                var html = tool.render();
-                element.html(html || '');
-            }
-        },
-
-        _getTool: function (toolId) {
-            var self = this;
-
-            var parts = toolId.split('_');
-            var parentTool = self.template[parts[0]];
-            if (parts[1]) {
-                if ($.isArray(parentTool.columns) && parentTool.columns.length > parts[1])
-                    return parentTool.columns[parts[1]];
-
-                return undefined;
-            }
-
-            return parentTool;
-        },
-
-        _initCustomTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var toolElement = this.host.find("#" + id);
-
-            if (tool.init)
-                tool.init(toolElement);
-        },
-
-        _initButtonTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var button = this.host.find("#" + id);
-
-            if (tool.init)
-                tool.init(button);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-
-                button.jqxButton({ theme: self.theme, width: width, height: height });
-                button.val(tool.text === undefined ? 'Button' : tool.text);
-            }
-
-            this.host.find("#" + id).on('click', function (event) {
-                self._onButtonClick(button, tool);
-            }
-            );
-        },
-
-
-        _initPasswordTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var input = this.host.find("#" + id);
-            //       input.css({ 'padding-left': 0, 'padding-right': 0 });
-
-            if (tool.init)
-                tool.init(input);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '25px' : tool.height;
-
-                input.jqxPasswordInput({ theme: self.theme, width: width, height: height });
-            }
-
-            input.on('change', function (event) { self._onChangeHandler(event); });
-        },
-
-        _initDateTimeTool: function (toolId) {
-            var self = this;
-
-            var id = "el_" + this.element.id + toolId;
-
-            var tool = self._getTool(toolId);
-
-            var input = this.host.find("#" + id);
-            //        input.css({ 'padding-left': 0, 'padding-right': 0 });
-
-            if (tool.init)
-                tool.init(input);
-            else {
-                var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
-                var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
-
-                var formatString = tool.formatString;
-                if (!formatString) {
-                    if (tool.type == 'time')
-                        formatString = 'hh mm ss tt';
-                    else if (tool.type == 'date')
-                        formatString = 'MM/dd/yyyy';
-                    else
-                        formatString = 'MM/dd/yyyy hh:mm:ss tt';
-
-                }
-
-                input.jqxDateTimeInput({ theme: self.theme, width: width, height: height, formatString: formatString, showTimeButton: tool.type != 'date', showCalendarButton: tool.type != 'time' });
-            }
-
-            input.on('valueChanged', function (event) { self._onChangeHandler(event); });
-        },
-
-        getComponentByName: function (name) {
-            if (!$.isArray(this.template))
-                return undefined;
-
-            for (var i = 0; i < this.template.length; i++) {
-                if (this.template[i].name == name)
-                    return this._getComponentById(i);
-
-                if ($.isArray(this.template[i].columns)) {
-                    for (var j = 0; j < this.template[i].columns.length; j++) {
-                        if (this.template[i].columns[j].name == name)
-                            return this._getComponentById(i + "_" + j);
+                    template += this._beginRow(id, tool.rowheight || 'auto', tool.valign);
+                    if (label != '') {
+                        template += this._beginColumn(widths[0]);
+                        template += tdLabel;
+                        template += this._endColumn();
                     }
 
+                    template += this._beginColumn(widths[1]);
+                    template += tdComponent;
+                    template += this._endColumn();
+                    template += this._endRow();
                 }
-            }
 
-            return undefined;
-        },
 
-        _getComponentById: function (id) {
-            var component = this.host.find('#el_' + this.element.id + id);
 
-            return component;
-        },
+                return template;
+            },
 
-        _getComponentLabelById: function (id) {
-            var component = this.host.find('#label_el_' + id);
+            _initTools: function (tools, idPrefix) {
+                var template = tools || this.template;
 
-            return component;
-        },
+                if (undefined == idPrefix)
+                    idPrefix = '';
 
-        hideComponent: function (name) {
-            this._showhideComponent(name, undefined, false);
-        },
-
-        showComponent: function (name) {
-            this._showhideComponent(name, undefined, true);
-        },
-
-        _showhideComponent: function (name, id, show) {
-            if (!$.isArray(this.template))
-                return;
-
-            var index = '';
-            if (id === undefined) {
-                for (var i = 0; i < this.template.length; i++) {
-                    if (this.template[i].name == name) {
-                        index = i;
-                        break;
+                for (var i = 0; i < template.length; i++) {
+                    var tool = template[i];
+                    if ($.isArray(tool.columns)) {
+                        this._initTools(tool.columns, i + "_");
+                        continue;
                     }
-                    if (this.template[i].bind == name) {
-                        index = i;
-                        break;
+
+                    var id = idPrefix + i;
+
+                    switch (tool.type) {
+                        case 'color':
+                            this._initColorTool(id);
+                            break;
+                        case 'option':
+                            if (tool.component == 'jqxDropDownList')
+                                this._initOptionToolDropDownList(id);
+                            else
+                                this._initOptionTool(id);
+                            break;
+                        case 'dropdownlist':
+                            this._initOptionToolDropDownList(id);
+                            break;
+                        case 'number':
+                            this._initNumberTool(id);
+                            break;
+                        case 'boolean': case 'checkbox':
+                            this._initBooleanTool(id);
+                            break;
+                        case 'text':
+                            this._initTextTool(id);
+                            break;
+                        case 'password':
+                            this._initPasswordTool(id);
+                            break;
+                        case 'label':
+                            this._initLabelTool(id);
+                            break;
+                        case 'date': case 'time': case 'datetime':
+                            this._initDateTimeTool(id);
+                            break;
+                        case 'button':
+                            this._initButtonTool(id);
+                            break;
+                        case 'custom':
+                            this._initCustomTool(id);
+                            break;
                     }
-                    if ($.isArray(this.template[i].columns)) {
-                        for (var j = 0; j < this.template[i].length; j++) {
-                            if (this.template[i].columns[j].name == name) {
-                                index = i + "_" + j;
-                                break;
+
+                    if (tool.visible === false)
+                        this._showhideComponent(undefined, id, false);
+
+                    if (tool.theme)
+                        this._setToolTheme(tool, id);
+                }
+            },
+
+            _smartPaste: function () {
+                var form = this.element;
+                var that = this;
+                var openaiApiKey = this.aiKey;
+                var idPrefix = '';
+
+                if (this.enableSmartPaste) {
+                    form.addEventListener('paste', function (e) {
+                        var pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                        if (!pastedText || !openaiApiKey) return;
+
+                        var spinner = document.createElement('span');
+                        spinner.classList.add('jqx-form-spinner');
+                        spinner.innerHTML = '';
+
+                        var tooltip = document.createElement('div');
+                        tooltip.classList.add('jqx-widget', 'jqx-form-tooltip');
+                        document.body.appendChild(tooltip);
+                        tooltip.innerHTML = spinner.outerHTML + '<span>' + that.pasteProgress + '</span>';
+
+                        var offset = that.host.offset();
+                        tooltip.style.top = offset.top + form.offsetHeight - 30 + 'px';
+                        tooltip.style.left = offset.left + 'px';
+
+                        e.preventDefault();
+
+                        var names = [];
+                        var inputs = [];
+
+                        for (var i = 0; i < that.template.length; i++) {
+                            var tool = that.template[i];
+
+                            if (tool.type === 'text' || tool.type === 'boolean' || tool.type === 'number' ||
+                                tool.type === 'password' || tool.type === 'password' || tool.type === 'dropdownlist' ||
+                                tool.type === 'option' || tool.type === 'date' || tool.type === 'time' || tool.type === 'datetime') {
+
+
+                                if (tool.bind) {
+                                    names.push(tool.bind);
+
+                                    var toolId = idPrefix + i;
+                                    var id = "el_" + that.element.id + toolId;
+                                    var widget = that.host.find("#" + id);
+                                    widget.name = tool.bind;
+                                    inputs.push(widget);
+                                }
                             }
-                            if (this.template[i].columns[j].bind == name) {
-                                index = i + "_" + j;
-                                break;
+                        }
+
+                        var inputSchema = names;
+                        var prompt =
+                            "You are an AI assistant. Here's a list of form field names: " + JSON.stringify(inputSchema) + ".\n\n" +
+                            "Given this pasted text:\n\"\"\"" + pastedText + "\"\"\"\n\n" +
+                            "Return a JSON object mapping field names to appropriate values.";
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', that.aiUrl || "https://api.openai.com/v1/chat/completions", true);
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + openaiApiKey);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status >= 200 && xhr.status < 300) {
+                                    var data;
+                                    try {
+                                        data = JSON.parse(xhr.responseText);
+                                    } catch (e) {
+                                        console.error('Error parsing response JSON:', e);
+                                        showError();
+                                        return;
+                                    }
+
+                                    var content = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+                                    var mappedValues = {};
+                                    try {
+                                        mappedValues = JSON.parse(content || '{}');
+                                    } catch (err) {
+                                        console.error('Error parsing JSON from AI response:', err);
+                                    }
+
+                                    var fieldsCount = 0;
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        var input = inputs[i];
+                                        if (mappedValues[input.name]) {
+                                            if (input[0].classList.contains('jqx-dropdownlist')) {
+                                                var source = input.jqxDropDownList('source');
+                                                var index = -1;
+
+                                                for (var j = 0; j < source.length; j++) {
+                                                    var item = source[j];
+                                                    if (typeof item === 'string') {
+                                                        if (item === mappedValues[input.name]) {
+                                                            index = j;
+                                                            break;
+                                                        }
+                                                    } else if (typeof item === 'object' && item) {
+                                                        if (item.label === mappedValues[input.name] || item.value === mappedValues[input.name]) {
+                                                            index = j;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+
+                                                if (index !== -1) {
+                                                    input.jqxDropDownList('selectIndex', index);
+                                                    input.val(mappedValues[input.name]);
+                                                    fieldsCount++;
+                                                }
+                                            } else {
+                                                input.val(mappedValues[input.name]);
+                                                fieldsCount++;
+                                            }
+                                        }
+                                    }
+
+                                    if (fieldsCount > 0) {
+                                        tooltip.innerHTML = '<span>' + that.pasteSuccess.replace('{{value}}', fieldsCount) + '</span>';
+                                    } else {
+                                        tooltip.innerHTML = '<span>' + that.pasteError + '</span>';
+                                    }
+
+                                    setTimeout(function () {
+                                        if (tooltip && tooltip.parentNode) {
+                                            tooltip.parentNode.removeChild(tooltip);
+                                        }
+                                    }, 4000);
+
+                                } else {
+                                    console.error('Smart Paste error: status ' + xhr.status);
+                                    showError();
+                                }
+                            }
+                        };
+
+                        function showError() {
+                            if (tooltip) {
+                                tooltip.innerHTML = '<span>' + that.pasteError + '</span>';
+                                if (tooltip.parentNode) {
+                                    tooltip.parentNode.removeChild(tooltip);
+                                }
+                            }
+                        }
+
+                        var body = JSON.stringify({
+                            model: that.aiModel || 'gpt-3.5-turbo',
+                            messages: [{ role: 'user', content: prompt }],
+                            temperature: 0.3
+                        });
+
+                        xhr.send(body);
+
+                    });
+                }
+            },
+            _setToolTheme: function (tool, id) {
+                var component = this._getComponentById(id);
+
+                var theme = tool.theme || this.theme;
+
+                switch (tool.type) {
+                    case 'option':
+                        if (tool.component == 'jqxDropDownList')
+                            component.jqxDropDownList('theme', theme);
+                        break;
+                    case 'number':
+                        component.jqxNumberInput('theme', theme);
+                        break;
+                    case 'text':
+                        component.jqxInput('theme', theme);
+                        break;
+                    case 'password':
+                        component.jqxPasswordInput('theme', theme);
+                        break;
+                }
+            },
+
+            _initOptionTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                for (var i = 0; i < tool.options.length; i++) {
+                    var optionId = id + "_option_" + i;
+                    var el = self.host.find("#" + optionId);
+                    if (el.length > 0)
+                        el.jqxRadioButton({ width: 25, theme: self.theme, groupName: 'group_' + toolId }).on('change', function (event) { self._onChangeHandler(event); });
+
+                    var inputLabel = self.host.find('#label_' + optionId);
+                    inputLabel.data('el', el);
+                    inputLabel.on('mousedown', function (event) {
+                        var el = $(this).data('el');
+                        el.jqxRadioButton('toggle');
+                    });
+
+                }
+            },
+
+            _initOptionToolDropDownList: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var dropDownList = this.host.find("#" + id);
+
+                var itemTemplateStart = "<div style=\"height: 20px;\"></div>";
+
+                var source = [];
+
+                if (tool.source) {
+                    source = tool.source;
+                }
+                else if (tool.options && $.isArray(tool.options)) {
+                    for (var i = 0; i < tool.options.length; i++)
+                        source.push(tool.options[i]);
+                }
+
+                if (tool.init)
+                    tool.init(dropDownList);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+
+                    if (tool.width && tool.width.toString().indexOf('%') != -1 && tool.columnwidth === undefined)
+                        width = '100%';
+
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+                    dropDownList.jqxDropDownList({ theme: self.theme, width: width || 'auto', autoDropDownHeight: true, height: height, enableBrowserBoundsDetection: true, source: source, selectedIndex: 0 });
+                }
+
+
+                dropDownList.on('change', function (event) {
+                    self._onChangeHandler(event);
+                });
+            },
+
+            _initNumberTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var numberInput = this.host.find("#" + id);
+
+                if (tool.init)
+                    tool.init(numberInput);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+
+                    numberInput.jqxNumberInput({ theme: self.theme, width: width, height: height, inputMode: 'simple' });
+                }
+
+                numberInput.on('change', function (event) { self._onChangeHandler(event); });
+            },
+
+            _initBooleanTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var booleanInput = this.host.find("#" + id);
+
+                if (tool.init)
+                    tool.init(booleanInput);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+
+                    var isThreeState = tool.isThreeState == true;
+
+                    if (tool.component === undefined || tool.component == 'jqxCheckBox') {
+                        booleanInput.jqxCheckBox({ theme: self.theme, width: width, height: height, hasThreeStates: isThreeState });
+                    }
+                    else {
+                        return;
+                    }
+                }
+
+                booleanInput.on('change', function (event) { self._onChangeHandler(event); });
+
+                var booleanInputLabel = self.host.find('#label_' + id);
+                booleanInputLabel.on('mousedown', function (event) {
+                    var val = self.host.find('#' + id).val();
+                    self.host.find('#' + id).val(!val);
+                });
+            },
+
+
+
+            _initTextTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var input = this.host.find("#" + id);
+
+                if (tool.init)
+                    tool.init(input);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+
+                    input.jqxInput({ theme: self.theme, width: width, height: height });
+                }
+
+                input.on('change', function (event) { self._onChangeHandler(event); });
+            },
+
+            _initLabelTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var element = this.host.find("#" + id);
+
+                if (tool.render && $.isFunction(tool.render)) {
+                    var html = tool.render();
+                    element.html(html || '');
+                }
+            },
+
+            _getTool: function (toolId) {
+                var self = this;
+
+                var parts = toolId.split('_');
+                var parentTool = self.template[parts[0]];
+                if (parts[1]) {
+                    if ($.isArray(parentTool.columns) && parentTool.columns.length > parts[1])
+                        return parentTool.columns[parts[1]];
+
+                    return undefined;
+                }
+
+                return parentTool;
+            },
+
+            _initCustomTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var toolElement = this.host.find("#" + id);
+
+                if (tool.init)
+                    tool.init(toolElement);
+            },
+
+            _initButtonTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var button = this.host.find("#" + id);
+
+                if (tool.init)
+                    tool.init(button);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+
+                    button.jqxButton({ theme: self.theme, width: width, height: height });
+                    button.val(tool.text === undefined ? 'Button' : tool.text);
+                }
+
+                this.host.find("#" + id).on('click', function (event) {
+                    self._onButtonClick(button, tool);
+                }
+                );
+            },
+
+
+            _initPasswordTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var input = this.host.find("#" + id);
+                //       input.css({ 'padding-left': 0, 'padding-right': 0 });
+
+                if (tool.init)
+                    tool.init(input);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '25px' : tool.height;
+
+                    input.jqxPasswordInput({ theme: self.theme, width: width, height: height });
+                }
+
+                input.on('change', function (event) { self._onChangeHandler(event); });
+            },
+
+            _initDateTimeTool: function (toolId) {
+                var self = this;
+
+                var id = "el_" + this.element.id + toolId;
+
+                var tool = self._getTool(toolId);
+
+                var input = this.host.find("#" + id);
+                //        input.css({ 'padding-left': 0, 'padding-right': 0 });
+
+                if (tool.init)
+                    tool.init(input);
+                else {
+                    var width = isNaN(parseFloat(tool.width)) ? 'auto' : tool.width;
+                    var height = isNaN(parseFloat(tool.height)) ? '30px' : tool.height;
+
+                    var formatString = tool.formatString;
+                    if (!formatString) {
+                        if (tool.type == 'time')
+                            formatString = 'hh mm ss tt';
+                        else if (tool.type == 'date')
+                            formatString = 'MM/dd/yyyy';
+                        else
+                            formatString = 'MM/dd/yyyy hh:mm:ss tt';
+
+                    }
+
+                    input.jqxDateTimeInput({ theme: self.theme, width: width, height: height, formatString: formatString, showTimeButton: tool.type != 'date', showCalendarButton: tool.type != 'time' });
+                }
+
+                input.on('valueChanged', function (event) { self._onChangeHandler(event); });
+            },
+
+            getComponentByName: function (name) {
+                if (!$.isArray(this.template))
+                    return undefined;
+
+                for (var i = 0; i < this.template.length; i++) {
+                    if (this.template[i].name == name)
+                        return this._getComponentById(i);
+
+                    if ($.isArray(this.template[i].columns)) {
+                        for (var j = 0; j < this.template[i].columns.length; j++) {
+                            if (this.template[i].columns[j].name == name)
+                                return this._getComponentById(i + "_" + j);
+                        }
+
+                    }
+                }
+
+                return undefined;
+            },
+
+            _getComponentById: function (id) {
+                var component = this.host.find('#el_' + this.element.id + id);
+
+                return component;
+            },
+
+            _getComponentLabelById: function (id) {
+                var component = this.host.find('#label_el_' + id);
+
+                return component;
+            },
+
+            hideComponent: function (name) {
+                this._showhideComponent(name, undefined, false);
+            },
+
+            showComponent: function (name) {
+                this._showhideComponent(name, undefined, true);
+            },
+
+            _showhideComponent: function (name, id, show) {
+                if (!$.isArray(this.template))
+                    return;
+
+                var index = '';
+                if (id === undefined) {
+                    for (var i = 0; i < this.template.length; i++) {
+                        if (this.template[i].name == name) {
+                            index = i;
+                            break;
+                        }
+                        if (this.template[i].bind == name) {
+                            index = i;
+                            break;
+                        }
+                        if ($.isArray(this.template[i].columns)) {
+                            for (var j = 0; j < this.template[i].length; j++) {
+                                if (this.template[i].columns[j].name == name) {
+                                    index = i + "_" + j;
+                                    break;
+                                }
+                                if (this.template[i].columns[j].bind == name) {
+                                    index = i + "_" + j;
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-            }
-            else {
-                index = id;
-            }
+                else {
+                    index = id;
+                }
 
-            if (index != '') {
-                var toolWrapper = this.host.find('#rowWrap_el_' + this.element.id + index);
-                if (toolWrapper && toolWrapper.length != 0) {
-                    if (show)
-                        toolWrapper.show();
-                    else
-                        toolWrapper.hide();
+                if (index != '') {
+                    var toolWrapper = this.host.find('#rowWrap_el_' + this.element.id + index);
+                    if (toolWrapper && toolWrapper.length != 0) {
+                        if (show)
+                            toolWrapper.show();
+                        else
+                            toolWrapper.hide();
+                    }
                 }
             }
-        }
-    });
+        });
 
-})(jqxBaseFramework);
+    })(jqxBaseFramework);
 })();
-
-
 
 
 
@@ -50385,7 +50584,7 @@ var saveAs = window.jqxSaveAs = saveAs
         // clears the selection.
         clearSelection: function (render) {
             for (var indx = 0; indx < this.selectedIndexes.length; indx++) {
-                if (this.selectedIndexes[indx] && this.selectedIndexes[indx] != -1) {
+                if (this.selectedIndexes[indx] !== undefined && this.selectedIndexes[indx] != -1) {
                     this._raiseEvent('1', { index: indx, type: 'api', item: this.getVisibleItem(indx), originalEvent: null });
                 }
 
@@ -53620,8 +53819,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 6217:
@@ -54844,8 +55041,6 @@ var saveAs = window.jqxSaveAs = saveAs
     });
 })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -57817,8 +58012,6 @@ var saveAs = window.jqxSaveAs = saveAs
     }; //
 })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -61776,8 +61969,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 4240:
@@ -63371,8 +63562,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })();
 
 
-
-
 /***/ })
 
 /******/ 	});
@@ -63381,7 +63570,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_2583843__(moduleId) {
+/******/ 	function __nested_webpack_require_2596273__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -63395,7 +63584,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2583843__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2596273__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -63404,17 +63593,17 @@ var saveAs = window.jqxSaveAs = saveAs
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2583843__.amdO = {};
+/******/ 		__nested_webpack_require_2596273__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_2583843__.n = (module) => {
+/******/ 		__nested_webpack_require_2596273__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_2583843__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_2596273__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -63422,9 +63611,9 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_2583843__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_2596273__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_2583843__.o(definition, key) && !__nested_webpack_require_2583843__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_2596273__.o(definition, key) && !__nested_webpack_require_2596273__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -63433,7 +63622,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2583843__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_2596273__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -63441,42 +63630,42 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2583843__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2583843__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2583843__(3907);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_2583843__(714);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_2583843__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_2583843__(7196);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_2583843__(4240);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_2583843__(1610);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_2583843__(1062);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_2583843__(5868);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_2583843__(4720);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_2583843__(7995);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_2583843__(6217);
-/* harmony import */ var _jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_2583843__(4545);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_2583843__(2497);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_2583843__(5725);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_2583843__(4993);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _jqxform__WEBPACK_IMPORTED_MODULE_17__ = __nested_webpack_require_2583843__(281);
-/* harmony import */ var _jqxform__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__nested_webpack_require_2583843__.n(_jqxform__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2596273__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2596273__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2596273__(3907);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_2596273__(714);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_2596273__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_2596273__(7196);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_2596273__(4240);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_2596273__(1610);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_2596273__(1062);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_2596273__(5868);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_2596273__(4720);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_2596273__(7995);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_2596273__(6217);
+/* harmony import */ var _jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxmaskedinput__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_2596273__(4545);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_2596273__(2497);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_2596273__(5725);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_2596273__(4993);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _jqxform__WEBPACK_IMPORTED_MODULE_17__ = __nested_webpack_require_2596273__(281);
+/* harmony import */ var _jqxform__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__nested_webpack_require_2596273__.n(_jqxform__WEBPACK_IMPORTED_MODULE_17__);
 
 
 
@@ -63497,6 +63686,24 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
 /******/ })()
 ;
 /******/ })()

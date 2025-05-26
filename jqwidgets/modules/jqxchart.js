@@ -1,14 +1,86 @@
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
@@ -184,8 +256,6 @@ License: https://jqwidgets.com/license/ */
 })(jqxBaseFramework);
 
 })();
-
-
 
 
 /***/ }),
@@ -391,8 +461,6 @@ License: https://jqwidgets.com/license/ */
 })(jqxBaseFramework);
 
 })();
-
-
 
 
 /***/ }),
@@ -1375,19 +1443,7 @@ License: https://jqwidgets.com/license/ */
             },
 
             _credits: function () {
-                if ($.jqx["c" + "r" + "e" + "d" + "i" + "t" + "s"] !== "71208878-FCD1-4EC7-9249-BA0F153A5DE8") {
-	var self = this;
-	var t = String.fromCharCode(119, 119, 119, 46, 106, 113, 119, 105, 100, 103, 101, 116, 115, 46, 99, 111, 109);
-	if (!self._isRangeSelectorInstance && location.hostname.indexOf(t.substring(4)) == -1) {
-		var renderer = self.renderer;
-		var rect = self._rect;
-		var params = { 'class': self.toThemeProperty('jqx-chart-legend-text', null), opacity: 0.5 };
-		var tsz = renderer.measureText(t, 0, params);
-		var txt = renderer.text(t, rect.x + rect.width - tsz.width - 5, rect.y + rect.height - tsz.height - 5, tsz.width, tsz.height, 0, params);
-		$(txt).on('click', function () { location.href = 'http://' + t + '/?ref=' + self.widgetName; });
-	}
-}
-
+                //DEPRECATED
             },
 
             /** @private */
@@ -11038,8 +11094,6 @@ License: https://jqwidgets.com/license/ */
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 2306:
@@ -11752,8 +11806,6 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
 /***/ }),
 
 /***/ 2462:
@@ -11907,20 +11959,18 @@ License: https://jqwidgets.com/license/ */
 
 
 
-
-
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_518559__) => {
+/***/ ((module, exports, __nested_webpack_require_517778__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function () {
-	if (typeof document === 'undefined') {
+(function(){
+	if (typeof document === 'undefined') { 
 		return;
 	}
-
+		
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -20092,7 +20142,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (  true && __nested_webpack_require_518559__.amdO.JQXLite) {
+			if (           true && __nested_webpack_require_517778__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -20113,19 +20163,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
-			if (window.jQuery.fn.extend) {
-				window.jQuery.fn.stop = window.JQXLite.fn.stop;
-				window.jQuery.fn.animate = window.JQXLite.fn.animate;
-
-				var keys = Object.keys(window.JQXLite.fn);
-				for (var index in keys) {
-					var key = keys[index];
-					if (window.jQuery.fn[key] == undefined) {
-						window.jQuery.fn[key] = window.JQXLite.fn[key];
-					}
-				}
-			}
-
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -21747,7 +21784,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {
+					try {	
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -22240,12 +22277,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							return returnValue;
-							//       return returnValue + $(window).scrollTop();
+							 return returnValue;
+					//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-							//        return returnValue + $(window).scrollTop();
+					//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -22941,9 +22978,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
-		if (!$.easing) {
-			$.easing = {};
-		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -23283,8 +23317,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
 
 
 /***/ }),
@@ -28230,8 +28262,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 })(pdfDataExport.API)
 })();
-
-
 
 /***/ }),
 
@@ -34380,8 +34410,6 @@ var saveAs = window.jqxSaveAs = saveAs
 } )( jqxBaseFramework );
 })();
 
-
-
 /***/ }),
 
 /***/ 3159:
@@ -37304,8 +37332,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })();
 
 
-
-
 /***/ })
 
 /******/ 	});
@@ -37314,7 +37340,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_1450743__(moduleId) {
+/******/ 	function __nested_webpack_require_1449518__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -37328,7 +37354,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1450743__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1449518__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -37337,17 +37363,17 @@ var saveAs = window.jqxSaveAs = saveAs
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1450743__.amdO = {};
+/******/ 		__nested_webpack_require_1449518__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_1450743__.n = (module) => {
+/******/ 		__nested_webpack_require_1449518__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_1450743__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_1449518__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -37355,9 +37381,9 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_1450743__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_1449518__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_1450743__.o(definition, key) && !__nested_webpack_require_1450743__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_1449518__.o(definition, key) && !__nested_webpack_require_1449518__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -37366,7 +37392,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1450743__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_1449518__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -37374,24 +37400,24 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1450743__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1450743__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1450743__(3907);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1450743__(3159);
-/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxdraw__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1450743__(7848);
-/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1450743__(9815);
-/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_api__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1450743__(675);
-/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1450743__(2306);
-/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_1450743__(2462);
-/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_1450743__.n(_jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1449518__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1449518__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1449518__(3907);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1449518__(3159);
+/* harmony import */ var _jqxdraw__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxdraw__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1449518__(7848);
+/* harmony import */ var _jqxchart_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxchart_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1449518__(9815);
+/* harmony import */ var _jqxchart_api__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxchart_api__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1449518__(675);
+/* harmony import */ var _jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxchart_annotations__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1449518__(2306);
+/* harmony import */ var _jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxchart_rangeselector__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_1449518__(2462);
+/* harmony import */ var _jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_1449518__.n(_jqxchart_waterfall__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -37403,6 +37429,24 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
 /******/ })()
 ;
 /******/ })()

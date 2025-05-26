@@ -22,6 +22,8 @@ declare class JqxWindow extends React.PureComponent<IWindowProps, IState> {
     isOpen(): boolean;
     move(top: number, left: number): void;
     open(): void;
+    openConfirm(): void;
+    openAlert(): void;
     hide(): void;
     resize(top: number, left: number): void;
     setTitle(title: string): void;

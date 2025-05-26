@@ -1,4 +1,66 @@
-﻿jQWidgets v20.0.0 Release, Sep-17-2024
+﻿jQWidgets v23.0.0 Release, May-26-2025
+
+What's New
+
+- Side Panel in jqxGrid
+The new Side Panel feature in jqxGrid allows developers to add custom HTML elements directly into side panels positioned next to the grid. Whether you want to include filters, charts, summaries, help text, or interactive widgets, the side panel supports any type of content. This powerful new capability enables more contextual and productive UI layouts, without disrupting the core grid view.
+- Natural Language & AI Filtering in jqxGrid
+Filtering in jqxGrid is now enhanced with natural language understanding and AI assistance. End users can filter the grid using simple, conversational input like:
+“Show completed tasks from last week” or “filter by priority: high and assigned to Alice.”
+This significantly reduces the friction of building complex filter expressions manually and makes grid interactions more intuitive for all users.
+- Smart Paste with AI in Smart.Form
+The Smart.Form component now includes a Smart Paste feature powered by AI. When users paste copied content—such as email messages, structured text, or spreadsheet data—the form intelligently parses and maps values to the appropriate input fields. For example, a pasted sentence like “John Doe, johndoe@gmail.com, due May 28” will be automatically split and populated into Name, Email, and Due Date fields.
+
+What's Improved
+
+- jqxTree – disableCheckbox Method
+Improved the behavior of the disableCheckbox method in jqxTree, allowing developers to selectively enable or disable checkboxes for specific items or entire branches. This includes visual styling updates, event handling improvements, and better keyboard navigation support.
+- jqxWindow – Enhanced Positioning API
+The jqxWindow positioning API has been updated for greater flexibility and precision. Developers can now position windows relative to other elements or screen edges with improved alignment logic. This is especially useful for responsive applications and dynamically generated modal windows.
+
+What's Fixed
+
+- Accessibility: WAI-ARIA in jqxGrid
+Updated jqxGrid to improve WAI-ARIA compliance, ensuring better support for screen readers and improved accessibility in line with modern standards.
+- jqxListBox – clearSelection Bug
+Fixed an issue where the clearSelection method did not reliably update the selected state visually and programmatically.
+- jqxRibbon – jQuery Compatibility
+Resolved a conflict affecting jqxRibbon when integrated with certain versions of jQuery, ensuring stable and consistent behavior.
+- jqxDropDownList – Placeholder Issue
+Corrected a bug where the placeholder text in jqxDropDownList would not appear or update correctly under certain binding configurations.
+- jqxGantt – Resizing and Rendering
+Addressed layout issues in jqxGantt that affected rendering accuracy and responsiveness when resizing the component or the browser window.
+- jqxGrid – State Persistence Fix
+Fixed a bug in jqxGrid that caused inconsistencies when saving and restoring grid state (such as filters, column order, or selected rows). State management is now more consistent and reliable across reloads.
+
+
+jQWidgets v22.0.0 Release, Jan-22-2025
+
+What's Improved:
+
+- Accessibility Enhancements: Enhanced support for WCAG 2.1 AA compliance across all components, ensuring better usability for individuals with disabilities. Improvements include better keyboard navigation, screen reader compatibility, and color contrast adjustments to meet accessibility guidelines.
+- Angular 19 Compatibility: All Angular-related demos, documentation, and StackBlitz examples have been updated to Angular 19, providing users with access to the latest features and improvements in the Angular ecosystem.
+- jQuery 3.7.1 Integration: Integrated support for jQuery 3.7.1, ensuring compatibility and leveraging the latest updates, bug fixes, and performance improvements provided by the jQuery framework.
+
+
+What's Fixed:
+
+- jqxGrid (Column Group Renderer): Resolved an issue where the columngrouprenderer property was not functioning correctly when both rtl=true (right-to-left layout) and closeablegroups=true were enabled, ensuring proper rendering in these configurations.
+- jqxGrid (Checked List Filter): Addressed a bug with the checked list filter when localization was applied, ensuring that filters now work as expected in localized environments.
+- jqxDropDownList (Select All): Fixed an issue where the "select all items" feature did not behave correctly, ensuring users can now reliably select all options at once.
+- jqxInput (Query Property): Corrected a problem where the query property in the jqxInput component was not functioning as intended, improving its usability and reliability in dynamic input scenarios.
+- jqxComboBox (Remote Auto-Complete): Fixed a bug where remote auto-complete functionality was not working properly with dynamic API calls, ensuring seamless integration with external data sources.
+- jqxComboBox (Auto-Complete Paste Issue): Resolved an issue with auto-complete functionality when users pasted values directly into the input field, ensuring smooth and accurate completion behavior.
+- jqxGantt (CSS Properties): Fixed a problem in the jqxGantt component related to its CSS properties, ensuring consistent styling and better visual presentation across various use cases.
+
+These improvements and fixes significantly enhance the user experience, compatibility, and reliability of the platform, ensuring seamless operation across different environments and configurations. Let me know if you'd like to add further details!
+
+jQWidgets v21.0.0 Release, Dec-04-2024
+
+What's New:
+Angular 19 support - The integration of Angular 19 support ensures a smoother, more efficient development process.
+
+jQWidgets v20.0.0 Release, Sep-17-2024
 
 What's New:
 
@@ -21,7 +83,8 @@ Fixed an issue in jqxDropdownlist. The close behavior when more than one is pres
 Fixed an issue in jqxTabs and adding html in the tab item.
 Fixed an issue in RadioButtonGroup css styles. Some of the styles applied to the component are about the CheckboxGroup.
 Fixed an issue in Kanban and updateItem method when status is updated
-Fixed an issue in jqxInput about escaping html tags" 
+Fixed an issue in jqxInput about escaping html tags" - make this more professional
+
 jQWidgets v19.2.0 Release, May-21-2024
 
 What's New:

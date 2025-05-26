@@ -1,14 +1,86 @@
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
@@ -2262,8 +2334,6 @@ document.Globalize = Globalize;
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 7351:
@@ -3449,8 +3519,6 @@ document.Globalize = Globalize;
 
     })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -7292,8 +7360,6 @@ document.Globalize = Globalize;
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 4545:
@@ -8139,8 +8205,6 @@ document.Globalize = Globalize;
     });
 })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -11439,20 +11503,18 @@ document.Globalize = Globalize;
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_484139__) => {
+/***/ ((module, exports, __nested_webpack_require_484119__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function () {
-	if (typeof document === 'undefined') {
+(function(){
+	if (typeof document === 'undefined') { 
 		return;
 	}
-
+		
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -19624,7 +19686,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (  true && __nested_webpack_require_484139__.amdO.JQXLite) {
+			if (           true && __nested_webpack_require_484119__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -19645,19 +19707,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
-			if (window.jQuery.fn.extend) {
-				window.jQuery.fn.stop = window.JQXLite.fn.stop;
-				window.jQuery.fn.animate = window.JQXLite.fn.animate;
-
-				var keys = Object.keys(window.JQXLite.fn);
-				for (var index in keys) {
-					var key = keys[index];
-					if (window.jQuery.fn[key] == undefined) {
-						window.jQuery.fn[key] = window.JQXLite.fn[key];
-					}
-				}
-			}
-
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -21279,7 +21328,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {
+					try {	
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -21772,12 +21821,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							return returnValue;
-							//       return returnValue + $(window).scrollTop();
+							 return returnValue;
+					//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-							//        return returnValue + $(window).scrollTop();
+					//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -22473,9 +22522,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
-		if (!$.easing) {
-			$.easing = {};
-		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -22815,8 +22861,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
 
 
 /***/ }),
@@ -27762,8 +27806,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 })(pdfDataExport.API)
 })();
-
-
 
 /***/ }),
 
@@ -33911,8 +33953,6 @@ var saveAs = window.jqxSaveAs = saveAs
     }
 } )( jqxBaseFramework );
 })();
-
-
 
 /***/ }),
 
@@ -40384,8 +40424,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 
 
-
-
 /***/ }),
 
 /***/ 5868:
@@ -42530,8 +42568,6 @@ var saveAs = window.jqxSaveAs = saveAs
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 714:
@@ -42774,7 +42810,7 @@ var saveAs = window.jqxSaveAs = saveAs
                 let output = null;
                 switch (format) {
                     case 'csv':
-                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv', toRemove: 2 }, fileName);
+                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv;charset=utf-8;', toRemove: 2 }, fileName);
                         break;
                     case 'html':
                         output = that.exportToHTML(data, fileName);
@@ -42842,7 +42878,10 @@ var saveAs = window.jqxSaveAs = saveAs
                 if (!fileName) {
                     return stringResult;
                 }
-                return this.downloadFile(stringResult, formatOptions.MIME, fileName);
+
+                const bom = '\uFEFF';
+                const csvContent = bom + stringResult;
+                return this.downloadFile(csvContent, formatOptions.MIME, fileName);
             }
 
             /**
@@ -46162,7 +46201,7 @@ var saveAs = window.jqxSaveAs = saveAs
                         case 'D':
                         case 'd':
                             if (precision) {
-                                return ('0').repeat(precision);
+                                return '\#,0' + precisionCode;
                             }
 
                             return '0';
@@ -49092,7 +49131,7 @@ var saveAs = window.jqxSaveAs = saveAs
         // clears the selection.
         clearSelection: function (render) {
             for (var indx = 0; indx < this.selectedIndexes.length; indx++) {
-                if (this.selectedIndexes[indx] && this.selectedIndexes[indx] != -1) {
+                if (this.selectedIndexes[indx] !== undefined && this.selectedIndexes[indx] != -1) {
                     this._raiseEvent('1', { index: indx, type: 'api', item: this.getVisibleItem(indx), originalEvent: null });
                 }
 
@@ -52327,8 +52366,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 4069:
@@ -53148,8 +53185,6 @@ var saveAs = window.jqxSaveAs = saveAs
 
 }(jqxBaseFramework));
 })();
-
-
 
 /***/ }),
 
@@ -56121,8 +56156,6 @@ var saveAs = window.jqxSaveAs = saveAs
     }; //
 })(jqxBaseFramework);
 })();
-
-
 
 /***/ }),
 
@@ -60080,8 +60113,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 4240:
@@ -61675,8 +61706,6 @@ var saveAs = window.jqxSaveAs = saveAs
 })();
 
 
-
-
 /***/ })
 
 /******/ 	});
@@ -61685,7 +61714,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_2525466__(moduleId) {
+/******/ 	function __nested_webpack_require_2525101__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -61699,7 +61728,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2525466__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2525101__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -61708,17 +61737,17 @@ var saveAs = window.jqxSaveAs = saveAs
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2525466__.amdO = {};
+/******/ 		__nested_webpack_require_2525101__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_2525466__.n = (module) => {
+/******/ 		__nested_webpack_require_2525101__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_2525466__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_2525101__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -61726,9 +61755,9 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_2525466__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_2525101__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_2525466__.o(definition, key) && !__nested_webpack_require_2525466__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_2525101__.o(definition, key) && !__nested_webpack_require_2525101__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -61737,7 +61766,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2525466__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_2525101__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -61745,40 +61774,40 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2525466__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2525466__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2525466__(3907);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_2525466__(714);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_2525466__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_2525466__(7196);
-/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_2525466__(4240);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_2525466__(1610);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_2525466__(1062);
-/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_2525466__(5868);
-/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_2525466__(4720);
-/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_2525466__(7995);
-/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_2525466__(4545);
-/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_2525466__(2497);
-/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_2525466__(5725);
-/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_2525466__(4993);
-/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _jqxlistmenu__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_2525466__(4069);
-/* harmony import */ var _jqxlistmenu__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__nested_webpack_require_2525466__.n(_jqxlistmenu__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2525101__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2525101__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2525101__(3907);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_2525101__(714);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_2525101__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_2525101__(7196);
+/* harmony import */ var _jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxbuttongroup__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_2525101__(4240);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_2525101__(1610);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_2525101__(1062);
+/* harmony import */ var _jqxlistbox__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxlistbox__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_2525101__(5868);
+/* harmony import */ var _jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxdropdownlist__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_2525101__(4720);
+/* harmony import */ var _jqxcombobox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxcombobox__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_2525101__(7995);
+/* harmony import */ var _jqxnumberinput__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxnumberinput__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_2525101__(4545);
+/* harmony import */ var _jqxcheckbox__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxcheckbox__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_2525101__(2497);
+/* harmony import */ var _globalization_globalize__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_globalization_globalize__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_2525101__(5725);
+/* harmony import */ var _jqxcalendar__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxcalendar__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_2525101__(4993);
+/* harmony import */ var _jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxdatetimeinput__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _jqxlistmenu__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_2525101__(4069);
+/* harmony import */ var _jqxlistmenu__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__nested_webpack_require_2525101__.n(_jqxlistmenu__WEBPACK_IMPORTED_MODULE_16__);
 
 
 
@@ -61798,6 +61827,24 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
 /******/ })()
 ;
 /******/ })()

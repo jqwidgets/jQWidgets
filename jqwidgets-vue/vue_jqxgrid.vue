@@ -655,6 +655,12 @@
             getselectedcells: function() {
                 return JQXLite(this.componentSelector).jqxGrid('getselectedcells');  
             },
+            showSidePanel: function(selector, width, callbackFn) {
+                JQXLite(this.componentSelector).jqxGrid('showSidePanel', selector, width, callbackFn);  
+            },
+            closeSidePanel: function() {
+                JQXLite(this.componentSelector).jqxGrid('closeSidePanel');  
+            },
             selectcell: function(rowBoundIndex, dataField) {
                 JQXLite(this.componentSelector).jqxGrid('selectcell', rowBoundIndex, dataField);  
             },

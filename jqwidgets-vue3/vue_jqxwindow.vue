@@ -137,6 +137,12 @@
             function open() {
                 JQXLite(componentSelector).jqxWindow('open');  
             }
+            function openConfirm() {
+                JQXLite(componentSelector).jqxWindow('openConfirm');  
+            }
+            function openAlert() {
+                JQXLite(componentSelector).jqxWindow('openAlert');  
+            }
             function hide() {
                 JQXLite(componentSelector).jqxWindow('hide');  
             }
@@ -644,7 +650,7 @@
 				const widgetOptions = __manageProps__();
 				JQXLite(componentSelector).jqxWindow(widgetOptions);
 			})
-			return {id, componentSelector, bringToFront,close,collapse,closeAll,disable,destroy,enable,expand,focus,isOpen,move,open,hide,resize,setTitle,setContent, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, bringToFront,close,collapse,closeAll,disable,destroy,enable,expand,focus,isOpen,move,open,openConfirm,openAlert,hide,resize,setTitle,setContent, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

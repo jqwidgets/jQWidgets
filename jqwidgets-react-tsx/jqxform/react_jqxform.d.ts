@@ -69,6 +69,9 @@ interface IFormOptions {
     borderColor?: string;
     value?: any;
     template?: IFormTemplateItem[];
+    enableSmartPaste?: boolean;
+    aiKey?: string;
+    aiUrl?: string;
 }
 export interface IFormProps extends IFormOptions {
     className?: string;

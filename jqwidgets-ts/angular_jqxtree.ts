@@ -1,6 +1,6 @@
 /*
-jQWidgets v20.0.0 (2024-Sep)
-Copyright (c) 2011-2024 jQWidgets.
+jQWidgets v23.0.0 (2025-May)
+Copyright (c) 2011-2025 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -362,12 +362,20 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('destroy');
    }
 
+   disableCheckbox(item: any): void {
+      this.host.jqxTree('disableCheckbox', item);
+   }
+
    disableItem(item: any): void {
       this.host.jqxTree('disableItem', item);
    }
 
    ensureVisible(item: any): void {
       this.host.jqxTree('ensureVisible', item);
+   }
+
+   enableCheckbox(item: any): void {
+      this.host.jqxTree('enableCheckbox', item);
    }
 
    enableItem(item: any): void {

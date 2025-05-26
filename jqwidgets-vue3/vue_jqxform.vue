@@ -31,6 +31,12 @@
             borderColor: String,
             value: Object,
             template: Array,
+            enableSmartPaste: {
+                default: ,
+                type: Boolean
+            },
+            aiKey: String,
+            aiUrl: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -118,6 +124,27 @@
                     return JQXLite(componentSelector).jqxForm('template');
                 }
             }
+            function _enableSmartPaste (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('enableSmartPaste', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('enableSmartPaste');
+                }
+            }
+            function _aiKey (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('aiKey', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('aiKey');
+                }
+            }
+            function _aiUrl (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('aiUrl', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('aiUrl');
+                }
+            }
             function __createComponent__ (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
@@ -125,7 +152,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['padding','backgroundColor','borderColor','value','template'];
+                const widgetProps = ['padding','backgroundColor','borderColor','value','template','enableSmartPaste','aiKey','aiUrl'];
                 const componentProps = props;
                 let options = {};
 
@@ -166,6 +193,24 @@
                  },
                  set template(newValue) {
                      _template(newValue);
+                 },
+                 get enableSmartPaste() {
+                     return _enableSmartPaste();
+                 },
+                 set enableSmartPaste(newValue) {
+                     _enableSmartPaste(newValue);
+                 },
+                 get aiKey() {
+                     return _aiKey();
+                 },
+                 set aiKey(newValue) {
+                     _aiKey(newValue);
+                 },
+                 get aiUrl() {
+                     return _aiUrl();
+                 },
+                 set aiUrl(newValue) {
+                     _aiUrl(newValue);
                  },
             }
             function __wireEvents__() {

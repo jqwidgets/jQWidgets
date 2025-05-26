@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2024 jQWidgets.
+   Copyright (c) 2011-2025 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 
@@ -1649,6 +1649,9 @@ declare module jqwidgets {
         borderColor?: string;
         value?: any;
         template: Array<FormTemplateItem>;
+        enableSmartPaste: boolean;
+        aiKey?: string;
+        aiUrl?: string;
     }// FormOptions
 
     export interface jqxForm extends widget, FormOptions {
@@ -1828,6 +1831,9 @@ declare module jqwidgets {
         threestatecheckbox?: boolean;
         sortable?: boolean;
         filterable?: boolean;
+        filternlpinput?: string;
+        aiKey?: string;
+        aiUrl?: string;
         filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
         buttonclick?: (row: number) => void;
         hideable?: boolean;
@@ -2351,6 +2357,8 @@ declare module jqwidgets {
         getselectedrowindexes(): Array<number>;
         getselectedcell(): GridGetSelectedCell;
         getselectedcells(): Array<GridGetSelectedCell>;
+        showSidePanel(selector: string | HTMLElement, width: number, callbackFn: any): void;
+        closeSidePanel(): void;
         selectcell(rowBoundIndex: number, dataField: string): void;
         selectallrows(): void;
         selectrow(rowBoundIndex: number): void;
@@ -4481,8 +4489,10 @@ declare module jqwidgets {
         collapseAll(): void;
         collapseItem(item: any): void;
         destroy(): void;
+        disableCheckbox(item: any): void;
         disableItem(item: any): void;
         ensureVisible(item: any): void;
+        enableCheckbox(item: any): void;
         enableItem(item: any): void;
         enableAll(): void;
         expandAll(): void;
@@ -4825,6 +4835,8 @@ declare module jqwidgets {
         isOpen(): boolean;
         move(top: number, left: number): void;
         open(): void;
+        openConfirm(): void;
+        openAlert(): void;
         hide(): void;
         resize(top: number, left: number): void;
         setTitle(title: string): void;

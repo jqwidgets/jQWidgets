@@ -1,6 +1,6 @@
 /*
-jQWidgets v20.0.0 (2024-Sep)
-Copyright (c) 2011-2024 jQWidgets.
+jQWidgets v23.0.0 (2025-May)
+Copyright (c) 2011-2025 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -2887,6 +2887,24 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       return this.host.jqxGrid('getselectedcells');
+   }
+
+   showSidePanel(selector: string | HTMLElement, width?: number, callbackFn?: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('showSidePanel', selector, width, callbackFn);
+   }
+
+   closeSidePanel(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('closeSidePanel');
    }
 
    selectcell(rowBoundIndex: number, dataField: string): void {

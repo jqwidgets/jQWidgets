@@ -235,7 +235,7 @@
                 let output = null;
                 switch (format) {
                     case 'csv':
-                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv', toRemove: 2 }, fileName);
+                        output = that.exportToCSVAndTSV(data, { delimiter: ', ', MIME: 'text/csv;charset=utf-8;', toRemove: 2 }, fileName);
                         break;
                     case 'html':
                         output = that.exportToHTML(data, fileName);
@@ -303,7 +303,10 @@
                 if (!fileName) {
                     return stringResult;
                 }
-                return this.downloadFile(stringResult, formatOptions.MIME, fileName);
+
+                const bom = '\uFEFF';
+                const csvContent = bom + stringResult;
+                return this.downloadFile(csvContent, formatOptions.MIME, fileName);
             }
 
             /**
@@ -3623,7 +3626,7 @@
                         case 'D':
                         case 'd':
                             if (precision) {
-                                return ('0').repeat(precision);
+                                return '\#,0' + precisionCode;
                             }
 
                             return '0';

@@ -1,6 +1,6 @@
 /*
-jQWidgets v20.0.0 (2024-Sep)
-Copyright (c) 2011-2024 jQWidgets.
+jQWidgets v23.0.0 (2025-May)
+Copyright (c) 2011-2025 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -40,12 +40,15 @@ export class jqxFormComponent implements OnChanges
    @Input('borderColor') attrBorderColor: string;
    @Input('value') attrValue: any;
    @Input('template') attrTemplate: Array<jqwidgets.FormTemplateItem>;
+   @Input('enableSmartPaste') attrEnableSmartPaste: boolean;
+   @Input('aiKey') attrAiKey: string;
+   @Input('aiUrl') attrAiUrl: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['padding','backgroundColor','borderColor','value','template'];
+   properties: string[] = ['padding','backgroundColor','borderColor','value','template','enableSmartPaste','aiKey','aiUrl'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxForm;
@@ -202,6 +205,30 @@ export class jqxFormComponent implements OnChanges
           this.host.jqxForm('template', arg);
       } else {
           return this.host.jqxForm('template');
+      }
+   }
+
+   enableSmartPaste(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxForm('enableSmartPaste', arg);
+      } else {
+          return this.host.jqxForm('enableSmartPaste');
+      }
+   }
+
+   aiKey(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('aiKey', arg);
+      } else {
+          return this.host.jqxForm('aiKey');
+      }
+   }
+
+   aiUrl(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('aiUrl', arg);
+      } else {
+          return this.host.jqxForm('aiUrl');
       }
    }
 

@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>In this sample is demonstrated how to create a Datagrid with different templates.</title>
+    <meta name="description" content="JavaScript Grid which displays sparklines" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsreorder.js"></script>
+
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.storage.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+
+    <script type="text/javascript" src="../../../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxrating.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgauge.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const data = [
+                { product: 'Apples', quantity: 3, price: 1.20 },
+                { product: 'Oranges', quantity: 5, price: 0.80 },
+                { product: 'Bananas', quantity: 2, price: 1.50 },
+                { product: 'Strawberries', quantity: 1, price: 3.90 },
+                { product: 'Grapes', quantity: 4, price: 2.10 },
+                { product: 'Peaches', quantity: 6, price: 1.10 },
+                { product: 'Cherries', quantity: 3, price: 4.20 },
+                { product: 'Mangoes', quantity: 2, price: 2.80 },
+                { product: 'Blueberries', quantity: 2, price: 3.60 },
+                { product: 'Kiwi', quantity: 4, price: 1.90 },
+                { product: 'Pears', quantity: 5, price: 1.70 },
+                { product: 'Plums', quantity: 3, price: 2.20 },
+                { product: 'Lemons', quantity: 6, price: 0.95 },
+                { product: 'Avocados', quantity: 2, price: 2.50 },
+                { product: 'Coconut', quantity: 1, price: 4.80 },
+                { product: 'Papaya', quantity: 2, price: 3.10 },
+                { product: 'Raspberries', quantity: 1, price: 4.50 },
+                { product: 'Dragon Fruit', quantity: 1, price: 6.20 },
+                { product: 'Pineapple', quantity: 2, price: 3.30 },
+                { product: 'Watermelon', quantity: 1, price: 5.50 },
+                { product: 'Cantaloupe', quantity: 3, price: 3.00 },
+                { product: 'Blackberries', quantity: 2, price: 4.10 },
+                { product: 'Guava', quantity: 2, price: 2.70 },
+                { product: 'Fig', quantity: 3, price: 3.50 },
+                { product: 'Tangerines', quantity: 4, price: 1.40 },
+                { product: 'Pomegranate', quantity: 1, price: 5.80 },
+                { product: 'Lychee', quantity: 2, price: 4.00 },
+                { product: 'Starfruit', quantity: 1, price: 4.75 },
+                { product: 'Jackfruit', quantity: 1, price: 6.50 },
+                { product: 'Durian', quantity: 1, price: 8.00 },
+                { product: 'Mulberries', quantity: 2, price: 3.90 },
+                { product: 'Cranberries', quantity: 3, price: 2.90 }
+            ];
+
+            const source = {
+                localdata: data,
+                datatype: "array",
+                datafields: [
+                    { name: 'product', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    {
+                        name: 'total', type: 'number',
+                        calculate: function (record) {
+                            return record.quantity * record.price;
+                        }
+                    }
+                ]
+            };
+
+            const dataAdapter = new $.jqx.dataAdapter(source);
+
+            $("#jqxGrid").jqxGrid({
+                width: 1000,
+                height: 700,
+                source: dataAdapter,
+                columnsresize: true,
+                selectionmode: 'singlerow',
+                columns: [
+                    { text: 'Product', datafield: 'product', width: 250 },
+                    { text: 'Quantity', datafield: 'quantity', width: 200 },
+                    {
+                        text: 'Price', datafield: 'price', width: 200,
+                        cellsformat: 'c2'
+                    },
+                    {
+                        text: 'Total', datafield: 'total',
+                        cellsformat: 'c2',
+                        cellsrenderer: function (row, columnfield, value, defaulthtml, columnproperties, data) {
+                            return '<div style="margin: 5px;">' + (data.price * data.quantity).toFixed(2) + ' €</div>';
+                        }
+                    }
+                ]
+            });
+
+            $("#jqxGrid").on('rowselect', function (event) {
+                const row = event.args.row;
+
+                $("#jqxGrid").jqxGrid('showSidePanel', document.getElementById('sidePanel'), 400, function (panel) {
+                    panel = $(panel);
+                    panel.find("#productName").text(row.product);
+                    panel.find("#productQty").text(row.quantity);
+                    panel.find("#productPrice").text(row.price.toFixed(2) + ' €');
+                    panel.find("#productTotal").text((row.quantity * row.price).toFixed(2) + ' €');
+
+                    // Gauge
+                    panel.find("#quantityGauge").jqxGauge({
+                        ranges: [{ startValue: 0, endValue: 3, style: { fill: '#4bb648', stroke: '#4bb648' }, endWidth: 5, startWidth: 1 },
+                        { startValue: 3, endValue: 5, style: { fill: '#fbd109', stroke: '#fbd109' }, endWidth: 10, startWidth: 5 },
+                        { startValue: 5, endValue: 7, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
+                        { startValue: 7, endValue: 10, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
+                        colorScheme: 'scheme05',
+                        width: 200,
+                        height: 200,
+                        animationDuration: 1200,
+                        max: 10,
+                        niceInterval: true,
+                        value: row.quantity
+                    });
+
+                    // Mock history
+                    const mockHistory = Array.from({ length: 5 }, (_, i) => ({
+                        label: `Week ${i + 1}`,
+                        value: (Math.random() * 5 + 1).toFixed(2)
+                    }));
+
+                    // Chart
+                    panel.find('#priceChart').jqxChart({
+                        title: "Price Trend",
+                        description: "",
+                        source: mockHistory,
+                        xAxis: {
+                            dataField: 'label',
+                            gridLines: { visible: false }
+                        },
+                        valueAxis: {
+                            minValue: 0,
+                            maxValue: 10,
+                            title: { text: 'Price €' },
+                            unitInterval: 1
+                        },
+                        seriesGroups: [{
+                            type: 'column',
+                            columnsGapPercent: 50,
+                            series: [
+                                { dataField: 'value', displayText: 'Value' }
+                            ]
+                        }]
+                    });
+                })
+            });
+        });
+    </script>
+</head>
+
+<body class='default'>
+
+    <div id="jqxGrid"></div>
+    <div id="sidePanel" style="display:none; margin-top:20px;">
+        <h3>Product Details</h3>
+        <p><strong>Product:</strong> <span id="productName"></span></p>
+        <p><strong>Quantity:</strong> <span id="productQty"></span></p>
+        <p><strong>Price:</strong> <span id="productPrice"></span></p>
+        <p><strong>Total:</strong> <span id="productTotal"></span></p>
+        <div id="quantityGauge" style="position: absolute; top: 50px; right: 10px; width:200px; height:200px;"></div>
+        <br /><br /><br />
+        <div id="priceChart" style="width:350px; height:300px; margin-top:20px;"></div>
+    </div>
+</body>
+
+</html>

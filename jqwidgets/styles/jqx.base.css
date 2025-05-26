@@ -74,6 +74,22 @@
     --jqx-font-family-icon: "jqx-icons";
     --jqx-font-size: 14px;
     --jqx-action-button-size: 25px;
+    --jqx-window-header-height: 48px;
+    --jqx-window-header-background: #ffffff;
+    --jqx-window-header-padding: 5px;
+    --jqx-border-width: 1px;
+    /* Theme border-width */
+    --jqx-border-radius: 4px;
+    /* Theme border-radius */
+    --jqx-border-top-left-radius: var(--jqx-border-radius);
+    /* Theme border-radius */
+    --jqx-border-top-right-radius: var(--jqx-border-radius);
+    /* Theme border-radius */
+    --jqx-border-bottom-left-radius: var(--jqx-border-radius);
+    /* Theme border-radius */
+    --jqx-border-bottom-right-radius: var(--jqx-border-radius);
+    /* Theme border-radius */
+    --jqx-border: #E0E0E0;
 }
 
 /*Rounded Corners*/
@@ -9352,14 +9368,13 @@ input[type=number].jqx-input {
     font-weight: normal;
     speak: none;
 }
-
 .jqx-timeline.jqx-widget {
     overflow: hidden;
     padding: 10px;
     font-family: var(--jqx-font-family);
     display: block;
 }
-.jqx-timeline.jqx-widget .jqx-container {
+.jqx-timeline .jqx-container {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -9373,21 +9388,21 @@ input[type=number].jqx-input {
     position: relative;
 }
 
-.jqx-timeline[horizontal].jqx-widget .jqx-container  {
+.jqx-timeline[horizontal] .jqx-container  {
     flex-direction: column;
 }
-.jqx-timeline[horizontal].jqx-widget .jqx-timeline-near-items {
+.jqx-timeline[horizontal] .jqx-timeline-near-items {
     padding-right: 0px;
     padding-bottom: 20px;
     display: flex;
     align-items: flex-end;
 }
-.jqx-timeline[horizontal].jqx-widget .jqx-timeline-far-items {
+.jqx-timeline[horizontal] .jqx-timeline-far-items {
     padding-left: 0px;
     padding-top: 20px;
     display: flex;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item {
+.jqx-timeline-item {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -9395,52 +9410,52 @@ input[type=number].jqx-input {
     padding-inline: 0;
     position: relative;
 }
-.jqx-timeline[horizontal].jqx-widget .jqx-timeline-item {
+.jqx-timeline[horizontal] .jqx-timeline-item {
     display: block;
     padding-block:0px;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item[collapsible] {
+.jqx-timeline-item[collapsible] {
     cursor: pointer;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item-icon {
+.jqx-timeline-item-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item-content {
-    background: var(--jqx-background);
-    border: 1px solid var(--jqx-border);
+.jqx-timeline-item-content {
+    background: var(--jqx-background, #fff);
+    border: 1px solid var(--jqx-border, #E9EAED);
     padding: 20px;
     border-radius: var(--jqx-border-radius);
     position: relative;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item-pointer {
+.jqx-timeline-item-pointer {
     top: 50%;
     right: 0px;
     content: '';
     transform: translate(-50%, -50%) rotate(45deg);
     width: 16px;
     height: 16px;
-    background: var(--jqx-background);
-    border:1px solid var(--jqx-border);
+    background: var(--jqx-background, #fff);
+    border:1px solid var(--jqx-border, #E9EAED);
     display: block;
     right: 0px;
     position: absolute;
     margin-right: -16px;
     z-index: 9;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item-pointer::after {
+.jqx-timeline-item-pointer::after {
     width: 16px;
     content: '';
-    background: var(--jqx-background);
+    background: var(--jqx-background, #fff);
     height: 16px;
     position: absolute;
     z-index: 9;
     right: 14px;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-item-pointer::before {
+.jqx-timeline-item-pointer::before {
     content: '';
-    background: var(--jqx-background);
+    background: var(--jqx-background, #fff);
     width: 16px;
     height: 16px;
     position: absolute;
@@ -9449,33 +9464,33 @@ input[type=number].jqx-input {
     right: inherit;
 }
 
-.jqx-timeline.jqx-widget .jqx-timeline-far-items .jqx-timeline-item-pointer {
+.jqx-timeline-far-items .jqx-timeline-item-pointer {
     right: inherit;
     left: 0px;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-far-items .jqx-timeline-item-pointer::before {
+.jqx-timeline-far-items .jqx-timeline-item-pointer::before {
     right: unset;
     left: 14px;
     top: -2px;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-far-items .jqx-timeline-item-pointer::after {
+.jqx-timeline-far-items .jqx-timeline-item-pointer::after {
     top: -16px;
     right: -2px;
 }
-.jqx-timeline[horizontal].jqx-widget .jqx-timeline-item-pointer {
+.jqx-timeline[horizontal] .jqx-timeline-item-pointer {
     left: 50%;
     top: 0px;
 }
-.jqx-timeline[horizontal].jqx-widget .jqx-timeline-near-items .jqx-timeline-item-pointer {
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer {
     left: 50%;
     bottom: -16px;
     top: unset;
 }
 
-.jqx-timeline.jqx-widget .jqx-timeline-far-items .jqx-timeline-item {
+.jqx-timeline-far-items .jqx-timeline-item {
     justify-content: flex-start;
 }
-.jqx-timeline.jqx-widget .jqx-timeline-far-items .jqx-timeline-item-content {
+.jqx-timeline-far-items .jqx-timeline-item-content {
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -9530,8 +9545,8 @@ input[type=number].jqx-input {
     border-style: solid;
     width: 6px;
     border-radius: 6px;
-    background:var(--jqx-surface);
-    border:1px solid var(--jqx-border);
+    background:var(--jqx-surface, #FAFAFA);
+    border:1px solid var(--jqx-border, #E9EAED);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -9568,8 +9583,173 @@ input[type=number].jqx-input {
     border-radius: 50%;
     position: absolute;
     z-index: 1;
-    background: var(--jqx-primary);
+    background: var(--jqx-primary, #1274AC);
 }
 .jqx-timeline[horizontal] .jqx-timeline-dot {
     margin-top: -6px;
 }   
+
+
+.jqx-window.jqx-grid-dialog {
+    position: absolute;
+    box-shadow: 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12), 0 11px 15px 0 rgba(0, 0, 0, .2);
+    z-index: 99999;
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: var(--jqx-background);
+    border: 1px solid var(--jqx-border);
+    --jqx-window-header-button-size: 13px;
+    --jqx-window-content-padding: 10px;
+    /* Sets the size of the header buttons */
+    --jqx-window-header-icon-size: var(--jqx-font-size);
+  
+  }
+  .jqx-window.jqx-grid-dialog  > .jqx-container:not(.jqx-window) {
+   width: 100%;
+   height: 100%;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container {
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    max-height: inherit;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section {
+    display: flex;
+    justify-content: space-between;
+    cursor: move;
+    overflow: hidden;
+    align-items: center;
+    touch-action: none;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    border-color: var(--jqx-border);
+    color: var(--jqx-surface-color);
+    line-height: initial;
+    height: var(--jqx-window-header-height);
+    min-height: var(--jqx-window-header-height);
+    background: var(--jqx-window-header-background);
+    padding: var(--jqx-window-header-padding);
+    box-sizing: border-box;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container button {
+    position: relative;
+    margin-left: 1px;
+    margin-right: 1px;
+    cursor: pointer;
+    height: var(--jqx-window-header-button-size);
+    width: var(--jqx-window-header-button-size);
+    padding: 0;
+    min-height: 0;
+    background: transparent;
+    color: inherit;
+    border: none;
+    outline: none;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container button:active {
+    outline: none;
+    background-color: initial;
+  }
+  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-content {
+    width: 100%;
+    height: calc(100% - var(--jqx-window-header-height));
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    padding: var(--jqx-window-content-padding);
+    background: var(--jqx-background);
+    flex-direction: column;
+    /* There's an issue with display:flex/grid and align-items: center */
+  }
+
+.jqx-window.jqx-grid-dialog {
+    transition: opacity 0.2s, transform 0.2s ease-out;
+    transform: scaleX(0);
+    opacity: 0;
+    font-family: var(--jqx-font-family);
+    font-size: var(--jqx-font-size);
+  }
+
+  
+@font-face {
+    font-family: jqx-icons;
+    src: local("./font/jqx-icons"), url("./font/jqx-icons.woff2") format("woff2"), url("./font/jqx-icons.woff") format("woff"), url("./font/jqx-icons.ttf") format("truetype"), url("./font/jqx-icons.eot") format("embedded-opentype");
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+  }
+  
+  .jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button {
+    font-family: jqx-icons;
+  }
+
+  .jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button:after {
+    content: var(--jqx-icon-close);
+  }
+
+  .jqx-window.jqx-grid-dialog.open {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+.jqx-window.jqx-grid-dialog.jqx-grid-dialog.disable-animation {
+    transition: none;
+  }
+
+  
+  .jqx-window.jqx-grid-dialog.jqx-grid-side-panel {
+    transform-origin: top right !important;
+    transform: scaleX(0) !important;
+  }
+  .jqx-window.jqx-grid-dialog.jqx-grid-side-panel.open {
+    transform: scaleX(1) !important;
+  }
+ 
+  .jqx-form-tooltip {
+    background-color: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 0px;
+    cursor: pointer;
+    display: flex;
+    opacity: 0.9;
+    align-items: center;
+    position: absolute;
+    padding: 5px;
+}
+.jqx-form-spinner {
+    border: 3px solid var(--jqx-primary-color);
+    border-top: 3px solid var(--jqx-primary);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 0.8s linear infinite;
+    margin-left: 4px;
+    margin-right: 8px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

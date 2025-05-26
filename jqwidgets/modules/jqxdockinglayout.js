@@ -1,14 +1,86 @@
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Sep-17-2024 
-Copyright (c) 2011-2024 jQWidgets. 
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
+License: https://jqwidgets.com/license/ */
+
+
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+
+/* Release Date: Jan-28-2025 
+Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
 
@@ -1199,20 +1271,18 @@ License: https://jqwidgets.com/license/ */
     })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_52089__) => {
+/***/ ((module, exports, __nested_webpack_require_52085__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function () {
-	if (typeof document === 'undefined') {
+(function(){
+	if (typeof document === 'undefined') { 
 		return;
 	}
-
+		
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -9384,7 +9454,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (  true && __nested_webpack_require_52089__.amdO.JQXLite) {
+			if (           true && __nested_webpack_require_52085__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -9405,19 +9475,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 
 		if (window.jQuery) {
-			if (window.jQuery.fn.extend) {
-				window.jQuery.fn.stop = window.JQXLite.fn.stop;
-				window.jQuery.fn.animate = window.JQXLite.fn.animate;
-
-				var keys = Object.keys(window.JQXLite.fn);
-				for (var index in keys) {
-					var key = keys[index];
-					if (window.jQuery.fn[key] == undefined) {
-						window.jQuery.fn[key] = window.JQXLite.fn[key];
-					}
-				}
-			}
-
 			window.minQuery = window.JQXLite = window.jQuery;
 			return;
 		}
@@ -11039,7 +11096,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {
+					try {	
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -11532,12 +11589,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							return returnValue;
-							//       return returnValue + $(window).scrollTop();
+							 return returnValue;
+					//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-							//        return returnValue + $(window).scrollTop();
+					//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -12233,9 +12290,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 				}
 			});
 
-		if (!$.easing) {
-			$.easing = {};
-		}
 		$.extend($.easing, {
 			easeOutBack: function (x, t, b, c, d, s) {
 				if (s == undefined) s = 1.70158;
@@ -12575,8 +12629,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 		}
 	})(jqxBaseFramework);
 })();
-
-
 
 
 /***/ }),
@@ -13994,8 +14046,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     });
 })(jqxBaseFramework); //ignore jslint
 })();
-
-
 
 /***/ }),
 
@@ -16110,8 +16160,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     });
 })(jqxBaseFramework); //ignore jslint
 })();
-
-
 
 /***/ }),
 
@@ -19084,8 +19132,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 })(jqxBaseFramework);
 })();
 
-
-
 /***/ }),
 
 /***/ 9274:
@@ -21079,8 +21125,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 })(jqxBaseFramework); //ignore jslint
 })();
 
-
-
 /***/ }),
 
 /***/ 4240:
@@ -22672,8 +22716,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     }); // jqxScrollBar
 })(jqxBaseFramework);
 })();
-
-
 
 
 /***/ }),
@@ -24335,6 +24377,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                         case 'right':
                             this.element.style.left = this._toPx(dragArea.left + dragArea.width - this.host.width());
                             break;
+                        case 'center':
+                            this._centerElement(this.host, dragArea, 'x');
+                            break;
+                        case 'middle':
+                            this._centerElement(this.host, dragArea, 'y');
+                            break;
                         default:
                             if (!this.dragArea) {
                                 dragArea = $(window);
@@ -24789,6 +24837,137 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
                     this._raiseEvent(1);
                     this._raiseEvent(8);
                 }
+            },
+
+            openAlert: function (message, title) {
+                if (!message) {
+                    message = '';
+                }
+
+                if (!title) {
+                    title = 'Alert';
+                }
+                return this._openDialog(
+                    message,
+                    title,
+                    "alert"
+                );
+            },
+
+            openConfirm: function (message, title) {
+                if (!message) {
+                    message = '';
+                }
+                if (!title) {
+                    title = 'Confirm';
+                }
+
+                return this._openDialog(
+                    message,
+                    title,
+                    "confirm"
+                );
+            },
+
+            _openDialog: function (message, title, type) {
+                var that = this;
+                var $window = this.host;
+
+                if (typeof message !== "string") {
+                    message = '';
+                };
+
+
+                var getDialogSize = function (message, minWidth, minHeight, maxWidth, maxHeight) {
+                    minWidth = typeof minWidth !== 'undefined' ? minWidth : 300;
+                    minHeight = typeof minHeight !== 'undefined' ? minHeight : 150;
+                    maxWidth = typeof maxWidth !== 'undefined' ? maxWidth : 600;
+                    maxHeight = typeof maxHeight !== 'undefined' ? maxHeight : 400;
+
+                    var tempDiv = $("<div>")
+                        .css({
+                            position: "absolute",
+                            visibility: "hidden",
+                            width: maxWidth + "px",
+                            padding: "16px",
+                            fontFamily: "inherit",
+                            fontSize: "14px",
+                            lineHeight: "1.4",
+                            whiteSpace: "normal"
+                        })
+                        .html(message)
+                        .appendTo("body");
+
+                    var width = Math.min(Math.max(tempDiv.outerWidth(true), minWidth), maxWidth);
+                    var height = Math.min(Math.max(tempDiv.outerHeight(true) + 80, minHeight), maxHeight); // +80 for buttons & spacing
+
+                    tempDiv.remove();
+
+                    return {
+                        width: width,
+                        height: height
+                    };
+                };
+
+
+                var size = getDialogSize(message);
+                this.width = size.width;
+                this.height = 30 + size.height;
+
+                that.element.style.height = size.height + 'px';
+                that.element.style.width = size.width + 'px';
+
+                var $content = $window.find(".jqx-window-content"); // scoped to this instance
+                var idSuffix = $window.attr("id") || Math.random().toString(36).substr(2, 5);
+                var isConfirm = type === "confirm";
+
+                return new Promise(function (resolve) {
+                    $window.jqxWindow("setTitle", title);
+
+                    // Use unique IDs for each button per window instance
+                    var okId = 'jqxDialogOkBtn_' + idSuffix;
+                    var cancelId = 'jqxDialogCancelBtn_' + idSuffix;
+
+                    var html =
+                        '<div class="dialog-container" style="display: flex; flex-direction: column; height: 100%;">' +
+                        '<div class="dialog-message" style="flex: 1; padding: 20px; overflow-y: auto;">' +
+                        message +
+                        '</div>' +
+                        '<div class="dialog-buttons" style="' +
+                        'padding: 5px 10px;' +
+                        'text-align: right;' +
+                        'background: var(--jqx-surface);' +
+                        'color: var(--jqx-surface-color);' +
+                        'flex-shrink: 0;' +
+                        '">' +
+                        '<button id="' + okId + '" class="jqx-btn">OK</button>' +
+                        (isConfirm ? '<button id="' + cancelId + '" class="jqx-btn">Cancel</button>' : '') +
+                        '</div>' +
+                        '</div>';
+
+
+                    $content.html(html);
+                    $window.jqxWindow("open");
+
+                    setTimeout(function () {
+                        $('#' + okId).jqxButton({ theme: that.theme, width: 75, height: 28 })
+                            .off("click")
+                            .on("click", function () {
+                                $window.jqxWindow("close");
+                                resolve(true);
+                            });
+
+                        if (isConfirm) {
+                            $('#' + cancelId).jqxButton({ theme: that.theme, width: 75, height: 28 })
+                                .off("click")
+                                .on("click", function () {
+                                    $window.jqxWindow("close");
+                                    resolve(false);
+                                });
+                        }
+                    }, 0);
+
+                });
             },
 
             open: function (callback, duration) {
@@ -25679,8 +25858,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
     }(jqxBaseFramework)); //ignore jslint
 })();
 
-
-
 /***/ })
 
 /******/ 	});
@@ -25689,7 +25866,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_1015182__(moduleId) {
+/******/ 	function __nested_webpack_require_1020323__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -25703,7 +25880,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1015182__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1020323__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -25712,17 +25889,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1015182__.amdO = {};
+/******/ 		__nested_webpack_require_1020323__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_1015182__.n = (module) => {
+/******/ 		__nested_webpack_require_1020323__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_1015182__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_1020323__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -25730,9 +25907,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_1015182__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_1020323__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_1015182__.o(definition, key) && !__nested_webpack_require_1015182__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_1020323__.o(definition, key) && !__nested_webpack_require_1020323__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -25741,7 +25918,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1015182__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_1020323__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -25749,22 +25926,22 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1015182__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1015182__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1015182__(7762);
-/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxwindow__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxribbon__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1015182__(9274);
-/* harmony import */ var _jqxribbon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxribbon__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxlayout__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1015182__(7355);
-/* harmony import */ var _jqxlayout__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxlayout__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1015182__(1610);
-/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1015182__(4240);
-/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1015182__(1448);
-/* harmony import */ var _jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_1015182__.n(_jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1020323__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1020323__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1020323__(7762);
+/* harmony import */ var _jqxwindow__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxwindow__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxribbon__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1020323__(9274);
+/* harmony import */ var _jqxribbon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxribbon__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxlayout__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1020323__(7355);
+/* harmony import */ var _jqxlayout__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxlayout__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1020323__(1610);
+/* harmony import */ var _jqxmenu__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxmenu__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1020323__(4240);
+/* harmony import */ var _jqxscrollbar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxscrollbar__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1020323__(1448);
+/* harmony import */ var _jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_1020323__.n(_jqxdockinglayout__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -25777,6 +25954,24 @@ var __webpack_exports__ = {};
 
 })();
 
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
+/******/ })()
+;
 /******/ })()
 ;
 /******/ })()

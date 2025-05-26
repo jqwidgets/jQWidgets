@@ -115,11 +115,17 @@
             function destroy() {
                 JQXLite(componentSelector).jqxTree('destroy');  
             }
+            function disableCheckbox(item) {
+                JQXLite(componentSelector).jqxTree('disableCheckbox', item);  
+            }
             function disableItem(item) {
                 JQXLite(componentSelector).jqxTree('disableItem', item);  
             }
             function ensureVisible(item) {
                 JQXLite(componentSelector).jqxTree('ensureVisible', item);  
+            }
+            function enableCheckbox(item) {
+                JQXLite(componentSelector).jqxTree('enableCheckbox', item);  
             }
             function enableItem(item) {
                 JQXLite(componentSelector).jqxTree('enableItem', item);  
@@ -489,7 +495,7 @@
 				const widgetOptions = __manageProps__();
 				JQXLite(componentSelector).jqxTree(widgetOptions);
 			})
-			return {id, componentSelector, addBefore,addAfter,addTo,clear,checkAll,checkItem,collapseAll,collapseItem,destroy,disableItem,ensureVisible,enableItem,enableAll,expandAll,expandItem,focus,getCheckedItems,getUncheckedItems,getItems,getItem,getSelectedItem,getPrevItem,getNextItem,hitTest,removeItem,render,refresh,selectItem,uncheckAll,uncheckItem,updateItem,val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addBefore,addAfter,addTo,clear,checkAll,checkItem,collapseAll,collapseItem,destroy,disableCheckbox,disableItem,ensureVisible,enableCheckbox,enableItem,enableAll,expandAll,expandItem,focus,getCheckedItems,getUncheckedItems,getItems,getItem,getSelectedItem,getPrevItem,getNextItem,hitTest,removeItem,render,refresh,selectItem,uncheckAll,uncheckItem,updateItem,val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

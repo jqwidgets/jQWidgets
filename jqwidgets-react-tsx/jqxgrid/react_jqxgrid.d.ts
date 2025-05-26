@@ -102,6 +102,8 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     getselectedrowindexes(): number[];
     getselectedcell(): IGridGetSelectedCell;
     getselectedcells(): IGridGetSelectedCell[];
+    showSidePanel(selector: string | HTMLElement, width?: number, callbackFn?: any): void;
+    closeSidePanel(): void;
     selectcell(rowBoundIndex: number, dataField: string): void;
     selectallrows(): void;
     selectrow(rowBoundIndex: number): void;
@@ -139,6 +141,9 @@ export interface IGridColumn {
     threestatecheckbox?: boolean;
     sortable?: boolean;
     filterable?: boolean;
+    filternlpinput?: string;
+    aiKey?: string;
+    aiUrl?: string;
     filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
     buttonclick?: (row: number) => void;
     hideable?: boolean;

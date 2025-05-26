@@ -116,11 +116,17 @@ require('../../jqwidgets/jqxcheckbox');
         JqxTree.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxTree('destroy');
         };
+        JqxTree.prototype.disableCheckbox = function (item) {
+            this._jqx(this._componentSelector).jqxTree('disableCheckbox', item);
+        };
         JqxTree.prototype.disableItem = function (item) {
             this._jqx(this._componentSelector).jqxTree('disableItem', item);
         };
         JqxTree.prototype.ensureVisible = function (item) {
             this._jqx(this._componentSelector).jqxTree('ensureVisible', item);
+        };
+        JqxTree.prototype.enableCheckbox = function (item) {
+            this._jqx(this._componentSelector).jqxTree('enableCheckbox', item);
         };
         JqxTree.prototype.enableItem = function (item) {
             this._jqx(this._componentSelector).jqxTree('enableItem', item);

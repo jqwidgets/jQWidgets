@@ -128,7 +128,7 @@ require('../../jqwidgets/jqxform');
             return this._jqx(this._componentSelector).jqxForm('getComponentByName', name);
         };
         JqxForm.prototype._manageProps = function () {
-            var widgetProps = ['padding', 'backgroundColor', 'borderColor', 'value', 'template'];
+            var widgetProps = ['padding', 'backgroundColor', 'borderColor', 'value', 'template', 'enableSmartPaste', 'aiKey', 'aiUrl'];
             var options = {};
             for (var prop in this.props) {
                 if (widgetProps.indexOf(prop) !== -1) {

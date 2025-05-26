@@ -385,6 +385,12 @@ require('../../jqwidgets/jqxgrid.chart');
         JqxGrid.prototype.getselectedcells = function () {
             return this._jqx(this._componentSelector).jqxGrid('getselectedcells');
         };
+        JqxGrid.prototype.showSidePanel = function (selector, width, callbackFn) {
+            this._jqx(this._componentSelector).jqxGrid('showSidePanel', selector, width, callbackFn);
+        };
+        JqxGrid.prototype.closeSidePanel = function () {
+            this._jqx(this._componentSelector).jqxGrid('closeSidePanel');
+        };
         JqxGrid.prototype.selectcell = function (rowBoundIndex, dataField) {
             this._jqx(this._componentSelector).jqxGrid('selectcell', rowBoundIndex, dataField);
         };

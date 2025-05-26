@@ -652,6 +652,12 @@
             function getselectedcells() {
                 return JQXLite(componentSelector).jqxGrid('getselectedcells');  
             }
+            function showSidePanel(selector, width, callbackFn) {
+                JQXLite(componentSelector).jqxGrid('showSidePanel', selector, width, callbackFn);  
+            }
+            function closeSidePanel() {
+                JQXLite(componentSelector).jqxGrid('closeSidePanel');  
+            }
             function selectcell(rowBoundIndex, dataField) {
                 JQXLite(componentSelector).jqxGrid('selectcell', rowBoundIndex, dataField);  
             }
@@ -2492,7 +2498,7 @@
 				const widgetOptions = __manageProps__();
 				JQXLite(componentSelector).jqxGrid(widgetOptions);
 			})
-			return {id, componentSelector, autoresizecolumns,autoresizecolumn,beginupdate,clear,createChart,destroy,endupdate,ensurerowvisible,focus,getcolumnindex,getcolumn,getcolumnproperty,getrowid,getrowdata,getrowdatabyid,getrowboundindexbyid,getrowboundindex,getrows,getboundrows,getdisplayrows,getdatainformation,getsortinformation,getpaginginformation,hidecolumn,hideloadelement,hiderowdetails,iscolumnvisible,iscolumnpinned,localizestrings,pincolumn,refreshdata,refresh,render,scrolloffset,scrollposition,showloadelement,showrowdetails,setcolumnindex,setcolumnproperty,showcolumn,unpincolumn,updatebounddata,updating,getsortcolumn,removesort,sortby,addgroup,cleargroups,collapsegroup,collapseallgroups,expandallgroups,expandgroup,getrootgroupscount,getgroup,insertgroup,iscolumngroupable,removegroupat,removegroup,addfilter,applyfilters,clearfilters,getfilterinformation,getcolumnat,removefilter,refreshfilterrow,gotopage,gotoprevpage,gotonextpage,addrow,begincelledit,beginrowedit,closemenu,deleterow,endcelledit,endrowedit,getcell,getcellatposition,getcelltext,getcelltextbyid,getcellvaluebyid,getcellvalue,isBindingCompleted,openmenu,setcellvalue,setcellvaluebyid,showvalidationpopup,updaterow,clearselection,getselectedrowindex,getselectedrowindexes,getselectedcell,getselectedcells,selectcell,selectallrows,selectrow,unselectrow,unselectcell,getcolumnaggregateddata,refreshaggregates,renderaggregates,exportdata,exportview,openColumnChooser,getstate,loadstate,savestate, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, autoresizecolumns,autoresizecolumn,beginupdate,clear,createChart,destroy,endupdate,ensurerowvisible,focus,getcolumnindex,getcolumn,getcolumnproperty,getrowid,getrowdata,getrowdatabyid,getrowboundindexbyid,getrowboundindex,getrows,getboundrows,getdisplayrows,getdatainformation,getsortinformation,getpaginginformation,hidecolumn,hideloadelement,hiderowdetails,iscolumnvisible,iscolumnpinned,localizestrings,pincolumn,refreshdata,refresh,render,scrolloffset,scrollposition,showloadelement,showrowdetails,setcolumnindex,setcolumnproperty,showcolumn,unpincolumn,updatebounddata,updating,getsortcolumn,removesort,sortby,addgroup,cleargroups,collapsegroup,collapseallgroups,expandallgroups,expandgroup,getrootgroupscount,getgroup,insertgroup,iscolumngroupable,removegroupat,removegroup,addfilter,applyfilters,clearfilters,getfilterinformation,getcolumnat,removefilter,refreshfilterrow,gotopage,gotoprevpage,gotonextpage,addrow,begincelledit,beginrowedit,closemenu,deleterow,endcelledit,endrowedit,getcell,getcellatposition,getcelltext,getcelltextbyid,getcellvaluebyid,getcellvalue,isBindingCompleted,openmenu,setcellvalue,setcellvaluebyid,showvalidationpopup,updaterow,clearselection,getselectedrowindex,getselectedrowindexes,getselectedcell,getselectedcells,showSidePanel,closeSidePanel,selectcell,selectallrows,selectrow,unselectrow,unselectcell,getcolumnaggregateddata,refreshaggregates,renderaggregates,exportdata,exportview,openColumnChooser,getstate,loadstate,savestate, setOptions, options, getOptions, createComponent};
         },
     }
 </script>
