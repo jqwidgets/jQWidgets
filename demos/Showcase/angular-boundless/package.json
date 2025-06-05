@@ -76,7 +76,7 @@
     "ts-node": "~3.3.0",
     "tslint": "~5.7.0",
     "typescript": "2.3.4",
-    "jquery": "3.2.1"
+    "jquery": "3.5.0"
   },
   "license": "http://www.jqwidgets.com/license/",
   "name": "angular-boundless",
