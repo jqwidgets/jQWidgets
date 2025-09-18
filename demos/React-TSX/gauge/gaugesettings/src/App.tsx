@@ -1,148 +1,140 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState } from 'react';
 import JqxCheckBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
 import JqxExpander from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxexpander';
 import JqxGauge, { IGaugeProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgauge';
 import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-class App extends React.PureComponent<{}, IGaugeProps> {
-    private myGauge = React.createRef<JqxGauge>();
+const App = () => {
+    const myGauge = useRef<JqxGauge>(null);
 
-    constructor(props: {}) {
-        super(props);
+    const [border, setBorder] = useState<IGaugeProps['border']>({ visible: true });
+    const [caption] = useState<IGaugeProps['caption']>({ offset: [0, -25], value: 'jQWidgets', position: 'bottom' });
+    const [labels, setLabels] = useState<IGaugeProps['labels']>({ visible: true, position: 'inside' });
+    const [ranges, setRanges] = useState<IGaugeProps['ranges']>([
+        { startValue: 0, endValue: 90, style: { fill: '#e2e2e2', stroke: '#e2e2e2' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+        { startValue: 90, endValue: 140, style: { fill: '#f6de54', stroke: '#f6de54' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+        { startValue: 140, endValue: 180, style: { fill: '#db5016', stroke: '#db5016' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+        { startValue: 180, endValue: 220, style: { fill: '#d02841', stroke: '#d02841' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 }
+    ]);
+    const [showRanges, setShowRanges] = useState<boolean>(true);
+    const [style] = useState<{ stroke: string; fill: string }>({ stroke: '#ffffff', fill: '#ffffff' });
+    const [ticksMajor] = useState<IGaugeProps['ticksMajor']>({ interval: 10, size: '10%' });
+    const [ticksMinor] = useState<IGaugeProps['ticksMinor']>({ interval: 5, size: '5%' });
 
-        this.showLabelsCheckboxOnChange = this.showLabelsCheckboxOnChange.bind(this);
-        this.showRangesCheckboxOnChange = this.showRangesCheckboxOnChange.bind(this);
-        this.showBorderCheckboxOnChange = this.showBorderCheckboxOnChange.bind(this);
-        this.insideRadioOnChange = this.insideRadioOnChange.bind(this);
-        this.outsideRadioOnChange = this.outsideRadioOnChange.bind(this);
+    const showLabelsCheckboxOnChange = (event: any) => {
+        setLabels(prev => {
+            const updated = { ...prev, visible: event.args.checked };
+            return updated;
+        });
+    };
 
-        this.state = {
-            border: { visible: true },
-            caption: { offset: [0, -25], value: 'jQWidgets', position: 'bottom' },
-            labels: { visible: true, position: 'inside' },
-            ranges: [
-                { startValue: 0, endValue: 90, style: { fill: '#e2e2e2', stroke: '#e2e2e2' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
-                { startValue: 90, endValue: 140, style: { fill: '#f6de54', stroke: '#f6de54' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
-                { startValue: 140, endValue: 180, style: { fill: '#db5016', stroke: '#db5016' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
-                { startValue: 180, endValue: 220, style: { fill: '#d02841', stroke: '#d02841' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 }
-            ],
-            showRanges: true,
-            style: { stroke: '#ffffff', fill: '#ffffff' },
-            ticksMajor: { interval: 10, size: '10%' },
-            ticksMinor: { interval: 5, size: '5%' }
+    const showRangesCheckboxOnChange = (event: any) => {
+        setShowRanges(event.args.checked);
+    };
+
+    const showBorderCheckboxOnChange = (event: any) => {
+        setBorder({ visible: event.args.checked });
+    };
+
+    const insideRadioOnChange = (event: any) => {
+        if (event.args.checked) {
+            setLabels(prev => ({ ...prev, position: 'inside' }));
         }
-    }
+    };
 
-    public render() {
+    const outsideRadioOnChange = (event: any) => {
+        if (event.args.checked) {
+            setLabels(prev => ({ ...prev, position: 'outside' }));
+        }
+    };
 
-        return (
-            <div style={{ width: '600px' }}>
-                <div style={{ float: 'left' }}>
-                    <JqxGauge  ref={this.myGauge}
-                        value={0} colorScheme={'scheme04'} animationDuration={1500} border={this.state.border}
-                        ranges={this.state.ranges} ticksMinor={this.state.ticksMinor} ticksMajor={this.state.ticksMajor}
-                        labels={this.state.labels} caption={this.state.caption} showRanges={this.state.showRanges} />
-                </div>
-
-                <JqxExpander theme={'material-purple'} style={{ float: 'right' }}
-                    width={200} showArrow={false} toggleMode={'none'}>
-                    <div>Options</div>
-                    <div>
-                        <ul style={{ listStyle: 'none', padding: '0px', margin: '10px' }}>
-                            <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
-                                <JqxCheckBox theme={'material-purple'} onChange={this.showLabelsCheckboxOnChange}
-                                    width={150} checked={this.state.labels!.visible}>
-                                    Show Labels
-                                </JqxCheckBox>
-                                <ul style={{ listStyle: 'none', padding: 0, marginTop: '10px', marginLeft: '20px', fontFamily: 'Verdana', fontSize: '12px' }}>
-                                    <li>
-                                        <JqxRadioButton theme={'material-purple'} onChange={this.insideRadioOnChange}
-                                            width={150} checked={true}>
-                                            Inside the Gauge
-                                        </JqxRadioButton>
-                                    </li>
-                                    <li>
-                                        <JqxRadioButton theme={'material-purple'} style={{ marginTop: '5px' }} onChange={this.outsideRadioOnChange}
-                                            width={150}>
-                                            Outside the Gauge
-                                        </JqxRadioButton>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
-                                <JqxCheckBox theme={'material-purple'} onChange={this.showRangesCheckboxOnChange}
-                                    width={150} checked={this.state.showRanges}>
-                                    Show Ranges
-                                </JqxCheckBox>
-                            </li>
-                            <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
-                                <JqxCheckBox theme={'material-purple'} onChange={this.showBorderCheckboxOnChange}
-                                    width={150} checked={this.state.border!.visible}>
-                                    Show Border
-                                </JqxCheckBox>
-                            </li>
-                        </ul>
-                    </div>
-                </JqxExpander>
+    return (
+        <div style={{ width: '600px' }}>
+            <div style={{ float: 'left' }}>
+                <JqxGauge
+                    ref={myGauge}
+                    value={0}
+                    colorScheme={'scheme04'}
+                    animationDuration={1500}
+                    border={border}
+                    ranges={ranges}
+                    ticksMinor={ticksMinor}
+                    ticksMajor={ticksMajor}
+                    labels={labels}
+                    caption={caption}
+                    showRanges={showRanges}
+                    style={style}
+                />
             </div>
-        );
-    }
-
-    private showLabelsCheckboxOnChange(event: any): void {
-        const newLabels = this.state.labels;
-        newLabels!.visible = event.args.checked;
-        this.setState({
-            labels: newLabels
-        }, () => {
-            this.myGauge.current!.forceUpdate();
-        });
-    };
-
-    private showRangesCheckboxOnChange(event: any): void {
-        this.setState({
-            showRanges: event.args.checked
-        }, () => {
-            this.myGauge.current!.forceUpdate();
-        });
-    };
-
-    private showBorderCheckboxOnChange(event: any): void {
-        this.setState({
-            border: { visible: event.args.checked }
-        }, () => {
-            this.myGauge.current!.forceUpdate()
-
-        });
-    };
-
-    private insideRadioOnChange(event: any): void {
-        if (event.args.checked) {
-            const newLabels = this.state.labels;
-            newLabels!.position = 'inside';
-
-            this.setState({
-                labels: newLabels
-            }, () => {
-                this.myGauge.current!.forceUpdate();
-            });
-        }
-    };
-
-    private outsideRadioOnChange(event: any): void {
-        if (event.args.checked) {
-            const newLabels = this.state.labels;
-            newLabels!.position = 'outside';
-
-            this.setState({
-                labels: newLabels
-            }, () => {
-                this.myGauge.current!.forceUpdate();
-            });
-        }
-    };
-}
+            <JqxExpander
+                theme={'material-purple'}
+                style={{ float: 'right' }}
+                width={200}
+                showArrow={false}
+                toggleMode={'none'}
+            >
+                <div>Options</div>
+                <div>
+                    <ul style={{ listStyle: 'none', padding: '0px', margin: '10px' }}>
+                        <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
+                            <JqxCheckBox
+                                theme={'material-purple'}
+                                onChange={showLabelsCheckboxOnChange}
+                                width={150}
+                                checked={labels!.visible}
+                            >
+                                Show Labels
+                            </JqxCheckBox>
+                            <ul style={{ listStyle: 'none', padding: 0, marginTop: '10px', marginLeft: '20px', fontFamily: 'Verdana', fontSize: '12px' }}>
+                                <li>
+                                    <JqxRadioButton
+                                        theme={'material-purple'}
+                                        onChange={insideRadioOnChange}
+                                        width={150}
+                                        checked={labels.position === 'inside'}
+                                    >
+                                        Inside the Gauge
+                                    </JqxRadioButton>
+                                </li>
+                                <li>
+                                    <JqxRadioButton
+                                        theme={'material-purple'}
+                                        style={{ marginTop: '5px' }}
+                                        onChange={outsideRadioOnChange}
+                                        width={150}
+                                        checked={labels.position === 'outside'}
+                                    >
+                                        Outside the Gauge
+                                    </JqxRadioButton>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
+                            <JqxCheckBox
+                                theme={'material-purple'}
+                                onChange={showRangesCheckboxOnChange}
+                                width={150}
+                                checked={showRanges}
+                            >
+                                Show Ranges
+                            </JqxCheckBox>
+                        </li>
+                        <li style={{ padding: '3px', fontFamily: 'Verdana', fontSize: '12px' }}>
+                            <JqxCheckBox
+                                theme={'material-purple'}
+                                onChange={showBorderCheckboxOnChange}
+                                width={150}
+                                checked={border!.visible}
+                            >
+                                Show Border
+                            </JqxCheckBox>
+                        </li>
+                    </ul>
+                </div>
+            </JqxExpander>
+        </div>
+    );
+};
 
 export default App;

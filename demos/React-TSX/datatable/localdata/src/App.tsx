@@ -1,15 +1,10 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import { generatedata } from './generatedata';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
-
-    constructor(props: {}) {
-        super(props);
-
+function App() {
+    const data = useMemo(() => {
         const source = {
             dataFields: [
                 { name: 'firstname', type: 'string' },
@@ -22,28 +17,29 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             dataType: 'array',
             localData: generatedata()
         };
+        return new jqx.dataAdapter(source);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Name', dataField: 'firstname', width: 200 },
-                { text: 'Last Name', dataField: 'lastname', width: 200 },
-                { text: 'Product', editable: false, dataField: 'productname', width: 180 },
-                { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right', align: 'right' },
-                { text: 'Unit Price', dataField: 'price', width: 90, cellsAlign: 'right', align: 'right', cellsFormat: 'c2' },
-                { text: 'Total', dataField: 'total', cellsAlign: 'right', align: 'right', cellsFormat: 'c2' }
-            ],
-            source: new jqx.dataAdapter(source)
-        };
-    }
+    const columns = useMemo(() => [
+        { text: 'Name', dataField: 'firstname', width: 200 },
+        { text: 'Last Name', dataField: 'lastname', width: 200 },
+        { text: 'Product', editable: false, dataField: 'productname', width: 180 },
+        { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right', align: 'right' },
+        { text: 'Unit Price', dataField: 'price', width: 90, cellsAlign: 'right', align: 'right', cellsFormat: 'c2' },
+        { text: 'Total', dataField: 'total', cellsAlign: 'right', align: 'right', cellsFormat: 'c2' }
+    ], []);
 
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                pageable={true} columnsResize={true} pagerButtonsCount={10} />
-        );
-    }
+    return (
+        <JqxDataTable
+            theme="material-purple"
+            width="100%"
+            source={data}
+            columns={columns}
+            pageable={true}
+            columnsResize={true}
+            pagerButtonsCount={10}
+        />
+    );
 }
 
 export default App;

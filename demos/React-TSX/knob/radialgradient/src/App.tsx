@@ -1,26 +1,21 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState, useCallback } from 'react';
 import JqxInput from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxinput';
 import JqxKnob, { IKnobProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxknob';
 
+function App() {
+    const myKnob = useRef<JqxKnob>(null);
+    const myInput = useRef<JqxInput>(null);
 
-class App extends React.PureComponent<{}, IKnobProps> {
-
-    private myKnob = React.createRef<JqxKnob>();
-    private myInput = React.createRef<JqxInput>();
-
-    constructor(props: {}) {
-        super(props);
-
-        this.myKnobOnChange = this.myKnobOnChange.bind(this);
-        this.myInputOnChange = this.myInputOnChange.bind(this);
-
-        const styles = {
+    const styles = React.useMemo(
+        () => ({
             fill: 'transparent'
-        };
-        const progressBar = {
+        }),
+        []
+    );
+
+    const progressBar = React.useMemo(
+        () => ({
             background: {
                 fill: {
                     color: '#FFFFFF',
@@ -37,44 +32,59 @@ class App extends React.PureComponent<{}, IKnobProps> {
                     gradientType: 'radial'
                 }
             }
-        };
-        const pointer = {
-            offset: '50%', size: '50%',
+        }),
+        []
+    );
+
+    const pointer = React.useMemo(
+        () => ({
+            offset: '50%',
+            size: '50%',
             style: { fill: '#00a4e1' },
-            thickness: 0, type: 'line'
-        };
+            thickness: 0,
+            type: 'line'
+        }),
+        []
+    );
 
-        this.state = {
-            pointer,
-            progressBar,
-            styles
-        }
-    }
+    const [value, setValue] = useState<number>(10);
 
-    public render() {
-        return (
-            <div>
-                <JqxKnob ref={this.myKnob} onChange={this.myKnobOnChange}
-                    value={10} min={0} max={100}
-                    startAngle={90} endAngle={450}
-                    snapToStep={true} rotation={'clockwise'}
-                    styles={this.state.styles} progressBar={this.state.progressBar}
-                    pointer={this.state.pointer} pointerGrabAction={'progressBar'}
-                />
+    const myKnobOnChange = useCallback((event: any) => {
+        setValue(event.args.value);
+        myInput.current?.val(event.args.value);
+    }, []);
 
-                <JqxInput theme={'material-purple'} ref={this.myInput} onChange={this.myInputOnChange} value={10} />
-            </div>
-        );
-    }
+    const myInputOnChange = useCallback((event: any) => {
+        const val = Number(event.target.value);
+        setValue(val);
+        myKnob.current?.val(val);
+    }, []);
 
-    private myKnobOnChange(event: any): void {
-        this.myInput.current!.val(event.args.value);
-    }
-
-    private myInputOnChange(event: any): void {
-        this.myKnob.current!.val(event.target.value);
-    }
-
+    return (
+        <div>
+            <JqxKnob
+                ref={myKnob}
+                onChange={myKnobOnChange}
+                value={value}
+                min={0}
+                max={100}
+                startAngle={90}
+                endAngle={450}
+                snapToStep={true}
+                rotation={'clockwise'}
+                styles={styles}
+                progressBar={progressBar}
+                pointer={pointer}
+                pointerGrabAction={'progressBar'}
+            />
+            <JqxInput
+                theme={'material-purple'}
+                ref={myInput}
+                onChange={myInputOnChange}
+                value={value}
+            />
+        </div>
+    );
 }
 
 export default App;

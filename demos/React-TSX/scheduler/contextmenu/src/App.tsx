@@ -1,16 +1,19 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useMemo, useCallback } from 'react';
 import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler';
 
-class App extends React.PureComponent<{}, ISchedulerProps> {
-    private myScheduler = React.createRef<JqxScheduler>();
+const App = () => {
+    const myScheduler = useRef<JqxScheduler>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        const appointments = new Array();
+    const { 
+        source, 
+        resources, 
+        appointmentDataFields, 
+        height, 
+        date, 
+        views 
+    } = useMemo(() => {
+        const appointments = [];
         const appointment1 = {
             calendar: "Room 1",
             description: "George brings projector for presentations.",
@@ -65,14 +68,9 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             start: new Date(2017, 10, 26, 14, 0, 0),
             subject: "Interview with Nancy"
         };
-        appointments.push(appointment1);
-        appointments.push(appointment2);
-        appointments.push(appointment3);
-        appointments.push(appointment4);
-        appointments.push(appointment5);
-        appointments.push(appointment6);
+        appointments.push(appointment1, appointment2, appointment3, appointment4, appointment5, appointment6);
 
-        const source: any = {
+        const source = {
             dataFields: [
                 { name: 'id', type: 'string' },
                 { name: 'description', type: 'string' },
@@ -86,10 +84,15 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             id: 'id',
             localData: appointments
         };
+        const dataAdapter = new jqx.dataAdapter(source);
 
-        const dataAdapter: any = new jqx.dataAdapter(source);
-
-        this.state = {
+        return {
+            source: dataAdapter,
+            resources: {
+                colorScheme: "scheme02",
+                dataField: "calendar",
+                source: new jqx.dataAdapter(source)
+            },
             appointmentDataFields: {
                 description: "description",
                 from: "start",
@@ -99,128 +102,96 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
                 subject: "subject",
                 to: "end"
             },
-            /**
-             * called when the context menu is created.
-             * @param {Object} menu - jqxMenu's jQuery object.
-             * @param {Object} settings - Object with the menu's initialization settings.
-             */
-            contextMenuCreate: (menu: any, settings: any) => {
-                const menuItems: any[] = [];
-                settings.source!.forEach((element: any) => {
-                    menuItems.push(element);
-                });
-                menuItems.push({ id: 'delete', label: 'Delete Appointment' });
-                menuItems.push({
-                    id: 'status', 
-                    items:
-                    [
-                        { label: 'Free', id: 'free' },
-                        { label: 'Out of Office', id: 'outOfOffice' },
-                        { label: 'Tentative', id: 'tentative' },
-                        { label: 'Busy', id: 'busy' }
-                    ],
-                    label: 'Set Status'
-                });
-
-                settings.source = menuItems;
-            },
-            /**
-             * called when the user clicks an item in the Context Menu. Returning true as a result disables the built-in Click handler.
-             * @param {Object} menu - jqxMenu's jQuery object.
-             * @param {Object} the selected appointment instance or NULL when the menu is opened from cells selection.
-             * @param {jQuery.Event Object} the jqxMenu's itemclick event object.
-             */
-            contextMenuItemClick: (menu: any, appointment: any, event: any) => {
-                const args = event.args;
-                switch (args.id) {
-                    case 'delete':
-                        this.myScheduler.current!.deleteAppointment(appointment.id);
-                        return true;
-                    case 'free':
-                        this.myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'free');
-                        return true;
-                    case 'outOfOffice':
-                        this.myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'outOfOffice');
-                        return true;
-                    case 'tentative':
-                        this.myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'tentative');
-                        return true;
-                    case 'busy':
-                        this.myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'busy');
-                        return true;
-                    default:
-                        return false;
-                }
-            },
-
-            /**
-             * called when the menu is closed.
-             * @param {Object} menu - jqxMenu's jQuery object.
-             * @param {Object} the selected appointment instance or NULL when the menu is opened from cells selection.
-             * @param {jQuery.Event Object} the close event.
-             */
-            contextMenuClose: () => { /* Sets or gets a function called when the context menu is closed. */ },
-
-            /**
-             * called when the menu is opened.
-             * @param {Object} menu - jqxMenu's jQuery object.
-             * @param {Object} the selected appointment instance or NULL when the menu is opened from cells selection.
-             * @param {jQuery.Event Object} the open event.
-             */
-            contextMenuOpen: (menu, appointment, event) => {
-                if (!appointment) {
-                    menu.jqxMenu('hideItem', 'delete');
-                    menu.jqxMenu('hideItem', 'status');
-                }
-                else {
-                    menu.jqxMenu('showItem', 'delete');
-                    menu.jqxMenu('showItem', 'status');
-                }
-            },
-            date: new jqx.date(2017, 11, 23),
             height: 600,
-            ready: () => {
-                setTimeout(() => {
-                    this.myScheduler.current!.ensureAppointmentVisible("id1");
-                });
-            },
-            resources: {
-                colorScheme: "scheme02",
-                dataField: "calendar",
-                source: new jqx.dataAdapter(source)
-            },
-            source: dataAdapter,
+            date: new jqx.date(2017, 11, 23),
             views: [
                 'dayView',
                 'weekView',
                 'monthView'
             ]
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <JqxScheduler theme={'material-purple'} ref={this.myScheduler}
-                // @ts-ignore
-                width={'100%'}
-                height={this.state.height}
-                date={this.state.date}
-                source={this.state.source}
-                showLegend={true}
+    const contextMenuCreate = useCallback((menu: any, settings: any) => {
+        const menuItems: any[] = [];
+        settings.source!.forEach((element: any) => {
+            menuItems.push(element);
+        });
+        menuItems.push({ id: 'delete', label: 'Delete Appointment' });
+        menuItems.push({
+            id: 'status',
+            items: [
+                { label: 'Free', id: 'free' },
+                { label: 'Out of Office', id: 'outOfOffice' },
+                { label: 'Tentative', id: 'tentative' },
+                { label: 'Busy', id: 'busy' }
+            ],
+            label: 'Set Status'
+        });
+        settings.source = menuItems;
+    }, []);
 
-                contextMenuCreate={this.state.contextMenuCreate}
-                contextMenuItemClick={this.state.contextMenuItemClick}
-                contextMenuOpen={this.state.contextMenuOpen}
-                contextMenuClose={this.state.contextMenuClose}
+    const contextMenuItemClick = useCallback((menu: any, appointment: any, event: any) => {
+        const args = event.args;
+        switch (args.id) {
+            case 'delete':
+                myScheduler.current!.deleteAppointment(appointment.id);
+                return true;
+            case 'free':
+                myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'free');
+                return true;
+            case 'outOfOffice':
+                myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'outOfOffice');
+                return true;
+            case 'tentative':
+                myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'tentative');
+                return true;
+            case 'busy':
+                myScheduler.current!.setAppointmentProperty(appointment.id, 'status', 'busy');
+                return true;
+            default:
+                return false;
+        }
+    }, []);
 
-                resources={this.state.resources}
-                view={'weekView'}
-                views={this.state.views}
-                appointmentDataFields={this.state.appointmentDataFields}
-                ready={this.state.ready}
-            />
-        );
-    }
-}
+    const contextMenuClose = useCallback(() => {}, []);
+
+    const contextMenuOpen = useCallback((menu: any, appointment: any, event: any) => {
+        if (!appointment) {
+            menu.jqxMenu('hideItem', 'delete');
+            menu.jqxMenu('hideItem', 'status');
+        } else {
+            menu.jqxMenu('showItem', 'delete');
+            menu.jqxMenu('showItem', 'status');
+        }
+    }, []);
+
+    const ready = useCallback(() => {
+        setTimeout(() => {
+            myScheduler.current!.ensureAppointmentVisible("id1");
+        });
+    }, []);
+
+    return (
+        <JqxScheduler
+            theme="material-purple"
+            ref={myScheduler}
+            width="100%"
+            height={height}
+            date={date}
+            source={source}
+            showLegend={true}
+            contextMenuCreate={contextMenuCreate}
+            contextMenuItemClick={contextMenuItemClick}
+            contextMenuOpen={contextMenuOpen}
+            contextMenuClose={contextMenuClose}
+            resources={resources}
+            view="weekView"
+            views={views}
+            appointmentDataFields={appointmentDataFields}
+            ready={ready}
+        />
+    );
+};
 
 export default App;

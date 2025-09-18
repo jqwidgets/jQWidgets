@@ -1,70 +1,10 @@
 import * as React from 'react';
- 
-
-
+import { useMemo } from 'react';
 import JqxChart, { IChartProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const data = this.generateData();
-
-        this.state = {
-            description: 'data source: Eurostat',
-            padding: { left: 10, top: 5, right: 10, bottom: 5 },
-            seriesGroups: [
-                {
-                    series: [
-                        {
-                            colorFunction: (value: any, itemIndex: any, serie: any, group: any): string => {
-                                if (itemIndex === (data.length - 1)) {
-                                    return '#3F3A3B'; // total
-                                }
-                                return (value < 0) ? '#D30E2F' /* red */ : '#24A037' /*green*/;
-                            },
-                            dataField: 'population',
-                            displayText: 'Population change',
-                            summary: 'summary'
-                        }
-                    ],
-                    type: 'waterfall'
-                }
-            ],
-            source: data,
-            title: 'EU Population between 2003 and 2014',
-            titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
-            valueAxis: {
-                labels: {
-                    formatFunction: (value: any): string => {
-                        return value / 1000000 + ' M';
-                    }
-                },
-                title: { text: 'Population<br>' },
-                unitInterval: 1000000
-            },
-            xAxis: {
-                dataField: 'year',
-                displayText: 'Year',
-                labels: { angle: 0 },
-                type: 'basic',
-            }
-        };
-    }
-
-    public render() {
-        return (
-            <JqxChart style={{ width: '850px', height: '500px' }}
-                title={this.state.title} description={this.state.description}
-                showLegend={false} enableAnimations={true} padding={this.state.padding}
-                titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                valueAxis={this.state.valueAxis} seriesGroups={this.state.seriesGroups} colorScheme={'scheme06'} />
-        );
-    }
-
-    private generateData(): any[] {
-        const data: any[] = [
+function App() {
+    const data = useMemo(() => {
+        const dataArr: any[] = [
             { year: 2003, population: 490815046 },
             { year: 2004, population: 492709300 },
             { year: 2005, population: 494774599 },
@@ -79,13 +19,69 @@ class App extends React.PureComponent<{}, IChartProps> {
             { year: 2014, population: 507416607 },
             { year: 'Total', summary: true }
         ];
-
-        for (let i = data.length - 2; i > 0; i--) {
-            data[i].population -= data[i - 1].population;
+        for (let i = dataArr.length - 2; i > 0; i--) {
+            dataArr[i].population -= dataArr[i - 1].population;
         }
+        return dataArr;
+    }, []);
 
-        return data;
-    }
+    const chartProps: IChartProps = useMemo(() => ({
+        description: 'data source: Eurostat',
+        padding: { left: 10, top: 5, right: 10, bottom: 5 },
+        seriesGroups: [
+            {
+                series: [
+                    {
+                        colorFunction: (value: any, itemIndex: any, serie: any, group: any): string => {
+                            if (itemIndex === (data.length - 1)) {
+                                return '#3F3A3B';
+                            }
+                            return (value < 0) ? '#D30E2F' : '#24A037';
+                        },
+                        dataField: 'population',
+                        displayText: 'Population change',
+                        summary: 'summary'
+                    }
+                ],
+                type: 'waterfall'
+            }
+        ],
+        source: data,
+        title: 'EU Population between 2003 and 2014',
+        titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+        valueAxis: {
+            labels: {
+                formatFunction: (value: any): string => {
+                    return value / 1000000 + ' M';
+                }
+            },
+            title: { text: 'Population<br>' },
+            unitInterval: 1000000
+        },
+        xAxis: {
+            dataField: 'year',
+            displayText: 'Year',
+            labels: { angle: 0 },
+            type: 'basic'
+        }
+    }), [data]);
+
+    return (
+        <JqxChart
+            style={{ width: '850px', height: '500px' }}
+            title={chartProps.title}
+            description={chartProps.description}
+            showLegend={false}
+            enableAnimations={true}
+            padding={chartProps.padding}
+            titlePadding={chartProps.titlePadding}
+            source={chartProps.source}
+            xAxis={chartProps.xAxis}
+            valueAxis={chartProps.valueAxis}
+            seriesGroups={chartProps.seriesGroups}
+            colorScheme={'scheme06'}
+        />
+    );
 }
 
 export default App;

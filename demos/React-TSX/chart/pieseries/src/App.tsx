@@ -1,58 +1,67 @@
 import * as React from 'react';
- 
+import JqxChart, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
+const App = () => {
+    const sourceConfig: any = {
+        datafields: [
+            { name: 'Browser' },
+            { name: 'Share' }
+        ],
+        datatype: 'csv',
+        url: 'desktop_browsers_share_dec2011.txt'
+    };
 
-import JqxChart, { IChartProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
+    const source = React.useMemo(() => 
+        new jqx.dataAdapter(sourceConfig, { 
+            async: false, 
+            autoBind: true, 
+            loadError: (xhr: any, status: any, error: any) => { 
+                alert('Error loading "' + sourceConfig.url + '" : ' + error); 
+            } 
+        }), 
+        []
+    );
 
-class App extends React.PureComponent<{}, IChartProps> {
+    const [chartProps] = React.useState({
+        title: 'Desktop browsers share',
+        description: '(source: wikipedia.org)',
+        padding: { left: 5, top: 5, right: 5, bottom: 5 },
+        titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+        source,
+        seriesGroups: [
+            {
+                series: [
+                    {
+                        centerOffset: 0,
+                        dataField: 'Share',
+                        displayText: 'Browser',
+                        formatSettings: { sufix: '%', decimalPlaces: 1 },
+                        initialAngle: 15,
+                        labelRadius: 120,
+                        radius: 170
+                    }
+                ],
+                showLabels: true,
+                type: 'pie'
+            }
+        ]
+    });
 
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
-            datafields: [
-                { name: 'Browser' },
-                { name: 'Share' }
-            ],
-            datatype: 'csv',
-            url: 'desktop_browsers_share_dec2011.txt'
-        };
-
-        this.state = {
-            description: '(source: wikipedia.org)',
-            padding: { left: 5, top: 5, right: 5, bottom: 5 },
-            seriesGroups: [
-                {
-                    series: [
-                        {
-                            centerOffset: 0,
-                            dataField: 'Share',
-                            displayText: 'Browser',
-                            formatSettings: { sufix: '%', decimalPlaces: 1 },
-                            initialAngle: 15,
-                            labelRadius: 120,
-                            radius: 170
-                        }
-                    ],
-                    showLabels: true,
-                    type: 'pie'
-                }
-            ],
-            source: new jqx.dataAdapter(source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source.url + '" : ' + error); } }),
-            title: 'Desktop browsers share',
-            titlePadding: { left: 0, top: 0, right: 0, bottom: 10 }
-        };
-    }
-
-    public render() {
-        return (
-            <JqxChart style={{ width: '850px', height: '500px' }}
-                title={this.state.title} description={this.state.description}
-                showLegend={false} enableAnimations={false} padding={this.state.padding}
-                titlePadding={this.state.titlePadding} source={this.state.source} showBorderLine={true}
-                seriesGroups={this.state.seriesGroups} colorScheme={'scheme02'} />
-        );
-    }
-}
+    return (
+        <JqxChart
+            style={{ width: '850px', height: '500px' }}
+            title={chartProps.title}
+            description={chartProps.description}
+            showLegend={false}
+            enableAnimations={false}
+            padding={chartProps.padding}
+            titlePadding={chartProps.titlePadding}
+            source={chartProps.source}
+            showBorderLine={true}
+            seriesGroups={chartProps.seriesGroups}
+            colorScheme={'scheme02'}
+        />
+    );
+};
 
 export default App;

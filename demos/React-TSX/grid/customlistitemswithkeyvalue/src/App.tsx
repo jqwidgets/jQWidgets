@@ -1,19 +1,13 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useMemo, useCallback } from 'react';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
+function App() {
+    const myGrid = useRef<JqxGrid>(null);
+    const eventLog = useRef<HTMLDivElement>(null);
 
-    private myGrid = React.createRef<JqxGrid>();
-    private eventLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.myGridOnFilter = this.myGridOnFilter.bind(this);
-
-        const countries: any[] = [
+    const countries = useMemo(
+        () => [
             { value: 'AF', label: 'Afghanistan' },
             { value: 'AL', label: 'Albania' },
             { value: 'DZ', label: 'Algeria' },
@@ -97,28 +91,30 @@ class App extends React.PureComponent<{}, IGridProps> {
             { value: 'AE', label: 'United Arab Emirates' },
             { value: 'UK', label: 'United Kingdom' },
             { value: 'US', label: 'United States' }
-        ];
+        ],
+        [],
+    );
 
-        const countriesSource: any = {
+    const countriesSource = useMemo(
+        () => ({
             datafields: [
                 { name: 'label', type: 'string' },
                 { name: 'value', type: 'string' }
             ],
             datatype: 'array',
             localdata: countries
-        };
+        }),
+        [countries]
+    );
 
-        const countriesAdapter = new jqx.dataAdapter(countriesSource, { autoBind: true });
+    const countriesAdapter = useMemo(
+        () => new jqx.dataAdapter(countriesSource, { autoBind: true }),
+        [countriesSource]
+    );
 
-        const source: any = {
+    const source = useMemo(
+        () => ({
             datafields: [
-                // name - determines the field's name.
-                // value - the field's value in the data source.
-                // values - specifies the field's values.
-                // values.source - specifies the foreign source. The expected value is an array.
-                // values.value - specifies the field's value in the foreign source. 
-                // values.name - specifies the field's name in the foreign source. 
-                // When the adapter is loaded, each record will have a field called 'Country'. The 'Country' for each record comes from the countriesAdapter where the record's 'countryCode' from gridAdapter matches to the 'value' from countriesAdapter. 
                 { name: 'Country', type: 'string', value: 'countryCode', values: { source: countriesAdapter.records, value: 'value', name: 'label' } },
                 { name: 'countryCode', type: 'string' }
             ],
@@ -149,69 +145,45 @@ class App extends React.PureComponent<{}, IGridProps> {
                 { countryCode: 'MC' },
                 { countryCode: 'IN' },
                 { countryCode: 'HK' }
-            ]            
-        };
+            ]
+        }),
+        [countriesAdapter]
+    );
 
-        this.state = {
-            columns: [
-                {
-                    createfilterwidget: (column: any, htmlElement: any, editor: any): void => {
-                        editor.jqxDropDownList({ displayMember: 'label', valueMember: 'value' });
-                    },
-                    datafield: 'countryCode', displayfield: 'Country', filteritems: new jqx.dataAdapter(countriesSource),
-                    filtertype: 'list', text: 'Country'
-                }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
+    const gridSource = useMemo(() => new jqx.dataAdapter(source), [source]);
 
-    public render() {
-        return (
-            <div>
-                <JqxGrid theme={'material-purple'} ref={this.myGrid} onFilter={this.myGridOnFilter}
-                    width={600} source={this.state.source} columns={this.state.columns}
-                    filterable={true} showfilterrow={true} />
+    const columns = useMemo(
+        () => [
+            {
+                createfilterwidget: (column: any, htmlElement: any, editor: any): void => {
+                    editor.jqxDropDownList({ displayMember: 'label', valueMember: 'value' });
+                },
+                datafield: 'countryCode',
+                displayfield: 'Country',
+                filteritems: new jqx.dataAdapter(countriesSource),
+                filtertype: 'list',
+                text: 'Country'
+            }
+        ],
+        [countriesSource]
+    );
 
-                <div ref={this.eventLog} style={{ fontSize: '13px', width: '800px', maxWidth: '800px', overflow: 'auto', marginTop: '20px', fontFamily: 'Verdana' }} />
-            </div>
-        );
-    }
-
-    private myGridOnFilter(): void {
-        // get filter information.
-        const filterInformation = this.myGrid.current!.getfilterinformation();
+    const myGridOnFilter = useCallback(() => {
+        const filterInformation = myGrid.current!.getfilterinformation();
         let filterslength = 0;
         const data: any = {};
         for (const filterInfoItem of filterInformation) {
-            // column's data field.
             const filterdatafield = filterInfoItem.datafield;
-            // column's filter group.
             const filterGroup = filterInfoItem.filter;
-            // column's filters.
             const filters = filterGroup.getfilters();
-            // filter group's operator.
             data[filterdatafield + 'operator'] = filterGroup.operator;
             for (const filter of filters) {
                 filter.datafield = filterdatafield;
-                // filter's value.
                 const filtervalue = filter.value;
                 data['filtervalue' + filterslength] = filtervalue.toString();
-                // filter's id.
                 if (filter.id) {
                     data['filterid' + filterslength] = filter.id.toString();
                 }
-                // filter's condition.
                 data['filtercondition' + filterslength] = filter.condition;
-                // filter's operator.
                 data['filteroperator' + filterslength] = filter.operator;
-                // filter's data field.
-                data['filterdatafield' + filterslength] = filterdatafield;
-                filterslength++;
-            }
-        }
-        this.eventLog.current!.innerHTML = JSON.stringify(data);
-    };
-}
-
-export default App;
+                data

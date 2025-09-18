@@ -1,80 +1,76 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useMemo } from 'react';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
+function App() {
+    const myGrid = useRef<JqxGrid>(null);
 
-    private myGrid = React.createRef<JqxGrid>();
+    const data = '[{ "Country": "Belgium", "City": "Brussels"}, {"Country": "France", "City": "Paris"}, {"Country": "USA", "City": "Washington" }]';
 
-    constructor(props: {}) {
-        super(props);
+    const source = useMemo(() => ({
+        datafields: [
+            { name: 'Country', type: 'string' },
+            { name: 'City', type: 'string' }
+        ],
+        datatype: 'json',
+        localdata: data
+    }), []);
 
-        const data: string = '[{ "Country": "Belgium", "City": "Brussels"}, {"Country": "France", "City": "Paris"}, {"Country": "USA", "City": "Washington" }]';
-
-        const source: any =
+    const columns = useMemo<IGridProps['columns']>(() => [
         {
-            datafields: [
-                { name: 'Country', type: 'string' },
-                { name: 'City', type: 'string' }
-            ],
-            datatype: 'json',
-            localdata: data
-        };
-
-        this.state = {
-            columns: [
-                {
-                    cellvaluechanging: (row: number, datafield: string, columntype: any, oldvalue: any, newvalue: any): void => {
-                        if (newvalue !== oldvalue) {
-                            this.myGrid.current!.setcellvalue(row, 'City', 'Select a city...');
-                        };
-                    },
-                    columntype: 'combobox', 
-                    datafield: 'Country',
-                    text: 'Country', 
-                    width: 150
-                },
-                {
-                    columntype: 'combobox',
-                    datafield: 'City', 
-                    initeditor: (row: number, cellvalue: any, editor: any, celltext: any, cellwidth: any, cellheight: any) => {
-                        const country = this.myGrid.current!.getcellvalue(row, 'Country');
-                        const city = editor.val();
-                        let cities: string[] = [];
-                        switch (country) {
-                            case 'Belgium':
-                                cities = ['Bruges', 'Brussels', 'Ghent'];
-                                break;
-                            case 'France':
-                                cities = ['Bordeaux', 'Lille', 'Paris'];
-                                break;
-                            case 'USA':
-                                cities = ['Los Angeles', 'Minneapolis', 'Washington'];
-                                break;
-                        };
-                        editor.jqxComboBox({ autoDropDownHeight: true, source: cities });
-                        if (city !== 'Select a city...') {
-                            const index = cities.indexOf(city);
-                            editor.jqxComboBox('selectIndex', index);
-                        }
-                    },
-                    text: 'City',
-                    width: 150
+            cellvaluechanging: (row: number, datafield: string, columntype: any, oldvalue: any, newvalue: any): void => {
+                if (newvalue !== oldvalue) {
+                    myGrid.current!.setcellvalue(row, 'City', 'Select a city...');
                 }
-            ],
-            source: new jqx.dataAdapter(source) 
+            },
+            columntype: 'combobox',
+            datafield: 'Country',
+            text: 'Country',
+            width: 150
+        },
+        {
+            columntype: 'combobox',
+            datafield: 'City',
+            initeditor: (row: number, cellvalue: any, editor: any, celltext: any, cellwidth: any, cellheight: any) => {
+                const country = myGrid.current!.getcellvalue(row, 'Country');
+                const city = editor.val();
+                let cities: string[] = [];
+                switch (country) {
+                    case 'Belgium':
+                        cities = ['Bruges', 'Brussels', 'Ghent'];
+                        break;
+                    case 'France':
+                        cities = ['Bordeaux', 'Lille', 'Paris'];
+                        break;
+                    case 'USA':
+                        cities = ['Los Angeles', 'Minneapolis', 'Washington'];
+                        break;
+                }
+                editor.jqxComboBox({ autoDropDownHeight: true, source: cities });
+                if (city !== 'Select a city...') {
+                    const index = cities.indexOf(city);
+                    editor.jqxComboBox('selectIndex', index);
+                }
+            },
+            text: 'City',
+            width: 150
         }
-    }
+    ], []);
 
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'} ref={this.myGrid}
-                width={300} source={this.state.source} columns={this.state.columns}
-                autoheight={true} editable={true} selectionmode={'singlecell'} />
-        );
-    }
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source]);
+
+    return (
+        <JqxGrid
+            theme={'material-purple'}
+            ref={myGrid}
+            width={300}
+            source={dataAdapter}
+            columns={columns}
+            autoheight={true}
+            editable={true}
+            selectionmode={'singlecell'}
+        />
+    );
 }
 
 export default App;

@@ -1,24 +1,19 @@
-﻿import * as React from 'react';
- 
+import * as React from 'react';
+import { useRef, useMemo } from 'react';
+import JqxDataTable, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
+import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
+const App = () => {
+    const myDataTable = useRef<JqxDataTable>(null);
 
-import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
-import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
+    const dropDownsSource = useMemo(() => ['Left', 'Center', 'Right'], []);
+    const columns = useMemo(() => [
+        { text: 'Shipped Date', dataField: 'ShippedDate', width: '50%', cellsFormat: 'D' },
+        { text: 'Freight', dataField: 'Freight', width: '50%', cellsFormat: 'f2' }
+    ], []);
 
-export interface IState extends IDataTableProps {
-    dropDownsSource: IDropDownListProps['source'];
-}
-
-class App extends React.PureComponent<{}, IState> {
-
-    private myDataTable = React.createRef<JqxDataTable>();
-
-    constructor(props: {}) {
-        super(props);
-        this.columnAlignment = this.columnAlignment.bind(this);
-        this.cellsAlignment = this.cellsAlignment.bind(this);
-
-        const source: any = {
+    const source = useMemo(() => {
+        const src: any = {
             dataFields: [
                 { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
                 { name: 'Freight', map: 'm\\:properties>d\\:Freight', type: 'float' },
@@ -33,78 +28,85 @@ class App extends React.PureComponent<{}, IState> {
             root: 'entry',
             url: 'orders.xml'
         };
+        return new jqx.dataAdapter(src);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Shipped Date', dataField: 'ShippedDate', width: '50%', cellsFormat: 'D' },
-                { text: 'Freight', dataField: 'Freight', width: '50%', cellsFormat: 'f2' }
-            ],
-            dropDownsSource: ['Left', 'Center', 'Right'],
-            source: new jqx.dataAdapter(source)
-        };
-    }
+    const columnAlignment = React.useCallback((event: any) => {
+        const index = event.args.index;
+        if (!myDataTable.current) return;
+        switch (index) {
+            case 0:
+                myDataTable.current.setColumnProperty('ShippedDate', 'align', 'left');
+                myDataTable.current.setColumnProperty('Freight', 'align', 'left');
+                break;
+            case 1:
+                myDataTable.current.setColumnProperty('ShippedDate', 'align', 'center');
+                myDataTable.current.setColumnProperty('Freight', 'align', 'center');
+                break;
+            case 2:
+                myDataTable.current.setColumnProperty('ShippedDate', 'align', 'right');
+                myDataTable.current.setColumnProperty('Freight', 'align', 'right');
+                break;
+        }
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxDataTable theme={'material-purple'} ref={this.myDataTable}
-                    // @ts-ignore 
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    sortable={true} pageable={true} columnsResize={true} />
-                <div style={{ fontSize: '13px', fontFamily: 'Verdana', width: '600px', marginTop: '10px' }}>
-                    <div style={{ float: 'left', width: '300px' }}>
-                        <h4>Column Alignment</h4>
-                        <JqxDropDownList theme={'material-purple'} onChange={this.columnAlignment}
-                            height={25} autoDropDownHeight={true}
-                            selectedIndex={0} source={this.state.dropDownsSource} />
-                    </div>
-                    <div style={{ float: 'left', width: '300px' }}>
-                        <h4>Cells Alignment</h4>
-                        <JqxDropDownList theme={'material-purple'} onChange={this.cellsAlignment}
-                            height={25} autoDropDownHeight={true}
-                            selectedIndex={0} source={this.state.dropDownsSource} />
+    const cellsAlignment = React.useCallback((event: any) => {
+        const index = event.args.index;
+        if (!myDataTable.current) return;
+        switch (index) {
+            case 0:
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsAlign', 'left');
+                myDataTable.current.setColumnProperty('Freight', 'cellsAlign', 'left');
+                break;
+            case 1:
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsAlign', 'center');
+                myDataTable.current.setColumnProperty('Freight', 'cellsAlign', 'center');
+                break;
+            case 2:
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsAlign', 'right');
+                myDataTable.current.setColumnProperty('Freight', 'cellsAlign', 'right');
+                break;
+        }
+    }, []);
 
-                    </div>
+    return (
+        <div>
+            <JqxDataTable
+                theme="material-purple"
+                ref={myDataTable}
+                width="100%"
+                source={source}
+                columns={columns}
+                sortable={true}
+                pageable={true}
+                columnsResize={true}
+            />
+            <div style={{ fontSize: '13px', fontFamily: 'Verdana', width: '600px', marginTop: '10px' }}>
+                <div style={{ float: 'left', width: '300px' }}>
+                    <h4>Column Alignment</h4>
+                    <JqxDropDownList
+                        theme="material-purple"
+                        onChange={columnAlignment}
+                        height={25}
+                        autoDropDownHeight={true}
+                        selectedIndex={0}
+                        source={dropDownsSource}
+                    />
+                </div>
+                <div style={{ float: 'left', width: '300px' }}>
+                    <h4>Cells Alignment</h4>
+                    <JqxDropDownList
+                        theme="material-purple"
+                        onChange={cellsAlignment}
+                        height={25}
+                        autoDropDownHeight={true}
+                        selectedIndex={0}
+                        source={dropDownsSource}
+                    />
                 </div>
             </div>
-        );
-    }
-
-    private columnAlignment(event: any): void {
-        const index = event.args.index;
-        switch (index) {
-            case 0:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'align', 'left');
-                this.myDataTable.current!.setColumnProperty('Freight', 'align', 'left');
-                break;
-            case 1:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'align', 'center');
-                this.myDataTable.current!.setColumnProperty('Freight', 'align', 'center');
-                break;
-            case 2:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'align', 'right');
-                this.myDataTable.current!.setColumnProperty('Freight', 'align', 'right');
-                break;
-        }
-    }
-
-    private cellsAlignment(event: any): void {
-        const index = event.args.index;
-        switch (index) {
-            case 0:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsAlign', 'left');
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsAlign', 'left');
-                break;
-            case 1:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsAlign', 'center');
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsAlign', 'center');
-                break;
-            case 2:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsAlign', 'right');
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsAlign', 'right');
-                break;
-        }
-    }
-}
+        </div>
+    );
+};
 
 export default App;

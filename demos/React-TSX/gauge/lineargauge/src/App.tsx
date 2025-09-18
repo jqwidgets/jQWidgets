@@ -1,7 +1,5 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState, useEffect } from 'react';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxCheckBox, { ICheckBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
 import JqxExpander from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxexpander';
@@ -16,254 +14,228 @@ export interface IState extends ILinearGaugeProps {
     showBackgroundChecked: ICheckBoxProps['checked'];
 }
 
-class App extends React.PureComponent<{}, IState> {
+const App = () => {
+    const myLinearGauge = useRef<JqxLinearGauge>(null);
+    const bothLabelsRadioButton = useRef<JqxRadioButton>(null);
+    const bothTicksRadioButton = useRef<JqxRadioButton>(null);
 
-    private myLinearGauge = React.createRef<JqxLinearGauge>();
-    private bothLabelsRadioButton = React.createRef<JqxRadioButton>();
-    private bothTicksRadioButton = React.createRef<JqxRadioButton>();
+    const [state, setState] = useState<IState>({
+        background: { visible: true },
+        height: '300px',
+        labels: { interval: 20 },
+        orientation: 'vertical',
+        pointer: { size: '6%' },
+        ranges: [
+            { startValue: -10, endValue: 10, style: { fill: '#FFF157', stroke: '#FFF157' } },
+            { startValue: 10, endValue: 35, style: { fill: '#FFA200', stroke: '#FFA200' } },
+            { startValue: 35, endValue: 60, style: { fill: '#FF4800', stroke: '#FF4800' } }
+        ],
+        showBackgroundChecked: true,
+        showLabelsChecked: true,
+        showRanges: true,
+        showRangesChecked: true,
+        showTicksChecked: true,
+        ticksMajor: { visible: true, interval: 10, size: '10%' },
+        ticksMinor: { visible: true, size: '5%', interval: 2.5, style: { 'stroke-width': 1, stroke: '#aaaaaa' } },
+        verticalChecked: true,
+        width: '100px'
+    });
 
-    constructor(props: {}) {
-        super(props);
-        this.isVerticalCheckboxOnChange = this.isVerticalCheckboxOnChange.bind(this);
-        this.showTicksCheckboxOnChange = this.showTicksCheckboxOnChange.bind(this);
-        this.showLabelsCheckboxOnChange = this.showLabelsCheckboxOnChange.bind(this);
-        this.showRangesCheckboxOnChange = this.showRangesCheckboxOnChange.bind(this);
-        this.showBackgroundCheckboxOnChange = this.showBackgroundCheckboxOnChange.bind(this);
-        this.labelsNearRadioOnChecked = this.labelsNearRadioOnChecked.bind(this);
-        this.labelsFarRadioOnChecked = this.labelsFarRadioOnChecked.bind(this);
-        this.labelsBothRadioOnChecked = this.labelsBothRadioOnChecked.bind(this);
-        this.ticksNearRadioOnChecked = this.ticksNearRadioOnChecked.bind(this);
-        this.ticksFarRadioOnChecked = this.ticksFarRadioOnChecked.bind(this);
-        this.ticksBothRadioOnChecked = this.ticksBothRadioOnChecked.bind(this);
-        this.showAnimationButtonOnClick = this.showAnimationButtonOnClick.bind(this);
-
-        this.state = {
-            background: { visible: true },
-            height: '300px',
-            labels: { interval: 20 },
-            orientation: 'vertical',
-            pointer: { size: '6%' },
-            ranges: [
-                { startValue: -10, endValue: 10, style: { fill: '#FFF157', stroke: '#FFF157' } },
-                { startValue: 10, endValue: 35, style: { fill: '#FFA200', stroke: '#FFA200' } },
-                { startValue: 35, endValue: 60, style: { fill: '#FF4800', stroke: '#FF4800' } }
-            ],
-            showBackgroundChecked: true,
-            showLabelsChecked: true,
-            showRanges: true,
-            showRangesChecked: true,
-            showTicksChecked: true,
-            ticksMajor: { visible: true, interval: 10, size: '10%' },
-            ticksMinor: { visible: true, size: '5%', interval: 2.5, style: { 'stroke-width': 1, stroke: '#aaaaaa' } },
-            verticalChecked: true,
-            width: '100px'
-        }
-    }
-
-    public componentDidMount() {
-        this.bothLabelsRadioButton.current!.setOptions({ checked: true });
-        this.bothTicksRadioButton.current!.setOptions({ checked: true });
-
+    useEffect(() => {
+        bothLabelsRadioButton.current?.setOptions({ checked: true });
+        bothTicksRadioButton.current?.setOptions({ checked: true });
         setTimeout(() => {
-            this.myLinearGauge.current!.setOptions({ value: 50 });
+            myLinearGauge.current?.setOptions({ value: 50 });
         });
-    }
+    }, []);
 
-    public render() {
-
-        return (
-            <div>
-                <JqxLinearGauge ref={this.myLinearGauge} style={{ marginLeft: '20px', float: 'left' }}
-                    width={this.state.width} height={this.state.height} orientation={this.state.orientation}
-                    ticksMajor={this.state.ticksMajor} ticksMinor={this.state.ticksMinor} max={60} background={this.state.background}
-                    labels={this.state.labels} showRanges={this.state.showRanges} pointer={this.state.pointer}
-                    ticksPosition={this.state.ticksPosition} colorScheme={'scheme05'} ranges={this.state.ranges} />
-
-                <div style={{ marginLeft: '330px' }}>
-                    <JqxExpander theme={'material-purple'} width={280} height={320} toggleMode={'none'} showArrow={false}>
-                        <div className="demo-options-header">Options</div>
-                        <div>
-                            <JqxCheckBox theme={'material-purple'} style={{ marginTop: '15px' }} onChange={this.isVerticalCheckboxOnChange} checked={this.state.verticalChecked}>Is Vertical</JqxCheckBox>
-                            <br />
-                            <div>
-                                <table style={{ float: 'left', marginLeft: '10px' }}>
-                                    <tbody>
-                                        <tr>
-                                            <td>Labels position:</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} onChecked={this.labelsNearRadioOnChecked} groupName={'labels-position'}>Near</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} onChecked={this.labelsFarRadioOnChecked} groupName={'labels-position'}>Far</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} ref={this.bothLabelsRadioButton} onChecked={this.labelsBothRadioOnChecked} groupName={'labels-position'}>Both</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table style={{ float: 'right', marginRight: '10px' }}>
-                                    <tbody>
-                                        <tr>
-                                            <td>Ticks position:</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} onChecked={this.ticksNearRadioOnChecked} groupName={'ticks-position'}>Near</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} onChecked={this.ticksFarRadioOnChecked} groupName={'ticks-position'}>Far</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <JqxRadioButton theme={'material-purple'} ref={this.bothTicksRadioButton} onChecked={this.ticksBothRadioOnChecked} groupName={'ticks-position'}>Both</JqxRadioButton>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div style={{ clear: 'both' }} />
-                            </div>
-                            <br />
-                            <JqxCheckBox theme={'material-purple'} onChange={this.showTicksCheckboxOnChange} checked={this.state.showTicksChecked}>Show Ticks</JqxCheckBox>
-                            <JqxCheckBox theme={'material-purple'} onChange={this.showLabelsCheckboxOnChange} checked={this.state.showLabelsChecked}>Show Labels</JqxCheckBox>
-                            <JqxCheckBox theme={'material-purple'} onChange={this.showRangesCheckboxOnChange} checked={this.state.showRangesChecked}>Show Ranges</JqxCheckBox>
-                            <JqxCheckBox theme={'material-purple'} onChange={this.showBackgroundCheckboxOnChange} checked={this.state.showBackgroundChecked}>Show Background</JqxCheckBox>
-                            <br />
-                            <JqxButton theme={'material-purple'} style={{ marginLeft: '90px', textAlign: 'center' }} onClick={this.showAnimationButtonOnClick} width={100} height={20}>Reset Value</JqxButton>
-                        </div>
-                    </JqxExpander>
-                </div>
-            </div>
-        );
-    }
-
-    private isVerticalCheckboxOnChange(event: any): void {
+    const isVerticalCheckboxOnChange = (event: any) => {
         if (event.args.checked) {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 height: '300px',
                 orientation: 'vertical',
                 verticalChecked: true,
                 width: '100px'
-            });
+            }));
         } else {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 height: '100px',
                 orientation: 'horizontal',
                 verticalChecked: false,
                 width: '300px'
-            });
+            }));
         }
     };
 
-    private showTicksCheckboxOnChange(event: any): void {
+    const showTicksCheckboxOnChange = (event: any) => {
         if (event.args.checked) {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 showTicksChecked: true,
                 ticksMajor: { visible: true, size: '10%', interval: 10 },
                 ticksMinor: { visible: true, size: '5%', interval: 2.5, style: { 'stroke-width': 1, stroke: '#aaaaaa' } }
-            });
+            }));
         } else {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 showTicksChecked: false,
                 ticksMajor: { visible: false },
                 ticksMinor: { visible: false }
-            });
+            }));
         }
     };
 
-    private showLabelsCheckboxOnChange(event: any): void {
+    const showLabelsCheckboxOnChange = (event: any) => {
         if (event.args.checked) {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 labels: { visible: true, interval: 20 },
                 showLabelsChecked: true
-            });
+            }));
         } else {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 labels: { visible: false },
                 showLabelsChecked: false
-            });
+            }));
         }
     };
 
-    private showRangesCheckboxOnChange(event: any): void {
+    const showRangesCheckboxOnChange = (event: any) => {
         if (event.args.checked) {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 showRanges: true,
                 showRangesChecked: true
-            });
+            }));
         } else {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 showRanges: false,
                 showRangesChecked: false
-            });
+            }));
         }
     };
 
-    private showBackgroundCheckboxOnChange(event: any): void {
+    const showBackgroundCheckboxOnChange = (event: any) => {
         if (event.args.checked) {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 background: { visible: true },
                 showBackgroundChecked: true
-            });
+            }));
         } else {
-            this.setState({
+            setState(prev => ({
+                ...prev,
                 background: { visible: false },
                 showBackgroundChecked: false
-            });
+            }));
         }
     };
 
-    private labelsNearRadioOnChecked(): void {
-        this.setState({
+    const labelsNearRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             labels: { interval: 20, position: 'near' }
-        });
+        }));
     };
 
-    private labelsFarRadioOnChecked(): void {
-        this.setState({
+    const labelsFarRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             labels: { interval: 20, position: 'far' }
-        });
+        }));
     };
 
-    private labelsBothRadioOnChecked(): void {
-        this.setState({
+    const labelsBothRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             labels: { interval: 20, position: 'both' }
-        });
+        }));
     };
 
-    private ticksNearRadioOnChecked(): void {
-        this.setState({
+    const ticksNearRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             ticksPosition: 'near'
-        });
+        }));
     };
 
-    private ticksFarRadioOnChecked(): void {
-        this.setState({
+    const ticksFarRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             ticksPosition: 'far'
-        });
+        }));
     };
 
-    private ticksBothRadioOnChecked(): void {
-        this.setState({
+    const ticksBothRadioOnChecked = () => {
+        setState(prev => ({
+            ...prev,
             ticksPosition: 'both'
-        });
+        }));
     };
 
-    private showAnimationButtonOnClick(): void {
-        this.myLinearGauge.current!.setOptions({ animationDuration: 0 });
-        this.myLinearGauge.current!.setOptions({ value: -60 });
-        this.myLinearGauge.current!.setOptions({ animationDuration: 1000 });
-        this.myLinearGauge.current!.setOptions({ value: 50 });
+    const showAnimationButtonOnClick = () => {
+        myLinearGauge.current?.setOptions({ animationDuration: 0 });
+        myLinearGauge.current?.setOptions({ value: -60 });
+        myLinearGauge.current?.setOptions({ animationDuration: 1000 });
+        myLinearGauge.current?.setOptions({ value: 50 });
     };
-}
 
-export default App;
+    return (
+        <div>
+            <JqxLinearGauge ref={myLinearGauge} style={{ marginLeft: '20px', float: 'left' }}
+                width={state.width} height={state.height} orientation={state.orientation}
+                ticksMajor={state.ticksMajor} ticksMinor={state.ticksMinor} max={60} background={state.background}
+                labels={state.labels} showRanges={state.showRanges} pointer={state.pointer}
+                ticksPosition={state.ticksPosition} colorScheme={'scheme05'} ranges={state.ranges} />
+
+            <div style={{ marginLeft: '330px' }}>
+                <JqxExpander theme={'material-purple'} width={280} height={320} toggleMode={'none'} showArrow={false}>
+                    <div className="demo-options-header">Options</div>
+                    <div>
+                        <JqxCheckBox theme={'material-purple'} style={{ marginTop: '15px' }} onChange={isVerticalCheckboxOnChange} checked={state.verticalChecked}>Is Vertical</JqxCheckBox>
+                        <br />
+                        <div>
+                            <table style={{ float: 'left', marginLeft: '10px' }}>
+                                <tbody>
+                                    <tr>
+                                        <td>Labels position:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} onChecked={labelsNearRadioOnChecked} groupName={'labels-position'}>Near</JqxRadioButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} onChecked={labelsFarRadioOnChecked} groupName={'labels-position'}>Far</JqxRadioButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} ref={bothLabelsRadioButton} onChecked={labelsBothRadioOnChecked} groupName={'labels-position'}>Both</JqxRadioButton>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table style={{ float: 'right', marginRight: '10px' }}>
+                                <tbody>
+                                    <tr>
+                                        <td>Ticks position:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} onChecked={ticksNearRadioOnChecked} groupName={'ticks-position'}>Near</JqxRadioButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} onChecked={ticksFarRadioOnChecked} groupName={'ticks-position'}>Far</JqxRadioButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <JqxRadioButton theme={'material-purple'} ref={bothTicksRadioButton} onChecked={ticksBothRadioOnChecked} groupName={'ticks

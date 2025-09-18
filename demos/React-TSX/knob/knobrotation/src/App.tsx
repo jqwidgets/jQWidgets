@@ -1,16 +1,9 @@
-﻿import * as React from 'react';
- 
-
-
+import React, { useMemo } from 'react';
 import './App.css';
+import JqxKnob from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxknob';
 
-import JqxKnob, { IKnobProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxknob';
-
-class App extends React.PureComponent<{}, IKnobProps> {
-
-    constructor(props: {}) {
-        super(props);
-
+const App = () => {
+    const { marks, labels, progressBar, pointer, spinner, dial } = useMemo(() => {
         const marks = {
             colorProgress: '#fff', colorRemaining: '#fff',
             drawAboveProgressBar: true,
@@ -66,31 +59,29 @@ class App extends React.PureComponent<{}, IKnobProps> {
                 stroke: '#ff0000', strokeWidth: 1
             }
         };
+        return { marks, labels, progressBar, pointer, spinner, dial };
+    }, []);
 
-        this.state = {
-            dial,
-            labels,
-            marks,
-            pointer,
-            progressBar,
-            spinner
-        }
-    }
-
-    public render() {
-        return (
-            <JqxKnob
-                value={60} min={0} max={100} step={20}
-                startAngle={120} endAngle={480}
-                dragStartAngle={120} dragEndAngle={420}
-                snapToStep={true} rotation={'counterclockwise'}
-                marks={this.state.marks} labels={this.state.labels}
-                progressBar={this.state.progressBar} pointer={this.state.pointer}
-                spinner={this.state.spinner} dial={this.state.dial}
-            />
-        );
-    }
-
-}
+    return (
+        <JqxKnob
+            value={60}
+            min={0}
+            max={100}
+            step={20}
+            startAngle={120}
+            endAngle={480}
+            dragStartAngle={120}
+            dragEndAngle={420}
+            snapToStep={true}
+            rotation="counterclockwise"
+            marks={marks}
+            labels={labels}
+            progressBar={progressBar}
+            pointer={pointer}
+            spinner={spinner}
+            dial={dial}
+        />
+    );
+};
 
 export default App;

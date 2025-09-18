@@ -1,76 +1,67 @@
 import * as React from 'react';
- 
+import { useRef, useState } from 'react';
+import JqxColorPicker from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcolorpicker';
+import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
+const App = () => {
+    const [colorMode, setColorMode] = useState<'saturation' | 'hue'>('saturation');
+    const [hueChecked, setHueChecked] = useState(false);
+    const [saturationChecked, setSaturationChecked] = useState(true);
+    const colorLog = useRef<HTMLDivElement>(null);
 
-import JqxColorPicker, { IColorPickerProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcolorpicker';
-import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
-
-export interface IState extends IColorPickerProps {
-    hueChecked: IRadioButtonProps['checked'];
-    saturationChecked: IRadioButtonProps['checked'];
-}
-
-class App extends React.PureComponent<{}, IState> {
-
-    private colorLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.hueModeChanged = this.hueModeChanged.bind(this);
-        this.colorChanged = this.colorChanged.bind(this);
-
-        this.state = {
-            colorMode: 'saturation',
-            hueChecked: false,
-            saturationChecked: true
+    const colorChanged = (event: any) => {
+        if (colorLog.current) {
+            colorLog.current.innerHTML = `<div>Color: #${event.args.color.hex}</div>`;
         }
-    }
+    };
 
-    public render() {
-        return (
-            <div>
-                <JqxColorPicker onColorchange={this.colorChanged}
-                    width={250} height={250} colorMode={this.state.colorMode} />
-       
-                <div style={{ fontSize: '13px', fontFamily: 'Verdana', marginTop: '10px' }}>
-                    <div style={{ marginBottom: '5px' }}>Color Modes</div>
-
-                    <JqxRadioButton theme={'material-purple'}
-                        width={180} height={25} checked={this.state.saturationChecked}>
-                        Saturation Color Mode
-                    </JqxRadioButton>
-
-                    <JqxRadioButton theme={'material-purple'} onChange={this.hueModeChanged}
-                        width={180} height={25} checked={this.state.hueChecked}>
-                        Hue Color Mode
-                    </JqxRadioButton>
-                </div>
-
-                <div ref={this.colorLog} style={{ fontSize: '13px', fontFamily: 'Verdana' }} />
-            </div>
-        );
-    }
-
-    private colorChanged(event: any): void {
-        this.colorLog.current!.innerHTML = `<div>Color: #${event.args.color.hex}</div>`;
-    }
-
-    private hueModeChanged(event: any): void {
+    const hueModeChanged = (event: any) => {
         if (event.args.checked) {
-            this.setState({
-                colorMode: 'hue',
-                hueChecked: true,
-                saturationChecked: false
-            });
+            setColorMode('hue');
+            setHueChecked(true);
+            setSaturationChecked(false);
+        } else {
+            setColorMode('saturation');
+            setHueChecked(false);
+            setSaturationChecked(true);
         }
-        else {
-            this.setState({
-                colorMode: 'saturation',
-                hueChecked: false,
-                saturationChecked: true
-            });
-        }
-    }
-}
+    };
+
+    return (
+        <div>
+            <JqxColorPicker
+                onColorchange={colorChanged}
+                width={250}
+                height={250}
+                colorMode={colorMode}
+            />
+
+            <div style={{ fontSize: '13px', fontFamily: 'Verdana', marginTop: '10px' }}>
+                <div style={{ marginBottom: '5px' }}>Color Modes</div>
+
+                <JqxRadioButton
+                    theme={'material-purple'}
+                    width={180}
+                    height={25}
+                    checked={saturationChecked}
+                >
+                    Saturation Color Mode
+                </JqxRadioButton>
+
+                <JqxRadioButton
+                    theme={'material-purple'}
+                    onChange={hueModeChanged}
+                    width={180}
+                    height={25}
+                    checked={hueChecked}
+                >
+                    Hue Color Mode
+                </JqxRadioButton>
+            </div>
+
+            <div ref={colorLog} style={{ fontSize: '13px', fontFamily: 'Verdana' }} />
+        </div>
+    );
+};
 
 export default App;

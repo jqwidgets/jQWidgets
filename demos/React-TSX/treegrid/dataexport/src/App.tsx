@@ -1,24 +1,12 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useMemo, useCallback } from 'react';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
-import JqxTreeGrid, { ITreeGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtreegrid';
+import JqxTreeGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtreegrid';
 
-class App extends React.PureComponent<{}, ITreeGridProps> {
-    private myTreeGrid = React.createRef<JqxTreeGrid>();
+const App = () => {
+    const myTreeGrid = useRef<JqxTreeGrid | null>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        this.excelExportClick = this.excelExportClick.bind(this);
-        this.xmlExportClick = this.xmlExportClick.bind(this);
-        this.csvExportClick = this.csvExportClick.bind(this);
-        this.tsvExportClick = this.tsvExportClick.bind(this);
-        this.htmlExportClick = this.htmlExportClick.bind(this);
-        this.jsonExportClick = this.jsonExportClick.bind(this);
-        this.pdfExportClick = this.pdfExportClick.bind(this);
-
+    const { columns, source, ready } = useMemo(() => {
         const employees: any[] = [
             { "EmployeeID": 1, "FirstName": "Nancy", "LastName": "Davolio", "ReportsTo": 2, "Country": "USA", "Title": "Sales Representative", "HireDate": "1992-05-01 00:00:00", "BirthDate": "1948-12-08 00:00:00", "City": "Seattle", "Address": "507 - 20th Ave. E.Apt. 2A" },
             { "EmployeeID": 2, "FirstName": "Andrew", "LastName": "Fuller", "ReportsTo": null, "Country": "USA", "Title": "Vice President, Sales", "HireDate": "1992-08-14 00:00:00", "BirthDate": "1952-02-19 00:00:00", "City": "Tacoma", "Address": "908 W. Capital Way" },
@@ -45,8 +33,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                 { name: 'BirthDate', type: 'date' }
             ],
             dataType: 'json',
-            hierarchy:
-            {
+            hierarchy: {
                 keyDataField: { name: 'EmployeeID' },
                 parentDataField: { name: 'ReportsTo' }
             },
@@ -56,95 +43,70 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
 
         const dataAdapter: any = new jqx.dataAdapter(source);
 
-        this.state = {
-            columns: [
-                { dataField: 'FirstName', text: 'FirstName', width: 200 },
-                { dataField: 'LastName', text: 'LastName', width: 150 },
-                { dataField: 'Title', text: 'Title', width: 160 },
-                { cellsFormat: 'd', dataField: 'BirthDate', text: 'Birth Date', width: 120 },
-                { cellsFormat: 'd', dataField: 'HireDate', text: 'Hire Date', width: 120 },
-                { dataField: 'Address', text: 'Address', width: 250 },
-                { dataField: 'City', text: 'City', width: 150 },
-                { dataField: 'Country', text: 'Country', width: 120 }
-            ],
-            ready: (): void => {
-                setTimeout(() => {
-                    this.myTreeGrid.current!.expandRow(2);
-                });
-            },
-            source: dataAdapter
-        }
-    }
+        const columns = [
+            { dataField: 'FirstName', text: 'FirstName', width: 200 },
+            { dataField: 'LastName', text: 'LastName', width: 150 },
+            { dataField: 'Title', text: 'Title', width: 160 },
+            { cellsFormat: 'd', dataField: 'BirthDate', text: 'Birth Date', width: 120 },
+            { cellsFormat: 'd', dataField: 'HireDate', text: 'Hire Date', width: 120 },
+            { dataField: 'Address', text: 'Address', width: 250 },
+            { dataField: 'City', text: 'City', width: 150 },
+            { dataField: 'Country', text: 'Country', width: 120 }
+        ];
 
-    public render() {
-        const buttonsStyle: React.CSSProperties = {
-            float: "left",
-            marginLeft: 10
+        const ready = (): void => {
+            setTimeout(() => {
+                myTreeGrid.current!.expandRow(2);
+            });
         };
-        return (
-            <div>
-                <JqxTreeGrid theme={'material-purple'} ref={this.myTreeGrid}
-                    // @ts-ignore
-                    width={'100%'}
-                    source={this.state.source}
-                    columns={this.state.columns}
-                    ready={this.state.ready}
-                />
-                <div style={{ marginTop: 20 }}>
-                    <div style={{ float: "left" }}>
-                        <JqxButton theme={'material-purple'} onClick={this.excelExportClick}>Export to Excel</JqxButton>
-                        <br />
-                        <br />
-                        <JqxButton theme={'material-purple'} onClick={this.xmlExportClick}>Export to XML</JqxButton>
-                    </div>
-                    <div style={buttonsStyle}>
-                        <JqxButton theme={'material-purple'} onClick={this.csvExportClick}>Export to CSV</JqxButton>
-                        <br />
-                        <br />
-                        <JqxButton theme={'material-purple'} onClick={this.tsvExportClick}>Export to TSV</JqxButton>
-                    </div >
-                    <div style={buttonsStyle}>
-                        <JqxButton theme={'material-purple'} onClick={this.htmlExportClick}>Export to HTML</JqxButton>
-                        <br />
-                        <br />
-                        <JqxButton theme={'material-purple'} onClick={this.jsonExportClick}>Export to JSON</JqxButton>
-                    </div >
-                    <div style={buttonsStyle}>
-                        <JqxButton theme={'material-purple'} onClick={this.pdfExportClick}>Export to PDF</JqxButton>
-                    </div >
-                </div >
+
+        return { columns, source: dataAdapter, ready };
+    }, []);
+
+    const exportClick = useCallback((type: string) => {
+        myTreeGrid.current?.exportData(type);
+    }, []);
+
+    const buttonsStyle: React.CSSProperties = {
+        float: "left",
+        marginLeft: 10
+    };
+
+    return (
+        <div>
+            <JqxTreeGrid
+                theme="material-purple"
+                ref={myTreeGrid}
+                width="100%"
+                source={source}
+                columns={columns}
+                ready={ready}
+            />
+            <div style={{ marginTop: 20 }}>
+                <div style={{ float: "left" }}>
+                    <JqxButton theme="material-purple" onClick={() => exportClick('xls')}>Export to Excel</JqxButton>
+                    <br />
+                    <br />
+                    <JqxButton theme="material-purple" onClick={() => exportClick('xml')}>Export to XML</JqxButton>
+                </div>
+                <div style={buttonsStyle}>
+                    <JqxButton theme="material-purple" onClick={() => exportClick('csv')}>Export to CSV</JqxButton>
+                    <br />
+                    <br />
+                    <JqxButton theme="material-purple" onClick={() => exportClick('tsv')}>Export to TSV</JqxButton>
+                </div>
+                <div style={buttonsStyle}>
+                    <JqxButton theme="material-purple" onClick={() => exportClick('html')}>Export to HTML</JqxButton>
+                    <br />
+                    <br />
+                    <JqxButton theme="material-purple" onClick={() => exportClick('json')}>Export to JSON</JqxButton>
+                </div>
+                <div style={buttonsStyle}>
+                    <JqxButton theme="material-purple" onClick={() => exportClick('pdf')}>Export to PDF</JqxButton>
+                </div>
             </div>
-        );
-    }
-
-    // Event handling
-    private excelExportClick(): void {
-        this.myTreeGrid.current!.exportData('xls');
-    }
-
-    private xmlExportClick(): void {
-        this.myTreeGrid.current!.exportData('xml');
-    }
-
-    private csvExportClick(): void {
-        this.myTreeGrid.current!.exportData('csv');
-    }
-
-    private tsvExportClick(): void {
-        this.myTreeGrid.current!.exportData('tsv');
-    }
-
-    private htmlExportClick(): void {
-        this.myTreeGrid.current!.exportData('html');
-    }
-
-    private jsonExportClick(): void {
-        this.myTreeGrid.current!.exportData('json');
-    }
-
-    private pdfExportClick(): void {
-        this.myTreeGrid.current!.exportData('pdf');
-    }
-}
+        </div>
+    );
+};
 
 export default App;

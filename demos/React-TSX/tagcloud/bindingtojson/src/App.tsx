@@ -1,39 +1,27 @@
 import * as React from 'react';
- 
-
 import JqxTagCloud, { ITagCloudProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtagcloud';
 
-class App extends React.PureComponent<{}, ITagCloudProps> {
-    constructor(props: {}) {
-        super(props);
-
-        const url: string = 'beverages.txt';
-        const source: any = {
+const App = () => {
+    const source = React.useMemo(() => {
+        const url = 'beverages.txt';
+        return new jqx.dataAdapter({
             dataFields: [
                 { name: 'calories' },
                 { name: 'name' }
             ],
             dataType: 'json',
             url
-        };
-        const dataAdapter: any = new jqx.dataAdapter(source);
+        });
+    }, []);
 
-        this.state = {
-            source: dataAdapter
-        }
-    }
-
-    public render() {
-        return (
-            <JqxTagCloud
-                // @ts-ignore
-                width={"100%"}
-                source={this.state.source}
-                displayMember={"name"}
-                valueMember={"calories"}
-            />
-        );
-    }
-}
+    return (
+        <JqxTagCloud
+            width={"100%"}
+            source={source}
+            displayMember={"name"}
+            valueMember={"calories"}
+        />
+    );
+};
 
 export default App;

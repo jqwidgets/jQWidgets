@@ -1,94 +1,47 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useState, useCallback } from 'react';
 import JqxDateTimeInput, { IDateTimeInputProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatetimeinput';
 import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
-export interface IState extends IDateTimeInputProps {
-    selectedIndex: IDropDownListProps['selectedIndex'];
-    source: IDropDownListProps['source'];
-}
+const source: IDropDownListProps['source'] = [
+    'Czech (Czech Republic)', 'German (Germany)', 'English (Canada)', 'English (United States)', 'French (France)',
+    'Italian (Italy)', 'Japanese (Japan)', 'Hebrew (Israel)', 'Russian (Russia)', 'Croatian (Croatia)', 'Sanskrit (India)'
+];
 
-class App extends React.PureComponent<{}, IState> {
+const cultures: IDateTimeInputProps['culture'][] = [
+    'cs-CZ', 'de-DE', 'en-CA', 'en-US', 'fr-FR', 'it-IT', 'ja-JP', 'he-IL', 'ru-RU', 'hr', 'sa-IN'
+];
 
-    constructor(props: {}) {
-        super(props);
-        this.listOnSelect = this.listOnSelect.bind(this);
+const App = () => {
+    const [culture, setCulture] = useState<IDateTimeInputProps['culture']>('en-US');
+    const [selectedIndex, setSelectedIndex] = useState<IDropDownListProps['selectedIndex']>(3);
 
-        this.state = {
-            culture: 'en-US',
-            selectedIndex: 3,
-            source: [
-                'Czech (Czech Republic)', 'German (Germany)', 'English (Canada)', 'English (United States)', 'French (France)',
-                'Italian (Italy)', 'Japanese (Japan)', 'Hebrew (Israel)', 'Russian (Russia)', 'Croatian (Croatia)', 'Sanskrit (India)'
-            ]
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxDateTimeInput theme={'material-purple'} width={300} height={30} culture={this.state.culture} />
-                <br />
-                <div>
-                    <div style={{ fontFamily: 'Verdana', fontSize: '13px' }}>
-                        Choose Culture:
-                    </div>
-                    <br />
-                    <JqxDropDownList theme={'material-purple'} onSelect={this.listOnSelect}
-                        width={200} height={30}
-                        source={this.state.source} selectedIndex={this.state.selectedIndex} />
-                </div >
-            </div>
-        );
-    }
-
-    private listOnSelect(event: any): void {
+    const listOnSelect = useCallback((event: any) => {
         const index: number = event.args.index;
-        let newCulture: IDateTimeInputProps['culture'];
+        setCulture(cultures[index]);
+        setSelectedIndex(index);
+    }, []);
 
-        switch (index) {
-            case 0:
-                newCulture = 'cs-CZ';
-                break;
-            case 1:
-                newCulture = 'de-DE';
-                break;
-            case 2:
-                newCulture = 'en-CA';
-                break;
-            case 3:
-                newCulture = 'en-US';
-                break;
-            case 4:
-                newCulture = 'fr-FR';
-                break;
-            case 5:
-                newCulture = 'it-IT';
-                break;
-            case 6:
-                newCulture = 'ja-JP';
-                break;
-            case 7:
-                newCulture = 'he-IL';
-                break;
-            case 8:
-                newCulture = 'ru-RU';
-                break;
-            case 9:
-                newCulture = 'hr';
-                break;
-            case 10:
-                newCulture = 'sa-IN';
-                break;
-        }
-
-        this.setState({
-            culture: newCulture,
-            selectedIndex: index
-        });
-    }
-}
+    return (
+        <div>
+            <JqxDateTimeInput theme={'material-purple'} width={300} height={30} culture={culture} />
+            <br />
+            <div>
+                <div style={{ fontFamily: 'Verdana', fontSize: '13px' }}>
+                    Choose Culture:
+                </div>
+                <br />
+                <JqxDropDownList
+                    theme={'material-purple'}
+                    onSelect={listOnSelect}
+                    width={200}
+                    height={30}
+                    source={source}
+                    selectedIndex={selectedIndex}
+                />
+            </div>
+        </div>
+    );
+};
 
 export default App;

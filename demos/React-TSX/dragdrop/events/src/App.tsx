@@ -1,55 +1,14 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import './App.css';
-
 import JqxDragDrop, { IDragDropProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdragdrop';
 import JqxPanel from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxpanel';
 
+function App() {
+    const [restricter] = useState({ left: 8, top: 8, width: 247, height: 247 });
+    const myPanel = useRef<JqxPanel>(null);
 
-class App extends React.PureComponent<{}, IDragDropProps> {
-
-    private myPanel = React.createRef<JqxPanel>();
-
-    constructor(props: {}) {
-        super(props);
-        this.addEvent = this.addEvent.bind(this);
-        this.onDragStart = this.onDragStart.bind(this);
-        this.onDragEnd = this.onDragEnd.bind(this);
-        this.onDropTargetEnter = this.onDropTargetEnter.bind(this);
-        this.onDropTargetLeave = this.onDropTargetLeave.bind(this);
-
-        this.state = {
-            restricter: { left: 8, top: 8, width: 247, height: 247 }
-        }
-    }
-
-    public componentDidMount() {
-        this.centerLabels();
-    }
-
-    public render() {
-
-        return (
-            <div className="main-container">
-                <div id="draggable-parent">
-                    <JqxDragDrop  className="draggable"
-                        onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
-                        onDropTargetEnter={this.onDropTargetEnter} onDropTargetLeave={this.onDropTargetLeave}
-                        restricter={this.state.restricter} dropTarget={'.drop-target'}>
-                        <div className="label">I can be dragged only inside my parent</div>
-                    </JqxDragDrop>
-                    <div className="drop-target">
-                        <div className="label">I am a drop target</div>
-                    </div>
-                </div>
-                <JqxPanel theme={'material-purple'} ref={this.myPanel} className="events" width={260} height={330} />
-            </div>
-        );
-    }
-
-    private centerLabels(): void {
+    const centerLabels = useCallback(() => {
         const labels = document.getElementsByClassName('label');
         Array.prototype.forEach.call(labels, (label: HTMLDivElement) => {
             const parentHeight = label.parentElement!.offsetHeight;
@@ -57,37 +16,63 @@ class App extends React.PureComponent<{}, IDragDropProps> {
             const top = (parentHeight - elementHeight) / 2;
             label.style.top = top + 'px';
         });
-    }
+    }, []);
 
-    private addEvent(type: string, position: any): void {
+    useEffect(() => {
+        centerLabels();
+    }, [centerLabels]);
+
+    const addEvent = useCallback((type: string, position: any) => {
         const left = position.left.toString().substring(0, 2).replace(/\./g, '').replace(/\-/g, '');
         const top = position.top.toString().substring(0, 2).replace(/\./g, '').replace(/\-/g, '');
-        this.myPanel.current!.prepend(`<div class="row">Event: ${type}, (${left}, ${top})</div>`);
-    }
+        myPanel.current?.prepend(`<div class="row">Event: ${type}, (${left}, ${top})</div>`);
+    }, []);
 
-    private onDragStart(event: any): void {
+    const onDragStart = useCallback((event: any) => {
         if (event.args) {
-            this.addEvent(event.type, event.args.position);
+            addEvent(event.type, event.args.position);
         }
-    }
+    }, [addEvent]);
 
-    private onDragEnd(event: any): void {
+    const onDragEnd = useCallback((event: any) => {
         if (event && event.args) {
-            this.addEvent(event.type, event.args.position);
+            addEvent(event.type, event.args.position);
         }
-    }
+    }, [addEvent]);
 
-    private onDropTargetEnter(event: any): void {
+    const onDropTargetEnter = useCallback((event: any) => {
         if (event.args) {
-            this.addEvent(event.type, event.args.position);
+            addEvent(event.type, event.args.position);
         }
-    }
+    }, [addEvent]);
 
-    private onDropTargetLeave(event: any): void {
+    const onDropTargetLeave = useCallback((event: any) => {
         if (event.args) {
-            this.addEvent(event.type, event.args.position);
+            addEvent(event.type, event.args.position);
         }
-    }
+    }, [addEvent]);
+
+    return (
+        <div className="main-container">
+            <div id="draggable-parent">
+                <JqxDragDrop
+                    className="draggable"
+                    onDragStart={onDragStart}
+                    onDragEnd={onDragEnd}
+                    onDropTargetEnter={onDropTargetEnter}
+                    onDropTargetLeave={onDropTargetLeave}
+                    restricter={restricter}
+                    dropTarget={'.drop-target'}
+                >
+                    <div className="label">I can be dragged only inside my parent</div>
+                </JqxDragDrop>
+                <div className="drop-target">
+                    <div className="label">I am a drop target</div>
+                </div>
+            </div>
+            <JqxPanel theme={'material-purple'} ref={myPanel} className="events" width={260} height={330} />
+        </div>
+    );
 }
 
 export default App;

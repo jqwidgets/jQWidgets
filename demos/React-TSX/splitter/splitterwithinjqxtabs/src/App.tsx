@@ -1,81 +1,71 @@
-import * as React from 'react';
- 
+import React, { useRef, useState, useCallback } from 'react'
+import * as ReactDOM from 'react-dom'
+import './App.css'
+import JqxSplitter from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxsplitter'
+import JqxTabs, { ITabsProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtabs'
 
-import * as ReactDOM from 'react-dom';
+const App = () => {
+  const splitter = useRef<JqxSplitter>(null)
+  const splitterContainer = useRef<HTMLDivElement>(null)
+  const splitter2Container = useRef<HTMLDivElement>(null)
 
-import './App.css';
-
-import JqxSplitter from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxsplitter';
-import JqxTabs, { ITabsProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtabs';
-
-class App extends React.PureComponent<{}, ITabsProps> {
-    private splitter = React.createRef<JqxSplitter>();
-    private splitterContainer = React.createRef<HTMLDivElement>();
-    private splitter2Container = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-
-        this.state = {
-            initTabContent: (tab: number) => {
-                if (tab === 0) {
-                    const splitter = <JqxSplitter theme={'material-purple'} ref={this.splitter}
-                        height={"100%"}
-                        width={"100%"}
-                        panels={[{ size: "50%" }]}
-                    >
-                        <div>
-                            Content 1.1
-                        </div>
-                        <div>
-                            Content 1.2
-                        </div>
-                    </JqxSplitter>;
-
-                    ReactDOM.render(
-                        splitter,
-                        this.splitterContainer.current!
-                    );
-                }
-                else {
-                    const splitter2 = <JqxSplitter theme={'material-purple'} ref={this.splitter}
-                        height={"100%"}
-                        width={"100%"}
-                        panels={[{ size: "50%" }]}
-                        orientation={"horizontal"}
-                    >
-                        <div>
-                            Content 2.1
-                        </div>
-                        <div>
-                            Content 2.2
-                        </div>
-                    </JqxSplitter>;
-
-                    ReactDOM.render(
-                        splitter2,
-                        this.splitter2Container.current!
-                    );
-                }
-            }
-        }
+  const initTabContent = useCallback((tab: number) => {
+    if (tab === 0) {
+      const splitterElement = (
+        <JqxSplitter
+          theme="material-purple"
+          ref={splitter}
+          height="100%"
+          width="100%"
+          panels={[{ size: '50%' }]}
+        >
+          <div>Content 1.1</div>
+          <div>Content 1.2</div>
+        </JqxSplitter>
+      )
+      if (splitterContainer.current) {
+        ReactDOM.render(splitterElement, splitterContainer.current)
+      }
+    } else {
+      const splitter2Element = (
+        <JqxSplitter
+          theme="material-purple"
+          ref={splitter}
+          height="100%"
+          width="100%"
+          panels={[{ size: '50%' }]}
+          orientation="horizontal"
+        >
+          <div>Content 2.1</div>
+          <div>Content 2.2</div>
+        </JqxSplitter>
+      )
+      if (splitter2Container.current) {
+        ReactDOM.render(splitter2Element, splitter2Container.current)
+      }
     }
+  }, [])
 
-    public render() {
-        return (
-            <JqxTabs theme={'material-purple'} className={"jqx-hideborder jqx-hidescrollbars"}
-                width={850} height={850}
-                initTabContent={this.state.initTabContent}
-            >
-                <ul>
-                    <li style={{ marginLeft: 30 }}>Tab 1</li>
-                    <li>Tab 2</li>
-                </ul>
-                <div className={"jqx-hidescrollbars jqx-hideborder"} ref={this.splitterContainer} />
-                <div className={"jqx-hidescrollbars jqx-hideborder"} ref={this.splitter2Container} />
-            </JqxTabs>
-        );
-    }
+  const tabsProps: ITabsProps = {
+    initTabContent,
+  }
+
+  return (
+    <JqxTabs
+      theme="material-purple"
+      className="jqx-hideborder jqx-hidescrollbars"
+      width={850}
+      height={850}
+      {...tabsProps}
+    >
+      <ul>
+        <li style={{ marginLeft: 30 }}>Tab 1</li>
+        <li>Tab 2</li>
+      </ul>
+      <div className="jqx-hidescrollbars jqx-hideborder" ref={splitterContainer} />
+      <div className="jqx-hidescrollbars jqx-hideborder" ref={splitter2Container} />
+    </JqxTabs>
+  )
 }
 
-export default App;
+export default App

@@ -1,63 +1,53 @@
 import * as React from 'react';
- 
-
-
 import JqxTreeGrid, { ITreeGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtreegrid';
 
-class App extends React.PureComponent<{}, ITreeGridProps> {
-    private myTreeGrid = React.createRef<JqxTreeGrid>();
+function App() {
+    const myTreeGrid = React.useRef<JqxTreeGrid>(null);
 
-    constructor(props: {}) {
-        super(props);
+    const source: any = React.useMemo(() => ({
+        dataFields: [
+            { name: "Id", type: "number" },
+            { name: "Name", type: "string" },
+            { name: "ParentID", type: "number" },
+            { name: "Population", type: "number" }
+        ],
+        dataType: 'tab',
+        hierarchy: {
+            keyDataField: { name: 'Id' },
+            parentDataField: { name: 'ParentID' }
+        },
+        id: 'Id',
+        url: 'locations.tsv'
+    }), []);
 
-        const source: any = {
-            dataFields: [
-                { name: "Id", type: "number" },
-                { name: "Name", type: "string" },
-                { name: "ParentID", type: "number" },
-                { name: "Population", type: "number" }
-            ],
-            dataType: 'tab',
-            hierarchy:
-            {
-                keyDataField: { name: 'Id' },
-                parentDataField: { name: 'ParentID' }
-            },
-            id: 'Id',
-            url: 'locations.tsv'
-        };
+    const dataAdapter: any = React.useMemo(() => new jqx.dataAdapter(source), [source]);
 
-        const dataAdapter: any = new jqx.dataAdapter(source);
-        this.state = {
-            columns: [
-                { align: 'center', dataField: 'Name', text: 'Location Name', width: '50%' },
-                { aggregates: ['min', 'max', 'count'], align: 'center', dataField: 'Population', text: 'Population', width: '50%' }
-            ],
-            ready: (): void => {
-                this.myTreeGrid.current!.expandRow(34);
-            },
-            source: dataAdapter
-        }
-    }
+    const columns = React.useMemo(() => [
+        { align: 'center', dataField: 'Name', text: 'Location Name', width: '50%' },
+        { aggregates: ['min', 'max', 'count'], align: 'center', dataField: 'Population', text: 'Population', width: '50%' }
+    ], []);
 
-    public render() {
-        return (
-            <JqxTreeGrid theme={'material-purple'} ref={this.myTreeGrid}
-                // @ts-ignore
-                width={'100%'}
-                pageable={true}
-                pageSize={25}
-                showAggregates={true}
-                showSubAggregates={true}
-                aggregatesHeight={70}
-                sortable={true}
-                height={400}
-                source={this.state.source}
-                columns={this.state.columns}
-                ready={this.state.ready}
-            />
-        );
-    }
+    const ready = React.useCallback(() => {
+        myTreeGrid.current && myTreeGrid.current.expandRow(34);
+    }, []);
+
+    return (
+        <JqxTreeGrid
+            theme="material-purple"
+            ref={myTreeGrid}
+            width="100%"
+            pageable
+            pageSize={25}
+            showAggregates
+            showSubAggregates
+            aggregatesHeight={70}
+            sortable
+            height={400}
+            source={dataAdapter}
+            columns={columns}
+            ready={ready}
+        />
+    );
 }
 
 export default App;

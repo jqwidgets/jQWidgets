@@ -1,5 +1,5 @@
 
-/* Release Date: Jan-28-2025 
+/* Release Date: Sep-17-2025 
 Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
@@ -7,79 +7,7 @@ License: https://jqwidgets.com/license/ */
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
+/* Release Date: Sep-17-2025 
 Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
@@ -639,6 +567,7 @@ License: https://jqwidgets.com/license/ */
                         else {
                             instance.element.style.cursor = 'default';
                         }
+                        instance.buttonObj.removeClass(instance.toThemeProperty('jqx-fill-state-hover'));
 
                         $.jqx.aria(instance, "aria-disabled", instance.disabled);
                     }
@@ -1130,6 +1059,7 @@ License: https://jqwidgets.com/license/ */
                 };
                 that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
                     instance.base.disabled = value;
+                    instance.base.buttonObj.removeClass(instance.toThemeProperty('jqx-fill-state-hover'));
                     instance.refresh();
                 };
 
@@ -1274,15 +1204,15 @@ License: https://jqwidgets.com/license/ */
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_52085__) => {
+/***/ ((module, exports, __nested_webpack_require_52300__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -9454,7 +9384,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (           true && __nested_webpack_require_52085__.amdO.JQXLite) {
+			if (  true && __nested_webpack_require_52300__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -10340,6 +10270,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 						return true;
 					}
 
+					if (this.theme === "tailwind" || this.theme === "tailwind-dark") {
+						return true;
+					}
+
 					if (this.theme === "light") {
 						return true;
 					}
@@ -11096,7 +11030,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -11589,12 +11523,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -23729,91 +23663,150 @@ var saveAs = window.jqxSaveAs = saveAs
 
 ﻿/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
-		return;
-	}
+(function () {
+    if (typeof document === 'undefined') {
+        return;
+    }
 
-(function ($) {
-    'use strict';
-    $.jqx.jqxWidget('jqxExpander', '', {});
+    (function ($) {
+        'use strict';
+        $.jqx.jqxWidget('jqxExpander', '', {});
 
-    $.extend($.jqx._jqxExpander.prototype, {
+        $.extend($.jqx._jqxExpander.prototype, {
 
-        defineInstance: function () {
-            var settings =
-            {
-                //// properties
-                width: 'auto',
-                height: 'auto',
-                expanded: true, // possible values: true, false
-                expandAnimationDuration: 259,
-                collapseAnimationDuration: 250,
-                animationType: 'slide', // possible values: 'slide', 'fade', 'none'
-                toggleMode: 'click', //possible values: 'click', 'dblclick', 'none'
-                showArrow: true, // possible values: true, false
-                arrowPosition: 'right', // possible values: 'left', 'right'
-                headerPosition: 'top', // possible values: 'top', 'bottom'
-                disabled: false, // possible values: true, false
-                initContent: null, // callback function
-                rtl: false, // possible values: true, false
-                easing: 'easeInOutSine', // possible values: easeOutBack, easeInQuad, easeInOutCirc, easeInOutSine, easeInCubic, easeOutCubic, easeInOutCubic, easeInSine, easeOutSine, easeInOutSine
-                aria:
-                 {
-                     'aria-disabled': { name: 'disabled', type: 'boolean' }
-                 },
-                //// events
-                events: ['expanding', 'expanded', 'collapsing', 'collapsed', 'resize']
-            };
-            if (this === $.jqx._jqxExpander.prototype) {
-                return settings;
-            }
-            $.extend(true, this, settings);
-            return settings;
-        },
-
-        createInstance: function () {
-            this._isTouchDevice = $.jqx.mobile.isTouchDevice();
-            $.jqx.aria(this);
-            // saves the initial HTML structure in a variable
-            this._cachedHTMLStructure = this.host.html();
-
-            // renders the widget
-            this._rendered = false;
-            this.render();
-            this._rendered = true;
-        },
-
-        //// methods
-
-        //// public methods
-
-        // expands the content
-        expand: function () {
-            if (this.disabled === false && this.expanded === false && this._expandChecker == 1) {
-                var that = this;
-                this._expandChecker = 0;
-                this._raiseEvent('0');
-                this._header.removeClass(this.toThemeProperty('jqx-fill-state-normal'));
-                this._header.addClass(this.toThemeProperty('jqx-fill-state-pressed jqx-expander-header-expanded'));
-                if (this.headerPosition == 'top') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-hover jqx-icon-arrow-up-hover jqx-icon-arrow-down-selected jqx-expander-arrow-top'));
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-icon-arrow-down-hover jqx-icon-arrow-up-hover jqx-expander-arrow-bottom'));
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
+            defineInstance: function () {
+                var settings =
+                {
+                    //// properties
+                    width: 'auto',
+                    height: 'auto',
+                    expanded: true, // possible values: true, false
+                    expandAnimationDuration: 259,
+                    collapseAnimationDuration: 250,
+                    animationType: 'slide', // possible values: 'slide', 'fade', 'none'
+                    toggleMode: 'click', //possible values: 'click', 'dblclick', 'none'
+                    showArrow: true, // possible values: true, false
+                    arrowPosition: 'right', // possible values: 'left', 'right'
+                    headerPosition: 'top', // possible values: 'top', 'bottom'
+                    disabled: false, // possible values: true, false
+                    initContent: null, // callback function
+                    rtl: false, // possible values: true, false
+                    easing: 'easeInOutSine', // possible values: easeOutBack, easeInQuad, easeInOutCirc, easeInOutSine, easeInCubic, easeOutCubic, easeInOutCubic, easeInSine, easeOutSine, easeInOutSine
+                    aria:
+                    {
+                        'aria-disabled': { name: 'disabled', type: 'boolean' }
+                    },
+                    //// events
+                    events: ['expanding', 'expanded', 'collapsing', 'collapsed', 'resize']
+                };
+                if (this === $.jqx._jqxExpander.prototype) {
+                    return settings;
                 }
-                switch (this.animationType) {
-                    case 'slide':
-                        if (this.headerPosition == 'top') {
-                            this._content.slideDown({
+                $.extend(true, this, settings);
+                return settings;
+            },
+
+            createInstance: function () {
+                this._isTouchDevice = $.jqx.mobile.isTouchDevice();
+                $.jqx.aria(this);
+                // saves the initial HTML structure in a variable
+                this._cachedHTMLStructure = this.host.html();
+
+                // renders the widget
+                this._rendered = false;
+                this.render();
+                this._rendered = true;
+            },
+
+            //// methods
+
+            //// public methods
+
+            // expands the content
+            expand: function () {
+                if (this.disabled === false && this.expanded === false && this._expandChecker == 1) {
+                    var that = this;
+                    this._expandChecker = 0;
+                    this._raiseEvent('0');
+                    this._header.removeClass(this.toThemeProperty('jqx-fill-state-normal'));
+                    this._header.addClass(this.toThemeProperty('jqx-fill-state-pressed jqx-expander-header-expanded'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-hover jqx-icon-arrow-up-hover jqx-icon-arrow-down-selected jqx-expander-arrow-top'));
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-icon-arrow-down-hover jqx-icon-arrow-up-hover jqx-expander-arrow-bottom'));
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
+                    }
+                    switch (this.animationType) {
+                        case 'slide':
+                            if (this.headerPosition == 'top') {
+                                this._content.slideDown({
+                                    duration: this.expandAnimationDuration,
+                                    easing: this.easing,
+                                    complete: function () {
+                                        that.expanded = true;
+                                        $.jqx.aria(that._header, 'aria-expanded', true);
+                                        $.jqx.aria(that._content, 'aria-hidden', false);
+
+                                        that._raiseEvent('1');
+                                        if (that.initContent && that._initialized === false) {
+                                            that.initContent();
+                                            that._initialized = true;
+                                        }
+                                    }
+                                });
+                            } else if (this.headerPosition == 'bottom') {
+                                this._contentElement.style.display = '';
+                                this._contentElement.style.height = '0px';
+                                if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
+                                    this._contentElement.style.display = 'block';
+                                }
+
+                                if (this._cntntEmpty === true) {
+                                    this._content.animate({
+                                        height: 0
+                                    }, {
+                                        duration: this.expandAnimationDuration,
+                                        easing: this.easing,
+                                        complete: function () {
+                                            that.expanded = true;
+                                            $.jqx.aria(that._header, 'aria-expanded', true);
+                                            $.jqx.aria(that._content, 'aria-hidden', false);
+                                            that._raiseEvent('1');
+                                            if (that.initContent && that._initialized === false) {
+                                                that.initContent();
+                                                that._initialized = true;
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    this._content.animate({
+                                        height: this._contentHeight
+                                    }, {
+                                        duration: this.expandAnimationDuration,
+                                        easing: this.easing,
+                                        complete: function () {
+                                            that.expanded = true;
+                                            $.jqx.aria(that._header, 'aria-expanded', true);
+                                            $.jqx.aria(that._content, 'aria-hidden', false);
+                                            that._raiseEvent('1');
+                                            if (that.initContent && that._initialized === false) {
+                                                that.initContent();
+                                                that._initialized = true;
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                            break;
+                        case 'fade':
+                            this._content.fadeIn({
                                 duration: this.expandAnimationDuration,
                                 easing: this.easing,
                                 complete: function () {
                                     that.expanded = true;
                                     $.jqx.aria(that._header, 'aria-expanded', true);
                                     $.jqx.aria(that._content, 'aria-hidden', false);
-
                                     that._raiseEvent('1');
                                     if (that.initContent && that._initialized === false) {
                                         that.initContent();
@@ -23821,106 +23814,74 @@ var saveAs = window.jqxSaveAs = saveAs
                                     }
                                 }
                             });
-                        } else if (this.headerPosition == 'bottom') {
+                            break;
+                        case 'none':
                             this._contentElement.style.display = '';
-                            this._contentElement.style.height = '0px';
-                            if ($.jqx.browser.msie && $.jqx.browser.version < 8) {
-                                this._contentElement.style.display = 'block';
+                            this.expanded = true;
+                            $.jqx.aria(that._header, 'aria-expanded', true);
+                            $.jqx.aria(that._content, 'aria-hidden', false);
+                            this._raiseEvent('1');
+                            if (this.initContent && this._initialized === false) {
+                                this.initContent();
+                                this._initialized = true;
                             }
+                            break;
+                    }
+                }
+            },
 
-                            if (this._cntntEmpty === true) {
+            // collapses the content
+            collapse: function () {
+                if (this.disabled === false && this.expanded === true && this._expandChecker === 0) {
+                    var that = this;
+                    this._expandChecker = 1;
+                    this._raiseEvent('2');
+                    this._header.removeClass(this.toThemeProperty('jqx-fill-state-pressed jqx-expander-header-expanded'));
+                    this._header.addClass(this.toThemeProperty('jqx-fill-state-normal'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top'));
+                        if (that._hovered) {
+                            this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-hover'));
+                        }
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-selected jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-expander-arrow-bottom'));
+                        if (that._hovered) {
+                            this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-hover'));
+                        }
+                    }
+                    switch (this.animationType) {
+                        case 'slide':
+                            if (this.headerPosition == 'top') {
+                                this._content.slideUp({
+                                    duration: this.collapseAnimationDuration,
+                                    easing: this.easing,
+                                    complete: function () {
+                                        that.expanded = false;
+                                        $.jqx.aria(that._header, 'aria-expanded', false);
+                                        $.jqx.aria(that._content, 'aria-hidden', true);
+                                        that._raiseEvent('3');
+                                    }
+                                });
+                            } else if (this.headerPosition == 'bottom') {
                                 this._content.animate({
                                     height: 0
                                 }, {
                                     duration: this.expandAnimationDuration,
                                     easing: this.easing,
                                     complete: function () {
-                                        that.expanded = true;
-                                        $.jqx.aria(that._header, 'aria-expanded', true);
-                                        $.jqx.aria(that._content, 'aria-hidden', false);
-                                        that._raiseEvent('1');
-                                        if (that.initContent && that._initialized === false) {
-                                            that.initContent();
-                                            that._initialized = true;
-                                        }
-                                    }
-                                });
-                            } else {
-                                this._content.animate({
-                                    height: this._contentHeight
-                                }, {
-                                    duration: this.expandAnimationDuration,
-                                    easing: this.easing,
-                                    complete: function () {
-                                        that.expanded = true;
-                                        $.jqx.aria(that._header, 'aria-expanded', true);
-                                        $.jqx.aria(that._content, 'aria-hidden', false);
-                                        that._raiseEvent('1');
-                                        if (that.initContent && that._initialized === false) {
-                                            that.initContent();
-                                            that._initialized = true;
-                                        }
+                                        that._contentElement.style.display = 'none';
+                                        that.expanded = false;
+                                        $.jqx.aria(that._header, 'aria-expanded', false);
+                                        $.jqx.aria(that._content, 'aria-hidden', true);
+                                        that._raiseEvent('3');
                                     }
                                 });
                             }
-                        }
-                        break;
-                    case 'fade':
-                        this._content.fadeIn({
-                            duration: this.expandAnimationDuration,
-                            easing: this.easing,
-                            complete: function () {
-                                that.expanded = true;
-                                $.jqx.aria(that._header, 'aria-expanded', true);
-                                $.jqx.aria(that._content, 'aria-hidden', false);
-                                that._raiseEvent('1');
-                                if (that.initContent && that._initialized === false) {
-                                    that.initContent();
-                                    that._initialized = true;
-                                }
-                            }
-                        });
-                        break;
-                    case 'none':
-                        this._contentElement.style.display = '';
-                        this.expanded = true;
-                        $.jqx.aria(that._header, 'aria-expanded', true);
-                        $.jqx.aria(that._content, 'aria-hidden', false);
-                        this._raiseEvent('1');
-                        if (this.initContent && this._initialized === false) {
-                            this.initContent();
-                            this._initialized = true;
-                        }
-                        break;
-                }
-            }
-        },
-
-        // collapses the content
-        collapse: function () {
-            if (this.disabled === false && this.expanded === true && this._expandChecker === 0) {
-                var that = this;
-                this._expandChecker = 1;
-                this._raiseEvent('2');
-                this._header.removeClass(this.toThemeProperty('jqx-fill-state-pressed jqx-expander-header-expanded'));
-                this._header.addClass(this.toThemeProperty('jqx-fill-state-normal'));
-                if (this.headerPosition == 'top') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top'));
-                    if (that._hovered) {
-                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down-hover'));
-                    }
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-selected jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-expander-arrow-bottom'));
-                    if (that._hovered) {
-                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up-hover'));
-                    }
-                }
-                switch (this.animationType) {
-                    case 'slide':
-                        if (this.headerPosition == 'top') {
-                            this._content.slideUp({
+                            break;
+                        case 'fade':
+                            this._content.fadeOut({
                                 duration: this.collapseAnimationDuration,
                                 easing: this.easing,
                                 complete: function () {
@@ -23930,602 +23891,582 @@ var saveAs = window.jqxSaveAs = saveAs
                                     that._raiseEvent('3');
                                 }
                             });
-                        } else if (this.headerPosition == 'bottom') {
-                            this._content.animate({
-                                height: 0
-                            }, {
-                                duration: this.expandAnimationDuration,
-                                easing: this.easing,
-                                complete: function () {
-                                    that._contentElement.style.display = 'none';
-                                    that.expanded = false;
-                                    $.jqx.aria(that._header, 'aria-expanded', false);
-                                    $.jqx.aria(that._content, 'aria-hidden', true);
-                                    that._raiseEvent('3');
-                                }
-                            });
-                        }
-                        break;
-                    case 'fade':
-                        this._content.fadeOut({
-                            duration: this.collapseAnimationDuration,
-                            easing: this.easing,
-                            complete: function () {
-                                that.expanded = false;
-                                $.jqx.aria(that._header, 'aria-expanded', false);
-                                $.jqx.aria(that._content, 'aria-hidden', true);
-                                that._raiseEvent('3');
-                            }
-                        });
-                        break;
-                    case 'none':
-                        that._contentElement.style.display = 'none';
-                        this.expanded = false;
-                        $.jqx.aria(that._header, 'aria-expanded', false);
-                        $.jqx.aria(that._content, 'aria-hidden', true);
-                        this._raiseEvent('3');
-                        break;
+                            break;
+                        case 'none':
+                            that._contentElement.style.display = 'none';
+                            this.expanded = false;
+                            $.jqx.aria(that._header, 'aria-expanded', false);
+                            $.jqx.aria(that._content, 'aria-hidden', true);
+                            this._raiseEvent('3');
+                            break;
+                    }
                 }
-            }
-        },
+            },
 
-        // sets the header's content
-        setHeaderContent: function (headerContent) {
-            this._headerText.innerHTML = headerContent;
-            this.invalidate();
-        },
+            // sets the header's content
+            setHeaderContent: function (headerContent) {
+                this._headerText.innerHTML = headerContent;
+                this.invalidate();
+            },
 
-        // gets the header's content
-        getHeaderContent: function () {
-            return this._headerText.innerHTML;
-        },
+            // gets the header's content
+            getHeaderContent: function () {
+                return this._headerText.innerHTML;
+            },
 
-        // sets the content
-        setContent: function (content) {
-            this._content.html(content);
-            this._checkContent();
-            this.invalidate();
-        },
+            // sets the content
+            setContent: function (content) {
+                this._content.html(content);
+                this._checkContent();
+                this.invalidate();
+            },
 
-        // gets the content
-        getContent: function () {
-            return this._content.html();
-        },
+            // gets the content
+            getContent: function () {
+                return this._content.html();
+            },
 
-        // enables the widget
-        enable: function () {
-            this.disabled = false;
-            this.refresh();
-            $.jqx.aria(this, 'aria-disabled', false);
-        },
-
-        // disables the widget
-        disable: function () {
-            this.disabled = true;
-            this.refresh();
-            $.jqx.aria(this, 'aria-disabled', true);
-        },
-
-        // refreshes the widget
-        invalidate: function () {
-            if ($.jqx.isHidden(this.host)) {
-                return;
-            }
-
-            this._setSize();
-        },
-
-        // refreshes the widget
-        refresh: function (initialRefresh) {
-            if (initialRefresh === true) {
-                return;
-            }
-
-            this._removeHandlers();
-            if (this.showArrow === true) {
-                this._arrowElement.style.display = '';
-            } else {
-                this._arrowElement.style.display = 'none';
-            }
-            this._setTheme();
-            this._setSize();
-            if (this.disabled === false) {
-                this._toggle();
-            }
-            this._keyBoard();
-        },
-
-        // renders the widget
-        render: function () {
-            var that = this;
-
-            if (that._rendered) {
-                that.refresh();
-                return;
-            }
-
-            this.widgetID = this.element.id;
-
-            var hostChildren = this.host.children();
-            this._headerText = hostChildren[0];
-
-            this._headerElement = document.createElement('div');
-            this._header = $(this._headerElement);
-
-            this._contentElement = hostChildren[1];
-            this._content = $(this._contentElement);
-            if (this._content.initAnimate) {
-                this._content.initAnimate();
-            }
-
-            if (this.headerPosition === 'top') {
-                that.element.insertBefore(that._headerElement, that._headerText);
-            } else {
-                that.element.appendChild(that._headerElement);
-            }
-            that._headerElement.appendChild(that._headerText);
-
-            // defines the header text section
-            var className = this._headerText.className;
-            this._headerElement.className = className;
-            this._headerText.className = '';
-            if (!this.rtl) {
-                this._headerText.className += ' ' + that.toThemeProperty('jqx-expander-header-content');
-            }
-            else {
-                this._headerText.className += ' ' + that.toThemeProperty('jqx-expander-header-content-rtl');
-            }
-
-            // appends an arrow to the header
-            that._arrowElement = document.createElement('div');
-            that._headerElement.appendChild(that._arrowElement);
-            this._arrow = $(that._arrowElement);
-            if (this.showArrow === true) {
-                that._arrowElement.style.display = '';
-            } else {
-                that._arrowElement.style.display = 'none';
-            }
-
-            // sets the tabindex attribute of the header and conten if it is not already set
-            if (this._headerElement.getAttribute('tabindex') === null && this._contentElement.getAttribute('tabindex') === null) {
-                if (that.headerPosition === 'top') {
-                    this._headerElement.setAttribute('tabindex', 1);
-                    this._contentElement.setAttribute('tabindex', 2);
-                } else {
-                    this._headerElement.setAttribute('tabindex', 2);
-                    this._contentElement.setAttribute('tabindex', 1);
-                }
-            }
-
-            // sets the expander's theme and classes
-            this._setTheme();
-
-            // checks whether the HTML structure of the widget is valid and alerts the user if not
-            var exceptionMessage = 'Invalid jqxExpander structure. Please add only two child div elements to your jqxExpander div that will represent the expander\'s header and content.';
-            try {
-                if (this._header.length === 0 || this._content.length === 0 || hostChildren.length < 2 || hostChildren.length > 2) {
-                    throw exceptionMessage;
-                }
-            } catch (exception) {
-                throw new Error(exception);
-            }
-
-            // sets the width and height of the widget
-            this._setSize();
-
-            // checks if content is expanded initially
-            if (this.expanded === true) {
-                if (this.headerPosition == 'top') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-selected jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
-                }
-                if (this.initContent) {
-                    //this._setSize();
-                    this.initContent();
-                }
-                this._initialized = true;
-                this._expandChecker = 0;
-            } else if (this.expanded === false) {
-                this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected jqx-icon-arrow-up-selected'));
-                if (this.headerPosition == 'top') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top'));
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-expander-arrow-bottom'));
-                }
-                this._initialized = false;
-                this._expandChecker = 1;
-                this._contentElement.style.display = 'none';
-            }
-
-            // checks if the content is empty
-            this._checkContent();
-
-            // toggles the widget
-            if (this.disabled === false) {
-                this._toggle();
-            }
-
-            // adds keyboard interaction
-            this._keyBoard();
-
-            $.jqx.utilities.resize(this.host, function () {
-                that.invalidate();
-            });
-        },
-
-        // removes the widget
-        destroy: function () {
-            this.removeHandler($(window), 'resize.expander' + this.widgetID);
-            this.host.remove();
-            $(this.element).removeData('jqxExpander');
-        },
-
-        // focuses on the widget
-        focus: function () {
-            try {
-                if (this.disabled === false) {
-                    this._headerElement.focus();
-                }
-            }
-            catch (error) {
-            }
-        },
-
-        //// private methods
-        propertiesChangedHandler: function (object, key, value) {
-            if (value.width && value.height && Object.keys(value).length == 2) {
-                object._setSize();
-            }
-        },
-
-        // called when a property is changed
-        propertyChangedHandler: function (object, key, oldvalue, value) {
-            if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
-                return;
-            }
-
-            if (key == 'width' || key == 'height') {
-                object._setSize();
-                return;
-            }
-
-            if (key == 'expanded') {
-                if (value === true && oldvalue === false) {
-                    this.expanded = false;
-                    this.expand();
-                } else if (value === false && oldvalue === true) {
-                    this.expanded = true;
-                    this.collapse();
-                }
-            } else {
+            // enables the widget
+            enable: function () {
+                this.disabled = false;
                 this.refresh();
-            }
-        },
+                $.jqx.aria(this, 'aria-disabled', false);
+            },
 
-        // raises an event
-        _raiseEvent: function (id, args) {
-            var evt = this.events[id];
-            var event = new $.Event(evt);
-            event.owner = this;
-            event.args = args;
+            // disables the widget
+            disable: function () {
+                this.disabled = true;
+                this.refresh();
+                $.jqx.aria(this, 'aria-disabled', true);
+            },
 
-            var result;
-            try {
-                result = this.host.trigger(event);
-            }
-            catch (error) {
-            }
-
-            return result;
-        },
-
-        resize: function (width, height) {
-            this.width = width;
-            this.height = height;
-            this._setSize();
-        },
-
-        // sets the width and height of the widget
-        _setSize: function () {
-            this.element.style.width = this._toPx(this.width);
-            this.element.style.height = this._toPx(this.height);
-
-            this._headerElement.style.height = 'auto';
-            this._headerElement.style.minHeight = this._arrowElement.offsetHeight;
-
-            // sets the arrow position
-            var arrowPosition = this.arrowPosition;
-            if (this.rtl) {
-                switch (arrowPosition) {
-                    case 'left':
-                        arrowPosition = 'right';
-                        break;
-                    case 'right':
-                        arrowPosition = 'left';
-                        break;
-                }
-            }
-            if (arrowPosition == 'right') {
-                this._headerText.style['float'] = 'left';
-                this._headerText.style.marginLeft = '0px';
-                this._arrowElement.style['float'] = 'right';
-                this._arrowElement.style.position = 'relative';
-            } else if (arrowPosition == 'left') {
-                if (this.width == 'auto') {
-                    this._headerText.style['float'] = 'left';
-                    this._headerText.style.marginLeft = '17px';
-                    this._arrowElement.style['float'] = 'left';
-                    this._arrowElement.style.position = 'absolute';
-                } else {
-                    this._headerText.style['float'] = 'right';
-                    this._headerText.style.marginLeft = '0px';
-                    this._arrowElement.style['float'] = 'left';
-                    this._arrowElement.style.position = 'relative';
-                }
-            }
-            this._arrowElement.style.marginTop = (this._headerText.offsetHeight / 2 - this._arrowElement.offsetHeight / 2) + 'px';
-
-            this._contentElement.style.height = 'auto';
-            var actualContentHeight = Math.max(0, this._content.height());
-            if (this.height == 'auto') {
-                this._contentHeight = actualContentHeight;
-            } else {
-                var newHeight = Math.round(this.element.offsetHeight) - Math.round(this._header.outerHeight()) - 1;
-                if (newHeight < 0) {
-                    newHeight = 0;
-                }
-                if (!this._contentHeight) {
-                    this._contentHeight = actualContentHeight;
-                }
-                if (newHeight != this._contentHeight) {
-                    this._contentElement.style.height = this._toPx(newHeight);
-                    this._contentHeight = Math.round(this._content.outerHeight());
-                } else {
-                    this._contentElement.style.height = this._toPx(this._contentHeight);
-                }
-            }
-        },
-
-        // toggles the expander
-        _toggle: function () {
-            var that = this;
-            if (this._isTouchDevice === false) {
-                this._header.removeClass(this.toThemeProperty('jqx-expander-header-disabled'));
-                switch (this.toggleMode) {
-                    case 'click':
-                        this.addHandler(this._header, 'click.expander' + this.widgetID, function () {
-                            that._animate();
-                        });
-                        break;
-                    case 'dblclick':
-                        this.addHandler(this._header, 'dblclick.expander' + this.widgetID, function () {
-                            that._animate();
-                        });
-                        break;
-                    case 'none':
-                        this._header.addClass(this.toThemeProperty('jqx-expander-header-disabled'));
-                        break;
-                }
-            } else {
-                if (this.toggleMode != 'none') {
-                    this.addHandler(this._header, $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.widgetID, function () {
-                        that._animate();
-                    });
-                } else {
+            // refreshes the widget
+            invalidate: function () {
+                if ($.jqx.isHidden(this.host)) {
                     return;
                 }
-            }
-        },
 
-        // calls for either expand() or collapse()
-        _animate: function () {
-            if (this.expanded === true) {
-                this.collapse();
-                this._header.addClass(this.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
-                if (this.headerPosition == 'top') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
+                this._setSize();
+            },
+
+            // refreshes the widget
+            refresh: function (initialRefresh) {
+                if (initialRefresh === true) {
+                    return;
                 }
-            } else {
-                this.expand();
-                this._header.removeClass(this.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
-                if (this.headerPosition == 'top') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
-                } else if (this.headerPosition == 'bottom') {
-                    this._arrow.removeClass(this.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
+
+                this._removeHandlers();
+                if (this.showArrow === true) {
+                    this._arrowElement.style.display = '';
+                } else {
+                    this._arrowElement.style.display = 'none';
                 }
-            }
-        },
+                this._setTheme();
+                this._setSize();
+                if (this.disabled === false) {
+                    this._toggle();
+                }
+                this._keyBoard();
+            },
 
-        // removes event handlers
-        _removeHandlers: function () {
-            this.removeHandler(this._header, 'click.expander' + this.widgetID);
-            this.removeHandler(this._header, 'dblclick.expander' + this.widgetID);
-            this.removeHandler(this._header, 'mouseenter.expander' + this.widgetID);
-            this.removeHandler(this._header, 'mouseleave.expander' + this.widgetID);
-        },
+            // renders the widget
+            render: function () {
+                var that = this;
 
-        // sets the expander's theme and classes
-        _setTheme: function () {
-            var that = this,
-                hostClass = 'jqx-widget jqx-expander',
-                headerClass = 'jqx-widget-header jqx-expander-header',
-                contentClass = 'jqx-widget-content jqx-expander-content';
+                if (that._rendered) {
+                    that.refresh();
+                    return;
+                }
 
-            if (this.rtl === true) {
-                hostClass += ' jqx-rtl';
-            }
+                this.widgetID = this.element.id;
 
-            if (this.disabled === false) {
-                this._header.removeClass(this.toThemeProperty('jqx-expander-header-disabled'));
-                this.host.removeClass(this.toThemeProperty('jqx-fill-state-disabled'));
+                var hostChildren = this.host.children();
+                this._headerText = hostChildren[0];
+
+                this._headerElement = document.createElement('div');
+                this._header = $(this._headerElement);
+
+                this._contentElement = hostChildren[1];
+                this._content = $(this._contentElement);
+                if (this._content.initAnimate) {
+                    this._content.initAnimate();
+                }
+
+                if (this.headerPosition === 'top') {
+                    that.element.insertBefore(that._headerElement, that._headerText);
+                } else {
+                    that.element.appendChild(that._headerElement);
+                }
+                that._headerElement.appendChild(that._headerText);
+
+                // defines the header text section
+                var className = this._headerText.className;
+                this._headerElement.className = className;
+                this._headerText.className = '';
+                if (!this.rtl) {
+                    this._headerText.className += ' ' + that.toThemeProperty('jqx-expander-header-content');
+                }
+                else {
+                    this._headerText.className += ' ' + that.toThemeProperty('jqx-expander-header-content-rtl');
+                }
+
+                // appends an arrow to the header
+                that._arrowElement = document.createElement('div');
+                that._headerElement.appendChild(that._arrowElement);
+                this._arrow = $(that._arrowElement);
+                if (this.showArrow === true) {
+                    that._arrowElement.style.display = '';
+                } else {
+                    that._arrowElement.style.display = 'none';
+                }
+
+                // sets the tabindex attribute of the header and conten if it is not already set
+                if (this._headerElement.getAttribute('tabindex') === null && this._contentElement.getAttribute('tabindex') === null) {
+                    if (that.headerPosition === 'top') {
+                        this._headerElement.setAttribute('tabindex', 1);
+                        this._contentElement.setAttribute('tabindex', 2);
+                    } else {
+                        this._headerElement.setAttribute('tabindex', 2);
+                        this._contentElement.setAttribute('tabindex', 1);
+                    }
+                }
+
+                // sets the expander's theme and classes
+                this._setTheme();
+
+                // checks whether the HTML structure of the widget is valid and alerts the user if not
+                var exceptionMessage = 'Invalid jqxExpander structure. Please add only two child div elements to your jqxExpander div that will represent the expander\'s header and content.';
+                try {
+                    if (this._header.length === 0 || this._content.length === 0 || hostChildren.length < 2 || hostChildren.length > 2) {
+                        throw exceptionMessage;
+                    }
+                } catch (exception) {
+                    throw new Error(exception);
+                }
+
+                // sets the width and height of the widget
+                this._setSize();
+
+                // checks if content is expanded initially
                 if (this.expanded === true) {
-                    headerClass += ' jqx-fill-state-pressed jqx-expander-header-expanded';
-                } else {
-                    headerClass += ' jqx-fill-state-normal';
-                    this._header.removeClass(this.toThemeProperty('jqx-expander-header-expanded'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-icon-arrow-up-selected jqx-expander-arrow-bottom jqx-expander-arrow-expanded'));
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-icon-arrow-down-selected jqx-expander-arrow-top jqx-expander-arrow-expanded-top'));
+                    }
+                    if (this.initContent) {
+                        //this._setSize();
+                        this.initContent();
+                    }
+                    this._initialized = true;
+                    this._expandChecker = 0;
+                } else if (this.expanded === false) {
+                    this._arrow.removeClass(this.toThemeProperty('jqx-icon-arrow-down-selected jqx-icon-arrow-up-selected'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-down jqx-expander-arrow-top'));
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-icon-arrow-up jqx-expander-arrow-bottom'));
+                    }
+                    this._initialized = false;
+                    this._expandChecker = 1;
+                    this._contentElement.style.display = 'none';
                 }
 
-                this._hovered = false;
-                if (!that._isTouchDevice) {
-                    // adds events on hover over header
-                    this.addHandler(this._header, 'mouseenter.expander' + this.widgetID, function () {
-                        that._hovered = true;
-                        if (that._expandChecker == 1) {
-                            that._header.removeClass(that.toThemeProperty('jqx-fill-state-normal jqx-fill-state-pressed'));
-                            that._header.addClass(that.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
-                            if (that.headerPosition == 'top') {
-                                if (that.expanded) {
-                                    that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
-                                } else {
-                                    that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                // checks if the content is empty
+                this._checkContent();
+
+                // toggles the widget
+                if (this.disabled === false) {
+                    this._toggle();
+                }
+
+                // adds keyboard interaction
+                this._keyBoard();
+
+                $.jqx.utilities.resize(this.host, function () {
+                    that.invalidate();
+                });
+            },
+
+            // removes the widget
+            destroy: function () {
+                this.removeHandler($(window), 'resize.expander' + this.widgetID);
+                this.host.remove();
+                $(this.element).removeData('jqxExpander');
+            },
+
+            // focuses on the widget
+            focus: function () {
+                try {
+                    if (this.disabled === false) {
+                        this._headerElement.focus();
+                    }
+                }
+                catch (error) {
+                }
+            },
+
+            //// private methods
+            propertiesChangedHandler: function (object, key, value) {
+                if (value.width && value.height && Object.keys(value).length == 2) {
+                    object._setSize();
+                }
+            },
+
+            // called when a property is changed
+            propertyChangedHandler: function (object, key, oldvalue, value) {
+                if (object.batchUpdate && object.batchUpdate.width && object.batchUpdate.height && Object.keys(object.batchUpdate).length == 2) {
+                    return;
+                }
+
+                if (key == 'width' || key == 'height') {
+                    object._setSize();
+                    return;
+                }
+
+                if (key === 'headerPosition') {
+                    var that = this;
+                    that._rendered = false;
+                    that._headerElement.innerHTML = that._headerText.innerHTML;
+                    this.render();
+                    that._rendered = true;
+                }
+                if (key == 'expanded') {
+                    if (value === true && oldvalue === false) {
+                        this.expanded = false;
+                        this.expand();
+                    } else if (value === false && oldvalue === true) {
+                        this.expanded = true;
+                        this.collapse();
+                    }
+                } else {
+                    this.refresh();
+                }
+            },
+
+            // raises an event
+            _raiseEvent: function (id, args) {
+                var evt = this.events[id];
+                var event = new $.Event(evt);
+                event.owner = this;
+                event.args = args;
+
+                var result;
+                try {
+                    result = this.host.trigger(event);
+                }
+                catch (error) {
+                }
+
+                return result;
+            },
+
+            resize: function (width, height) {
+                this.width = width;
+                this.height = height;
+                this._setSize();
+            },
+
+            // sets the width and height of the widget
+            _setSize: function () {
+                this.element.style.width = this._toPx(this.width);
+                this.element.style.height = this._toPx(this.height);
+
+                this._headerElement.style.height = 'auto';
+                this._headerElement.style.minHeight = this._arrowElement.offsetHeight;
+
+                // sets the arrow position
+                var arrowPosition = this.arrowPosition;
+                if (this.rtl) {
+                    switch (arrowPosition) {
+                        case 'left':
+                            arrowPosition = 'right';
+                            break;
+                        case 'right':
+                            arrowPosition = 'left';
+                            break;
+                    }
+                }
+                if (arrowPosition == 'right') {
+                    this._headerText.style['float'] = 'left';
+                    this._headerText.style.marginLeft = '0px';
+                    this._arrowElement.style['float'] = 'right';
+                    this._arrowElement.style.position = 'relative';
+                } else if (arrowPosition == 'left') {
+                    if (this.width == 'auto') {
+                        this._headerText.style['float'] = 'left';
+                        this._headerText.style.marginLeft = '17px';
+                        this._arrowElement.style['float'] = 'left';
+                        this._arrowElement.style.position = 'absolute';
+                    } else {
+                        this._headerText.style['float'] = 'right';
+                        this._headerText.style.marginLeft = '0px';
+                        this._arrowElement.style['float'] = 'left';
+                        this._arrowElement.style.position = 'relative';
+                    }
+                }
+                this._arrowElement.style.marginTop = (this._headerText.offsetHeight / 2 - this._arrowElement.offsetHeight / 2) + 'px';
+
+                this._contentElement.style.height = 'auto';
+                var actualContentHeight = Math.max(0, this._content.height());
+                if (this.height == 'auto') {
+                    this._contentHeight = actualContentHeight;
+                } else {
+                    var newHeight = Math.round(this.element.offsetHeight) - Math.round(this._header.outerHeight()) - 1;
+                    if (newHeight < 0) {
+                        newHeight = 0;
+                    }
+                    if (!this._contentHeight) {
+                        this._contentHeight = actualContentHeight;
+                    }
+                    if (newHeight != this._contentHeight) {
+                        this._contentElement.style.height = this._toPx(newHeight);
+                        this._contentHeight = Math.round(this._content.outerHeight());
+                    } else {
+                        this._contentElement.style.height = this._toPx(this._contentHeight);
+                    }
+                }
+            },
+
+            // toggles the expander
+            _toggle: function () {
+                var that = this;
+                if (this._isTouchDevice === false) {
+                    this._header.removeClass(this.toThemeProperty('jqx-expander-header-disabled'));
+                    switch (this.toggleMode) {
+                        case 'click':
+                            this.addHandler(this._header, 'click.expander' + this.widgetID, function () {
+                                that._animate();
+                            });
+                            break;
+                        case 'dblclick':
+                            this.addHandler(this._header, 'dblclick.expander' + this.widgetID, function () {
+                                that._animate();
+                            });
+                            break;
+                        case 'none':
+                            this._header.addClass(this.toThemeProperty('jqx-expander-header-disabled'));
+                            break;
+                    }
+                } else {
+                    if (this.toggleMode != 'none') {
+                        this.addHandler(this._header, $.jqx.mobile.getTouchEventName('touchstart') + '.' + this.widgetID, function () {
+                            that._animate();
+                        });
+                    } else {
+                        return;
+                    }
+                }
+            },
+
+            // calls for either expand() or collapse()
+            _animate: function () {
+                if (this.expanded === true) {
+                    this.collapse();
+                    this._header.addClass(this.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
+                    }
+                } else {
+                    this.expand();
+                    this._header.removeClass(this.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
+                    if (this.headerPosition == 'top') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
+                    } else if (this.headerPosition == 'bottom') {
+                        this._arrow.removeClass(this.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
+                    }
+                }
+            },
+
+            // removes event handlers
+            _removeHandlers: function () {
+                this.removeHandler(this._header, 'click.expander' + this.widgetID);
+                this.removeHandler(this._header, 'dblclick.expander' + this.widgetID);
+                this.removeHandler(this._header, 'mouseenter.expander' + this.widgetID);
+                this.removeHandler(this._header, 'mouseleave.expander' + this.widgetID);
+            },
+
+            // sets the expander's theme and classes
+            _setTheme: function () {
+                var that = this,
+                    hostClass = 'jqx-widget jqx-expander',
+                    headerClass = 'jqx-widget-header jqx-expander-header',
+                    contentClass = 'jqx-widget-content jqx-expander-content';
+
+                if (this.rtl === true) {
+                    hostClass += ' jqx-rtl';
+                }
+
+                if (this.disabled === false) {
+                    this._header.removeClass(this.toThemeProperty('jqx-expander-header-disabled'));
+                    this.host.removeClass(this.toThemeProperty('jqx-fill-state-disabled'));
+                    if (this.expanded === true) {
+                        headerClass += ' jqx-fill-state-pressed jqx-expander-header-expanded';
+                    } else {
+                        headerClass += ' jqx-fill-state-normal';
+                        this._header.removeClass(this.toThemeProperty('jqx-expander-header-expanded'));
+                    }
+
+                    this._hovered = false;
+                    if (!that._isTouchDevice) {
+                        // adds events on hover over header
+                        this.addHandler(this._header, 'mouseenter.expander' + this.widgetID, function () {
+                            that._hovered = true;
+                            if (that._expandChecker == 1) {
+                                that._header.removeClass(that.toThemeProperty('jqx-fill-state-normal jqx-fill-state-pressed'));
+                                that._header.addClass(that.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
+                                if (that.headerPosition == 'top') {
+                                    if (that.expanded) {
+                                        that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-up-hover'));
+                                    } else {
+                                        that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                                    }
+                                    that._arrow.addClass(that.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
+                                } else if (that.headerPosition == 'bottom') {
+                                    if (that.expanded) {
+                                        that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
+                                    }
+                                    that._arrow.addClass(that.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
                                 }
-                                that._arrow.addClass(that.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
-                            } else if (that.headerPosition == 'bottom') {
-                                if (that.expanded) {
-                                    that._arrow.addClass(that.toThemeProperty('jqx-icon-arrow-down-hover'));
-                                }
-                                that._arrow.addClass(that.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
                             }
-                        }
-                    });
-                    this.addHandler(this._header, 'mouseleave.expander' + this.widgetID, function () {
-                        that._hovered = false;
-                        that._header.removeClass(that.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
-                        that._arrow.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover jqx-icon-arrow-down-hover'));
-                        if (that.headerPosition == 'top') {
-                            that._arrow.removeClass(that.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
-                        } else if (that.headerPosition == 'bottom') {
-                            that._arrow.removeClass(that.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
-                        }
-                        if (that._expandChecker == 1) {
-                            that._header.addClass(that.toThemeProperty('jqx-fill-state-normal'));
-                        } else {
-                            that._header.addClass(that.toThemeProperty('jqx-fill-state-pressed'));
-                        }
-                    });
-                }
-            } else {
-                hostClass += ' jqx-fill-state-disabled';
-                headerClass += ' jqx-expander-header-disabled';
-            }
-
-            if (this.headerPosition == 'top') {
-                contentClass += ' jqx-expander-content-bottom';
-            } else if (this.headerPosition == 'bottom') {
-                contentClass += ' jqx-expander-content-top';
-            }
-
-            this.host.addClass(this.toThemeProperty(hostClass));
-            this._header.addClass(this.toThemeProperty(headerClass));
-            this._content.addClass(this.toThemeProperty(contentClass));
-            this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow'));
-        },
-
-        // checks if the content is empty
-        _checkContent: function () {
-            this._cntntEmpty = /^\s*$/.test(this._contentElement.innerHTML);
-            if (this._cntntEmpty === true) {
-                this._contentElement.style.height = '0px';
-                this._content.addClass(this.toThemeProperty('jqx-expander-content-empty'));
-            } else {
-                if (this.height === 'auto') {
-                    this._contentElement.style.height = 'auto';
+                        });
+                        this.addHandler(this._header, 'mouseleave.expander' + this.widgetID, function () {
+                            that._hovered = false;
+                            that._header.removeClass(that.toThemeProperty('jqx-fill-state-hover jqx-expander-header-hover'));
+                            that._arrow.removeClass(that.toThemeProperty('jqx-icon-arrow-up-hover jqx-icon-arrow-down-hover'));
+                            if (that.headerPosition == 'top') {
+                                that._arrow.removeClass(that.toThemeProperty('jqx-expander-arrow-top-hover jqx-expander-arrow-down-hover'));
+                            } else if (that.headerPosition == 'bottom') {
+                                that._arrow.removeClass(that.toThemeProperty('jqx-expander-arrow-bottom-hover jqx-expander-arrow-up-hover'));
+                            }
+                            if (that._expandChecker == 1) {
+                                that._header.addClass(that.toThemeProperty('jqx-fill-state-normal'));
+                            } else {
+                                that._header.addClass(that.toThemeProperty('jqx-fill-state-pressed'));
+                            }
+                        });
+                    }
                 } else {
-                    this._contentElement.style.height = this._contentHeight + 'px';
+                    hostClass += ' jqx-fill-state-disabled';
+                    headerClass += ' jqx-expander-header-disabled';
                 }
-                this._content.removeClass(this.toThemeProperty('jqx-expander-content-empty'));
-            }
-        },
 
-        // adds keyboard interaction
-        _keyBoard: function () {
-            var that = this;
-            this._focus();
+                if (this.headerPosition == 'top') {
+                    contentClass += ' jqx-expander-content-bottom';
+                } else if (this.headerPosition == 'bottom') {
+                    contentClass += ' jqx-expander-content-top';
+                }
 
-            this.addHandler(this.host, 'keydown.expander' + this.widgetID, function (event) {
-                var handled = false;
-                if ((that.focusedH === true || that.focusedC === true) && that.disabled === false) {
+                this.host.addClass(this.toThemeProperty(hostClass));
+                this._header.addClass(this.toThemeProperty(headerClass));
+                this._content.addClass(this.toThemeProperty(contentClass));
+                this._arrow.addClass(this.toThemeProperty('jqx-expander-arrow'));
+            },
 
-                    // functionality for different keys
-                    switch (event.keyCode) {
-                        case 13:
-                        case 32:
-                            if (that.toggleMode != 'none') {
-                                if (that.focusedH === true) {
-                                    that._animate();
+            // checks if the content is empty
+            _checkContent: function () {
+                this._cntntEmpty = /^\s*$/.test(this._contentElement.innerHTML);
+                if (this._cntntEmpty === true) {
+                    this._contentElement.style.height = '0px';
+                    this._content.addClass(this.toThemeProperty('jqx-expander-content-empty'));
+                } else {
+                    if (this.height === 'auto') {
+                        this._contentElement.style.height = 'auto';
+                    } else {
+                        this._contentElement.style.height = this._contentHeight + 'px';
+                    }
+                    this._content.removeClass(this.toThemeProperty('jqx-expander-content-empty'));
+                }
+            },
+
+            // adds keyboard interaction
+            _keyBoard: function () {
+                var that = this;
+                this._focus();
+
+                this.addHandler(this.host, 'keydown.expander' + this.widgetID, function (event) {
+                    var handled = false;
+                    if ((that.focusedH === true || that.focusedC === true) && that.disabled === false) {
+
+                        // functionality for different keys
+                        switch (event.keyCode) {
+                            case 13:
+                            case 32:
+                                if (that.toggleMode != 'none') {
+                                    if (that.focusedH === true) {
+                                        that._animate();
+                                    }
+                                    handled = true;
+                                }
+                                break;
+                            case 38:
+                                if (event.ctrlKey === true && that.focusedC === true) {
+                                    that._headerElement.focus();
                                 }
                                 handled = true;
-                            }
-                            break;
-                        case 38:
-                            if (event.ctrlKey === true && that.focusedC === true) {
-                                that._headerElement.focus();
-                            }
-                            handled = true;
-                            break;
-                        case 40:
-                            if (event.ctrlKey === true && that.focusedH === true) {
-                                that._contentElement.focus();
-                            }
-                            handled = true;
-                            break;
+                                break;
+                            case 40:
+                                if (event.ctrlKey === true && that.focusedH === true) {
+                                    that._contentElement.focus();
+                                }
+                                handled = true;
+                                break;
                             //                        case 9:                         
                             //                            that._headerElement.focus();                         
                             //                            handled = true;                         
                             //                            break;                         
+                        }
+                        return true;
                     }
-                    return true;
+
+                    if (handled && event.preventDefault) {
+                        event.preventDefault();
+                    }
+
+                    return !handled;
+                });
+            },
+
+            // focuses/blurs the headers and contents
+            _focus: function () {
+                var that = this;
+                this.addHandler(this._header, 'focus.expander' + this.widgetID, function () {
+                    that.focusedH = true;
+                    $.jqx.aria(that._header, 'aria-selected', true);
+                    that._header.addClass(that.toThemeProperty('jqx-fill-state-focus'));
+                });
+                this.addHandler(this._header, 'blur.expander' + this.widgetID, function () {
+                    that.focusedH = false;
+                    $.jqx.aria(that._header, 'aria-selected', false);
+                    that._header.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
+                });
+                this.addHandler(this._headerText, 'focus.expander' + this.widgetID, function () {
+                    that._headerElement.focus();
+                });
+                this.addHandler(this._arrow, 'focus.expander' + this.widgetID, function () {
+                    that._headerElement.focus();
+                });
+                this.addHandler(this._content, 'focus.expander' + this.widgetID, function () {
+                    that.focusedC = true;
+                    that._content.addClass(that.toThemeProperty('jqx-fill-state-focus'));
+                });
+                this.addHandler(this._content, 'blur.expander' + this.widgetID, function () {
+                    that.focusedC = false;
+                    that._content.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
+                });
+            },
+
+            _toPx: function (value) {
+                if (typeof value === 'number') {
+                    return value + 'px';
+                } else {
+                    return value;
                 }
-
-                if (handled && event.preventDefault) {
-                    event.preventDefault();
-                }
-
-                return !handled;
-            });
-        },
-
-        // focuses/blurs the headers and contents
-        _focus: function () {
-            var that = this;
-            this.addHandler(this._header, 'focus.expander' + this.widgetID, function () {
-                that.focusedH = true;
-                $.jqx.aria(that._header, 'aria-selected', true);
-                that._header.addClass(that.toThemeProperty('jqx-fill-state-focus'));
-            });
-            this.addHandler(this._header, 'blur.expander' + this.widgetID, function () {
-                that.focusedH = false;
-                $.jqx.aria(that._header, 'aria-selected', false);
-                that._header.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
-            });
-            this.addHandler(this._headerText, 'focus.expander' + this.widgetID, function () {
-                that._headerElement.focus();
-            });
-            this.addHandler(this._arrow, 'focus.expander' + this.widgetID, function () {
-                that._headerElement.focus();
-            });
-            this.addHandler(this._content, 'focus.expander' + this.widgetID, function () {
-                that.focusedC = true;
-                that._content.addClass(that.toThemeProperty('jqx-fill-state-focus'));
-            });
-            this.addHandler(this._content, 'blur.expander' + this.widgetID, function () {
-                that.focusedC = false;
-                that._content.removeClass(that.toThemeProperty('jqx-fill-state-focus'));
-            });
-        },
-
-        _toPx: function (value) {
-            if (typeof value === 'number') {
-                return value + 'px';
-            } else {
-                return value;
             }
-        }
-    });
-})(jqxBaseFramework); //ignore jslint
+        });
+    })(jqxBaseFramework); //ignore jslint
 })();
 
 /***/ }),
@@ -29396,7 +29337,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_1144254__(moduleId) {
+/******/ 	function __nested_webpack_require_1147771__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -29410,7 +29351,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1144254__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1147771__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -29419,17 +29360,17 @@ var saveAs = window.jqxSaveAs = saveAs
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1144254__.amdO = {};
+/******/ 		__nested_webpack_require_1147771__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_1144254__.n = (module) => {
+/******/ 		__nested_webpack_require_1147771__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_1144254__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_1147771__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -29437,9 +29378,9 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_1144254__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_1147771__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_1144254__.o(definition, key) && !__nested_webpack_require_1144254__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_1147771__.o(definition, key) && !__nested_webpack_require_1147771__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -29448,7 +29389,7 @@ var saveAs = window.jqxSaveAs = saveAs
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_1144254__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_1147771__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -29456,18 +29397,18 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1144254__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1144254__(4198);
-/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1144254__(3907);
-/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1144254__(714);
-/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1144254__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _jqxexpander__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1144254__(4247);
-/* harmony import */ var _jqxexpander__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1144254__.n(_jqxexpander__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1147771__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1147771__(4198);
+/* harmony import */ var _jqxdata__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxdata__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1147771__(3907);
+/* harmony import */ var _jqxdata_export__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxdata_export__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1147771__(714);
+/* harmony import */ var _jqxexport__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxexport__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1147771__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _jqxexpander__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1147771__(4247);
+/* harmony import */ var _jqxexpander__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nested_webpack_require_1147771__.n(_jqxexpander__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -29476,24 +29417,6 @@ var __webpack_exports__ = {};
 
 })();
 
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
 /******/ })()
 ;
 /******/ })()

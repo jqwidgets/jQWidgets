@@ -1,17 +1,11 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import { generatedata } from './generatedata';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const source: any =
-        {
+function App() {
+    const { columns, source } = useMemo(() => {
+        const source: any = {
             datafields: [
                 { name: 'firstname', type: 'string' },
                 { name: 'lastname', type: 'string' },
@@ -22,9 +16,7 @@ class App extends React.PureComponent<{}, IGridProps> {
             ],
             datatype: 'array',
             localdata: generatedata(200, false),
-            updaterow: (rowid: any, rowdata: any): any => {
-                // synchronize with the server - send update command   
-            }
+            updaterow: (rowid: any, rowdata: any): any => {}
         };
 
         const columns: IGridProps['columns'] = [
@@ -76,26 +68,30 @@ class App extends React.PureComponent<{}, IGridProps> {
                     }
                     return renderstring;
                 },
-                cellsalign: 'right', cellsformat: 'n2', datafield: 'quantity', text: 'Quantity', width: 85, 
+                cellsalign: 'right', cellsformat: 'n2', datafield: 'quantity', text: 'Quantity', width: 85,
             },
             { text: 'Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2', aggregates: ['sum', 'avg'] }
         ];
 
-        this.state = {
+        return {
             columns,
             source: new jqx.dataAdapter(source)
-        }
-    }
+        };
+    }, []);
 
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'}
-                // @ts-ignore
-                width={'100%'} source={this.state.source} editable={true}
-                showstatusbar={true} statusbarheight={50} showaggregates={true}
-                columns={this.state.columns} selectionmode={'singlecell'} />
-        );
-    }
+    return (
+        <JqxGrid
+            theme={'material-purple'}
+            width={'100%'}
+            source={source}
+            editable={true}
+            showstatusbar={true}
+            statusbarheight={50}
+            showaggregates={true}
+            columns={columns}
+            selectionmode={'singlecell'}
+        />
+    );
 }
 
 export default App;

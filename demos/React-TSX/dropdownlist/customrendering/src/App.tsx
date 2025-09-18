@@ -1,44 +1,9 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import JqxDropDownList, { IDropDownListProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
-class App extends React.PureComponent<{}, IDropDownListProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const data = this.generateData();
-
-        const source = {
-            datatype: 'array',
-            localdata: data
-        }
-
-        this.state = {
-            renderer: (index: number, label: string, value: any): string => {
-                const datarecord = data[index];
-                const imgurl = 'https://www.jqwidgets.com/react/images/' + label.toLowerCase() + '.png';
-                const img = '<img height="50" width="45" src="' + imgurl + '"/>';
-                const table = '<table style="min-width: 150px;"><tr><td style="width: 55px;" rowspan="2">' + img + '</td><td>' + datarecord.firstname + ' ' + datarecord.lastname + '</td></tr><tr><td>' + datarecord.title + '</td></tr></table>';
-                return table;
-            },
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-
-        return (
-            <JqxDropDownList theme={'material-purple'}
-                width={270} height={30} source={this.state.source} selectedIndex={0}
-                displayMember={'firstname'} valueMember={'notes'} itemHeight={70} renderer={this.state.renderer} />
-        );
-    }
-
-    private generateData(): any[] {
-        const data = new Array();
+function App() {
+    const data = useMemo(() => {
         const firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'];
         const lastNames = ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth'];
         const titles = ['Sales Representative', 'Vice President, Sales', 'Sales Representative', 'Sales Representative', 'Sales Manager', 'Sales Representative', 'Sales Representative', 'Inside Sales Coordinator', 'Sales Representative'];
@@ -59,28 +24,54 @@ class App extends React.PureComponent<{}, IDropDownListProps> {
             'Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan in 1992, the year he joined the company.  After completing a course entitled "Selling in Europe," he was transferred to the London office in March 1993.',
             'Laura received a BA in psychology from the University of Washington.  She has also completed a course in business French.  She reads and writes French.',
             'Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German.'];
-        let k = 0;
+        const data: any[] = [];
         for (let i = 0; i < firstNames.length; i++) {
             const row: any = {};
-            /* tslint:disable:no-string-literal */
-            row['firstname'] = firstNames[k];
-            row['lastname'] = lastNames[k];
-            row['title'] = titles[k];
-            row['titleofcourtesy'] = titleofcourtesy[k];
-            row['birthdate'] = birthdate[k];
-            row['hiredate'] = hiredate[k];
-            row['address'] = address[k];
-            row['city'] = city[k];
-            row['postalcode'] = postalcode[k];
-            row['country'] = country[k];
-            row['homephone'] = homephone[k];
-            row['notes'] = notes[k];
+            row['firstname'] = firstNames[i];
+            row['lastname'] = lastNames[i];
+            row['title'] = titles[i];
+            row['titleofcourtesy'] = titleofcourtesy[i];
+            row['birthdate'] = birthdate[i];
+            row['hiredate'] = hiredate[i];
+            row['address'] = address[i];
+            row['city'] = city[i];
+            row['postalcode'] = postalcode[i];
+            row['country'] = country[i];
+            row['homephone'] = homephone[i];
+            row['notes'] = notes[i];
             data[i] = row;
-            k++;
         }
-
         return data;
-    }
+    }, []);
+
+    const source = useMemo(() => ({
+        datatype: 'array',
+        localdata: data
+    }), [data]);
+
+    const renderer = React.useCallback((index: number, label: string, value: any): string => {
+        const datarecord = data[index];
+        const imgurl = 'https://www.jqwidgets.com/react/images/' + label.toLowerCase() + '.png';
+        const img = '<img height="50" width="45" src="' + imgurl + '"/>';
+        const table = '<table style="min-width: 150px;"><tr><td style="width: 55px;" rowspan="2">' + img + '</td><td>' + datarecord.firstname + ' ' + datarecord.lastname + '</td></tr><tr><td>' + datarecord.title + '</td></tr></table>';
+        return table;
+    }, [data]);
+
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source]);
+
+    return (
+        <JqxDropDownList
+            theme="material-purple"
+            width={270}
+            height={30}
+            source={dataAdapter}
+            selectedIndex={0}
+            displayMember="firstname"
+            valueMember="notes"
+            itemHeight={70}
+            renderer={renderer}
+        />
+    );
 }
 
 export default App;

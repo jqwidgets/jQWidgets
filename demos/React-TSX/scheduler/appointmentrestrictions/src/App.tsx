@@ -1,19 +1,14 @@
 import * as React from 'react';
- 
-
+import { useRef, useCallback, useMemo } from 'react';
 
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler';
 
-class App extends React.PureComponent<{}, ISchedulerProps> {
-    private myScheduler = React.createRef<JqxScheduler>();
+const App = () => {
+    const myScheduler = useRef<JqxScheduler>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        this.click = this.click.bind(this);
-
-        const appointments = new Array();
+    const { ready, stateProps } = useMemo(() => {
+        const appointments = [];
         const appointment1 = {
             calendar: "Room 1",
             description: "George brings projector for presentations.",
@@ -68,12 +63,7 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             start: new Date(2018, 10, 26, 14, 0, 0),
             subject: "Interview with Nancy"
         };
-        appointments.push(appointment1);
-        appointments.push(appointment2);
-        appointments.push(appointment3);
-        appointments.push(appointment4);
-        appointments.push(appointment5);
-        appointments.push(appointment6);
+        appointments.push(appointment1, appointment2, appointment3, appointment4, appointment5, appointment6);
 
         const source: any = {
             dataFields: [
@@ -92,7 +82,23 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
 
         const dataAdapter: any = new jqx.dataAdapter(source);
 
-        this.state = {
+        const ready = () => {
+            setTimeout(() => {
+                if (!myScheduler.current) return;
+                myScheduler.current.ensureAppointmentVisible("id1");
+                myScheduler.current.beginAppointmentsUpdate();
+                myScheduler.current.setAppointmentProperty('id1', 'resizable', false);
+                myScheduler.current.setAppointmentProperty('id2', 'draggable', false);
+                myScheduler.current.setAppointmentProperty('id3', 'resizable', false);
+                myScheduler.current.setAppointmentProperty('id3', 'draggable', false);
+                myScheduler.current.setAppointmentProperty('id4', 'readOnly', true);
+                myScheduler.current.setAppointmentProperty('id5', 'hidden', true);
+                myScheduler.current.setAppointmentProperty('id6', 'hidden', true);
+                myScheduler.current.endAppointmentsUpdate();
+            });
+        };
+
+        const stateProps: ISchedulerProps = {
             appointmentDataFields: {
                 description: "description",
                 from: "start",
@@ -104,20 +110,7 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             },
             date: new jqx.date(2018, 11, 23),
             height: 600,
-            ready: () => {
-                setTimeout(() => {
-                    this.myScheduler.current!.ensureAppointmentVisible("id1");
-                    this.myScheduler.current!.beginAppointmentsUpdate();
-                    this.myScheduler.current!.setAppointmentProperty('id1', 'resizable', false);
-                    this.myScheduler.current!.setAppointmentProperty('id2', 'draggable', false);
-                    this.myScheduler.current!.setAppointmentProperty('id3', 'resizable', false);
-                    this.myScheduler.current!.setAppointmentProperty('id3', 'draggable', false);
-                    this.myScheduler.current!.setAppointmentProperty('id4', 'readOnly', true);
-                    this.myScheduler.current!.setAppointmentProperty('id5', 'hidden', true);
-                    this.myScheduler.current!.setAppointmentProperty('id6', 'hidden', true);
-                    this.myScheduler.current!.endAppointmentsUpdate();
-                });
-            },
+            ready,
             resources: {
                 colorScheme: "scheme05",
                 dataField: "calendar",
@@ -130,39 +123,41 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
                 'monthView'
             ]
         };
-    }
 
-    public render() {
-        return (
-            <div>
-                <JqxScheduler theme={'material-purple'} ref={this.myScheduler}
-                    // @ts-ignore
-                    width={'100%'}
-                    height={this.state.height}
-                    date={this.state.date}
-                    source={this.state.source}
-                    showLegend={true}
-                    view={"monthView"}
-                    appointmentDataFields={this.state.appointmentDataFields}
-                    resources={this.state.resources}
-                    views={this.state.views}
-                    ready={this.state.ready}
-                />
-                <br />
-                <JqxButton theme={'material-purple'} onClick={this.click} width={200}>
-                    Show Hidden Appointments
-                </JqxButton>
-            </div>
-        );
-    }
+        return { ready, stateProps };
+    }, []);
 
-    // Event handling
-    private click(event: any): void {
-        this.myScheduler.current!.beginAppointmentsUpdate();
-        this.myScheduler.current!.setAppointmentProperty('id5', 'hidden', false);
-        this.myScheduler.current!.setAppointmentProperty('id6', 'hidden', false);
-        this.myScheduler.current!.endAppointmentsUpdate();
-    }
-}
+    const click = useCallback(() => {
+        if (!myScheduler.current) return;
+        myScheduler.current.beginAppointmentsUpdate();
+        myScheduler.current.setAppointmentProperty('id5', 'hidden', false);
+        myScheduler.current.setAppointmentProperty('id6', 'hidden', false);
+        myScheduler.current.endAppointmentsUpdate();
+    }, []);
+
+    return (
+        <div>
+            <JqxScheduler
+                theme={'material-purple'}
+                // @ts-ignore
+                width={'100%'}
+                height={stateProps.height}
+                date={stateProps.date}
+                source={stateProps.source}
+                showLegend={true}
+                view={"monthView"}
+                appointmentDataFields={stateProps.appointmentDataFields}
+                resources={stateProps.resources}
+                views={stateProps.views}
+                ready={stateProps.ready}
+                ref={myScheduler}
+            />
+            <br />
+            <JqxButton theme={'material-purple'} onClick={click} width={200}>
+                Show Hidden Appointments
+            </JqxButton>
+        </div>
+    );
+};
 
 export default App;

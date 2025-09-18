@@ -1,30 +1,10 @@
 import * as React from 'react';
- 
-
-
+import { useMemo } from 'react';
 import JqxComboBox, { IComboBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
 
-class App extends React.PureComponent<{}, IComboBoxProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        this.state = {
-            source: this.generateHTML()
-        }
-    }
-
-    public render() {
-        return (
-            <JqxComboBox theme={'material-purple'}
-                width={250} height={25}
-                source={this.state.source} selectedIndex={0} />
-        );
-    }
-
-    private generateHTML() {
-        const source = [];
-
+function App() {
+    const source = useMemo(() => {
+        const source: { html: string; title: string }[] = [];
         for (let i = 0; i < 10; i++) {
             let movie = 'avatar.png';
             let title = 'Avatar';
@@ -63,7 +43,7 @@ class App extends React.PureComponent<{}, IComboBoxProps> {
                 case 7:
                     movie = 'knockout.png';
                     title = 'Knockout';
-                    year = 2011
+                    year = 2011;
                     break;
                 case 8:
                     movie = 'theplane.png';
@@ -76,14 +56,30 @@ class App extends React.PureComponent<{}, IComboBoxProps> {
                     year = 1999;
                     break;
             }
-            const html = "<div style='padding: 0px; margin: 0px; height: 95px; float: left;'><img width='60'" +
-                "style='float: left; margin-top: 4px; margin-right: 15px;' src='https://www.jqwidgets.com/react/images/" + movie
-                + "'/><div style='margin-top: 10px; font-size: 13px;'>" + "<b>Title</b><div>" + title +
-                "</div><div style='margin-top: 10px;'><b>Year</b><div>" + year.toString() + "</div></div></div>";
+            const html =
+                "<div style='padding: 0px; margin: 0px; height: 95px; float: left;'><img width='60'" +
+                "style='float: left; margin-top: 4px; margin-right: 15px;' src='https://www.jqwidgets.com/react/images/" +
+                movie +
+                "'/><div style='margin-top: 10px; font-size: 13px;'>" +
+                "<b>Title</b><div>" +
+                title +
+                "</div><div style='margin-top: 10px;'><b>Year</b><div>" +
+                year.toString() +
+                "</div></div></div>";
             source[i] = { html, title };
         }
         return source;
-    }
+    }, []);
+
+    return (
+        <JqxComboBox
+            theme="material-purple"
+            width={250}
+            height={25}
+            source={source}
+            selectedIndex={0}
+        />
+    );
 }
 
 export default App;

@@ -1,20 +1,15 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import JqxDropDownList, { IDropDownListProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
-class App extends React.PureComponent<{}, IDropDownListProps> {
+function App() {
+    const myDropDownList = useRef<JqxDropDownList>(null);
+    const log = useRef<HTMLDivElement>(null);
+    const checkedItemsLog = useRef<HTMLDivElement>(null);
+    const [source, setSource] = useState<any>(null);
 
-    private myDropDownList = React.createRef<JqxDropDownList>();
-    private log = React.createRef<HTMLDivElement>();
-    private checkedItemsLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.listOnSelect = this.listOnSelect.bind(this);
-
-        const source: any = {
+    useEffect(() => {
+        const s = {
             datafields: [
                 { name: 'CompanyName' },
                 { name: 'ContactName' }
@@ -23,29 +18,10 @@ class App extends React.PureComponent<{}, IDropDownListProps> {
             id: 'id',
             url: 'customers.txt'
         };
+        setSource(new jqx.dataAdapter(s));
+    }, []);
 
-        this.state = {
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-
-        return (
-            <div> 
-                <JqxDropDownList theme={'material-purple'} ref={this.myDropDownList} onSelect={this.listOnSelect}
-                    width={200} height={30} source={this.state.source} checkboxes={true}
-                    displayMember={'ContactName'} valueMember={'CompanyName'} />
-
-                <div style={{ float: 'left', marginLeft: '20px', fontSize: '13px', fontFamily: 'Verdana' }}>
-                    <div ref={this.log} />
-                    <div ref={this.checkedItemsLog} style={{ maxWidth: '300px', marginTop: '20px' }} />
-                </div>
-            </div>
-        );
-    }
-
-    private listOnSelect(event: any): void {
+    const listOnSelect = useCallback((event: any) => {
         if (event.args) {
             const selectedItem = event.args.item;
             if (selectedItem) {
@@ -58,21 +34,41 @@ class App extends React.PureComponent<{}, IDropDownListProps> {
                 const checkedElement = document.createElement('div');
                 checkedElement.innerHTML = `Checked: ${selectedItem.checked}`;
 
-                const selectionLog = this.log.current!;
+                const selectionLog = log.current!;
                 selectionLog.innerHTML = '';
                 selectionLog.appendChild(labelElement);
                 selectionLog.appendChild(valueElement);
                 selectionLog.appendChild(checkedElement);
 
-                const items = this.myDropDownList.current!.getCheckedItems();
+                const items = myDropDownList.current!.getCheckedItems();
                 let checkedItems = '';
                 for (const item of items) {
                     checkedItems += item.label + ', ';
                 }
-                this.checkedItemsLog.current!.innerHTML = checkedItems;
+                checkedItemsLog.current!.innerHTML = checkedItems;
             }
         }
-    };
+    }, []);
+
+    return (
+        <div>
+            <JqxDropDownList
+                theme="material-purple"
+                ref={myDropDownList}
+                onSelect={listOnSelect}
+                width={200}
+                height={30}
+                source={source}
+                checkboxes={true}
+                displayMember="ContactName"
+                valueMember="CompanyName"
+            />
+            <div style={{ float: 'left', marginLeft: '20px', fontSize: '13px', fontFamily: 'Verdana' }}>
+                <div ref={log} />
+                <div ref={checkedItemsLog} style={{ maxWidth: '300px', marginTop: '20px' }} />
+            </div>
+        </div>
+    );
 }
 
 export default App;

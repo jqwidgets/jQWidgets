@@ -1,85 +1,72 @@
-﻿import * as React from 'react';
- 
+import { useState, useCallback } from 'react';
+import JqxDateTimeInput from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatetimeinput';
+import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
+const App = () => {
+    const [animationType, setAnimationType] = useState<'none' | 'slide' | 'fade'>('fade');
+    const [noneChecked, setNoneChecked] = useState(false);
+    const [slideChecked, setSlideChecked] = useState(false);
+    const [fadeChecked, setFadeChecked] = useState(true);
 
-import JqxDateTimeInput, { IDateTimeInputProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatetimeinput';
-import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
+    const noneAnimationBtn = useCallback(() => {
+        setAnimationType('none');
+        setNoneChecked(true);
+        setSlideChecked(false);
+        setFadeChecked(false);
+    }, []);
 
-export interface IState extends IDateTimeInputProps {
-    noneChecked: IRadioButtonProps['checked'];
-    slideChecked: IRadioButtonProps['checked'];
-    fadeChecked: IRadioButtonProps['checked'];
-}
+    const slideAnimationBtn = useCallback(() => {
+        setAnimationType('slide');
+        setNoneChecked(false);
+        setSlideChecked(true);
+        setFadeChecked(false);
+    }, []);
 
-class App extends React.PureComponent<{}, IState> {
+    const fadeAnimationBtn = useCallback(() => {
+        setAnimationType('fade');
+        setNoneChecked(false);
+        setSlideChecked(false);
+        setFadeChecked(true);
+    }, []);
 
-    constructor(props: {}) {
-        super(props);
-        this.noneAnimationBtn = this.noneAnimationBtn.bind(this);
-        this.slideAnimationBtn = this.slideAnimationBtn.bind(this);
-        this.fadeAnimationBtn = this.fadeAnimationBtn.bind(this);
-
-        this.state = {
-            animationType: 'fade',
-            fadeChecked: true,
-            noneChecked: false,
-            slideChecked: false
-        };
-    }
-
-    public render() {
-        return (
-            <div>
-                <div style={{ float: 'left' }}>
-                    <h3>Animation Type</h3>
-
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.noneAnimationBtn} checked={this.state.noneChecked}>
-                        None
-                    </JqxRadioButton>
-
-                    <div style={{ marginTop: '10px' }} />
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.slideAnimationBtn} checked={this.state.slideChecked}>
-                        Slide
-                    </JqxRadioButton>
-
-                    <div style={{ marginTop: '10px' }} />
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.fadeAnimationBtn} checked={this.state.fadeChecked}>
-                        Fade
-                    </JqxRadioButton>
-                </div>
-
-                <JqxDateTimeInput theme={'material-purple'} style={{ float: 'left', marginTop: '40px', marginLeft: '100px' }}
-                    width={150} height={30} animationType={this.state.animationType} dropDownHorizontalAlignment={'right'} />
+    return (
+        <div>
+            <div style={{ float: 'left' }}>
+                <h3>Animation Type</h3>
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={noneAnimationBtn}
+                    checked={noneChecked}
+                >
+                    None
+                </JqxRadioButton>
+                <div style={{ marginTop: '10px' }} />
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={slideAnimationBtn}
+                    checked={slideChecked}
+                >
+                    Slide
+                </JqxRadioButton>
+                <div style={{ marginTop: '10px' }} />
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={fadeAnimationBtn}
+                    checked={fadeChecked}
+                >
+                    Fade
+                </JqxRadioButton>
             </div>
-        );
-    }
-
-    private noneAnimationBtn() {
-        this.setState({
-            animationType: 'none',
-            fadeChecked: false,
-            noneChecked: true,
-            slideChecked: false
-        });
-    }
-
-    private slideAnimationBtn() {
-        this.setState({
-            animationType: 'slide',
-            fadeChecked: false,
-            noneChecked: false,
-            slideChecked: true
-        });
-    }
-
-    private fadeAnimationBtn() {
-        this.setState({
-            animationType: 'fade',
-            fadeChecked: true,
-            noneChecked: false,
-            slideChecked: false
-        });
-    }
-}
+            <JqxDateTimeInput
+                theme="material-purple"
+                style={{ float: 'left', marginTop: '40px', marginLeft: '100px' }}
+                width={150}
+                height={30}
+                animationType={animationType}
+                dropDownHorizontalAlignment="right"
+            />
+        </div>
+    );
+};
 
 export default App;

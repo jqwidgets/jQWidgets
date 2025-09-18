@@ -1,44 +1,28 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef } from 'react';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
-import JqxLoader, { ILoaderProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxloader';
+import JqxLoader from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxloader';
 
-class App extends React.PureComponent<{}, ILoaderProps> {
-
-    private myLoader = React.createRef<JqxLoader>();
-
-    constructor(props: {}) {
-        super(props);
-        this.openLoaderClick = this.openLoaderClick.bind(this);
-        this.closeLoaderClick = this.closeLoaderClick.bind(this);
-    }
-
-    public render() {
-        const style = { display: 'inline-block' };
-        return (
-            <div>
-                <JqxLoader theme={'material-purple'} ref={this.myLoader}
-                    width={60} height={60} text={''}/>
-
-                <JqxButton theme={'material-purple'} style={style} onClick={this.openLoaderClick} width={150}>
-                    Open Loader
-                </JqxButton>
-                <JqxButton theme={'material-purple'} style={style} onClick={this.closeLoaderClick} width={100}>
-                    Close
-                </JqxButton>
-            </div>
-        );
-    }
-
-    private openLoaderClick(event: any): void {
-        this.myLoader.current!.open();
+function App() {
+    const myLoader = useRef<any>(null);
+    const style = { display: 'inline-block' };
+    const openLoaderClick = () => {
+        myLoader.current && myLoader.current.open();
     };
-
-    private closeLoaderClick(event: any): void {
-        this.myLoader.current!.close();
+    const closeLoaderClick = () => {
+        myLoader.current && myLoader.current.close();
     };
+    return (
+        <div>
+            <JqxLoader theme={'material-purple'} ref={myLoader} width={60} height={60} text={''} />
+            <JqxButton theme={'material-purple'} style={style} onClick={openLoaderClick} width={150}>
+                Open Loader
+            </JqxButton>
+            <JqxButton theme={'material-purple'} style={style} onClick={closeLoaderClick} width={100}>
+                Close
+            </JqxButton>
+        </div>
+    );
 }
 
 export default App;

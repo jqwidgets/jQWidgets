@@ -1,15 +1,17 @@
-﻿import * as React from 'react';
- 
+import * as React from 'react';
+import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
+const App = () => {
+    const columns = React.useMemo(() => [
+        { text: 'Ship Name', datafield: 'ShipName', width: 250 },
+        { text: 'Ship City', datafield: 'ShipCity', width: 250 },
+        { text: 'Ship Country', datafield: 'ShipCountry', width: 200 },
+        { text: 'Freight', datafield: 'Freight', width: 130, cellsformat: 'f2', cellsalign: 'right' },
+        { text: 'Ship Address', datafield: 'ShipAddress', width: 350 }
+    ], []);
 
-import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
-
-class App extends React.PureComponent<{}, IGridProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
+    const source = React.useMemo(() => {
+        const src: any = {
             datafields: [
                 { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
                 { name: 'Freight', map: 'm\\:properties>d\\:Freight', type: 'float' },
@@ -24,28 +26,22 @@ class App extends React.PureComponent<{}, IGridProps> {
             root: 'entry',
             url: 'orders.xml'
         };
+        return new jqx.dataAdapter(src);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Ship Name', datafield: 'ShipName', width: 250 },
-                { text: 'Ship City', datafield: 'ShipCity', width: 250 },
-                { text: 'Ship Country', datafield: 'ShipCountry', width: 200 },
-                { text: 'Freight', datafield: 'Freight', width: 130, cellsformat: 'f2', cellsalign: 'right' },
-                { text: 'Ship Address', datafield: 'ShipAddress', width: 350 }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'}
-                // @ts-ignore
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                filterable={true} sortable={true} columnsresize={true} autoshowfiltericon={true}
-                filtermode={'excel'} />
-        );
-    }
-}
+    return (
+        <JqxGrid
+            theme="material-purple"
+            width="100%"
+            source={source}
+            columns={columns}
+            filterable={true}
+            sortable={true}
+            columnsresize={true}
+            autoshowfiltericon={true}
+            filtermode="excel"
+        />
+    );
+};
 
 export default App;

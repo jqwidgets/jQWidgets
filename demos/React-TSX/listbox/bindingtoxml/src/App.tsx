@@ -1,66 +1,56 @@
-﻿import * as React from 'react';
- 
-
-
+import React, { useRef, useCallback, useMemo } from 'react';
 import JqxListBox, { IListBoxProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxlistbox';
 
-class App extends React.PureComponent<{}, IListBoxProps> {
+const App = () => {
+    const selectionLog = useRef<HTMLDivElement>(null);
 
-    private selectionLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.onSelect = this.onSelect.bind(this);
-
-        const source: any = {
+    const source = useMemo(() => {
+        const dataSource: any = {
             datafields: [
                 { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName' },
                 { name: 'ContactName', map: 'm\\:properties>d\\:ContactName' },
             ],
-            datatype: 'xml',           
+            datatype: 'xml',
             id: 'm\\:properties>d\\:CustomerID',
             record: 'content',
             root: 'entry',
             url: 'customers.xml'
-        }
+        };
+        return new jqx.dataAdapter(dataSource, { async: false });
+    }, []);
 
-        this.state = {
-            source: new jqx.dataAdapter(source, { async: false })
-        }
-    }
-
-    public render() {
-
-        return (
-            <div>
-                <JqxListBox theme={'material-purple'} onSelect={this.onSelect}
-                    width={250} height={200} source={this.state.source}
-                    displayMember={'ContactName'} valueMember={'CompanyName'} />
-
-                <div ref={this.selectionLog} style={{ fontSize: '13px', fontFamily: 'Verdana' }} />
-            </div>
-        );
-    }
-
-    private onSelect(event: any): void {
+    const onSelect = useCallback((event: any) => {
         if (event.args) {
             const item = event.args.item;
             if (item) {
                 const valueElement = document.createElement('div');
                 const labelElement = document.createElement('div');
-
                 valueElement.innerHTML = 'Value: ' + item.value;
                 labelElement.innerHTML = 'Label: ' + item.label;
-
-                const selectionLog = this.selectionLog.current!;
-
-                selectionLog.innerHTML = '';
-
-                selectionLog.appendChild(labelElement);
-                selectionLog.appendChild(valueElement);
+                const selectionLogDiv = selectionLog.current;
+                if (selectionLogDiv) {
+                    selectionLogDiv.innerHTML = '';
+                    selectionLogDiv.appendChild(labelElement);
+                    selectionLogDiv.appendChild(valueElement);
+                }
             }
         }
-    };
-}
+    }, []);
+
+    return (
+        <div>
+            <JqxListBox
+                theme={'material-purple'}
+                onSelect={onSelect}
+                width={250}
+                height={200}
+                source={source}
+                displayMember={'ContactName'}
+                valueMember={'CompanyName'}
+            />
+            <div ref={selectionLog} style={{ fontSize: '13px', fontFamily: 'Verdana' }} />
+        </div>
+    );
+};
 
 export default App;

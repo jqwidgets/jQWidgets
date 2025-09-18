@@ -1,15 +1,10 @@
 import * as React from 'react';
- 
-
-
+import { useState } from 'react';
 import JqxChart, { IChartProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const sampleData: any[] = [
+function App() {
+    const [chartProps] = useState<IChartProps>(() => {
+        const sampleData = [
             { Day: 'Monday', Running: 30, Swimming: 0, Cycling: 25 },
             { Day: 'Tuesday', Running: 25, Swimming: 25, Cycling: 0 },
             { Day: 'Wednesday', Running: 30, Swimming: 0, Cycling: 25 },
@@ -18,8 +13,7 @@ class App extends React.PureComponent<{}, IChartProps> {
             { Day: 'Saturday', Running: 30, Swimming: 0, Cycling: 30 },
             { Day: 'Sunday', Running: 60, Swimming: 45, Cycling: 0 }
         ];
-
-        this.state = {
+        return {
             description: 'Time spent in vigorous exercise by activity',
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
             seriesGroups: [
@@ -43,7 +37,7 @@ class App extends React.PureComponent<{}, IChartProps> {
                 minValue: 0,
                 tickMarks: { color: '#BCBCBC' },
                 title: { text: 'Time in minutes' },
-                unitInterval: 10,
+                unitInterval: 10
             },
             xAxis: {
                 axisSize: 'auto',
@@ -51,27 +45,34 @@ class App extends React.PureComponent<{}, IChartProps> {
                 gridLines: {
                     color: '#BCBCBC',
                     interval: 1,
-                    visible: true,
+                    visible: true
                 },
                 tickMarks: {
                     color: '#BCBCBC',
                     interval: 1,
                     visible: true
                 },
-                unitInterval: 1            
+                unitInterval: 1
             }
         };
-    }
+    });
 
-    public render() {
-        return (
-            <JqxChart style={{ width: '850px', height: '500px' }}
-                title={this.state.title} description={this.state.description}
-                showLegend={true} enableAnimations={true} padding={this.state.padding}
-                titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                valueAxis={this.state.valueAxis} seriesGroups={this.state.seriesGroups} colorScheme={'scheme06'}/>
-        );
-    }
+    return (
+        <JqxChart
+            style={{ width: '850px', height: '500px' }}
+            title={chartProps.title}
+            description={chartProps.description}
+            showLegend={true}
+            enableAnimations={true}
+            padding={chartProps.padding}
+            titlePadding={chartProps.titlePadding}
+            source={chartProps.source}
+            xAxis={chartProps.xAxis}
+            valueAxis={chartProps.valueAxis}
+            seriesGroups={chartProps.seriesGroups}
+            colorScheme={'scheme06'}
+        />
+    );
 }
 
 export default App;

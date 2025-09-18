@@ -1,19 +1,12 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
 import JqxInput, { IInputProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxinput';
 
-class App extends React.PureComponent<{}, IInputProps> {
+const App = () => {
+    const myInput = React.useRef<JqxInput>(null);
+    const selectionLog = React.useRef<HTMLDivElement>(null);
 
-    private myInput = React.createRef<JqxInput>();
-    private selectionLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.myInputOnSelect = this.myInputOnSelect.bind(this);
-
-        const source: any = {
+    const [source] = React.useState(() => {
+        const s: any = {
             datafields: [
                 { name: 'CompanyName' },
                 { name: 'ContactName' }
@@ -21,28 +14,10 @@ class App extends React.PureComponent<{}, IInputProps> {
             datatype: 'json',
             url: 'customers.txt'
         };
+        return new jqx.dataAdapter(s);
+    });
 
-        this.state = {
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxInput theme={'material-purple'} ref={this.myInput} onSelect={this.myInputOnSelect}
-                    width={200} height={25} source={this.state.source} placeHolder={'Contact Name:'}
-                    valueMember={'CompanyName'} displayMember={'ContactName'} />
-                <br />
-
-                <label style={{ fontFamily: 'Verdana', fontSize: '10px' }}>ex: Ana</label>
-
-                <div ref={this.selectionLog} style={{ fontFamily: 'Verdana', fontSize: '13px' }} />
-            </div>
-        );
-    }
-
-    private myInputOnSelect(event: any): void {
+    const myInputOnSelect = React.useCallback((event: any) => {
         if (event.args) {
             const item = event.args.item;
             if (item) {
@@ -52,16 +27,35 @@ class App extends React.PureComponent<{}, IInputProps> {
                 const labelElement = document.createElement('div');
                 labelElement.innerHTML = 'Label: ' + item.label;
 
-                const selectionLog = this.selectionLog.current!;
-                selectionLog.innerHTML = '';
+                const selectionLogCurrent = selectionLog.current!;
+                selectionLogCurrent.innerHTML = '';
 
-                selectionLog.appendChild(labelElement);
-                selectionLog.appendChild(valueElement);
+                selectionLogCurrent.appendChild(labelElement);
+                selectionLogCurrent.appendChild(valueElement);
 
-                setTimeout(() => this.myInput.current!.val(item.label));
+                setTimeout(() => myInput.current!.val(item.label));
             }
         }
-    }
-}
+    }, []);
+
+    return (
+        <div>
+            <JqxInput
+                theme="material-purple"
+                ref={myInput}
+                onSelect={myInputOnSelect}
+                width={200}
+                height={25}
+                source={source}
+                placeHolder="Contact Name:"
+                valueMember="CompanyName"
+                displayMember="ContactName"
+            />
+            <br />
+            <label style={{ fontFamily: 'Verdana', fontSize: '10px' }}>ex: Ana</label>
+            <div ref={selectionLog} style={{ fontFamily: 'Verdana', fontSize: '13px' }} />
+        </div>
+    );
+};
 
 export default App;

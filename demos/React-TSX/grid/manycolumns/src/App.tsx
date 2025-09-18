@@ -1,52 +1,38 @@
-﻿import * as React from 'react';
- 
+import React, { useMemo } from 'react';
+import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-
-import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
-
-class App extends React.PureComponent<{}, IGridProps> {
-
-    private data: any[] = [];
-    private datafields: any[] = [];
-    private columns: any[] = [];
-
-    constructor(props: {}) {
-        super(props);
-
-        this.generateData();
-
-        const source: any = {
-            datafields: this.datafields,
-            datatype: 'array',
-            localdata: this.data
-        };
-
-        this.state = {
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'}
-                // @ts-ignore
-                width={'100%'} source={this.state.source} columns={this.columns} />
-        );
-    }
-
-    private generateData(): void {
+const App = () => {
+    const { source, columns } = useMemo(() => {
+        const data: any[] = [];
+        const datafields: any[] = [];
+        const columns: any[] = [];
         for (let i = 0; i < 200; i++) {
             const row: any = {};
             for (let j = 0; j < 200; j++) {
                 row['Name' + j] = 'Cell ' + (1 + i) + '.' + (1 + j);
                 if (i === 0) {
-                    this.columns.push({ datafield: 'Name' + j, text: 'Column ' + (1 + j), width: 100 });
-                    this.datafields.push({ name: 'Name' + j, type: 'string' });
+                    columns.push({ datafield: 'Name' + j, text: 'Column ' + (1 + j), width: 100 });
+                    datafields.push({ name: 'Name' + j, type: 'string' });
                 }
             }
-            this.data[i] = row;
+            data[i] = row;
         }
-    }
-}
+        const source = new jqx.dataAdapter({
+            datafields,
+            datatype: 'array',
+            localdata: data
+        });
+        return { source, columns };
+    }, []);
+
+    return (
+        <JqxGrid
+            theme="material-purple"
+            width="100%"
+            source={source}
+            columns={columns}
+        />
+    );
+};
 
 export default App;

@@ -1,16 +1,11 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useMemo } from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
+const App = () => {
+    const filterChanged = useRef<boolean>(false);
 
-    private filterChanged: boolean;
-
-    constructor(props: {}) {
-        super(props);
-
+    const { columns, source } = useMemo(() => {
         const source: any = {
             dataFields: [
                 { name: 'ShipCountry', type: 'string' },
@@ -23,7 +18,7 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             dataType: 'json',
             root: 'value',
             url: 'http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=?'
-        }
+        };
 
         const dataAdapter: any = new jqx.dataAdapter(source,
             {
@@ -34,23 +29,16 @@ class App extends React.PureComponent<{}, IDataTableProps> {
                 },
                 formatData: (data: any): void => {
                     if (data.sortdatafield && data.sortorder) {
-                        // update the $orderby param of the OData service.
-                        // data.sortdatafield - the column's datafield value(ShipCountry, ShipCity, etc.).
-                        // data.sortorder - the sort order(asc or desc).
                         data.$orderby = data.sortdatafield + ' ' + data.sortorder;
                     }
                     let filterOperator;
                     if (data.filterslength) {
-                        this.filterChanged = true;
+                        filterChanged.current = true;
                         let filterParam = '';
                         for (let i = 0; i < data.filterslength; i++) {
-                            // filter's value.
                             const filterValue = data['filtervalue' + i];
-                            // filter's condition. For the filterMode='simple' it is 'CONTAINS'.
                             const filterCondition = data['filtercondition' + i];
-                            // filter's data field - the filter column's datafield value.
                             const filterDataField = data['filterdatafield' + i];
-                            // 'and' or 'or' depending on the filter expressions. When the filterMode='simple', the value is 'or'.
                             filterOperator = data[filterDataField + 'operator'];
                             let startIndex = 0;
                             if (filterValue.indexOf('-') === -1) {
@@ -61,7 +49,7 @@ class App extends React.PureComponent<{}, IDataTableProps> {
                             }
                             else {
                                 if (filterDataField === 'ShippedDate') {
-                                    const dateGroups = new Array();                                  
+                                    const dateGroups: string[] = [];
                                     let item = filterValue.substring(startIndex).indexOf('-');
                                     while (item > -1) {
                                         dateGroups.push(filterValue.substring(startIndex, item + startIndex));
@@ -78,33 +66,29 @@ class App extends React.PureComponent<{}, IDataTableProps> {
                                 }
                             }
                         }
-                        // remove last filter operator.
                         filterParam = filterParam.substring(0, filterParam.length - filterOperator.length - 2);
                         data.$filter = filterParam;
                         source.totalRecords = 0;
                     }
                     else {
-                        if (this.filterChanged) {
+                        if (filterChanged.current) {
                             source.totalRecords = 0;
-                            this.filterChanged = false;
+                            filterChanged.current = false;
                         }
                     }
                     if (source.totalRecords) {
-                        // update the $skip and $top params of the OData service.
-                        // data.pagenum - page number starting from 0.
-                        // data.pagesize - page size
                         data.$skip = data.pagenum * data.pagesize;
                         data.$top = data.pagesize;
                     }
                     return data;
-                },               
+                },
                 loadError: (xhr: any, status: any, error: any) => {
                     throw new Error('http://services.odata.org: ' + error.toString());
                 }
             }
         );
 
-        this.state = {
+        return {
             columns: [
                 { text: 'Ship Name', dataField: 'ShipName', width: 250 },
                 { text: 'Ship Country', dataField: 'ShipCountry', width: 150 },
@@ -114,22 +98,28 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             ],
             source: dataAdapter
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
-
-                <JqxDataTable theme={'material-purple'}
-                    // @ts-ignore
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    altRows={true} pageable={true} sortable={true} filterable={true}
-                    serverProcessing={true} columnsResize={true} filterMode={'simple'}
-                    pagerButtonsCount={10} />
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
+            <JqxDataTable
+                theme={'material-purple'}
+                width={'100%'}
+                // @ts-ignore
+                source={source}
+                columns={columns}
+                altRows={true}
+                pageable={true}
+                sortable={true}
+                filterable={true}
+                serverProcessing={true}
+                columnsResize={true}
+                filterMode={'simple'}
+                pagerButtonsCount={10}
+            />
+        </div>
+    );
+};
 
 export default App;

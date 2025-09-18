@@ -1831,9 +1831,6 @@ declare module jqwidgets {
         threestatecheckbox?: boolean;
         sortable?: boolean;
         filterable?: boolean;
-        filternlpinput?: string;
-        aiKey?: string;
-        aiUrl?: string;
         filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
         buttonclick?: (row: number) => void;
         hideable?: boolean;
@@ -2228,6 +2225,9 @@ declare module jqwidgets {
         editmode?: string;
         filter?: (cellValue?: GridFilter['cellValue'], rowData?: GridFilter['rowData'], dataField?: GridFilter['dataField'], filterGroup?: GridFilter['filterGroup'], defaultFilterResult?: GridFilter['defaultFilterResult']) => any;
         filterable?: boolean;
+        filternlpinput?: string;
+        aiKey?: string;
+        aiUrl?: string;
         groupable?: boolean;
         groups?: Array<string>;
         horizontalscrollbarstep?: number;

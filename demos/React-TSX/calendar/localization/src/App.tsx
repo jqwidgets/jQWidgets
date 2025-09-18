@@ -1,118 +1,68 @@
 import * as React from 'react';
- 
-
 import JqxCalendar, { ICalendarProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcalendar';
-import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
+import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
-export interface IState extends IDropDownListProps {
-    culture: ICalendarProps["culture"]
-}
+const source = [
+    'Czech (Czech Republic)', 'German (Germany)', 'English (Canada)', 'English (United States)', 'French (France)',
+    'Italian (Italy)', 'Japanese (Japan)', 'Hebrew (Israel)', 'Russian (Russia)', 'Croatian (Croatia)', 'Sanskrit (India)'
+];
 
-class App extends React.PureComponent<{}, IState> {
-    private myCalendar = React.createRef<JqxCalendar>();
+const cultureMap: Record<number, ICalendarProps["culture"]> = {
+    0: 'cs-CZ',
+    1: 'de-DE',
+    2: 'en-CA',
+    3: 'en-US',
+    4: 'en-US',
+    5: 'it-IT',
+    6: 'ja-JP',
+    7: 'he-IL',
+    8: 'ru-RU',
+    9: 'hr',
+    10: 'sa-IN'
+};
 
-    constructor(props: {}) {
-        super(props);
-        this.dropDownListOnSelect = this.dropDownListOnSelect.bind(this);
+const App = () => {
+    const [culture, setCulture] = React.useState<ICalendarProps["culture"]>('default');
+    const [selectedIndex, setSelectedIndex] = React.useState(3);
 
-        this.state = {
-            culture: 'default',
-            selectedIndex: 3,
-            source: [
-                'Czech (Czech Republic)', 'German (Germany)', 'English (Canada)', 'English (United States)', 'French (France)',
-                'Italian (Italy)', 'Japanese (Japan)', 'Hebrew (Israel)', 'Russian (Russia)', 'Croatian (Croatia)', 'Sanskrit (India)'
-            ]
-        }
-    };
+    const myCalendar = React.useRef<JqxCalendar>(null);
 
-    public render() {
-        return (
-            <div>
-                <JqxCalendar theme={'material-purple'} ref={this.myCalendar} style={{ float: 'left', marginRight: '20px' }}
-                    width={220} height={220} enableTooltips={false} culture={this.state.culture} />
-                <div style={{ float: 'left' }}>
-                    <div style={{ float: 'left', fontFamily: 'Verdana', fontSize: '13px' }}>
-                        Choose Culture
-                    </div>
-                    <br /><br />
-                    <JqxDropDownList theme={'material-purple'} style={{ float: 'left' }} onSelect={this.dropDownListOnSelect}
-                        width={220} height={25} selectedIndex={this.state.selectedIndex} source={this.state.source} />
-                </div>
-            </div>
-        );
-    }
-
-    private dropDownListOnSelect(event: any): void {
+    const dropDownListOnSelect = React.useCallback((event: any) => {
         const index = event.args.index;
-        switch (index) {
-            case 0:
-                this.setState({
-                    culture: 'cs-CZ',
-                    selectedIndex: index
-                });
-                break;
-            case 1:
-                this.setState({
-                    culture: 'de-DE',
-                    selectedIndex: index
-                });
-                break;
-            case 2:
-                this.setState({
-                    culture: 'en-CA',
-                    selectedIndex: index
-                });
-                break;
-            case 3:
-                this.setState({
-                    culture: 'en-US',
-                    selectedIndex: index
-                });
-                break;
-            case 4:
-                this.setState({
-                    culture: 'en-US',
-                    selectedIndex: index
-                });
-                break;
-            case 5:
-                this.setState({
-                    culture: 'it-IT',
-                    selectedIndex: index
-                });
-                break;
-            case 6:
-                this.setState({
-                    culture: 'ja-JP',
-                    selectedIndex: index
-                });
-                break;
-            case 7:
-                this.setState({
-                    culture: 'he-IL',
-                    selectedIndex: index
-                });
-                break;
-            case 8:
-                this.setState({
-                    culture: 'ru-RU',
-                    selectedIndex: index
-                });
-                break;
-            case 9:
-                this.setState({
-                    culture: 'hr',
-                    selectedIndex: index
-                });
-                break;
-            case 10:
-                this.setState({
-                    culture: 'sa-IN',
-                    selectedIndex: index
-                });
-                break;
+        if (cultureMap.hasOwnProperty(index)) {
+            setCulture(cultureMap[index]);
+            setSelectedIndex(index);
         }
-    }
-}
+    }, []);
 
-export default App; 
+    return (
+        <div>
+            <JqxCalendar
+                theme="material-purple"
+                ref={myCalendar}
+                style={{ float: 'left', marginRight: '20px' }}
+                width={220}
+                height={220}
+                enableTooltips={false}
+                culture={culture}
+            />
+            <div style={{ float: 'left' }}>
+                <div style={{ float: 'left', fontFamily: 'Verdana', fontSize: '13px' }}>
+                    Choose Culture
+                </div>
+                <br /><br />
+                <JqxDropDownList
+                    theme="material-purple"
+                    style={{ float: 'left' }}
+                    onSelect={dropDownListOnSelect}
+                    width={220}
+                    height={25}
+                    selectedIndex={selectedIndex}
+                    source={source}
+                />
+            </div>
+        </div>
+    );
+};
+
+export default App;

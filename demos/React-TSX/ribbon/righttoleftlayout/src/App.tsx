@@ -1,30 +1,27 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
 import './App.css';
-
 import JqxRibbon from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxribbon';
 
-class App extends React.PureComponent<{}> {
-
-    constructor(props: {}) {
-        super(props);
-    }
-
-    public render() {
-        return (
-            <JqxRibbon theme={'material-purple'}
-                width={370} height={350} position={'top'} rtl={true}
-                selectionMode={'click'} animationType={'fade'}>
-                <ul>
-                    <li style={{ marginRight: '30px' }}>Browse Books</li>
-                    <li>Shipping</li>
-                    <li>About Us</li>
-                </ul>
+function App() {
+    return (
+        <JqxRibbon
+            theme="material-purple"
+            width={370}
+            height={350}
+            position="top"
+            rtl={true}
+            selectionMode="click"
+            animationType="fade"
+        >
+            <ul>
+                <li style={{ marginRight: '30px' }}>Browse Books</li>
+                <li>Shipping</li>
+                <li>About Us</li>
+            </ul>
+            <div>
                 <div>
-                    <div>
-                        <table style={{ direction: 'rtl', float: 'right' }}><tbody>
+                    <table style={{ direction: 'rtl', float: 'right' }}>
+                        <tbody>
                             <tr>
                                 <td>
                                     <b>Fiction</b>
@@ -101,7 +98,7 @@ class App extends React.PureComponent<{}> {
                                 <td />
                             </tr>
                             <tr>
-                                <td/>
+                                <td />
                                 <td>
                                     <a href="#">Quick & Easy Cooking</a>
                                 </td>
@@ -116,10 +113,12 @@ class App extends React.PureComponent<{}> {
                                     <a href="#">More books</a>
                                 </td>
                             </tr>
-                        </tbody></table>
-                    </div>
-                    <div>
-                        <table style={{ direction: 'rtl', float: 'right' }}><tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table style={{ direction: 'rtl', float: 'right' }}>
+                        <tbody>
                             <tr>
                                 <td>
                                     <a href="#">Countries we ship to</a>
@@ -135,17 +134,19 @@ class App extends React.PureComponent<{}> {
                                     <a href="#">Order cancellation and returns</a>
                                 </td>
                             </tr>
-                        </tbody></table>
-                    </div>
-                    <div>
-                        <table style={{ direction: 'rtl', float: 'right' }}><tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table style={{ direction: 'rtl', float: 'right' }}>
+                        <tbody>
                             <tr>
                                 <td>
                                     <a href="#">Contact us</a>
                                 </td>
                                 <td rowSpan={3} style={{ width: '125px' }} />
                                 <td rowSpan={3}>
-                                    <img src={'https://www.jqwidgets.com/react/images/bookshop.png'} />
+                                    <img src="https://www.jqwidgets.com/react/images/bookshop.png" />
                                 </td>
                             </tr>
                             <tr>
@@ -158,12 +159,12 @@ class App extends React.PureComponent<{}> {
                                     <a href="#">Affiliates</a>
                                 </td>
                             </tr>
-                        </tbody></table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-            </JqxRibbon>
-        );
-    }
+            </div>
+        </JqxRibbon>
+    );
 }
 
 export default App;

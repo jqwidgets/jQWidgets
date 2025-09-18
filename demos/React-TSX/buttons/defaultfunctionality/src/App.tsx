@@ -1,91 +1,84 @@
 import * as React from 'react';
- 
-
-
 import './App.css';
-
 import JqxButton, { IButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 
-class App extends React.PureComponent<{}, IButtonProps> {
-    private textImageButton = React.createRef<JqxButton>();
-    private htmlButton = React.createRef<JqxButton>();
-    private events = React.createRef<HTMLDivElement>();
+const App = () => {
+    const [imgPosition, setImgPosition] = React.useState<IButtonProps['imgPosition']>('center');
+    const [textImageRelation, setTextImageRelation] = React.useState<IButtonProps['textImageRelation']>('imageBeforeText');
+    const [textPosition, setTextPosition] = React.useState<IButtonProps['textPosition']>('left');
+    const [value, setValue] = React.useState("<span style={{ fontWeight: 'bold' }}>HTML Button</span>");
 
-    constructor(props: {}) {
-        super(props); 
-        this.buttonClicked = this.buttonClicked.bind(this);
-        this.submitButtonClicked = this.submitButtonClicked.bind(this);
-        this.imageButtonClicked = this.imageButtonClicked.bind(this);
-        this.textImageButtonClicked = this.textImageButtonClicked.bind(this);
-        this.hTMLButtonClicked = this.hTMLButtonClicked.bind(this);
+    const textImageButton = React.useRef<JqxButton>(null);
+    const htmlButton = React.useRef<JqxButton>(null);
+    const events = React.useRef<HTMLDivElement>(null);
 
-        this.state = {
-            imgPosition: 'center',
-            textImageRelation: 'imageBeforeText',
-            textPosition: 'left',
-            value: "<span style={{ fontWeight: 'bold' }}>HTML Button</span>"
-        }
-    };
+    const buttonClicked = React.useCallback(() => {
+        if (events.current) events.current.innerHTML = '<span>Button Clicked</span>';
+    }, []);
 
-    public render() { 
-        return (
-            <div> 
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} width={120} height={30} onClick={this.buttonClicked}>Button</JqxButton>
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} width={120} height={30} onClick={this.submitButtonClicked}>Submit</JqxButton>
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} width={120} height={40} imgSrc={'https://www.jqwidgets.com/react/images/facebook.png'} onClick={this.imageButtonClicked} />
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} ref={this.textImageButton} onClick={this.textImageButtonClicked}
-                        width={120} height={40} textImageRelation={this.state.textImageRelation}
-                        imgPosition={this.state.imgPosition} textPosition={'left'} imgSrc={'https://www.jqwidgets.com/react/images/twitter.png'}>
-                        Button
-                    </JqxButton>
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} ref={this.htmlButton} onClick={this.hTMLButtonClicked}
-                        width={120} height={40} value={this.state.value} />
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} width={120} height={30} disabled={true}>Disabled</JqxButton>
-                </div>
-                <div style={{ marginTop: '1em' }}>Events:</div>
-                <div ref={this.events} />
+    const submitButtonClicked = React.useCallback(() => {
+        if (events.current) events.current.innerHTML = '<span>Submit Button Clicked</span>';
+    }, []);
+
+    const imageButtonClicked = React.useCallback(() => {
+        if (events.current) events.current.innerHTML = '<span>Image Button Clicked</span>';
+    }, []);
+
+    const textImageButtonClicked = React.useCallback(() => {
+        if (events.current) events.current.innerHTML = '<span>Text/Image Button Clicked</span>';
+        setImgPosition('left');
+        setTextImageRelation('textBeforeImage');
+        setTextPosition('center');
+    }, []);
+
+    const hTMLButtonClicked = React.useCallback(() => {
+        if (events.current) events.current.innerHTML = '<span>HTML Button Clicked</span>';
+        setValue("<span style='font-style: italic; position: relative; right: 8px'>Thanks for clicking me!</span>");
+    }, []);
+
+    return (
+        <div>
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton theme={'material-purple'} width={120} height={30} onClick={buttonClicked}>Button</JqxButton>
             </div>
-        );
-    }
-
-    private buttonClicked() {
-        this.events.current!.innerHTML = '<span>Button Clicked</span>';
-    }
-
-    private submitButtonClicked() {
-        this.events.current!.innerHTML = '<span>Submit Button Clicked</span>';
-    }  
-
-    private imageButtonClicked() {
-        this.events.current!.innerHTML = '<span>Image Button Clicked</span>';
-    }
-
-    private textImageButtonClicked() {
-        this.events.current!.innerHTML = '<span>Text/Image Button Clicked</span>';
-        this.setState({
-            imgPosition: 'left',
-            textImageRelation: 'textBeforeImage',
-            textPosition: 'center'
-        })
-    }
-
-    private hTMLButtonClicked() {
-        this.events.current!.innerHTML = '<span>HTML Button Clicked</span>';
-        this.setState({
-            value: "<span style='font-style: italic; position: relative; right: 8px'>Thanks for clicking me!</span>"
-        })
-    }
-}
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton theme={'material-purple'} width={120} height={30} onClick={submitButtonClicked}>Submit</JqxButton>
+            </div>
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton theme={'material-purple'} width={120} height={40} imgSrc={'https://www.jqwidgets.com/react/images/facebook.png'} onClick={imageButtonClicked} />
+            </div>
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton
+                    theme={'material-purple'}
+                    ref={textImageButton}
+                    onClick={textImageButtonClicked}
+                    width={120}
+                    height={40}
+                    textImageRelation={textImageRelation}
+                    imgPosition={imgPosition}
+                    textPosition={textPosition}
+                    imgSrc={'https://www.jqwidgets.com/react/images/twitter.png'}
+                >
+                    Button
+                </JqxButton>
+            </div>
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton
+                    theme={'material-purple'}
+                    ref={htmlButton}
+                    onClick={hTMLButtonClicked}
+                    width={120}
+                    height={40}
+                    value={value}
+                />
+            </div>
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton theme={'material-purple'} width={120} height={30} disabled={true}>Disabled</JqxButton>
+            </div>
+            <div style={{ marginTop: '1em' }}>Events:</div>
+            <div ref={events} />
+        </div>
+    );
+};
 
 export default App;

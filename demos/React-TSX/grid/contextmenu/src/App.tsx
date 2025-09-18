@@ -1,7 +1,6 @@
-﻿import * as React from 'react';
- 
+import * as React from 'react';
 
-
+import { useEffect, useRef, useState } from 'react';
 import { generatedata } from './generatedata';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
@@ -10,174 +9,213 @@ import JqxMenu from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu';
 import JqxNumberInput from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxnumberinput';
 import JqxWindow from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxwindow';
 
-class App extends React.PureComponent<{}, IGridProps> {
+const App = () => {
+    const myGrid = useRef<JqxGrid>(null);
+    const myWindow = useRef<JqxWindow>(null);
+    const firstName = useRef<JqxInput>(null);
+    const lastName = useRef<JqxInput>(null);
+    const product = useRef<JqxInput>(null);
+    const quantity = useRef<JqxNumberInput>(null);
+    const price = useRef<JqxNumberInput>(null);
+    const myMenu = useRef<JqxMenu>(null);
 
-    private myGrid = React.createRef<JqxGrid>();
-    private myWindow = React.createRef<JqxWindow>();
-    private firstName = React.createRef<JqxInput>();
-    private lastName = React.createRef<JqxInput>();
-    private product = React.createRef<JqxInput>();
-    private quantity = React.createRef<JqxNumberInput>();
-    private price = React.createRef<JqxNumberInput>();
-    private myMenu = React.createRef<JqxMenu>();
-
-    private editrow: number = -1;
-
-    constructor(props: {}) {
-        super(props);
-        this.myGridOnRowClick = this.myGridOnRowClick.bind(this);
-        this.myMenuOnItemClick = this.myMenuOnItemClick.bind(this);
-        this.saveBtnOnClick = this.saveBtnOnClick.bind(this);
-        this.cancelBtnOnClick = this.cancelBtnOnClick.bind(this);
-
-        const source: any = {
+    const [columns] = useState<IGridProps['columns']>([
+        { text: 'First Name', datafield: 'firstname', width: 200 },
+        { text: 'Last Name', datafield: 'lastname', width: 200 },
+        { text: 'Product', datafield: 'productname', width: 190 },
+        { text: 'Quantity', datafield: 'quantity', width: 90, cellsalign: 'right' },
+        { text: 'Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+    ]);
+    const [source] = useState<any>(() => {
+        const src: any = {
             datafields: [
                 { name: 'firstname', type: 'string' },
                 { name: 'lastname', type: 'string' },
                 { name: 'productname', type: 'string' },
                 { name: 'quantity', type: 'number' },
                 { name: 'price', type: 'number' }
-            ],          
+            ],
             datatype: 'array',
             localdata: generatedata(25, false)
         };
+        return new jqx.dataAdapter(src);
+    });
 
-        this.state = {
-            columns: [
-                { text: 'First Name', datafield: 'firstname', width: 200 },
-                { text: 'Last Name', datafield: 'lastname', width: 200 },
-                { text: 'Product', datafield: 'productname', width: 190 },
-                { text: 'Quantity', datafield: 'quantity', width: 90, cellsalign: 'right' },
-                { text: 'Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
+    const editrow = useRef<number>(-1);
 
-    public componentDidMount() {
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    }
+    useEffect(() => {
+        const handler = (event: Event) => event.preventDefault();
+        document.addEventListener('contextmenu', handler);
+        return () => document.removeEventListener('contextmenu', handler);
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxGrid theme={'material-purple'} ref={this.myGrid}
-                    onRowclick={this.myGridOnRowClick}
-                    // @ts-ignore
-                    width={'100%'} source={this.state.source} pageable={true}
-                    autoheight={true} columns={this.state.columns} />
-
-                <div style={{ marginTop: '30px' }}>
-                    <div id="cellbegineditevent" />
-                    <div style={{ marginTop: '10px' }} id="cellendeditevent" />
-                </div>
-
-                <JqxWindow theme={'material-purple'} ref={this.myWindow}
-                    width={250} height={230} modalOpacity={'0.01'}
-                    resizable={false} isModal={true} autoOpen={false}>
-                    <div>Edit</div>
-                    <div style={{ overflow: 'hidden' }}>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td align={'right'}>First Name:</td>
-                                    <td align={'left'}><JqxInput ref={this.firstName} width={150} height={23} /></td>
-                                </tr>
-                                <tr>
-                                    <td align={'right'}>Last Name:</td>
-                                    <td align={'left'}><JqxInput ref={this.lastName} width={150} height={23} /></td>
-                                </tr>
-                                <tr>
-                                    <td align={'right'}>Product:</td>
-                                    <td align={'left'}><JqxInput ref={this.product} width={150} height={23} /></td>
-                                </tr>
-                                <tr>
-                                    <td align={'right'}>Quantity:</td>
-                                    <td align={'left'}>
-                                        <JqxNumberInput theme={'material-purple'} ref={this.quantity}
-                                            width={150} height={23} decimalDigits={0} spinButtons={true} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align={'right'}>Price:</td>
-                                    <td align={'left'}>
-                                        <JqxNumberInput theme={'material-purple'} ref={this.price}
-                                            width={150} height={23} symbol={'$'} spinButtons={true} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align={'right'} />
-                                    <td style={{ paddingTop: '10px' }} align={'right'}>
-                                        <JqxButton theme={'material-purple'} style={{ marginRight: '5px', float: 'left' }} onClick={this.saveBtnOnClick}>Save</JqxButton>
-                                        <JqxButton theme={'material-purple'} style={{ float: 'left' }} onClick={this.cancelBtnOnClick}>Cancel</JqxButton>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </JqxWindow>
-
-                <JqxMenu theme={'material-purple'} ref={this.myMenu} onItemclick={this.myMenuOnItemClick}
-                    width={200} height={58} mode={'popup'} autoOpenPopup={false}>
-                    <ul>
-                        <li>Edit Selected Row</li>
-                        <li>Delete Selected Row</li>
-                    </ul>
-                </JqxMenu>
-            </div>
-        );
-    }
-
-    private myGridOnRowClick(event: any): void | boolean {
+    const myGridOnRowClick = (event: any): void | boolean => {
         if (event.args.rightclick) {
-            this.myGrid.current!.selectrow(event.args.rowindex);
+            myGrid.current!.selectrow(event.args.rowindex);
             const scrollTop = window.scrollY;
             const scrollLeft = window.scrollX;
-            this.myMenu.current!.open(parseInt(event.args.originalEvent.clientX, 10) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY, 10) + 5 + scrollTop);
+            myMenu.current!.open(
+                parseInt(event.args.originalEvent.clientX, 10) + 5 + scrollLeft,
+                parseInt(event.args.originalEvent.clientY, 10) + 5 + scrollTop
+            );
             return false;
         }
     };
 
-    private myMenuOnItemClick(event: any): void {
+    const myMenuOnItemClick = (event: any): void => {
         const args = event.args;
-        const rowindex = this.myGrid.current!.getselectedrowindex();
+        const rowindex = myGrid.current!.getselectedrowindex();
         if (args.innerHTML === 'Edit Selected Row') {
-            this.editrow = rowindex;
-            this.myWindow.current!.setOptions({ position: { x: 60, y: 60 } });
-            // get the clicked row's data and initialize the input fields.
-            const dataRecord = this.myGrid.current!.getrowdata(this.editrow);
-            this.firstName.current!.val(dataRecord.firstname);
-            this.lastName.current!.val(dataRecord.lastname);
-            this.product.current!.val(dataRecord.productname);
-            this.quantity.current!.setOptions({ decimal: dataRecord.quantity });
-            this.price.current!.setOptions({ decimal: dataRecord.price });
-            // show the popup window.
-            this.myWindow.current!.open();
-        }
-        else {
-            const rowid = this.myGrid.current!.getrowid(rowindex);
-            this.myGrid.current!.deleterow(rowid);
+            editrow.current = rowindex;
+            myWindow.current!.setOptions({ position: { x: 60, y: 60 } });
+            const dataRecord = myGrid.current!.getrowdata(editrow.current);
+            firstName.current!.val(dataRecord.firstname);
+            lastName.current!.val(dataRecord.lastname);
+            product.current!.val(dataRecord.productname);
+            quantity.current!.setOptions({ decimal: dataRecord.quantity });
+            price.current!.setOptions({ decimal: dataRecord.price });
+            myWindow.current!.open();
+        } else {
+            const rowid = myGrid.current!.getrowid(rowindex);
+            myGrid.current!.deleterow(rowid);
         }
     };
 
-    private saveBtnOnClick(): void {
-        if (this.editrow >= 0) {
+    const saveBtnOnClick = (): void => {
+        if (editrow.current >= 0) {
             const row = {
-                firstname: this.firstName.current!.getOptions('value'),
-                lastname: this.lastName.current!.getOptions('value'),
-                price: this.price.current!.getDecimal(),
-                productname: this.product.current!.getOptions('value'),              
-                quantity: this.quantity.current!.getDecimal(),
+                firstname: firstName.current!.getOptions('value'),
+                lastname: lastName.current!.getOptions('value'),
+                price: price.current!.getDecimal(),
+                productname: product.current!.getOptions('value'),
+                quantity: quantity.current!.getDecimal(),
             };
-            const rowid = this.myGrid.current!.getrowid(this.editrow);
-            this.myGrid.current!.updaterow(rowid, row);
-            this.myWindow.current!.hide();
+            const rowid = myGrid.current!.getrowid(editrow.current);
+            myGrid.current!.updaterow(rowid, row);
+            myWindow.current!.hide();
         }
     };
 
-    private cancelBtnOnClick(): void {
-        this.myWindow.current!.hide();
+    const cancelBtnOnClick = (): void => {
+        myWindow.current!.hide();
     };
-}
+
+    return (
+        <div>
+            <JqxGrid
+                theme={'material-purple'}
+                ref={myGrid}
+                onRowclick={myGridOnRowClick}
+                width={'100%'}
+                source={source}
+                pageable={true}
+                autoheight={true}
+                columns={columns}
+            />
+
+            <div style={{ marginTop: '30px' }}>
+                <div id="cellbegineditevent" />
+                <div style={{ marginTop: '10px' }} id="cellendeditevent" />
+            </div>
+
+            <JqxWindow
+                theme={'material-purple'}
+                ref={myWindow}
+                width={250}
+                height={230}
+                modalOpacity={'0.01'}
+                resizable={false}
+                isModal={true}
+                autoOpen={false}
+            >
+                <div>Edit</div>
+                <div style={{ overflow: 'hidden' }}>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td align={'right'}>First Name:</td>
+                                <td align={'left'}>
+                                    <JqxInput ref={firstName} width={150} height={23} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align={'right'}>Last Name:</td>
+                                <td align={'left'}>
+                                    <JqxInput ref={lastName} width={150} height={23} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align={'right'}>Product:</td>
+                                <td align={'left'}>
+                                    <JqxInput ref={product} width={150} height={23} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align={'right'}>Quantity:</td>
+                                <td align={'left'}>
+                                    <JqxNumberInput
+                                        theme={'material-purple'}
+                                        ref={quantity}
+                                        width={150}
+                                        height={23}
+                                        decimalDigits={0}
+                                        spinButtons={true}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align={'right'}>Price:</td>
+                                <td align={'left'}>
+                                    <JqxNumberInput
+                                        theme={'material-purple'}
+                                        ref={price}
+                                        width={150}
+                                        height={23}
+                                        symbol={'$'}
+                                        spinButtons={true}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align={'right'} />
+                                <td style={{ paddingTop: '10px' }} align={'right'}>
+                                    <JqxButton
+                                        theme={'material-purple'}
+                                        style={{ marginRight: '5px', float: 'left' }}
+                                        onClick={saveBtnOnClick}
+                                    >
+                                        Save
+                                    </JqxButton>
+                                    <JqxButton
+                                        theme={'material-purple'}
+                                        style={{ float: 'left' }}
+                                        onClick={cancelBtnOnClick}
+                                    >
+                                        Cancel
+                                    </JqxButton>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </JqxWindow>
+
+            <JqxMenu
+                theme={'material-purple'}
+                ref={myMenu}
+                onItemclick={myMenuOnItemClick}
+                width={200}
+                height={58}
+                mode={'popup'}
+                autoOpenPopup={false}
+            >
+                <ul>
+                    <li>Edit Selected Row</li>
+                    <li>Delete Selected Row</li>
+                </ul>
+            </JqxMenu>
+        </div>
+    );
+};
 
 export default App;

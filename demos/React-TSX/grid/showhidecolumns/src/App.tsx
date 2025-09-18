@@ -1,74 +1,61 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState, useMemo, useCallback } from 'react';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 import JqxListBox, { IListBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxlistbox';
 
-export interface IState extends IGridProps {
-    listBoxSource: IListBoxProps['source'];
-}
+const App = () => {
+    const myGrid = useRef<JqxGrid>(null);
 
-class App extends React.PureComponent<{}, IState> {
+    const source = useMemo(() => ({
+        datafields: [
+            { name: 'name' },
+            { name: 'type' },
+            { name: 'calories', type: 'int' },
+            { name: 'totalfat' },
+            { name: 'protein' }
+        ],
+        datatype: 'json',
+        id: 'id',
+        url: 'beverages.txt'
+    }), []);
 
-    private myGrid = React.createRef<JqxGrid>();
+    const [columns] = useState<IGridProps['columns']>([
+        { text: 'Name', datafield: 'name', width: 100, hidden: true },
+        { text: 'Beverage Type', datafield: 'type' },
+        { text: 'Calories', datafield: 'calories' },
+        { text: 'Total Fat', datafield: 'totalfat' },
+        { text: 'Protein', datafield: 'protein' }
+    ]);
 
-    constructor(props: {}) {
-        super(props);
-        this.myListBoxOnCheckChange = this.myListBoxOnCheckChange.bind(this);
+    const [listBoxSource] = useState<IListBoxProps['source']>([
+        { label: 'Name', value: 'name', checked: false },
+        { label: 'Beverage Type', value: 'type', checked: true },
+        { label: 'Calories', value: 'calories', checked: true },
+        { label: 'Total Fat', value: 'totalfat', checked: true },
+        { label: 'Protein', value: 'protein', checked: true }
+    ]);
 
-        const source: any = {
-            datafields: [
-                { name: 'name' },
-                { name: 'type' },
-                { name: 'calories', type: 'int' },
-                { name: 'totalfat' },
-                { name: 'protein' }
-            ],
-            datatype: 'json',
-            id: 'id',
-            url: 'beverages.txt'
-        };
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source]);
 
-        this.state = {
-            columns: [
-                { text: 'Name', datafield: 'name', width: 100, hidden: true },
-                { text: 'Beverage Type', datafield: 'type' },
-                { text: 'Calories', datafield: 'calories' },
-                { text: 'Total Fat', datafield: 'totalfat' },
-                { text: 'Protein', datafield: 'protein' }
-            ],
-            listBoxSource: [
-                { label: 'Name', value: 'name', checked: false }, { label: 'Beverage Type', value: 'type', checked: true },
-                { label: 'Calories', value: 'calories', checked: true }, { label: 'Total Fat', value: 'totalfat', checked: true },
-                { label: 'Protein', value: 'protein', checked: true }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxListBox theme={'material-purple'} style={{ float: 'left' }} onCheckChange={this.myListBoxOnCheckChange}
-                    width={200} height={200} source={this.state.listBoxSource} checkboxes={true} />
-
-                <JqxGrid theme={'material-purple'} ref={this.myGrid} style={{ float: 'left', marginLeft: '20px' }}
-                    width={600} source={this.state.source} columns={this.state.columns} columnsresize={true} />
-            </div>
-        );
-    }
-
-    private myListBoxOnCheckChange(event: any): void {
-        this.myGrid.current!.beginupdate();
+    const myListBoxOnCheckChange = useCallback((event: any) => {
+        if (!myGrid.current) return;
+        myGrid.current.beginupdate();
         if (event.args.checked) {
-            this.myGrid.current!.showcolumn(event.args.value);
+            myGrid.current.showcolumn(event.args.value);
+        } else {
+            myGrid.current.hidecolumn(event.args.value);
         }
-        else {
-            this.myGrid.current!.hidecolumn(event.args.value);
-        }
-        this.myGrid.current!.endupdate();
-    };
-}
+        myGrid.current.endupdate();
+    }, []);
+
+    return (
+        <div>
+            <JqxListBox theme={'material-purple'} style={{ float: 'left' }} onCheckChange={myListBoxOnCheckChange}
+                width={200} height={200} source={listBoxSource} checkboxes={true} />
+            <JqxGrid theme={'material-purple'} ref={myGrid} style={{ float: 'left', marginLeft: '20px' }}
+                width={600} source={dataAdapter} columns={columns} columnsresize={true} />
+        </div>
+    );
+};
 
 export default App;

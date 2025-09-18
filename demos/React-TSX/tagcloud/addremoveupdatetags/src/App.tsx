@@ -1,21 +1,13 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useState, useMemo } from 'react';
 import { generatedata } from './generatedata';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
-import JqxTagCloud, { ITagCloudProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtagcloud';
+import JqxTagCloud, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtagcloud';
 
-class App extends React.PureComponent<{}, ITagCloudProps> {
-    private myTagCloud = React.createRef<JqxTagCloud>();
+const App = () => {
+    const myTagCloud = useRef<JqxTagCloud>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        this.addItemClick = this.addItemClick.bind(this);
-        this.deleteItemClick = this.deleteItemClick.bind(this);
-        this.updateItemClick = this.updateItemClick.bind(this);
-
+    const initialSource = useMemo(() => {
         const data = generatedata(50);
         const source: any = {
             dataFields: [
@@ -25,55 +17,49 @@ class App extends React.PureComponent<{}, ITagCloudProps> {
             dataType: 'array',
             localData: data
         };
+        return new jqx.dataAdapter(source);
+    }, []);
 
-        const dataAdapter: any = new jqx.dataAdapter(source);
+    const [source] = useState<any>(initialSource);
 
-        this.state = {
-            source: dataAdapter
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                This demo demonstrates how to add a tag in first position or update/remove the tag in first position.
-                <JqxTagCloud ref={this.myTagCloud}
-					// @ts-ignore
-                    width={"100%"}
-                    source={this.state.source}
-                    displayMember={"productname"}
-                    valueMember={"price"}
-                    fontSizeUnit={"px"}
-                    minFontSize={12}
-                    maxFontSize={20}
-                    urlBase={"http://localhost/"}
-                    minColor={"#00AA99"}
-                    maxColor={"#FF0000"}
-                />
-                <br />
-                <br />
-                <JqxButton theme={'material-purple'} onClick={this.addItemClick}>Add Item</JqxButton>
-                <JqxButton theme={'material-purple'} onClick={this.deleteItemClick}>Delete First Item</JqxButton>
-                <JqxButton theme={'material-purple'} onClick={this.updateItemClick}>Update First Item</JqxButton>
-                <br />
-            </div>
-        );
-    }
-
-    // Event handling
-    private addItemClick(e: Event): void {
+    const addItemClick = () => {
         const row = generatedata(1, false)[0];
-        this.myTagCloud.current!.insertAt(0, row);
-    }
+        myTagCloud.current!.insertAt(0, row);
+    };
 
-    private deleteItemClick(e: Event): void {
-        this.myTagCloud.current!.removeAt(0);
-    }
+    const deleteItemClick = () => {
+        myTagCloud.current!.removeAt(0);
+    };
 
-    private updateItemClick(e: Event): void {
+    const updateItemClick = () => {
         const row = generatedata(1, false)[0];
-        this.myTagCloud.current!.updateAt(0, row);
-    }
-}
+        myTagCloud.current!.updateAt(0, row);
+    };
+
+    return (
+        <div>
+            This demo demonstrates how to add a tag in first position or update/remove the tag in first position.
+            <JqxTagCloud
+                ref={myTagCloud}
+                width={"100%"}
+                source={source}
+                displayMember={"productname"}
+                valueMember={"price"}
+                fontSizeUnit={"px"}
+                minFontSize={12}
+                maxFontSize={20}
+                urlBase={"http://localhost/"}
+                minColor={"#00AA99"}
+                maxColor={"#FF0000"}
+            />
+            <br />
+            <br />
+            <JqxButton theme={'material-purple'} onClick={addItemClick}>Add Item</JqxButton>
+            <JqxButton theme={'material-purple'} onClick={deleteItemClick}>Delete First Item</JqxButton>
+            <JqxButton theme={'material-purple'} onClick={updateItemClick}>Update First Item</JqxButton>
+            <br />
+        </div>
+    );
+};
 
 export default App;

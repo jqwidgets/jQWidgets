@@ -1,166 +1,99 @@
-﻿import * as React from 'react';
- 
-
+import * as React from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
-import JqxCheckBox, { ICheckBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
-import JqxComboBox, { IComboBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
-import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
+import JqxCheckBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
+import JqxComboBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
+import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 import JqxExpander from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxexpander';
 
-export interface IState extends IComboBoxProps {
-    autoCompleteChecked: ICheckBoxProps['checked'];
-    enabledChecked: ICheckBoxProps['checked'];
-    dropDownListSource: IDropDownListProps['source'];   
-    searchTypeSelected: IDropDownListProps['selectedIndex'];
-}
+const dropDownListSource = [
+    'Starts with',
+    'Starts with(Case Sensitive)',
+    'Ends with',
+    'Ends with(Case Sensitive)',
+    'Contains',
+    'Contains(Case Sensitive)',
+    'Equal',
+    'Equal(Case Sensitive)'
+];
 
-class App extends React.PureComponent<{}, IState> {
+const comboBoxSource = [
+    'Affogato',
+    'Americano',
+    'Bicerin',
+    'Breve',
+    'Café Bombón',
+    'Café au lait',
+    'Caffé Corretto',
+    'Café Crema',
+    'Caffé Latte',
+    'Caffé macchiato',
+    'Café mélange',
+    'Coffee milk',
+    'Cafe mocha',
+    'Cappuccino',
+    'Carajillo',
+    'Cortado',
+    'Cuban espresso',
+    'Espresso',
+    'Eiskaffee',
+    'The Flat White',
+    'Frappuccino',
+    'Galao',
+    'Greek frappé coffee',
+    'Iced Coffee﻿',
+    'Indian filter coffee',
+    'Instant coffee',
+    'Irish coffee',
+    'Liqueur coffee'
+];
 
-    private myComboBox = React.createRef<JqxComboBox>();
+function App() {
+    const myComboBox = useRef<any>(null);
 
-    constructor(props: {}) {
-        super(props);
-        this.btnOpenOnClick = this.btnOpenOnClick.bind(this);
-        this.btnCloseOnClick = this.btnCloseOnClick.bind(this);
-        this.checkBoxAutoCompleteOnChange = this.checkBoxAutoCompleteOnChange.bind(this);
-        this.checkBoxEnabledOnChange = this.checkBoxEnabledOnChange.bind(this);
-        this.dropDownListOnSelect = this.dropDownListOnSelect.bind(this);
+    const [autoCompleteChecked, setAutoCompleteChecked] = useState(false);
+    const [autoComplete, setAutoComplete] = useState(false);
+    const [enabledChecked, setEnabledChecked] = useState(true);
+    const [disabled, setDisabled] = useState(false);
+    const [searchTypeSelected, setSearchTypeSelected] = useState(0);
 
-        this.state = {
-            autoComplete: false,
-            autoCompleteChecked: false,
-            disabled: false,
-            dropDownListSource: [
-                'Starts with',
-                'Starts with(Case Sensitive)',
-                'Ends with',
-                'Ends with(Case Sensitive)',
-                'Contains',
-                'Contains(Case Sensitive)',
-                'Equal',
-                'Equal(Case Sensitive)'
-            ],
-            enabledChecked: true,
-            searchMode: 'startswith',
-            searchTypeSelected: 0,
-            source: [
-                'Affogato',
-                'Americano',
-                'Bicerin',
-                'Breve',
-                'Café Bombón',
-                'Café au lait',
-                'Caffé Corretto',
-                'Café Crema',
-                'Caffé Latte',
-                'Caffé macchiato',
-                'Café mélange',
-                'Coffee milk',
-                'Cafe mocha',
-                'Cappuccino',
-                'Carajillo',
-                'Cortado',
-                'Cuban espresso',
-                'Espresso',
-                'Eiskaffee',
-                'The Flat White',
-                'Frappuccino',
-                'Galao',
-                'Greek frappé coffee',
-                'Iced Coffee﻿',
-                'Indian filter coffee',
-                'Instant coffee',
-                'Irish coffee',
-                'Liqueur coffee'
-            ]
+    const [searchMode, setSearchMode] = useState<'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith'>('startswith');
+    
+    useEffect(() => {
+        if (myComboBox.current) {
+            myComboBox.current.setOptions({ selectedIndex: 0 });
         }
-    }
+    }, []);
 
-    public componentDidMount() {
-        this.myComboBox.current!.setOptions({ selectedIndex: 0 });
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxComboBox theme={'material-purple'} ref={this.myComboBox} style={{ float: 'left', marginTop: '10px' }}
-                    width={200} height={25} source={this.state.source} searchMode={this.state.searchMode}
-                    autoComplete={this.state.autoComplete} disabled={this.state.disabled} />
-
-                <JqxExpander theme={'material-purple'} style={{ float: 'left', marginLeft: '100px', marginTop: '10px' }}
-                    width={220} showArrow={false} toggleMode={'none'}>
-                    <div>Settings</div>
-                    <div style={{ padding: '10px' }}>
-                        <span>Search Type:</span>
-
-                        <div style={{ marginTop: '10px' }} />
-                        <JqxDropDownList theme={'material-purple'} onSelect={this.dropDownListOnSelect}
-                            width={200} height={30} source={this.state.dropDownListSource} selectedIndex={0} />
-
-                        <div style={{ marginTop: '10px' }}>
-                            <JqxButton theme={'material-purple'} style={{ float: 'left', marginRight: '0.5em' }}
-                                onClick={this.btnOpenOnClick} width={80}>
-                                Open
-                            </JqxButton>
-
-                            <JqxButton theme={'material-purple'} style={{ float: 'left' }}
-                                onClick={this.btnCloseOnClick} width={80}>
-                                Close
-                            </JqxButton>
-                        </div>
-
-                        <div style={{ clear: 'both' }} />
-                        <div style={{ clear: 'both', marginTop: '10px' }} />
-                        <JqxCheckBox theme={'material-purple'} onChange={this.checkBoxAutoCompleteOnChange}
-                            width={130} checked={this.state.autoCompleteChecked}>
-                            Auto Complete
-                        </JqxCheckBox>
-
-                        <div style={{ marginTop: '10px' }} />
-                        <JqxCheckBox theme={'material-purple'} onChange={this.checkBoxEnabledOnChange}
-                            width={120} checked={this.state.enabledChecked}>
-                            Enabled
-                        </JqxCheckBox>
-                    </div>
-                </JqxExpander>
-            </div>
-        );
-    }
-
-    private btnOpenOnClick(): void {
-        // show popup.
-        this.myComboBox.current!.open();
+    const btnOpenOnClick = () => {
+        if (myComboBox.current) {
+            myComboBox.current.open();
+        }
     };
 
-    private btnCloseOnClick(): void {
-        // hide popup.
-        this.myComboBox.current!.close();
+    const btnCloseOnClick = () => {
+        if (myComboBox.current) {
+            myComboBox.current.close();
+        }
     };
 
-    private checkBoxAutoCompleteOnChange(event: any): void {
-        // set autocomplete property.
+    const checkBoxAutoCompleteOnChange = (event: any) => {
         const checked = event.args.checked;
-        this.setState({
-            autoComplete: checked,
-            autoCompleteChecked: checked
-        });
+        setAutoComplete(checked);
+        setAutoCompleteChecked(checked);
     };
 
-    private checkBoxEnabledOnChange(event: any): void {
-        // enable or disable.
+    const checkBoxEnabledOnChange = (event: any) => {
         const checked = event.args.checked;
-        this.setState({
-            disabled: !checked,
-            enabledChecked: checked
-        });
+        setDisabled(!checked);
+        setEnabledChecked(checked);
     };
 
-    private dropDownListOnSelect(event: any): void {
+    const dropDownListOnSelect = (event: any) => {
         const index = event.args.index;
-        // set search mode.
-        let searchType: "none" | "contains" | "containsignorecase" | "equals" | "equalsignorecase" | "startswithignorecase" | "startswith" | "endswithignorecase" | "endswith" | undefined;
-        switch (event.args.index) {
+        let searchType: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith' = 'none';
+        switch (index) {
             case 0:
                 searchType = 'startswithignorecase';
                 break;
@@ -186,11 +119,83 @@ class App extends React.PureComponent<{}, IState> {
                 searchType = 'equals';
                 break;
         }
-        this.setState({
-            searchMode: searchType,
-            searchTypeSelected: index
-        });
+        setSearchMode(searchType);
+        setSearchTypeSelected(index);
     };
+
+    return (
+        <div>
+            <JqxComboBox
+                theme={'material-purple'}
+                ref={myComboBox}
+                style={{ float: 'left', marginTop: '10px' }}
+                width={200}
+                height={25}
+                source={comboBoxSource}
+                searchMode={searchMode}
+                autoComplete={autoComplete}
+                disabled={disabled}
+            />
+            <JqxExpander
+                theme={'material-purple'}
+                style={{ float: 'left', marginLeft: '100px', marginTop: '10px' }}
+                width={220}
+                showArrow={false}
+                toggleMode={'none'}
+            >
+                <div>Settings</div>
+                <div style={{ padding: '10px' }}>
+                    <span>Search Type:</span>
+                    <div style={{ marginTop: '10px' }} />
+                    <JqxDropDownList
+                        theme={'material-purple'}
+                        onSelect={dropDownListOnSelect}
+                        width={200}
+                        height={30}
+                        source={dropDownListSource}
+                        selectedIndex={searchTypeSelected}
+                    />
+                    <div style={{ marginTop: '10px' }}>
+                        <JqxButton
+                            theme={'material-purple'}
+                            style={{ float: 'left', marginRight: '0.5em' }}
+                            onClick={btnOpenOnClick}
+                            width={80}
+                        >
+                            Open
+                        </JqxButton>
+                        <JqxButton
+                            theme={'material-purple'}
+                            style={{ float: 'left' }}
+                            onClick={btnCloseOnClick}
+                            width={80}
+                        >
+                            Close
+                        </JqxButton>
+                    </div>
+                    <div style={{ clear: 'both' }} />
+                    <div style={{ clear: 'both', marginTop: '10px' }} />
+                    <JqxCheckBox
+                        theme={'material-purple'}
+                        onChange={checkBoxAutoCompleteOnChange}
+                        width={130}
+                        checked={autoCompleteChecked}
+                    >
+                        Auto Complete
+                    </JqxCheckBox>
+                    <div style={{ marginTop: '10px' }} />
+                    <JqxCheckBox
+                        theme={'material-purple'}
+                        onChange={checkBoxEnabledOnChange}
+                        width={120}
+                        checked={enabledChecked}
+                    >
+                        Enabled
+                    </JqxCheckBox>
+                </div>
+            </JqxExpander>
+        </div>
+    );
 }
 
 export default App;

@@ -1,22 +1,17 @@
-﻿import * as React from 'react';
- 
-
-
+import React, { useRef, useEffect, useState } from 'react';
 import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}> {
+const App = () => {
+    const myGrid = useRef<JqxGrid>(null);
+    const [source, setSource] = useState<any>(null);
 
-    private myGrid = React.createRef<JqxGrid>();
-
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
+    useEffect(() => {
+        const sourceObj: any = {
             datatype: 'json',
             url: 'rows_and_columns.txt'
         };
 
-        const dataAdapter = new jqx.dataAdapter(source, {
+        const dataAdapter = new jqx.dataAdapter(sourceObj, {
             autoBind: true,
             downloadComplete: (data: any): void => {
                 const columns = data[0].columns;
@@ -34,25 +29,27 @@ class App extends React.PureComponent<{}> {
                     localdata: rows
                 });
 
-                this.myGrid.current!.hideloadelement();
-                this.myGrid.current!.beginupdate();
-                this.myGrid.current!.setOptions({ source: gridAdapter, columns });
-                this.myGrid.current!.endupdate();
+                if (myGrid.current) {
+                    myGrid.current.hideloadelement();
+                    myGrid.current.beginupdate();
+                    myGrid.current.setOptions({ source: gridAdapter, columns });
+                    myGrid.current.endupdate();
+                }
             }
         });
 
-        this.state = {
-            source: dataAdapter
-        }
-    }
+        setSource(dataAdapter);
+    }, []);
 
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'} ref={this.myGrid}
-                // @ts-ignore
-                width={'100%'} columnsresize={true} />
-        );
-    }
-}
+    return (
+        <JqxGrid
+            theme="material-purple"
+            ref={myGrid}
+            // @ts-ignore
+            width="100%"
+            columnsresize={true}
+        />
+    );
+};
 
 export default App;

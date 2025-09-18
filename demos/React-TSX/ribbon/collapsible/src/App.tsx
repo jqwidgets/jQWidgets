@@ -1,130 +1,20 @@
-﻿import * as React from 'react';
- 
-
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import './App.css';
-
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxCheckBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
 import JqxRibbon, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxribbon';
 
-class App extends React.PureComponent<{}> {
+function App() {
+    const myRibbon = React.useRef<JqxRibbon>(null);
+    const content = React.useRef<HTMLDivElement>(null);
 
-    private myRibbon = React.createRef<JqxRibbon>();
-    private content = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.onChange = this.onChange.bind(this);
-        this.generateContent = this.generateContent.bind(this);
-    }
-
-    public componentDidMount() {
-        this.content.current!.innerHTML = this.generateContent();
-        this.myRibbon.current!.refresh();
-
-        let itemsInCart = 0;
-        const allBuyButtons = document.getElementsByClassName('buy');
-        Array.prototype.forEach.call(allBuyButtons, (buyButton: HTMLDivElement) => {
-
-            const clickHandler = () => {
-                itemsInCart += 1;
-                document.getElementsByClassName('cart-top')[0].innerHTML = '<p>' + itemsInCart + ' products</p>';
-            }
-            ReactDOM.render(
-                <JqxButton theme={'material-purple'} onClick={clickHandler} width={100} height={25} value={'Buy'} />,
-                buyButton
-            );
-        });
-    }
-
-    public render() {
-        return (
-            <div>
-                <div style={{ float: 'left' }}>
-                    <div className="cart-top">
-                        <p>0 products</p>
-                    </div>
-                    <div>
-                        <div>
-                            <div className="tag-title">
-                                <h4>Welcome to our online shop!</h4>
-                                <span className="tag-title-info" />
-                            </div>
-                        </div>
-                    </div>
-                    <br /><br /><br />
-                    <JqxRibbon theme={'material-purple'} ref={this.myRibbon}
-                        width={700} position={'top'} mode={'popup'}
-                        selectedIndex={0} selectionMode={'click'} animationType={'fade'}>
-                        <ul style={{ marginTop: '28px' }}>
-                            <li style={{ marginLeft: '20px' }}>Business</li>
-                            <li>Games</li>
-                            <li>Internet and Movies</li>
-                        </ul>
-                        <div ref={this.content}>
-                            <div />
-                            <div />
-                            <div />
-                        </div>
-                    </JqxRibbon>
-                </div>
-                <JqxCheckBox theme={'material-purple'} style={{ float: 'left', marginLeft: '50px' }} onChange={this.onChange}
-                    width={130} checked={true}>
-                    Menu Mode
-                </JqxCheckBox>
-            </div>
-        );
-    }
-
-    private onChange(event: any): void {
+    const onChange = React.useCallback((event: any) => {
         const checked = event.args.checked;
-        this.myRibbon.current!.setOptions({ mode: checked ? "popup" : "default" });
-    };
+        myRibbon.current!.setOptions({ mode: checked ? "popup" : "default" });
+    }, []);
 
-    private generateContent() {
-        const records = this.records();
-        let ribbonHTML = '';
-
-        for (let j = 0; j < records.length; j++) {
-            const rowData = records[j];
-            const laptops = rowData.laptops;
-            let container = '<div style="padding-left: 15px;">';
-            for (let i = 0; i < laptops.length; i++) {
-                const laptop = laptops[i];
-                let item = '<div style="float: left; width: 220px; overflow: hidden; white-space: nowrap; height: 275px;">';
-                let image = '<div style="margin: 5px; margin-bottom: 3px;">';
-                const imgurl = laptop.img;
-                const img = '<img width=160 height=120 style="display: block;" src="' + imgurl + '"/>';
-                image += img;
-                image += '</div>';
-                let info = '<div style="margin: 5px; margin-left: 20px; margin-bottom: 3px;">';
-                info += '<div><i>' + laptop.model + '</i></div>';
-                info += '<div>Price: $' + laptop.price + '</div>';
-                info += '<div>RAM: ' + laptop.ram + '</div>';
-                info += '<div>HDD: ' + laptop.hdd + '</div>';
-                info += '<div>CPU: ' + laptop.cpu + '</div>';
-                info += '<div>Display: ' + laptop.display + '</div>';
-                info += '</div>';
-                const buy = '<div class="buy" id="buy' + j + i + '" #buy style="margin: 5px; left: -40px; position: relative; margin-left: 50%; margin-bottom: 3px;">Buy</div>';
-
-                item += image;
-                item += info;
-                item += buy;
-                item += '</div>';
-                container += item;
-            }
-
-            container += '</div>';
-            ribbonHTML += container;
-        };
-
-        return ribbonHTML;
-    }
-
-    private records(): any {
-
+    const records = React.useCallback(() => {
         const data: any[] = [
             {
                 laptops: [
@@ -164,10 +54,44 @@ class App extends React.PureComponent<{}> {
         };
 
         const dataAdapter: any = new jqx.dataAdapter(source);
-
         dataAdapter.dataBind();
         return dataAdapter.records;
-    };
-}
+    }, []);
 
-export default App;
+    const generateContent = React.useCallback(() => {
+        const recs = records();
+        let ribbonHTML = '';
+        for (let j = 0; j < recs.length; j++) {
+            const rowData = recs[j];
+            const laptops = rowData.laptops;
+            let container = '<div style="padding-left: 15px;">';
+            for (let i = 0; i < laptops.length; i++) {
+                const laptop = laptops[i];
+                let item = '<div style="float: left; width: 220px; overflow: hidden; white-space: nowrap; height: 275px;">';
+                let image = '<div style="margin: 5px; margin-bottom: 3px;">';
+                const imgurl = laptop.img;
+                const img = '<img width=160 height=120 style="display: block;" src="' + imgurl + '"/>';
+                image += img;
+                image += '</div>';
+                let info = '<div style="margin: 5px; margin-left: 20px; margin-bottom: 3px;">';
+                info += '<div><i>' + laptop.model + '</i></div>';
+                info += '<div>Price: $' + laptop.price + '</div>';
+                info += '<div>RAM: ' + laptop.ram + '</div>';
+                info += '<div>HDD: ' + laptop.hdd + '</div>';
+                info += '<div>CPU: ' + laptop.cpu + '</div>';
+                info += '<div>Display: ' + laptop.display + '</div>';
+                info += '</div>';
+                const buy = '<div class="buy" id="buy' + j + i + '" #buy style="margin: 5px; left: -40px; position: relative; margin-left: 50%; margin-bottom: 3px;">Buy</div>';
+                item += image;
+                item += info;
+                item += buy;
+                item += '</div>';
+                container += item;
+            }
+            container += '</div>';
+            ribbonHTML += container;
+        }
+        return ribbonHTML;
+    }, [records]);
+
+    React.useEffect

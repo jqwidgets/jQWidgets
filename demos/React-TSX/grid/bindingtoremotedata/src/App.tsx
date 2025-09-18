@@ -1,16 +1,17 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
+function App() {
+    const columns = useMemo<IGridProps['columns']>(() => [
+        { text: 'Country Name', datafield: 'countryName', width: 200 },
+        { text: 'City', datafield: 'name', width: 170 },
+        { text: 'Population', datafield: 'population', cellsformat: 'f', width: 170 },
+        { text: 'Continent Code', datafield: 'continentCode', minwidth: 110 }
+    ], []);
 
-    constructor(props: {}) {
-        super(props);
-
-        const source: any =
-        {
+    const source = useMemo(() => {
+        const src: any = {
             datafields: [
                 { name: 'countryName', type: 'string' },
                 { name: 'name', type: 'string' },
@@ -20,35 +21,26 @@ class App extends React.PureComponent<{}, IGridProps> {
             datatype: 'jsonp',
             url: 'http://api.geonames.org/searchJSON'
         };
+        return new jqx.dataAdapter(src, {
+            formatData: (data: any): any => {
+                data.featureClass = 'P';
+                data.style = 'full';
+                data.maxRows = 50;
+                data.username = 'jqwidgets';
+                return data;
+            }
+        });
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Country Name', datafield: 'countryName', width: 200 },
-                { text: 'City', datafield: 'name', width: 170 },
-                { text: 'Population', datafield: 'population', cellsformat: 'f', width: 170 },
-                { text: 'Continent Code', datafield: 'continentCode', minwidth: 110 }
-            ],
-            source: new jqx.dataAdapter(source,
-                {
-                    formatData: (data: any): any => {
-                        data.featureClass = 'P';
-                        data.style = 'full';
-                        data.maxRows = 50;
-                        data.username = 'jqwidgets';
-                        return data;
-                    }
-                }
-            )
-        }
-    }
-
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'}
-                // @ts-ignore
-                width={'100%'} source={this.state.source} columns={this.state.columns} columnsresize={true} />
-        );
-    }
+    return (
+        <JqxGrid
+            theme="material-purple"
+            width="100%"
+            source={source}
+            columns={columns}
+            columnsresize={true}
+        />
+    );
 }
 
 export default App;

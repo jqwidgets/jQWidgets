@@ -1,22 +1,13 @@
-import * as React from 'react';
- 
+import * as React from 'react'
+import { useRef, useMemo, useCallback } from 'react'
+import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler'
 
-import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler';
+function App() {
+    const myScheduler = useRef<JqxScheduler>(null)
+    const myLog = useRef<HTMLDivElement>(null)
 
-class App extends React.PureComponent<{}, ISchedulerProps> {
-    private myScheduler = React.createRef<JqxScheduler>();
-    private myLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-
-        this.mySchedulerOnAppointmentAdd = this.mySchedulerOnAppointmentAdd.bind(this);
-        this.mySchedulerOnAppointmentDelete = this.mySchedulerOnAppointmentDelete.bind(this);
-        this.mySchedulerOnAppointmentChange = this.mySchedulerOnAppointmentChange.bind(this);
-        this.mySchedulerOnAppointmentDoubleClick = this.mySchedulerOnAppointmentDoubleClick.bind(this);
-        this.mySchedulerOnCellClick = this.mySchedulerOnCellClick.bind(this);
-
-        const source: any = {
+    const source = useMemo(
+        () => ({
             dataFields: [
                 { name: "id", type: "string" },
                 { name: "status", type: "string" },
@@ -32,90 +23,79 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             dataType: "json",
             id: "id",
             url: 'appointments.txt'
-        };
+        }),
+        []
+    )
 
-        const dataAdapter: any = new jqx.dataAdapter(source);
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source])
 
-        this.state = {
-            appointmentDataFields: {
-                description: "about",
-                from: "start",
-                id: "id",
-                location: "address",
-                resourceId: "calendar",
-                status: "status",
-                style: "style",
-                subject: "name",
-                to: "end"
-            },
-            date: new jqx.date(2016, 11, 23),
-            height: 600,
-            ready: () => {
-                this.myScheduler.current!.scrollTop(700);
-            },
-            source: dataAdapter,
-            views: [
-                "dayView",
-                "weekView"
-            ]
-        };
-    }
+    const appointmentDataFields = useMemo(
+        () => ({
+            description: "about",
+            from: "start",
+            id: "id",
+            location: "address",
+            resourceId: "calendar",
+            status: "status",
+            style: "style",
+            subject: "name",
+            to: "end"
+        }),
+        []
+    )
 
-    public render() {
-        return (
-            <div>
-            <JqxScheduler theme={'material-purple'} ref={this.myScheduler}
-                onAppointmentDelete={this.mySchedulerOnAppointmentDelete}
-                onAppointmentAdd={this.mySchedulerOnAppointmentAdd}
-                onAppointmentDoubleClick={this.mySchedulerOnAppointmentDoubleClick}
-                onAppointmentChange={this.mySchedulerOnAppointmentChange}
-                onCellClick={this.mySchedulerOnCellClick}
-                // @ts-ignore
-                width={"100%"}
-                height={this.state.height}
-                date={this.state.date}
-                source={this.state.source}
+    const views = useMemo(() => ["dayView", "weekView"], [])
+
+    const ready = useCallback(() => {
+        myScheduler.current?.scrollTop(700)
+    }, [])
+
+    const mySchedulerOnAppointmentDelete = useCallback((event: any) => {
+        if (myLog.current) myLog.current.innerHTML = 'appointmentDelete is raised'
+    }, [])
+
+    const mySchedulerOnAppointmentAdd = useCallback((event: any) => {
+        if (myLog.current) myLog.current.innerHTML = 'appointmentAdd is raised'
+    }, [])
+
+    const mySchedulerOnAppointmentDoubleClick = useCallback((event: any) => {
+        if (myLog.current) myLog.current.innerHTML = 'appointmentDoubleClick is raised'
+    }, [])
+
+    const mySchedulerOnAppointmentChange = useCallback((event: any) => {
+        if (myLog.current) myLog.current.innerHTML = 'appointmentChange is raised'
+    }, [])
+
+    const mySchedulerOnCellClick = useCallback((event: any) => {
+        if (myLog.current) myLog.current.innerHTML = 'cellClick is raised'
+    }, [])
+
+    return (
+        <div>
+            <JqxScheduler
+                theme='material-purple'
+                ref={myScheduler}
+                onAppointmentDelete={mySchedulerOnAppointmentDelete}
+                onAppointmentAdd={mySchedulerOnAppointmentAdd}
+                onAppointmentDoubleClick={mySchedulerOnAppointmentDoubleClick}
+                onAppointmentChange={mySchedulerOnAppointmentChange}
+                onCellClick={mySchedulerOnCellClick}
+                width="100%"
+                height={600}
+                date={useMemo(() => new jqx.date(2016, 11, 23), [])}
+                source={dataAdapter}
                 showLegend={true}
                 rowsHeight={40}
-                view={"weekView"}
-                views={this.state.views}
-                appointmentDataFields={this.state.appointmentDataFields}
-                ready={this.state.ready}
+                view="weekView"
+                views={views}
+                appointmentDataFields={appointmentDataFields}
+                ready={ready}
             />
-            
-            <br/>
-
-                <div>Event Log:</div>
-                <div ref={this.myLog} />
-            </div>
-        );
-    }
-
-    // Event handling
-    private mySchedulerOnAppointmentDelete(event: any): void {
-        // const appointment = event.args.appointment;
-        this.myLog.current!.innerHTML = 'appointmentDelete is raised';
-    }
-
-    private mySchedulerOnAppointmentAdd(event: any): void {
-        // const appointment = event.args.appointment;
-        this.myLog.current!.innerHTML = 'appointmentAdd is raised';
-    }
-
-    private mySchedulerOnAppointmentDoubleClick(event: any): void {
-        // const appointment = event.args.appointment;
-        this.myLog.current!.innerHTML = 'appointmentDoubleClick is raised';
-    }
-
-    private mySchedulerOnAppointmentChange(event: any): void {
-        // const appointment = event.args.appointment;
-        this.myLog.current!.innerHTML = 'appointmentChange is raised';
-    }
-
-    private mySchedulerOnCellClick(event: any): void {
-        // const appointment = event.args.appointment;
-        this.myLog.current!.innerHTML = 'cellClick is raised';
-    }
+            <br />
+            <div>Event Log:</div>
+            <div ref={myLog} />
+        </div>
+    )
 }
 
-export default App;
+export default App

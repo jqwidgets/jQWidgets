@@ -1,16 +1,11 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import { generatedata } from './generatedata';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const source = {
+function App() {
+    const source = useMemo(() => {
+        return {
             dataFields: [
                 { name: 'firstname', type: 'string' },
                 { name: 'lastname', type: 'string' },
@@ -22,28 +17,31 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             dataType: 'array',
             localData: generatedata(200, false),
         };
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Name', dataField: 'firstname', align: 'right', cellsAlign: 'right', width: 150 },
-                { text: 'Last Name', dataField: 'lastname', align: 'right', cellsAlign: 'right', width: 150 },
-                { text: 'Product', editable: false, dataField: 'productname', align: 'right', cellsAlign: 'right', width: 180 },
-                { text: 'Quantity', dataField: 'quantity', width: 180, cellsAlign: 'left', align: 'left' },
-                { text: 'Unit Price', dataField: 'price', width: 180, cellsAlign: 'left', align: 'left' },
-                { text: 'Total', dataField: 'total', width: 180, cellsAlign: 'left', align: 'left', cellsFormat: 'c2' }
-            ],
-            source: new jqx.dataAdapter(source)
-        };
-    }
+    const columns = useMemo(() => [
+        { text: 'Name', dataField: 'firstname', align: 'right', cellsAlign: 'right', width: 150 },
+        { text: 'Last Name', dataField: 'lastname', align: 'right', cellsAlign: 'right', width: 150 },
+        { text: 'Product', editable: false, dataField: 'productname', align: 'right', cellsAlign: 'right', width: 180 },
+        { text: 'Quantity', dataField: 'quantity', width: 180, cellsAlign: 'left', align: 'left' },
+        { text: 'Unit Price', dataField: 'price', width: 180, cellsAlign: 'left', align: 'left' },
+        { text: 'Total', dataField: 'total', width: 180, cellsAlign: 'left', align: 'left', cellsFormat: 'c2' }
+    ], []);
 
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                altRows={true} pageable={true} sortable={true} rtl={true} />
-        );
-    }
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source]);
+
+    return (
+        <JqxDataTable
+            theme={'material-purple'}
+            width={'100%'}
+            source={dataAdapter}
+            columns={columns}
+            altRows={true}
+            pageable={true}
+            sortable={true}
+            rtl={true}
+        />
+    );
 }
 
 export default App;

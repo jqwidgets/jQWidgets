@@ -1,49 +1,46 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import { generatedata } from './generatedata';
-import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
+import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
+function App() {
+    const source = useMemo(() => ({
+        datafields: [
+            { name: 'name', type: 'string' },
+            { name: 'productname', type: 'string' },
+            { name: 'available', type: 'bool' },
+            { name: 'date', type: 'date' },
+            { name: 'quantity', type: 'number' }
+        ],
+        datatype: 'array',
+        localdata: generatedata(10, false)
+    }), []);
 
-    constructor(props: {}) {
-        super(props);
+    const columns = useMemo(() => [
+        { text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215 },
+        { text: 'Product', filtertype: 'checkedlist', datafield: 'productname', width: 220 },
+        { text: 'Ship Date', datafield: 'date', filtertype: 'range', width: 210, cellsalign: 'right', cellsformat: 'd' },
+        { text: 'Qty.', datafield: 'quantity', filtertype: 'number', cellsalign: 'right' },
+        { text: '', datafield: 'addButtonColumn', width: 50 },
+        { text: '', datafield: 'resetButtonColumn', width: 50 }
+    ], []);
 
-        const source: any = {
-            datafields: [
-                { name: 'name', type: 'string' },
-                { name: 'productname', type: 'string' },
-                { name: 'available', type: 'bool' },
-                { name: 'date', type: 'date' },
-                { name: 'quantity', type: 'number' }
-            ],
-            datatype: 'array',
-            localdata: generatedata(10, false)
-        };
+    const dataAdapter = useMemo(() => new jqx.dataAdapter(source), [source]);
 
-        this.state = {
-            columns: [
-                { text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215 },
-                { text: 'Product', filtertype: 'checkedlist', datafield: 'productname', width: 220 },
-                { text: 'Ship Date', datafield: 'date', filtertype: 'range', width: 210, cellsalign: 'right', cellsformat: 'd' },
-                { text: 'Qty.', datafield: 'quantity', filtertype: 'number', cellsalign: 'right' },
-                { text: '', datafield: 'addButtonColumn', width: 50 },
-                { text: '', datafield: 'resetButtonColumn', width: 50 }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <JqxGrid theme={'material-purple'}
-                // @ts-ignore
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                showeverpresentrow={true} editable={true} filterable={true} everpresentrowposition={'top'}
-                everpresentrowactions={'add reset'} everpresentrowactionsmode={'columns'} />
-        );
-    }
+    return (
+        <JqxGrid
+            theme="material-purple"
+            width="100%"
+            source={dataAdapter}
+            columns={columns}
+            showeverpresentrow={true}
+            editable={true}
+            filterable={true}
+            everpresentrowposition="top"
+            everpresentrowactions="add reset"
+            everpresentrowactionsmode="columns"
+        />
+    );
 }
 
 export default App;

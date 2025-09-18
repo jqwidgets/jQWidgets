@@ -1,93 +1,12 @@
-﻿import * as React from 'react';
- 
-
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 import JqxTabs from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtabs';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
+function App() {
+    const myDataTable = React.useRef<JqxDataTable>(null);
 
-    private myDataTable = React.createRef<JqxDataTable>();
-
-    constructor(props: {}) {
-        super(props);
-
-        const source = {
-            dataType: 'array',
-            localData: this.generateData(),
-        };
-
-        const initRowDetails = (id: any, row: any, element: any, rowinfo: any): void => {
-            // update the details height.
-            rowinfo.detailsHeight = 200;
-            const marginTop = { marginTop: '10px' };
-            const tabs =
-                <JqxTabs theme={'material-purple'} style={{ margin: '10px' }} width={820} height={170}>
-                    <ul style={{ marginLeft: '30px' }}>
-                        <li>{row.firstname}</li>
-                        <li>Notes</li>
-                    </ul>
-                    <div>
-                        <div style={{ margin: '5px' }}>
-                            <div style={{ float: 'left', width: '15%' }}>
-                                <div style={{ marginTop: '10px' }}>
-                                    <div className="jqx-rc-all" style={{ margin: '10px' }}><b>Photo:</b></div>
-                                    <img height={60} src={'https://www.jqwidgets.com/react/images/' + row.firstname.toLowerCase() + '.png'} style={{ marginLeft: '10px' }} />
-                                </div>
-                            </div>
-                            <div style={{ float: 'left', width: '45%' }}>
-                                <div style={marginTop}><b>First Name: </b>{row.firstname}</div>
-                                <div style={marginTop}><b>Last Name: </b>{row.lastname}</div>
-                                <div style={marginTop}><b>Title: </b>{row.title}</div>
-                                <div style={marginTop}><b>Address: </b>{row.address}</div>
-                            </div>
-                            <div style={{ float: 'left', width: '40%' }}>
-                                <div style={marginTop}><b>Postal Code: </b>{row.postalcode}</div>
-                                <div style={marginTop}><b>City: </b>{row.city}</div>
-                                <div style={marginTop}><b>Phone: </b>{row.homephone}</div>
-                                <div style={marginTop}><b>Hire Date: </b>{row.hiredate}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div style={{ whiteSpace: 'normal', margin: '5px' }}>
-                            <span>{row.notes}</span>
-                        </div>
-                    </div>
-                </JqxTabs>
-
-            ReactDOM.render(tabs, element[0]);
-        };
-
-        this.state = {
-            columns: [
-                { text: 'First Name', dataField: 'firstname', width: 200 },
-                { text: 'Last Name', dataField: 'lastname', width: 200 },
-                { text: 'Title', dataField: 'title', width: 200 },
-                { text: 'City', dataField: 'city', width: 100 },
-                { text: 'Country', dataField: 'country' }
-            ],
-            initRowDetails,
-            source: new jqx.dataAdapter(source)
-        };
-    }
-
-    public componentDidMount() {
-        this.myDataTable.current!.showDetails(0);
-    }
-
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'} ref={this.myDataTable}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source}
-                columns={this.state.columns} rowDetails={true} pageable={true}
-                sortable={true} pageSize={3} initRowDetails={this.state.initRowDetails} />
-        );
-    }
-
-    private generateData(): any[] {
+    const generateData = React.useCallback((): any[] => {
         const data = [];
         const firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'];
         const lastNames = ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth'];
@@ -112,7 +31,6 @@ class App extends React.PureComponent<{}, IDataTableProps> {
         let k = 0;
         for (let i = 0; i < firstNames.length; i++) {
             const row: any = {};
-            /* tslint:disable:no-string-literal */
             row['firstname'] = firstNames[k];
             row['lastname'] = lastNames[k];
             row['title'] = titles[k];
@@ -128,9 +46,54 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             data[i] = row;
             k++;
         }
-
         return data;
-    };
-}
+    }, []);
 
-export default App;
+    const columns = React.useMemo(() => [
+        { text: 'First Name', dataField: 'firstname', width: 200 },
+        { text: 'Last Name', dataField: 'lastname', width: 200 },
+        { text: 'Title', dataField: 'title', width: 200 },
+        { text: 'City', dataField: 'city', width: 100 },
+        { text: 'Country', dataField: 'country' }
+    ], []);
+
+    const source = React.useMemo(() => {
+        return new jqx.dataAdapter({
+            dataType: 'array',
+            localData: generateData()
+        });
+    }, [generateData]);
+
+    const initRowDetails = React.useCallback((id: any, row: any, element: any, rowinfo: any) => {
+        rowinfo.detailsHeight = 200;
+        const marginTop = { marginTop: '10px' };
+        const tabs = (
+            <JqxTabs theme={'material-purple'} style={{ margin: '10px' }} width={820} height={170}>
+                <ul style={{ marginLeft: '30px' }}>
+                    <li>{row.firstname}</li>
+                    <li>Notes</li>
+                </ul>
+                <div>
+                    <div style={{ margin: '5px' }}>
+                        <div style={{ float: 'left', width: '15%' }}>
+                            <div style={{ marginTop: '10px' }}>
+                                <div className="jqx-rc-all" style={{ margin: '10px' }}><b>Photo:</b></div>
+                                <img height={60} src={'https://www.jqwidgets.com/react/images/' + row.firstname.toLowerCase() + '.png'} style={{ marginLeft: '10px' }} />
+                            </div>
+                        </div>
+                        <div style={{ float: 'left', width: '45%' }}>
+                            <div style={marginTop}><b>First Name: </b>{row.firstname}</div>
+                            <div style={marginTop}><b>Last Name: </b>{row.lastname}</div>
+                            <div style={marginTop}><b>Title: </b>{row.title}</div>
+                            <div style={marginTop}><b>Address: </b>{row.address}</div>
+                        </div>
+                        <div style={{ float: 'left', width: '40%' }}>
+                            <div style={marginTop}><b>Postal Code: </b>{row.postalcode}</div>
+                            <div style={marginTop}><b>City: </b>{row.city}</div>
+                            <div style={marginTop}><b>Phone: </b>{row.homephone}</div>
+                            <div style={marginTop}><b>Hire Date: </b>{row.hiredate}</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div style={{ whiteSpace: 'normal', margin: '

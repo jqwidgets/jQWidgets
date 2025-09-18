@@ -1,17 +1,12 @@
 import * as React from 'react';
- 
-
+import { useRef, useMemo } from 'react';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxChart, { IChartProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
+const App = () => {
+    const myChart = useRef<JqxChart>(null);
 
-    private myChart = React.createRef<JqxChart>();
-
-    constructor(props: {}) {
-        super(props);
-        this.btnOnClick = this.btnOnClick.bind(this);
-
+    const chartProps: IChartProps = useMemo(() => {
         const source: any = {
             datafields: [
                 { name: 'Country' },
@@ -23,7 +18,7 @@ class App extends React.PureComponent<{}, IChartProps> {
             url: 'gdp_dept_2010.txt'
         };
 
-        this.state = {
+        return {
             description: 'GDP and Debt in 2010',
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
             seriesGroups: [
@@ -59,28 +54,12 @@ class App extends React.PureComponent<{}, IChartProps> {
                 dataField: 'Country'
             }
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxChart ref={this.myChart} style={{ width: '850px', height: '500px' }}
-                    title={this.state.title} description={this.state.description}
-                    showLegend={true} enableAnimations={true} padding={this.state.padding}
-                    titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                    seriesGroups={this.state.seriesGroups} colorScheme={'scheme01'} />
-                <br />
-                <br />
-                <JqxButton theme={'material-purple'} onClick={this.btnOnClick} width={80}>Print</JqxButton>
-            </div>
-        );
-    }
-
-    private btnOnClick(event: any) {
-        const content = this.myChart.current!.getInstance().host[0].outerHTML;
-
+    const btnOnClick = (event: any) => {
+        const content = myChart.current!.getInstance().host[0].outerHTML;
         const newWindow = window.open('', '', 'width=800, height=500');
-        const document = newWindow!.document.open();
+        const documentWindow = newWindow!.document.open();
         const pageContent =
             '<!DOCTYPE html>' +
             '<html>' +
@@ -90,15 +69,36 @@ class App extends React.PureComponent<{}, IChartProps> {
             '</head>' +
             '<body>' + content + '</body></html>';
         try {
-            document.write(pageContent);
-            document.close();
+            documentWindow.write(pageContent);
+            documentWindow.close();
             newWindow!.print();
             newWindow!.close();
-        }
-        catch (error) {
+        } catch (error) {
             alert('error');
         }
-    }
-}
+    };
 
-export default App; 
+    return (
+        <div>
+            <JqxChart
+                ref={myChart}
+                style={{ width: '850px', height: '500px' }}
+                title={chartProps.title}
+                description={chartProps.description}
+                showLegend={true}
+                enableAnimations={true}
+                padding={chartProps.padding}
+                titlePadding={chartProps.titlePadding}
+                source={chartProps.source}
+                xAxis={chartProps.xAxis}
+                seriesGroups={chartProps.seriesGroups}
+                colorScheme={'scheme01'}
+            />
+            <br />
+            <br />
+            <JqxButton theme={'material-purple'} onClick={btnOnClick} width={80}>Print</JqxButton>
+        </div>
+    );
+};
+
+export default App;

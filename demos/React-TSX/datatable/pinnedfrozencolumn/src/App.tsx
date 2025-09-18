@@ -1,14 +1,9 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
-
-    constructor(props: {}) {
-        super(props);
-
+function App() {
+    const { source, columns } = useMemo(() => {
         const source = {
             dataFields: [
                 { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
@@ -24,8 +19,7 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             root: 'entry',
             url: 'orders.xml'
         };
-
-        this.state = {
+        return {
             columns: [
                 { text: 'Ship Name', dataField: 'ShipName', pinned: true, width: 300 },
                 { text: 'Ship City', dataField: 'ShipCity', width: 250 },
@@ -36,17 +30,20 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             ],
             source: new jqx.dataAdapter(source)
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source}
-                columns={this.state.columns} pageable={true} sortable={true}
-                columnsResize={true} pagerButtonsCount={10} />
-        );
-    }
+    return (
+        <JqxDataTable
+            theme="material-purple"
+            width="100%"
+            source={source}
+            columns={columns}
+            pageable
+            sortable
+            columnsResize
+            pagerButtonsCount={10}
+        />
+    );
 }
 
 export default App;

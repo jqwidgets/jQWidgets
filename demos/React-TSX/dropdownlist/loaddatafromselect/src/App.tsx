@@ -1,85 +1,92 @@
-﻿import * as React from 'react';
- 
+import React, { useEffect, useRef, useState } from 'react';
+import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
+const options = [
+  'Affogato',
+  'Americano',
+  'Bicerin',
+  'Breve',
+  'Café Bombón',
+  'Caffé Corretto',
+  'Café Crema',
+  'Caffé Latte',
+  'Caffé macchiato',
+  'Café mélange',
+  'Coffee milk',
+  'Cafe mocha',
+  'Cappuccino',
+  'Carajillo',
+  'Cuban espresso',
+  'Espresso',
+  'The Flat White',
+  'Frappuccino',
+  'Galao',
+  'Greek frappé coffee',
+  'Iced Coffee﻿',
+  'Indian filter coffee',
+  'Instant coffee',
+  'Irish coffee',
+  'Liqueur coffee'
+];
 
-import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
+const App = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const myDropDownList = useRef<any>(null);
+  const mySelect = useRef<HTMLSelectElement>(null);
+  const updating = useRef(false);
 
-class App extends React.PureComponent<{}, IDropDownListProps> {
-
-    private myDropDownList = React.createRef<JqxDropDownList>();
-    private mySelect = React.createRef<HTMLSelectElement>();
-    private updating: boolean = false;
-
-    constructor(props: {}) {
-        super(props);
-        this.listOnSelect = this.listOnSelect.bind(this);
-        this.onSelectChange = this.onSelectChange.bind(this);
-
-        this.state = {
-            selectedIndex: 0
-        }
+  useEffect(() => {
+    if (myDropDownList.current) {
+      myDropDownList.current.loadFromSelect('select');
     }
+  }, []);
 
-    public componentDidMount() {
-        this.myDropDownList.current!.loadFromSelect('select');
+  const listOnSelect = (event: any) => {
+    if (event.args && !updating.current) {
+      const index = event.args.item.index;
+      if (mySelect.current) {
+        mySelect.current.selectedIndex = index;
+      }
     }
+  };
 
-    public render() {
-        return (
-            <div>
-                <JqxDropDownList theme={'material-purple'} ref={this.myDropDownList} style={{ float: 'left' }}
-                    onSelect={this.listOnSelect} width={200} height={30} selectedIndex={this.state.selectedIndex} />
+  const onSelectChange = () => {
+    updating.current = true;
+    const index = mySelect.current!.selectedIndex;
+    setSelectedIndex(index);
+    setTimeout(() => {
+      if (myDropDownList.current) {
+        myDropDownList.current.ensureVisible(index);
+      }
+      updating.current = false;
+    }, 0);
+  };
 
-                <div style={{ float: 'left' }}>
-                    <select ref={this.mySelect} id="select" onChange={this.onSelectChange} style={{ height: '25px', width: '200px', marginLeft: '30px' }}>
-                        <option>Affogato</option>
-                        <option>Americano</option>
-                        <option>Bicerin</option>
-                        <option>Breve</option>
-                        <option>Café Bombón</option>
-                        <option>Caffé Corretto</option>
-                        <option>Café Crema</option>
-                        <option>Caffé Latte</option>
-                        <option>Caffé macchiato</option>
-                        <option>Café mélange</option>
-                        <option>Coffee milk</option>
-                        <option>Cafe mocha</option>
-                        <option>Cappuccino</option>
-                        <option>Carajillo</option>
-                        <option>Cuban espresso</option>
-                        <option>Espresso</option>
-                        <option>The Flat White</option>
-                        <option>Frappuccino</option>
-                        <option>Galao</option>
-                        <option>Greek frappé coffee</option>
-                        <option>Iced Coffee﻿</option>
-                        <option>Indian filter coffee</option>
-                        <option>Instant coffee</option>
-                        <option>Irish coffee</option>
-                        <option>Liqueur coffee</option>
-                    </select>
-                </div>
-            </div>
-        );
-    }
-
-    private listOnSelect(event: any): void {
-        if (event.args && !this.updating) {
-            const index = event.args.item.index;
-            this.mySelect.current!.selectedIndex = index;
-        }
-    }
-
-    private onSelectChange() {
-        this.updating = true;
-        const index = this.mySelect.current!.selectedIndex;
-        this.setState({
-            selectedIndex: index
-        }, () => {
-            this.myDropDownList.current!.ensureVisible(index);
-            this.updating = false;
-        });       
-    }
-}
+  return (
+    <div>
+      <JqxDropDownList
+        theme="material-purple"
+        ref={myDropDownList}
+        style={{ float: 'left' }}
+        onSelect={listOnSelect}
+        width={200}
+        height={30}
+        selectedIndex={selectedIndex}
+      />
+      <div style={{ float: 'left' }}>
+        <select
+          ref={mySelect}
+          id="select"
+          onChange={onSelectChange}
+          style={{ height: '25px', width: '200px', marginLeft: '30px' }}
+        >
+          {options.map(option => (
+            <option key={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+};
 
 export default App;

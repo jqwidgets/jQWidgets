@@ -1,13 +1,9 @@
 import * as React from 'react';
- 
-
-
 import './App.css';
-
 import JqxSortable, { ISortableProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxsortable';
 
-const InnerItems = (props: any) => {
-    return <div>
+const InnerItems = (props: any) => (
+    <div>
         <table style={{ minWidth: 130 }}>
             <tbody>
                 <tr>
@@ -20,7 +16,7 @@ const InnerItems = (props: any) => {
             </tbody>
         </table>
     </div>
-};
+);
 
 const firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'];
 const lastNames = ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth'];
@@ -30,49 +26,50 @@ const isValidFirstHalf = (index: number) => index < Math.floor(firstNamesLength 
 const isValidSecondHalf = (index: number) => index >= Math.floor(firstNamesLength / 2);
 
 const SortableComponent = (props: any) => {
-    const validation = (whichHalf: string, index: number): any => {
+    const validation = (whichHalf: string, index: number) => {
         if (whichHalf === "A") {
             return isValidFirstHalf(index);
         } else {
             return isValidSecondHalf(index);
         }
     };
-    return <div>
-        <span>Team {props.whichHalf}</span>
-        <JqxSortable className={"sortable"} connectWith={props.connectWith} opacity={props.opacity}>
-            {firstNames.map((firstName, i): any => {
-                if (validation(props.whichHalf, i)) {
-                    const imgurl = 'https://www.jqwidgets.com/react/images/' + firstNames[i].toLowerCase() + '.png';
-                    return <InnerItems key={i} index={i} imgurl={imgurl} firstName={firstName} lastName={lastNames[i]} title={titles[i]} />;
-                }
-            })}
-        </JqxSortable>
-    </div>;
+    return (
+        <div>
+            <span>Team {props.whichHalf}</span>
+            <JqxSortable className={"sortable"} connectWith={props.connectWith} opacity={props.opacity}>
+                {firstNames.map((firstName, i) =>
+                    validation(props.whichHalf, i) ? (
+                        <InnerItems
+                            key={i}
+                            index={i}
+                            imgurl={`https://www.jqwidgets.com/react/images/${firstNames[i].toLowerCase()}.png`}
+                            firstName={firstName}
+                            lastName={lastNames[i]}
+                            title={titles[i]}
+                        />
+                    ) : null
+                )}
+            </JqxSortable>
+        </div>
+    );
 };
 
-class App extends React.PureComponent<{}, ISortableProps> {
-    constructor(props: {}) {
-        super(props);
+const App = () => {
+    const [sortableProps] = React.useState<ISortableProps>({
+        connectWith: ".sortable",
+        opacity: 0.5,
+    });
 
-        this.state = {
-            connectWith: ".sortable",
-            opacity: 0.5
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                <div className={"sortable-container"}>
-                    <SortableComponent whichHalf={"A"} connectWith={this.state.connectWith} opacity={this.state.opacity} />
-                </div>
-
-                <div className={"sortable-container"}>
-                    <SortableComponent whichHalf={"B"} connectWith={this.state.connectWith} opacity={this.state.opacity} />
-                </div >
+    return (
+        <div>
+            <div className={"sortable-container"}>
+                <SortableComponent whichHalf={"A"} connectWith={sortableProps.connectWith} opacity={sortableProps.opacity} />
             </div>
-        );
-    }
-}
+            <div className={"sortable-container"}>
+                <SortableComponent whichHalf={"B"} connectWith={sortableProps.connectWith} opacity={sortableProps.opacity} />
+            </div>
+        </div>
+    );
+};
 
 export default App;

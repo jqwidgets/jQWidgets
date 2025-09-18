@@ -1,14 +1,10 @@
 import * as React from 'react';
- 
-
 import JqxChart, { IChartProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
+const App = () => {
+    const [chartProps, setChartProps] = React.useState<IChartProps | null>(null);
 
-
-    constructor(props: {}) {
-        super(props);
-
+    React.useEffect(() => {
         const source: any = {
             datafields: [
                 { name: 'id' },
@@ -17,7 +13,6 @@ class App extends React.PureComponent<{}, IChartProps> {
                 { name: 'eu' }
             ],
             datatype: 'json',
-            /* EU map definitions in JSON derived from  http://commons.wikimedia.org/wiki/File:116_000_map_of_Europe.svg */
             url: 'europe.txt'
         };
         const dataAdapter = new jqx.dataAdapter(source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source.url + '" : ' + error); } });
@@ -27,7 +22,6 @@ class App extends React.PureComponent<{}, IChartProps> {
                 if (path[i] === 'C' || path[i] === 'M' || path[i] === 'L') {
                     output += path[i];
                     i++;
-
                     let j = i;
                     while (j + 1 < path.length && !(path[j + 1] === 'C' || path[j + 1] === 'M' || path[j + 1] === 'L' || path[j + 1] === 'z')) {
                         j++;
@@ -45,27 +39,24 @@ class App extends React.PureComponent<{}, IChartProps> {
                         output += ' ' + point.x + ',' + point.y + ' ';
                     }
                     i = j - 1;
-                }
-                else {
+                } else {
                     output += path[i];
                 }
             }
             return output;
         };
 
-        this.state = {
+        setChartProps({
             draw: (renderer: any, rect: any): void => {
                 const records = dataAdapter.records;
                 const wScale = rect.width / 13000
-                const hScale = (rect.height) / 8500;
-
+                const hScale = rect.height / 8500;
                 for (const record of records) {
                     const path = transformPath(record.path, wScale, hScale, 62, 22);
                     const pathElement = renderer.path(path, { stroke: 'black' });
                     if (record.eu === 'true') {
                         renderer.attr(pathElement, { fill: 'blue' });
-                    }
-                    else {
+                    } else {
                         renderer.attr(pathElement, { fill: '#DEDEDE' });
                     }
                 }
@@ -77,17 +68,25 @@ class App extends React.PureComponent<{}, IChartProps> {
             source: dataAdapter,
             title: 'Map of the European Union',
             titlePadding: { left: 90, top: 0, right: 0, bottom: 10 }
-        };
+        });
+    }, []);
+
+    if (!chartProps) {
+        return null;
     }
 
-    public render() {
-        return (
-            <JqxChart style={{ width: '850px', height: '500px' }}
-                title={this.state.title} description={''}
-                padding={this.state.padding} titlePadding={this.state.titlePadding}
-                source={this.state.source} drawBefore={this.state.drawBefore} draw={this.state.draw} />
-        );
-    }
-}
+    return (
+        <JqxChart
+            style={{ width: '850px', height: '500px' }}
+            title={chartProps.title}
+            description={''}
+            padding={chartProps.padding}
+            titlePadding={chartProps.titlePadding}
+            source={chartProps.source}
+            drawBefore={chartProps.drawBefore}
+            draw={chartProps.draw}
+        />
+    );
+};
 
-export default App; 
+export default App;

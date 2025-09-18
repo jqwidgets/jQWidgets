@@ -1,86 +1,85 @@
 import * as React from 'react';
- 
+import { useRef, useState } from 'react';
 
 import JqxButtonGroup, { IButtonGroupProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttongroup';
 import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-export interface IState extends IRadioButtonProps {
-    defaultChecked: IRadioButtonProps["checked"];
-    radioChecked: IRadioButtonProps["checked"];
-    checkBoxChecked: IRadioButtonProps["checked"];
-    mode: IButtonGroupProps["mode"];
-}
+function App() {
+    const myButtonGroup = useRef<JqxButtonGroup>(null);
+    const myLog = useRef<HTMLDivElement>(null);
 
-class App extends React.PureComponent<{}, IState> {
+    const [mode, setMode] = useState<IButtonGroupProps['mode']>('default');
+    const [defaultChecked, setDefaultChecked] = useState<IRadioButtonProps['checked']>(true);
+    const [radioChecked, setRadioChecked] = useState<IRadioButtonProps['checked']>(false);
+    const [checkBoxChecked, setCheckBoxChecked] = useState<IRadioButtonProps['checked']>(false);
 
-    private myButtonGroup = React.createRef<JqxButtonGroup>();
-    private myLog = React.createRef<HTMLDivElement>();
+    const defaultModeButtonChecked = () => {
+        setMode('default');
+        setDefaultChecked(true);
+        setRadioChecked(false);
+        setCheckBoxChecked(false);
+    };
 
-    constructor(props: {}) {
-        super(props);
-        this.defaultModeButtonChecked = this.defaultModeButtonChecked.bind(this);
-        this.radioModeButtonChecked = this.radioModeButtonChecked.bind(this);
-        this.checkBoxModeButtonChecked = this.checkBoxModeButtonChecked.bind(this);
-        this.groupOnBtnClick = this.groupOnBtnClick.bind(this);
+    const radioModeButtonChecked = () => {
+        setMode('radio');
+        setDefaultChecked(false);
+        setRadioChecked(true);
+        setCheckBoxChecked(false);
+    };
 
-        this.state = {
-            checkBoxChecked: false,
-            defaultChecked: true,
-            mode: 'default',
-            radioChecked: false
+    const checkBoxModeButtonChecked = () => {
+        setMode('checkbox');
+        setDefaultChecked(false);
+        setRadioChecked(true);
+        setCheckBoxChecked(true);
+    };
+
+    const groupOnBtnClick = (event: any) => {
+        const clickedButton = event.args.button;
+        if (myLog.current) {
+            myLog.current.innerHTML = `Clicked: ${clickedButton[0].id}`;
         }
     };
 
-    public render() {
-        return (
-            <div>
-                <JqxButtonGroup theme={'material-purple'} ref={this.myButtonGroup} onButtonclick={this.groupOnBtnClick} mode={this.state.mode}>
-                    <button style={{ padding: '4px 16px' }} id='Left' value='Left' />
-                    <button style={{ padding: '4px 16px' }} id='Center' value='Center' />
-                    <button style={{ padding: '4px 16px' }} id='Right' value='Right' />
-                </JqxButtonGroup>
-                <div style={{ marginTop: '10px' }}>
-                    <h4>Modes</h4>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.defaultModeButtonChecked} checked={this.state.defaultChecked}>Default</JqxRadioButton>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.radioModeButtonChecked}>RadioButtons</JqxRadioButton>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.checkBoxModeButtonChecked}> CheckBoxes</JqxRadioButton>
-                </div>
-                <div ref={this.myLog} style={{ marginTop: '10px' }} />
+    return (
+        <div>
+            <JqxButtonGroup
+                theme="material-purple"
+                ref={myButtonGroup}
+                onButtonclick={groupOnBtnClick}
+                mode={mode}
+            >
+                <button style={{ padding: '4px 16px' }} id="Left" value="Left" />
+                <button style={{ padding: '4px 16px' }} id="Center" value="Center" />
+                <button style={{ padding: '4px 16px' }} id="Right" value="Right" />
+            </JqxButtonGroup>
+            <div style={{ marginTop: '10px' }}>
+                <h4>Modes</h4>
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={defaultModeButtonChecked}
+                    checked={defaultChecked}
+                >
+                    Default
+                </JqxRadioButton>
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={radioModeButtonChecked}
+                    checked={radioChecked}
+                >
+                    RadioButtons
+                </JqxRadioButton>
+                <JqxRadioButton
+                    theme="material-purple"
+                    onChecked={checkBoxModeButtonChecked}
+                    checked={checkBoxChecked}
+                >
+                    CheckBoxes
+                </JqxRadioButton>
             </div>
-        );
-    }
-
-    private defaultModeButtonChecked() {
-        this.setState({
-            checkBoxChecked: false,
-            defaultChecked: true,
-            mode: 'default',
-            radioChecked: false
-        });
-    }
-
-    private radioModeButtonChecked() {
-        this.setState({
-            checkBoxChecked: false,
-            defaultChecked: false,
-            mode: 'radio',
-            radioChecked: true
-        });
-    }
-
-    private checkBoxModeButtonChecked() {
-        this.setState({
-            checkBoxChecked: true,
-            defaultChecked: false,
-            mode: 'checkbox',
-            radioChecked: true
-        });
-    }
-
-    private groupOnBtnClick(event: any) {
-        const clickedButton = event.args.button;
-        this.myLog.current!.innerHTML = `Clicked: ${clickedButton[0].id}`;
-    }
+            <div ref={myLog} style={{ marginTop: '10px' }} />
+        </div>
+    );
 }
 
 export default App;

@@ -1,14 +1,9 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useMemo } from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
-
-    constructor(props: {}) {
-        super(props);
-
+function App() {
+    const { columns, source } = useMemo(() => {
         const source: any = {
             dataFields: [
                 { name: 'ShipCountry', type: 'string' },
@@ -21,7 +16,7 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             dataType: 'json',
             root: 'value',
             url: 'http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=?'
-        }
+        };
 
         const dataAdapter: any = new jqx.dataAdapter(source,
             {
@@ -32,11 +27,6 @@ class App extends React.PureComponent<{}, IDataTableProps> {
                 },
                 formatData: (data: any): void => {
                     if (source.totalRecords) {
-                        // update the $skip and $top params of the OData service.
-                        // data.pagenum - page number starting from 0.
-                        // data.pagesize - page size
-                        // data.sortdatafield - the column's datafield value(ShipCountry, ShipCity, etc.).
-                        // data.sortorder - the sort order(asc or desc).
                         data.$skip = data.pagenum * data.pagesize;
                         data.$top = data.pagesize;
                         if (data.sortdatafield && data.sortorder) {
@@ -51,30 +41,33 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             }
         );
 
-        this.state = {
-            columns: [
-                { text: 'Ship Name', dataField: 'ShipName', width: 300 },
-                { text: 'Ship Country', dataField: 'ShipCountry', width: 250 },
-                { text: 'Ship City', dataField: 'ShipCity', width: 150 },
-                { text: 'Ship Address', dataField: 'ShipAddress' }
-            ],
-            source: dataAdapter
-        };
-    }
+        const columns: IDataTableProps['columns'] = [
+            { text: 'Ship Name', dataField: 'ShipName', width: 300 },
+            { text: 'Ship Country', dataField: 'ShipCountry', width: 250 },
+            { text: 'Ship City', dataField: 'ShipCity', width: 150 },
+            { text: 'Ship Address', dataField: 'ShipAddress' }
+        ];
 
-    public render() {
-        return (
-            <div>
-                <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
+        return { columns, source: dataAdapter };
+    }, []);
 
-                <JqxDataTable theme={'material-purple'}
-                    // @ts-ignore
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    altRows={true} pageable={true} sortable={true} pagerButtonsCount={10}
-                    serverProcessing={true} columnsResize={true} />
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
+            <JqxDataTable
+                theme={'material-purple'}
+                width={'100%'}
+                source={source}
+                columns={columns}
+                altRows={true}
+                pageable={true}
+                sortable={true}
+                pagerButtonsCount={10}
+                serverProcessing={true}
+                columnsResize={true}
+            />
+        </div>
+    );
 }
 
 export default App;

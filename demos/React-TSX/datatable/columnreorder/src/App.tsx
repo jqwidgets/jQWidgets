@@ -1,15 +1,18 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
+function App() {
+    const columns = React.useMemo(() => [
+        { text: 'Supplier Name', cellsAlign: 'center', align: 'center', dataField: 'SupplierName', width: 200 },
+        { text: 'Name', cellsAlign: 'center', align: 'center', dataField: 'ProductName', width: 200 },
+        { text: 'Quantity', dataField: 'Quantity', cellsFormat: 'd', cellsAlign: 'center', align: 'center', width: 80 },
+        { text: 'Price', dataField: 'Price', cellsFormat: 'c2', align: 'center', cellsAlign: 'center', width: 70 },
+        { text: 'Address', cellsAlign: 'center', align: 'center', dataField: 'Address', width: 120 },
+        { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City' }
+    ], []);
 
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
+    const source = React.useMemo(() => {
+        const src: any = {
             dataFields: [
                 { name: 'SupplierName', type: 'string' },
                 { name: 'Quantity', type: 'number' },
@@ -26,28 +29,22 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             root: 'DATA',
             url: 'orderdetailsextended.xml'
         };
+        return new jqx.dataAdapter(src);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Supplier Name', cellsAlign: 'center', align: 'center', dataField: 'SupplierName', width: 200 },
-                { text: 'Name', cellsAlign: 'center', align: 'center', dataField: 'ProductName', width: 200 },
-                { text: 'Quantity', dataField: 'Quantity', cellsFormat: 'd', cellsAlign: 'center', align: 'center', width: 80 },
-                { text: 'Price', dataField: 'Price', cellsFormat: 'c2', align: 'center', cellsAlign: 'center', width: 70 },
-                { text: 'Address', cellsAlign: 'center', align: 'center', dataField: 'Address', width: 120 },
-                { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City' }
-            ],
-            source: new jqx.dataAdapter(source)
-        };
-    }
-
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} height={400} source={this.state.source}
-                columns={this.state.columns} altRows={true} pageable={true} columnsReorder={true} />
-        );
-    }
+    return (
+        <JqxDataTable
+            theme="material-purple"
+            // @ts-ignore
+            width="100%"
+            height={400}
+            source={source}
+            columns={columns}
+            altRows={true}
+            pageable={true}
+            columnsReorder={true}
+        />
+    );
 }
 
 export default App;

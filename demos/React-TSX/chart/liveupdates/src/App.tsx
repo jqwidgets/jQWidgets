@@ -1,150 +1,168 @@
 import * as React from 'react';
- 
-
+import { useRef, useState, useEffect, useCallback } from 'react';
 import JqxChart, { IChartProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
-export interface IState extends IChartProps {
-    colorsSchemesList: IDropDownListProps['source'];
-    schemeSelectedIndex: IDropDownListProps['selectedIndex'];
-    seriesList: IDropDownListProps['source'];
-    seriesTypeSelectedIndex: IDropDownListProps['selectedIndex'];
-}
+const initialData: any[] = [
+    { a: 100, b: 200, c: 1 },
+    { a: 120, b: 140, c: 2 },
+    { a: 100, b: 110, c: 3 },
+    { a: 90, b: 135, c: 4 },
+    { a: 70, b: 210, c: 5 },
+    { a: 170, b: 210, c: 5 },
+    { a: 270, b: 350, c: 5 },
+    { a: 710, b: 410, c: 5 },
+    { a: 230, b: 305, c: 5 }
+];
 
-class App extends React.PureComponent<{}, IState> {
+const colorsSchemesList: IDropDownListProps['source'] = [
+    'scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'
+];
 
-    private myChart = React.createRef<JqxChart>();
+const seriesList: IDropDownListProps['source'] = [
+    'splinearea', 'spline', 'column', 'scatter', 'stackedcolumn', 'stackedsplinearea', 'stackedspline'
+];
 
-    constructor(props: {}) {
-        super(props);
-        this.colorsOnChange = this.colorsOnChange.bind(this);
-        this.seriesOnChange = this.seriesOnChange.bind(this);
-
-        const data: any[] = [
-            { a: 100, b: 200, c: 1 },
-            { a: 120, b: 140, c: 2 },
-            { a: 100, b: 110, c: 3 },
-            { a: 90, b: 135, c: 4 },
-            { a: 70, b: 210, c: 5 },
-            { a: 170, b: 210, c: 5 },
-            { a: 270, b: 350, c: 5 },
-            { a: 710, b: 410, c: 5 },
-            { a: 230, b: 305, c: 5 }
-        ];
-
-        this.state = {
-            colorScheme: 'scheme03',
-            colorsSchemesList: ['scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'],
-            description: '',
-            padding: { left: 5, top: 5, right: 5, bottom: 5 },
-            schemeSelectedIndex: 2,
-            seriesGroups: [
-                {
-                    alignEndPointsWithIntervals: true,
-                    columnsGapPercent: 50,
-                    series: [
-                        { dataField: 'a', displayText: 'a', opacity: 1, lineWidth: 1, symbolType: 'circle', fillColorSymbolSelected: 'white', radius: 15 },
-                        { dataField: 'b', displayText: 'b', opacity: 1, lineWidth: 1, symbolType: 'circle', fillColorSymbolSelected: 'white', radius: 15 }
-                    ],
-                    type: 'column'
-                }
-            ],
-            seriesList: ['splinearea', 'spline', 'column', 'scatter', 'stackedcolumn', 'stackedsplinearea', 'stackedspline'],
-            seriesTypeSelectedIndex: 2,
-            source: data,
-            title: 'Live updates demo',
-            titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
-            valueAxis: {
-                labels: { horizontalAlignment: 'right' },
-                maxValue: 1000,
-                minValue: 0,
-                title: { text: 'Index Value' }
-            },
-            xAxis: {
-                gridLines: { interval: 2 },
-                unitInterval: 1,
-                valuesOnTicks: false
-            }
-        };
+const initialSeriesGroups = [
+    {
+        alignEndPointsWithIntervals: true,
+        columnsGapPercent: 50,
+        series: [
+            { dataField: 'a', displayText: 'a', opacity: 1, lineWidth: 1, symbolType: 'circle', fillColorSymbolSelected: 'white', radius: 15 },
+            { dataField: 'b', displayText: 'b', opacity: 1, lineWidth: 1, symbolType: 'circle', fillColorSymbolSelected: 'white', radius: 15 }
+        ],
+        type: 'column'
     }
+];
 
-    public componentDidMount() {
-        const newSource = this.state.source;
+const App = () => {
+    const myChart = useRef<JqxChart>(null);
+
+    const [colorScheme, setColorScheme] = useState<IChartProps['colorScheme']>('scheme03');
+    const [schemeSelectedIndex, setSchemeSelectedIndex] = useState<IDropDownListProps['selectedIndex']>(2);
+    const [seriesGroups, setSeriesGroups] = useState<IChartProps['seriesGroups']>(JSON.parse(JSON.stringify(initialSeriesGroups)));
+    const [seriesTypeSelectedIndex, setSeriesTypeSelectedIndex] = useState<IDropDownListProps['selectedIndex']>(2);
+    const [source, setSource] = useState<IChartProps['source']>(JSON.parse(JSON.stringify(initialData)));
+
+    const [chartSettings] = useState({
+        title: 'Live updates demo',
+        description: '',
+        padding: { left: 5, top: 5, right: 5, bottom: 5 },
+        titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+        valueAxis: {
+            labels: { horizontalAlignment: 'right' },
+            maxValue: 1000,
+            minValue: 0,
+            title: { text: 'Index Value' }
+        },
+        xAxis: {
+            gridLines: { interval: 2 },
+            unitInterval: 1,
+            valuesOnTicks: false
+        }
+    });
+
+    useEffect(() => {
         const max = 800;
-        setInterval(() => {
-            for (const sourceItem of newSource) {
-                sourceItem.a = Math.max(100, (Math.random() * 1000) % max);
-                sourceItem.b = Math.max(100, (Math.random() * 1000) % max);
-            }
-            this.setState({
-                source: newSource
-            }, () => {
-                this.myChart.current!.update();
+        const interval = setInterval(() => {
+            setSource(prevSource => {
+                const updatedSource = prevSource.map(item => ({
+                    ...item,
+                    a: Math.max(100, (Math.random() * 1000) % max),
+                    b: Math.max(100, (Math.random() * 1000) % max)
+                }));
+                // update chart after state
+                setTimeout(() => {
+                    myChart.current && myChart.current.update();
+                }, 0);
+                return updatedSource;
             });
         }, 3000);
-    }
+        return () => clearInterval(interval);
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxChart ref={this.myChart} style={{ width: '850px', height: '500px' }}
-                    title={this.state.title} description={this.state.description} enableAxisTextAnimation={true}
-                    showLegend={true} enableAnimations={true} animationDuration={1000} padding={this.state.padding}
-                    titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                    valueAxis={this.state.valueAxis} seriesGroups={this.state.seriesGroups} colorScheme={this.state.colorScheme} />
-                <table style={{ width: '680px' }}>
-                    <tbody>
-                        <tr>
-                            <td style={{ paddingLeft: '50px' }}>
-                                <p>Select the series type:</p>
-                                <JqxDropDownList theme={'material-purple'} onChange={this.seriesOnChange}
-                                    width={200} height={25} selectedIndex={this.state.seriesTypeSelectedIndex}
-                                    dropDownHeight={100} source={this.state.seriesList} />
-                            </td>
-                            <td>
-                                <p>Select color scheme:</p>
-                                <JqxDropDownList theme={'material-purple'} onChange={this.colorsOnChange}
-                                    width={200} height={25} selectedIndex={this.state.schemeSelectedIndex}
-                                    dropDownHeight={100} source={this.state.colorsSchemesList} />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table >
-            </div>
-        );
-    }
-
-    private colorsOnChange(event: any): void {
+    const colorsOnChange = useCallback((event: any) => {
         const value = event.args.item.value;
         const index = event.args.index;
-        this.setState({
-            colorScheme: value,
-            schemeSelectedIndex: index
-        }, () => {
-            this.myChart.current!.update();
-        });
-    }
+        setColorScheme(value);
+        setSchemeSelectedIndex(index);
+        setTimeout(() => {
+            myChart.current && myChart.current.update();
+        }, 0);
+    }, []);
 
-    private seriesOnChange(event: any): void {
+    const seriesOnChange = useCallback((event: any) => {
         const args = event.args;
-        if (args) {
-            const index = event.args.index;
-            const value = args.item.value;
-            const isLine = value.indexOf('line') !== -1;
-            const isArea = value.indexOf('area') !== -1;
-            const newSeriesGroups = this.state.seriesGroups;
-            const group = newSeriesGroups![0];
-            group!.series![0].opacity = group!.series![1].opacity = isArea ? 0.7 : 1;
-            group!.series![0].lineWidth = group!.series![1].lineWidth = isLine ? 2 : 1;
+        if (!args) return;
+        const index = args.index;
+        const value = args.item.value;
+        const isLine = value.indexOf('line') !== -1;
+        const isArea = value.indexOf('area') !== -1;
+        setSeriesGroups(prevGroups => {
+            const newGroups = JSON.parse(JSON.stringify(prevGroups));
+            const group = newGroups[0];
+            group.series[0].opacity = group.series[1].opacity = isArea ? 0.7 : 1;
+            group.series[0].lineWidth = group.series[1].lineWidth = isLine ? 2 : 1;
             group.type = value;
-            this.setState({
-                seriesGroups: newSeriesGroups,
-                seriesTypeSelectedIndex: index
-            }, () => {
-                this.myChart.current!.update();
-            });
-        }
-    }
-}
+            setTimeout(() => {
+                myChart.current && myChart.current.update();
+            }, 0);
+            return newGroups;
+        });
+        setSeriesTypeSelectedIndex(index);
+    }, []);
 
-export default App; 
+    return (
+        <div>
+            <JqxChart
+                ref={myChart}
+                style={{ width: '850px', height: '500px' }}
+                title={chartSettings.title}
+                description={chartSettings.description}
+                enableAxisTextAnimation={true}
+                showLegend={true}
+                enableAnimations={true}
+                animationDuration={1000}
+                padding={chartSettings.padding}
+                titlePadding={chartSettings.titlePadding}
+                source={source}
+                xAxis={chartSettings.xAxis}
+                valueAxis={chartSettings.valueAxis}
+                seriesGroups={seriesGroups}
+                colorScheme={colorScheme}
+            />
+            <table style={{ width: '680px' }}>
+                <tbody>
+                    <tr>
+                        <td style={{ paddingLeft: '50px' }}>
+                            <p>Select the series type:</p>
+                            <JqxDropDownList
+                                theme={'material-purple'}
+                                onChange={seriesOnChange}
+                                width={200}
+                                height={25}
+                                selectedIndex={seriesTypeSelectedIndex}
+                                dropDownHeight={100}
+                                source={seriesList}
+                            />
+                        </td>
+                        <td>
+                            <p>Select color scheme:</p>
+                            <JqxDropDownList
+                                theme={'material-purple'}
+                                onChange={colorsOnChange}
+                                width={200}
+                                height={25}
+                                selectedIndex={schemeSelectedIndex}
+                                dropDownHeight={100}
+                                source={colorsSchemesList}
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
+export default App;

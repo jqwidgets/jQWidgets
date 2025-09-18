@@ -1,30 +1,8 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
 import JqxPivotGrid, { IPivotGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxpivotgrid';
 
-class App extends React.PureComponent<{}, IPivotGridProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const pivotDataSource = this.createPivotDataSource();
-
-        this.state = {
-            source: pivotDataSource
-        }
-    }
-
-    public render() {
-        return (
-            <JqxPivotGrid theme={'material-purple'} style={{ width: 800, height: 400 }} source={this.state.source}
-                treeStyleRows={false} autoResize={false} multipleSelectionEnabled={true} />
-        );
-    }
-
-    private createPivotDataSource(): any {
-        // prepare sample data
+function App() {
+    const [source] = React.useState(() => {
         const data = [];
 
         const firstNames = [
@@ -59,7 +37,6 @@ class App extends React.PureComponent<{}, IPivotGridProps> {
             data[i] = row;
         }
 
-        // create a data source and data adapter
         const source = {
             datafields: [
                 { name: 'firstname', type: 'string' },
@@ -76,7 +53,6 @@ class App extends React.PureComponent<{}, IPivotGridProps> {
         const dataAdapter = new jqx.dataAdapter(source);
         dataAdapter.dataBind();
 
-        // create a pivot data source from the dataAdapter
         const pivotDataSource = new jqx.pivot(
             dataAdapter,
             {
@@ -86,25 +62,16 @@ class App extends React.PureComponent<{}, IPivotGridProps> {
                         if (values.length <= 1) {
                             return 0;
                         }
-
-                        // sample's mean
                         let mean = 0;
                         for (const value of values) {
                             mean += value;
                         }
-
                         mean /= values.length;
-
-                        // calc squared sum
                         let ssum = 0;
-
                         for (const value of values) {
                             ssum += Math.pow(value - mean, 2)
                         }
-
-                        // calc the variance
                         const variance = ssum / values.length;
-
                         return variance;
                     }
                 },
@@ -112,21 +79,17 @@ class App extends React.PureComponent<{}, IPivotGridProps> {
                     {
                         dataField: 'productname',
                         filterFunction: (value: any) => {
-                            if (value === "Black Tea" || value === "Green Tea") {
-                                return true;
-                            }
-
-                            return false;
+                            return value === "Black Tea" || value === "Green Tea";
                         }
                     }
                 ],
                 pivotValuesOnRows: false,
-                rows: [{ dataField: 'firstname' }, { dataField: 'lastname' }],                               
+                rows: [{ dataField: 'firstname' }, { dataField: 'lastname' }],
                 values: [
                     { dataField: 'price', 'function': 'sum', text: 'sum', formatSettings: { prefix: '$', decimalPlaces: 2, align: 'right' } },
                     { dataField: 'price', 'function': 'count', text: 'count' },
                     {
-                        dataField: 'quantity',                                               
+                        dataField: 'quantity',
                         formatSettings: { decimalPlaces: 2 },
                         'function': 'var',
                         text: 'variance'
@@ -136,7 +99,18 @@ class App extends React.PureComponent<{}, IPivotGridProps> {
         );
 
         return pivotDataSource;
-    }
+    });
+
+    return (
+        <JqxPivotGrid
+            theme={'material-purple'}
+            style={{ width: 800, height: 400 }}
+            source={source}
+            treeStyleRows={false}
+            autoResize={false}
+            multipleSelectionEnabled={true}
+        />
+    );
 }
 
 export default App;

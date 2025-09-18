@@ -1,29 +1,14 @@
 import * as React from 'react';
- 
-
-
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
-
 import JqxComboBox, { IComboBoxProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
-import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
+import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-export interface IState extends IComboBoxProps {
-    noneChecked: IRadioButtonProps['checked'];
-    slideChecked: IRadioButtonProps['checked'];
-    fadeChecked: IRadioButtonProps['checked'];
-}
+const App = () => {
+    const myComboBox = useRef<JqxComboBox>(null);
 
-class App extends React.PureComponent<{}, IState> {
-
-    private myComboBox = React.createRef<JqxComboBox>();
-
-    constructor(props: {}) {
-        super(props);
-        this.noneAnimationOnChecked = this.noneAnimationOnChecked.bind(this);
-        this.slideAnimationOnChecked = this.slideAnimationOnChecked.bind(this);
-        this.fadeAnimationOnChecked = this.fadeAnimationOnChecked.bind(this);
-
-        const source: any = {
+    const source: any = React.useMemo(() => {
+        return new jqx.dataAdapter({
             datafields: [
                 { name: 'CompanyName' },
                 { name: 'ContactName' }
@@ -31,73 +16,68 @@ class App extends React.PureComponent<{}, IState> {
             datatype: 'json',
             id: 'id',
             url: 'customers.txt'
-        };
+        });
+    }, []);
 
-        this.state = {
-            animationType: 'fade',
-            fadeChecked: true,
-            noneChecked: false,
-            slideChecked: false,
-            source: new jqx.dataAdapter(source)
-        }
-    }
+    const [animationType, setAnimationType] = useState<IComboBoxProps['animationType']>('fade');
+    const [noneChecked, setNoneChecked] = useState(false);
+    const [slideChecked, setSlideChecked] = useState(false);
+    const [fadeChecked, setFadeChecked] = useState(true);
 
-    public componentDidMount() {
+    useEffect(() => {
         setTimeout(() => {
-            this.myComboBox.current!.setOptions({ selectedIndex: 0 });
+            myComboBox.current?.setOptions({ selectedIndex: 0 });
         });
-    }
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <div id='selectionlog'>
-                    <h3>Animation Type</h3>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.noneAnimationOnChecked} checked={this.state.noneChecked}>
-                        None
-                    </JqxRadioButton>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.slideAnimationOnChecked} checked={this.state.slideChecked}>
-                        Slide
-                    </JqxRadioButton>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.fadeAnimationOnChecked} checked={this.state.fadeChecked}>
-                        Fade
-                    </JqxRadioButton>
-                </div>
+    const noneAnimationOnChecked = () => {
+        setAnimationType('none');
+        setFadeChecked(false);
+        setNoneChecked(true);
+        setSlideChecked(false);
+    };
 
-                <JqxComboBox theme={'material-purple'} ref={this.myComboBox}
-                    width={150} height={30} source={this.state.source}
-                    animationType={this.state.animationType} dropDownHorizontalAlignment={'right'}
-                    displayMember={'ContactName'} valueMember={'CompanyName'} />
+    const slideAnimationOnChecked = () => {
+        setAnimationType('slide');
+        setFadeChecked(false);
+        setNoneChecked(false);
+        setSlideChecked(true);
+    };
+
+    const fadeAnimationOnChecked = () => {
+        setAnimationType('fade');
+        setFadeChecked(true);
+        setNoneChecked(false);
+        setSlideChecked(false);
+    };
+
+    return (
+        <div>
+            <div id='selectionlog'>
+                <h3>Animation Type</h3>
+                <JqxRadioButton theme={'material-purple'} onChecked={noneAnimationOnChecked} checked={noneChecked}>
+                    None
+                </JqxRadioButton>
+                <JqxRadioButton theme={'material-purple'} onChecked={slideAnimationOnChecked} checked={slideChecked}>
+                    Slide
+                </JqxRadioButton>
+                <JqxRadioButton theme={'material-purple'} onChecked={fadeAnimationOnChecked} checked={fadeChecked}>
+                    Fade
+                </JqxRadioButton>
             </div>
-        );
-    }
-
-    private noneAnimationOnChecked(): void {
-        this.setState({
-            animationType: 'none',
-            fadeChecked: false,
-            noneChecked: true,
-            slideChecked: false
-        });
-    };
-
-    private slideAnimationOnChecked(): void {
-        this.setState({
-            animationType: 'slide',
-            fadeChecked: false,
-            noneChecked: false,
-            slideChecked: true,
-        });
-    };
-
-    private fadeAnimationOnChecked(): void {
-        this.setState({
-            animationType: 'fade',
-            fadeChecked: true,
-            noneChecked: false,
-            slideChecked: false
-        });
-    };
-}
+            <JqxComboBox
+                theme={'material-purple'}
+                ref={myComboBox}
+                width={150}
+                height={30}
+                source={source}
+                animationType={animationType}
+                dropDownHorizontalAlignment={'right'}
+                displayMember={'ContactName'}
+                valueMember={'CompanyName'}
+            />
+        </div>
+    );
+};
 
 export default App;

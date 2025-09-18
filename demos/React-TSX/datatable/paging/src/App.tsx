@@ -1,49 +1,44 @@
-﻿import * as React from 'react';
- 
-
+import * as React from 'react';
 
 import { generatedata } from './generatedata';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
+const App = () => {
+    const source = React.useMemo(() => ({
+        dataFields: [
+            { name: 'firstname', type: 'string' },
+            { name: 'lastname', type: 'string' },
+            { name: 'productname', type: 'string' },
+            { name: 'quantity', type: 'number' },
+            { name: 'price', type: 'number' },
+            { name: 'total', type: 'number' }
+        ],
+        dataType: 'array',
+        localData: generatedata(200, false)
+    }), []);
 
-    constructor(props: {}) {
-        super(props);
+    const columns = React.useMemo(() => [
+        { text: 'Name', dataField: 'firstname', width: 150 },
+        { text: 'Last Name', dataField: 'lastname', width: 150 },
+        { text: 'Product', editable: false, dataField: 'productname', width: 250 },
+        { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right' },
+        { text: 'Unit Price', dataField: 'price', width: 80, cellsAlign: 'right', cellsFormat: 'c2' },
+        { text: 'Total', dataField: 'total', cellsAlign: 'right', cellsFormat: 'c2' }
+    ], []);
 
-        const source = {
-            dataFields: [
-                { name: 'firstname', type: 'string' },
-                { name: 'lastname', type: 'string' },
-                { name: 'productname', type: 'string' },
-                { name: 'quantity', type: 'number' },
-                { name: 'price', type: 'number' },
-                { name: 'total', type: 'number' }
-            ],
-            dataType: 'array',
-            localData: generatedata(200, false)
-        };
-    
-        this.state = {
-            columns: [
-                { text: 'Name', dataField: 'firstname', width: 150 },
-                { text: 'Last Name', dataField: 'lastname', width: 150 },
-                { text: 'Product', editable: false, dataField: 'productname', width: 250 },
-                { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right' },
-                { text: 'Unit Price', dataField: 'price', width: 80, cellsAlign: 'right', cellsFormat: 'c2' },
-                { text: 'Total', dataField: 'total', cellsAlign: 'right', cellsFormat: 'c2' }
-            ],
-            source: new jqx.dataAdapter(source)
-        };
-    }
+    const dataAdapter = React.useMemo(() => new jqx.dataAdapter(source), [source]);
 
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                pageable={true} altRows={true} pagerMode={'advanced'} />
-        );
-    }
-}
+    return (
+        <JqxDataTable
+            theme={'material-purple'}
+            width={'100%'}
+            source={dataAdapter}
+            columns={columns}
+            pageable={true}
+            altRows={true}
+            pagerMode={'advanced'}
+        />
+    );
+};
 
 export default App;

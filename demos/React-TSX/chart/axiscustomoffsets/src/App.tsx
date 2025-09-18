@@ -1,269 +1,167 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useState } from 'react';
 import './App.css';
-
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxChart, { IChartProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 import JqxInput from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxinput';
 import JqxListBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxlistbox';
 
-export interface IState extends IChartProps {
-    dropDownListSource: IDropDownListProps["source"];
-    xAxisDropDownSelected: IDropDownListProps["selectedIndex"];
-    valueAxisDropDownSelected: IDropDownListProps["selectedIndex"];
-}
+const sampleData = [
+    { a: 0.1535, b: 0.5 },
+    { a: 0.48, b: 20.5 },
+    { a: 10, b: 60 },
+    { a: 100, b: 80 },
+    { a: 200, b: 90 },
+    { a: 245.11, b: 100.13 },
+    { a: 300.13, b: 150.13 },
+    { a: 340, b: 200 }
+];
 
-class App extends React.PureComponent<{}, IState> {
-    private myChart = React.createRef<JqxChart>();
-    private myCustomXAxisInput = React.createRef<JqxInput>();
-    private myCustomValueAxisInput = React.createRef<JqxInput>();
-    private myXAxisListBox = React.createRef<JqxListBox>();
-    private myValueAxisListBox = React.createRef<JqxListBox>();
+const initialCustomPositions = [10, 20];
 
-    constructor(props: {}) {
-        super(props);
-        this.dropDownLabelsVisibility_xAxisOnChange = this.dropDownLabelsVisibility_xAxisOnChange.bind(this);
-        this.dropDownLabelsVisibility_valueAxisOnChange = this.dropDownLabelsVisibility_valueAxisOnChange.bind(this);
-        this.btnAddCustomPosition_xAxisOnClick = this.btnAddCustomPosition_xAxisOnClick.bind(this);
-        this.btnAddCustomPosition_valueAxisOnClick = this.btnAddCustomPosition_valueAxisOnClick.bind(this);
-        this.btnRemoveCustomPosition_xAxisOnClick = this.btnRemoveCustomPosition_xAxisOnClick.bind(this);
-        this.btnRemoveCustomPosition_valueAxisOnClick = this.btnRemoveCustomPosition_valueAxisOnClick.bind(this);
+function App() {
+    const myChart = useRef<JqxChart>(null);
+    const myCustomXAxisInput = useRef<JqxInput>(null);
+    const myCustomValueAxisInput = useRef<JqxInput>(null);
+    const myXAxisListBox = useRef<JqxListBox>(null);
+    const myValueAxisListBox = useRef<JqxListBox>(null);
 
-        const sampleData = [
-            { a: 0.1535, b: 0.5 },
-            { a: 0.48, b: 20.5 },
-            { a: 10, b: 60 },
-            { a: 100, b: 80 },
-            { a: 200, b: 90 },
-            { a: 245.11, b: 100.13 },
-            { a: 300.13, b: 150.13 },
-            { a: 340, b: 200 }
-        ];
+    const [dropDownListSource] = useState<IDropDownListProps['source']>([true, false, 'custom']);
 
-        this.state = {
-            dropDownListSource: [true, false, 'custom'],
-            padding: { left: 5, top: 5, right: 15, bottom: 5 },
-            seriesGroups: [
-                {
-                    series: [
-                        { dataField: 'a', displayText: 'A', symbolType: 'diamond', symbolSize: 10 },
-                        { dataField: 'b', displayText: 'B', symbolType: 'triangle_up', symbolSize: 10 }
-                    ],
-                    type: 'scatter'
-                }
-            ],
-            source: sampleData,
-            title: 'Custom labels, grid lines and tick marks offsets',
-            titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
-            valueAxis: {
-                flip: false,
-                gridLines: {
-                    custom: [{ value: 10 }, { value: 20 }]
-                },
-                labels: {
-                    custom: [{ value: 10 }, { value: 20 }],
-                    horizontalAlignment: 'right'                   
-                },
-                logarithmicScale: true,
-                logarithmicScaleBase: 2,               
-                tickMarks: {
-                    custom: [{ value: 10 }, { value: 20 }]
-                }
-            },
-            valueAxisDropDownSelected: 0,
-            xAxis: {
-                dataField: 'a',
-                flip: false,
-                gridLines:
-                {
-                    custom: [{ value: 10 }, { value: 20 }],
-                    visible: true
-                },
-                labels: {
-                    custom: [{ value: 10 }, { value: 20 }],
-                    visible: true
-                },
-                logarithmicScale: true,
-                logarithmicScaleBase: 2,              
-                tickMarks:
-                {
-                    custom: [{ value: 10 }, { value: 20 }],
-                    visible: true
-                }
-            },
-            xAxisDropDownSelected: 0
-        };
-    }
+    const [xAxisCustomPositions, setXAxisCustomPositions] = useState<number[]>([...initialCustomPositions]);
+    const [valueAxisCustomPositions, setValueAxisCustomPositions] = useState<number[]>([...initialCustomPositions]);
+    const [xAxisDropDownSelected, setXAxisDropDownSelected] = useState<IDropDownListProps["selectedIndex"]>(0);
+    const [valueAxisDropDownSelected, setValueAxisDropDownSelected] = useState<IDropDownListProps["selectedIndex"]>(0);
 
-    public render() {
-        return (
-            <div>
-                <JqxChart ref={this.myChart} style={{ width: '850px', height: '500px' }}
-                    title={this.state.title} enableAnimations={false} padding={this.state.padding}
-                    titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                    valueAxis={this.state.valueAxis} seriesGroups={this.state.seriesGroups} />
-                <table>
-                    <tbody>
-                        <tr>
-                            <td style={{ width: '300px' }}><strong>xAxis settings</strong></td>
-                            <td style={{ width: '300px' }}><strong>valueAxis settings</strong></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Label, tick marks & grid lines visibility:</p>
-                                <JqxDropDownList theme={'material-purple'} onChange={this.dropDownLabelsVisibility_xAxisOnChange}
-                                    width={235} height={25} dropDownHeight={80} selectedIndex={this.state.xAxisDropDownSelected}
-                                    source={this.state.dropDownListSource} />
-                            </td>
-                            <td>
-                                <p>Label, tick marks & grid lines visibility:</p>
-                                <JqxDropDownList theme={'material-purple'} onChange={this.dropDownLabelsVisibility_valueAxisOnChange}
-                                    width={235} height={25} dropDownHeight={80} selectedIndex={this.state.valueAxisDropDownSelected}
-                                    source={this.state.dropDownListSource} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Custom positions:</p>
-                                <JqxInput theme={'material-purple'} ref={this.myCustomXAxisInput} width={50} height={22} />
-                                <JqxButton theme={'material-purple'} onClick={this.btnAddCustomPosition_xAxisOnClick}>Add</JqxButton>
-                                <JqxButton theme={'material-purple'} onClick={this.btnRemoveCustomPosition_xAxisOnClick}>Remove</JqxButton>
-                                <JqxListBox theme={'material-purple'} ref={this.myXAxisListBox} style={{ marginTop: '10px' }}
-                                    width={235} height={80} source={[10, 20]} />
-                            </td >
-                            <td>
-                                <p>Custom positions:</p>
-                                <JqxInput theme={'material-purple'} ref={this.myCustomValueAxisInput} width={50} height={22} />
-                                <JqxButton theme={'material-purple'} onClick={this.btnAddCustomPosition_valueAxisOnClick}>Add</JqxButton>
-                                <JqxButton theme={'material-purple'} onClick={this.btnRemoveCustomPosition_valueAxisOnClick}>Remove</JqxButton>
-                                <JqxListBox theme={'material-purple'} ref={this.myValueAxisListBox} style={{ marginTop: '10px' }}
-                                    width={235} height={80} source={[10, 20]} />
-                            </td >
-                        </tr >
-                    </tbody >
-                </table >
-            </div >
-        );
-    }
+    const [chartProps, setChartProps] = useState<IChartProps>({
+        padding: { left: 5, top: 5, right: 15, bottom: 5 },
+        seriesGroups: [
+            {
+                series: [
+                    { dataField: 'a', displayText: 'A', symbolType: 'diamond', symbolSize: 10 },
+                    { dataField: 'b', displayText: 'B', symbolType: 'triangle_up', symbolSize: 10 }
+                ],
+                type: 'scatter'
+            }
+        ],
+        source: sampleData,
+        title: 'Custom labels, grid lines and tick marks offsets',
+        titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+        valueAxis: {
+            flip: false,
+            gridLines: { custom: initialCustomPositions.map(v => ({ value: v })) },
+            labels: { custom: initialCustomPositions.map(v => ({ value: v })), horizontalAlignment: 'right' },
+            logarithmicScale: true,
+            logarithmicScaleBase: 2,
+            tickMarks: { custom: initialCustomPositions.map(v => ({ value: v })) }
+        },
+        xAxis: {
+            dataField: 'a',
+            flip: false,
+            gridLines: { custom: initialCustomPositions.map(v => ({ value: v })), visible: true },
+            labels: { custom: initialCustomPositions.map(v => ({ value: v })), visible: true },
+            logarithmicScale: true,
+            logarithmicScaleBase: 2,
+            tickMarks: { custom: initialCustomPositions.map(v => ({ value: v })), visible: true }
+        }
+    });
 
-    private dropDownLabelsVisibility_xAxisOnChange(event: any) {
+    const refreshChart = () => {
+        myChart.current?.refresh();
+    };
+
+    const dropDownLabelsVisibility_xAxisOnChange = (event: any) => {
         const value = event.args.item.value;
         const index = event.args.index;
-        const newXAxis = this.state.xAxis;
-        newXAxis!.labels!.visible = value === 'false' ? false : value;
-        newXAxis!.gridLines!.visible = value === 'false' ? false : value;
-        newXAxis!.tickMarks!.visible = value === 'false' ? false : value;
-        this.setState({
-            xAxis: newXAxis,
-            xAxisDropDownSelected: index
-        }, () => {
-            this.myChart.current!.refresh();
-        });
-    }
+        const newXAxis = { ...chartProps.xAxis } as any;
+        newXAxis.labels = { ...newXAxis.labels, visible: value === 'false' ? false : value };
+        newXAxis.gridLines = { ...newXAxis.gridLines, visible: value === 'false' ? false : value };
+        newXAxis.tickMarks = { ...newXAxis.tickMarks, visible: value === 'false' ? false : value };
+        setChartProps(prev => ({ ...prev, xAxis: newXAxis }));
+        setXAxisDropDownSelected(index);
+        setTimeout(refreshChart, 0);
+    };
 
-    private dropDownLabelsVisibility_valueAxisOnChange(event: any) {
+    const dropDownLabelsVisibility_valueAxisOnChange = (event: any) => {
         const value = event.args.item.value;
         const index = event.args.index;
-        const newValueAxis = this.state.valueAxis;
-        newValueAxis!.labels!.visible = value === 'false' ? false : value;
-        newValueAxis!.gridLines!.visible = value === 'false' ? false : value;
-        newValueAxis!.tickMarks!.visible = value === 'false' ? false : value;
-        this.setState({
-            valueAxis: newValueAxis,
-            valueAxisDropDownSelected: index
-        }, () => {
-            this.myChart.current!.refresh();
-        });
-    } 
+        const newValueAxis = { ...chartProps.valueAxis } as any;
+        newValueAxis.labels = { ...newValueAxis.labels, visible: value === 'false' ? false : value };
+        newValueAxis.gridLines = { ...newValueAxis.gridLines, visible: value === 'false' ? false : value };
+        newValueAxis.tickMarks = { ...newValueAxis.tickMarks, visible: value === 'false' ? false : value };
+        setChartProps(prev => ({ ...prev, valueAxis: newValueAxis }));
+        setValueAxisDropDownSelected(index);
+        setTimeout(refreshChart, 0);
+    };
 
-    private btnAddCustomPosition_xAxisOnClick() {
-        const value = this.myCustomXAxisInput.current!.getOptions('value');
-        if (!isNaN(parseFloat(value))) {
-            this.myXAxisListBox.current!.addItem(parseFloat(value));
-            const items = this.myXAxisListBox.current!.getItems();
-            const customOffsets = [];
-            for (const item of items) {
-                customOffsets.push({ value: parseFloat(item.value) });
-            }
-            const newXAxis = this.state.xAxis;
-            newXAxis!.labels!.custom = customOffsets;
-            newXAxis!.gridLines!.custom = customOffsets;
-            newXAxis!.tickMarks!.custom = customOffsets;
-            this.setState({
-                xAxis: newXAxis
-            }, () => {
-                this.myChart.current!.refresh();
-            });
+    const btnAddCustomPosition_xAxisOnClick = () => {
+        const value = myCustomXAxisInput.current?.getOptions('value');
+        const parsed = parseFloat(value);
+        if (!isNaN(parsed)) {
+            const updatedPositions = [...xAxisCustomPositions, parsed];
+            setXAxisCustomPositions(updatedPositions);
+            const customOffsets = updatedPositions.map(v => ({ value: v }));
+            const newXAxis = { ...chartProps.xAxis } as any;
+            newXAxis.labels = { ...newXAxis.labels, custom: customOffsets };
+            newXAxis.gridLines = { ...newXAxis.gridLines, custom: customOffsets };
+            newXAxis.tickMarks = { ...newXAxis.tickMarks, custom: customOffsets };
+            setChartProps(prev => ({ ...prev, xAxis: newXAxis }));
+            setTimeout(refreshChart, 0);
         }
-    }
+    };
 
-    private btnRemoveCustomPosition_xAxisOnClick() {
-        const idx = this.myXAxisListBox.current!.getOptions('selectedIndex');
-        if (idx === -1) {
-            return;
-        }
-        this.myXAxisListBox.current!.removeAt(idx);
-        const items = this.myXAxisListBox.current!.getItems();
-        const customOffsets = [];
-        for (const item of items) {
-            customOffsets.push({ value: parseFloat(item.value) });
-        }
-        const newXAxis = this.state.xAxis;
-        newXAxis!.labels!.custom = customOffsets;
-        newXAxis!.gridLines!.custom = customOffsets;
-        newXAxis!.tickMarks!.custom = customOffsets;
-        this.setState({
-            xAxis: newXAxis
-        }, () => {
-            this.myChart.current!.refresh();
-        });
-    }
+    const btnRemoveCustomPosition_xAxisOnClick = () => {
+        const idx = myXAxisListBox.current?.getOptions('selectedIndex');
+        if (typeof idx !== 'number' || idx === -1) return;
+        const newPositions = xAxisCustomPositions.filter((_, i) => i !== idx);
+        setXAxisCustomPositions(newPositions);
+        const customOffsets = newPositions.map(v => ({ value: v }));
+        const newXAxis = { ...chartProps.xAxis } as any;
+        newXAxis.labels = { ...newXAxis.labels, custom: customOffsets };
+        newXAxis.gridLines = { ...newXAxis.gridLines, custom: customOffsets };
+        newXAxis.tickMarks = { ...newXAxis.tickMarks, custom: customOffsets };
+        setChartProps(prev => ({ ...prev, xAxis: newXAxis }));
+        setTimeout(refreshChart, 0);
+    };
 
-    private btnAddCustomPosition_valueAxisOnClick() {
-        const value = this.myCustomValueAxisInput.current!.getOptions('value');
-        if (!isNaN(parseFloat(value))) {
-            this.myValueAxisListBox.current!.addItem(parseFloat(value));
-            const items = this.myValueAxisListBox.current!.getItems();
-            const customOffsets = [];
-            for (const item of items) {
-                customOffsets.push({ value: parseFloat(item.value) });
-            }
-            const newValueAxis = this.state.valueAxis;
-            newValueAxis!.labels!.custom = customOffsets;
-            newValueAxis!.gridLines!.custom = customOffsets;
-            newValueAxis!.tickMarks!.custom = customOffsets;
-            this.setState({
-                valueAxis: newValueAxis
-            }, () => {
-                this.myChart.current!.refresh();
-            });
+    const btnAddCustomPosition_valueAxisOnClick = () => {
+        const value = myCustomValueAxisInput.current?.getOptions('value');
+        const parsed = parseFloat(value);
+        if (!isNaN(parsed)) {
+            const updatedPositions = [...valueAxisCustomPositions, parsed];
+            setValueAxisCustomPositions(updatedPositions);
+            const customOffsets = updatedPositions.map(v => ({ value: v }));
+            const newValueAxis = { ...chartProps.valueAxis } as any;
+            newValueAxis.labels = { ...newValueAxis.labels, custom: customOffsets };
+            newValueAxis.gridLines = { ...newValueAxis.gridLines, custom: customOffsets };
+            newValueAxis.tickMarks = { ...newValueAxis.tickMarks, custom: customOffsets };
+            setChartProps(prev => ({ ...prev, valueAxis: newValueAxis }));
+            setTimeout(refreshChart, 0);
         }
-    }
+    };
 
-    private btnRemoveCustomPosition_valueAxisOnClick() {
-        const idx = this.myValueAxisListBox.current!.getOptions('selectedIndex');
-        if (idx === -1) {
-            return;
-        }
-        this.myValueAxisListBox.current!.removeAt(idx);
-        const items = this.myValueAxisListBox.current!.getItems();
-        const customOffsets = [];
-        for (const item of items) {
-            customOffsets.push({ value: parseFloat(item.value) });
-        }
-        const newValueAxis = this.state.valueAxis;
-        newValueAxis!.labels!.custom = customOffsets;
-        newValueAxis!.gridLines!.custom = customOffsets;
-        newValueAxis!.tickMarks!.custom = customOffsets;
-        this.setState({
-            valueAxis: newValueAxis
-        }, () => {
-            this.myChart.current!.refresh();
-        });
-    }
-}
+    const btnRemoveCustomPosition_valueAxisOnClick = () => {
+        const idx = myValueAxisListBox.current?.getOptions('selectedIndex');
+        if (typeof idx !== 'number' || idx === -1) return;
+        const newPositions = valueAxisCustomPositions.filter((_, i) => i !== idx);
+        setValueAxisCustomPositions(newPositions);
+        const customOffsets = newPositions.map(v => ({ value: v }));
+        const newValueAxis = { ...chartProps.valueAxis } as any;
+        newValueAxis.labels = { ...newValueAxis.labels, custom: customOffsets };
+        newValueAxis.gridLines = { ...newValueAxis.gridLines, custom: customOffsets };
+        newValueAxis.tickMarks = { ...newValueAxis.tickMarks, custom: customOffsets };
+        setChartProps(prev => ({ ...prev, valueAxis: newValueAxis }));
+        setTimeout(refreshChart, 0);
+    };
 
-export default App; 
+    return (
+        <div>
+            <JqxChart
+                ref={myChart}
+                style={{ width: '850px', height: '500px' }}
+                title={chartProps.title}
+                enableAnimations={false}
+                padding={chartProps.padding}
+                titlePadding={chartProps.titlePadding}
+               

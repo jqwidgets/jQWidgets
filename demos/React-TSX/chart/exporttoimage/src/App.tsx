@@ -1,23 +1,14 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useMemo } from 'react';
 import './App.css';
-
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxChart, { IChartProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
+const App = () => {
+    const myChart = useRef<JqxChart>(null);
 
-    private myChart = React.createRef<JqxChart>();
-
-    constructor(props: {}) {
-        super(props);
-        this.jpegButtonOnClick = this.jpegButtonOnClick.bind(this);
-        this.pngButtonOnClick = this.pngButtonOnClick.bind(this);
-        this.pdfButtonOnClick = this.pdfButtonOnClick.bind(this);
-
-        const source: any = {
+    const { source, seriesGroups, padding, title, description, titlePadding, xAxis } = useMemo(() => {
+        const src: any = {
             datafields: [
                 { name: 'Country' },
                 { name: 'GDP' },
@@ -27,10 +18,21 @@ class App extends React.PureComponent<{}, IChartProps> {
             datatype: 'csv',
             url: 'gdp_dept_2010.txt'
         };
-
-        this.state = {
+        return {
+            source: new jqx.dataAdapter(src, {
+                async: false,
+                autoBind: true,
+                loadError: (xhr: any, status: any, error: any) => {
+                    alert('Error loading "' + src.url + '" : ' + error)
+                }
+            }),
+            title: 'Economic comparison',
             description: 'GDP and Debt in 2010',
             padding: { left: 5, top: 5, right: 5, bottom: 5 },
+            titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+            xAxis: {
+                dataField: 'Country'
+            },
             seriesGroups: [
                 {
                     columnsGapPercent: 50,
@@ -39,8 +41,7 @@ class App extends React.PureComponent<{}, IChartProps> {
                         { dataField: 'Debt', displayText: 'Debt per Capita' }
                     ],
                     type: 'column',
-                    valueAxis:
-                    {                       
+                    valueAxis: {
                         title: { text: 'GDP & Debt per Capita($)<br>' },
                         unitInterval: 5000
                     }
@@ -50,53 +51,52 @@ class App extends React.PureComponent<{}, IChartProps> {
                         { dataField: 'DebtPercent', displayText: 'Debt (% of GDP)' }
                     ],
                     type: 'line',
-                    valueAxis:
-                    {
+                    valueAxis: {
                         gridLines: { visible: false },
                         position: 'right',
                         title: { text: 'Debt (% of GDP)<br>' },
                         unitInterval: 10
                     }
                 }
-            ],
-            source: new jqx.dataAdapter(source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source.url + '" : ' + error) } }),
-            title: 'Economic comparison',
-            titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
-            xAxis: {
-                dataField: 'Country'
-            }
+            ]
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxChart ref={this.myChart} style={{ width: '850px', height: '500px' }}
-                    title={this.state.title} description={this.state.description}
-                    showLegend={true} enableAnimations={true} padding={this.state.padding}
-                    titlePadding={this.state.titlePadding} source={this.state.source} xAxis={this.state.xAxis}
-                    seriesGroups={this.state.seriesGroups} colorScheme={'scheme01'} />
+    const jpegButtonOnClick = () => {
+        myChart.current!.saveAsJPEG('myChart.jpeg', 'https://www.jqwidgets.com/export_server/export.php');
+    };
 
-                <div style={{ marginTop: '10px' }}>
-                    <JqxButton theme={'material-purple'} onClick={this.jpegButtonOnClick}>Save As JPEG</JqxButton>
-                    <JqxButton theme={'material-purple'} onClick={this.pngButtonOnClick}>Save As PNG</JqxButton>
-                    <JqxButton theme={'material-purple'} onClick={this.pdfButtonOnClick}>Save As PDF</JqxButton>
-                </div>
+    const pngButtonOnClick = () => {
+        myChart.current!.saveAsPNG('myChart.png', 'https://www.jqwidgets.com/export_server/export.php');
+    };
+
+    const pdfButtonOnClick = () => {
+        myChart.current!.saveAsPDF('myChart.pdf', 'https://www.jqwidgets.com/export_server/export.php');
+    };
+
+    return (
+        <div>
+            <JqxChart
+                ref={myChart}
+                style={{ width: '850px', height: '500px' }}
+                title={title}
+                description={description}
+                showLegend={true}
+                enableAnimations={true}
+                padding={padding}
+                titlePadding={titlePadding}
+                source={source}
+                xAxis={xAxis}
+                seriesGroups={seriesGroups}
+                colorScheme={'scheme01'}
+            />
+            <div style={{ marginTop: '10px' }}>
+                <JqxButton theme={'material-purple'} onClick={jpegButtonOnClick}>Save As JPEG</JqxButton>
+                <JqxButton theme={'material-purple'} onClick={pngButtonOnClick}>Save As PNG</JqxButton>
+                <JqxButton theme={'material-purple'} onClick={pdfButtonOnClick}>Save As PDF</JqxButton>
             </div>
-        );
-    }
+        </div>
+    );
+};
 
-    private jpegButtonOnClick() {
-        this.myChart.current!.saveAsJPEG('myChart.jpeg', 'https://www.jqwidgets.com/export_server/export.php');
-    }
-
-    private pngButtonOnClick() {
-        this.myChart.current!.saveAsPNG('myChart.png', 'https://www.jqwidgets.com/export_server/export.php');
-    }
-
-    private pdfButtonOnClick() {
-        this.myChart.current!.saveAsPDF('myChart.pdf', 'https://www.jqwidgets.com/export_server/export.php');
-    }
-}
-
-export default App; 
+export default App;

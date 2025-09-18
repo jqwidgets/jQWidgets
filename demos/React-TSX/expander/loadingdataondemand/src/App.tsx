@@ -1,55 +1,43 @@
-﻿import * as React from 'react';
- 
-
-
+import React, { useEffect, useRef } from 'react';
 import JqxExpander from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxexpander';
 
-class App extends React.PureComponent<{}> {
+const App = () => {
+    const myExpander = useRef<JqxExpander>(null);
 
-    private myExpander = React.createRef<JqxExpander>();
-  
-    constructor(props: {}) {
-        super(props);
-    }
-
-    public componentDidMount() {
+    useEffect(() => {
         fetch('jqxexpanderxmldata.xml')
             .then(response => response.text())
-                .then(data => this.populateExpander(data));
-    }
+            .then(data => {
+                const content = document.createElement('div');
+                content.innerHTML = data;
 
-    public render() {
-        return (
-            <JqxExpander theme={'material-purple'} ref={this.myExpander} width={350} height={350}>
-                <div>
-                    Loading Header...
-                </div>
-                <div>
-                    Loading Content...
-                </div>
-            </JqxExpander>
-        );
-    }
+                const LIArray = content.getElementsByTagName('li');
+                const container = document.createElement('div');
+                const ul = document.createElement('ul');
 
-    private populateExpander(data: any) {
-        const content = document.createElement('div');
-        content.innerHTML = data;
+                Array.prototype.forEach.call(LIArray, (liItem: HTMLLIElement) => {
+                    const li = document.createElement('li');
+                    li.innerText = liItem.innerHTML;
+                    ul.appendChild(li);
+                });
 
-        const LIArray = content.getElementsByTagName('li');
-        const container = document.createElement('div');
-        const ul = document.createElement('ul');
+                container.appendChild(ul);
 
-        Array.prototype.forEach.call(LIArray, (liItem: HTMLLIElement) => {
-            const li = document.createElement('li');
-            li.innerText = liItem.innerHTML;
-            ul.appendChild(li);
-        });
+                myExpander.current?.setContent(container.outerHTML);
+                myExpander.current?.setHeaderContent(content.getElementsByTagName('header')[0].innerHTML);
+            });
+    }, []);
 
-        container.appendChild(ul);
-
-        this.myExpander.current!.setContent(container.outerHTML);
-        this.myExpander.current!.setHeaderContent(content.getElementsByTagName('header')[0].innerHTML);
-    }
-}
+    return (
+        <JqxExpander theme="material-purple" ref={myExpander} width={350} height={350}>
+            <div>
+                Loading Header...
+            </div>
+            <div>
+                Loading Content...
+            </div>
+        </JqxExpander>
+    );
+};
 
 export default App;

@@ -1,16 +1,11 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
 import JqxMenu, { IMenuProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu';
 
-class App extends React.PureComponent<{}, IMenuProps> {
+const App = () => {
+    const [source, setSource] = React.useState<IMenuProps['source']>([]);
 
-    constructor(props: {}) {
-        super(props);
-
-        // prepare the data
-        const source = {
+    React.useEffect(() => {
+        const dataSource = {
             async: false,
             datafields: [
                 { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName' },
@@ -27,22 +22,24 @@ class App extends React.PureComponent<{}, IMenuProps> {
             url: 'customers.xml'
         };
 
-        const getAdapter = (dataSource: any): any => {
-            const dataAdapter = new jqx.dataAdapter(dataSource);
-            // perform Data Binding.
+        const getAdapter = (src: any) => {
+            const dataAdapter = new jqx.dataAdapter(src);
             dataAdapter.dataBind();
             return dataAdapter;
         };
-        this.state = {
-            source: getAdapter(source).getGroupedRecords(['ContactTitle', 'ContactName'], 'items', 'label', [{ name: 'ContactName', map: 'label' }])
-        }
-    }
 
-    public render() {
-        return (
-            <JqxMenu theme={'material-purple'} width={150} source={this.state.source} mode={'vertical'} />
+        const groupedSource = getAdapter(dataSource).getGroupedRecords(
+            ['ContactTitle', 'ContactName'],
+            'items',
+            'label',
+            [{ name: 'ContactName', map: 'label' }]
         );
-    }
-}
+        setSource(groupedSource);
+    }, []);
+
+    return (
+        <JqxMenu theme={'material-purple'} width={150} source={source} mode={'vertical'} />
+    );
+};
 
 export default App;

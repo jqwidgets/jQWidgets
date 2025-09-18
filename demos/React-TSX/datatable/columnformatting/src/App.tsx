@@ -1,25 +1,27 @@
-﻿import * as React from 'react';
- 
+import * as React from 'react';
+import { useRef, useMemo } from 'react';
+import JqxDataTable, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
+import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
+const App = () => {
+    const myDataTable = useRef<JqxDataTable>(null);
 
-import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
-import JqxDropDownList, { IDropDownListProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
+    const dateSource = useMemo(() => [
+        'Short Date',
+        'Long Date',
+        'Long date, Short Time',
+        'Long date, Long Time',
+        'Month/Year',
+        'Month/Day',
+        'Custom'
+    ], []);
 
-export interface IState extends IDataTableProps {
-    dateSource: IDropDownListProps['source'];
-    numberSource: IDropDownListProps['source'];
-}
+    const numberSource = useMemo(() => [
+        'n', 'f', 'f2', 'f3', 'c', 'c2', 'c3', 'p', 'p2', 'p3'
+    ], []);
 
-class App extends React.PureComponent<{}, IState> {
-
-    private myDataTable = React.createRef<JqxDataTable>();
-
-    constructor(props: {}) {
-        super(props);
-        this.dateFormats = this.dateFormats.bind(this);
-        this.cellsAlignment = this.cellsAlignment.bind(this);
-
-        const source: any = {
+    const source = useMemo(() => {
+        return new jqx.dataAdapter({
             dataFields: [
                 { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
                 { name: 'Freight', map: 'm\\:properties>d\\:Freight', type: 'float' },
@@ -33,107 +35,117 @@ class App extends React.PureComponent<{}, IState> {
             record: 'content',
             root: 'entry',
             url: 'orders.xml'
-        };
+        });
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Shipped Date', dataField: 'ShippedDate', width: '50%', cellsFormat: 'D' },
-                { text: 'Freight', dataField: 'Freight', width: '50%', cellsFormat: 'f2', cellsAlign: 'right' }
-            ],
-            dateSource: ['Short Date', 'Long Date', 'Long date, Short Time', 'Long date, Long Time', 'Month/Year', 'Month/Day', 'Custom'],
-            numberSource: ['n', 'f', 'f2', 'f3', 'c', 'c2', 'c3', 'p', 'p2', 'p3'],
-            source: new jqx.dataAdapter(source)
-        };
-    }
+    const columns = useMemo(() => [
+        { text: 'Shipped Date', dataField: 'ShippedDate', width: '50%', cellsFormat: 'D' },
+        { text: 'Freight', dataField: 'Freight', width: '50%', cellsFormat: 'f2', cellsAlign: 'right' }
+    ], []);
 
-    public render() {
-        return (
-            <div>
-                <JqxDataTable theme={'material-purple'} ref={this.myDataTable}
-                    // @ts-ignore 
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    sortable={true} pageable={true} columnsResize={true} />
-                <div style={{ fontSize: '13px', fontFamily: 'Verdana', width: '600px', marginTop: '10px' }}>
-                    <div style={{ float: 'left', width: '300px' }}>
-                        <h4>Shipped Date</h4>
-                        <JqxDropDownList theme={'material-purple'} onChange={this.dateFormats}
-                            height={25} autoDropDownHeight={true}
-                            selectedIndex={1} source={this.state.dateSource} />
-                    </div>
-                    <div style={{ float: 'left', width: '300px' }}>
-                        <h4>Freight</h4>
-                        <JqxDropDownList theme={'material-purple'} onChange={this.cellsAlignment}
-                            height={25} autoDropDownHeight={true}
-                            selectedIndex={2} source={this.state.numberSource} />
-
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    private dateFormats(event: any): void {
+    const dateFormats = (event: any) => {
         const index = event.args.index;
+        if (!myDataTable.current) return;
         switch (index) {
             case 0:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'd');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'd');
                 break;
             case 1:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'D');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'D');
                 break;
             case 2:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'f');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'f');
                 break;
             case 3:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'F');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'F');
                 break;
             case 4:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'Y');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'Y');
                 break;
             case 5:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'M');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'M');
                 break;
             case 6:
-                this.myDataTable.current!.setColumnProperty('ShippedDate', 'cellsFormat', 'yyyy-MM-dd HH:mm:ss');
+                myDataTable.current.setColumnProperty('ShippedDate', 'cellsFormat', 'yyyy-MM-dd HH:mm:ss');
                 break;
         }
-    }
+    };
 
-    private cellsAlignment(event: any): void {
+    const cellsAlignment = (event: any) => {
         const index = event.args.index;
+        if (!myDataTable.current) return;
         switch (index) {
             case 0:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'n');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'n');
                 break;
             case 1:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'f');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'f');
                 break;
             case 2:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'f2');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'f2');
                 break;
             case 3:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'f3');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'f3');
                 break;
             case 4:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'c');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'c');
                 break;
             case 5:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'c2');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'c2');
                 break;
             case 6:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'c3');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'c3');
                 break;
             case 7:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'p');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'p');
                 break;
             case 8:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'p2');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'p2');
                 break;
             case 9:
-                this.myDataTable.current!.setColumnProperty('Freight', 'cellsFormat', 'p3');
+                myDataTable.current.setColumnProperty('Freight', 'cellsFormat', 'p3');
                 break;
         }
-    }
-}
+    };
+
+    return (
+        <div>
+            <JqxDataTable
+                theme="material-purple"
+                ref={myDataTable}
+                width="100%"
+                source={source}
+                columns={columns}
+                sortable={true}
+                pageable={true}
+                columnsResize={true}
+            />
+            <div style={{ fontSize: '13px', fontFamily: 'Verdana', width: '600px', marginTop: '10px' }}>
+                <div style={{ float: 'left', width: '300px' }}>
+                    <h4>Shipped Date</h4>
+                    <JqxDropDownList
+                        theme="material-purple"
+                        onChange={dateFormats}
+                        height={25}
+                        autoDropDownHeight={true}
+                        selectedIndex={1}
+                        source={dateSource}
+                    />
+                </div>
+                <div style={{ float: 'left', width: '300px' }}>
+                    <h4>Freight</h4>
+                    <JqxDropDownList
+                        theme="material-purple"
+                        onChange={cellsAlignment}
+                        height={25}
+                        autoDropDownHeight={true}
+                        selectedIndex={2}
+                        source={numberSource}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default App;

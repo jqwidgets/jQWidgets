@@ -141,9 +141,6 @@ export interface IGridColumn {
     threestatecheckbox?: boolean;
     sortable?: boolean;
     filterable?: boolean;
-    filternlpinput?: string;
-    aiKey?: string;
-    aiUrl?: string;
     filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
     buttonclick?: (row: number) => void;
     hideable?: boolean;
@@ -488,6 +485,9 @@ interface IGridOptions {
     editmode?: 'click' | 'selectedcell' | 'selectedrow' | 'dblclick' | 'programmatic';
     filter?: (cellValue?: IGridFilter['cellValue'], rowData?: IGridFilter['rowData'], dataField?: IGridFilter['dataField'], filterGroup?: IGridFilter['filterGroup'], defaultFilterResult?: IGridFilter['defaultFilterResult']) => any;
     filterable?: boolean;
+    filternlpinput?: string;
+    aiKey?: string;
+    aiUrl?: string;
     groupable?: boolean;
     groups?: string[];
     horizontalscrollbarstep?: number;

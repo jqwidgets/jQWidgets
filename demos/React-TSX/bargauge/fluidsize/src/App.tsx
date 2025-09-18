@@ -1,29 +1,18 @@
-import * as React from 'react';
- 
-
-
+import React, { useState } from 'react';
 import './App.css';
+import JqxBarGauge from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbargauge';
 
-import JqxBarGauge, { IBarGaugeProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbargauge';
+const App = () => {
+    const [values] = useState([32, 11, 100, 49, 69, 20]);
 
-class App extends React.PureComponent<{}, IBarGaugeProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        this.state = {
-            values: [32, 11, 100, 49, 69, 20]
-        };
-    }
-
-    public render() {
-        return ( 
-            <JqxBarGauge
-                width={'75%'} height={'75%'}
-                colorScheme={'scheme11'} values={this.state.values}
-            />
-        );
-    }
-}
+    return (
+        <JqxBarGauge
+            width={'75%'}
+            height={'75%'}
+            colorScheme={'scheme11'}
+            values={values}
+        />
+    );
+};
 
 export default App;

@@ -1,25 +1,17 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import JqxDropDownList, { IDropDownListProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
-import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
+import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-export interface IState extends IDropDownListProps {
-    leftBtnChecked: IRadioButtonProps['checked'];
-    rightBtnChecked: IRadioButtonProps['checked']
-}
+const App = () => {
+    const myDropDownList = useRef<JqxDropDownList>(null);
 
-class App extends React.PureComponent<{}, IState> {
+    const [dropDownHorizontalAlignment, setDropDownHorizontalAlignment] = useState<IDropDownListProps['dropDownHorizontalAlignment']>('right');
+    const [leftBtnChecked, setLeftBtnChecked] = useState(false);
+    const [rightBtnChecked, setRightBtnChecked] = useState(true);
 
-    private myDropDownList = React.createRef<JqxDropDownList>();
-
-    constructor(props: {}) {
-        super(props);
-        this.leftBtnOnChecked = this.leftBtnOnChecked.bind(this);
-        this.rightBtnOnChecked = this.rightBtnOnChecked.bind(this);
-
-        const source: any = {
+    const [source] = useState(() => {
+        const s: any = {
             async: false,
             datafields: [
                 { name: 'CompanyName' },
@@ -29,55 +21,52 @@ class App extends React.PureComponent<{}, IState> {
             id: 'id',
             url: 'customers.txt'
         };
+        return new jqx.dataAdapter(s);
+    });
 
-        this.state = {
-            dropDownHorizontalAlignment: 'right',
-            leftBtnChecked: false,
-            rightBtnChecked: true,
-            source: new jqx.dataAdapter(source)
+    useEffect(() => {
+        if (myDropDownList.current) {
+            myDropDownList.current.setOptions({ selectedIndex: 0 });
         }
-    }
+    }, []);
 
-    public componentDidMount() {
-        this.myDropDownList.current!.setOptions({ selectedIndex: 0 });
-    }
+    const leftBtnOnChecked = useCallback(() => {
+        setDropDownHorizontalAlignment('left');
+        setLeftBtnChecked(true);
+        setRightBtnChecked(false);
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <div style={{ float: 'left', fontSize: '13px', fontFamily: 'Verdana' }}>
-                    <h3>Alignment</h3>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.leftBtnOnChecked} checked={this.state.leftBtnChecked}>
-                        Left
-                    </JqxRadioButton>
+    const rightBtnOnChecked = useCallback(() => {
+        setDropDownHorizontalAlignment('right');
+        setLeftBtnChecked(false);
+        setRightBtnChecked(true);
+    }, []);
 
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.rightBtnOnChecked} checked={this.state.rightBtnChecked}>
-                        Right
-                    </JqxRadioButton>
-                </div>
-
-                <JqxDropDownList theme={'material-purple'} ref={this.myDropDownList} style={{ float: 'left', marginTop: '20px', marginLeft: '100px' }}
-                    width={150} height={30} source={this.state.source} displayMember={'ContactName'} valueMember={'notes'}
-                    dropDownHorizontalAlignment={this.state.dropDownHorizontalAlignment} dropDownWidth={200} />
+    return (
+        <div>
+            <div style={{ float: 'left', fontSize: '13px', fontFamily: 'Verdana' }}>
+                <h3>Alignment</h3>
+                <JqxRadioButton theme={'material-purple'} onChecked={leftBtnOnChecked} checked={leftBtnChecked}>
+                    Left
+                </JqxRadioButton>
+                <JqxRadioButton theme={'material-purple'} onChecked={rightBtnOnChecked} checked={rightBtnChecked}>
+                    Right
+                </JqxRadioButton>
             </div>
-        );
-    }
-
-    private leftBtnOnChecked(): void {
-        this.setState({
-            dropDownHorizontalAlignment: 'left',
-            leftBtnChecked: true,
-            rightBtnChecked: false
-        });
-    }
-
-    private rightBtnOnChecked(): void {
-        this.setState({
-            dropDownHorizontalAlignment: 'right',
-            leftBtnChecked: false,
-            rightBtnChecked: true
-        });
-    }
-}
+            <JqxDropDownList
+                theme={'material-purple'}
+                ref={myDropDownList}
+                style={{ float: 'left', marginTop: '20px', marginLeft: '100px' }}
+                width={150}
+                height={30}
+                source={source}
+                displayMember={'ContactName'}
+                valueMember={'notes'}
+                dropDownHorizontalAlignment={dropDownHorizontalAlignment}
+                dropDownWidth={200}
+            />
+        </div>
+    );
+};
 
 export default App;

@@ -1,5 +1,5 @@
 
-/* Release Date: Jan-28-2025 
+/* Release Date: Sep-17-2025 
 Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
@@ -7,79 +7,7 @@ License: https://jqwidgets.com/license/ */
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
-Copyright (c) 2011-2025 jQWidgets. 
-License: https://jqwidgets.com/license/ */
-
-
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-
-/* Release Date: Jan-28-2025 
+/* Release Date: Sep-17-2025 
 Copyright (c) 2011-2025 jQWidgets. 
 License: https://jqwidgets.com/license/ */
 
@@ -639,6 +567,7 @@ License: https://jqwidgets.com/license/ */
                         else {
                             instance.element.style.cursor = 'default';
                         }
+                        instance.buttonObj.removeClass(instance.toThemeProperty('jqx-fill-state-hover'));
 
                         $.jqx.aria(instance, "aria-disabled", instance.disabled);
                     }
@@ -1130,6 +1059,7 @@ License: https://jqwidgets.com/license/ */
                 };
                 that.propertyChangeMap['disabled'] = function (instance, key, oldVal, value) {
                     instance.base.disabled = value;
+                    instance.base.buttonObj.removeClass(instance.toThemeProperty('jqx-fill-state-hover'));
                     instance.refresh();
                 };
 
@@ -2311,15 +2241,15 @@ License: https://jqwidgets.com/license/ */
 /***/ }),
 
 /***/ 5459:
-/***/ ((module, exports, __nested_webpack_require_100814__) => {
+/***/ ((module, exports, __nested_webpack_require_101029__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disable */
 /* eslint-disable */
-(function(){
-	if (typeof document === 'undefined') { 
+(function () {
+	if (typeof document === 'undefined') {
 		return;
 	}
-		
+
 	var oldBrowser = document.all && !document.addEventListener;
 	if (!oldBrowser) {
 		(function (window, undefined) {
@@ -10491,7 +10421,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 			// file names, and JQXLite is normally delivered in a lowercase file name.
 			// Do this after creating the global so that if an AMD module wants to call
 			// noConflict to hide this version of JQXLite, it will work.
-			if (           true && __nested_webpack_require_100814__.amdO.JQXLite) {
+			if (  true && __nested_webpack_require_101029__.amdO.JQXLite) {
 				!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () { return JQXLite; }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 			}
@@ -11377,6 +11307,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 						return true;
 					}
 
+					if (this.theme === "tailwind" || this.theme === "tailwind-dark") {
+						return true;
+					}
+
 					if (this.theme === "light") {
 						return true;
 					}
@@ -12133,7 +12067,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 					if (!$(element).on || !$.access) {
 						return $(element).html(value);
 					}
-					try {	
+					try {
 						return $.access(element, function (value) {
 							var elem = element[0] || {},
 								i = 0,
@@ -12626,12 +12560,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 							returnValue = returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* (!?Mobile))/.exec(navigator.userAgent)) {
-							 return returnValue;
-					//       return returnValue + $(window).scrollTop();
+							return returnValue;
+							//       return returnValue + $(window).scrollTop();
 						}
 						if (/(Android.*Chrome\/[.0-9]* Mobile)/.exec(navigator.userAgent)) {
 							return returnValue;
-					//        return returnValue + $(window).scrollTop();
+							//        return returnValue + $(window).scrollTop();
 						}
 
 						return initialOffset.top;
@@ -13676,7 +13610,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_449373__(moduleId) {
+/******/ 	function __nested_webpack_require_449692__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -13690,7 +13624,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_449373__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_449692__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -13699,17 +13633,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_449373__.amdO = {};
+/******/ 		__nested_webpack_require_449692__.amdO = {};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_449373__.n = (module) => {
+/******/ 		__nested_webpack_require_449692__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_449373__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_449692__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -13717,9 +13651,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_449373__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_449692__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_449373__.o(definition, key) && !__nested_webpack_require_449373__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_449692__.o(definition, key) && !__nested_webpack_require_449692__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -13728,7 +13662,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* tslint:disabl
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_449373__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_449692__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -13736,36 +13670,18 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_449373__(5459);
-/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_449373__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_449373__(7351);
-/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_449373__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_449373__(2749);
-/* harmony import */ var _jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_449373__.n(_jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_449692__(5459);
+/* harmony import */ var _jqxcore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_449692__.n(_jqxcore__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_449692__(7351);
+/* harmony import */ var _jqxbuttons__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_449692__.n(_jqxbuttons__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_449692__(2749);
+/* harmony import */ var _jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_449692__.n(_jqxcomplexinput__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 
 })();
 
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
-/******/ })()
-;
 /******/ })()
 ;
 /******/ })()

@@ -1,21 +1,14 @@
-﻿import * as React from 'react';
- 
+import React, { useState, useEffect, useCallback } from 'react';
+import JqxDropDownList, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
 
+const App = () => {
+    const [selectedIndex, setSelectedIndex] = useState(() => {
+        const idx = jqx.cookie.cookie('jqxDropDownList_jqxWidget');
+        return idx === undefined ? 0 : idx;
+    });
 
-import JqxDropDownList, { IDropDownListProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
-
-class App extends React.PureComponent<{}, IDropDownListProps> {
-
-    private index: any = jqx.cookie.cookie('jqxDropDownList_jqxWidget');
-
-    constructor(props: {}) {
-        super(props);
-
-        if (this.index === undefined) {
-            this.index = 0;
-        }
-
-        const source: any = {
+    const [source] = useState(() => {
+        const dataSource = {
             datafields: [
                 { name: 'CompanyName' },
                 { name: 'ContactName' }
@@ -24,24 +17,33 @@ class App extends React.PureComponent<{}, IDropDownListProps> {
             id: 'id',
             url: 'customers.txt'
         };
+        return new jqx.dataAdapter(dataSource);
+    });
 
-        this.state = {
-            selectedIndex: this.index,
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <JqxDropDownList theme={'material-purple'} onSelect={this.listOnSelect}
-                width={200} height={30} source={this.state.source} selectedIndex={this.state.selectedIndex}
-                displayMember={'ContactName'} valueMember={'CompanyName'} />
-        );
-    }
-
-    private listOnSelect(event: any): void {
+    const listOnSelect = useCallback((event: any) => {
         jqx.cookie.cookie('jqxDropDownList_jqxWidget', event.args.index);
-    }
-}
+        setSelectedIndex(event.args.index);
+    }, []);
+
+    useEffect(() => {
+        setSelectedIndex(prev => {
+            const idx = jqx.cookie.cookie('jqxDropDownList_jqxWidget');
+            return idx === undefined ? 0 : idx;
+        });
+    }, [source]);
+
+    return (
+        <JqxDropDownList
+            theme={'material-purple'}
+            onSelect={listOnSelect}
+            width={200}
+            height={30}
+            source={source}
+            selectedIndex={selectedIndex}
+            displayMember={'ContactName'}
+            valueMember={'CompanyName'}
+        />
+    );
+};
 
 export default App;

@@ -1,20 +1,13 @@
-﻿import * as React from 'react';
- 
-
+import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import * as ReactDOM from 'react-dom';
-
 import './App.css';
-
 import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxnavigationbar';
 
-class App extends React.PureComponent<{}> {
+const App = () => {
+    const leftPanelRef = useRef<HTMLDivElement>(null);
 
-    constructor(props: {}) {
-        super(props);
-    }
-
-    public componentDidMount() {
-
+    useEffect(() => {
         const Tolkien =
             <div className="bookContainer">
                 <div className="book">
@@ -77,7 +70,19 @@ class App extends React.PureComponent<{}> {
                     <img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Goblet of Fire.jpg'} />
                     <i>Harry Potter and the Goblet of Fire</i>
                 </div>
-                <div className="book"><img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Order of the Phoenix.jpg'} /><i>Harry Potter and the Order of the Phoenix</i></div> <div className="book"><img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Half-Blood Prince.jpg'} /><i>Harry Potter and the Half-Blood Prince</i></div> <div className="book"><img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Deathly Hallows.jpg'} /><i>Harry Potter and the Deathly Hallows</i></div></div>;
+                <div className="book">
+                    <img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Order of the Phoenix.jpg'} />
+                    <i>Harry Potter and the Order of the Phoenix</i>
+                </div>
+                <div className="book">
+                    <img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Half-Blood Prince.jpg'} />
+                    <i>Harry Potter and the Half-Blood Prince</i>
+                </div>
+                <div className="book">
+                    <img src={'https://www.jqwidgets.com/react/images/books/Harry Potter and the Deathly Hallows.jpg'} />
+                    <i>Harry Potter and the Deathly Hallows</i>
+                </div>
+            </div>;
 
         const Wells =
             <div className="bookContainer">
@@ -145,31 +150,32 @@ class App extends React.PureComponent<{}> {
                     <img src={'https://www.jqwidgets.com/react/images/books/The Dark Half.jpg'} />
                     <i>The Dark Half</i>
                 </div>
-            </div>; 
+            </div>;
 
         const bookShelf = document.getElementById('bookShelf');
+        if (!bookShelf) return;
         ReactDOM.render(Tolkien, bookShelf, () => {
-
             let booksNum = 0;
             const addToShoppingCart = () => {
                 booksNum++;
-                document.getElementById('text')!.innerHTML = 'Added ' + booksNum + (booksNum === 1 ? ' book' : ' books') + ' to shopping cart.';
+                const textDiv = document.getElementById('text');
+                if (textDiv) {
+                    textDiv.innerHTML = 'Added ' + booksNum + (booksNum === 1 ? ' book' : ' books') + ' to shopping cart.';
+                }
             };
-
-            const booksImages = document.querySelectorAll('.book img');
-
-            Array.prototype.forEach.call(booksImages, (image: HTMLImageElement) => {
-                image.addEventListener('click', addToShoppingCart);
-                image.style.cursor = 'pointer';
-            });
-
+            const updateBookImages = () => {
+                const booksImages = document.querySelectorAll('.book img');
+                Array.prototype.forEach.call(booksImages, (image: HTMLImageElement) => {
+                    image.addEventListener('click', addToShoppingCart);
+                    image.style.cursor = 'pointer';
+                });
+            };
+            updateBookImages();
             const liTags = document.getElementsByTagName('li');
             Array.prototype.forEach.call(liTags, (liTag: HTMLLIElement, index: number) => {
-
                 liTag.addEventListener('click', () => {
-
-                    ReactDOM.unmountComponentAtNode(bookShelf!);
-                    let newBook: any;
+                    ReactDOM.unmountComponentAtNode(bookShelf);
+                    let newBook: React.ReactNode;
                     switch (index) {
                         case 0:
                             newBook = Tolkien;
@@ -192,71 +198,16 @@ class App extends React.PureComponent<{}> {
                         case 6:
                             newBook = King;
                             break;
-                    };
-
+                        default:
+                            newBook = Tolkien;
+                    }
                     ReactDOM.render(newBook!, bookShelf, () => {
-                        const booksImagesEl = document.querySelectorAll('.book img');
-                        Array.prototype.forEach.call(booksImagesEl, (image: HTMLImageElement) => {
-                            image.addEventListener('click', addToShoppingCart);
-                            image.style.cursor = 'pointer';
-                        });
+                        updateBookImages();
                     });
                 });
-            }); 
-            
-        });               
-    }
+            });
+        });
+    }, []);
 
-    public render() {
-        return (
-            <div style={{ width: '370px', height: '450px', border: 'none' }}>
-                <div id="leftPanel" style={{ width: '225px', height: '100%', marginTop: '10px' }}>
-                    <JqxNavigationBar theme={'material-purple'} width={'100%'} height={'100%'} expandMode={'singleFitHeight'}>
-                        <div>
-                            Fantasy
-                        </div>
-                        <div>
-                            <ul>
-                                <li>J. R. R. Tolkien</li>
-                                <li>Terry Brooks</li>
-                                <li>J. K. Rowling</li>
-                            </ul>
-                        </div>
-                        <div>
-                            Science Fiction
-                        </div>
-                        <div>
-                            <ul>
-                                <li>H. G. Wells</li>
-                                <li>Simon R. Green</li>
-                            </ul>
-                        </div>
-                        <div>
-                            Horror
-                        </div>
-                        <div>
-                            <ul>
-                                <li>H. P. Lovecraft</li>
-                                <li>Stephen King</li>
-                            </ul>
-                        </div>
-                    </JqxNavigationBar>
-                </div>
-
-                <div style={{ width: '370px', height: '100%', marginTop: '20px' }} id="rightPanel">
-                    <div id='rightPanelContent' className='jqx-widget-content'>
-                        <div id="bookShelf" style={{ margin: '5px', width: '444px', height: '425px' }} />
-                        <div id="shoppingCart" style={{ float: 'left', marginLeft: '5px' }}>
-                            <img style={{ float: 'left' }} width={16} height={16} src={'https://www.jqwidgets.com/react/images/shopping_cart.png'} />
-                            <div id='text'>
-                                Shopping cart is empty.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }   
-}
-
-export default App;
+    return (
+        <div

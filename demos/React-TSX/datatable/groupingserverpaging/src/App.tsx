@@ -1,15 +1,10 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useState, useMemo } from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
-
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
+const App = () => {
+    const source = useMemo(() => {
+        const src: any = {
             dataFields: [
                 { name: 'ShipCountry', type: 'string' },
                 { name: 'ShipCity', type: 'string' },
@@ -22,60 +17,63 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             root: 'value',
             url: 'http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=?'
         };
+        return src;
+    }, []);
 
-        const dataAdapter: any = new jqx.dataAdapter(source,
-            {
-                /* tslint:disable:no-string-literal */
-                downloadComplete: (data: any, status: any, xhr: any): void => {
-                    if (!source['totalRecords']) {
-                        source['totalRecords'] = data.value.length;
-                    }
-                },
-                formatData: (data: any): void => {
-                    if (source['totalRecords']) {
-                        // update the $skip and $top params of the OData service.
-                        // data.pagenum - page number starting from 0.
-                        // data.pagesize - page size
-                        data.$skip = data.pagenum * data.pagesize;
-                        data.$top = data.pagesize;
-                        data.$orderby = 'ShipCountry asc';
-                    }
-                    return data;
-                },           
-                loadError: (xhr: any, status: any, error: any): void => {
-                    throw new Error('http://services.odata.org: ' + error.toString());
+    const dataAdapter = useMemo(() => {
+        return new jqx.dataAdapter(source, {
+            downloadComplete: (data: any, status: any, xhr: any): void => {
+                if (!source['totalRecords']) {
+                    source['totalRecords'] = data.value.length;
                 }
-            }
-        );
-
-        this.state = {
-            columns: [
-                { text: 'Ship Name', dataField: 'ShipName', width: 250 },
-                { text: 'Ship Country', hidden: true, dataField: 'ShipCountry', width: 250 },
-                { text: 'Ship City', dataField: 'ShipCity', width: 150 },
-                { text: 'Ship Address', dataField: 'ShipAddress' }
-            ],
-            groups: ['ShipCountry'],
-            groupsRenderer: (value: string, rowData: any, level: any): string => {
-                return 'Ship Country: ' + value;
             },
-            source: dataAdapter
-        };
-    }
+            formatData: (data: any): void => {
+                if (source['totalRecords']) {
+                    data.$skip = data.pagenum * data.pagesize;
+                    data.$top = data.pagesize;
+                    data.$orderby = 'ShipCountry asc';
+                }
+                return data;
+            },
+            loadError: (xhr: any, status: any, error: any): void => {
+                throw new Error('http://services.odata.org: ' + error.toString());
+            }
+        });
+    }, [source]);
 
-    public render() {
-        return (
-            <div>
-                <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
+    const columns = useMemo(
+        () => [
+            { text: 'Ship Name', dataField: 'ShipName', width: 250 },
+            { text: 'Ship Country', hidden: true, dataField: 'ShipCountry', width: 250 },
+            { text: 'Ship City', dataField: 'ShipCity', width: 150 },
+            { text: 'Ship Address', dataField: 'ShipAddress' }
+        ],
+        []
+    );
 
-                <JqxDataTable theme={'material-purple'}
-                    // @ts-ignore 
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    altRows={true} pageable={true} serverProcessing={true} pagerButtonsCount={10}
-                    groups={this.state.groups} groupsRenderer={this.state.groupsRenderer} />
-            </div>
-        );
-    }
-}
+    const groups = useMemo(() => ['ShipCountry'], []);
+    const groupsRenderer = React.useCallback((value: string, rowData: any, level: any): string => {
+        return 'Ship Country: ' + value;
+    }, []);
+
+    return (
+        <div>
+            <h3 style={{ fontSize: '16px', fontFamily: 'Verdana' }}>Data Source: 'http://services.odata.org'</h3>
+            <JqxDataTable
+                theme={'material-purple'}
+                // @ts-ignore
+                width={'100%'}
+                source={dataAdapter}
+                columns={columns}
+                altRows={true}
+                pageable={true}
+                serverProcessing={true}
+                pagerButtonsCount={10}
+                groups={groups}
+                groupsRenderer={groupsRenderer}
+            />
+        </div>
+    );
+};
 
 export default App;

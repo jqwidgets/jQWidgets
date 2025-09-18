@@ -1,81 +1,84 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useEffect } from 'react';
 import JqxListBox, { IListBoxProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxlistbox';
 
-class App extends React.PureComponent<{}, IListBoxProps> {
+function App() {
+    const myListBox = useRef<JqxListBox>(null);
+    const select = useRef<HTMLSelectElement>(null);
+    const updating = useRef(false);
 
-    private myListBox = React.createRef<JqxListBox>();
-    private select = React.createRef<HTMLSelectElement>();
-    private updating: boolean = false;
+    useEffect(() => {
+        if (myListBox.current) {
+            myListBox.current.loadFromSelect('select');
+        }
+    }, []);
 
-    constructor(props: {}) {
-        super(props);
-        this.change = this.change.bind(this);
-        this.selectItem = this.selectItem.bind(this);
-    }
-
-    public componentDidMount() {
-        this.myListBox.current!.loadFromSelect('select');
-    }
-
-    public render() {
-        return (
-            <div>
-                <div style={{ float: 'left' }}>
-                    <JqxListBox theme={'material-purple'} ref={this.myListBox} onSelect={this.selectItem}
-                        width={200} height={250} />
-                </div>
-
-                <div style={{ float: 'left' }}>
-                    <select ref={this.select} id="select" style={{ height: '250px', width: '200px', marginLeft: '30px' }} size={2} onChange={this.change}>
-                        <option>Affogato</option>
-                        <option>Americano</option>
-                        <option>Bicerin</option>
-                        <option>Breve</option>
-                        <option>Café Bombón</option>
-                        <option>Caffé Corretto</option>
-                        <option>Café Crema</option>
-                        <option>Caffé Latte</option>
-                        <option>Caffé macchiato</option>
-                        <option>Café mélange</option>
-                        <option>Coffee milk</option>
-                        <option>Cafe mocha</option>
-                        <option>Cappuccino</option>
-                        <option>Carajillo</option>
-                        <option>Cuban espresso</option>
-                        <option>Espresso</option>
-                        <option selected={true}>The Flat White</option>
-                        <option>Frappuccino</option>
-                        <option>Galao</option>
-                        <option>Greek frappé coffee</option>
-                        <option>Iced Coffee﻿</option>
-                        <option>Indian filter coffee</option>
-                        <option>Instant coffee</option>
-                        <option>Irish coffee</option>
-                        <option>Liqueur coffee</option>
-                    </select>
-                </div>
-            </div >
-        );
-    }
-
-    private change(event: any): void {
-        this.updating = true;
-        const index = this.select.current!.selectedIndex;
-        this.myListBox.current!.selectIndex(index);
-        this.myListBox.current!.ensureVisible(index);
-        this.updating = false;
+    const change = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        updating.current = true;
+        const index = select.current!.selectedIndex;
+        myListBox.current!.selectIndex(index);
+        myListBox.current!.ensureVisible(index);
+        updating.current = false;
     };
 
-    private selectItem(event: any): void {
-        if (event.args && !this.updating) {
-            // select the item in the 'select' tag.
+    const selectItem = (event: any) => {
+        if (event.args && !updating.current) {
             const index = event.args.item.index;
-            this.select.current!.selectedIndex = index;
+            if (select.current) {
+                select.current.selectedIndex = index;
+            }
         }
     };
+
+    return (
+        <div>
+            <div style={{ float: 'left' }}>
+                <JqxListBox
+                    theme="material-purple"
+                    ref={myListBox}
+                    onSelect={selectItem}
+                    width={200}
+                    height={250}
+                />
+            </div>
+            <div style={{ float: 'left' }}>
+                <select
+                    ref={select}
+                    id="select"
+                    style={{ height: '250px', width: '200px', marginLeft: '30px' }}
+                    size={2}
+                    onChange={change}
+                    defaultValue="The Flat White"
+                >
+                    <option>Affogato</option>
+                    <option>Americano</option>
+                    <option>Bicerin</option>
+                    <option>Breve</option>
+                    <option>Café Bombón</option>
+                    <option>Caffé Corretto</option>
+                    <option>Café Crema</option>
+                    <option>Caffé Latte</option>
+                    <option>Caffé macchiato</option>
+                    <option>Café mélange</option>
+                    <option>Coffee milk</option>
+                    <option>Cafe mocha</option>
+                    <option>Cappuccino</option>
+                    <option>Carajillo</option>
+                    <option>Cuban espresso</option>
+                    <option>Espresso</option>
+                    <option>The Flat White</option>
+                    <option>Frappuccino</option>
+                    <option>Galao</option>
+                    <option>Greek frappé coffee</option>
+                    <option>Iced Coffee﻿</option>
+                    <option>Indian filter coffee</option>
+                    <option>Instant coffee</option>
+                    <option>Irish coffee</option>
+                    <option>Liqueur coffee</option>
+                </select>
+            </div>
+        </div>
+    );
 }
 
 export default App;

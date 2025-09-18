@@ -1,21 +1,16 @@
 import * as React from 'react';
- 
+import { useRef, useState, useEffect } from 'react';
+import JqxComboBox, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
 
+const App = () => {
+    const selectionLog = useRef<HTMLDivElement>(null);
+    const [source, setSource] = useState<any>(null);
 
-import JqxComboBox, { IComboBoxProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
-
-class App extends React.PureComponent<{}, IComboBoxProps> {
-
-    private selectionLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.myComboBoxOnSelect = this.myComboBoxOnSelect.bind(this);
-
-        const source: any = {
+    useEffect(() => {
+        const src: any = {
             datafields: [
                 { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName' },
-                { name: 'ContactName', map: 'm\\:properties>d\\:ContactName' },
+                { name: 'ContactName', map: 'm\\:properties>d\\:ContactName' }
             ],
             datatype: 'xml',
             id: 'm\\:properties>d\\:CustomerID',
@@ -23,39 +18,39 @@ class App extends React.PureComponent<{}, IComboBoxProps> {
             root: 'entry',
             url: 'customers.xml'
         };
+        setSource(new jqx.dataAdapter(src));
+    }, []);
 
-        this.state = {
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxComboBox theme={'material-purple'} onSelect={this.myComboBoxOnSelect}
-                    width={150} height={30} source={this.state.source} selectedIndex={0}
-                    displayMember={'ContactName'} valueMember={'CompanyName'} />
-
-                <div ref={this.selectionLog} style={{ fontSize: '12px', fontFamily: 'Verdana' }} />
-            </div>
-        );
-    }
-
-    private myComboBoxOnSelect(event: any): void {
+    const myComboBoxOnSelect = (event: any): void => {
         if (event.args) {
             const item = event.args.item;
-            if (item) {
+            if (item && selectionLog.current) {
                 const valueElement = document.createElement('div');
                 valueElement.innerHTML = 'Value: ' + item.value;
                 const labelElement = document.createElement('div');
                 labelElement.innerHTML = 'Label: ' + item.label;
-                const selectionLog = this.selectionLog.current!;
-                selectionLog.innerHTML = '';
-                selectionLog.appendChild(labelElement);
-                selectionLog.appendChild(valueElement);
+                selectionLog.current.innerHTML = '';
+                selectionLog.current.appendChild(labelElement);
+                selectionLog.current.appendChild(valueElement);
             }
         }
     };
-}
+
+    return (
+        <div>
+            <JqxComboBox
+                theme={'material-purple'}
+                onSelect={myComboBoxOnSelect}
+                width={150}
+                height={30}
+                source={source}
+                selectedIndex={0}
+                displayMember={'ContactName'}
+                valueMember={'CompanyName'}
+            />
+            <div ref={selectionLog} style={{ fontSize: '12px', fontFamily: 'Verdana' }} />
+        </div>
+    );
+};
 
 export default App;

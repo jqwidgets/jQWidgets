@@ -1,20 +1,14 @@
 import * as React from 'react';
- 
-
-
+import { useEffect, useRef, useState, useCallback } from 'react';
 import JqxComboBox, { IComboBoxProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcombobox';
 
-class App extends React.PureComponent<{}, IComboBoxProps> {
+const App = () => {
+    const myComboBox = useRef<JqxComboBox>(null);
+    const selectionLog = useRef<HTMLDivElement>(null);
+    const checkedItemsLog = useRef<HTMLDivElement>(null);
 
-    private myComboBox = React.createRef<JqxComboBox>();
-    private selectionLog = React.createRef<HTMLDivElement>();
-    private checkedItemsLog = React.createRef<HTMLDivElement>();
-
-    constructor(props: {}) {
-        super(props);
-        this.myComboBoxOnCheckChange = this.myComboBoxOnCheckChange.bind(this);
-
-        const source: any = {
+    const [source] = useState(() => {
+        const src: any = {
             async: false,
             datafields: [
                 { name: 'CompanyName' },
@@ -24,32 +18,10 @@ class App extends React.PureComponent<{}, IComboBoxProps> {
             id: 'id',
             url: 'customers.txt',
         };
+        return new jqx.dataAdapter(src);
+    });
 
-        this.state = {
-            source: new jqx.dataAdapter(source)
-        }
-    }
-
-    public componentDidMount() {
-        this.myComboBox.current!.checkIndex(0);
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxComboBox theme={'material-purple'} ref={this.myComboBox} style={{ float: 'left' }} onCheckChange={this.myComboBoxOnCheckChange}
-                    width={200} height={30} source={this.state.source} checkboxes={true}
-                    displayMember={'ContactName'} valueMember={'CompanyName'} />
-
-                <div style={{ float: 'left', marginLeft: '20px', fontSize: '13px', fontFamily: 'Verdana' }}>
-                    <div ref={this.selectionLog} />
-                    <div ref={this.checkedItemsLog} style={{ maxWidth: '300px', marginTop: '20px' }} />
-                </div>
-            </div>
-        );
-    }
-
-    private myComboBoxOnCheckChange(event: any): void {
+    const myComboBoxOnCheckChange = useCallback((event: any) => {
         if (event.args) {
             const item = event.args.item;
             if (item) {
@@ -59,21 +31,46 @@ class App extends React.PureComponent<{}, IComboBoxProps> {
                 labelElement.innerHTML = 'Label: ' + item.label;
                 const checkedElement = document.createElement('div');
                 checkedElement.innerHTML = 'Checked: ' + item.checked;
-                const selectionLog = this.selectionLog.current!;
-                selectionLog.innerHTML = '';
-                selectionLog.appendChild(labelElement);
-                selectionLog.appendChild(valueElement);
-                selectionLog.appendChild(checkedElement);
+                const selectionLogEl = selectionLog.current!;
+                selectionLogEl.innerHTML = '';
+                selectionLogEl.appendChild(labelElement);
+                selectionLogEl.appendChild(valueElement);
+                selectionLogEl.appendChild(checkedElement);
 
-                const items = this.myComboBox.current!.getCheckedItems();
+                const items = myComboBox.current!.getCheckedItems();
                 let checkedItems = '';
                 for (const obj of items) {
                     checkedItems += obj.label + ', ';
                 }
-                this.checkedItemsLog.current!.innerHTML = checkedItems;
+                checkedItemsLog.current!.innerHTML = checkedItems;
             }
         }
-    };
-}
+    }, []);
+
+    useEffect(() => {
+        myComboBox.current!.checkIndex(0);
+    }, []);
+
+    return (
+        <div>
+            <JqxComboBox
+                theme="material-purple"
+                ref={myComboBox}
+                style={{ float: 'left' }}
+                onCheckChange={myComboBoxOnCheckChange}
+                width={200}
+                height={30}
+                source={source}
+                checkboxes={true}
+                displayMember="ContactName"
+                valueMember="CompanyName"
+            />
+            <div style={{ float: 'left', marginLeft: '20px', fontSize: '13px', fontFamily: 'Verdana' }}>
+                <div ref={selectionLog} />
+                <div ref={checkedItemsLog} style={{ maxWidth: '300px', marginTop: '20px' }} />
+            </div>
+        </div>
+    );
+};
 
 export default App;

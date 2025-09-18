@@ -1,40 +1,25 @@
-﻿import * as React from 'react';
- 
-
+import React, { useRef, useState, useCallback } from 'react';
 import * as ReactDOM from "react-dom";
-
 import './App.css';
-
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxTooltip from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtooltip';
 import JqxTreeGrid, { ITreeGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtreegrid';
 
-class App extends React.PureComponent<{}, ITreeGridProps> {
-    private myTreeGrid = React.createRef<JqxTreeGrid>();
-    private addButton = React.createRef<JqxButton>();
-    private editButton = React.createRef<JqxButton>();
-    private deleteButton = React.createRef<JqxButton>();
-    private cancelButton = React.createRef<JqxButton>();
-    private updateButton = React.createRef<JqxButton>();
+const App = () => {
+    const myTreeGrid = useRef<JqxTreeGrid>(null);
+    const addButton = useRef<JqxButton>(null);
+    const editButton = useRef<JqxButton>(null);
+    const deleteButton = useRef<JqxButton>(null);
+    const cancelButton = useRef<JqxButton>(null);
+    const updateButton = useRef<JqxButton>(null);
 
-    private rowKey: any = '';
-    private newRowID: any = null;
+    const rowKeyRef = useRef<any>('');
+    const newRowIDRef = useRef<any>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        this.rowSelect = this.rowSelect.bind(this);
-        this.rowUnselect = this.rowUnselect.bind(this);
-        this.rowBeginEdit = this.rowBeginEdit.bind(this);
-        this.rowEndEdit = this.rowEndEdit.bind(this);
-
+    const [treeProps] = useState<ITreeGridProps>(() => {
         const source: any = {
             addRow: (rowID?: any, rowData?: any, position?: any, parentID?: any, commit?: any) => {
-                // synchronize with the server - send insert command
-                // call commit with parameter true if the synchronization with the server is successful 
-                // and with parameter false if the synchronization failed.
-                // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
-                this.newRowID = rowID;
+                newRowIDRef.current = rowID;
                 commit(true);
             },
             dataFields: [
@@ -45,42 +30,28 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
             ],
             dataType: 'tab',
             deleteRow: (rowID?: any, commit?: any) => {
-                // synchronize with the server - send delete command
-                // call commit with parameter true if the synchronization with the server is successful 
-                // and with parameter false if the synchronization failed.
                 commit(true);
             },
-            hierarchy:
-            {
+            hierarchy: {
                 keyDataField: { name: 'Id' },
                 parentDataField: { name: 'ParentID' }
             },
             id: 'Id',
             updateRow: (rowID?: any, rowData?: any, commit?: any) => {
-                // synchronize with the server - send update command
-                // call commit with parameter true if the synchronization with the server is successful 
-                // and with parameter false if the synchronization failed.
                 commit(true);
             },
             url: './assets/sampledata/locations.tsv'
         };
-
         const dataAdapter: any = new jqx.dataAdapter(source);
 
-        this.state = {
+        return {
             columns: [
                 { text: 'Location Name', dataField: 'Name', align: 'center', width: '50%' },
                 { text: 'Population', dataField: 'Population', align: 'right', cellsAlign: 'right', width: '50%' }
             ],
+            source: dataAdapter,
             renderToolbar: (toolBar: any) => {
-                const toTheme = (className: string) => {
-                    // @ts-ignore
-                    if (theme === "") {
-                        return className;
-                    }
-                    // @ts-ignore
-                    return className + "-" + theme + " " + className;
-                };
+                const toTheme = (className: string) => className;
                 const container = document.createElement('div');
                 container.style.cssText = 'overflow: hidden; position: relative; height: 100%; width: 100%;';
                 const createButton = () => {
@@ -107,53 +78,46 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                 };
 
                 const addHandler = () => {
-                    if (!isDisabled(this.addButton)) {
-                        this.myTreeGrid.current!.expandRow(this.rowKey);
-                        // add new empty row.
-                        this.myTreeGrid.current!.addRow(null, {}, 'first', this.rowKey);
-                        // select the first row and clear the selection.
-                        this.myTreeGrid.current!.clearSelection();
-                        this.myTreeGrid.current!.selectRow(this.newRowID);
-                        // edit the new row.
-                        this.myTreeGrid.current!.beginRowEdit(this.newRowID);
-                        // this.updateButtons('add');
-                        this.updateButtons('Add');
+                    if (!isDisabled(addButton)) {
+                        myTreeGrid.current!.expandRow(rowKeyRef.current);
+                        myTreeGrid.current!.addRow(null, {}, 'first', rowKeyRef.current);
+                        myTreeGrid.current!.clearSelection();
+                        myTreeGrid.current!.selectRow(newRowIDRef.current);
+                        myTreeGrid.current!.beginRowEdit(newRowIDRef.current);
+                        updateButtons('Add');
                     }
                 };
 
                 const editHandler = () => {
-                    if (!this.editButton.current!.props!.disabled) {
-                        this.myTreeGrid.current!.beginRowEdit(this.rowKey);
-                        this.updateButtons('Edit');
+                    if (!editButton.current!.props!.disabled) {
+                        myTreeGrid.current!.beginRowEdit(rowKeyRef.current);
+                        updateButtons('Edit');
                     }
                 };
 
                 const deleteHandler = () => {
-                    if (!isDisabled(this.deleteButton)) {
-                        const selection = this.myTreeGrid.current!.getSelection();
+                    if (!isDisabled(deleteButton)) {
+                        const selection = myTreeGrid.current!.getSelection();
                         if (selection.length > 1) {
                             for (const key of selection) {
-                                this.myTreeGrid.current!.deleteRow(key.Id);
+                                myTreeGrid.current!.deleteRow(key.Id);
                             }
+                        } else {
+                            myTreeGrid.current!.deleteRow(rowKeyRef.current);
                         }
-                        else {
-                            this.myTreeGrid.current!.deleteRow(this.rowKey);
-                        }
-
-                        this.updateButtons('Delete');
+                        updateButtons('Delete');
                     }
                 };
 
                 const cancelHandler = () => {
-                    if (!isDisabled(this.cancelButton)) {
-                        // cancel changes.
-                        this.myTreeGrid.current!.endRowEdit(this.rowKey, true);
+                    if (!isDisabled(cancelButton)) {
+                        myTreeGrid.current!.endRowEdit(rowKeyRef.current, true);
                     }
                 };
 
                 const updateHandler = () => {
-                    if (!isDisabled(this.updateButton)) {
-                        this.myTreeGrid.current!.endRowEdit(this.rowKey, false);
+                    if (!isDisabled(updateButton)) {
+                        myTreeGrid.current!.endRowEdit(rowKeyRef.current, false);
                     }
                 };
 
@@ -161,7 +125,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
 
                 const addComponent =
                     <JqxTooltip theme={'material-purple'} position={'bottom'} content={'Add'}>
-                        <JqxButton theme={'material-purple'} ref={this.addButton}
+                        <JqxButton theme={'material-purple'} ref={addButton}
                             onClick={addHandler}
                             disabled={true} height={25} width={25}>
                             <div className={toTheme('jqx-icon-plus')} style={iconStyle} />
@@ -169,7 +133,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                     </JqxTooltip>;
                 const editComponent =
                     <JqxTooltip theme={'material-purple'} position={'bottom'} content={'Edit'}>
-                        <JqxButton theme={'material-purple'} ref={this.editButton}
+                        <JqxButton theme={'material-purple'} ref={editButton}
                             onClick={editHandler}
                             disabled={true} height={25} width={25}>
                             <div className={toTheme('jqx-icon-edit')} style={iconStyle} />
@@ -177,7 +141,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                     </JqxTooltip>;
                 const deleteComponent =
                     <JqxTooltip theme={'material-purple'} position={'bottom'} content={'Delete'}>
-                        <JqxButton theme={'material-purple'} ref={this.deleteButton}
+                        <JqxButton theme={'material-purple'} ref={deleteButton}
                             onClick={deleteHandler}
                             disabled={true} height={25} width={25}>
                             <div className={toTheme('jqx-icon-delete')} style={iconStyle} />
@@ -185,7 +149,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                     </JqxTooltip>;
                 const cancelComponent =
                     <JqxTooltip theme={'material-purple'} position={'bottom'} content={'Cancel'}>
-                        <JqxButton theme={'material-purple'} ref={this.cancelButton}
+                        <JqxButton theme={'material-purple'} ref={cancelButton}
                             onClick={cancelHandler}
                             disabled={true} height={25} width={25}>
                             <div className={toTheme('jqx-icon-cancel')} style={iconStyle} />
@@ -193,7 +157,7 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                     </JqxTooltip>;
                 const updateComponent =
                     <JqxTooltip theme={'material-purple'} position={'bottom'} content={'Update'}>
-                        <JqxButton theme={'material-purple'} ref={this.updateButton}
+                        <JqxButton theme={'material-purple'} ref={updateButton}
                             onClick={updateHandler}
                             disabled={true} height={25} width={25}>
                             <div className={toTheme('jqx-icon-save')} style={iconStyle} />
@@ -205,89 +169,61 @@ class App extends React.PureComponent<{}, ITreeGridProps> {
                 ReactDOM.render(deleteComponent, deleteButtonDom);
                 ReactDOM.render(cancelComponent, cancelButtonDom);
                 ReactDOM.render(updateComponent, updateButtonDom);
-            },
-            source: dataAdapter
+            }
+        };
+    });
+
+    const setButtonState = useCallback((button: any, state: boolean) => {
+        if (button.current) {
+            button.current.setOptions({ disabled: state });
         }
-    }
+    }, []);
 
-    public render() {
-        return (
-            <JqxTreeGrid theme={'material-purple'} ref={this.myTreeGrid}
-                onRowSelect={this.rowSelect}
-                onRowUnselect={this.rowUnselect}
-                onRowBeginEdit={this.rowBeginEdit}
-                onRowEndEdit={this.rowEndEdit}
-                // @ts-ignore
-                width={'100%'}
-                source={this.state.source}
-                pageable={true}
-                editable={true}
-                showToolbar={true}
-                altRows={true}
-                pagerButtonsCount={8}
-                toolbarHeight={35}
-                renderToolbar={this.state.renderToolbar}
-                columns={this.state.columns}
-            />
-        );
-    }
-
-    private setButtonState = (button: any, state: boolean) => {
-        button.current!.setOptions({ disabled: state });
-    };
-
-    private updateButtons = (action: string, buttons?: any) => {
+    const updateButtons = useCallback((action: string) => {
         switch (action) {
             case 'Select':
-                this.setButtonState(this.addButton, false);
-                this.setButtonState(this.deleteButton, false);
-                this.setButtonState(this.editButton, false);
-                this.setButtonState(this.cancelButton, false);
-                this.setButtonState(this.updateButton, false);
+                setButtonState(addButton, false);
+                setButtonState(deleteButton, false);
+                setButtonState(editButton, false);
+                setButtonState(cancelButton, false);
+                setButtonState(updateButton, false);
                 break;
             case 'Unselect':
-                this.setButtonState(this.addButton, true);
-                this.setButtonState(this.deleteButton, true);
-                this.setButtonState(this.editButton, true);
-                this.setButtonState(this.cancelButton, true);
-                this.setButtonState(this.updateButton, true);
-
+                setButtonState(addButton, true);
+                setButtonState(deleteButton, true);
+                setButtonState(editButton, true);
+                setButtonState(cancelButton, true);
+                setButtonState(updateButton, true);
                 break;
             case 'Edit':
-                this.setButtonState(this.addButton, true);
-                this.setButtonState(this.deleteButton, true);
-                this.setButtonState(this.editButton, true);
-                this.setButtonState(this.cancelButton, false);
-                this.setButtonState(this.updateButton, false);
+                setButtonState(addButton, true);
+                setButtonState(deleteButton, true);
+                setButtonState(editButton, true);
+                setButtonState(cancelButton, false);
+                setButtonState(updateButton, false);
                 break;
             case 'End Edit':
-                this.setButtonState(this.addButton, false);
-                this.setButtonState(this.deleteButton, false);
-                this.setButtonState(this.editButton, false);
-                this.setButtonState(this.cancelButton, true);
-                this.setButtonState(this.updateButton, true);
+                setButtonState(addButton, false);
+                setButtonState(deleteButton, false);
+                setButtonState(editButton, false);
+                setButtonState(cancelButton, true);
+                setButtonState(updateButton, true);
                 break;
         }
-    };
+    }, [setButtonState, addButton, editButton, deleteButton, cancelButton, updateButton]);
 
-    // Event handling
-    private rowSelect(event: any): void {
+    const rowSelect = useCallback((event: any) => {
         const args = event.args;
-        this.rowKey = args.key;
-        this.updateButtons('Select');
-    }
+        rowKeyRef.current = args.key;
+        updateButtons('Select');
+    }, [updateButtons]);
 
-    private rowUnselect(event: any): void {
-        this.updateButtons('Unselect');
-    }
+    const rowUnselect = useCallback(() => {
+        updateButtons('Unselect');
+    }, [updateButtons]);
 
-    private rowBeginEdit(event: any): void {
-        this.updateButtons('Edit');
-    }
+    const rowBeginEdit = useCallback(() => {
+        updateButtons('Edit');
+    }, [updateButtons]);
 
-    private rowEndEdit(event: any): void {
-        this.updateButtons('End Edit');
-    }
-}
-
-export default App;
+   

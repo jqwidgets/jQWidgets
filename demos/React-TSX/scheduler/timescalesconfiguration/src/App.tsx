@@ -1,14 +1,17 @@
 import * as React from 'react';
- 
-
+import { useRef, useMemo } from 'react';
 import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler';
 
-class App extends React.PureComponent<{}, ISchedulerProps> {
-    private myScheduler = React.createRef<JqxScheduler>();
+const App = () => {
+    const myScheduler = useRef<JqxScheduler>(null);
 
-    constructor(props: {}) {
-        super(props);
-
+    const {
+        height,
+        date,
+        source,
+        views,
+        appointmentDataFields
+    } = useMemo(() => {
         const source: any = {
             dataFields: [
                 { name: "id", type: "string" },
@@ -29,44 +32,45 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
 
         const dataAdapter: any = new jqx.dataAdapter(source);
 
-        this.state = {
-            appointmentDataFields: {
-                description: "about",
-                from: "start",
-                id: "id",
-                location: "address",
-                resourceId: "calendar",
-                status: "status",
-                style: "style",
-                subject: "name",
-                to: "end"
-            },
-            date: new jqx.date(2018, 11, 23),
-            height: 600,
-            source: dataAdapter,
-            views: [
-                { type: "dayView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
-                { type: "weekView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
-                { type: "timelineDayView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
-                { type: "timelineWeekView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } }
-            ]
+        const appointmentDataFields = {
+            description: "about",
+            from: "start",
+            id: "id",
+            location: "address",
+            resourceId: "calendar",
+            status: "status",
+            style: "style",
+            subject: "name",
+            to: "end"
         };
-    }
 
-    public render() {
-        return (
-            <JqxScheduler theme={'material-purple'} ref={this.myScheduler}
-                // @ts-ignore
-                width={"100%"}
-                height={this.state.height}
-                date={this.state.date}
-                source={this.state.source}
-                view={"weekView"}
-                views={this.state.views}
-                appointmentDataFields={this.state.appointmentDataFields}
-            />
-        );
-    }
-}
+        const date = new jqx.date(2018, 11, 23);
+
+        const height = 600;
+
+        const views = [
+            { type: "dayView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
+            { type: "weekView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
+            { type: "timelineDayView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } },
+            { type: "timelineWeekView", showWeekends: true, timeRuler: { scaleStartHour: 7, scaleEndHour: 21 } }
+        ];
+
+        return { height, date, source: dataAdapter, views, appointmentDataFields };
+    }, []);
+
+    return (
+        <JqxScheduler
+            theme={'material-purple'}
+            ref={myScheduler}
+            width={"100%"}
+            height={height}
+            date={date}
+            source={source}
+            view={"weekView"}
+            views={views}
+            appointmentDataFields={appointmentDataFields}
+        />
+    );
+};
 
 export default App;

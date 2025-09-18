@@ -1,20 +1,22 @@
-﻿import * as React from 'react';
- 
-
-
+import React, { useRef, useMemo, useCallback } from 'react';
 import { generatedata } from './generatedata';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
-import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
+import JqxGrid, { jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
-class App extends React.PureComponent<{}, IGridProps> {
+const App = () => {
+    const myGrid = useRef<JqxGrid>(null);
 
-    private myGrid = React.createRef<JqxGrid>();
+    const columns = useMemo(
+        () => [
+            { text: 'Name', columntype: 'textbox', filtercondition: 'STARTS_WITH', datafield: 'name', width: '30%' },
+            { text: 'Range', datafield: 'range', filtertype: 'range', cellsalign: 'right', width: '35%', cellsformat: 'd' },
+            { text: 'Date', datafield: 'date', filtertype: 'date', cellsalign: 'right', width: '35%', cellsformat: 'd' }
+        ],
+        []
+    );
 
-    constructor(props: {}) {
-        super(props);
-        this.btnOnClick = this.btnOnClick.bind(this);
-
-        const source: any = {
+    const source = useMemo(() => {
+        const s: any = {
             datafields: [
                 { name: 'name', type: 'string' },
                 { name: 'productname', type: 'string' },
@@ -26,35 +28,32 @@ class App extends React.PureComponent<{}, IGridProps> {
             datatype: 'array',
             localdata: generatedata(500)
         };
+        return new jqx.dataAdapter(s);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Name', columntype: 'textbox', filtercondition: 'STARTS_WITH', datafield: 'name', width: '30%' },
-                { text: 'Range', datafield: 'range', filtertype: 'range', cellsalign: 'right', width: '35%', cellsformat: 'd' },
-                { text: 'Date', datafield: 'date', filtertype: 'date', cellsalign: 'right', width: '35%', cellsformat: 'd' }
-            ],
-            source: new jqx.dataAdapter(source)
-        }
-    }
+    const btnOnClick = useCallback(() => {
+        myGrid.current?.clearfilters();
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxGrid theme={'material-purple'} ref={this.myGrid}
-                    // @ts-ignore
-                    width={'100%'} source={this.state.source} columns={this.state.columns}
-                    showfilterrow={true} filterable={true} selectionmode={'multiplecellsadvanced'} />
-
-                <div style={{ marginTop: '20px' }}>
-                    <JqxButton theme={'material-purple'} onClick={this.btnOnClick} width={100}>Remove Filter</JqxButton>
-                </div>
+    return (
+        <div>
+            <JqxGrid
+                theme="material-purple"
+                ref={myGrid}
+                width="100%"
+                source={source}
+                columns={columns}
+                showfilterrow={true}
+                filterable={true}
+                selectionmode="multiplecellsadvanced"
+            />
+            <div style={{ marginTop: '20px' }}>
+                <JqxButton theme="material-purple" onClick={btnOnClick} width={100}>
+                    Remove Filter
+                </JqxButton>
             </div>
-        );
-    }
-
-    private btnOnClick() {
-        this.myGrid.current!.clearfilters();
-    };
-}
+        </div>
+    );
+};
 
 export default App;

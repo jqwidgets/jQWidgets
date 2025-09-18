@@ -1,17 +1,20 @@
 import * as React from 'react';
- 
-
-
+import { useRef, useMemo } from 'react';
 import JqxScheduler, { ISchedulerProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxscheduler';
 
-class App extends React.PureComponent<{}, ISchedulerProps> {
-    private myScheduler = React.createRef<JqxScheduler>();
+const App = () => {
+    const myScheduler = useRef<JqxScheduler>(null);
 
-    constructor(props: {}) {
-        super(props);
-
-        const appointments = new Array();
-        const appointment1 = {
+    const {
+        appointmentDataFields,
+        date,
+        height,
+        resources,
+        source,
+        views
+    } = useMemo(() => {
+        const appointments = [];
+        appointments.push({
             calendar: "Room 1",
             description: "George brings projector for presentations.",
             end: new Date(2018, 10, 23, 16, 0, 0),
@@ -19,8 +22,8 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 23, 9, 0, 0),
             subject: "Quarterly Project Review Meeting"
-        };
-        const appointment2 = {
+        });
+        appointments.push({
             calendar: "Room 2",
             description: "",
             end: new Date(2018, 10, 24, 15, 0, 0),
@@ -28,8 +31,8 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 24, 10, 0, 0),
             subject: "IT Group Mtg."
-        };
-        const appointment3 = {
+        });
+        appointments.push({
             calendar: "Room 3",
             description: "",
             end: new Date(2018, 10, 27, 13, 0, 0),
@@ -37,8 +40,8 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 27, 11, 0, 0),
             subject: "Course Social Media"
-        };
-        const appointment4 = {
+        });
+        appointments.push({
             calendar: "Room 2",
             description: "",
             end: new Date(2018, 10, 23, 18, 0, 0),
@@ -46,8 +49,8 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 23, 16, 0, 0),
             subject: "New Projects Planning"
-        };
-        const appointment5 = {
+        });
+        appointments.push({
             calendar: "Room 1",
             description: "",
             end: new Date(2018, 10, 25, 17, 0, 0),
@@ -55,8 +58,8 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 25, 15, 0, 0),
             subject: "Interview with James"
-        };
-        const appointment6 = {
+        });
+        appointments.push({
             calendar: "Room 4",
             description: "",
             end: new Date(2018, 10, 26, 16, 0, 0),
@@ -64,15 +67,9 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             location: "",
             start: new Date(2018, 10, 26, 14, 0, 0),
             subject: "Interview with Nancy"
-        };
-        appointments.push(appointment1);
-        appointments.push(appointment2);
-        appointments.push(appointment3);
-        appointments.push(appointment4);
-        appointments.push(appointment5);
-        appointments.push(appointment6);
+        });
 
-        const source: any = {
+        const sourceObj: any = {
             dataFields: [
                 { name: 'id', type: 'string' },
                 { name: 'description', type: 'string' },
@@ -87,9 +84,9 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             localData: appointments
         };
 
-        const dataAdapter: any = new jqx.dataAdapter(source);
+        const dataAdapter: any = new jqx.dataAdapter(sourceObj);
 
-        this.state = {
+        return {
             appointmentDataFields: {
                 description: "description",
                 from: "start",
@@ -104,7 +101,7 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
             resources: {
                 colorScheme: "scheme05",
                 dataField: "calendar",
-                source: new jqx.dataAdapter(source)
+                source: new jqx.dataAdapter(sourceObj)
             },
             source: dataAdapter,
             views: [
@@ -113,24 +110,23 @@ class App extends React.PureComponent<{}, ISchedulerProps> {
                 { type: 'monthView', showWeekNumbers: true }
             ]
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <JqxScheduler theme={'material-purple'} ref={this.myScheduler}
-                // @ts-ignore
-                width={'100%'}
-                height={this.state.height}
-                date={this.state.date}
-                source={this.state.source}
-                showLegend={true}
-                view={"monthView"}
-                appointmentDataFields={this.state.appointmentDataFields}
-                resources={this.state.resources}
-                views={this.state.views}
-            />
-        );
-    }
-}
+    return (
+        <JqxScheduler
+            theme="material-purple"
+            ref={myScheduler}
+            width="100%"
+            height={height}
+            date={date}
+            source={source}
+            showLegend={true}
+            view="monthView"
+            appointmentDataFields={appointmentDataFields}
+            resources={resources}
+            views={views}
+        />
+    );
+};
 
 export default App;

@@ -1,15 +1,16 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useState, useMemo } from 'react';
 import JqxDataTable, { IDataTableProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdatatable';
 
-class App extends React.PureComponent<{}, IDataTableProps> {
+function App() {
+    const [columns] = useState([
+        { text: 'Date', dataField: 'Date', cellsFormat: 'D', width: 250 },
+        { text: 'S&P 500', dataField: 'S&P 500', width: 300, cellsFormat: 'f' },
+        { text: 'NASDAQ', dataField: 'NASDAQ', cellsFormat: 'f' }
+    ]);
 
-    constructor(props: {}) {
-        super(props);
-
-        const source: any = {
+    const source = useMemo(() => {
+        const sourceObj = {
             dataFields: [
                 { name: 'Date', type: 'date' },
                 { name: 'S&P 500', type: 'float' },
@@ -18,25 +19,20 @@ class App extends React.PureComponent<{}, IDataTableProps> {
             dataType: 'csv',
             url: 'nasdaq_vs_sp500.txt'
         };
+        return new jqx.dataAdapter(sourceObj);
+    }, []);
 
-        this.state = {
-            columns: [
-                { text: 'Date', dataField: 'Date', cellsFormat: 'D', width: 250 },
-                { text: 'S&P 500', dataField: 'S&P 500', width: 300, cellsFormat: 'f' },
-                { text: 'NASDAQ', dataField: 'NASDAQ', cellsFormat: 'f' }
-            ],
-            source: new jqx.dataAdapter(source)
-        };
-    }
-
-    public render() {
-        return (
-            <JqxDataTable theme={'material-purple'}
-                // @ts-ignore 
-                width={'100%'} source={this.state.source} columns={this.state.columns}
-                columnsResize={true} pageable={true} pagerButtonsCount={10} />
-        );
-    }
+    return (
+        <JqxDataTable
+            theme="material-purple"
+            width="100%"
+            source={source}
+            columns={columns}
+            columnsResize={true}
+            pageable={true}
+            pagerButtonsCount={10}
+        />
+    );
 }
 
 export default App;

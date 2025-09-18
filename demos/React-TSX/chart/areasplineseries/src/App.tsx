@@ -1,13 +1,9 @@
 import * as React from 'react';
- 
-
+import { useMemo } from 'react';
 import JqxChart, { IChartProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxchart';
 
-class App extends React.PureComponent<{}, IChartProps> {
-
-    constructor(props: {}) {
-        super(props);
-
+function App() {
+    const chartProps = useMemo<IChartProps>(() => {
         const source = {
             datafields: [
                 { name: 'Year' },
@@ -20,7 +16,7 @@ class App extends React.PureComponent<{}, IChartProps> {
             url: 'homeprices.txt'
         };
 
-        this.state = {
+        return {
             description: 'Source: http://www.econ.yale.edu/~shiller/data.htm',
             padding: { left: 15, top: 5, right: 20, bottom: 5 },
             seriesGroups: [
@@ -31,8 +27,7 @@ class App extends React.PureComponent<{}, IChartProps> {
                         { dataField: 'BuildCost', displayText: 'Building Cost Index', opacity: 0.9 }
                     ],
                     type: 'splinearea',
-                    valueAxis:
-                    {
+                    valueAxis: {
                         labels: {
                             formatSettings: { decimalPlaces: 0 },
                             horizontalAlignment: 'right'
@@ -43,18 +38,15 @@ class App extends React.PureComponent<{}, IChartProps> {
                     }
                 },
                 {
-
                     alignEndPointsWithIntervals: false,
                     series: [
                         { dataField: 'Rate', displayText: 'Interest Rate', opacity: 1.0, lineWidth: 4, dashStyle: '4,4' }
                     ],
                     type: 'spline',
-                    valueAxis:
-                    {
+                    valueAxis: {
                         gridLines: {
                             interval: 0.01,
                             visible: false
-
                         },
                         labels: { formatSettings: { decimalPlaces: 2 } },
                         maxValue: 0.2,
@@ -65,10 +57,16 @@ class App extends React.PureComponent<{}, IChartProps> {
                         },
                         title: { text: 'Interest Rate' },
                         unitInterval: 0.01
-                    },
+                    }
                 }
             ],
-            source: new jqx.dataAdapter(source, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + source.url + '" : ' + error); } }),
+            source: new jqx.dataAdapter(source, {
+                async: false,
+                autoBind: true,
+                loadError: (xhr: any, status: any, error: any) => {
+                    alert('Error loading "' + source.url + '" : ' + error);
+                }
+            }),
             title: 'U.S. History Home Prices (1950-2010)',
             titlePadding: { left: 10, top: 0, right: 0, bottom: 10 },
             xAxis: {
@@ -79,17 +77,23 @@ class App extends React.PureComponent<{}, IChartProps> {
                 valuesOnTicks: true
             }
         };
-    }
+    }, []);
 
-    public render() {
-        return (
-            <JqxChart style={{ width: '850px', height: '500px' }}
-                title={this.state.title} description={this.state.description}
-                showLegend={true} enableAnimations={true} padding={this.state.padding}
-                source={this.state.source} xAxis={this.state.xAxis} titlePadding={this.state.titlePadding}
-                colorScheme={'scheme05'} seriesGroups={this.state.seriesGroups} />
-        );
-    }
+    return (
+        <JqxChart
+            style={{ width: '850px', height: '500px' }}
+            title={chartProps.title}
+            description={chartProps.description}
+            showLegend={true}
+            enableAnimations={true}
+            padding={chartProps.padding}
+            source={chartProps.source}
+            xAxis={chartProps.xAxis}
+            titlePadding={chartProps.titlePadding}
+            colorScheme="scheme05"
+            seriesGroups={chartProps.seriesGroups}
+        />
+    );
 }
 
-export default App; 
+export default App;

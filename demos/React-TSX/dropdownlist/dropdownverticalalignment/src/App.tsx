@@ -1,25 +1,13 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import JqxDropDownList, { IDropDownListProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
-import JqxRadioButton, { IRadioButtonProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
+import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-export interface IState extends IDropDownListProps {
-    bottomBtnChecked: IRadioButtonProps['checked'];
-    topBtnChecked: IRadioButtonProps['checked']
-}
+const App = () => {
+    const myDropDownList = useRef<JqxDropDownList>(null);
 
-class App extends React.PureComponent<{}, IState> {
-
-    private myDropDownList = React.createRef<JqxDropDownList>();
-
-    constructor(props: {}) {
-        super(props);
-        this.topBtnOnChecked = this.topBtnOnChecked.bind(this);
-        this.bottomBtnOnChecked = this.bottomBtnOnChecked.bind(this);
-
-        const source: any = {
+    const source = useMemo(() => {
+        const s: any = {
             async: false,
             datafields: [
                 { name: 'CompanyName' },
@@ -29,55 +17,55 @@ class App extends React.PureComponent<{}, IState> {
             id: 'id',
             url: 'customers.txt'
         };
+        return new jqx.dataAdapter(s);
+    }, []);
 
-        this.state = {
-            bottomBtnChecked: false,
-            dropDownVerticalAlignment: 'top',
-            source: new jqx.dataAdapter(source),
-            topBtnChecked: true
-        }
-    }
+    const [dropDownVerticalAlignment, setDropDownVerticalAlignment] = useState<IDropDownListProps['dropDownVerticalAlignment']>('top');
+    const [topBtnChecked, setTopBtnChecked] = useState(true);
+    const [bottomBtnChecked, setBottomBtnChecked] = useState(false);
 
-    public componentDidMount() {
-        this.myDropDownList.current!.setOptions({ selectedIndex: 0 });
-    }
+    useEffect(() => {
+        myDropDownList.current?.setOptions({ selectedIndex: 0 });
+    }, []);
 
-    public render() {
-        return (
-            <div>
-                <JqxDropDownList theme={'material-purple'} ref={this.myDropDownList} style={{ float: 'left', marginTop: '270px' }}
-                    width={150} height={30} source={this.state.source} displayMember={'ContactName'} valueMember={'notes'}
-                    dropDownVerticalAlignment={this.state.dropDownVerticalAlignment} dropDownWidth={200} />
+    const topBtnOnChecked = useCallback(() => {
+        setDropDownVerticalAlignment('top');
+        setTopBtnChecked(true);
+        setBottomBtnChecked(false);
+    }, []);
 
-                <div style={{ float: 'left', fontSize: '13px', fontFamily: 'Verdana', marginLeft: '100px', marginTop: '270px' }}>
-                    <h3>Alignment</h3>
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.topBtnOnChecked} checked={this.state.topBtnChecked}>
-                        Top
-                    </JqxRadioButton>
+    const bottomBtnOnChecked = useCallback(() => {
+        setDropDownVerticalAlignment('bottom');
+        setTopBtnChecked(false);
+        setBottomBtnChecked(true);
+    }, []);
 
-                    <JqxRadioButton theme={'material-purple'} onChecked={this.bottomBtnOnChecked} checked={this.state.bottomBtnChecked}>
-                        Bottom
-                    </JqxRadioButton>
-                </div>
+    return (
+        <div>
+            <JqxDropDownList
+                theme="material-purple"
+                ref={myDropDownList}
+                style={{ float: 'left', marginTop: '270px' }}
+                width={150}
+                height={30}
+                source={source}
+                displayMember="ContactName"
+                valueMember="notes"
+                dropDownVerticalAlignment={dropDownVerticalAlignment}
+                dropDownWidth={200}
+            />
+
+            <div style={{ float: 'left', fontSize: '13px', fontFamily: 'Verdana', marginLeft: '100px', marginTop: '270px' }}>
+                <h3>Alignment</h3>
+                <JqxRadioButton theme="material-purple" onChecked={topBtnOnChecked} checked={topBtnChecked}>
+                    Top
+                </JqxRadioButton>
+                <JqxRadioButton theme="material-purple" onChecked={bottomBtnOnChecked} checked={bottomBtnChecked}>
+                    Bottom
+                </JqxRadioButton>
             </div>
-        );
-    }
-
-    private topBtnOnChecked(): void {
-        this.setState({
-            bottomBtnChecked: false,
-            dropDownVerticalAlignment: 'top',
-            topBtnChecked: true
-        });
-    }
-
-    private bottomBtnOnChecked(): void {
-        this.setState({
-            bottomBtnChecked: true,
-            dropDownVerticalAlignment: 'bottom',
-            topBtnChecked: false
-        });
-    }
-}
+        </div>
+    );
+};
 
 export default App;

@@ -1,7 +1,5 @@
-﻿import * as React from 'react';
- 
-
-
+import * as React from 'react';
+import { useRef, useState } from 'react';
 import JqxButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxbuttons';
 import JqxCheckBox from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxcheckbox';
 import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxdropdownlist';
@@ -9,154 +7,184 @@ import JqxExpander from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxexpander';
 import JqxNotification from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxnotification';
 import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxradiobutton';
 
-class App extends React.PureComponent<{}> {
+const App = () => {
+    const myNotification = useRef<JqxNotification>(null);
 
-    private myNotification = React.createRef<JqxNotification>();
+    const [position, setPosition] = useState<'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'>('top-right');
+    const [template, setTemplate] = useState<string | null>('info');
+    const [closeOnClick, setCloseOnClick] = useState<boolean>(true);
+    const [autoClose, setAutoClose] = useState<boolean>(true);
+    const [blink, setBlink] = useState<boolean>(false);
 
-    constructor(props: {}) {
-        super(props);
-        this.openNotificationClick = this.openNotificationClick.bind(this);
-        this.closeLastNotificationClick = this.closeLastNotificationClick.bind(this);
-        this.closeNotificationsClick = this.closeNotificationsClick.bind(this);
-        this.topLeftChecked = this.topLeftChecked.bind(this);
-        this.topRightChecked = this.topRightChecked.bind(this);
-        this.bottomLeftChecked = this.bottomLeftChecked.bind(this);
-        this.bottomRightChecked = this.bottomRightChecked.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.closeOnClickCheckboxChange = this.closeOnClickCheckboxChange.bind(this);
-        this.autoCloseCheckBoxChange = this.autoCloseCheckBoxChange.bind(this);
-        this.blinkCheckboxChange = this.blinkCheckboxChange.bind(this);
-    }
-
-    public render() {
-        return (
-            <div>
-                <JqxNotification theme={'material-purple'} ref={this.myNotification}
-                    width={'auto'} autoOpen={false} autoClose={true} template={'info'}
-                    blink={false} icon={{ width: 25, height: 25, url: 'https://www.jqwidgets.com/react/images/smiley.png', padding: 5 }}
-                    closeOnClick={true} opacity={0.9} position={'top-right'}>
-                    <div>
-                        <span>
-                            Welcome to our website.
-                        </span>
-                    </div>
-                </JqxNotification>
-
-                <div style={{ float: 'left', marginLeft: '25%' }}>
-                    <JqxButton theme={'material-purple'} onClick={this.openNotificationClick} width={160}>Open notification</JqxButton>
-                    <JqxButton theme={'material-purple'} onClick={this.closeLastNotificationClick} width={160}>Close last notification</JqxButton>
-                    <JqxButton theme={'material-purple'} onClick={this.closeNotificationsClick} width={160}>Close all notifications</JqxButton>
-                </div>
-
-                <div style={{ float: 'left', marginLeft: '15px' }}>
-                    <JqxExpander theme={'material-purple'} width={200} height={385} toggleMode={'none'} showArrow={false}>
-                        <div>
-                            jqxNotification settings
-                        </div>
-                        <div style={{ padding: '5px' }}>
-                            <div>
-                                Position:
-                            </div>
-                            <ul style={{ listStyle: 'none', padding: '0px', marginTop: '10px', marginLeft: '20px', fontFamily: 'Verdana', fontSize: '12px' }}>
-                                <li>
-                                    <JqxRadioButton theme={'material-purple'} checked={false} groupName={'position'} onChecked={this.topLeftChecked}>
-                                        Top-Left
-                                    </JqxRadioButton>
-                                </li>
-                                <li>
-                                    <JqxRadioButton theme={'material-purple'} checked={true} groupName={'position'} onChecked={this.topRightChecked}>
-                                        Top-Right
-                                    </JqxRadioButton>
-                                </li>
-                                <li>
-                                    <JqxRadioButton theme={'material-purple'} checked={false} groupName={'position'} onChecked={this.bottomLeftChecked}>
-                                        Bottom-Left
-                                    </JqxRadioButton>
-                                </li>
-                                <li>
-                                    <JqxRadioButton theme={'material-purple'} checked={false} groupName={'position'} onChecked={this.bottomRightChecked}>
-                                        Bottom-Right
-                                    </JqxRadioButton>
-                                </li>
-                            </ul>
-                            <br />
-                            <div>
-                                Template:
-                            </div>
-                            <JqxDropDownList theme={'material-purple'} onChange={this.onChange}
-                                width={'100%'} height={25} source={['info', 'warning', 'success', 'error', 'mail', 'time', 'null']}
-                                autoDropDownHeight={true} selectedIndex={0} />
-                            <br />
-                            <JqxCheckBox theme={'material-purple'} checked={true} onChange={this.closeOnClickCheckboxChange}>
-                                Close on click
-                            </JqxCheckBox>
-                            <JqxCheckBox theme={'material-purple'} checked={true} onChange={this.autoCloseCheckBoxChange}>
-                                Auto close
-                            </JqxCheckBox>
-                            <JqxCheckBox theme={'material-purple'} checked={false} onChange={this.blinkCheckboxChange}>
-                                Blink
-                            </JqxCheckBox>
-                        </div>
-                    </JqxExpander>
-                </div>
-            </div>
-        );
-    }
-
-    private openNotificationClick(): void {
-        this.myNotification.current!.open();
+    const openNotificationClick = () => {
+        myNotification.current?.open();
     };
 
-    private closeLastNotificationClick(): void {
-        this.myNotification.current!.closeLast();
+    const closeLastNotificationClick = () => {
+        myNotification.current?.closeLast();
     };
 
-    private closeNotificationsClick(): void {
-        this.myNotification.current!.closeAll();
+    const closeNotificationsClick = () => {
+        myNotification.current?.closeAll();
     };
 
-    private topLeftChecked(): void {
-        this.myNotification.current!.setOptions({ position: 'top-left' });
+    const topLeftChecked = () => {
+        setPosition('top-left');
+        myNotification.current?.setOptions({ position: 'top-left' });
     };
 
-    private topRightChecked(): void {
-        this.myNotification.current!.setOptions({ position: 'top-right' });
+    const topRightChecked = () => {
+        setPosition('top-right');
+        myNotification.current?.setOptions({ position: 'top-right' });
     };
 
-    private bottomLeftChecked(): void {
-        this.myNotification.current!.setOptions({ position: 'bottom-left' });
+    const bottomLeftChecked = () => {
+        setPosition('bottom-left');
+        myNotification.current?.setOptions({ position: 'bottom-left' });
     };
 
-    private bottomRightChecked(): void {
-        this.myNotification.current!.setOptions({ position: 'bottom-right' });
+    const bottomRightChecked = () => {
+        setPosition('bottom-right');
+        myNotification.current?.setOptions({ position: 'bottom-right' });
     };
 
-    private onChange (event: any): void {
+    const onChange = (event: any) => {
         const choice = event.args.item.label;
-        let newTemplate;
+        let newTemplate: string | null;
         if (choice !== "null") {
             newTemplate = choice;
         } else {
             newTemplate = null;
         }
-
-        this.myNotification.current!.setOptions({ template: newTemplate });
+        setTemplate(newTemplate);
+        myNotification.current?.setOptions({ template: newTemplate });
     };
 
-    private closeOnClickCheckboxChange(event: any): void {
+    const closeOnClickCheckboxChange = (event: any) => {
         const checked = event.args.checked;
-        this.myNotification.current!.setOptions({ closeOnClick: checked });
+        setCloseOnClick(checked);
+        myNotification.current?.setOptions({ closeOnClick: checked });
     };
 
-    private autoCloseCheckBoxChange(event: any): void {
+    const autoCloseCheckBoxChange = (event: any) => {
         const checked = event.args.checked;
-        this.myNotification.current!.setOptions({ autoClose: checked });
+        setAutoClose(checked);
+        myNotification.current?.setOptions({ autoClose: checked });
     };
 
-    private blinkCheckboxChange(event: any): void {
+    const blinkCheckboxChange = (event: any) => {
         const checked = event.args.checked;
-        this.myNotification.current!.setOptions({ blink: checked });
+        setBlink(checked);
+        myNotification.current?.setOptions({ blink: checked });
     };
-}
+
+    return (
+        <div>
+            <JqxNotification
+                theme="material-purple"
+                ref={myNotification}
+                width="auto"
+                autoOpen={false}
+                autoClose={autoClose}
+                template={template as any}
+                blink={blink}
+                icon={{ width: 25, height: 25, url: 'https://www.jqwidgets.com/react/images/smiley.png', padding: 5 }}
+                closeOnClick={closeOnClick}
+                opacity={0.9}
+                position={position}
+            >
+                <div>
+                    <span>
+                        Welcome to our website.
+                    </span>
+                </div>
+            </JqxNotification>
+
+            <div style={{ float: 'left', marginLeft: '25%' }}>
+                <JqxButton theme="material-purple" onClick={openNotificationClick} width={160}>Open notification</JqxButton>
+                <JqxButton theme="material-purple" onClick={closeLastNotificationClick} width={160}>Close last notification</JqxButton>
+                <JqxButton theme="material-purple" onClick={closeNotificationsClick} width={160}>Close all notifications</JqxButton>
+            </div>
+
+            <div style={{ float: 'left', marginLeft: '15px' }}>
+                <JqxExpander theme="material-purple" width={200} height={385} toggleMode="none" showArrow={false}>
+                    <div>
+                        jqxNotification settings
+                    </div>
+                    <div style={{ padding: '5px' }}>
+                        <div>
+                            Position:
+                        </div>
+                        <ul style={{ listStyle: 'none', padding: '0px', marginTop: '10px', marginLeft: '20px', fontFamily: 'Verdana', fontSize: '12px' }}>
+                            <li>
+                                <JqxRadioButton
+                                    theme="material-purple"
+                                    checked={position === 'top-left'}
+                                    groupName="position"
+                                    onChecked={topLeftChecked}
+                                >
+                                    Top-Left
+                                </JqxRadioButton>
+                            </li>
+                            <li>
+                                <JqxRadioButton
+                                    theme="material-purple"
+                                    checked={position === 'top-right'}
+                                    groupName="position"
+                                    onChecked={topRightChecked}
+                                >
+                                    Top-Right
+                                </JqxRadioButton>
+                            </li>
+                            <li>
+                                <JqxRadioButton
+                                    theme="material-purple"
+                                    checked={position === 'bottom-left'}
+                                    groupName="position"
+                                    onChecked={bottomLeftChecked}
+                                >
+                                    Bottom-Left
+                                </JqxRadioButton>
+                            </li>
+                            <li>
+                                <JqxRadioButton
+                                    theme="material-purple"
+                                    checked={position === 'bottom-right'}
+                                    groupName="position"
+                                    onChecked={bottomRightChecked}
+                                >
+                                    Bottom-Right
+                                </JqxRadioButton>
+                            </li>
+                        </ul>
+                        <br />
+                        <div>
+                            Template:
+                        </div>
+                        <JqxDropDownList
+                            theme="material-purple"
+                            onChange={onChange}
+                            width="100%"
+                            height={25}
+                            source={['info', 'warning', 'success', 'error', 'mail', 'time', 'null']}
+                            autoDropDownHeight={true}
+                            selectedIndex={template === null ? 6 : ['info', 'warning', 'success', 'error', 'mail', 'time', 'null'].indexOf(template)}
+                        />
+                        <br />
+                        <JqxCheckBox theme="material-purple" checked={closeOnClick} onChange={closeOnClickCheckboxChange}>
+                            Close on click
+                        </JqxCheckBox>
+                        <JqxCheckBox theme="material-purple" checked={autoClose} onChange={autoCloseCheckBoxChange}>
+                            Auto close
+                        </JqxCheckBox>
+                        <JqxCheckBox theme="material-purple" checked={blink} onChange={blinkCheckboxChange}>
+                            Blink
+                        </JqxCheckBox>
+                    </div>
+                </JqxExpander>
+            </div>
+        </div>
+    );
+};
 
 export default App;
