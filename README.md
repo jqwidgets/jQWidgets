@@ -1,78 +1,222 @@
-jQWidgets
-=========
+jQWidgets & Smart UI
 
-jQWidgets is an advanced UI framework for Angular, React, Vue, Blazor, Web Components, Javascript and ASP .NET.
+Enterprise-grade UI components for modern web applications (2026)
 
-![Angular Components](https://www.jqwidgets.com/wp-content/images/material-pager.png)
+jQWidgets is a mature, high-performance UI component framework for building complex, data-driven web applications. It supports Angular, React, Vue, Blazor, Web Components, JavaScript, and ASP.NET Core, and is trusted in enterprise environments worldwide.
+
+Alongside jQWidgets, Smart UI by htmlelements.com represents the next generation of the platform—built on native Web Components, modern standards, and long-term maintainability.
 
 What is jQWidgets?
----------
 
-jQWidgets represents a framework based on Javascript for building web-based applications that run on PC, Touch and Mobile devices. jQWidgets includes more than 60 User Interface widgets. All UI widgets are designed from ground-up and based on a powerful common core. The framework core provides fundamental capabilities like support for widget extensions and inheritance, widget settings, internal event handling and routing, property change notifications, device and browser compatibility detection and adjustments.
+jQWidgets is a comprehensive JavaScript UI framework designed for rich business applications running on desktop, touch, and mobile devices.
 
-Highlights
----------
-* Feature complete User Interface widgets.
-* Works on PC, Touch and Mobile Devices.
-* Rich functionality and great performance.
-* Web Components built from ground-up.
-* React 19.1 Javascript Library User Interface Components
-* Angular 20 and AngularJS 1.x Directives for every widget.
-* [Blazor Controls](https://www.htmlelements.com/blazor/). 
-* ASP .NET Core UI Components
-* Easy PHP & ASP .NET integration and how-to demos.
-* Typescript Definitions for all widgets.
-* PhoneGap Integration.
-* Java Integration.
-* 60+ UI components, 30+ Charts, 1000+ code samples are provided to accelerate your learning.
-* Search-engine friendly.
-* Guaranteed 24h support time for licensed developers Mon-Fri.
-* Outstanding technical assistance provided by software developers.
-* Free fully functional Download and upgrades for a full calendar year.
-* [Chart Studio](https://www.jqwidgets.com/chartstudio/) - cloud solution for visual editing and hosting of interactive charts.
-* [jsEditor](https://www.jqwidgets.com/jseditor/) - cloud solution for JavaScript, HTML and CSS editing, hosting and sharing your web development ideas.
-* Easy CSS styling and [Online Theme Builder](https://www.jqwidgets.com/themebuilder).
-* Ready to use, built-in Themes.
-* Unique and completely customizable architecture for JQuery widgets.
-* Integration tutorials for Bootstrap, RequireJS, BreezeJS, KnockoutJS.
-* jQuery Mobile, WordPress, Joomla and more.
+It includes 60+ feature-complete UI components, all built on a powerful shared core that provides:
 
-Works across devices and browsers
----------
+Consistent APIs and configuration model
 
-jQWidgets takes the JavaScript & HTML UI development to a new level. It is platform independent, cross-browser compatible and works on PC and mobile devices. Don’t spend time testing on different devices and browsers. Use a reliable, CSS compliant JavaScript library based jQuery, HTML5 and CSS3.The product supports all major desktop and mobile web browsers - Internet Explorer 7.0+, Firefox 2.0+, Safari 3.0+, Opera 9.0+, Google Chrome, IE Mobile, Android, Opera Mini, Mobile Safari(IPhone, IPad).
+High-performance rendering for large datasets
+
+Robust event system and property change notifications
+
+Cross-browser and cross-device compatibility
+
+Extensibility and inheritance for advanced customization
+
+jQWidgets has been used for over a decade in financial systems, dashboards, internal tools, admin panels, and enterprise portals.
+
+Smart UI (htmlelements.com) – The Future-Proof Stack
+
+Smart UI is the modern evolution of jQWidgets, built entirely on Web Components and aligned with 2026 web standards.
+
+Smart UI focuses on:
+
+Native Web Components (framework-agnostic)
+
+First-class support for Angular, React, Vue, and Blazor
+
+Modern theming and design systems
+
+Long-term browser compatibility without framework lock-in
+
+Cleaner APIs and improved developer experience
+
+👉 Smart UI website: https://www.htmlelements.com/
+
+Key Highlights (2026)
+
+✅ 60+ enterprise-ready UI components
+
+📊 30+ advanced chart types
+
+⚡ High performance for large datasets (Grid, Gantt, Scheduler, Kanban)
+
+🧩 Web Components built from the ground up (Smart UI)
+
+⚛️ React 19+ compatible components
+
+🅰️ Angular 20 & AngularJS 1.x support
+
+🔷 Blazor UI controls (WebAssembly & Server)
+
+🧱 ASP.NET Core MVC & Tag Helpers
+
+🧠 TypeScript definitions for all widgets
+
+🎨 Built-in themes + Online Theme Builder
+
+🛠️ 1000+ ready-to-use demos and samples
+
+📱 Works on desktop, tablet, and mobile
+
+🔍 SEO-friendly rendering
+
+🧑‍💻 Direct support from core framework developers
+
+⏱️ Guaranteed 24h response time (Mon–Fri) for licensed users
+
+Supported Technologies
+Frameworks
+
+Angular
+
+React
+
+Vue
+
+Blazor
+
+ASP.NET Core
+
+Plain JavaScript / jQuery
+
+Web Components (Smart UI)
+
+Integrations
+
+Bootstrap
+
+RequireJS
+
+KnockoutJS
+
+BreezeJS
+
+PhoneGap
+
+WordPress, Joomla
+
+Java & PHP backends
+
+Cross-Device & Cross-Browser Support
+
+jQWidgets and Smart UI are platform-independent and CSS-compliant.
+
+Supported environments include:
+
+Desktop browsers: Chrome, Firefox, Safari, Edge
+
+Mobile browsers: Android, iOS (Mobile Safari)
+
+Legacy enterprise environments (older IE supported where required)
+
+You build once and deploy everywhere—without device-specific rewrites.
+
+Cloud & Developer Tools
+
+Chart Studio – Visual editor and hosting for interactive charts
+https://www.jqwidgets.com/chartstudio/
+
+jsEditor – Cloud IDE for JavaScript, HTML, and CSS
+https://www.jqwidgets.com/jseditor/
+
+Online Theme Builder – Create and export custom themes
+https://www.jqwidgets.com/themebuilder
 
 Licensing
----------
+Non-Commercial License (Free)
 
-*Non-Commercial License*
+jQWidgets is free for non-commercial use under the
+Creative Commons Attribution-NonCommercial 3.0 License.
 
-Do you want to use jQWidgets for a non-profit project? Then you can use jQWidgets for free under the Creative Commons Attribution-NonCommercial 3.0 License.
+Allowed for:
 
-* For non-profit organizations, public schools and non-commercial personal websites.
-* For testing applications using jQWidgets.
+Non-profit organizations
 
-You are allowed to distribute jQWidgets with non-commercial packages given that you fulfill two conditions:
+Public schools
 
-* Emphasize to your users that jQWidgets is not free for commercial use. You can do this on your download page or when your users activate jQWidgets in your application.
-* Provide a link back to this web page in the same location: https://www.jqwidgets.com/license/.
+Personal, non-commercial websites
 
-*Commercial License*
+Testing and evaluation
 
-The commercial license is suitable for commercial websites and projects or a corporate intranet. The license is perpetual and allows royalty free distribution with your websites and applications. Each license includes 1-year subscription for free product updates and platinum, premium or standard technical support plan. Subscription renewal is optional and costs 50% of the price of a new license. For subscription renewals, license upgrades, licenses with more than 1-year subscription or if you wish to license subsidiary or affiliate organizations, please contact us.
+Conditions:
 
-For more information, please visit https://www.jqwidgets.com/license/.
+Clearly state that jQWidgets is not free for commercial use
 
-More
--
-* React Demos: https://www.jqwidgets.com/react/ and https://www.htmlelements.com/react/
-* Angular Demos: https://www.jqwidgets.com/angular/ and https://www.htmlelements.com/angular/
-* Blazor Demos: https://blazor.jqwidgets.com/ and https://www.htmlelements.com/blazor/
-* Vue Demos: https://www.jqwidgets.com/vue/ and https://www.htmlelements.com/vue/
-* ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
-* Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
-* Javascript/jQuery Demos: https://www.jqwidgets.com/jquery-widgets-demo/ 
-* Vanilla Javascript Demos: https://www.htmlelements.com/demos/
-* Web Components Demos: https://www.htmlelements.com/
-* Services: https://www.jqwidgets.com/services/
-* Community Forums: https://www.jqwidgets.com/community/
+Provide a link to: https://www.jqwidgets.com/license/
+
+Commercial License
+
+The commercial license is suitable for:
+
+Commercial websites and SaaS products
+
+Enterprise and corporate intranets
+
+Distributed client applications
+
+Includes:
+
+Perpetual license
+
+Royalty-free distribution
+
+1 year of updates and support (renewable at 50%)
+
+Access to Platinum / Premium / Standard support plans
+
+For enterprise licensing, renewals, or multi-company usage, contact the jQWidgets team.
+
+👉 Full license details: https://www.jqwidgets.com/license/
+
+Demos & Resources
+Smart UI (Recommended)
+
+Web Components & Vanilla JS: https://www.htmlelements.com/
+
+Angular: https://www.htmlelements.com/angular/
+
+React: https://www.htmlelements.com/react/
+
+Blazor: https://www.htmlelements.com/blazor/
+
+Demos: https://www.htmlelements.com/demos/
+
+jQWidgets
+
+React: https://www.jqwidgets.com/react/
+
+Angular: https://www.jqwidgets.com/angular/
+
+Vue: https://www.jqwidgets.com/vue/
+
+Blazor: https://blazor.jqwidgets.com/
+
+ASP.NET Core: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
+
+jQuery Widgets: https://www.jqwidgets.com/jquery-widgets-demo/
+
+Showcase: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
+
+Community & Support
+
+💬 Community Forums: https://www.jqwidgets.com/community/
+
+🧑‍💻 Professional services: https://www.jqwidgets.com/services/
+
+📚 Extensive documentation and demos included
+
+Final Note
+
+In 2026, Smart UI by htmlelements.com is the recommended choice for new projects, offering a future-proof, standards-based UI architecture—while jQWidgets continues to provide a stable, battle-tested solution for existing and enterprise systems.
+
+Both are built and supported by the same expert team.

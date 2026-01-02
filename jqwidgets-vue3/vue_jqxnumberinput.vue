@@ -15,6 +15,10 @@
                 default: true,
                 type: Boolean
             },
+            autoHidePromptChart: {
+                default: true,
+                type: Boolean
+            },
             decimal: Number,
             disabled: {
                 default: false,
@@ -105,6 +109,13 @@
                     JQXLite(componentSelector).jqxNumberInput('allowNull', arg)
                 } else {
                     return JQXLite(componentSelector).jqxNumberInput('allowNull');
+                }
+            }
+            function _autoHidePromptChart (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNumberInput('autoHidePromptChart', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNumberInput('autoHidePromptChart');
                 }
             }
             function _decimal (arg) {
@@ -303,7 +314,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+                const widgetProps = ['allowNull','autoHidePromptChart','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -320,6 +331,12 @@
                  },
                  set allowNull(newValue) {
                      _allowNull(newValue);
+                 },
+                 get autoHidePromptChart() {
+                     return _autoHidePromptChart();
+                 },
+                 set autoHidePromptChart(newValue) {
+                     _autoHidePromptChart(newValue);
                  },
                  get decimal() {
                      return _decimal();

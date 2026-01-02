@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2025 jQWidgets.
+   Copyright (c) 2011-2026 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 
@@ -3091,6 +3091,7 @@ declare module jqwidgets {
     export interface NumberInputOptions {
         // NumberInputOptions properties
         allowNull?: boolean;
+        autoHidePromptChart?: boolean;
         decimal?: number | string;
         disabled?: boolean;
         decimalDigits?: number | string;

@@ -108,7 +108,7 @@
   --jqx-scrollbar-button-background-pressed: #f5f5f5;
   --jqx-scrollbar-button-border-pressed: #f5f5f5;
   --jqx-font-size: 14px;
-  --jqx-icon-calendar-up:'\e804';
+  --jqx-icon-calendar-up: '\e804';
   --jqx-icon-calendar-down: '\e805';
   --jqx-icon-sort-up: '\e904';
   --jqx-icon-sort-down: '\e901';
@@ -200,7 +200,7 @@ body[theme=tailwind-dark] {
   --jqx-icon-right: url(font/svg/right-dir.svg);
   --jqx-icon-edit: url(font/svg/edit.svg);
   --jqx-icon-calendar-alt: url(font/svg/calendar-alt.svg);
-  --jqx-icon-close-alt:url(font/svg/close-alt.svg);
+  --jqx-icon-close-alt: url(font/svg/close-alt.svg);
   --jqx-icon-delete: url(font/svg/delete.svg);
   --jqx-icon-download: url(font/svg/download-alt.svg);
   --jqx-icon-check-alt: url(font/svg/check-alt.svg);
@@ -208,13 +208,14 @@ body[theme=tailwind-dark] {
   --jqx-icon-info: url(font/svg/info.svg);
   --jqx-icon-circle: url(font/svg/circle.svg);
   --jqx-icon-sort-menu-down: url(font/svg/sort-alt-down.svg);
-  --jqx-icon-sort-menu-up:url(font/svg/sort-alt-up.svg);
-  --jqx-icon-sort-up:url(font/svg/up-dir.svg);
+  --jqx-icon-sort-menu-up: url(font/svg/sort-alt-up.svg);
+  --jqx-icon-sort-up: url(font/svg/up-dir.svg);
   --jqx-icon-sort-down: url(font/svg/down-dir.svg);
   --jqx-icon-menu-alt: url(font/svg/hamburger.svg);
   --jqx-icon-calendar-up: url(font/svg/arrow-up-long.svg);
   --jqx-icon-calendar-down: url(font/svg/arrow-down-long.svg);
 }
+
 .jqx-icon-type-svg .jqx-icon-close-tailwind:after,
 .jqx-icon-type-svg .jqx-icon-search-tailwind:after,
 .jqx-icon-type-svg .jqx-grid-column-filterbutton-tailwind:after,
@@ -288,50 +289,113 @@ body[theme=tailwind-dark] {
 .jqx-icon-type-svg .jqx-icon-arrow-last-tailwind:after {
   width: 16px;
 }
+
 .jqx-icon-type-svg .jqx-checkbox-check-checked-tailwind:after {
   content: "";
   -webkit-mask-image: var(--jqx-icon-check);
   background-color: var(--jqx-primary-color);
   -webkit-mask-size: cover;
 }
+
 .jqx-icon-type-svg .sorticon.ascending .jqx-grid-column-sorticon-tailwind::after {
   margin-left: 3px;
   margin-top: 3px;
 }
-.jqx-icon-type-svg .jqx-icon-calendar-tailwind:after, .jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind:after, .jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind:after {
+
+.jqx-icon-type-svg .jqx-icon-calendar-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind:after {
   margin-top: 5px;
   width: 18px;
 }
+
 .jqx-icon-type-svg .jqx-calendar-title-navigation-tailwind:hover::after {
   padding: 1px !important;
 }
-.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind, .jqx-icon-type-svg .jqx-grid-group-expand-tailwind, .jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind, .jqx-icon-type-svg .jqx-expander-arrow-top-tailwind, .jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-down-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind {
+
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind {
   font-family: inherit !important;
   background-size: 12px;
   background-image: var(--jqx-icon-arrow-down) !important;
   background-repeat: no-repeat;
 }
-.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind::after, .jqx-icon-type-svg .jqx-grid-group-expand-tailwind::after, .jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind::after, .jqx-icon-type-svg .jqx-expander-arrow-top-tailwind::after, .jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-down-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind::after {
+
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind::after,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind::after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind::after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind::after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind::after {
   content: "" !important;
 }
-.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind, .jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind, .jqx-icon-type-svg .jqx-window-collapse-button-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-up-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind {
+
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind {
   font-family: inherit !important;
   background-size: 12px;
   background-image: var(--jqx-icon-arrow-up) !important;
   background-repeat: no-repeat;
 }
-.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind::after, .jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind::after, .jqx-icon-type-svg .jqx-window-collapse-button-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-up-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind::after {
+
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind::after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind::after,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind::after {
   content: "" !important;
 }
-.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind, .jqx-icon-type-svg .jqx-grid-group-collapse-tailwind, .jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind, .jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-right-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind, .jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind {
+
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind {
   font-family: inherit !important;
   background-size: 10px;
   background-image: var(--jqx-icon-arrow-right) !important;
   background-repeat: no-repeat;
 }
-.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind::after, .jqx-icon-type-svg .jqx-grid-group-collapse-tailwind::after, .jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind::after, .jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-right-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind::after, .jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind::after {
+
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind::after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind::after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind::after {
   content: "" !important;
 }
+
 .jqx-icon-type-svg .jqx-icon-time-tailwind:after,
 .jqx-icon-type-svg .jqx-icon-time-hover-tailwind:after,
 .jqx-icon-type-svg .jqx-icon-time-pressed-tailwind:after {
@@ -345,14 +409,17 @@ body[theme=tailwind-dark] {
   justify-content: center;
   height: 100%;
 }
+
 .jqx-calendar-title-navigation-tailwind.jqx-icon-arrow-left-tailwind:after {
   content: var(--jqx-icon-calendar-up) !important;
   font-size: 12px;
 }
+
 .jqx-calendar-title-navigation-tailwind.jqx-icon-arrow-right-tailwind:after {
   content: var(--jqx-icon-calendar-down) !important;
   font-size: 12px;
 }
+
 .jqx-calendar-title-navigation-tailwind:hover::after {
   background: var(--jqx-background-hover) !important;
   color: var(--jqx-background-color-hover) !important;
@@ -407,6 +474,7 @@ body[theme=tailwind-dark] {
   font-weight: normal;
   speak: none;
 }
+
 /*Rounded Corners*/
 /*top-left rounded Corners*/
 .jqx-rc-tl-tailwind {
@@ -511,7 +579,9 @@ body[theme=tailwind-dark] {
   border-bottom-color: var(--jqx-border);
 }
 
-.jqx-widget-tailwind input::-moz-selection, input.jqx-input-widget-tailwind::-moz-selection, .jqx-widget-content-tailwind input::-moz-selection {
+.jqx-widget-tailwind input::-moz-selection,
+input.jqx-input-widget-tailwind::-moz-selection,
+.jqx-widget-content-tailwind input::-moz-selection {
   background: var(--jqx-primary);
   color: var(--jqx-primary-color);
 }
@@ -563,38 +633,55 @@ jqx-button-tailwind input {
   border: 1px solid var(--jqx-border);
   border-radius: var(--jqx-border-radius);
 }
+
 .jqx-button-tailwind.jqx-button-tailwind:hover {
   --jqx-background: var(--tailwind-btn-secondary-bg-hover);
 }
+
 .jqx-button-tailwind.jqx-button-tailwind:active {
   --jqx-background: var(--tailwind-btn-secondary-bg-active);
 }
-.jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-pressed, .jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-focus, .jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block):focus {
+
+.jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-pressed,
+.jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-focus,
+.jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block):focus {
   outline-offset: 1px;
   outline: 2px solid var(--jqx-border);
 }
-.jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block.jqx-fill-state-pressed, .jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block.jqx-fill-state-focus, .jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block:focus {
+
+.jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block.jqx-fill-state-pressed,
+.jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block.jqx-fill-state-focus,
+.jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block:focus {
   background: var(--tailwind-btn-secondary-bg-active);
 }
+
 .jqx-button-tailwind.jqx-button-tailwind[disabled] {
   opacity: 1;
   --jqx-border: var(--tailwind-greys-grey20);
   --jqx-background: var(--tailwind-greys-grey20);
   --jqx-background-color: var(--tailwind-greys-grey90);
 }
-.jqx-button-tailwind.jqx-button-tailwind.jqx-primary, .jqx-button-tailwind.jqx-button-tailwind.primary {
+
+.jqx-button-tailwind.jqx-button-tailwind.jqx-primary,
+.jqx-button-tailwind.jqx-button-tailwind.primary {
   --jqx-border: var(--tailwind-btn-primary-bg);
   --jqx-background: var(--tailwind-btn-primary-bg);
   --jqx-background-color: var(--tailwind-btn-primary-color);
 }
-.jqx-button-tailwind.jqx-button-tailwind.jqx-primary:hover, .jqx-button-tailwind.jqx-button-tailwind.primary:hover {
+
+.jqx-button-tailwind.jqx-button-tailwind.jqx-primary:hover,
+.jqx-button-tailwind.jqx-button-tailwind.primary:hover {
   --jqx-border: var(--tailwind-btn-primary-bg-hover);
   --jqx-background: var(--tailwind-btn-primary-bg-hover);
 }
-.jqx-button-tailwind.jqx-button-tailwind.jqx-primary:active, .jqx-button-tailwind.jqx-button-tailwind.primary:active {
+
+.jqx-button-tailwind.jqx-button-tailwind.jqx-primary:active,
+.jqx-button-tailwind.jqx-button-tailwind.primary:active {
   --jqx-background: var(--tailwind-btn-primary-bg-active);
 }
-.jqx-button-tailwind.jqx-button-tailwind.jqx-primary[disabled], .jqx-button-tailwind.jqx-button-tailwind.primary[disabled] {
+
+.jqx-button-tailwind.jqx-button-tailwind.jqx-primary[disabled],
+.jqx-button-tailwind.jqx-button-tailwind.primary[disabled] {
   opacity: 1;
   --jqx-border: var(--tailwind-greys-grey20);
   --jqx-background: var(--tailwind-greys-grey20);
@@ -638,21 +725,26 @@ jqx-button-tailwind input {
   overflow: unset;
   opacity: 1;
 }
+
 .jqx-slider-tailwind .jqx-track-container {
   border-radius: 2px;
 }
+
 .jqx-slider-tailwind .jqx-slider-button {
   opacity: 0 !important;
 }
+
 .jqx-slider-tailwind .jqx-fill-state-focus-tailwind .jqx-slider-rangebar-tailwind,
 .jqx-slider-tailwind .jqx-fill-state-focus-tailwind .jqx-slider-slider {
   --jqx-primary: var(--tailwind-theme-primary);
   --jqx-ui-state-active: var(--tailwind-theme-primary);
 }
+
 .jqx-slider-tailwind .jqx-slider-track {
   background: var(--jqx-disabled);
   overflow: unset;
 }
+
 .jqx-slider-tailwind .jqx-slider-track .jqx-fill-state-normal {
   width: 16px;
   height: 16px;
@@ -660,24 +752,30 @@ jqx-button-tailwind input {
   border-width: 2px;
   border-color: var(--jqx-ui-state-active);
 }
+
 .jqx-slider-tailwind .jqx-slider-track:hover {
   background: var(--tailwind-theme-light);
 }
+
 .jqx-slider-tailwind .jqx-slider-track:hover .jqx-fill-state-pressed {
   background-color: var(--tailwind-theme-primary);
 }
+
 .jqx-slider-tailwind .jqx-slider-track:hover .jqx-fill-state-normal,
 .jqx-slider-tailwind .jqx-slider-track:hover .jqx-fill-state-hover {
   border-color: var(--tailwind-theme-primary);
 }
+
 .jqx-slider-tailwind[disabled] {
   opacity: 1;
 }
+
 .jqx-slider-tailwind[disabled] .jqx-track {
   --jqx-primary: var(--tailwind-greys-grey90);
   background-color: var(--tailwind-greys-grey20);
   --jqx-disabled: var(--tailwind-greys-grey20);
 }
+
 .jqx-slider-tailwind[disabled] .jqx-track .jqx-value {
   background-color: var(--tailwind-greys-grey90);
 }
@@ -762,6 +860,8 @@ jqx-button-tailwind input {
   height: 100% !important;
   margin-top: 0px !important;
 }
+
+
 
 .jqx-dropdownlist-content-tailwind span {
   top: 0px !important;
@@ -1065,7 +1165,7 @@ jqx-button-tailwind input {
   border-width: 0px;
 }
 
-.jqx-grid-groups-row-tailwind > span {
+.jqx-grid-groups-row-tailwind>span {
   padding-left: 4px;
 }
 
@@ -1116,15 +1216,17 @@ jqx-button-tailwind input {
   color: var(--jqx-surface-color);
 }
 
-.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-tailwind {
+.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind {
   background: rgba(244, 245, 249, 0.2) !important;
   color: var(--jqx-surface-color) !important;
 }
-.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-tailwind.jqx-grid-cell-sort-tailwind {
+
+.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind.jqx-grid-cell-sort-tailwind {
   background: rgba(244, 245, 249, 0.2) !important;
   color: var(--jqx-surface-color) !important;
 }
-.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-tailwind.jqx-grid-cell-hover-tailwind {
+
+.jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind.jqx-grid-cell-hover-tailwind {
   background: var(--jqx-background-hover) !important;
   color: var(--jqx-background-color-hover) !important;
 }
@@ -1148,8 +1250,8 @@ jqx-button-tailwind input {
   padding: 0px !important;
 }
 
-.jqx-grid-pager-top-tailwind .jqx-button-tailwind > div,
-.jqx-grid-pager-tailwind .jqx-button-tailwind > div {
+.jqx-grid-pager-top-tailwind .jqx-button-tailwind>div,
+.jqx-grid-pager-tailwind .jqx-button-tailwind>div {
   top: 0px;
   position: relative;
   left: 0px;
@@ -1206,7 +1308,7 @@ jqx-button-tailwind input {
   font-size: 13px;
 }
 
-.jqx-calendar-tailwind > div {
+.jqx-calendar-tailwind>div {
   padding: 0px;
   box-sizing: border-box;
 }
@@ -1223,14 +1325,17 @@ jqx-button-tailwind input {
   justify-content: center;
   height: 100%;
 }
+
 .jqx-calendar-title-navigation-tailwind.jqx-icon-arrow-left-tailwind:after {
   content: var(--jqx-icon-calendar-up) !important;
   font-size: 12px;
 }
+
 .jqx-calendar-title-navigation-tailwind.jqx-icon-arrow-right-tailwind:after {
   content: var(--jqx-icon-calendar-down) !important;
   font-size: 12px;
 }
+
 .jqx-calendar-title-navigation-tailwind:hover::after {
   background: var(--jqx-background-hover) !important;
   color: var(--jqx-background-color-hover) !important;
@@ -1264,35 +1369,47 @@ jqx-button-tailwind input {
   background: transparent;
   border-color: transparent;
 }
+
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-button-state-normal-tailwind {
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-tailwind {
   transform: scaleX(0.3);
   border-radius: 5px;
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-horizontal-tailwind {
   transform: scaleY(0.3);
   border-radius: 5px;
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-state-normal-tailwind, .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-state-normal-tailwind {
+
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-state-normal-tailwind,
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-state-normal-tailwind {
   background: transparent;
   border-color: transparent;
 }
-.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-button-state-normal-tailwind, .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-button-state-normal-tailwind {
+
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-button-state-normal-tailwind,
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-button-state-normal-tailwind {
   opacity: 0;
 }
-.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-tailwind, .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-tailwind {
+
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-tailwind,
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-tailwind {
   transform: scaleX(0.4);
   border-radius: 5px;
 }
-.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-horizontal-tailwind, .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-horizontal-tailwind {
+
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-horizontal-tailwind,
+.jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-horizontal-tailwind {
   transform: scaleY(0.4);
   border-radius: 5px;
 }
+
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-pressed-tailwind,
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-pressed-horizontal-tailwind {
   transform: scale(1);
@@ -1405,10 +1522,12 @@ jqx-grid-column-filterbutton-tailwind,
   box-shadow: var(--tailwind-box-shadow-16) !important;
   border-radius: var(--jqx-border-radius);
 }
+
 .jqx-tooltip-tailwind.dark {
   --tailwind-tooltip-bg: #201F1E;
   --tailwind-tooltip-color: #fff;
 }
+
 .jqx-tooltip-tailwind.jqx-popup-light,
 .jqx-tooltip-tailwind .jqx-fill-state-normal-tailwind {
   background: var(--tailwind-tooltip-bg);
@@ -1416,6 +1535,7 @@ jqx-grid-column-filterbutton-tailwind,
   box-shadow: none;
   color: var(--tailwind-tooltip-color);
 }
+
 .jqx-tooltip-tailwind .jqx-tooltip-main {
   border-color: var(--tailwind-tooltip-bg);
   background-color: var(--tailwind-tooltip-bg);
@@ -1429,6 +1549,7 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-rating-image-backward img {
   visibility: hidden;
 }
+
 .jqx-rating-image-default:after,
 .jqx-rating-image-hover:after,
 .jqx-rating-image-backward:after {
@@ -1545,10 +1666,13 @@ jqx-grid-column-filterbutton-tailwind,
   background-color: var(--jqx-background);
   border-color: var(--jqx-border);
 }
+
 .jqx-datatable-tailwind .jqx-tree-grid-checkbox-tailwind:hover {
   border-color: var(--tailwind-input-border-hover);
 }
-.jqx-datatable-tailwind .jqx-tree-grid-checkbox-tailwind .jqx-checkbox-check-indeterminate, .jqx-datatable-tailwind .jqx-tree-grid-checkbox-tailwind[checked=true] {
+
+.jqx-datatable-tailwind .jqx-tree-grid-checkbox-tailwind .jqx-checkbox-check-indeterminate,
+.jqx-datatable-tailwind .jqx-tree-grid-checkbox-tailwind[checked=true] {
   color: var(--jqx-primary-color) !important;
   background-color: var(--jqx-primary) !important;
   border-color: var(--jqx-primary) !important;
@@ -1559,15 +1683,18 @@ jqx-grid-column-filterbutton-tailwind,
   background-color: var(--jqx-background);
   border-color: var(--jqx-border);
 }
+
 .jqx-listbox-content-element-tailwind .jqx-checkbox-tailwind .jqx-checkbox-default-tailwind:hover {
   border-color: var(--tailwind-input-border-hover);
 }
+
 .jqx-listbox-content-element-tailwind .jqx-checkbox-tailwind .jqx-checkbox-check-checked {
   color: var(--jqx-primary-color);
   background-color: var(--jqx-primary);
   border-color: var(--jqx-primary);
   border-radius: var(--jqx-border-radius) !important;
 }
+
 .jqx-menu-item-disabled-tailwind {
   color: inherit;
 }
@@ -1620,10 +1747,12 @@ jqx-grid-column-filterbutton-tailwind,
   padding-left: 5px;
   box-sizing: border-box;
 }
+
 .jqx-grid-pager-input-tailwind:hover,
 .jqx-listbox-tailwind input:hover {
   border: 1px solid var(--tailwind-input-border-hover) !important;
 }
+
 .jqx-grid-pager-input-tailwind:focus,
 .jqx-listbox-tailwind input:focus {
   border: 1px solid var(--jqx-primary) !important;
@@ -1736,6 +1865,7 @@ jqx-grid-column-filterbutton-tailwind,
   box-shadow: var(--tailwind-box-shadow-8) !important;
   background: var(--jqx-background) !important;
 }
+
 .jqx-menu-popup-tailwind .jqx-popup-tailwind {
   box-shadow: none !important;
 }
@@ -1854,10 +1984,6 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-grid-column-sortdescbutton-tailwind:after,
 .jqx-grid-column-sorticon-tailwind.jqx-icon-arrow-down-tailwind:after {
   content: var(--jqx-icon-sort-down);
-}
-
-.jqx-grid-column-header-tailwind[sort][sort-index] > div > div {
-  width: calc(100% - 45px);
 }
 
 .jqx-grid-column-header-tailwind[sort][sort-index] .sorticon {
@@ -1992,7 +2118,12 @@ jqx-grid-column-filterbutton-tailwind,
   transform: scaleY(1);
   opacity: 1;
 }
-
+.jqx-dropdownbutton-popup.jqx-popup-up,
+.jqx-calendar-tailwind.jqx-popup-up,
+.jqx-listbox-tailwind.jqx-popup-up,
+.jqx-grid-menu.jqx-popup-up {
+  transform-origin: bottom left;
+}
 .jqx-widget-tailwind .jqx-grid-cell {
   border-color: var(--jqx-border);
   color: var(--jqx-background-color);
@@ -2035,9 +2166,11 @@ jqx-grid-column-filterbutton-tailwind,
   border-color: transparent;
   background: transparent;
 }
+
 .jqx-scheduler-toolbar-tailwind .jqx-widget-tailwind .jqx-action-button {
   margin-left: unset !important;
 }
+
 .jqx-scheduler-toolbar-tailwind .jqx-widget-tailwind:hover {
   background: var(--jqx-background-hover);
   color: var(--jqx-background-color-hover);
@@ -2127,48 +2260,85 @@ jqx-grid-column-filterbutton-tailwind,
   box-shadow: none;
   --jqx-border: var(--tailwind-input-border);
 }
+
 .jqx-input-group-tailwind.jqx-complex-input-group-tailwind {
   min-height: 30px;
 }
+
 .jqx-input-group-tailwind.jqx-complex-input-group-tailwind .jqx-formatted-input-spin-button-tailwind:hover {
   background: var(--jqx-background-hover);
   color: var(--jqx-background-color-hover);
 }
+
 .jqx-input-group-tailwind.jqx-complex-input-group-tailwind .jqx-formatted-input-spin-button-tailwind.jqx-fill-state-pressed {
   color: var(--jqx-primary-color);
   background-color: var(--jqx-primary);
 }
+
 .jqx-input-group-tailwind.underlined .jqx-input-tailwind {
   border: none;
   border-bottom: 1px solid var(--jqx-border);
 }
-.jqx-input-group-tailwind .jqx-input-tailwind, .jqx-input-group-tailwind input, .jqx-input-group-tailwind textarea {
+
+.jqx-input-group-tailwind .jqx-input-tailwind,
+.jqx-input-group-tailwind input,
+.jqx-input-group-tailwind textarea {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
   z-index: 9;
 }
-.jqx-input-group-tailwind .jqx-input-tailwind.jqx-fill-state-disabled, .jqx-input-group-tailwind input.jqx-fill-state-disabled, .jqx-input-group-tailwind textarea.jqx-fill-state-disabled {
+
+.jqx-input-group-tailwind .jqx-input-tailwind.jqx-fill-state-disabled,
+.jqx-input-group-tailwind input.jqx-fill-state-disabled,
+.jqx-input-group-tailwind textarea.jqx-fill-state-disabled {
   background: var(--tailwind-input-disabled-background);
   --jqx-background: var(--tailwind-input-disabled-background);
   --jqx-surface: var(--tailwind-input-disabled-background);
   pointer-events: none;
 }
-.jqx-input-group-tailwind .jqx-input-tailwind .jqx-action-button, .jqx-input-group-tailwind input .jqx-action-button, .jqx-input-group-tailwind textarea .jqx-action-button {
+
+.jqx-input-group-tailwind .jqx-input-tailwind .jqx-action-button,
+.jqx-input-group-tailwind input .jqx-action-button,
+.jqx-input-group-tailwind textarea .jqx-action-button {
   margin-left: -3px;
 }
-.jqx-input-group-tailwind .jqx-input-tailwind:hover, .jqx-input-group-tailwind input:hover, .jqx-input-group-tailwind textarea:hover {
+
+.jqx-input-group-tailwind .jqx-input-tailwind:hover,
+.jqx-input-group-tailwind input:hover,
+.jqx-input-group-tailwind textarea:hover {
   border: 1px solid var(--tailwind-input-border-hover);
 }
-.jqx-input-group-tailwind .jqx-input-tailwind.underlined:hover, .jqx-input-group-tailwind input.underlined:hover, .jqx-input-group-tailwind textarea.underlined:hover {
+
+.jqx-input-group-tailwind .jqx-input-tailwind.underlined:hover,
+.jqx-input-group-tailwind input.underlined:hover,
+.jqx-input-group-tailwind textarea.underlined:hover {
   border-bottom: 1px solid var(--tailwind-input-border-hover);
 }
-.jqx-input-group-tailwind .jqx-input-tailwind.underlined.jqx-fill-state-pressed, .jqx-input-group-tailwind .jqx-input-tailwind.underlined.jqx-fill-state-focus, .jqx-input-group-tailwind .jqx-input-tailwind.underlined:focus, .jqx-input-group-tailwind input.underlined.jqx-fill-state-pressed, .jqx-input-group-tailwind input.underlined.jqx-fill-state-focus, .jqx-input-group-tailwind input.underlined:focus, .jqx-input-group-tailwind textarea.underlined.jqx-fill-state-pressed, .jqx-input-group-tailwind textarea.underlined.jqx-fill-state-focus, .jqx-input-group-tailwind textarea.underlined:focus {
+
+.jqx-input-group-tailwind .jqx-input-tailwind.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind .jqx-input-tailwind.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind .jqx-input-tailwind.underlined:focus,
+.jqx-input-group-tailwind input.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind input.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind input.underlined:focus,
+.jqx-input-group-tailwind textarea.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind textarea.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind textarea.underlined:focus {
   border-bottom: 1px solid var(--jqx-primary);
   color: var(--tailwind-greys-grey190) !important;
 }
-.jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed, .jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined).jqx-fill-state-focus, .jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined):focus, .jqx-input-group-tailwind input:not(.underlined).jqx-fill-state-pressed, .jqx-input-group-tailwind input:not(.underlined).jqx-fill-state-focus, .jqx-input-group-tailwind input:not(.underlined):focus, .jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-pressed, .jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-focus, .jqx-input-group-tailwind textarea:not(.underlined):focus {
+
+.jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined):focus,
+.jqx-input-group-tailwind input:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind input:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind input:not(.underlined):focus,
+.jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind textarea:not(.underlined):focus {
   border: 1px solid var(--jqx-primary);
   outline: 1px solid var(--jqx-primary) !important;
   color: var(--tailwind-greys-grey190) !important;
@@ -2219,6 +2389,7 @@ jqx-grid-column-filterbutton-tailwind,
   --jqx-border: var(--tailwind-body-divider);
   outline: none;
 }
+
 .jqx-input-tailwind.underlined input:not(.jqx-fill-state-focus):hover,
 .jqx-dropdownlist-state-normal-tailwind.underlined:not(.jqx-fill-state-focus):hover,
 .jqx-combobox-state-normal-tailwind.underlined:not(.jqx-fill-state-focus):hover,
@@ -2226,6 +2397,7 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-datetimeinput-tailwind.underlined:not(.jqx-fill-state-focus):hover {
   border-bottom-color: var(--tailwind-input-border-hover);
 }
+
 .jqx-input-tailwind.underlined input:not(.jqx-fill-state-focus):focus,
 .jqx-dropdownlist-state-normal-tailwind.underlined:not(.jqx-fill-state-focus):focus,
 .jqx-combobox-state-normal-tailwind.underlined:not(.jqx-fill-state-focus):focus,
@@ -2238,7 +2410,7 @@ jqx-grid-column-filterbutton-tailwind,
   border-radius: 0;
 }
 
-.jqx-numberinput-tailwind .jqx-action-button-tailwind > div {
+.jqx-numberinput-tailwind .jqx-action-button-tailwind>div {
   width: 100%;
   display: flex;
   align-items: center;
@@ -2248,18 +2420,22 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-date-time-input-popup-tailwind {
   --jqx-font-size: 12px;
 }
+
 .jqx-date-time-input-popup-tailwind input {
   padding-left: 5px;
   box-sizing: border-box;
 }
+
 .jqx-date-time-input-popup-tailwind input:hover {
   border: 1px solid var(--tailwind-input-border-hover) !important;
 }
+
 .jqx-date-time-input-popup-tailwind input:focus {
   border: 1px solid var(--jqx-primary) !important;
   outline: 1px solid var(--jqx-primary) !important;
   color: var(--tailwind-greys-grey190) !important;
 }
+
 .jqx-date-time-input-popup-tailwind td:hover {
   background: var(--jqx-background-hover);
   color: var(--jqx-background-color-hover);
@@ -2282,7 +2458,9 @@ textarea.jqx-input-tailwind:not(.underlined),
   border-color: var(--jqx-background);
   border: 1px solid var(--jqx-border);
 }
-textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind, textarea.jqx-input-tailwind:not(.underlined).jqx-datetimeinput-tailwind,
+
+textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind,
+textarea.jqx-input-tailwind:not(.underlined).jqx-datetimeinput-tailwind,
 .jqx-text-area-tailwind:not(.underlined).jqx-numberinput-tailwind,
 .jqx-text-area-tailwind:not(.underlined).jqx-datetimeinput-tailwind,
 .jqx-numberinput-tailwind:not(.underlined).jqx-numberinput-tailwind,
@@ -2298,6 +2476,7 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind, textarea.
   padding-top: 3px;
   padding-bottom: 2px;
 }
+
 textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-disabled,
 .jqx-text-area-tailwind:not(.underlined).jqx-fill-state-disabled,
 .jqx-numberinput-tailwind:not(.underlined).jqx-fill-state-disabled,
@@ -2310,6 +2489,7 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-disabled,
   --jqx-surface: var(--tailwind-input-disabled-background);
   pointer-events: none;
 }
+
 textarea.jqx-input-tailwind:not(.underlined) .jqx-action-button,
 .jqx-text-area-tailwind:not(.underlined) .jqx-action-button,
 .jqx-numberinput-tailwind:not(.underlined) .jqx-action-button,
@@ -2319,6 +2499,7 @@ textarea.jqx-input-tailwind:not(.underlined) .jqx-action-button,
 .jqx-datetimeinput-tailwind:not(.underlined) .jqx-action-button {
   margin-left: -3px;
 }
+
 textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
 .jqx-text-area-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
 .jqx-numberinput-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
@@ -2328,6 +2509,7 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-actio
 .jqx-datetimeinput-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button {
   margin-left: -3px !important;
 }
+
 textarea.jqx-input-tailwind:not(.underlined):hover,
 .jqx-text-area-tailwind:not(.underlined):hover,
 .jqx-numberinput-tailwind:not(.underlined):hover,
@@ -2337,7 +2519,10 @@ textarea.jqx-input-tailwind:not(.underlined):hover,
 .jqx-datetimeinput-tailwind:not(.underlined):hover {
   border: 1px solid var(--tailwind-input-border-hover);
 }
-textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed, textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus, textarea.jqx-input-tailwind:not(.underlined):focus,
+
+textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed,
+textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus,
+textarea.jqx-input-tailwind:not(.underlined):focus,
 .jqx-text-area-tailwind:not(.underlined).jqx-fill-state-pressed,
 .jqx-text-area-tailwind:not(.underlined).jqx-fill-state-focus,
 .jqx-text-area-tailwind:not(.underlined):focus,
@@ -2360,11 +2545,14 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed, textarea.jq
   outline: 1px solid var(--jqx-primary) !important;
   color: var(--tailwind-greys-grey190) !important;
 }
+
 textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind,
 textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind,
-textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind, textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind,
+textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind,
+textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind,
 textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind,
-textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind, textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-arrow-up-tailwind,
+textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind,
+textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-arrow-up-tailwind,
 textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-arrow-down-tailwind,
 textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-time-tailwind,
 .jqx-text-area-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind,
@@ -2424,9 +2612,11 @@ textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-time-tailwind,
   color: var(--tailwind-greys-grey190) !important;
   font-weight: 400;
 }
+
 textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-combobox-arrow-normal-tailwind:hover,
 textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button-tailwind:hover,
-textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button-rtl-tailwind:hover, textarea.jqx-input-tailwind:not(.underlined).jqx-combobox-tailwind .jqx-combobox-arrow-normal-tailwind:hover,
+textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button-rtl-tailwind:hover,
+textarea.jqx-input-tailwind:not(.underlined).jqx-combobox-tailwind .jqx-combobox-arrow-normal-tailwind:hover,
 textarea.jqx-input-tailwind:not(.underlined).jqx-combobox-tailwind .jqx-action-button-tailwind:hover,
 textarea.jqx-input-tailwind:not(.underlined).jqx-combobox-tailwind .jqx-action-button-rtl-tailwind:hover,
 .jqx-text-area-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-combobox-arrow-normal-tailwind:hover,
@@ -2469,6 +2659,7 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-combobox-tailwind .jqx-action-b
   border-color: var(--jqx-background-hover);
   color: var(--jqx-background-color-hover);
 }
+
 textarea.jqx-input-tailwind:not(.underlined).underlined,
 .jqx-text-area-tailwind:not(.underlined).underlined,
 .jqx-numberinput-tailwind:not(.underlined).underlined,
@@ -2489,15 +2680,15 @@ textarea.jqx-input-tailwind:not(.underlined).underlined,
 }
 
 .jqx-datetimeinput-tailwind,
-.jqx-datetimeinput-tailwind > div,
+.jqx-datetimeinput-tailwind>div,
 .jqx-numberinput-tailwind,
-.jqx-numberinput-tailwind > div,
+.jqx-numberinput-tailwind>div,
 .jqx-dropdownlist-state-normal-tailwind,
-.jqx-dropdownlist-state-normal-tailwind > div,
-.jqx-dropdownlist-state-normal-tailwind > div > div,
+.jqx-dropdownlist-state-normal-tailwind>div,
+.jqx-dropdownlist-state-normal-tailwind>div>div,
 .jqx-combobox-state-normal-tailwind,
-.jqx-combobox-state-normal-tailwind > div,
-.jqx-combobox-state-normal-tailwind > div > div {
+.jqx-combobox-state-normal-tailwind>div,
+.jqx-combobox-state-normal-tailwind>div>div {
   overflow: visible !important;
 }
 
@@ -2524,6 +2715,7 @@ textarea.jqx-input-tailwind {
   box-shadow: none;
   border: 1px solid var(--jqx-border);
 }
+
 .jqx-input-tailwind input.underlined,
 input[type=text].jqx-input-tailwind.underlined,
 input[type=password].jqx-input-tailwind.underlined,
@@ -2547,8 +2739,8 @@ input[type=textarea].jqx-widget-content-tailwind {
   visibility: inherit;
 }
 
-input.underlined:focus ~ .jqx-input-label-tailwind,
-textarea.underlined:focus ~ .jqx-input-label-tailwind .jqx-input-widget-tailwind[hint=true].underlined .jqx-input-label,
+input.underlined:focus~.jqx-input-label-tailwind,
+textarea.underlined:focus~.jqx-input-label-tailwind .jqx-input-widget-tailwind[hint=true].underlined .jqx-input-label,
 .jqx-text-area-tailwind[hint=true].underlined .jqx-input-label,
 .jqx-dropdownlist-state-selected-tailwind.underlined .jqx-input-label,
 .jqx-dropdownlist-state-normal-tailwind[hint=true].underlined .jqx-input-label,
@@ -2569,7 +2761,7 @@ textarea.underlined:focus ~ .jqx-input-label-tailwind .jqx-input-widget-tailwind
   visibility: hidden;
 }
 
-.jqx-input-widget-tailwind.jqx-rtl > input {
+.jqx-input-widget-tailwind.jqx-rtl>input {
   direction: rtl;
 }
 
@@ -2586,8 +2778,8 @@ textarea.underlined:focus ~ .jqx-input-label-tailwind .jqx-input-widget-tailwind
   transition: 300ms ease all;
 }
 
-input:focus ~ .jqx-input-label-tailwind,
-textarea:focus ~ .jqx-input-label-tailwind,
+input:focus~.jqx-input-label-tailwind,
+textarea:focus~.jqx-input-label-tailwind,
 .jqx-widget-tailwind[hint=true] .jqx-input-label-tailwind {
   opacity: 0 !important;
 }
@@ -2600,16 +2792,16 @@ textarea:focus ~ .jqx-input-label-tailwind,
   transition: none;
 }
 
-.jqx-input-group-tailwind.underlined input:focus ~ .jqx-input-bar:before,
-.jqx-input-group-tailwind.underlined textarea:focus ~ .jqx-input-bar:before,
+.jqx-input-group-tailwind.underlined input:focus~.jqx-input-bar:before,
+.jqx-input-group-tailwind.underlined textarea:focus~.jqx-input-bar:before,
 .jqx-input-group-tailwind.underlined .jqx-dropdownlist-state-selected-tailwind .jqx-input-bar:before,
 .jqx-input-group-tailwind.underlined .jqx-dropdownlist-tailwind .jqx-input-bar.focused:before,
 .jqx-input-group-tailwind.underlined .jqx-dropdownbutton-tailwind .jqx-input-bar.focused:before,
 .jqx-input-group-tailwind.underlined .jqx-combobox-tailwind .jqx-input-bar.focused:before,
 .jqx-input-group-tailwind.underlined .jqx-input-bar.focused::before,
 .jqx-input-group-tailwind.underlined .jqx-combobox-state-selected-tailwind .jqx-input-bar:before,
-.jqx-widget-tailwind.underlined input:focus ~ .jqx-input-bar:before,
-.jqx-widget-tailwind.underlined textarea:focus ~ .jqx-input-bar:before,
+.jqx-widget-tailwind.underlined input:focus~.jqx-input-bar:before,
+.jqx-widget-tailwind.underlined textarea:focus~.jqx-input-bar:before,
 .jqx-widget-tailwind.underlined .jqx-dropdownlist-state-selected-tailwind .jqx-input-bar:before,
 .jqx-widget-tailwind.underlined .jqx-dropdownlist-tailwind .jqx-input-bar.focused:before,
 .jqx-widget-tailwind.underlined .jqx-dropdownbutton-tailwind .jqx-input-bar.focused:before,
@@ -2618,12 +2810,14 @@ textarea:focus ~ .jqx-input-label-tailwind,
 .jqx-widget-tailwind.underlined .jqx-combobox-state-selected-tailwind .jqx-input-bar:before {
   width: 100%;
 }
+
 .jqx-input-group-tailwind.underlined .jqx-input-bar-tailwind,
 .jqx-widget-tailwind.underlined .jqx-input-bar-tailwind {
   position: relative;
   display: block;
   z-index: 1;
 }
+
 .jqx-input-group-tailwind.underlined .jqx-input-bar-tailwind:before,
 .jqx-widget-tailwind.underlined .jqx-input-bar-tailwind:before {
   content: "";
@@ -2751,7 +2945,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-text-area-tailwind,
-.jqx-text-area-tailwind > div {
+.jqx-text-area-tailwind>div {
   overflow: visible !important;
 }
 
@@ -2763,19 +2957,19 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border-color: var(--jqx-border);
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-expand-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-expand-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-collapse-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-collapse-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-collapse-rtl-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-collapse-rtl-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-expand-rtl-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-expand-rtl-tailwind {
   background-image: none;
 }
 
@@ -2819,12 +3013,15 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border: 0;
   background: transparent;
 }
+
 .jqx-tabs .jqx-tabs-header .jqx-item {
   color: var(--tailwind-btn-secondary-color);
 }
+
 .jqx-tabs .jqx-tabs-header .jqx-item.jqx-fill-state-pressed:hover {
   background: var(--tailwind-btn-secondary-bg-hover);
 }
+
 .jqx-tabs .jqx-tabs-header .jqx-item.jqx-fill-state-hover {
   border-color: var(--tailwind-btn-secondary-bg-hover);
   background: var(--tailwind-btn-secondary-bg-hover);
@@ -2961,6 +3158,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   top: unset;
   right: unset;
 }
+
 .jqx-kanban-column-header-button-tailwind .jqx-window-collapse-button {
   right: unset;
 }
@@ -3028,12 +3226,15 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   display: grid;
   grid-template-columns: 1fr 30px 30px 20px;
 }
+
 .jqx-calendar-title-container-tailwind td {
   height: 100%;
 }
+
 .jqx-calendar-title-container-tailwind td:first-child {
   order: 1;
 }
+
 .jqx-calendar-title-container-tailwind td:last-child {
   order: 2;
 }
@@ -3125,19 +3326,19 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-expand-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-expand-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-collapse-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-collapse-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-collapse-rtl-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-collapse-rtl-tailwind {
   background-image: none;
 }
 
-.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind > .jqx-grid-group-expand-rtl-tailwind {
+.jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-expand-rtl-tailwind {
   background-image: none;
 }
 
@@ -3252,6 +3453,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
 .jqx-fill-state-pressed-tailwind .jqx-icon-delete-tailwind {
   background-image: url("images/icon-delete-white.png");
 }
@@ -3376,16 +3578,19 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .jqx-loader-tailwind {
   background: transparent;
   color: var(--tailwind-theme-primary);
   box-shadow: unset !important;
   border: none !important;
 }
+
 .jqx-loader-tailwind .jqx-loader-icon {
   background-image: unset;
   box-sizing: border-box;
@@ -3415,34 +3620,42 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   color: var(--tailwind-alert-color);
   box-shadow: unset !important;
 }
-.jqx-notification-tailwind > div {
+
+.jqx-notification-tailwind>div {
   display: flex;
   align-items: center;
 }
+
 .jqx-notification-tailwind.jqx-notification-primary {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-theme-light) !important;
 }
+
 .jqx-notification-tailwind.jqx-notification-info {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-greys-grey20) !important;
 }
+
 .jqx-notification-tailwind.jqx-notification-success {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-success-bg) !important;
 }
+
 .jqx-notification-tailwind.jqx-notification-warning {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-warning-bg) !important;
 }
+
 .jqx-notification-tailwind.jqx-notification-severe-warning {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-severe-warning-bg) !important;
 }
+
 .jqx-notification-tailwind.jqx-notification-error {
   color: var(--tailwind-alert-color) !important;
   background-color: var(--tailwind-error-bg) !important;
 }
+
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-info,
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-primary,
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-warning {
@@ -3450,17 +3663,21 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   width: 30px;
   height: 25px;
 }
+
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-serve-warning {
   background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23D83B01'/%3E%3C/svg%3E");
   width: 30px;
   height: 25px;
 }
+
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-success {
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23107C10'/%3E%3C/svg%3E");
 }
+
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-error {
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23A4262C'/%3E%3C/svg%3E");
 }
+
 .jqx-notification-tailwind .jqx-notification-close-button {
   background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23201F1E'/%3E%3C/svg%3E") !important;
   right: 0 !important;
@@ -3469,11 +3686,13 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-editor-tailwind .jqx-button-tailwind {
-  --jqx-border:var(--tailwind-body-divider);
+  --jqx-border: var(--tailwind-body-divider);
 }
+
 .jqx-editor-tailwind .jqx-button-tailwind:hover {
   border-color: var(--tailwind-input-border-hover);
 }
+
 .jqx-editor-tailwind .jqx-button-tailwind:focus {
   border-color: var(--jqx-primary);
   outline-color: var(--jqx-primary);
@@ -3482,23 +3701,27 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind),
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input {
-  --jqx-border:var(--tailwind-body-divider) !important;
+  --jqx-border: var(--tailwind-body-divider) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind).jqx-input:hover,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-input:hover {
   border-color: var(--tailwind-input-border-hover) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind).jqx-input:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-input:focus {
   border-color: var(--jqx-primary) !important;
   outline-color: var(--jqx-primary) !important;
   color: var(--tailwind-greys-grey190) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input {
   padding-left: 5px;
   box-sizing: border-box;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-grid-cell-edit,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-grid-cell-edit {
   position: relative;
@@ -3510,29 +3733,35 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border-style: solid !important;
   border-color: var(--tailwind-input-border) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-grid-cell-edit:hover,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-grid-cell-edit:hover {
   border-color: var(--tailwind-input-border-hover) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-grid-cell-edit:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-grid-cell-edit:focus {
   border-color: var(--jqx-primary) !important;
   outline-color: var(--jqx-primary) !important;
   color: var(--tailwind-greys-grey190) !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea:hover,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input:hover {
   border-color: var(--tailwind-input-border-hover);
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-filter-input,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-filter-input {
   padding-top: 5px !important;
   padding-bottom: 5px !important;
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-filter-input:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-filter-input:focus {
   outline: 1px solid var(--jqx-primary);
 }
+
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input:focus {
   border-color: var(--jqx-primary);
@@ -3542,13 +3771,14 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-form-tailwind .jqx-widget-tailwind:not(.jqx-button-tailwind),
 .jqx-form-tailwind input {
-  --jqx-border:var(--tailwind-input-border);
+  --jqx-border: var(--tailwind-input-border);
 }
 
 .jqx-switchbutton-tailwind {
   border-color: var(--tailwind-input-border);
   border-radius: 15px;
 }
+
 .jqx-switchbutton-tailwind .jqx-switchbutton-label {
   font-size: inherit;
   font-family: inherit;
@@ -3556,6 +3786,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   text-transform: inherit;
   font-weight: normal;
 }
+
 .jqx-switchbutton-tailwind .jqx-switchbutton-thumb-tailwind {
   border-radius: 50%;
   transform: scale(0.7);
@@ -3563,18 +3794,20 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   color: var(--tailwind-greys-grey190);
   border-color: var(--tailwind-greys-grey190);
 }
+
 .jqx-switchbutton-tailwind.jqx-switchbutton-on {
   background: var(--jqx-primary);
   border-color: var(--jqx-primary);
   color: var(--jqx-primary-color);
 }
+
 .jqx-switchbutton-tailwind.jqx-switchbutton-on .jqx-switchbutton-thumb-tailwind {
   background: var(--jqx-background);
   border-color: var(--jqx-background);
   color: var(--jqx-background);
 }
 
-.jqx-navigationbar-tailwind .jqx-expander-header-expanded{
+.jqx-navigationbar-tailwind .jqx-expander-header-expanded {
   background: var(--jqx-background);
   color: var(--jqx-primary);
 }
@@ -3590,6 +3823,25 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   width: 24px;
 }
 
-.jqx-expander-arrow-tailwind.jqx-icon-arrow-up  {
+.jqx-expander-arrow-tailwind.jqx-icon-arrow-up {
   left: 2px;
+}
+
+/*applied to a pinned grid cell.*/
+.jqx-grid-cell-pinned-tailwind {
+    background-color: #e5e5e5 !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-tailwind {
+    background-color: #e5e5e5 !important;
+}
+
+.jqx-grid-cell-pinned-tailwind.jqx-grid-cell-selected-tailwind {
+    background-color: var(--jqx-primary) !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-tailwind.jqx-grid-cell-selected-tailwind {
+    background-color: var(--jqx-primary) !important;
 }

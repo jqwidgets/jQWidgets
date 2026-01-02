@@ -27,6 +27,7 @@ interface IState {
 }
 interface INumberInputOptions {
     allowNull?: boolean;
+    autoHidePromptChart?: boolean;
     decimal?: number | string;
     disabled?: boolean;
     decimalDigits?: number | string;

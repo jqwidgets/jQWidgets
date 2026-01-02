@@ -1112,15 +1112,15 @@ jqx-button-fluent input {
   color: var(--jqx-surface-color);
 }
 
-.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-fluent {
+.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-fluent {
   background: rgba(244, 245, 249, 0.2) !important;
   color: var(--jqx-surface-color) !important;
 }
-.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-fluent.jqx-grid-cell-sort-fluent {
+.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-fluent.jqx-grid-cell-sort-fluent {
   background: rgba(244, 245, 249, 0.2) !important;
   color: var(--jqx-surface-color) !important;
 }
-.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected).jqx-grid-cell-alt-fluent.jqx-grid-cell-hover-fluent {
+.jqx-grid-fluent:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-fluent.jqx-grid-cell-hover-fluent {
   background: var(--jqx-background-hover) !important;
   color: var(--jqx-background-color-hover) !important;
 }
@@ -1852,9 +1852,6 @@ jqx-grid-column-filterbutton-fluent,
   content: var(--jqx-icon-sort-down);
 }
 
-.jqx-grid-column-header-fluent[sort][sort-index] > div > div {
-  width: calc(100% - 45px);
-}
 
 .jqx-grid-column-header-fluent[sort][sort-index] .sorticon {
   display: flex;
@@ -1988,7 +1985,12 @@ jqx-grid-column-filterbutton-fluent,
   transform: scaleY(1);
   opacity: 1;
 }
-
+.jqx-dropdownbutton-popup.jqx-popup-up,
+.jqx-calendar-fluent.jqx-popup-up,
+.jqx-listbox-fluent.jqx-popup-up,
+.jqx-grid-menu.jqx-popup-up {
+  transform-origin: bottom left;
+}
 .jqx-widget-fluent .jqx-grid-cell {
   border-color: var(--jqx-border);
   color: var(--jqx-background-color);
@@ -3567,4 +3569,25 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   background: var(--jqx-background);
   border-color: var(--jqx-background);
   color: var(--jqx-background);
+}
+
+
+/*applied to a pinned grid cell.*/
+.jqx-grid-cell-pinned-fluent {
+    background-color: #e5e5e5 !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-fluent {
+    background-color: #e5e5e5 !important;
+}
+
+
+.jqx-grid-cell-pinned-fluent.jqx-grid-cell-selected-fluent {
+    background-color: var(--jqx-primary) !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-fluent.jqx-grid-cell-selected-fluent {
+    background-color: var(--jqx-primary) !important;
 }

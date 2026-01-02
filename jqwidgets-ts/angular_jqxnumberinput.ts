@@ -1,6 +1,6 @@
 /*
-jQWidgets v24.0.0 (2025-Sep)
-Copyright (c) 2011-2025 jQWidgets.
+jQWidgets v25.0.0 (2026-Jan)
+Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -33,6 +33,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('allowNull') attrAllowNull: boolean;
+   @Input('autoHidePromptChart') attrAutoHidePromptChart: boolean;
    @Input('decimal') attrDecimal: number | string;
    @Input('disabled') attrDisabled: boolean;
    @Input('decimalDigits') attrDecimalDigits: number | string;
@@ -63,7 +64,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+   properties: string[] = ['allowNull','autoHidePromptChart','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNumberInput;
@@ -204,6 +205,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxNumberInput('allowNull', arg);
       } else {
           return this.host.jqxNumberInput('allowNull');
+      }
+   }
+
+   autoHidePromptChart(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('autoHidePromptChart', arg);
+      } else {
+          return this.host.jqxNumberInput('autoHidePromptChart');
       }
    }
 

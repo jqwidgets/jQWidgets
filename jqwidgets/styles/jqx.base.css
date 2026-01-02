@@ -3857,7 +3857,7 @@ of the horizontal scrollbar.*/
 }
 
 .jqx-date-time-input-popup table td input {
-    width: 25px;
+    width: 30px;
     margin: 0;
     text-align: center;
     padding: 4px 6px;
@@ -3897,18 +3897,23 @@ of the horizontal scrollbar.*/
     border-bottom-color: #0078D4;
 }
 
-.jqx-grid-column-header[sort]>div>div {
+.jqx-grid-column-header[sort]>div>div:not(.iconscontainer) {
     width: calc(100% - 20px);
 }
 
-.jqx-grid-column-header[filter]>div>div {
+.jqx-grid-column-header[sort][sort-index]>div>div:not(.iconscontainer) {
+    width: calc(100% - 45px);
+}
+.jqx-grid-column-header[filter]>div>div:not(.iconscontainer) {
     width: calc(100% - 20px);
 }
 
-.jqx-grid-column-header[filter][sort]>div>div {
+.jqx-grid-column-header[filter][sort]>div>div:not(.iconscontainer) {
     width: calc(100% - 40px);
 }
-
+.jqx-grid-column-header[filter][sort][sort-index]>div>div:not(.iconscontainer) {
+    width: calc(100% - 65px);
+}
 .jqx-scheduler-all-day-cell {
     text-align: left;
 }
@@ -9368,40 +9373,47 @@ input[type=number].jqx-input {
     font-weight: normal;
     speak: none;
 }
+
 .jqx-timeline.jqx-widget {
     overflow: hidden;
     padding: 10px;
     font-family: var(--jqx-font-family);
     display: block;
 }
+
 .jqx-timeline .jqx-container {
     position: relative;
     overflow: hidden;
     display: flex;
 }
+
 .jqx-timeline-near-items {
     padding-right: 20px;
     position: relative;
 }
+
 .jqx-timeline-far-items {
     padding-left: 20px;
     position: relative;
 }
 
-.jqx-timeline[horizontal] .jqx-container  {
+.jqx-timeline[horizontal] .jqx-container {
     flex-direction: column;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-near-items {
     padding-right: 0px;
     padding-bottom: 20px;
     display: flex;
     align-items: flex-end;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-far-items {
     padding-left: 0px;
     padding-top: 20px;
     display: flex;
 }
+
 .jqx-timeline-item {
     display: flex;
     align-items: center;
@@ -9410,18 +9422,22 @@ input[type=number].jqx-input {
     padding-inline: 0;
     position: relative;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-item {
     display: block;
-    padding-block:0px;
+    padding-block: 0px;
 }
+
 .jqx-timeline-item[collapsible] {
     cursor: pointer;
 }
+
 .jqx-timeline-item-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
+
 .jqx-timeline-item-content {
     background: var(--jqx-background, #fff);
     border: 1px solid var(--jqx-border, #E9EAED);
@@ -9429,6 +9445,7 @@ input[type=number].jqx-input {
     border-radius: var(--jqx-border-radius);
     position: relative;
 }
+
 .jqx-timeline-item-pointer {
     top: 50%;
     right: 0px;
@@ -9437,13 +9454,14 @@ input[type=number].jqx-input {
     width: 16px;
     height: 16px;
     background: var(--jqx-background, #fff);
-    border:1px solid var(--jqx-border, #E9EAED);
+    border: 1px solid var(--jqx-border, #E9EAED);
     display: block;
     right: 0px;
     position: absolute;
     margin-right: -16px;
     z-index: 9;
 }
+
 .jqx-timeline-item-pointer::after {
     width: 16px;
     content: '';
@@ -9453,6 +9471,7 @@ input[type=number].jqx-input {
     z-index: 9;
     right: 14px;
 }
+
 .jqx-timeline-item-pointer::before {
     content: '';
     background: var(--jqx-background, #fff);
@@ -9468,19 +9487,23 @@ input[type=number].jqx-input {
     right: inherit;
     left: 0px;
 }
+
 .jqx-timeline-far-items .jqx-timeline-item-pointer::before {
     right: unset;
     left: 14px;
     top: -2px;
 }
+
 .jqx-timeline-far-items .jqx-timeline-item-pointer::after {
     top: -16px;
     right: -2px;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-item-pointer {
     left: 50%;
     top: 0px;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer {
     left: 50%;
     bottom: -16px;
@@ -9490,15 +9513,17 @@ input[type=number].jqx-input {
 .jqx-timeline-far-items .jqx-timeline-item {
     justify-content: flex-start;
 }
+
 .jqx-timeline-far-items .jqx-timeline-item-content {
     padding-left: 20px;
     padding-right: 20px;
 }
 
 
-.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-pointer::after  {
+.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-pointer::after {
     top: unset;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-pointer::before {
     top: 0px;
 }
@@ -9506,6 +9531,7 @@ input[type=number].jqx-input {
 .jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer::before {
     top: -16px;
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer::after {
     left: -16px;
     top: -2px;
@@ -9520,9 +9546,11 @@ input[type=number].jqx-input {
     display: none;
     margin-top: 20px;
 }
-.jqx-timeline-item.expanded .jqx-timeline-item-description  {
+
+.jqx-timeline-item.expanded .jqx-timeline-item-description {
     display: block;
-}   
+}
+
 .jqx-timeline-item[collapsible].expanded .jqx-timeline-item-title::after {
     content: var(--jqx-icon-arrow-down);
 }
@@ -9536,22 +9564,25 @@ input[type=number].jqx-input {
     margin-top: 10px;
     cursor: pointer;
 }
+
 .jqx-timeline-item-subtitle {
     font-size: 12px;
     font-weight: 400;
 }
+
 .jqx-timeline-track {
     border-width: 1px;
     border-style: solid;
     width: 6px;
     border-radius: 6px;
-    background:var(--jqx-surface, #FAFAFA);
-    border:1px solid var(--jqx-border, #E9EAED);
+    background: var(--jqx-surface, #FAFAFA);
+    border: 1px solid var(--jqx-border, #E9EAED);
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.jqx-timeline[horizontal] .jqx-timeline-track  {
+
+.jqx-timeline[horizontal] .jqx-timeline-track {
     width: 100%;
     height: 6px;
 }
@@ -9563,14 +9594,17 @@ input[type=number].jqx-input {
 .jqx-timeline-far-items .jqx-timeline-item-date {
     left: 20px;
 }
-.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-date  {
+
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-date {
     right: unset;
     bottom: 20px;
 }
-.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-date  {
+
+.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-date {
     left: unset;
     top: 20px;
 }
+
 .jqx-timeline-item-date {
     position: absolute;
     margin-top: 3px;
@@ -9579,15 +9613,16 @@ input[type=number].jqx-input {
 .jqx-timeline-dot {
     width: 16px;
     height: 16px;
-    margin-top:4px;
+    margin-top: 4px;
     border-radius: 50%;
     position: absolute;
     z-index: 1;
     background: var(--jqx-primary, #1274AC);
 }
+
 .jqx-timeline[horizontal] .jqx-timeline-dot {
     margin-top: -6px;
-}   
+}
 
 
 .jqx-window.jqx-grid-dialog {
@@ -9603,13 +9638,15 @@ input[type=number].jqx-input {
     --jqx-window-content-padding: 10px;
     /* Sets the size of the header buttons */
     --jqx-window-header-icon-size: var(--jqx-font-size);
-  
-  }
-  .jqx-window.jqx-grid-dialog  > .jqx-container:not(.jqx-window) {
-   width: 100%;
-   height: 100%;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container {
+
+}
+
+.jqx-window.jqx-grid-dialog>.jqx-container:not(.jqx-window) {
+    width: 100%;
+    height: 100%;
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container {
     display: flex;
     flex-direction: column;
     font-family: inherit;
@@ -9618,8 +9655,9 @@ input[type=number].jqx-input {
     height: 100%;
     outline: none;
     max-height: inherit;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container>.jqx-header-section {
     display: flex;
     justify-content: space-between;
     cursor: move;
@@ -9641,14 +9679,16 @@ input[type=number].jqx-input {
     background: var(--jqx-window-header-background);
     padding: var(--jqx-window-header-padding);
     box-sizing: border-box;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container>.jqx-header-section .jqx-buttons-container {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container button {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container>.jqx-header-section .jqx-buttons-container button {
     position: relative;
     margin-left: 1px;
     margin-right: 1px;
@@ -9661,12 +9701,14 @@ input[type=number].jqx-input {
     color: inherit;
     border: none;
     outline: none;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-header-section .jqx-buttons-container button:active {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container>.jqx-header-section .jqx-buttons-container button:active {
     outline: none;
     background-color: initial;
-  }
-  .jqx-window.jqx-grid-dialog  .jqx-content-container > .jqx-content {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-content-container>.jqx-content {
     width: 100%;
     height: calc(100% - var(--jqx-window-header-height));
     display: flex;
@@ -9676,7 +9718,7 @@ input[type=number].jqx-input {
     background: var(--jqx-background);
     flex-direction: column;
     /* There's an issue with display:flex/grid and align-items: center */
-  }
+}
 
 .jqx-window.jqx-grid-dialog {
     transition: opacity 0.2s, transform 0.2s ease-out;
@@ -9684,9 +9726,9 @@ input[type=number].jqx-input {
     opacity: 0;
     font-family: var(--jqx-font-family);
     font-size: var(--jqx-font-size);
-  }
+}
 
-  
+
 @font-face {
     font-family: jqx-icons;
     src: local("./font/jqx-icons"), url("./font/jqx-icons.woff2") format("woff2"), url("./font/jqx-icons.woff") format("woff"), url("./font/jqx-icons.ttf") format("truetype"), url("./font/jqx-icons.eot") format("embedded-opentype");
@@ -9696,35 +9738,36 @@ input[type=number].jqx-input {
     font-style: normal;
     font-weight: normal;
     speak: none;
-  }
-  
-  .jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button {
+}
+
+.jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button {
     font-family: jqx-icons;
-  }
+}
 
-  .jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button:after {
+.jqx-window.jqx-grid-dialog .jqx-header-section .jqx-close-button:after {
     content: var(--jqx-icon-close);
-  }
+}
 
-  .jqx-window.jqx-grid-dialog.open {
+.jqx-window.jqx-grid-dialog.open {
     transform: scaleX(1);
     opacity: 1;
-  }
+}
 
 .jqx-window.jqx-grid-dialog.jqx-grid-dialog.disable-animation {
     transition: none;
-  }
+}
 
-  
-  .jqx-window.jqx-grid-dialog.jqx-grid-side-panel {
+
+.jqx-window.jqx-grid-dialog.jqx-grid-side-panel {
     transform-origin: top right !important;
     transform: scaleX(0) !important;
-  }
-  .jqx-window.jqx-grid-dialog.jqx-grid-side-panel.open {
+}
+
+.jqx-window.jqx-grid-dialog.jqx-grid-side-panel.open {
     transform: scaleX(1) !important;
-  }
- 
-  .jqx-form-tooltip {
+}
+
+.jqx-form-tooltip {
     background-color: var(--jqx-primary);
     color: var(--jqx-primary-color);
     text-align: center;
@@ -9738,6 +9781,7 @@ input[type=number].jqx-input {
     position: absolute;
     padding: 5px;
 }
+
 .jqx-form-spinner {
     border: 3px solid var(--jqx-primary-color);
     border-top: 3px solid var(--jqx-primary);
@@ -9747,13 +9791,858 @@ input[type=number].jqx-input {
     animation: spin 0.8s linear infinite;
     margin-left: 4px;
     margin-right: 8px;
-  }
+}
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
- jqx-pager {
-	display: none !important;
- }
- 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+jqx-pager {
+    display: none !important;
+}
+
+.jqx-grid-pager-zindex {
+    z-index: 20;
+}
+
+/* CSP helpers */
+
+.jqx-scroll-outer {
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    position: relative;
+}
+
+.jqx-scroll-wrap {
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.jqx-scroll-item {
+    box-sizing: content-box;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.jqx-scroll-btn-inner {
+    width: 100%;
+    height: 100%;
+}
+
+/* Loader container */
+.jqx-grid-load-container {
+    overflow: hidden;
+    position: absolute;
+}
+
+/* Centered loader box */
+.jqx-grid-load-box {
+    z-index: 99;
+    margin-left: -66px;
+    left: 50%;
+    top: 50%;
+    margin-top: -24px;
+    position: relative;
+    width: 100px;
+    height: 33px;
+    padding: 5px;
+    font-family: verdana;
+    font-size: 12px;
+    color: #767676;
+    border-color: #898989;
+    border-width: 1px;
+    border-style: solid;
+    background: #f6f6f6;
+    border-collapse: collapse;
+}
+
+/* Inner layout */
+.jqx-grid-load-row {
+    float: left;
+}
+
+.jqx-grid-load-icon-wrapper {
+    float: left;
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+}
+
+.jqx-grid-load-text {
+    margin-top: 10px;
+    float: left;
+    display: block;
+    margin-left: 5px;
+}
+
+.jqx-measure-span {
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+.jqx-grid-columns-header-csp {
+    overflow: hidden;
+}
+
+.jqx-grid-content-csp {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.jqx-grid-row-csp {
+    position: relative;
+}
+
+.jqx-selection-area-csp {
+    z-index: 9999;
+    visibility: hidden;
+    position: absolute;
+}
+
+.jqx-column-header-csp {
+    position: absolute;
+    height: 100%;
+}
+
+.jqx-column-header-inner-csp {
+    height: 100%;
+    width: 100%;
+}
+
+.jqx-column-table-csp {
+    height: 100%;
+    position: relative;
+}
+
+.jqx-columns-menu-csp {
+    display: none;
+    left: 100%;
+    top: 0%;
+    position: absolute;
+}
+
+.jqx-columns-menu-inner-csp {
+    width: 100%;
+    height: 100%;
+}
+
+/* Base ellipsis wrapper */
+.jqx-header-ellipsis-left-csp {
+    padding-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    margin-left: 4px;
+    margin-right: 2px;
+}
+
+.jqx-header-ellipsis-right-csp {
+    padding-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
+.jqx-header-ellipsis-text-csp {
+    text-overflow: ellipsis;
+    cursor: default;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Center wrapper */
+.jqx-header-center-csp {
+    padding-bottom: 2px;
+    text-align: center;
+}
+
+/* Link base */
+.jqx-header-link-csp {
+    display: inline-block;
+}
+
+/* Float variants */
+.jqx-header-link-left-csp {
+    float: left;
+}
+
+.jqx-header-link-right-csp {
+    float: right;
+}
+
+/* Outer container */
+.jqx-grid-iconscontainer-csp {
+    margin-left: -32px;
+    display: block;
+    position: absolute;
+    left: calc(100% - 2px);
+    top: 0%;
+    width: 32px;
+}
+.jqx-grid-column-header[sort][sort-index] .jqx-grid-iconscontainer-csp {
+    left: calc(100% - 20px);
+    width: auto;
+}
+.jqx-grid-column-header[filter][sort][sort-index] .jqx-grid-iconscontainer-csp {
+    left: calc(100% - 34px);
+    width: auto;
+}
+
+/* Shared icon box */
+.jqx-grid-header-icon-csp {
+    float: right;
+    width: 16px;
+}
+
+/* Visibility states */
+.jqx-grid-header-icon-hidden-csp {
+    visibility: hidden;
+}
+
+.jqx-grid-header-icon-display-none-csp {
+    display: none;
+}
+
+/* Inner icon full size */
+.jqx-grid-header-icon-inner-csp {
+    width: 100%;
+    height: 100%;
+}
+
+.jqx-grid-content-table-csp {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ellipsis-enabled cell wrappers */
+.jqx-grid-cell-middle-align-csp {
+    text-align: center;
+}
+
+.jqx-grid-cell-left-align-csp {
+    text-align: left;
+}
+
+.jqx-grid-cell-right-align-csp {
+    text-align: right;
+}
+
+/* Non-ellipsis center */
+.jqx-grid-cell-center-csp {
+    text-align: center;
+}
+
+/* Default span (non-center) */
+.jqx-grid-cell-span-csp {
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 2px;
+}
+
+/* Float helpers */
+.jqx-grid-float-left-csp {
+    float: left;
+}
+
+.jqx-grid-float-right-csp {
+    float: right;
+}
+
+/* Resize lines */
+.jqx-grid-resizeline-csp {
+    position: absolute;
+}
+
+.jqx-grid-resizestartline-csp {
+    position: absolute;
+}
+
+/* Resize background overlay */
+.jqx-grid-resizebackground-csp {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+}
+
+/* Main pager container */
+.jqx-grid-pagerdiv-csp {
+    line-height: 26px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Material pager wrapper (replaces <style> injection too) */
+.jqx-grid-pager-material-wrapper-csp {
+    margin-top: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+/* These replace the injected <style> */
+.jqx-center {
+    text-align: center;
+}
+
+.jqx-pagination {
+    display: inline-block;
+}
+
+.jqx-pagination span {
+    float: left;
+    text-decoration: none;
+    transition: background-color .3s;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 4px;
+    border-radius: 100%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Pager input wrapper */
+.jqx-grid-pager-gotoinput-csp {
+    margin-right: 12px;
+    height: 28px;
+    float: right;
+}
+
+/* Pager goto input */
+.jqx-grid-pager-input-csp {
+    height: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    width: 36px;
+}
+
+/* Generic pager right-floating blocks */
+.jqx-grid-pager-float-right-csp {
+    float: right;
+    margin-right: 7px;
+}
+
+/* Pager buttons container */
+.jqx-grid-pager-buttons-csp {
+    margin-right: 3px;
+    float: right;
+}
+
+/* Individual pager buttons */
+.jqx-grid-pager-btn-csp {
+    padding: 0;
+    margin-right: 3px;
+    height: 26px;
+    width: 26px;
+    float: right;
+}
+
+/* First/Last buttons */
+.jqx-grid-pager-btn-first-csp {
+    padding: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 26px;
+    float: right;
+}
+
+.jqx-grid-pager-btn-last-csp {
+    padding: 0;
+    margin-right: 3px;
+    width: 26px;
+    float: right;
+}
+
+.jqx-grid-pager-goto-csp {
+    float: right;
+    margin-right: 7px;
+}
+
+/* Wrapper for filter inputs */
+.jqx-grid-filter-wrapper-csp {
+    margin-top: 3px;
+}
+
+.jqx-grid-menu-csp {
+    z-index: 99;
+}
+
+/* Filter input itself */
+.jqx-grid-filter-input-csp {
+    padding: 3px;
+    height: 16px;
+    margin-top: 3px;
+}
+
+.jqx-grid-filteritem-csp {
+    height: 224px;
+}
+
+.jqx-grid-measure-span-csp {
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+.jqx-grid-filterpanel-container-csp {
+    position: absolute;
+    bottom: 3px;
+    margin-left: 3px;
+}
+
+.jqx-grid-filter-showwhere-csp {
+    height: 18px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.jqx-grid-filter-input-second-csp {
+    padding: 3px;
+    height: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+/* Apply input container */
+.jqx-grid-filter-apply-container-csp {
+    height: 35px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: -2px;
+}
+
+.jqx-grid-filter-operator-csp {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+/* Main filter button */
+.jqx-grid-filter-apply-button-csp {
+    padding: 6px 15px;
+}
+
+/* Clear filter button */
+.jqx-grid-filter-clear-button-csp {
+    position: relative;
+    left: 2px;
+    padding: 6px 15px;
+    margin-left: 7px;
+}
+
+.jqx-grid-span-csp {
+    color: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+/* Arrow inner icons */
+.jqx-grid-pager-arrow-inner-csp {
+    margin-left: 6px;
+    width: 15px;
+    height: 26px;
+}
+
+/* DropDown pager list */
+.jqx-grid-pager-list-csp {
+    margin-right: 7px;
+    float: right;
+}
+
+.jqx-grid-filter-input-inline-csp {
+    box-sizing: content-box;
+    height: 16px;
+    padding: 3px;
+}
+
+.jqx-ddl-structure-csp {
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    position: relative;
+}
+
+.jqx-ddl-wrapper-csp {
+    overflow: hidden;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.jqx-ddl-content-csp {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    float: left;
+    position: relative;
+}
+
+.jqx-ddl-arrow-csp {
+    background-color: transparent;
+    border: none;
+    float: right;
+    position: relative;
+}
+
+.jqx-ddl-arrow-inner-csp {
+    width: 100%;
+    height: 100%;
+}
+
+.jqx-ddl-arrow-inner-csp.jqx-icon {
+    height: 16px;
+}
+
+.jqx-listbox-container-csp {
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+}
+
+/* Root listbox structure */
+.jqx-listbox-structure-csp {
+    -webkit-appearance: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    position: relative;
+}
+
+/* Inner wrapper */
+.jqx-listbox-inner-wrapper-csp {
+    -webkit-appearance: none;
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    position: relative;
+}
+
+/* Filter container */
+.jqx-listbox-filter-csp {
+    display: none;
+    visibility: inherit;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.jqx-listbox-filter-input-csp {
+    position: absolute;
+}
+
+/* Content area */
+.jqx-listbox-content-csp {
+    -webkit-appearance: none;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0;
+    overflow: hidden;
+    margin: 0;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+/* Scrollbars */
+.jqx-listbox-vscroll-csp,
+.jqx-listbox-hscroll-csp {
+    visibility: inherit;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+/* Bottom right corner */
+.jqx-listbox-bottomright-csp {
+    border: none;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+/* Checkbox outer wrapper */
+.jqx-listbox-checkbox-wrapper-csp {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    float: left;
+}
+
+/* Checkbox inner clickable area */
+.jqx-listbox-checkbox-inner-csp {
+    cursor: pointer;
+}
+
+/* Checkbox check span */
+.jqx-listbox-checkbox-check-csp {
+    display: inline-block;
+}
+
+/* Item text span */
+.jqx-listbox-item-text-csp {
+    white-space: pre;
+    -ms-touch-action: none;
+}
+
+.jqx-listbox-itemswrapper-csp {
+    outline: 0 none;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.jqx-menu-wrapper-csp {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    visibility: visible;
+}
+/* DataTable */
+/* Root container */
+.jqx-datatable-csp-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Main wrapper */
+.jqx-datatable-csp-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* Shared absolute elements */
+.jqx-datatable-csp-toolbar,
+.jqx-datatable-csp-toppager,
+.jqx-datatable-csp-filter,
+.jqx-datatable-csp-content,
+.jqx-datatable-csp-vscroll,
+.jqx-datatable-csp-hscroll,
+.jqx-datatable-csp-bottomright,
+.jqx-datatable-csp-aggregates,
+.jqx-datatable-csp-statusbar,
+.jqx-datatable-csp-pager {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Hidden by default */
+.jqx-datatable-csp-toolbar,
+.jqx-datatable-csp-filter {
+    visibility: hidden;
+}
+
+/* Content area */
+.jqx-datatable-csp-content {
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Pager overlay priority */
+.jqx-datatable-csp-pager {
+    z-index: 20;
+}
+/* Full-screen-ish overlay inside the host */
+.jqx-datatable-csp-load-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 99998;
+    background-color: rgba(50, 50, 50, 0.1);
+    width: 100%;
+    height: 100%;
+}
+
+/* Centered loading box */
+.jqx-datatable-csp-load-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    width: 100px;
+    height: 33px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    color: #767676;
+
+    border: 1px solid #898989;
+    background: #f6f6f6;
+}
+
+/* Flex layout for icon + text */
+.jqx-datatable-csp-load-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Spinner/icon wrapper */
+.jqx-datatable-csp-load-icon-wrapper {
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+}
+
+/* Optional: hook for extra styling on jqx-grid-load */
+.jqx-datatable-csp-load-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* Text next to spinner */
+.jqx-datatable-csp-load-text {
+    display: block;
+    margin-left: 5px;
+    margin-top: 2px; /* small visual tweak if needed */
+}
+.jqx-datatable-csp-measure {
+    visibility: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: -10000px;   /* extra safety: keep it offscreen */
+    left: -10000px;
+}
+/* Column header wrapper */
+.jqx-datatable-csp-column {
+    position: absolute;
+    height: 100%;
+}
+
+/* Inner sizing div */
+.jqx-datatable-csp-column-inner {
+    width: 100%;
+    height: 100%;
+}
+.jqx-datatable-csp-col {
+    width: auto;
+    max-width: none;
+}
+.jqx-datatable-csp-empty-cell {
+    border: none;
+    box-sizing: border-box;
+}
+.jqx-grid-columnsheader-csp {
+  overflow: hidden;
+}
+/* Outer container */
+.jqx-csp-column-header-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* Inner text */
+.jqx-csp-column-header-text {
+    text-overflow: ellipsis;
+    cursor: default;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+.jqx-csp-column-header-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.jqx-csp-align-left   { text-align: left; }
+.jqx-csp-align-center { text-align: center; }
+.jqx-csp-align-right  { text-align: right; }
+
+.jqx-csp-column-header-text {
+    text-overflow: ellipsis;
+    cursor: default;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+.jqx-datatable-cell-csp {
+    box-sizing: border-box;
+}
+
+.jqx-datatable-cell-pinned-csp {
+    pointer-events: none;
+    visibility: hidden;
+    border-color: transparent;
+}
+
+.jqx-no-right-border-csp {
+    border-right-color: transparent;
+}
+
+/* End of DataTable */
+
+

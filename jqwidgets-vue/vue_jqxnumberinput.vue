@@ -13,6 +13,10 @@
                 default: true,
                 type: Boolean
             },
+            autoHidePromptChart: {
+                default: true,
+                type: Boolean
+            },
             decimal: Number,
             disabled: {
                 default: false,
@@ -107,6 +111,13 @@
                     JQXLite(this.componentSelector).jqxNumberInput('allowNull', arg)
                 } else {
                     return JQXLite(this.componentSelector).jqxNumberInput('allowNull');
+                }
+            },
+            _autoHidePromptChart: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChart', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChart');
                 }
             },
             _decimal: function(arg) {
@@ -306,7 +317,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+                const widgetProps = ['allowNull','autoHidePromptChart','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -326,6 +337,16 @@
                     },
                     set: function(newValue) {
                         that._allowNull(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'autoHidePromptChart', {
+                    get: function() {
+                        return that._autoHidePromptChart();
+                    },
+                    set: function(newValue) {
+                        that._autoHidePromptChart(newValue);
                     },
                     enumerable: true,
                     configurable: true

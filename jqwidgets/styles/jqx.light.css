@@ -1512,10 +1512,6 @@ jqx-grid-column-filterbutton-light,
     content: var(--jqx-icon-arrow-down);
 }
 
-.jqx-grid-column-header-light[sort][sort-index]>div>div {
-    width: calc(100% - 45px)
-}
-
 .jqx-grid-column-header-light[sort][sort-index] .sorticon {
     display: flex;
     align-items: center;
@@ -2680,3 +2676,12 @@ textarea.jqx-input-light:-ms-input-placeholder {
     }
   
   
+/*applied to a pinned grid cell.*/
+.jqx-grid-cell-pinned-light {
+    background-color: #e5e5e5 !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-light {
+    background-color: #e5e5e5 !important;
+}
