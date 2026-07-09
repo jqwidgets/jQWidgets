@@ -1,5 +1,7 @@
 jQWidgets & Smart UI
 
+<img width="1895" height="939" alt="jqwidgets-26" src="https://github.com/user-attachments/assets/986859f3-f981-4c94-b29e-863a7494ec10" />
+
 Enterprise-grade UI components for modern web applications (2026)
 
 jQWidgets is a mature, high-performance UI component framework for building complex, data-driven web applications. It supports Angular, React, Vue, Blazor, Web Components, JavaScript, and ASP.NET Core, and is trusted in enterprise environments worldwide.
