@@ -1843,6 +1843,7 @@ declare module jqwidgets {
         columntype?: string;
         renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
         rendered?: (columnHeaderElement?: any) => void;
+        cellTemplate?: string | { type?: string; [prop: string]: any } | ((value?: any, rowData?: any) => string);
         cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
         aggregatesrenderer?: (aggregates?: any, column?: any, element?: any, summaryData?: any)  => string;
         validation?: (cell?: any, value?: number) => any;
@@ -2228,6 +2229,12 @@ declare module jqwidgets {
         filternlpinput?: string;
         aiKey?: string;
         aiUrl?: string;
+        aiProvider?: string;
+        aiModel?: string;
+        aiProxyUrl?: string;
+        aiHeaders?: any;
+        aiSendRequest?: any;
+        aiMaxRows?: number;
         groupable?: boolean;
         groups?: Array<string>;
         horizontalscrollbarstep?: number;
@@ -2265,6 +2272,12 @@ declare module jqwidgets {
     export interface jqxGrid extends widget, GridOptions {
 
         // jqxGrid functions
+        aiConfig(config: any): void;
+        aiCommand(text: string, callback: any): any;
+        aiAsk(text: string, callback: any): any;
+        aiSummarize(rows: any, callback: any): any;
+        aiExplainRow(rowindex: number, callback: any): any;
+        aiClassifyColumn(options: any, callback: any): any;
         autoresizecolumns(type: string): void;
         autoresizecolumn(dataField: string, type: string): void;
         beginupdate(): void;
@@ -5241,6 +5254,76 @@ declare module jqwidgets {
         // jqxTimeline functions
         render(): any;
     }// jqxTimeline
+
+    export interface ChatMessage {
+        // ChatMessage properties
+        role: any;
+        content: string;
+    }// ChatMessage
+
+    export interface ChatOptions {
+        // ChatOptions properties
+        accentColor?: string;
+        apiKey?: string;
+        botAvatar?: string;
+        botName?: string;
+        colorScheme?: string;
+        disabled?: boolean;
+        enableClear?: boolean;
+        enableCopyCode?: boolean;
+        enableStop?: boolean;
+        headers?: any;
+        height?: string | number;
+        launcherIcon?: string;
+        launcherPosition?: string;
+        maxTokens?: number;
+        messages?: ChatMessage[];
+        mode?: string;
+        model?: string;
+        open?: boolean;
+        placeHolder?: string;
+        provider?: string;
+        proxyUrl?: string;
+        rtl?: boolean;
+        sendButtonIcon?: boolean;
+        sendButtonLabel?: string;
+        sendRequest?: any;
+        showAvatars?: boolean;
+        showHeader?: boolean;
+        showHeaderAvatar?: boolean;
+        showTimestamps?: boolean;
+        starterPrompts?: string[];
+        statusText?: string;
+        stream?: boolean;
+        subtitle?: string;
+        system?: string;
+        theme?: string;
+        title?: string;
+        typingIndicator?: boolean;
+        userAvatar?: string;
+        userName?: string;
+        welcomeMessage?: string;
+        width?: string | number;
+    }// ChatOptions
+
+    export interface jqxChat extends widget, ChatOptions {
+
+        // jqxChat functions
+        sendMessage(text: string): void;
+        stop(): void;
+        addMessage(role: string, content: string): void;
+        appendDelta(delta: string): void;
+        getMessages(): ChatMessage[];
+        clearConversation(): void;
+        focus(): void;
+        openPopup(): void;
+        closePopup(): void;
+        toggle(): void;
+        val(value: any): ChatMessage[];
+        render(): void;
+        refresh(): void;
+        destroy(): void;
+    }// jqxChat
 
 
 

@@ -105,6 +105,24 @@ var JqxGrid = /** @class */ (function (_super) {
     JqxGrid.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxGrid(option);
     };
+    JqxGrid.prototype.aiConfig = function (config) {
+        this._jqx(this._componentSelector).jqxGrid('aiConfig', config);
+    };
+    JqxGrid.prototype.aiCommand = function (text, callback) {
+        return this._jqx(this._componentSelector).jqxGrid('aiCommand', text, callback);
+    };
+    JqxGrid.prototype.aiAsk = function (text, callback) {
+        return this._jqx(this._componentSelector).jqxGrid('aiAsk', text, callback);
+    };
+    JqxGrid.prototype.aiSummarize = function (rows, callback) {
+        return this._jqx(this._componentSelector).jqxGrid('aiSummarize', rows, callback);
+    };
+    JqxGrid.prototype.aiExplainRow = function (rowindex, callback) {
+        return this._jqx(this._componentSelector).jqxGrid('aiExplainRow', rowindex, callback);
+    };
+    JqxGrid.prototype.aiClassifyColumn = function (options, callback) {
+        return this._jqx(this._componentSelector).jqxGrid('aiClassifyColumn', options, callback);
+    };
     JqxGrid.prototype.autoresizecolumns = function (type) {
         this._jqx(this._componentSelector).jqxGrid('autoresizecolumns', type);
     };
@@ -430,7 +448,7 @@ var JqxGrid = /** @class */ (function (_super) {
         return this._jqx(this._componentSelector).jqxGrid('savestate');
     };
     JqxGrid.prototype._manageProps = function () {
-        var widgetProps = ['altrows', 'altstart', 'altstep', 'autoshowloadelement', 'autoshowfiltericon', 'autoshowcolumnsmenubutton', 'showcolumnlines', 'showrowlines', 'showcolumnheaderlines', 'adaptive', 'compact', 'contextmenuitems', 'contextmenuenabled', 'contextmenuwidth', 'contextmenuheight', 'contextmenuitemclick', 'adaptivewidth', 'commandcolumn', 'commandcolumnrenderer', 'clipboard', 'closeablegroups', 'columnsmenuwidth', 'columnmenuopening', 'columnmenuclosing', 'cellhover', 'enablekeyboarddelete', 'enableellipsis', 'enablemousewheel', 'enableanimations', 'enabletooltips', 'enablehover', 'enablebrowserselection', 'everpresentrowposition', 'everpresentrowheight', 'everpresentrowactions', 'everpresentrowactionsmode', 'filterrowheight', 'filtermode', 'groupsrenderer', 'groupcolumnrenderer', 'groupsexpandedbydefault', 'handlekeyboardnavigation', 'pagerrenderer', 'rtl', 'showdefaultloadelement', 'showfiltercolumnbackground', 'showfiltermenuitems', 'showpinnedcolumnbackground', 'showsortcolumnbackground', 'showsortmenuitems', 'showgroupmenuitems', 'showrowdetailscolumn', 'showheader', 'showgroupsheader', 'showaggregates', 'showgroupaggregates', 'showeverpresentrow', 'showfilterrow', 'showemptyrow', 'showstatusbar', 'statusbarheight', 'showtoolbar', 'showfilterbar', 'filterbarmode', 'selectionmode', 'updatefilterconditions', 'updatefilterpanel', 'theme', 'toolbarheight', 'autoheight', 'autorowheight', 'columnsheight', 'deferreddatafields', 'groupsheaderheight', 'groupindentwidth', 'height', 'pagerheight', 'rowsheight', 'scrollbarsize', 'scrollmode', 'scrollfeedback', 'width', 'autosavestate', 'autoloadstate', 'columns', 'enableSanitize', 'cardview', 'cardviewcolumns', 'cardheight', 'cardsize', 'columngroups', 'columnsmenu', 'columnsresize', 'columnsautoresize', 'columnsreorder', 'charting', 'disabled', 'editable', 'batcheditable', 'editmode', 'filter', 'filterable', 'filternlpinput', 'aiKey', 'aiUrl', 'groupable', 'groups', 'horizontalscrollbarstep', 'horizontalscrollbarlargestep', 'initrowdetails', 'disablerowdetails', 'keyboardnavigation', 'localization', 'pagesize', 'pagesizeoptions', 'pagermode', 'pagerbuttonscount', 'pageable', 'autofill', 'rowdetails', 'rowdetailstemplate', 'ready', 'rendered', 'renderstatusbar', 'rendertoolbar', 'rendergridrows', 'sortable', 'sortmode', 'sortmodekey', 'selectedrowindex', 'selectedrowindexes', 'source', 'sorttogglestates', 'updatedelay', 'virtualmode', 'verticalscrollbarstep', 'verticalscrollbarlargestep'];
+        var widgetProps = ['altrows', 'altstart', 'altstep', 'autoshowloadelement', 'autoshowfiltericon', 'autoshowcolumnsmenubutton', 'showcolumnlines', 'showrowlines', 'showcolumnheaderlines', 'adaptive', 'compact', 'contextmenuitems', 'contextmenuenabled', 'contextmenuwidth', 'contextmenuheight', 'contextmenuitemclick', 'adaptivewidth', 'commandcolumn', 'commandcolumnrenderer', 'clipboard', 'closeablegroups', 'columnsmenuwidth', 'columnmenuopening', 'columnmenuclosing', 'cellhover', 'enablekeyboarddelete', 'enableellipsis', 'enablemousewheel', 'enableanimations', 'enabletooltips', 'enablehover', 'enablebrowserselection', 'everpresentrowposition', 'everpresentrowheight', 'everpresentrowactions', 'everpresentrowactionsmode', 'filterrowheight', 'filtermode', 'groupsrenderer', 'groupcolumnrenderer', 'groupsexpandedbydefault', 'handlekeyboardnavigation', 'pagerrenderer', 'rtl', 'showdefaultloadelement', 'showfiltercolumnbackground', 'showfiltermenuitems', 'showpinnedcolumnbackground', 'showsortcolumnbackground', 'showsortmenuitems', 'showgroupmenuitems', 'showrowdetailscolumn', 'showheader', 'showgroupsheader', 'showaggregates', 'showgroupaggregates', 'showeverpresentrow', 'showfilterrow', 'showemptyrow', 'showstatusbar', 'statusbarheight', 'showtoolbar', 'showfilterbar', 'filterbarmode', 'selectionmode', 'updatefilterconditions', 'updatefilterpanel', 'theme', 'toolbarheight', 'autoheight', 'autorowheight', 'columnsheight', 'deferreddatafields', 'groupsheaderheight', 'groupindentwidth', 'height', 'pagerheight', 'rowsheight', 'scrollbarsize', 'scrollmode', 'scrollfeedback', 'width', 'autosavestate', 'autoloadstate', 'columns', 'enableSanitize', 'cardview', 'cardviewcolumns', 'cardheight', 'cardsize', 'columngroups', 'columnsmenu', 'columnsresize', 'columnsautoresize', 'columnsreorder', 'charting', 'disabled', 'editable', 'batcheditable', 'editmode', 'filter', 'filterable', 'filternlpinput', 'aiKey', 'aiUrl', 'aiProvider', 'aiModel', 'aiProxyUrl', 'aiHeaders', 'aiSendRequest', 'aiMaxRows', 'groupable', 'groups', 'horizontalscrollbarstep', 'horizontalscrollbarlargestep', 'initrowdetails', 'disablerowdetails', 'keyboardnavigation', 'localization', 'pagesize', 'pagesizeoptions', 'pagermode', 'pagerbuttonscount', 'pageable', 'autofill', 'rowdetails', 'rowdetailstemplate', 'ready', 'rendered', 'renderstatusbar', 'rendertoolbar', 'rendergridrows', 'sortable', 'sortmode', 'sortmodekey', 'selectedrowindex', 'selectedrowindexes', 'source', 'sorttogglestates', 'updatedelay', 'virtualmode', 'verticalscrollbarstep', 'verticalscrollbarlargestep'];
         var options = {};
         for (var prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {

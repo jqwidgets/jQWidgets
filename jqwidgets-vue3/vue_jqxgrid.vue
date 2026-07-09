@@ -302,6 +302,12 @@
             filternlpinput: String,
             aiKey: String,
             aiUrl: String,
+            aiProvider: String,
+            aiModel: String,
+            aiProxyUrl: String,
+            aiHeaders: Object,
+            aiSendRequest: Any,
+            aiMaxRows: Number,
             groupable: {
                 default: false,
                 type: Boolean
@@ -360,7 +366,7 @@
                 type: Boolean
             }
         },
-        emits: ["bindingcomplete","columnresized","columnreordered","columnclick","cellclick","celldoubleclick","cellselect","cellunselect","cellvaluechanged","cellbeginedit","cellendedit","filter","groupschanged","groupexpand","groupcollapse","pagechanged","pagesizechanged","rowclick","rowdoubleclick","rowselect","rowunselect","rowexpand","rowcollapse","sort"],
+        emits: ["gridaiResult","gridaiError","bindingcomplete","columnresized","columnreordered","columnclick","cellclick","celldoubleclick","cellselect","cellunselect","cellvaluechanged","cellbeginedit","cellendedit","filter","groupschanged","groupexpand","groupcollapse","pagechanged","pagesizechanged","rowclick","rowdoubleclick","rowselect","rowunselect","rowexpand","rowcollapse","sort"],
         setup(props, context) {
 			const id = "jqxGrid" + JQXLite.generateID();
 			const componentSelector = '#' + id;
@@ -378,6 +384,24 @@
                     resultToReturn[usedProps[i]] = JQXLite(componentSelector).jqxGrid(usedProps[i]);
                 }
                 return resultToReturn;
+            }
+            function aiConfig(config) {
+                JQXLite(componentSelector).jqxGrid('aiConfig', config);  
+            }
+            function aiCommand(text, callback) {
+                return JQXLite(componentSelector).jqxGrid('aiCommand', text, callback);  
+            }
+            function aiAsk(text, callback) {
+                return JQXLite(componentSelector).jqxGrid('aiAsk', text, callback);  
+            }
+            function aiSummarize(rows, callback) {
+                return JQXLite(componentSelector).jqxGrid('aiSummarize', rows, callback);  
+            }
+            function aiExplainRow(rowindex, callback) {
+                return JQXLite(componentSelector).jqxGrid('aiExplainRow', rowindex, callback);  
+            }
+            function aiClassifyColumn(options, callback) {
+                return JQXLite(componentSelector).jqxGrid('aiClassifyColumn', options, callback);  
             }
             function autoresizecolumns(type) {
                 JQXLite(componentSelector).jqxGrid('autoresizecolumns', type);  
@@ -1438,6 +1462,48 @@
                     return JQXLite(componentSelector).jqxGrid('aiUrl');
                 }
             }
+            function _aiProvider (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiProvider', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiProvider');
+                }
+            }
+            function _aiModel (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiModel', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiModel');
+                }
+            }
+            function _aiProxyUrl (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiProxyUrl', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiProxyUrl');
+                }
+            }
+            function _aiHeaders (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiHeaders', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiHeaders');
+                }
+            }
+            function _aiSendRequest (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiSendRequest', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiSendRequest');
+                }
+            }
+            function _aiMaxRows (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('aiMaxRows', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('aiMaxRows');
+                }
+            }
             function _groupable (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGrid('groupable', arg)
@@ -1669,7 +1735,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = props;
                 let options = {};
 
@@ -2311,6 +2377,42 @@
                  set aiUrl(newValue) {
                      _aiUrl(newValue);
                  },
+                 get aiProvider() {
+                     return _aiProvider();
+                 },
+                 set aiProvider(newValue) {
+                     _aiProvider(newValue);
+                 },
+                 get aiModel() {
+                     return _aiModel();
+                 },
+                 set aiModel(newValue) {
+                     _aiModel(newValue);
+                 },
+                 get aiProxyUrl() {
+                     return _aiProxyUrl();
+                 },
+                 set aiProxyUrl(newValue) {
+                     _aiProxyUrl(newValue);
+                 },
+                 get aiHeaders() {
+                     return _aiHeaders();
+                 },
+                 set aiHeaders(newValue) {
+                     _aiHeaders(newValue);
+                 },
+                 get aiSendRequest() {
+                     return _aiSendRequest();
+                 },
+                 set aiSendRequest(newValue) {
+                     _aiSendRequest(newValue);
+                 },
+                 get aiMaxRows() {
+                     return _aiMaxRows();
+                 },
+                 set aiMaxRows(newValue) {
+                     _aiMaxRows(newValue);
+                 },
                  get groupable() {
                      return _groupable();
                  },
@@ -2507,6 +2609,8 @@
             function __wireEvents__() {
                 const that = context;
 
+                JQXLite(componentSelector).on('gridaiResult', function (event) { that.emit('gridaiResult', event); });
+                JQXLite(componentSelector).on('gridaiError', function (event) { that.emit('gridaiError', event); });
                 JQXLite(componentSelector).on('bindingcomplete', function (event) { that.emit('bindingcomplete', event); });
                 JQXLite(componentSelector).on('columnresized', function (event) { that.emit('columnresized', event); });
                 JQXLite(componentSelector).on('columnreordered', function (event) { that.emit('columnreordered', event); });
@@ -2540,7 +2644,7 @@
 				const widgetOptions = __manageProps__();
 				JQXLite(componentSelector).jqxGrid(widgetOptions);
 			})
-			return {id, componentSelector, autoresizecolumns,autoresizecolumn,beginupdate,clear,createChart,destroy,endupdate,ensurerowvisible,focus,getcolumnindex,getcolumn,getcolumnproperty,getrowid,getrowdata,getrowdatabyid,getrowboundindexbyid,getrowboundindex,getrows,getboundrows,getdisplayrows,getdatainformation,getsortinformation,getpaginginformation,hidecolumn,hideloadelement,hiderowdetails,iscolumnvisible,iscolumnpinned,localizestrings,pincolumn,refreshdata,refresh,render,scrolloffset,scrollposition,showloadelement,showrowdetails,setcolumnindex,setcolumnproperty,showcolumn,unpincolumn,updatebounddata,updating,getsortcolumn,removesort,sortby,addgroup,cleargroups,collapsegroup,collapseallgroups,expandallgroups,expandgroup,getrootgroupscount,getgroup,insertgroup,iscolumngroupable,removegroupat,removegroup,addfilter,applyfilters,clearfilters,getfilterinformation,getcolumnat,removefilter,refreshfilterrow,gotopage,gotoprevpage,gotonextpage,addrow,begincelledit,beginrowedit,closemenu,deleterow,endcelledit,endrowedit,getcell,getcellatposition,getcelltext,getcelltextbyid,getcellvaluebyid,getcellvalue,isBindingCompleted,openmenu,setcellvalue,setcellvaluebyid,showvalidationpopup,updaterow,clearselection,getselectedrowindex,getselectedrowindexes,getselectedcell,getselectedcells,showSidePanel,closeSidePanel,selectcell,selectallrows,selectrow,unselectrow,unselectcell,getcolumnaggregateddata,refreshaggregates,renderaggregates,exportdata,exportview,openColumnChooser,getstate,loadstate,savestate, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, aiConfig,aiCommand,aiAsk,aiSummarize,aiExplainRow,aiClassifyColumn,autoresizecolumns,autoresizecolumn,beginupdate,clear,createChart,destroy,endupdate,ensurerowvisible,focus,getcolumnindex,getcolumn,getcolumnproperty,getrowid,getrowdata,getrowdatabyid,getrowboundindexbyid,getrowboundindex,getrows,getboundrows,getdisplayrows,getdatainformation,getsortinformation,getpaginginformation,hidecolumn,hideloadelement,hiderowdetails,iscolumnvisible,iscolumnpinned,localizestrings,pincolumn,refreshdata,refresh,render,scrolloffset,scrollposition,showloadelement,showrowdetails,setcolumnindex,setcolumnproperty,showcolumn,unpincolumn,updatebounddata,updating,getsortcolumn,removesort,sortby,addgroup,cleargroups,collapsegroup,collapseallgroups,expandallgroups,expandgroup,getrootgroupscount,getgroup,insertgroup,iscolumngroupable,removegroupat,removegroup,addfilter,applyfilters,clearfilters,getfilterinformation,getcolumnat,removefilter,refreshfilterrow,gotopage,gotoprevpage,gotonextpage,addrow,begincelledit,beginrowedit,closemenu,deleterow,endcelledit,endrowedit,getcell,getcellatposition,getcelltext,getcelltextbyid,getcellvaluebyid,getcellvalue,isBindingCompleted,openmenu,setcellvalue,setcellvaluebyid,showvalidationpopup,updaterow,clearselection,getselectedrowindex,getselectedrowindexes,getselectedcell,getselectedcells,showSidePanel,closeSidePanel,selectcell,selectallrows,selectrow,unselectrow,unselectcell,getcolumnaggregateddata,refreshaggregates,renderaggregates,exportdata,exportview,openColumnChooser,getstate,loadstate,savestate, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

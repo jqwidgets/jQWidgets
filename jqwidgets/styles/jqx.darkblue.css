@@ -259,3 +259,38 @@
 .jqx-time-picker .jqx-header .jqx-selected-darkblue:focus {
     outline: 1px solid rgba(255, 255, 255, 0.5);
 }
+/* Multi-column sort order indicator.
+   Classic (image-based) themes such as Dark Blue show only the sort direction
+   arrow in multi-column sort. jqxgrid.sort.js now exposes the 1-based sort
+   priority as an "order" attribute on the asc/desc arrow; render it as a small
+   badge so the sort order is visible. */
+.jqx-widget-header-darkblue.sortasc[order],
+.jqx-widget-header-darkblue.sortdesc[order] {
+    display: flex !important;
+    align-items: center;
+    width: auto !important;
+}
+
+.jqx-widget-header-darkblue.sortasc[order] > .jqx-grid-header-icon-inner-csp,
+.jqx-widget-header-darkblue.sortdesc[order] > .jqx-grid-header-icon-inner-csp {
+    width: 16px;
+    flex: 0 0 16px;
+}
+
+.jqx-widget-header-darkblue.sortasc[order]::before,
+.jqx-widget-header-darkblue.sortdesc[order]::before {
+    content: attr(order);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 12px;
+    height: 12px;
+    padding: 1px 3px;
+    margin-right: 4px;
+    font-size: 10px;
+    line-height: 1;
+    color: #fff;
+    background: #449bca;
+    border-radius: 8px;
+    box-sizing: content-box;
+}

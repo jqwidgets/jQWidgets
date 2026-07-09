@@ -10,6 +10,12 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     render(): React.ReactNode;
     setOptions(options: IGridProps): void;
     getOptions(option: string): any;
+    aiConfig(config: object): void;
+    aiCommand(text: string, callback?: any): Object;
+    aiAsk(text: string, callback?: any): Object;
+    aiSummarize(rows?: any, callback?: any): Object;
+    aiExplainRow(rowindex: number, callback?: any): Object;
+    aiClassifyColumn(options: object, callback?: any): Object;
     autoresizecolumns(type?: string): void;
     autoresizecolumn(dataField: string, type?: string): void;
     beginupdate(): void;
@@ -153,6 +159,10 @@ export interface IGridColumn {
     columntype?: 'number' | 'checkbox' | 'button' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'rating' | 'progressbar' | 'template' | 'custom';
     renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
     rendered?: (columnHeaderElement?: any) => void;
+    cellTemplate?: string | {
+        type?: string;
+        [prop: string]: any;
+    } | ((value?: any, rowData?: any) => string);
     cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
     aggregatesrenderer?: (aggregates?: any, column?: any, element?: any, summaryData?: any) => string;
     validation?: (cell?: any, value?: number) => any;
@@ -488,6 +498,12 @@ interface IGridOptions {
     filternlpinput?: string;
     aiKey?: string;
     aiUrl?: string;
+    aiProvider?: string;
+    aiModel?: string;
+    aiProxyUrl?: string;
+    aiHeaders?: object;
+    aiSendRequest?: any;
+    aiMaxRows?: number;
     groupable?: boolean;
     groups?: string[];
     horizontalscrollbarstep?: number;
@@ -524,6 +540,8 @@ interface IGridOptions {
 export interface IGridProps extends IGridOptions {
     className?: string;
     style?: React.CSSProperties;
+    onGridaiResult?: (e?: Event) => void;
+    onGridaiError?: (e?: Event) => void;
     onBindingcomplete?: (e?: Event) => void;
     onColumnresized?: (e?: Event) => void;
     onColumnreordered?: (e?: Event) => void;

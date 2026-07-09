@@ -301,6 +301,12 @@
             filternlpinput: String,
             aiKey: String,
             aiUrl: String,
+            aiProvider: String,
+            aiModel: String,
+            aiProxyUrl: String,
+            aiHeaders: Object,
+            aiSendRequest: Any,
+            aiMaxRows: Number,
             groupable: {
                 default: false,
                 type: Boolean
@@ -381,6 +387,24 @@
                     resultToReturn[usedProps[i]] = JQXLite(this.componentSelector).jqxGrid(usedProps[i]);
                 }
                 return resultToReturn;
+            },
+            aiConfig: function(config) {
+                JQXLite(this.componentSelector).jqxGrid('aiConfig', config);  
+            },
+            aiCommand: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxGrid('aiCommand', text, callback);  
+            },
+            aiAsk: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxGrid('aiAsk', text, callback);  
+            },
+            aiSummarize: function(rows, callback) {
+                return JQXLite(this.componentSelector).jqxGrid('aiSummarize', rows, callback);  
+            },
+            aiExplainRow: function(rowindex, callback) {
+                return JQXLite(this.componentSelector).jqxGrid('aiExplainRow', rowindex, callback);  
+            },
+            aiClassifyColumn: function(options, callback) {
+                return JQXLite(this.componentSelector).jqxGrid('aiClassifyColumn', options, callback);  
             },
             autoresizecolumns: function(type) {
                 JQXLite(this.componentSelector).jqxGrid('autoresizecolumns', type);  
@@ -1441,6 +1465,48 @@
                     return JQXLite(this.componentSelector).jqxGrid('aiUrl');
                 }
             },
+            _aiProvider: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiProvider', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiProvider');
+                }
+            },
+            _aiModel: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiModel', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiModel');
+                }
+            },
+            _aiProxyUrl: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiProxyUrl', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiProxyUrl');
+                }
+            },
+            _aiHeaders: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiHeaders', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiHeaders');
+                }
+            },
+            _aiSendRequest: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiSendRequest', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiSendRequest');
+                }
+            },
+            _aiMaxRows: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('aiMaxRows', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('aiMaxRows');
+                }
+            },
             _groupable: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxGrid('groupable', arg)
@@ -1673,7 +1739,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -2737,6 +2803,66 @@
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(that, 'aiProvider', {
+                    get: function() {
+                        return that._aiProvider();
+                    },
+                    set: function(newValue) {
+                        that._aiProvider(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiModel', {
+                    get: function() {
+                        return that._aiModel();
+                    },
+                    set: function(newValue) {
+                        that._aiModel(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiProxyUrl', {
+                    get: function() {
+                        return that._aiProxyUrl();
+                    },
+                    set: function(newValue) {
+                        that._aiProxyUrl(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiHeaders', {
+                    get: function() {
+                        return that._aiHeaders();
+                    },
+                    set: function(newValue) {
+                        that._aiHeaders(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiSendRequest', {
+                    get: function() {
+                        return that._aiSendRequest();
+                    },
+                    set: function(newValue) {
+                        that._aiSendRequest(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'aiMaxRows', {
+                    get: function() {
+                        return that._aiMaxRows();
+                    },
+                    set: function(newValue) {
+                        that._aiMaxRows(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(that, 'groupable', {
                     get: function() {
                         return that._groupable();
@@ -3061,6 +3187,8 @@
             __wireEvents__: function () {
                 const that = this;
 
+                JQXLite(this.componentSelector).on('gridaiResult', function (event) { that.$emit('gridaiResult', event); });
+                JQXLite(this.componentSelector).on('gridaiError', function (event) { that.$emit('gridaiError', event); });
                 JQXLite(this.componentSelector).on('bindingcomplete', function (event) { that.$emit('bindingcomplete', event); });
                 JQXLite(this.componentSelector).on('columnresized', function (event) { that.$emit('columnresized', event); });
                 JQXLite(this.componentSelector).on('columnreordered', function (event) { that.$emit('columnreordered', event); });

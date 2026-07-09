@@ -1,5 +1,5 @@
 /*
-jQWidgets v25.0.0 (2026-Jan)
+jQWidgets v26.0.0 (2026-July)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -123,6 +123,12 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('filternlpinput') attrFilternlpinput: string;
    @Input('aiKey') attrAiKey: string;
    @Input('aiUrl') attrAiUrl: string;
+   @Input('aiProvider') attrAiProvider: string;
+   @Input('aiModel') attrAiModel: string;
+   @Input('aiProxyUrl') attrAiProxyUrl: string;
+   @Input('aiHeaders') attrAiHeaders: object;
+   @Input('aiSendRequest') attrAiSendRequest: any;
+   @Input('aiMaxRows') attrAiMaxRows: number;
    @Input('groupable') attrGroupable: boolean;
    @Input('groups') attrGroups: Array<string>;
    @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: number;
@@ -160,7 +166,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -1685,6 +1691,84 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
+   aiProvider(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiProvider', arg);
+      } else {
+          return this.host.jqxGrid('aiProvider');
+      }
+   }
+
+   aiModel(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiModel', arg);
+      } else {
+          return this.host.jqxGrid('aiModel');
+      }
+   }
+
+   aiProxyUrl(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiProxyUrl', arg);
+      } else {
+          return this.host.jqxGrid('aiProxyUrl');
+      }
+   }
+
+   aiHeaders(arg?: any): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiHeaders', arg);
+      } else {
+          return this.host.jqxGrid('aiHeaders');
+      }
+   }
+
+   aiSendRequest(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiSendRequest', arg);
+      } else {
+          return this.host.jqxGrid('aiSendRequest');
+      }
+   }
+
+   aiMaxRows(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('aiMaxRows', arg);
+      } else {
+          return this.host.jqxGrid('aiMaxRows');
+      }
+   }
+
    groupable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -2103,6 +2187,60 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
 
    // jqxGridComponent functions
+   aiConfig(config: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('aiConfig', config);
+   }
+
+   aiCommand(text: string, callback?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('aiCommand', text, callback);
+   }
+
+   aiAsk(text: string, callback?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('aiAsk', text, callback);
+   }
+
+   aiSummarize(rows?: undefined, callback?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('aiSummarize', rows, callback);
+   }
+
+   aiExplainRow(rowindex: number, callback?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('aiExplainRow', rowindex, callback);
+   }
+
+   aiClassifyColumn(options: any, callback?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('aiClassifyColumn', options, callback);
+   }
+
    autoresizecolumns(type?: string): void {
 
       if (this.autoCreate && !this.host) {
@@ -3077,6 +3215,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
 
    // jqxGridComponent events
+   @Output() onGridaiResult = new EventEmitter();
+   @Output() onGridaiError = new EventEmitter();
    @Output() onBindingcomplete = new EventEmitter();
    @Output() onColumnresized = new EventEmitter();
    @Output() onColumnreordered = new EventEmitter();
@@ -3103,6 +3243,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Output() onSort = new EventEmitter();
 
    __wireEvents__(): void {
+      this.host.on('gridaiResult', (eventData: any) => { this.onGridaiResult.emit(eventData); });
+      this.host.on('gridaiError', (eventData: any) => { this.onGridaiError.emit(eventData); });
       this.host.on('bindingcomplete', (eventData: any) => { this.onBindingcomplete.emit(eventData); });
       this.host.on('columnresized', (eventData: any) => { this.onColumnresized.emit(eventData); });
       this.host.on('columnreordered', (eventData: any) => { this.onColumnreordered.emit(eventData); });
