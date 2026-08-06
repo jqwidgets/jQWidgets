@@ -40,7 +40,7 @@
     "@angular/animations": "^4.2.6",
     "@angular/common": "^4.2.6",
     "@angular/compiler": "^4.2.6",
-    "@angular/core": "^4.2.6",
+    "@angular/core": "^20.3.27",
     "@angular/forms": "^4.2.6",
     "@angular/http": "^4.2.6",
     "@angular/platform-browser": "^4.2.6",
