@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@angular/common": "20.3.27",
+    "@angular/common": "20.3.28",
     "@angular/compiler": "2.2.1",
     "@angular/core": "2.2.1",
     "@angular/forms": "2.2.1",
