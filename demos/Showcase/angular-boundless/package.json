@@ -41,7 +41,7 @@
     "@angular/cdk": "^2.0.0-beta.12",
     "@angular/common": "^4.4.4",
     "@angular/compiler": "^4.4.4",
-    "@angular/core": "^4.4.4",
+    "@angular/core": "^20.3.27",
     "@angular/forms": "^4.4.4",
     "@angular/http": "^4.4.4",
     "@angular/material": "^2.0.0-beta.12",
