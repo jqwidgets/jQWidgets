@@ -13,7 +13,7 @@
     "@angular/common": "12 - 15",
     "@angular/compiler": "12 - 15",
     "@angular/compiler-cli": "12 - 15",
-    "@angular/core": "12 - 15",
+    "@angular/core": "12 - 21",
     "@angular/elements": "12 - 15",
     "@angular/forms": "12 - 15",
     "@angular/language-service": "~9.0.7",
