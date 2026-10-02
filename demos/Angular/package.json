@@ -9,7 +9,7 @@
     "@angular-devkit/build-angular": "^15.2.1",
     "@angular/animations": "12 - 15",
     "@angular/cdk": "12 - 15",
-    "@angular/cli": "12 - 15",
+    "@angular/cli": "12 - 23",
     "@angular/common": "12 - 15",
     "@angular/compiler": "12 - 15",
     "@angular/compiler-cli": "12 - 15",
