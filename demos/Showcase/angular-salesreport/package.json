@@ -21,7 +21,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "@angular/animations": "^6.0.2",
-    "@angular/common": "^6.0.2",
+    "@angular/common": "^20.3.27",
     "@angular/compiler": "^6.0.2",
     "@angular/core": "^6.0.2",
     "@angular/forms": "^6.0.2",
