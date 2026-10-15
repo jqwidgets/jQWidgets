@@ -5,7 +5,8 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxdata.js';
     import '../jqwidgets/jqxdata.export.js';
@@ -31,6 +32,13 @@
 
     export default {
         props: {
+            allowOverlap: {
+                default: true,
+                type: Boolean
+            },
+            blockedTimes: Array,
+            maxDuration: Number,
+            minDuration: Number,
             appointmentOpacity: Number,
             appointmentsMinHeight: Number,
             appointmentDataFields: Object,
@@ -113,6 +121,11 @@
             toolBarRangeFormat: String,
             toolBarRangeFormatAbbr: String,
             toolbarHeight: Number,
+            undoRedo: {
+                default: true,
+                type: Boolean
+            },
+            undoRedoLimit: Number,
             views: Array,
             view: [Number, String],
             width: [Number, String],
@@ -121,10 +134,12 @@
                 type: Boolean
             }
         },
-        emits: ["appointmentChange","appointmentClick","appointmentDoubleClick","appointmentDelete","appointmentAdd","bindingComplete","cellClick","cellDoubleClick","contextMenuOpen","contextMenuClose","contextMenuItemClick","contextMenuCreate","dateChange","editRecurrenceDialogOpen","editRecurrenceDialogClose","editDialogCreate","editDialogOpen","editDialogClose","viewChange"],
+        emits: ["scheduleraiResult","appointmentChange","appointmentClick","appointmentDoubleClick","appointmentDelete","appointmentAdd","appointmentAdding","appointmentChanging","appointmentDeleting","undoRedoChange","bindingComplete","cellClick","cellDoubleClick","contextMenuOpen","contextMenuClose","contextMenuItemClick","contextMenuCreate","dateChange","editRecurrenceDialogOpen","editRecurrenceDialogClose","editDialogCreate","editDialogOpen","editDialogClose","viewChange"],
         setup(props, context) {
-			const id = "jqxScheduler" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxScheduler" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -140,8 +155,41 @@
                 }
                 return resultToReturn;
             }
+            function aiConfig(config) {
+                return JQXLite(componentSelector).jqxScheduler('aiConfig', config);  
+            }
+            function aiCommand(text, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiCommand', text, callback);  
+            }
+            function aiScheduleAppointment(text, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiScheduleAppointment', text, callback);  
+            }
+            function aiFindSlot(text, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiFindSlot', text, callback);  
+            }
+            function aiBookSlot(slot, details) {
+                return JQXLite(componentSelector).jqxScheduler('aiBookSlot', slot, details);  
+            }
+            function aiResolveConflicts(options, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiResolveConflicts', options, callback);  
+            }
+            function aiApplyResolution(proposals) {
+                return JQXLite(componentSelector).jqxScheduler('aiApplyResolution', proposals);  
+            }
+            function aiAsk(text, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiAsk', text, callback);  
+            }
+            function aiSummarize(callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiSummarize', callback);  
+            }
+            function aiExplainAppointment(key, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiExplainAppointment', key, callback);  
+            }
+            function aiClassifyAppointments(options, callback) {
+                return JQXLite(componentSelector).jqxScheduler('aiClassifyAppointments', options, callback);  
+            }
             function addAppointment(item) {
-                JQXLite(componentSelector).jqxScheduler('addAppointment', item);  
+                return JQXLite(componentSelector).jqxScheduler('addAppointment', item);  
             }
             function beginAppointmentsUpdate() {
                 JQXLite(componentSelector).jqxScheduler('beginAppointmentsUpdate');  
@@ -159,7 +207,7 @@
                 JQXLite(componentSelector).jqxScheduler('closeDialog');  
             }
             function deleteAppointment(appointmenId) {
-                JQXLite(componentSelector).jqxScheduler('deleteAppointment', appointmenId);  
+                return JQXLite(componentSelector).jqxScheduler('deleteAppointment', appointmenId);  
             }
             function destroy() {
                 JQXLite(componentSelector).jqxScheduler('destroy');  
@@ -172,6 +220,12 @@
             }
             function ensureVisible(item, resourceId) {
                 JQXLite(componentSelector).jqxScheduler('ensureVisible', item, resourceId);  
+            }
+            function findAvailableSlots(options) {
+                return JQXLite(componentSelector).jqxScheduler('findAvailableSlots', options);  
+            }
+            function importData(data, options) {
+                return JQXLite(componentSelector).jqxScheduler('importData', data, options);  
             }
             function exportData(format) {
                 JQXLite(componentSelector).jqxScheduler('exportData', format);  
@@ -223,6 +277,52 @@
             }
             function scrollTop(top) {
                 JQXLite(componentSelector).jqxScheduler('scrollTop', top);  
+            }
+            function scrollToTime(time) {
+                return JQXLite(componentSelector).jqxScheduler('scrollToTime', time);  
+            }
+            function undo() {
+                return JQXLite(componentSelector).jqxScheduler('undo');  
+            }
+            function redo() {
+                return JQXLite(componentSelector).jqxScheduler('redo');  
+            }
+            function canUndo() {
+                return JQXLite(componentSelector).jqxScheduler('canUndo');  
+            }
+            function canRedo() {
+                return JQXLite(componentSelector).jqxScheduler('canRedo');  
+            }
+            function clearUndoRedo() {
+                JQXLite(componentSelector).jqxScheduler('clearUndoRedo');  
+            }
+            function _allowOverlap (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('allowOverlap', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('allowOverlap');
+                }
+            }
+            function _blockedTimes (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('blockedTimes', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('blockedTimes');
+                }
+            }
+            function _maxDuration (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('maxDuration', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('maxDuration');
+                }
+            }
+            function _minDuration (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('minDuration', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('minDuration');
+                }
             }
             function _appointmentOpacity (arg) {
                 if (arg !== undefined) {
@@ -588,6 +688,20 @@
                     return JQXLite(componentSelector).jqxScheduler('toolbarHeight');
                 }
             }
+            function _undoRedo (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('undoRedo', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('undoRedo');
+                }
+            }
+            function _undoRedoLimit (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScheduler('undoRedoLimit', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScheduler('undoRedoLimit');
+                }
+            }
             function _views (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxScheduler('views', arg)
@@ -613,10 +727,13 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxScheduler(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+                const widgetProps = ['allowOverlap','blockedTimes','maxDuration','minDuration','appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','undoRedo','undoRedoLimit','views','view','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -628,6 +745,30 @@
                 return options;
             }
             const options = {
+                 get allowOverlap() {
+                     return _allowOverlap();
+                 },
+                 set allowOverlap(newValue) {
+                     _allowOverlap(newValue);
+                 },
+                 get blockedTimes() {
+                     return _blockedTimes();
+                 },
+                 set blockedTimes(newValue) {
+                     _blockedTimes(newValue);
+                 },
+                 get maxDuration() {
+                     return _maxDuration();
+                 },
+                 set maxDuration(newValue) {
+                     _maxDuration(newValue);
+                 },
+                 get minDuration() {
+                     return _minDuration();
+                 },
+                 set minDuration(newValue) {
+                     _minDuration(newValue);
+                 },
                  get appointmentOpacity() {
                      return _appointmentOpacity();
                  },
@@ -940,6 +1081,18 @@
                  set toolbarHeight(newValue) {
                      _toolbarHeight(newValue);
                  },
+                 get undoRedo() {
+                     return _undoRedo();
+                 },
+                 set undoRedo(newValue) {
+                     _undoRedo(newValue);
+                 },
+                 get undoRedoLimit() {
+                     return _undoRedoLimit();
+                 },
+                 set undoRedoLimit(newValue) {
+                     _undoRedoLimit(newValue);
+                 },
                  get views() {
                      return _views();
                  },
@@ -962,11 +1115,16 @@
             function __wireEvents__() {
                 const that = context;
 
+                JQXLite(componentSelector).on('scheduleraiResult', function (event) { that.emit('scheduleraiResult', event); });
                 JQXLite(componentSelector).on('appointmentChange', function (event) { that.emit('appointmentChange', event); });
                 JQXLite(componentSelector).on('appointmentClick', function (event) { that.emit('appointmentClick', event); });
                 JQXLite(componentSelector).on('appointmentDoubleClick', function (event) { that.emit('appointmentDoubleClick', event); });
                 JQXLite(componentSelector).on('appointmentDelete', function (event) { that.emit('appointmentDelete', event); });
                 JQXLite(componentSelector).on('appointmentAdd', function (event) { that.emit('appointmentAdd', event); });
+                JQXLite(componentSelector).on('appointmentAdding', function (event) { that.emit('appointmentAdding', event); });
+                JQXLite(componentSelector).on('appointmentChanging', function (event) { that.emit('appointmentChanging', event); });
+                JQXLite(componentSelector).on('appointmentDeleting', function (event) { that.emit('appointmentDeleting', event); });
+                JQXLite(componentSelector).on('undoRedoChange', function (event) { that.emit('undoRedoChange', event); });
                 JQXLite(componentSelector).on('bindingComplete', function (event) { that.emit('bindingComplete', event); });
                 JQXLite(componentSelector).on('cellClick', function (event) { that.emit('cellClick', event); });
                 JQXLite(componentSelector).on('cellDoubleClick', function (event) { that.emit('cellDoubleClick', event); });
@@ -986,11 +1144,40 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxScheduler(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxScheduler(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
+				try { element.jqxScheduler('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addAppointment,beginAppointmentsUpdate,clearAppointmentsSelection,clearSelection,closeMenu,closeDialog,deleteAppointment,destroy,endAppointmentsUpdate,ensureAppointmentVisible,ensureVisible,exportData,focus,getAppointmentProperty,getSelection,getAppointments,getDataAppointments,hideAppointmentsByResource,openMenu,openDialog,selectAppointment,setAppointmentProperty,selectCell,showAppointmentsByResource,scrollWidth,scrollHeight,scrollLeft,scrollTop, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, aiConfig, aiCommand, aiScheduleAppointment, aiFindSlot, aiBookSlot, aiResolveConflicts, aiApplyResolution, aiAsk, aiSummarize, aiExplainAppointment, aiClassifyAppointments, addAppointment, beginAppointmentsUpdate, clearAppointmentsSelection, clearSelection, closeMenu, closeDialog, deleteAppointment, destroy, endAppointmentsUpdate, ensureAppointmentVisible, ensureVisible, findAvailableSlots, importData, exportData, focus, getAppointmentProperty, getSelection, getAppointments, getDataAppointments, hideAppointmentsByResource, openMenu, openDialog, selectAppointment, setAppointmentProperty, selectCell, showAppointmentsByResource, scrollWidth, scrollHeight, scrollLeft, scrollTop, scrollToTime, undo, redo, canUndo, canRedo, clearUndoRedo, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

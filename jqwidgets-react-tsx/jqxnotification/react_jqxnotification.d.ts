@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxNotification extends React.PureComponent<INotificationProps, IState> {
-    protected static getDerivedStateFromProps(props: INotificationProps, state: IState): null | IState;
+declare class JqxNotification extends React.PureComponent<INotificationProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: INotificationProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: INotificationProps): void;
     getOptions(option: string): any;
@@ -17,14 +28,15 @@ declare class JqxNotification extends React.PureComponent<INotificationProps, IS
     refresh(): void;
     renderWidget(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxNotification;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface INotificationIcon {
     width?: number | string;
     height?: number | string;
@@ -50,14 +62,15 @@ interface INotificationOptions {
     position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
     rtl?: boolean;
     showCloseButton?: boolean;
-    template?: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | 'null';
+    template?: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null;
     theme?: string;
     width?: string | number;
 }
-export interface INotificationProps extends INotificationOptions {
+export interface INotificationProps extends INotificationOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onClick?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onClick?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
 }

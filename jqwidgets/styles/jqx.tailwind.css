@@ -1,165 +1,239 @@
 :root {
-  /* ---- Tailwind CSS palette (gray / slate neutrals, blue-600 primary) ---- */
-  --tailwind-black: #000;
-  --tailwind-white: #fff;
-  --tailwind-surface: #94a3b8;
+  /* jQWidgets Tailwind theme.
+   *
+   * A genuine Tailwind CSS theme: every colour below is a step of the Tailwind v3.4
+   * default palette, taken by name from the tailwindcss package and pinned in
+   * accessibility/tests/sweep/tailwind-3.4.19-palette.json. Typography, radii and shadows
+   * are Tailwind's defaultTheme values. Verify with `npm run theme-fidelity` in
+   * accessibility/tests, which checks this file against the package rather than against
+   * anyone's memory of it.
+   *
+   * Choices, and where each comes from:
+   *   neutral   gray        Tailwind's default neutral scale
+   *   primary   indigo-600  the primary Tailwind UI ships on every button
+   *   controls  gray-300    the ring Tailwind UI draws on inputs, selects and buttons (1.47:1
+   *                         on white: the Tailwind UI look, below WCAG 1.4.11's 3:1 by choice)
+   *   dividers  gray-200    Tailwind's preflight default border colour
+   *   text      gray-900 / gray-500 / gray-400  for primary, secondary, placeholder
+   *   alerts    the -50 tint with gray-900 text, as Tailwind UI's alert pattern
+   *   radius    0.375rem    rounded-md, Tailwind UI's default for controls
+   *   font      ui-sans-serif, system-ui  Tailwind's font-sans
+   */
+
+  /* -- palette ------------------------------------------------------------ */
+  --tw-white: #FFFFFF;
+  --tw-black: #000000;
+  --tw-gray-50: #F9FAFB;
+  --tw-gray-100: #F3F4F6;
+  --tw-gray-200: #E5E7EB;
+  --tw-gray-300: #D1D5DB;
+  --tw-gray-400: #9CA3AF;
+  --tw-gray-500: #6B7280;
+  --tw-gray-600: #4B5563;
+  --tw-gray-700: #374151;
+  --tw-gray-800: #1F2937;
+  --tw-gray-900: #111827;
+  --tw-gray-950: #030712;
+  --tw-indigo-50: #EEF2FF;
+  --tw-indigo-100: #E0E7FF;
+  --tw-indigo-200: #C7D2FE;
+  --tw-indigo-300: #A5B4FC;
+  --tw-indigo-400: #818CF8;
+  --tw-indigo-500: #6366F1;
+  --tw-indigo-600: #4F46E5;
+  --tw-indigo-700: #4338CA;
+  --tw-indigo-800: #3730A3;
+  --tw-indigo-900: #312E81;
+  --tw-red-50: #FEF2F2;
+  --tw-red-100: #FEE2E2;
+  --tw-red-400: #F87171;
+  --tw-red-500: #EF4444;
+  --tw-red-600: #DC2626;
+  --tw-red-700: #B91C1C;
+  --tw-red-800: #991B1B;
+  --tw-green-50: #F0FDF4;
+  --tw-green-100: #DCFCE7;
+  --tw-green-400: #4ADE80;
+  --tw-green-500: #22C55E;
+  --tw-green-600: #16A34A;
+  --tw-green-700: #15803D;
+  --tw-green-800: #166534;
+  --tw-amber-50: #FFFBEB;
+  --tw-amber-100: #FEF3C7;
+  --tw-amber-400: #FBBF24;
+  --tw-amber-500: #F59E0B;
+  --tw-amber-600: #D97706;
+  --tw-amber-700: #B45309;
+  --tw-amber-800: #92400E;
+  --tw-orange-50: #FFF7ED;
+  --tw-orange-100: #FFEDD5;
+  --tw-orange-400: #FB923C;
+  --tw-orange-500: #F97316;
+  --tw-orange-600: #EA580C;
+  --tw-orange-700: #C2410C;
+  --tw-orange-800: #9A3412;
+  --tw-sky-50: #F0F9FF;
+  --tw-sky-100: #E0F2FE;
+  --tw-sky-400: #38BDF8;
+  --tw-sky-500: #0EA5E9;
+  --tw-sky-600: #0284C7;
+  --tw-sky-700: #0369A1;
+  --tw-sky-800: #075985;
+
+  /* -- roles ---------------------------------------------------------------- */
+  --tailwind-black: var(--tw-black);
+  --tailwind-white: var(--tw-white);
+  --tailwind-surface: var(--tw-white);
   --tailwind-surface-rgb: 255, 255, 255;
-  --tailwind-surface-color: #0f172a;
-  --tailwind-background: #fff;
-  --tailwind-background-color: #0f172a;
-  --tailwind-type-primary: #111827;
-  --tailwind-type-secondary: #e0edff;
-  --tailwind-type-disabled: #9ca3af;
-  --tailwind-body-divider: #e5e7eb;
-  --tailwind-input-background: #fff;
-  --tailwind-input-disabled-background: #f3f4f6;
-  --tailwind-input-border: #d1d5db;
-  --tailwind-input-border-hover: #9ca3af;
-  --tailwind-alert-color: #111827;
-  --tailwind-theme-primary: #2563eb;
-  --tailwind-theme-lighter-alt: #f8fafc;
-  --tailwind-theme-lighter: #dbeafe;
-  --tailwind-theme-light: #bfdbfe;
-  --tailwind-theme-tertiary: #3b82f6;
-  --tailwind-theme-dark-alt: #1d4ed8;
-  --tailwind-theme-dark: #1e293b;
-  --tailwind-theme-darker: #1e40af;
-  --tailwind-btn-primary-color: #fff;
-  --tailwind-btn-primary-bg: #2563eb;
-  --tailwind-btn-primary-bg-hover: #1d4ed8;
-  --tailwind-btn-primary-bg-active: #1e40af;
-  --tailwind-btn-secondary-color: #111827;
-  --tailwind-btn-secondary-bg: #fff;
-  --tailwind-btn-secondary-bg-hover: #f3f4f6;
-  --tailwind-btn-secondary-bg-active: #e5e7eb;
-  --tailwind-btn-text-color: #111827;
-  --tailwind-btn-text-bg: #fff;
-  --tailwind-btn-text-color-hover: #111827;
-  --tailwind-btn-text-bg-hover: #f3f4f6;
-  --tailwind-btn-text-color-active: #111827;
-  --tailwind-btn-text-bg-active: #e5e7eb;
-  --tailwind-window-bg: #fff;
-  --tailwind-tabs-item-bg-hover: #f3f4f6;
-  --tailwind-list-items-group-bg: #f3f4f6;
-  --tailwind-tooltip-bg: #1f2937;
-  --tailwind-tooltip-color: #f9fafb;
-  --tailwind-tag-bg: #f1f5f9;
-  --tailwind-tag-color: #334155;
-  --tailwind-breadcrumb-color: #64748b;
+  --tailwind-surface-color: var(--tw-gray-900);
+  --tailwind-background: var(--tw-white);
+  --tailwind-background-color: var(--tw-gray-900);
+  --tailwind-type-primary: var(--tw-gray-900);
+  --tailwind-type-secondary: var(--tw-gray-500);
+  --tailwind-type-disabled: var(--tw-gray-400);
+  --tailwind-body-divider: var(--tw-gray-200);
+  --tailwind-input-background: var(--tw-white);
+  --tailwind-input-disabled-background: var(--tw-gray-100);
+  --tailwind-input-border: var(--tw-gray-300);
+  --tailwind-input-border-hover: var(--tw-gray-400);
+  --tailwind-alert-color: var(--tw-gray-900);
+  --tailwind-theme-primary: var(--tw-indigo-600);
+  --tailwind-theme-lighter-alt: var(--tw-indigo-50);
+  --tailwind-theme-lighter: var(--tw-indigo-100);
+  --tailwind-theme-light: var(--tw-indigo-200);
+  --tailwind-theme-tertiary: var(--tw-indigo-500);
+  --tailwind-theme-dark-alt: var(--tw-indigo-700);
+  --tailwind-theme-dark: var(--tw-indigo-800);
+  --tailwind-theme-darker: var(--tw-indigo-900);
+  --tailwind-btn-primary-color: var(--tw-white);
+  --tailwind-btn-primary-bg: var(--tw-indigo-600);
+  --tailwind-btn-primary-bg-hover: var(--tw-indigo-500);
+  --tailwind-btn-primary-bg-active: var(--tw-indigo-700);
+  --tailwind-btn-secondary-color: var(--tw-gray-900);
+  --tailwind-btn-secondary-bg: var(--tw-white);
+  --tailwind-btn-secondary-bg-hover: var(--tw-gray-50);
+  --tailwind-btn-secondary-bg-active: var(--tw-gray-100);
+  --tailwind-btn-text-color: var(--tw-gray-900);
+  --tailwind-btn-text-bg: var(--tw-white);
+  --tailwind-btn-text-color-hover: var(--tw-gray-900);
+  --tailwind-btn-text-bg-hover: var(--tw-gray-100);
+  --tailwind-btn-text-color-active: var(--tw-gray-900);
+  --tailwind-btn-text-bg-active: var(--tw-gray-200);
+  --tailwind-window-bg: var(--tw-white);
+  --tailwind-tabs-item-bg-hover: var(--tw-gray-100);
+  --tailwind-list-items-group-bg: var(--tw-gray-100);
+  --tailwind-tooltip-bg: var(--tw-gray-900);
+  --tailwind-tooltip-color: var(--tw-white);
+  --tailwind-tag-bg: var(--tw-gray-100);
+  --tailwind-tag-color: var(--tw-gray-700);
+  --tailwind-breadcrumb-color: var(--tw-gray-500);
   --tailwind-breadcrumb-bg: transparent;
-  --tailwind-breadcrumb-color-hover: #111827;
-  --tailwind-breadcrumb-bg-hover: #f3f4f6;
-  --tailwind-accordion-header-color: #111827;
-  --tailwind-accordion-header-bg: #f3f4f6;
-  --tailwind-pager-color: #2563eb;
-  --tailwind-pager-bg: #fff;
-  --tailwind-pager-border: #d1d5db;
-  --tailwind-sortable-border: #e5e7eb;
-  --tailwind-error-bg: #dc2626;
-  --tailwind-error-color: #dc2626;
-  --tailwind-success-bg: #16a34a;
-  --tailwind-success-color: #ffffff;
-  --tailwind-severe-warning-bg: #ffedd5;
-  --tailwind-severe-warning-color: #ea580c;
-  --tailwind-warning-bg: #f59e0b;
-  --tailwind-warning-color: #78350f;
-  /* neutral scale mapped to Tailwind gray-50 -> gray-900 */
-  --tailwind-greys-white: #fff;
-  --tailwind-greys-grey10: #f9fafb;
-  --tailwind-greys-grey20: #f3f4f6;
-  --tailwind-greys-grey30: #e5e7eb;
-  --tailwind-greys-grey40: #d1d5db;
-  --tailwind-greys-grey50: #cbd5e1;
-  --tailwind-greys-grey60: #9ca3af;
-  --tailwind-greys-grey90: #9ca3af;
-  --tailwind-greys-grey110: #6b7280;
-  --tailwind-greys-grey130: #4b5563;
-  --tailwind-greys-grey150: #374151;
-  --tailwind-greys-grey160: #1f2937;
-  --tailwind-greys-grey190: #111827;
+  --tailwind-breadcrumb-color-hover: var(--tw-gray-700);
+  --tailwind-breadcrumb-bg-hover: var(--tw-gray-100);
+  --tailwind-accordion-header-color: var(--tw-gray-900);
+  --tailwind-accordion-header-bg: var(--tw-gray-50);
+  --tailwind-pager-color: var(--tw-indigo-600);
+  --tailwind-pager-bg: var(--tw-white);
+  --tailwind-pager-border: var(--tw-gray-300);
+  --tailwind-sortable-border: var(--tw-gray-200);
+  --tailwind-error-bg: var(--tw-red-50);
+  --tailwind-error-color: var(--tw-red-700);
+  --tailwind-success-bg: var(--tw-green-50);
+  --tailwind-success-color: var(--tw-green-700);
+  --tailwind-severe-warning-bg: var(--tw-orange-50);
+  --tailwind-severe-warning-color: var(--tw-orange-700);
+  --tailwind-warning-bg: var(--tw-amber-50);
+  --tailwind-warning-color: var(--tw-amber-700);
+  --tailwind-header-bg: var(--tw-gray-50);
+  --tailwind-header-color: var(--tw-gray-700);
+  --tailwind-track: var(--tw-gray-200);
+  --tailwind-slider-track: var(--tw-gray-300);
+  --tailwind-disabled-bg: var(--tw-gray-100);
+  --tailwind-inverse-bg: var(--tw-gray-300);
+  --tailwind-inverse-color: var(--tw-gray-600);
+  --tailwind-accent: var(--tw-indigo-600);
+  --tailwind-danger: var(--tw-red-600);
+  --tailwind-success: var(--tw-green-600);
+  --tailwind-warning: var(--tw-amber-500);
+  --tailwind-info: var(--tw-sky-500);
+  /* the same colours as text: the 700 step, since a 500/600 fill colour used as text on
+     white is 2.2-3.3:1 */
+  --tailwind-danger-text: var(--tw-red-600);
+  --tailwind-success-text: var(--tw-green-700);
+  --tailwind-warning-text: var(--tw-amber-700);
+  --tailwind-info-text: var(--tw-sky-700);
+  --tailwind-thumb: var(--tw-white);
+  --tailwind-on-accent: var(--tw-white);
+  /* text on the amber-500 and sky-500 fills: white there is 2.15:1 and 2.77:1, gray-900 is
+     8.26:1 and 6.40:1 */
+  --tailwind-on-bright: var(--tw-gray-900);
+  /* even rows of a striped table: Tailwind UI's even:bg-gray-50 */
+  --tailwind-row-alt: var(--tw-gray-50);
+  --tailwind-rating-empty: var(--tw-gray-300);
+  --tailwind-editor-icons: url("images/html_editor.png");
+  /* black icons drawn as images (the jqx-icon-type-svg set, rasters with no white twin);
+     the dark variant inverts them */
+  --tailwind-icon-invert: none;
+  /* raster icons jqx.base.css draws dark; the dark variant swaps in the white set */
+  --tailwind-icon-edit: url("images/icon-edit.png");
+  --tailwind-icon-delete: url("images/icon-delete.png");
+  --tailwind-icon-save: url("images/icon-save.png");
+  --tailwind-icon-cancel: url("images/icon-cancel.png");
+  --tailwind-icon-plus: url("images/icon-plus.png");
+  --tailwind-icon-menu-minimized: url("images/icon-menu-minimized.png");
+  --tailwind-icon-pin: url("images/pin.png");
+  --tailwind-icon-pinned: url("images/pinned.png");
+  --tailwind-icon-sort-asc: url("images/icon-sort-asc.png");
+  --tailwind-icon-sort-desc: url("images/icon-sort-desc.png");
+  --tailwind-icon-sort-remove: url("images/icon-sort-remove.png");
+  --tailwind-icon-menu-small: url("images/icon-menu-small.png");
+  --tailwind-icon-recurrence: url("images/icon-recurrence.png");
+  --tailwind-icon-recurrence-exception: url("images/icon-recurrence-exception.png");
   --tailwind-overlay-light: rgba(255, 255, 255, 0.4);
-  --tailwind-overlay-dark: rgba(15, 23, 42, 0.4);
-  /* Tailwind elevation scale (shadow-sm / shadow / shadow-md / shadow-xl) */
-  --tailwind-box-shadow-4: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --tailwind-box-shadow-8: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --tailwind-box-shadow-16: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --tailwind-box-shadow-64: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --jqx-primary-rgb: 37, 99, 235;
+  --tailwind-overlay-dark: rgba(0, 0, 0, 0.4);
+
+  /* shadows: Tailwind's shadow-sm, shadow, shadow-md, shadow-lg */
+  --tailwind-box-shadow-4: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tailwind-box-shadow-8: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tailwind-box-shadow-16: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tailwind-box-shadow-64: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* -- the jQWidgets contract ----------------------------------------------- */
+  --jqx-primary-rgb: 79, 70, 229;
   --jqx-primary: rgb(var(--jqx-primary-rgb));
-  --jqx-primary-color: #fff;
-  --jqx-background: #fff;
-  --jqx-background-color: rgba(17, 24, 39, .95);
-  --jqx-background-hover: var(--tailwind-greys-grey30);
-  --jqx-background-color-hover: var(--tailwind-greys-grey190);
+  --jqx-primary-color: var(--tw-white);
+  --jqx-background: var(--tw-white);
+  --jqx-background-color: var(--tw-gray-900);
+  --jqx-background-hover: var(--tw-gray-100);
+  --jqx-background-color-hover: var(--tw-gray-900);
   --jqx-surface-rgb: var(--tailwind-surface-rgb);
   --jqx-surface: rgb(var(--jqx-surface-rgb));
-  --jqx-surface-color: rgba(17, 24, 39, .95);
-  --jqx-border: var(--tailwind-body-divider);
-  --jqx-border-radius: 6px;
-  /* signature Tailwind focus ring (blue-500 @ 45% - "ring-2 ring-blue-500/50") */
-  --jqx-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.45);
-  --jqx-scrollbar-background: #f9fafb;
-  --jqx-scrollbar-border: #e5e7eb;
-  --jqx-scrollbar-thumb-background: #cbd5e1;
-  --jqx-scrollbar-thumb-border: #cbd5e1;
-  --jqx-scrollbar-thumb-background-hover: #94a3b8;
-  --jqx-scrollbar-thumb-border-hover: #94a3b8;
-  --jqx-scrollbar-thumb-background-pressed: #64748b;
-  --jqx-scrollbar-thumb-border-pressed: #64748b;
-  --jqx-scrollbar-button-color-hover: #f3f4f6;
-  --jqx-scrollbar-button-background-hover: #f3f4f6;
-  --jqx-scrollbar-button-border-hover: #f3f4f6;
-  --jqx-scrollbar-button-color-pressed: #f3f4f6;
-  --jqx-scrollbar-button-background-pressed: #f3f4f6;
-  --jqx-scrollbar-button-border-pressed: #f3f4f6;
+  --jqx-surface-color: var(--tw-gray-900);
+  /* gray-300, the ring Tailwind UI draws on inputs, selects and buttons. It is 1.47:1 on
+     white, below WCAG 1.4.11's 3:1 for a control boundary: the Tailwind UI look was chosen
+     over the stronger gray-500 (4.83:1) that @tailwindcss/forms uses. */
+  --jqx-border: var(--tw-gray-300);
+  --jqx-border-radius: 0.375rem;
+  --jqx-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --jqx-scrollbar-background: var(--tw-gray-100);
+  --jqx-scrollbar-border: var(--tw-gray-200);
+  --jqx-scrollbar-thumb-background: var(--tw-gray-300);
+  --jqx-scrollbar-thumb-border: var(--tw-gray-300);
+  --jqx-scrollbar-thumb-background-hover: var(--tw-gray-400);
+  --jqx-scrollbar-thumb-border-hover: var(--tw-gray-400);
+  --jqx-scrollbar-thumb-background-pressed: var(--tw-gray-400);
+  --jqx-scrollbar-thumb-border-pressed: var(--tw-gray-400);
+  --jqx-scrollbar-button-color-hover: var(--tw-gray-100);
+  --jqx-scrollbar-button-background-hover: var(--tw-gray-100);
+  --jqx-scrollbar-button-border-hover: var(--tw-gray-100);
+  --jqx-scrollbar-button-color-pressed: var(--tw-gray-100);
+  --jqx-scrollbar-button-background-pressed: var(--tw-gray-100);
+  --jqx-scrollbar-button-border-pressed: var(--tw-gray-100);
   --jqx-font-size: 14px;
   --jqx-icon-calendar-up: '\e804';
   --jqx-icon-calendar-down: '\e805';
   --jqx-icon-sort-up: '\e904';
   --jqx-icon-sort-down: '\e901';
-}
-
-body[theme=tailwind-dark] {
-  /* Tailwind dark chrome: slate-800 surfaces, slate-600 borders. Retunes the
-     same variable set the theme already overrode - kept intentionally scoped so
-     content areas that read --jqx-background stay consistent with the base. */
-  --tailwind-surface: #1e293b;
-  --tailwind-surface-color: #f8fafc;
-  --tailwind-background: #1e293b;
-  --tailwind-background-color: #f8fafc;
-  --tailwind-input-background: #1e293b;
-  --tailwind-input-disabled-background: #334155;
-  --tailwind-greys-grey190: #f8fafc;
-  --tailwind-type-primary: #f1f5f9;
-  --tailwind-input-border: #475569;
-  --tailwind-input-border-hover: #cbd5e1;
-  --tailwind-btn-secondary-color: #f1f5f9;
-  --tailwind-btn-secondary-bg: #475569;
-  --tailwind-btn-secondary-bg-hover: #334155;
-  --tailwind-btn-secondary-bg-active: #1e293b;
-  --tailwind-btn-text-color: #f1f5f9;
-  --tailwind-btn-text-bg: transparent;
-  --tailwind-btn-text-color-hover: #fff;
-  --tailwind-btn-text-bg-hover: #334155;
-  --tailwind-btn-text-color-active: #fff;
-  --tailwind-btn-text-bg-active: #1e293b;
-  --tailwind-window-bg: #1e293b;
-  --tailwind-tabs-item-bg-hover: #334155;
-  --tailwind-list-items-group-bg: #334155;
-  --tailwind-tooltip-bg: #0f172a;
-  --tailwind-tooltip-color: #f8fafc;
-  --tailwind-tag-bg: #334155;
-  --tailwind-tag-color: #e2e8f0;
-  --tailwind-breadcrumb-color: #94a3b8;
-  --tailwind-breadcrumb-bg: transparent;
-  --tailwind-breadcrumb-color-hover: #e2e8f0;
-  --tailwind-breadcrumb-bg-hover: #1e293b;
-  --tailwind-accordion-header-color: #f1f5f9;
-  --tailwind-accordion-header-bg: #0f172a;
-  --tailwind-pager-color: #93c5fd;
-  --tailwind-pager-bg: #0f172a;
-  --tailwind-pager-border: #334155;
-  --tailwind-sortable-border: #334155;
 }
 
 .jqx-icon-type-svg {
@@ -551,7 +625,7 @@ body[theme=tailwind-dark] {
 }
 
 .jqx-widget-content-tailwind {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--jqx-font-family);
   font-size: 14px;
   color: var(--jqx-background-color);
   background-color: var(--jqx-background);
@@ -573,7 +647,7 @@ body[theme=tailwind-dark] {
 
 .jqx-grid-column-header-tailwind span:not(.jqx-checkbox-check-checked) {
   font-size: 12px !important;
-  border-color: var(--tailwind-greys-grey30);
+  border-color: var(--tailwind-body-divider);
   font-weight: 600;
 }
 
@@ -639,7 +713,6 @@ jqx-button-tailwind input {
   background: var(--jqx-background);
   color: var(--jqx-background-color);
   border: 1px solid var(--jqx-border);
-  border-radius: var(--jqx-border-radius);
 }
 
 .jqx-button-tailwind.jqx-button-tailwind:hover {
@@ -653,8 +726,8 @@ jqx-button-tailwind input {
 .jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-pressed,
 .jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block).jqx-fill-state-focus,
 .jqx-button-tailwind.jqx-button-tailwind:not(.jqx-navbar-block):focus {
-  outline: none;
-  box-shadow: var(--jqx-focus-ring);
+  outline-offset: 1px;
+  outline: 2px solid var(--tailwind-accent);
 }
 
 .jqx-button-tailwind.jqx-button-tailwind.jqx-navbar-block.jqx-fill-state-pressed,
@@ -665,9 +738,9 @@ jqx-button-tailwind input {
 
 .jqx-button-tailwind.jqx-button-tailwind[disabled] {
   opacity: 1;
-  --jqx-border: var(--tailwind-greys-grey20);
-  --jqx-background: var(--tailwind-greys-grey20);
-  --jqx-background-color: var(--tailwind-greys-grey90);
+  --jqx-border: var(--tailwind-disabled-bg);
+  --jqx-background: var(--tailwind-disabled-bg);
+  --jqx-background-color: var(--tailwind-type-disabled);
 }
 
 .jqx-button-tailwind.jqx-button-tailwind.jqx-primary,
@@ -691,9 +764,9 @@ jqx-button-tailwind input {
 .jqx-button-tailwind.jqx-button-tailwind.jqx-primary[disabled],
 .jqx-button-tailwind.jqx-button-tailwind.primary[disabled] {
   opacity: 1;
-  --jqx-border: var(--tailwind-greys-grey20);
-  --jqx-background: var(--tailwind-greys-grey20);
-  --jqx-background-color: var(--tailwind-greys-grey90);
+  --jqx-border: var(--tailwind-disabled-bg);
+  --jqx-background: var(--tailwind-disabled-bg);
+  --jqx-background-color: var(--tailwind-type-disabled);
 }
 
 .jqx-group-button-normal-tailwind {
@@ -701,7 +774,6 @@ jqx-button-tailwind input {
   background: var(--jqx-background);
   border-color: var(--jqx-border);
   color: var(--jqx-background-color) !important;
-  border-radius: 0px;
 }
 
 .jqx-group-button-normal.jqx-fill-state-hover {
@@ -713,7 +785,6 @@ jqx-button-tailwind input {
   background: var(--jqx-primary) !important;
   border-color: var(--jqx-primary) !important;
   color: var(--jqx-primary-color) !important;
-  border-radius: 0px;
   outline: none !important;
 }
 
@@ -723,9 +794,9 @@ jqx-button-tailwind input {
 }
 
 .jqx-slider-tailwind {
-  --jqx-primary: var(--tailwind-greys-grey130);
-  --jqx-ui-state-active: var(--tailwind-greys-grey130);
-  --jqx-disabled: var(--tailwind-greys-grey60);
+  --jqx-primary: var(--tailwind-accent);
+  --jqx-ui-state-active: var(--tailwind-accent);
+  --jqx-disabled: var(--tailwind-slider-track);
   --jqx-slider-track-size: 4px;
   --jqx-slider-thumb-width: 16px;
   --jqx-slider-thumb-height: 16px;
@@ -756,7 +827,7 @@ jqx-button-tailwind input {
 .jqx-slider-tailwind .jqx-slider-track .jqx-fill-state-normal {
   width: 16px;
   height: 16px;
-  background-color: var(--tailwind-greys-white) !important;
+  background-color: var(--jqx-background) !important;
   border-width: 2px;
   border-color: var(--jqx-ui-state-active);
 }
@@ -779,13 +850,13 @@ jqx-button-tailwind input {
 }
 
 .jqx-slider-tailwind[disabled] .jqx-track {
-  --jqx-primary: var(--tailwind-greys-grey90);
-  background-color: var(--tailwind-greys-grey20);
-  --jqx-disabled: var(--tailwind-greys-grey20);
+  --jqx-primary: var(--tailwind-type-disabled);
+  background-color: var(--tailwind-disabled-bg);
+  --jqx-disabled: var(--tailwind-disabled-bg);
 }
 
 .jqx-slider-tailwind[disabled] .jqx-track .jqx-value {
-  background-color: var(--tailwind-greys-grey90);
+  background-color: var(--tailwind-type-disabled);
 }
 
 .jqx-button-tailwind.float {
@@ -800,13 +871,13 @@ jqx-button-tailwind input {
 
 .jqx-button-tailwind.outlined {
   background: transparent;
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
   border-width: 2px;
 }
 
 .jqx-button-tailwind.flat {
   background: transparent;
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
   border: none;
 }
 
@@ -845,21 +916,21 @@ jqx-button-tailwind input {
 }
 
 .jqx-button-tailwind.jqx-fill-state-pressed.float {
-  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--tailwind-box-shadow-64);
 }
 
 .jqx-button-tailwind.jqx-fill-state-pressed.outlined,
 .jqx-button-tailwind.jqx-fill-state-pressed.flat {
-  background: rgba(179, 229, 252, 0.15);
+  background: rgba(var(--jqx-primary-rgb), 0.15);
   box-shadow: none;
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
 }
 
 .jqx-button-tailwind.jqx-fill-state-focus.outlined,
 .jqx-button-tailwind.jqx-fill-state-focus.flat {
   box-shadow: none;
   background: rgba(var(--jqx-primary-rgb), 0.15);
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
 }
 
 .jqx-dropdownlist-content-tailwind {
@@ -868,8 +939,6 @@ jqx-button-tailwind input {
   height: 100% !important;
   margin-top: 0px !important;
 }
-
-
 
 .jqx-dropdownlist-content-tailwind span {
   top: 0px !important;
@@ -897,15 +966,11 @@ jqx-button-tailwind input {
 .jqx-menu-item-top-selected-tailwind,
 .jqx-slider-button-tailwind,
 .jqx-slider-slider-tailwind {
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
   transition: background-color 100ms linear;
 }
 
 .jqx-primary-tailwind.jqx-input-label-tailwind {
-  color: var(--jqx-primary) !important;
+  color: var(--tailwind-accent) !important;
 }
 
 .jqx-primary-tailwind.jqx-input-bar-tailwind:before {
@@ -913,48 +978,48 @@ jqx-button-tailwind input {
 }
 
 .jqx-success-tailwind.jqx-input-label-tailwind {
-  color: #5cb85c !important;
+  color: var(--tailwind-success-text) !important;
 }
 
 .jqx-success-tailwind.jqx-input-bar-tailwind:before {
-  background: #5cb85c !important;
+  background: var(--tailwind-success) !important;
 }
 
 .jqx-inverse-tailwind.jqx-input-label-tailwind {
-  color: #666 !important;
+  color: var(--tailwind-inverse-color) !important;
 }
 
 .jqx-inverse-tailwind.jqx-input-bar-tailwind:before {
-  background: #666 !important;
+  background: var(--tailwind-inverse-color) !important;
 }
 
 .jqx-danger-tailwind.jqx-input-label-tailwind {
-  color: #d9534f !important;
+  color: var(--tailwind-danger-text) !important;
 }
 
 .jqx-danger-tailwind.jqx-input-bar-tailwind:before {
-  background: #d9534f !important;
+  background: var(--tailwind-danger) !important;
 }
 
 .jqx-warning-tailwind.jqx-input-label-tailwind {
-  color: #f0ad4e !important;
+  color: var(--tailwind-warning-text) !important;
 }
 
 .jqx-warning-tailwind.jqx-input-bar-tailwind:before {
-  background: #f0ad4e !important;
+  background: var(--tailwind-warning) !important;
 }
 
 .jqx-info-tailwind.jqx-input-label-tailwind {
-  color: #5bc0de !important;
+  color: var(--tailwind-info-text) !important;
 }
 
 .jqx-info-tailwind.jqx-input-bar-tailwind:before {
-  background: #5bc0de !important;
+  background: var(--tailwind-info) !important;
 }
 
 .jqx-primary-tailwind {
-  color: var(--jqx-primary) !important;
-  background: #fff !important;
+  color: var(--tailwind-accent) !important;
+  background: var(--tailwind-background) !important;
   border-color: var(--jqx-primary) !important;
   text-shadow: none !important;
 }
@@ -971,25 +1036,25 @@ jqx-button-tailwind input {
 .jqx-primary-tailwind.active,
 .jqx-primary-tailwind.disabled,
 .jqx-primary-tailwind[disabled] {
-  color: #fff !important;
+  color: var(--tailwind-on-accent) !important;
   background: var(--jqx-primary) !important;
-  border-color: var(--jqx-primary) !important;
+  border-color: var(--tailwind-accent) !important;
   text-shadow: none !important;
 }
 
 .jqx-fill-state-pressed-tailwind.jqx-primary-tailwind,
 .jqx-primary-tailwind:active,
 .jqx-primary-tailwind.active {
-  color: #fff !important;
+  color: var(--tailwind-on-accent) !important;
   background-color: var(--jqx-primary) !important;
   border-color: var(--jqx-primary) !important;
   text-shadow: none !important;
 }
 
 .jqx-success-tailwind {
-  color: #5cb85c !important;
-  background: #fff !important;
-  border-color: #5cb85c !important;
+  color: var(--tailwind-success-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-success) !important;
   text-shadow: none !important;
 }
 
@@ -1005,9 +1070,9 @@ jqx-button-tailwind input {
 .jqx-success-tailwind.active,
 .jqx-success-tailwind.disabled,
 .jqx-success-tailwind[disabled] {
-  color: #fff !important;
-  background: #5cb85c !important;
-  border-color: #5cb85c !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-success) !important;
+  border-color: var(--tailwind-success) !important;
   text-shadow: none !important;
 }
 
@@ -1015,16 +1080,16 @@ jqx-button-tailwind input {
 .jqx-success-tailwind:active,
 .jqx-success-tailwind.active {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #5cb85c !important;
-  border-color: #5cb85c !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-success) !important;
+  border-color: var(--tailwind-success) !important;
 }
 
 .jqx-inverse-tailwind {
   text-shadow: none !important;
-  color: #666 !important;
-  background: #fff !important;
-  border-color: #cccccc !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
 }
 
 .jqx-inverse-tailwind.jqx-dropdownlist-state-normal-tailwind,
@@ -1040,25 +1105,25 @@ jqx-button-tailwind input {
 .jqx-inverse-tailwind.disabled,
 .jqx-inverse-tailwind[disabled] {
   text-shadow: none !important;
-  color: #666 !important;
-  background: #cccccc !important;
-  border-color: #cccccc !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-inverse-bg) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
 }
 
 .jqx-fill-state-pressed-tailwind.jqx-inverse-tailwind,
 .jqx-inverse-tailwind:active,
 .jqx-inverse-tailwind.active {
   text-shadow: none !important;
-  color: #666 !important;
-  background: #cccccc !important;
-  border-color: #cccccc !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-inverse-bg) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
 }
 
 .jqx-danger-tailwind {
   text-shadow: none !important;
-  color: #d9534f !important;
-  background: #fff !important;
-  border-color: #d9534f !important;
+  color: var(--tailwind-danger-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-danger) !important;
 }
 
 .jqx-danger-tailwind.jqx-dropdownlist-state-normal-tailwind,
@@ -1074,29 +1139,29 @@ jqx-button-tailwind input {
 .jqx-danger-tailwind.disabled,
 .jqx-danger-tailwind[disabled] {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #d9534f !important;
-  border-color: #d9534f !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-danger) !important;
+  border-color: var(--tailwind-danger) !important;
 }
 
 .jqx-fill-state-pressed-tailwind.jqx-danger-tailwind,
 .jqx-danger-tailwind:active,
 .jqx-danger-tailwind.active {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #d9534f !important;
-  border-color: #d9534f !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-danger) !important;
+  border-color: var(--tailwind-danger) !important;
 }
 
 .jqx-validator-error-label-tailwind {
-  color: #d9534f !important;
+  color: var(--tailwind-danger-text) !important;
 }
 
 .jqx-warning-tailwind {
   text-shadow: none !important;
-  color: #f0ad4e !important;
-  background: #fff !important;
-  border-color: #f0ad4e !important;
+  color: var(--tailwind-warning-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-warning) !important;
 }
 
 .jqx-warning-tailwind.jqx-dropdownlist-state-normal-tailwind,
@@ -1112,25 +1177,25 @@ jqx-button-tailwind input {
 .jqx-warning-tailwind.disabled,
 .jqx-warning-tailwind[disabled] {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #f0ad4e !important;
-  border-color: #f0ad4e !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-warning) !important;
+  border-color: var(--tailwind-warning) !important;
 }
 
 .jqx-fill-state-pressed-tailwind.jqx-warning-tailwind,
 .jqx-warning-tailwind:active,
 .jqx-warning-tailwind.active {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #f0ad4e !important;
-  border-color: #f0ad4e !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-warning) !important;
+  border-color: var(--tailwind-warning) !important;
 }
 
 .jqx-info-tailwind {
   text-shadow: none !important;
-  color: #5bc0de !important;
-  background: #fff !important;
-  border-color: #5bc0de !important;
+  color: var(--tailwind-info-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-info) !important;
 }
 
 .jqx-info-tailwind.jqx-dropdownlist-state-normal-tailwind,
@@ -1145,9 +1210,9 @@ jqx-button-tailwind input {
 .jqx-info-tailwind.active,
 .jqx-info-tailwind.disabled,
 .jqx-info-tailwind[disabled] {
-  color: #fff !important;
-  background: #5bc0de !important;
-  border-color: #5bc0de !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-info) !important;
+  border-color: var(--tailwind-info) !important;
   text-shadow: none !important;
 }
 
@@ -1155,9 +1220,9 @@ jqx-button-tailwind input {
 .jqx-info-tailwind:active,
 .jqx-info-tailwind.active {
   text-shadow: none !important;
-  color: #fff !important;
-  background: #5bc0de !important;
-  border-color: #5bc0de !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-info) !important;
+  border-color: var(--tailwind-info) !important;
 }
 
 .jqx-fill-state-pressed-tailwind {
@@ -1200,8 +1265,8 @@ jqx-button-tailwind input {
   margin-top: 2px;
 }
 
-.jqx-datatable-dark .jqx-widget-header-dark .jqx-grid-column-header-dark {
-  border-right-color: var(--jqx-border);
+.jqx-datatable-tailwind .jqx-widget-header-tailwind .jqx-grid-column-header-tailwind {
+  border-right-color: var(--tailwind-body-divider);
 }
 
 .jqx-datatable-tailwind td.jqx-grid-cell-tailwind,
@@ -1214,8 +1279,6 @@ jqx-button-tailwind input {
 .jqx-grid-cell-tailwind {
   background: var(--jqx-background);
   color: var(--jqx-background-color);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -1224,13 +1287,34 @@ jqx-button-tailwind input {
   color: var(--jqx-surface-color);
 }
 
+/* A Tailwind UI table: rows separated by divide-gray-200, a bg-gray-50 header row, and the
+   control boundary (gray-500) only on the table's outer edge. Without this every cell
+   inherited the boundary colour from .jqx-widget-tailwind and the grid read as a lattice. */
+.jqx-grid-cell-tailwind,
+.jqx-grid-cell-alt-tailwind,
+.jqx-grid-column-header-tailwind,
+.jqx-grid-group-cell-tailwind,
+.jqx-grid-cell-pinned-tailwind,
+.jqx-grid-header-tailwind,
+.jqx-grid-groups-header-tailwind {
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-grid-column-header-tailwind,
+.jqx-widget-header-tailwind.jqx-grid-cell-tailwind,
+.jqx-grid-header-tailwind {
+  background: var(--tailwind-header-bg);
+  color: var(--tailwind-header-color);
+  font-weight: 600;
+}
+
 .jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind {
-  background: rgba(244, 245, 249, 0.2) !important;
+  background: var(--tailwind-row-alt) !important;
   color: var(--jqx-surface-color) !important;
 }
 
 .jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind.jqx-grid-cell-sort-tailwind {
-  background: rgba(244, 245, 249, 0.2) !important;
+  background: var(--tailwind-row-alt) !important;
   color: var(--jqx-surface-color) !important;
 }
 
@@ -1304,7 +1388,7 @@ jqx-button-tailwind input {
 .jqx-grid-pager-top-tailwind .jqx-grid-pager-number-tailwind.jqx-fill-state-pressed-tailwind,
 .jqx-grid-pager-tailwind .jqx-grid-pager-number-tailwind.jqx-fill-state-pressed-tailwind {
   background: var(--jqx-primary);
-  color: var(--jqx-background) !important;
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-grid-column-menubutton-tailwind {
@@ -1385,13 +1469,13 @@ jqx-button-tailwind input {
 
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-tailwind {
   transform: scaleX(0.3);
-  border-radius: 5px;
+  border-radius: var(--jqx-border-radius);
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-horizontal-tailwind {
   transform: scaleY(0.3);
-  border-radius: 5px;
+  border-radius: var(--jqx-border-radius);
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -1409,13 +1493,13 @@ jqx-button-tailwind input {
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-tailwind,
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-tailwind {
   transform: scaleX(0.4);
-  border-radius: 5px;
+  border-radius: var(--jqx-border-radius);
 }
 
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-horizontal-tailwind,
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-horizontal-tailwind {
   transform: scaleY(0.4);
-  border-radius: 5px;
+  border-radius: var(--jqx-border-radius);
 }
 
 .jqx-scrollbar-tailwind:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-pressed-tailwind,
@@ -1442,14 +1526,10 @@ jqx-button-tailwind input {
   background: var(--jqx-scrollbar-thumb-background-hover);
   border-color: var(--jqx-scrollbar-thumb-border-hover);
   box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
 }
 
 .jqx-progressbar-tailwind {
   background: var(--jqx-background) !important;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -1531,11 +1611,6 @@ jqx-grid-column-filterbutton-tailwind,
   border-radius: var(--jqx-border-radius);
 }
 
-.jqx-tooltip-tailwind.dark {
-  --tailwind-tooltip-bg: #201F1E;
-  --tailwind-tooltip-color: #fff;
-}
-
 .jqx-tooltip-tailwind.jqx-popup-light,
 .jqx-tooltip-tailwind .jqx-fill-state-normal-tailwind {
   background: var(--tailwind-tooltip-bg);
@@ -1578,16 +1653,34 @@ jqx-grid-column-filterbutton-tailwind,
 }
 
 .jqx-rating-image-backward:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23A19F9D'/%3E%3C/svg%3E");
-  background-color: #fff;
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--tailwind-rating-empty);
+}
+
+/* the empty star lies over the filled one; a page-coloured backing hides it, and the
+   star itself is a mask so the dark variant can recolour it */
+.jqx-rating-image-backward:before {
+  content: "";
+  top: 0;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--jqx-background);
+}
+
+.jqx-rating-image-backward.hidden-item:before {
+  display: none;
 }
 
 .jqx-rating-image-hover:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%230078D4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23F59E0B'/%3E%3C/svg%3E");
 }
 
 .jqx-rating-image-default:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23201F1E'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23FBBF24'/%3E%3C/svg%3E");
 }
 
 .jqx-docking-tailwind .jqx-window-tailwind {
@@ -1606,8 +1699,6 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-radiobutton-tailwind {
   overflow: visible;
   box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   background-repeat: no-repeat;
   background: none;
   line-height: 20px;
@@ -1622,7 +1713,7 @@ jqx-grid-column-filterbutton-tailwind,
 
 .jqx-radiobutton-check-checked-tailwind {
   filter: none;
-  background: var(--jqx-background);
+  background: var(--tailwind-on-accent);
   background-repeat: no-repeat;
   border-radius: 100%;
 }
@@ -1763,9 +1854,9 @@ jqx-grid-column-filterbutton-tailwind,
 
 .jqx-grid-pager-input-tailwind:focus,
 .jqx-listbox-tailwind input:focus {
-  border: 1px solid var(--jqx-primary) !important;
-  outline: 1px solid var(--jqx-primary) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border: 1px solid var(--tailwind-accent) !important;
+  outline: 1px solid var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-listitem-element-tailwind .jqx-checkbox-default-tailwind {
@@ -1776,9 +1867,9 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-listitem-state-selected-tailwind,
 .jqx-listitem-state-normal-tailwind {
   border-radius: var(--jqx-border-radius);
-  margin: 0px;
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
+
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
   padding-left: 5px;
   cursor: pointer;
 }
@@ -1841,7 +1932,7 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-scheduler-cell-hover-tailwind {
   border-color: var(--jqx-primary) !important;
   background: var(--jqx-primary) !important;
-  color: var(--jqx-background) !important;
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-listitem-state-selected-tailwind,
@@ -1896,7 +1987,6 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-popup-tailwind {
   border: 1px solid var(--jqx-border);
   background: var(--jqx-background);
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 3px rgba(0, 0, 0, 0.12), 0 4px 15px 0 rgba(0, 0, 0, 0.2);
   box-shadow: var(--tailwind-box-shadow-8) !important;
 }
 
@@ -2126,41 +2216,47 @@ jqx-grid-column-filterbutton-tailwind,
   transform: scaleY(1);
   opacity: 1;
 }
+
 .jqx-dropdownbutton-popup.jqx-popup-up,
 .jqx-calendar-tailwind.jqx-popup-up,
 .jqx-listbox-tailwind.jqx-popup-up,
 .jqx-grid-menu.jqx-popup-up {
   transform-origin: bottom left;
 }
+
+/* Cell and header dividers are divide-gray-200, as in a Tailwind UI table. The gray-500
+   control boundary belongs to the table's outer edge only; on every cell it turned the
+   grid into a lattice. */
 .jqx-widget-tailwind .jqx-grid-cell {
-  border-color: var(--jqx-border);
+  border-color: var(--tailwind-body-divider);
   color: var(--jqx-background-color);
 }
 
 .jqx-widget-tailwind .jqx-grid-column-header,
 .jqx-widget-tailwind .jqx-grid-group-cell {
-  border-color: var(--jqx-border);
-  color: var(--jqx-surface-color);
-  background: var(--jqx-surface);
+  border-color: var(--tailwind-body-divider);
+  color: var(--tailwind-header-color);
+  background: var(--tailwind-header-bg);
 }
 
 .jqx-widget-tailwind .jqx-grid-column-header-tailwind {
-  border-color: var(--jqx-border);
+  border-color: var(--tailwind-body-divider);
   font-size: 14px;
-  color: var(--jqx-surface-color);
+  font-weight: 600;
+  color: var(--tailwind-header-color);
 }
 
 .jqx-widget-tailwind .jqx-widget-header-tailwind:hover .jqx-grid-column-header-tailwind {
-  border-right-color: var(--jqx-border) !important;
-  border-bottom-color: var(--jqx-border) !important;
+  border-right-color: var(--tailwind-body-divider) !important;
+  border-bottom-color: var(--tailwind-body-divider) !important;
 }
 
 .jqx-widget-tailwind .jqx-grid-cell-tailwind {
-  border-color: var(--jqx-border);
+  border-color: var(--tailwind-body-divider);
 }
 
-.jqx-widgets-tailwind .jqx-scheduler-cell-selected span {
-  color: var(--jqx-background) !important;
+.jqx-widget-tailwind .jqx-scheduler-cell-selected span {
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-scheduler-time-column-tailwind,
@@ -2334,8 +2430,8 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-input-group-tailwind textarea.underlined.jqx-fill-state-pressed,
 .jqx-input-group-tailwind textarea.underlined.jqx-fill-state-focus,
 .jqx-input-group-tailwind textarea.underlined:focus {
-  border-bottom: 1px solid var(--jqx-primary);
-  color: var(--tailwind-greys-grey190) !important;
+  border-bottom: 1px solid var(--tailwind-accent);
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-input-group-tailwind .jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed,
@@ -2347,10 +2443,10 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-pressed,
 .jqx-input-group-tailwind textarea:not(.underlined).jqx-fill-state-focus,
 .jqx-input-group-tailwind textarea:not(.underlined):focus {
-  border: 1px solid var(--jqx-primary);
-  outline: none !important;
-  box-shadow: var(--jqx-focus-ring);
-  color: var(--tailwind-greys-grey190) !important;
+  border: 1px solid var(--tailwind-accent);
+  outline: 1px solid var(--tailwind-accent) !important;
+  outline-offset: 0 !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-input-group-tailwind input {
@@ -2381,7 +2477,7 @@ jqx-grid-column-filterbutton-tailwind,
 
 .jqx-input-tailwind.jqx-validator-error-element {
   border-color: transparent !important;
-  border-bottom: 1px solid #df2227 !important;
+  border-bottom: 1px solid var(--tailwind-danger) !important;
 }
 
 .jqx-input-tailwind.underlined input,
@@ -2412,7 +2508,7 @@ jqx-grid-column-filterbutton-tailwind,
 .jqx-combobox-state-normal-tailwind.underlined:not(.jqx-fill-state-focus):focus,
 .jqx-numberinput-tailwind.underlined:not(.jqx-fill-state-focus):focus,
 .jqx-datetimeinput-tailwind.underlined:not(.jqx-fill-state-focus):focus {
-  color: var(--tailwind-greys-grey190) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-numberinput-tailwind .jqx-action-button-tailwind {
@@ -2440,9 +2536,9 @@ jqx-grid-column-filterbutton-tailwind,
 }
 
 .jqx-date-time-input-popup-tailwind input:focus {
-  border: 1px solid var(--jqx-primary) !important;
-  outline: 1px solid var(--jqx-primary) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border: 1px solid var(--tailwind-accent) !important;
+  outline: 1px solid var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-date-time-input-popup-tailwind td:hover {
@@ -2506,7 +2602,7 @@ textarea.jqx-input-tailwind:not(.underlined) .jqx-action-button,
 .jqx-dropdownlist-tailwind:not(.underlined) .jqx-action-button,
 .jqx-combobox-tailwind:not(.underlined) .jqx-action-button,
 .jqx-datetimeinput-tailwind:not(.underlined) .jqx-action-button {
-  margin-left: -3px;
+  margin-left: -2px;
 }
 
 textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
@@ -2516,7 +2612,7 @@ textarea.jqx-input-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-actio
 .jqx-dropdownlist-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
 .jqx-combobox-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button,
 .jqx-datetimeinput-tailwind:not(.underlined).jqx-numberinput-tailwind .jqx-action-button {
-  margin-left: -3px !important;
+  margin-left: -2px !important;
 }
 
 textarea.jqx-input-tailwind:not(.underlined):hover,
@@ -2550,9 +2646,10 @@ textarea.jqx-input-tailwind:not(.underlined):focus,
 .jqx-datetimeinput-tailwind:not(.underlined).jqx-fill-state-pressed,
 .jqx-datetimeinput-tailwind:not(.underlined).jqx-fill-state-focus,
 .jqx-datetimeinput-tailwind:not(.underlined):focus {
-  border: 1px solid var(--jqx-primary);
-  outline: 1px solid var(--jqx-primary) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border: 1px solid var(--tailwind-accent);
+  outline: 1px solid var(--tailwind-accent) !important;
+  outline-offset: 0 !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 textarea.jqx-input-tailwind:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind,
@@ -2618,7 +2715,7 @@ textarea.jqx-input-tailwind:not(.underlined):focus .jqx-icon-time-tailwind,
 .jqx-datetimeinput-tailwind:not(.underlined):focus .jqx-icon-arrow-up-tailwind,
 .jqx-datetimeinput-tailwind:not(.underlined):focus .jqx-icon-arrow-down-tailwind,
 .jqx-datetimeinput-tailwind:not(.underlined):focus .jqx-icon-time-tailwind {
-  color: var(--tailwind-greys-grey190) !important;
+  color: var(--tailwind-type-primary) !important;
   font-weight: 400;
 }
 
@@ -2683,9 +2780,9 @@ textarea.jqx-input-tailwind:not(.underlined).underlined,
 .jqx-combobox-tailwind .jqx-combobox-arrow-normal-tailwind,
 .jqx-datetimeinput-tailwind .jqx-action-button-tailwind,
 .jqx-datetimeinput-tailwind .jqx-action-button-rtl-tailwind {
-  background-color: var(--jqx-surface);
-  border-color: var(--jqx-surface);
-  color: var(--jqx-surface-color);
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-background);
+  color: var(--jqx-background-color);
 }
 
 .jqx-datetimeinput-tailwind,
@@ -2704,7 +2801,7 @@ textarea.jqx-input-tailwind:not(.underlined).underlined,
 .jqx-input-tailwind input:focus {
   border-radius: 0;
   box-shadow: none;
-  border-color: var(--jqx-primary);
+  border-color: var(--tailwind-accent);
 }
 
 .jqx-input-tailwind input,
@@ -2719,7 +2816,8 @@ textarea.jqx-input-tailwind {
   resize: none;
   background: var(--jqx-background);
   color: var(--jqx-background-color);
-  border-radius: 0;
+  border-radius: var(--jqx-border-radius);
+  /* rounded-md, as Tailwind UI inputs */
   box-sizing: border-box;
   box-shadow: none;
   border: 1px solid var(--jqx-border);
@@ -2762,7 +2860,7 @@ textarea.underlined:focus~.jqx-input-label-tailwind .jqx-input-widget-tailwind[h
 .jqx-formattedinput-tailwind[hint=true].underlined .jqx-input-label {
   top: -15px;
   font-size: 12px;
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
   opacity: 1 !important;
 }
 
@@ -2848,9 +2946,9 @@ textarea:focus~.jqx-input-label-tailwind,
 
 .jqx-dropdownlist-state-selected-tailwind,
 .jqx-combobox-state-selected-tailwind {
-  color: var(--jqx-primary);
-  background: var(--jqx-primary-color);
-  border-color: var(--jqx-primary-color);
+  color: var(--tailwind-accent);
+  background: var(--jqx-background);
+  border-color: var(--jqx-background);
 }
 
 .jqx-dropdownlist-state-normal-tailwind .jqx-icon-arrow-down-tailwind,
@@ -2915,25 +3013,11 @@ textarea:focus~.jqx-input-label-tailwind,
   margin-top: 1px;
 }
 
-input[type=text].jqx-input-tailwind:-moz-placeholder,
-input[type=text].jqx-widget-content-tailwind:-moz-placeholder,
-input[type=textarea].jqx-widget-content-tailwind:-moz-placeholder,
-textarea.jqx-input-tailwind:-moz-placeholder {
-  color: #999999;
-}
-
 input[type=text].jqx-input-tailwind:-webkit-input-placeholder,
 input[type=text].jqx-widget-content-tailwind:-webkit-input-placeholder,
 input[type=textarea].jqx-widget-content-tailwind:-webkit-input-placeholder,
 textarea.jqx-input-tailwind:-webkit-input-placeholder {
-  color: #999999;
-}
-
-input[type=text].jqx-input-tailwind:-ms-input-placeholder,
-input[type=text].jqx-widget-content-tailwind:-ms-input-placeholder,
-input[type=textarea].jqx-widget-content-tailwind:-ms-input-placeholder,
-textarea.jqx-input-tailwind:-ms-input-placeholder {
-  color: #999999;
+  color: var(--tailwind-type-disabled);
 }
 
 .jqx-combobox-content-focus-tailwind,
@@ -2962,8 +3046,9 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   box-sizing: border-box;
 }
 
-.jqx-pivotgrid-content-wrapper.jqx-fill-state-normal-tailwind {
-  border-color: var(--jqx-border);
+.jqx-pivotgrid-content-wrapper.jqx-fill-state-normal-tailwind,
+.jqx-pivotgrid-content-wrapper.jqx-grid-cell-normal-tailwind {
+  border-color: var(--tailwind-body-divider);
 }
 
 .jqx-grid-cell-tailwind.jqx-grid-cell-selected-tailwind>.jqx-grid-group-expand-tailwind {
@@ -2988,8 +3073,6 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   filter: none;
   background: inherit;
   color: inherit;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -3008,7 +3091,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-tabs-title-selected-bottom-tailwind,
 .jqx-tabs-title-selected-top-tailwind {
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
   font-weight: 500;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -3024,7 +3107,15 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-tabs .jqx-tabs-header .jqx-item {
-  color: var(--tailwind-btn-secondary-color);
+  color: var(--tailwind-type-secondary);
+}
+
+/* Tailwind UI's underline tabs: inactive text-gray-500, the selected one text-indigo-600
+   over its border-indigo-500. Matches the specificity of the rule above, which otherwise
+   painted the selected tab the same as the rest. */
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-tabs-title-selected-top-tailwind,
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-tabs-title-selected-bottom-tailwind {
+  color: var(--tailwind-accent);
 }
 
 .jqx-tabs .jqx-tabs-header .jqx-item.jqx-fill-state-pressed:hover {
@@ -3041,7 +3132,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-ribbon-item-selected-tailwind {
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
   font-weight: 500;
   border-color: transparent;
 }
@@ -3077,8 +3168,6 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border-top: 1px solid var(--jqx-background);
   filter: none;
   background: var(--jqx-background);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -3113,8 +3202,6 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 .jqx-tabs-title-hover-top-tailwind,
 .jqx-tabs-title-hover-bottom-tailwind,
 .jqx-tabs-header-tailwind {
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
   background: var(--jqx-surface);
   color: var(--jqx-surface-color);
@@ -3185,13 +3272,13 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-calendar-cell-tailwind.jqx-fill-state-hover-tailwind {
-  outline: 2px var(--tailwind-greys-grey30);
+  outline: 2px var(--tailwind-body-divider);
   overflow: hidden;
   position: relative;
-  border-radius: 0px;
-  border-color: var(--tailwind-greys-grey30) !important;
-  background: var(--tailwind-greys-grey30) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border-radius: 9999px;
+  border-color: var(--tailwind-body-divider) !important;
+  background: var(--tailwind-track) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-calendar-cell-tailwind.jqx-fill-state-pressed {
@@ -3203,11 +3290,14 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border-radius: 50%;
 }
 
+/* Today is the Tailwind UI calendar's: text-indigo-600 font-semibold on the page, no fill.
+   It was gray-500 on a gray-200 fill, 3.90:1, and gray-400 on gray-700 in the dark variant,
+   4.06:1 - both under 4.5. The accent is 6.29:1 on white and 5.95:1 on gray-900. */
 .jqx-calendar-cell-today-tailwind {
-  border-radius: 0px;
-  border-color: var(--tailwind-greys-grey130) !important;
-  background: var(--tailwind-greys-grey30) !important;
-  color: var(--tailwind-greys-grey130) !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  color: var(--tailwind-accent) !important;
+  font-weight: 600;
 }
 
 .jqx-calendar-cell-year-tailwind,
@@ -3313,10 +3403,16 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 .jqx-tabs-close-button-selected-tailwind,
 .jqx-tabs-close-button-hover-tailwind {
   background-image: none;
+  font-family: jqx-icons;
 }
 
+/* jqx.base.css sets the button's font-size to 1px, so the glyph needs a real size. */
 .jqx-tabs-close-button-tailwind:after {
   content: var(--jqx-icon-close);
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
 }
 
 .jqx-scrollbar-button-state-pressed-tailwind .jqx-icon-arrow-up-selected-tailwind {
@@ -3500,14 +3596,14 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-editor-toolbar-icon-tailwind {
-  background: url("images/html_editor.png") no-repeat;
+  background: var(--tailwind-editor-icons) no-repeat;
 }
 
 .jqx-fill-state-hover-tailwind .jqx-editor-toolbar-icon-fontsize-tailwind,
 .jqx-fill-state-pressed-tailwind .jqx-editor-toolbar-icon-fontsize-tailwind,
 .jqx-fill-state-hover-tailwind .jqx-editor-toolbar-icon-forecolor-tailwind,
 .jqx-fill-state-pressed-tailwind .jqx-editor-toolbar-icon-forecolor-tailwind {
-  background: url("images/html_editor.png") no-repeat;
+  background: var(--tailwind-editor-icons) no-repeat;
 }
 
 .jqx-editor-toolbar-button-tailwind {
@@ -3534,17 +3630,17 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-time-picker .jqx-header .jqx-selected-tailwind:focus {
-  outline: 2px solid var(--jqx-primary);
-  box-shadow: 0px 0px 4px 2px rgba(0, 119, 190, 0.125);
+  outline: 2px solid var(--tailwind-accent);
+  box-shadow: 0px 0px 4px 2px rgba(var(--jqx-primary-rgb), 0.125);
 }
 
 .jqx-svg-picker-tailwind:focus {
-  border: 1px solid var(--jqx-primary) !important;
+  border: 1px solid var(--tailwind-accent) !important;
 }
 
 .jqx-validator-hint-tailwind {
-  background: #D94F43;
-  border-color: #D94F43;
+  background: var(--tailwind-danger);
+  border-color: var(--tailwind-danger);
   padding: 10px;
 }
 
@@ -3606,7 +3702,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   border-radius: 50%;
   border-width: 1.5px;
   border-style: solid;
-  border-color: rgb(0, 120, 212) rgb(199, 224, 244) rgb(199, 224, 244);
+  border-color: var(--tailwind-accent) var(--tailwind-track) var(--tailwind-track);
   border-image: initial;
   animation-name: css-spinner;
   animation-duration: 1.3s;
@@ -3642,7 +3738,7 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-notification-tailwind.jqx-notification-info {
   color: var(--tailwind-alert-color) !important;
-  background-color: var(--tailwind-greys-grey20) !important;
+  background-color: var(--jqx-background-hover) !important;
 }
 
 .jqx-notification-tailwind.jqx-notification-success {
@@ -3665,30 +3761,77 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
   background-color: var(--tailwind-error-bg) !important;
 }
 
+/* The mail and time templates kept the base theme's blue and charcoal fills and white
+   rasters; they follow the primary and info alerts instead. */
+.jqx-notification-tailwind.jqx-notification-mail {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-theme-light) !important;
+  text-shadow: none !important;
+}
+
+.jqx-notification-tailwind.jqx-notification-time {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--jqx-background-hover) !important;
+  text-shadow: none !important;
+}
+
+.jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-mail,
+.jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-time {
+  background-image: none;
+  -webkit-mask: url("images/time.png") left center / auto no-repeat;
+  mask: url("images/time.png") left center / auto no-repeat;
+  background-color: var(--tailwind-type-secondary);
+}
+
+.jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-mail {
+  -webkit-mask-image: url("images/mail.png");
+  mask-image: url("images/mail.png");
+}
+
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-info,
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-primary,
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-warning {
-  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23605E5C'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-type-secondary);
   width: 30px;
   height: 25px;
 }
 
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-serve-warning {
-  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23D83B01'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-severe-warning-color);
   width: 30px;
   height: 25px;
 }
 
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-success {
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23107C10'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-success-color);
 }
 
 .jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-error {
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23A4262C'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-error-color);
+}
+
+.jqx-notification-tailwind .jqx-notification-icon.jqx-notification-icon-rtl {
+  -webkit-mask-position: right center;
+  mask-position: right center;
 }
 
 .jqx-notification-tailwind .jqx-notification-close-button {
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23201F1E'/%3E%3C/svg%3E") !important;
+  background-image: none !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  background-color: var(--tailwind-alert-color) !important;
   right: 0 !important;
   top: 0 !important;
   background-position: center center !important;
@@ -3703,14 +3846,22 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-editor-tailwind .jqx-button-tailwind:focus {
-  border-color: var(--jqx-primary);
-  outline-color: var(--jqx-primary);
-  color: var(--tailwind-greys-grey190);
+  border-color: var(--tailwind-accent);
+  outline-color: var(--tailwind-accent);
+  color: var(--tailwind-type-primary);
+}
+
+/* Structural edges inside a widget (a popup list, a grid's panes) are dividers. Editable
+   controls nested in a widget - a grid's filter row and pager, the scheduler's dialog - keep
+   the control border: at gray-200 they are 1.2:1 on white (WCAG 1.4.11). */
+.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind):not(.jqx-input):not(.jqx-dropdownlist):not(.jqx-combobox):not(.jqx-datetimeinput):not(.jqx-numberinput),
+.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input:not(.jqx-input):not(.jqx-grid-pager-input):not(.jqx-input-tailwind > input) {
+  --jqx-border: var(--tailwind-body-divider) !important;
 }
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind),
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input {
-  --jqx-border: var(--tailwind-body-divider) !important;
+  border-radius: var(--jqx-border-radius) !important;
 }
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind).jqx-input:hover,
@@ -3720,9 +3871,9 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) .jqx-widget-tailwind:not(.jqx-button-tailwind).jqx-input:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-input:focus {
-  border-color: var(--jqx-primary) !important;
-  outline-color: var(--jqx-primary) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border-color: var(--tailwind-accent) !important;
+  outline-color: var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea,
@@ -3750,9 +3901,9 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-grid-cell-edit:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-grid-cell-edit:focus {
-  border-color: var(--jqx-primary) !important;
-  outline-color: var(--jqx-primary) !important;
-  color: var(--tailwind-greys-grey190) !important;
+  border-color: var(--tailwind-accent) !important;
+  outline-color: var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
 }
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea:hover,
@@ -3768,14 +3919,14 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea.jqx-filter-input:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input.jqx-filter-input:focus {
-  outline: 1px solid var(--jqx-primary);
+  outline: 1px solid var(--tailwind-accent);
 }
 
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea:focus,
 .jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input:focus {
-  border-color: var(--jqx-primary);
-  outline-color: var(--jqx-primary);
-  color: var(--tailwind-greys-grey190);
+  border-color: var(--tailwind-accent);
+  outline-color: var(--tailwind-accent);
+  color: var(--tailwind-type-primary);
 }
 
 .jqx-form-tailwind .jqx-widget-tailwind:not(.jqx-button-tailwind),
@@ -3784,8 +3935,13 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-switchbutton-tailwind {
-  border-color: var(--tailwind-input-border);
-  border-radius: 15px;
+  /* The Tailwind UI toggle: a gray-200 pill with a white thumb when off, indigo when on.
+     Tailwind UI draws the off state with no ring, and gray-200 on white is 1.24:1 - the
+     one place its pattern fails 1.4.11. A gray-500 ring is what @tailwindcss/forms would
+     give the same control, and keeps the boundary at 4.83:1. */
+  background: var(--tailwind-track);
+  border-color: var(--jqx-border);
+  border-radius: 9999px;
 }
 
 .jqx-switchbutton-tailwind .jqx-switchbutton-label {
@@ -3799,9 +3955,10 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 .jqx-switchbutton-tailwind .jqx-switchbutton-thumb-tailwind {
   border-radius: 50%;
   transform: scale(0.7);
-  background: var(--tailwind-greys-grey190);
-  color: var(--tailwind-greys-grey190);
-  border-color: var(--tailwind-greys-grey190);
+  background: var(--tailwind-thumb);
+  color: var(--tailwind-thumb);
+  box-shadow: var(--tailwind-box-shadow-8);
+  border-color: var(--tailwind-type-primary);
 }
 
 .jqx-switchbutton-tailwind.jqx-switchbutton-on {
@@ -3811,14 +3968,14 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 }
 
 .jqx-switchbutton-tailwind.jqx-switchbutton-on .jqx-switchbutton-thumb-tailwind {
-  background: var(--jqx-background);
-  border-color: var(--jqx-background);
-  color: var(--jqx-background);
+  background: var(--tailwind-thumb);
+  border-color: var(--tailwind-thumb);
+  color: var(--tailwind-thumb);
 }
 
 .jqx-navigationbar-tailwind .jqx-expander-header-expanded {
   background: var(--jqx-background);
-  color: var(--jqx-primary);
+  color: var(--tailwind-accent);
 }
 
 .jqx-navigationbar-tailwind .jqx-expander-header {
@@ -3838,19 +3995,509 @@ textarea.jqx-input-tailwind:-ms-input-placeholder {
 
 /*applied to a pinned grid cell.*/
 .jqx-grid-cell-pinned-tailwind {
-    background-color: #e5e5e5 !important;
+  background-color: var(--tailwind-header-bg) !important;
 }
 
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt-tailwind {
-    background-color: #e5e5e5 !important;
+  background-color: var(--tailwind-header-bg) !important;
 }
 
 .jqx-grid-cell-pinned-tailwind.jqx-grid-cell-selected-tailwind {
-    background-color: var(--jqx-primary) !important;
+  background-color: var(--jqx-primary) !important;
 }
 
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt-tailwind.jqx-grid-cell-selected-tailwind {
-    background-color: var(--jqx-primary) !important;
+  background-color: var(--jqx-primary) !important;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Polish. Each item is a Tailwind UI convention rather than a preference, and the block sits
+ * at the end so it wins at equal specificity over anything earlier in the file.
+ * ---------------------------------------------------------------------------------------- */
+
+/* shadow-sm on controls. Tailwind UI puts it on every input and button; it is a large part
+   of what makes a control read as raised from the page. */
+.jqx-button-tailwind:not(.jqx-slider-button-tailwind):not(.jqx-scrollbar-button-tailwind):not(.jqx-grid-pager-tailwind .jqx-button-tailwind),
+.jqx-input-tailwind,
+.jqx-dropdownlist-state-normal-tailwind,
+.jqx-combobox-state-normal-tailwind,
+.jqx-numberinput-tailwind,
+.jqx-maskedinput-tailwind,
+.jqx-datetimeinput-tailwind,
+.jqx-buttongroup-tailwind {
+  box-shadow: var(--tailwind-box-shadow-4);
+}
+
+/* Containers are rounded-md like the controls; these had square corners left over. */
+.jqx-tree-tailwind,
+.jqx-expander-tailwind,
+.jqx-expander-header-tailwind,
+.jqx-listbox-tailwind,
+.jqx-panel-tailwind,
+.jqx-navbar-tailwind,
+.jqx-tabs-content-element-tailwind {
+  border-radius: var(--jqx-border-radius);
+}
+
+/* An expander's header keeps its top corners and the body its bottom ones, so the two
+   read as one rounded card. */
+.jqx-expander-tailwind .jqx-expander-content-tailwind {
+  border-radius: 0 0 var(--jqx-border-radius) var(--jqx-border-radius);
+}
+
+.jqx-expander-tailwind .jqx-expander-header-tailwind {
+  border-radius: var(--jqx-border-radius) var(--jqx-border-radius) 0 0;
+}
+
+/* Windows and popups are rounded-lg with shadow-lg, as a Tailwind UI dialog or popover. */
+.jqx-window-tailwind,
+.jqx-popover-tailwind,
+.jqx-menu-popup-tailwind,
+.jqx-listbox-tailwind.jqx-popup-tailwind,
+.jqx-calendar-tailwind.jqx-popup-tailwind {
+  border-radius: 0.5rem;
+  box-shadow: var(--tailwind-box-shadow-64);
+}
+
+.jqx-window-header-tailwind {
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--jqx-background);
+  border-bottom: 1px solid var(--tailwind-body-divider);
+  font-weight: 600;
+  color: var(--tailwind-type-primary);
+}
+
+/* Progress bar: the percentage sat in gray-900 over the indigo fill. White on the fill and
+   the fill kept rounded. */
+.jqx-progressbar-tailwind {
+  border-radius: 9999px;
+  background: var(--tailwind-track) !important;
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-progressbar-value-tailwind {
+  border-radius: 9999px;
+}
+
+.jqx-progressbar-text-tailwind {
+  color: var(--tailwind-on-accent);
+  font-weight: 600;
+  text-shadow: 0 0 2px rgb(0 0 0 / 0.35);
+}
+
+/* Calendar: the header row of weekday names in gray-500 text-xs, cells rounded-full when
+   selected or today - the Tailwind UI calendar. */
+.jqx-calendar-tailwind .jqx-calendar-column-cell-tailwind {
+  color: var(--tailwind-type-secondary);
+  font-size: 12px;
+}
+
+.jqx-calendar-cell-tailwind {
+  border-radius: 9999px;
+}
+
+.jqx-calendar-cell-tailwind.jqx-fill-state-pressed,
+.jqx-calendar-cell-today-tailwind {
+  border-radius: 9999px;
+}
+
+.jqx-calendar-cell-today-tailwind {
+  color: var(--tailwind-accent);
+  font-weight: 600;
+}
+
+/* Menu items and list items: rounded-md hover in gray-100, indigo-600 selection - the
+   Tailwind UI dropdown and select-list patterns. */
+.jqx-menu-item-tailwind,
+.jqx-menu-item-top-tailwind,
+.jqx-listitem-state-normal-tailwind,
+.jqx-listitem-state-hover-tailwind,
+.jqx-listitem-state-selected-tailwind {
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-menu-item-tailwind.jqx-fill-state-hover-tailwind,
+.jqx-menu-item-top-tailwind.jqx-fill-state-hover-tailwind {
+  background: var(--jqx-background-hover);
+  color: var(--tailwind-type-primary);
+}
+
+/* Tooltips are dark in Tailwind UI: gray-900 with white text. */
+.jqx-tooltip-tailwind,
+.jqx-tooltip-main-tailwind {
+  background: var(--tailwind-tooltip-bg);
+  border-color: var(--tailwind-tooltip-bg);
+  color: var(--tailwind-tooltip-color);
+  border-radius: var(--jqx-border-radius);
+  box-shadow: var(--tailwind-box-shadow-16);
+}
+
+.jqx-tooltip-arrow-t-b-tailwind,
+.jqx-tooltip-arrow-l-r-tailwind {
+  background: var(--tailwind-tooltip-bg);
+  border-color: var(--tailwind-tooltip-bg);
+}
+
+/* Scrollbars: a thin gray-300 thumb on a gray-100 track, rounded-full. */
+.jqx-scrollbar-thumb-state-normal-tailwind,
+.jqx-scrollbar-thumb-state-normal-horizontal-tailwind,
+.jqx-scrollbar-thumb-state-hover-tailwind,
+.jqx-scrollbar-thumb-state-hover-horizontal-tailwind,
+.jqx-scrollbar-thumb-state-pressed-tailwind,
+.jqx-scrollbar-thumb-state-pressed-horizontal-tailwind {
+  border-radius: 9999px;
+}
+/* A form is a card: the header surface with a divider edge, rounded-md. Themed through the
+   role tokens, so the dark variant follows. */
+.jqx-form-table.jqx-form-table-tailwind {
+  background-color: var(--tailwind-header-bg);
+  border: 1px solid var(--tailwind-body-divider);
+  border-radius: var(--jqx-border-radius);
+}
+/* Calendar cells outside the month, and weekend cells. The base stylesheet colours these
+   #757575 with !important - 4.61:1 on white, but 3.85:1 on a gray-900 page - so a themed
+   rule has to carry !important too. type-secondary is gray-500 in light (4.83:1 on white)
+   and gray-400 in dark (6.99:1 on gray-900). */
+.jqx-calendar-cell-othermonth-tailwind,
+.jqx-calendar-cell-weekend-tailwind {
+  color: var(--tailwind-type-secondary) !important;
+}
+
+/* WCAG 1.4.11 and 2.4.7: a focus ring the theme owns. Where a widget draws none, the
+   browser's default applies, and Chrome's computes to near-black - fine on white,
+   invisible on the dark variant's gray-900 at 1.07:1 (16 of 20 such elements measured
+   below 3:1 there). Tailwind's own focus-visible pattern: outline-2 outline-offset-2 in
+   the accent, which is indigo-600 on white at 6.29:1 and indigo-400 on gray-900 at
+   5.95:1. Scoped to jQWidgets' own DOM so a host page's controls keep their styling. */
+[class*="jqx-"]:focus-visible,
+[class*="jqx-"] :focus-visible {
+  outline: 2px solid var(--tailwind-accent);
+  outline-offset: 2px;
+}
+
+/* A text field draws its focus ring on its own edge, as Tailwind UI's ring-inset: offset
+   outward, the ring stood 2px off the accent border and read as a second box. Inside a
+   combobox, date or number input the field is part of a control that already draws the
+   ring, and a second one around the text alone showed as an empty pill. */
+input[class*="jqx-"]:focus-visible,
+textarea[class*="jqx-"]:focus-visible,
+[class*="jqx-"] input:focus-visible,
+[class*="jqx-"] textarea:focus-visible {
+  outline-offset: -1px;
+}
+
+.jqx-combobox-tailwind input:focus-visible,
+.jqx-datetimeinput-tailwind input:focus-visible,
+.jqx-numberinput-tailwind input:focus-visible,
+.jqx-formattedinput-tailwind input:focus-visible,
+.jqx-complex-input-group-tailwind input:focus-visible,
+.jqx-dropdownlist-tailwind input:focus-visible,
+.jqx-text-area-tailwind textarea:focus-visible {
+  outline: none;
+}
+
+/* jqxInput's field sits in an input group that is rounded-md, but the field itself had
+   square corners, so its border and focus ring were square inside a rounded control. */
+.jqx-input-group-tailwind.jqx-input-widget-tailwind > input:not(.underlined) {
+  border-radius: var(--jqx-border-radius);
+}
+
+/* jqxNumberInput's text is right-aligned and had no padding, so the last digit touched
+   the border; the same 5px the other fields keep. */
+.jqx-numberinput-tailwind input.jqx-input-content-tailwind {
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* jqxTagCloud: tags without a textColor are plain links, the browser's link blue - 2.2:1 on
+   the dark variant's gray-900 and off-palette on both. */
+.jqx-tag-cloud-item-tailwind a {
+  color: var(--tailwind-accent);
+}
+
+/* jqxPopover: jqx.base.css fills the arrow white. The bottom arrow points into the
+   title, which is a header surface. */
+.jqx-popover-tailwind.top .jqx-popover-arrow-tailwind:after {
+  border-top-color: var(--jqx-background);
+}
+
+.jqx-popover-tailwind.right .jqx-popover-arrow-tailwind:after {
+  border-right-color: var(--jqx-background);
+}
+
+.jqx-popover-tailwind.bottom .jqx-popover-arrow-tailwind:after {
+  border-bottom-color: var(--jqx-surface);
+}
+
+.jqx-popover-tailwind.left .jqx-popover-arrow-tailwind:after {
+  border-left-color: var(--jqx-background);
+}
+
+/* jqx.base.css gives .jqx-split-layout a light palette of its own, which hides this
+   theme's roles (white panes on the dark variant). Inherit them; the split bars are
+   dividers, as the grid's rules are. */
+.jqx-split-layout-component-tailwind .jqx-split-layout {
+  --jqx-primary-rgb: inherit;
+  --jqx-primary: inherit;
+  --jqx-primary-color: inherit;
+  --jqx-background: inherit;
+  --jqx-background-color: inherit;
+  --jqx-background-hover: inherit;
+  --jqx-background-color-hover: inherit;
+  --jqx-surface-rgb: inherit;
+  --jqx-surface: inherit;
+  --jqx-surface-color: inherit;
+  --jqx-border: var(--tailwind-body-divider);
+  --jqx-scrollbar-background: inherit;
+  --jqx-scrollbar-border: inherit;
+  --jqx-scrollbar-thumb-background: inherit;
+  --jqx-scrollbar-thumb-border: inherit;
+  --jqx-scrollbar-thumb-background-hover: inherit;
+  --jqx-scrollbar-thumb-border-hover: inherit;
+  --jqx-scrollbar-thumb-background-pressed: inherit;
+  --jqx-scrollbar-thumb-border-pressed: inherit;
+  --jqx-scrollbar-button-color-hover: inherit;
+  --jqx-scrollbar-button-background-hover: inherit;
+  --jqx-scrollbar-button-border-hover: inherit;
+  --jqx-scrollbar-button-color-pressed: inherit;
+  --jqx-scrollbar-button-background-pressed: inherit;
+  --jqx-scrollbar-button-border-pressed: inherit;
+  color: var(--jqx-background-color);
+  background: var(--jqx-background);
+}
+
+/* The grid's ever-present new row: jqx.base.css paints it a pale yellow with black text, a
+   light strip in the dark variant. The header surface marks it instead. */
+.jqx-grid-cell-add-new-row-tailwind {
+  background: var(--tailwind-header-bg) !important;
+  color: var(--jqx-background-color) !important;
+}
+
+/* Raster icons from jqx.base.css, through roles so the dark variant can use the white set
+   (they were dark on gray-900). The pressed-state rules above still switch to white. */
+.jqx-icon-edit-tailwind {
+  background-image: var(--tailwind-icon-edit);
+}
+
+.jqx-icon-delete-tailwind {
+  background-image: var(--tailwind-icon-delete);
+}
+
+.jqx-icon-save-tailwind {
+  background-image: var(--tailwind-icon-save);
+}
+
+.jqx-icon-cancel-tailwind {
+  background-image: var(--tailwind-icon-cancel);
+}
+
+.jqx-icon-plus-alt-tailwind {
+  background-image: var(--tailwind-icon-plus);
+}
+
+.jqx-menu-minimized-button-tailwind {
+  background-image: var(--tailwind-icon-menu-minimized);
+}
+
+.jqx-layout-pseudo-window-pin-icon-tailwind {
+  background-image: var(--tailwind-icon-pin);
+}
+
+.jqx-layout-pseudo-window-pinned-icon-tailwind {
+  background-image: var(--tailwind-icon-pinned);
+}
+
+/* With body.jqx-icon-type-svg the icons are black SVG files drawn as images, which no
+   colour reaches; the role inverts them in the dark variant. */
+.jqx-icon-type-svg .jqx-icon-close-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-search-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-filterbutton-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-menubutton-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind:after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind.jqx-icon-arrow-up-tailwind:after,
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind:after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind.jqx-icon-arrow-down-tailwind:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-left-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-left-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-left:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-left-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind,
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-collapse-tailwind:after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-tailwind:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-rtl-tailwind:after,
+.jqx-icon-type-svg .jqx-combobox-tailwind .jqx-icon-close-tailwind:after,
+.jqx-icon-type-svg .jqx-expander-header-tailwind .jqx-icon-arrow-up:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-expand-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-time-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-calendar-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind:after,
+.jqx-icon-type-svg .jqx-tabs-close-button-tailwind,
+.jqx-icon-type-svg .jqx-tabs-close-button-selected-tailwind,
+.jqx-icon-type-svg .jqx-tabs-close-button-hover-tailwind .jqx-tabs-close-button-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-first-tailwind:after,
+.jqx-icon-type-svg .jqx-icon-arrow-last-tailwind:after,
+.jqx-icon-type-svg .jqx-widget-tailwind .jqx-grid-group-expand-tailwind,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind {
+  filter: var(--tailwind-icon-invert);
+}
+
+/* the sort items of the grid and pivot grid column menus; the icons carry no theme class */
+.jqx-menu-tailwind .jqx-grid-sortasc-icon,
+.jqx-menu-tailwind .jqx-pivotgrid-sortasc-icon {
+  background-image: var(--tailwind-icon-sort-asc);
+}
+
+.jqx-menu-tailwind .jqx-grid-sortdesc-icon,
+.jqx-menu-tailwind .jqx-pivotgrid-sortdesc-icon {
+  background-image: var(--tailwind-icon-sort-desc);
+}
+
+.jqx-menu-tailwind .jqx-grid-sortremove-icon,
+.jqx-menu-tailwind .jqx-pivotgrid-sortremove-icon {
+  background-image: var(--tailwind-icon-sort-remove);
+}
+
+/* jqxPivotDesigner: its section labels are bare .jqx-widget, which jqx.base.css colours
+   black - invisible on the dark variant. */
+.jqx-designer-host.jqx-widget-content-tailwind > .jqx-widget {
+  color: var(--jqx-background-color);
+}
+
+.jqx-pivotgrid-settings-icon {
+  background-image: var(--tailwind-icon-menu-small);
+}
+
+/* jqxPivotGrid row and column expanders: a dark raster with no white twin. */
+.jqx-widget-content-tailwind .jqx-pivotgrid-expand-button,
+.jqx-widget-content-tailwind .jqx-pivotgrid-collapse-button {
+  filter: var(--tailwind-icon-invert);
+}
+
+/* jqxScheduler month view: jqx.base.css paints each day's date strip, and its "more" popup,
+   a light gray with black text at 80% opacity, and the half-hour rule of the day and week
+   views a light gray with !important - light blocks and bright lines on the dark variant.
+   Today's strip was Fluent's blue. */
+.jqx-scheduler-month-cell-tailwind {
+  background: var(--tailwind-header-bg);
+  color: var(--jqx-background-color);
+  opacity: 1;
+}
+
+.jqx-scheduler-month-cell-popup-tailwind {
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-scheduler-month-outer-cell-tailwind.jqx-scheduler-month-cell-tailwind {
+  color: var(--tailwind-type-secondary);
+}
+
+.jqx-scheduler-tailwind[show-current] .jqx-scheduler-month-day-today-cell .jqx-scheduler-month-cell-tailwind {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+  border-bottom-color: var(--jqx-primary);
+}
+
+.jqx-scheduler-tailwind .current-appointment .jqx-scheduler-appointment-content {
+  border-color: var(--jqx-primary);
+}
+
+.jqx-widget-tailwind .jqx-scheduler-middle-cell {
+  border-bottom-color: var(--tailwind-body-divider) !important;
+}
+
+/* the recurrence marks on appointments */
+.jqx-icon-recurrence-tailwind {
+  background-image: var(--tailwind-icon-recurrence);
+}
+
+.jqx-icon-recurrence-exception-tailwind {
+  background-image: var(--tailwind-icon-recurrence-exception);
+}
+
+/* A pressed button - a toggled jqxToggleButton, an open dropdown button - drew exactly as an
+   idle one, because the button's own background rule outranks .jqx-fill-state-pressed. The
+   selected look is indigo-100 with an indigo-600 edge (indigo-900 and indigo-400 in the
+   dark variant); text stays the primary type colour, 14.40:1 and 10.38:1. */
+.jqx-button-tailwind.jqx-button-tailwind.jqx-fill-state-pressed:not(.jqx-navbar-block):not(.jqx-primary):not(.primary):not(.jqx-group-button-normal) {
+  --jqx-background: var(--tailwind-theme-lighter);
+  --jqx-border: var(--tailwind-accent);
+  --jqx-background-color: var(--tailwind-type-primary);
+}
+
+/* Out-of-hours, weekend and disabled cells: jqx.base.css tints them, but the grid cell rule
+   above repainted every cell the page colour, so work hours did not show. */
+.jqx-scheduler-tailwind .jqx-scheduler-not-work-time-cell,
+.jqx-scheduler-tailwind .jqx-scheduler-month-weekend-cell {
+  background: var(--tailwind-header-bg);
+}
+
+.jqx-scheduler-tailwind .jqx-scheduler-disabled-cell {
+  background: var(--tailwind-disabled-bg);
+}
+
+/* jqxDropDownButton's popup is its own container: it takes the container's -10px but has no
+   inner popup to take it back, so it hung 10px left of the button. */
+.jqx-dropdownbutton-popup-tailwind.jqx-listbox-container-tailwind {
+  margin-left: 0;
 }

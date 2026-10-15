@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxScrollBar extends React.PureComponent<IScrollBarProps, IState> {
-    protected static getDerivedStateFromProps(props: IScrollBarProps, state: IState): null | IState;
+declare class JqxScrollBar extends React.PureComponent<IScrollBarProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IScrollBarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IScrollBarProps): void;
     getOptions(option: string): any;
@@ -14,14 +25,15 @@ declare class JqxScrollBar extends React.PureComponent<IScrollBarProps, IState> 
     isScrolling(): boolean;
     setPosition(index: number): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxScrollBar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IScrollBarOptions {
     disabled?: boolean;
     height?: string | number;
@@ -37,8 +49,9 @@ interface IScrollBarOptions {
     value?: number;
     width?: string | number;
 }
-export interface IScrollBarProps extends IScrollBarOptions {
+export interface IScrollBarProps extends IScrollBarOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onValueChanged?: (e?: any) => void;
 }

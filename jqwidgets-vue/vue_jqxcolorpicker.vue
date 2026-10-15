@@ -24,6 +24,7 @@
                 default: false,
                 type: Boolean
             },
+            theme: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -94,6 +95,13 @@
                     return JQXLite(this.componentSelector).jqxColorPicker('showTransparent');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxColorPicker('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxColorPicker('theme');
+                }
+            },
             _width: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxColorPicker('width', arg)
@@ -109,7 +117,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['color','colorMode','disabled','height','showTransparent','width'];
+                const widgetProps = ['color','colorMode','disabled','height','showTransparent','theme','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -169,6 +177,16 @@
                     },
                     set: function(newValue) {
                         that._showTransparent(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

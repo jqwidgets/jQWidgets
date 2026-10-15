@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxSlider extends React.PureComponent<ISliderProps, IState> {
-    protected static getDerivedStateFromProps(props: ISliderProps, state: IState): null | IState;
+declare class JqxSlider extends React.PureComponent<ISliderProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ISliderProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ISliderProps): void;
     getOptions(option: string): any;
@@ -20,19 +31,20 @@ declare class JqxSlider extends React.PureComponent<ISliderProps, IState> {
     setValue(index: number | number[]): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxSlider;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ISliderTickLabelFormatFunction {
-    value?: number;
+    value: any;
 }
 export interface ISliderTooltipFormatFunction {
-    value?: number;
+    value: number;
 }
 interface ISliderOptions {
     buttonsPosition?: 'both' | 'left' | 'right';
@@ -58,7 +70,7 @@ interface ISliderOptions {
     ticksPosition?: 'top' | 'bottom' | 'both';
     ticksFrequency?: number;
     tickSize?: number;
-    tickLabelFormatFunction?: (value: ISliderTickLabelFormatFunction['value']) => string;
+    tickLabelFormatFunction?: (value: ISliderTickLabelFormatFunction['value']) => string | number;
     tooltip?: boolean;
     tooltipHideDelay?: number;
     tooltipPosition?: 'near' | 'far';
@@ -67,11 +79,12 @@ interface ISliderOptions {
     values?: number[];
     width?: number | string;
 }
-export interface ISliderProps extends ISliderOptions {
+export interface ISliderProps extends ISliderOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
-    onSlide?: (e?: Event) => void;
-    onSlideStart?: (e?: Event) => void;
-    onSlideEnd?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
+    onSlide?: (e?: any) => void;
+    onSlideStart?: (e?: any) => void;
+    onSlideEnd?: (e?: any) => void;
 }

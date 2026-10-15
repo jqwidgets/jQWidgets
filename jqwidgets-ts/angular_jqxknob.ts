@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -43,13 +43,14 @@ export class jqxKnobComponent implements OnChanges
    @Input('styles') attrStyles: jqwidgets.KnobStyle;
    @Input('step') attrStep: number | string;
    @Input('snapToStep') attrSnapToStep: boolean;
+   @Input('theme') attrTheme: string;
    @Input('value') attrValue: any;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','styles','step','snapToStep','value','width'];
+   properties: string[] = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','styles','step','snapToStep','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKnob;
@@ -64,6 +65,18 @@ export class jqxKnobComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxKnob('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -349,6 +362,14 @@ export class jqxKnobComponent implements OnChanges
           this.host.jqxKnob('snapToStep', arg);
       } else {
           return this.host.jqxKnob('snapToStep');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxKnob('theme', arg);
+      } else {
+          return this.host.jqxKnob('theme');
       }
    }
 

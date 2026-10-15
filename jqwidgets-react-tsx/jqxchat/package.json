@@ -1,0 +1,21 @@
+{
+  "name": "jqwidgets-react/jqxchat",
+  "version": "27.1.0",
+  "main": "react_jqxchat.umd.js",
+  "module": "react_jqxchat.esm.js",
+  "typings": "react_jqxchat.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxchat.d.ts",
+      "import": "./react_jqxchat.esm.js",
+      "require": "./react_jqxchat.umd.js",
+      "default": "./react_jqxchat.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

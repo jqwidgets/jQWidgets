@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,12 +31,13 @@ export class jqxValidatorComponent implements OnChanges
    @Input('position') attrPosition: string;
    @Input('rules') attrRules: Array<jqwidgets.ValidatorRule>;
    @Input('rtl') attrRtl: boolean;
+   @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl'];
+   properties: string[] = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxValidator;
@@ -49,6 +50,13 @@ export class jqxValidatorComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -236,6 +244,14 @@ export class jqxValidatorComponent implements OnChanges
           this.host.jqxValidator('rtl', arg);
       } else {
           return this.host.jqxValidator('rtl');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxValidator('theme', arg);
+      } else {
+          return this.host.jqxValidator('theme');
       }
    }
 

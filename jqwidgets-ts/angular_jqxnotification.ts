@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -38,7 +38,7 @@ export class jqxNotificationComponent implements OnChanges
    @Input('position') attrPosition: string;
    @Input('rtl') attrRtl: boolean;
    @Input('showCloseButton') attrShowCloseButton: boolean;
-   @Input('template') attrTemplate: string;
+   @Input('template') attrTemplate: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -57,6 +57,18 @@ export class jqxNotificationComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxNotification('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -304,7 +316,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   template(arg?: string): string {
+   template(arg?: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null): 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null {
       if (arg !== undefined) {
           this.host.jqxNotification('template', arg);
       } else {

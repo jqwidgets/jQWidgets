@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IState> {
-    protected static getDerivedStateFromProps(props: IToggleButtonProps, state: IState): null | IState;
+declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IToggleButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IToggleButtonProps): void;
     getOptions(option: string): any;
@@ -18,14 +29,15 @@ declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IS
     unCheck(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxToggleButton;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IToggleButtonOptions {
     disabled?: boolean;
     height?: number | string;
@@ -43,8 +55,9 @@ interface IToggleButtonOptions {
     width?: string | number;
     value?: string;
 }
-export interface IToggleButtonProps extends IToggleButtonOptions {
+export interface IToggleButtonProps extends IToggleButtonOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClick?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClick?: (e?: any) => void;
 }

@@ -56,10 +56,6 @@
                 default: true,
                 type: Boolean
             },
-            showMajorLabels: {
-                default: false,
-                type: Boolean
-            },
             showMarkers: {
                 default: true,
                 type: Boolean
@@ -249,13 +245,6 @@
                     return JQXLite(this.componentSelector).jqxRangeSelector('snapToTicks');
                 }
             },
-            _showMajorLabels: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('showMajorLabels', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('showMajorLabels');
-                }
-            },
             _showMarkers: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxRangeSelector('showMarkers', arg)
@@ -285,7 +274,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+                const widgetProps = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMarkers','theme','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -495,16 +484,6 @@
                     },
                     set: function(newValue) {
                         that._snapToTicks(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'showMajorLabels', {
-                    get: function() {
-                        return that._showMajorLabels();
-                    },
-                    set: function(newValue) {
-                        that._showMajorLabels(newValue);
                     },
                     enumerable: true,
                     configurable: true

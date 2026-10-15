@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
-    protected static getDerivedStateFromProps(props: IComboBoxProps, state: IState): null | IState;
+declare class JqxComboBox extends React.PureComponent<IComboBoxProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IComboBoxProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IComboBoxProps): void;
     getOptions(option: string): any;
@@ -52,28 +63,29 @@ declare class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
     uncheckAll(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxComboBox;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IComboBoxRenderer {
-    index?: number;
-    label?: number | string;
-    value?: number | string;
+    index: number;
+    label: number | string;
+    value: number | string;
 }
 export interface IComboBoxRenderSelectedItem {
-    index?: number;
-    item?: any;
+    index: number;
+    item: any;
 }
 export interface IComboBoxSearch {
-    searchString?: string;
+    searchString: string;
 }
 export interface IComboBoxValidateSelection {
-    itemValue?: string;
+    itemValue: string;
 }
 interface IComboBoxOptions {
     animationType?: 'fade' | 'slide' | 'none';
@@ -101,30 +113,31 @@ interface IComboBoxOptions {
     placeHolder?: string;
     remoteAutoComplete?: boolean;
     remoteAutoCompleteDelay?: number;
-    renderer?: (index?: IComboBoxRenderer['index'], label?: IComboBoxRenderer['label'], value?: IComboBoxRenderer['value']) => string;
-    renderSelectedItem?: (index?: IComboBoxRenderSelectedItem['index'], item?: IComboBoxRenderSelectedItem['item']) => string;
+    renderer?: (index: IComboBoxRenderer['index'], label: IComboBoxRenderer['label'], value: IComboBoxRenderer['value']) => string;
+    renderSelectedItem?: (index: IComboBoxRenderSelectedItem['index'], item: IComboBoxRenderSelectedItem['item']) => string;
     rtl?: boolean;
     selectedIndex?: number;
     showArrow?: boolean;
     showCloseButtons?: boolean;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
-    search?: (searchString?: IComboBoxSearch['searchString']) => void;
+    search?: (searchString: IComboBoxSearch['searchString']) => void;
     source?: any;
     scrollBarSize?: number | string;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
-    validateSelection?: (itemValue?: IComboBoxValidateSelection['itemValue']) => boolean;
+    validateSelection?: (itemValue: IComboBoxValidateSelection['itemValue']) => boolean;
     valueMember?: string;
     width?: string | number;
 }
-export interface IComboBoxProps extends IComboBoxOptions {
+export interface IComboBoxProps extends IComboBoxOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onCheckChange?: (e?: Event) => void;
-    onClose?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
-    onUnselect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onCheckChange?: (e?: any) => void;
+    onClose?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
+    onUnselect?: (e?: any) => void;
 }

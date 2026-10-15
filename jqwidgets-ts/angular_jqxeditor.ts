@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,7 +41,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxEditorComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('createCommand') attrCreateCommand: (name:jqwidgets.EditorCreateCommand['name']) => void;
+   @Input('createCommand') attrCreateCommand: (name: jqwidgets.EditorCreateCommand['name']) => any;
    @Input('disabled') attrDisabled: boolean;
    @Input('editable') attrEditable: boolean;
    @Input('lineBreak') attrLineBreak: string;
@@ -64,6 +64,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -72,6 +73,18 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxEditor('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -172,6 +185,10 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
        }
@@ -182,6 +199,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -193,7 +211,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxEditorComponent properties
-   createCommand(arg?: (name:jqwidgets.EditorCreateCommand['name']) => void): (name:jqwidgets.EditorCreateCommand['name']) => void {
+   createCommand(arg?: (name: jqwidgets.EditorCreateCommand['name']) => any): (name: jqwidgets.EditorCreateCommand['name']) => any {
       if (arg !== undefined) {
           this.host.jqxEditor('createCommand', arg);
       } else {

@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -60,8 +60,8 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('popupZIndex') attrPopupZIndex: number;
    @Input('rtl') attrRtl: boolean;
-   @Input('renderer') attrRenderer: (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string;
-   @Input('selectionRenderer') attrSelectionRenderer: (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string;
+   @Input('renderer') attrRenderer: (index: jqwidgets.DropDownListRenderer['index'], label: jqwidgets.DropDownListRenderer['label'], value: jqwidgets.DropDownListRenderer['value']) => string;
+   @Input('selectionRenderer') attrSelectionRenderer: (element: jqwidgets.DropDownListSelectionRenderer['element'], index: jqwidgets.DropDownListSelectionRenderer['index'], label: jqwidgets.DropDownListSelectionRenderer['label'], value: jqwidgets.DropDownListSelectionRenderer['value']) => string;
    @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: Array<any>;
    @Input('selectedIndex') attrSelectedIndex: number;
@@ -83,12 +83,25 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    container: HTMLDivElement;
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
    ngOnInit() {
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxDropDownList('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -219,6 +232,10 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
         this.widgetObject.clearSelection();
@@ -232,6 +249,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -581,7 +599,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string): (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string {
+   renderer(arg?: (index: jqwidgets.DropDownListRenderer['index'], label: jqwidgets.DropDownListRenderer['label'], value: jqwidgets.DropDownListRenderer['value']) => string): (index: jqwidgets.DropDownListRenderer['index'], label: jqwidgets.DropDownListRenderer['label'], value: jqwidgets.DropDownListRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -594,7 +612,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   selectionRenderer(arg?: (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string): (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string {
+   selectionRenderer(arg?: (element: jqwidgets.DropDownListSelectionRenderer['element'], index: jqwidgets.DropDownListSelectionRenderer['index'], label: jqwidgets.DropDownListSelectionRenderer['label'], value: jqwidgets.DropDownListSelectionRenderer['value']) => string): (element: jqwidgets.DropDownListSelectionRenderer['element'], index: jqwidgets.DropDownListSelectionRenderer['index'], label: jqwidgets.DropDownListSelectionRenderer['label'], value: jqwidgets.DropDownListSelectionRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -713,7 +731,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
 
    // jqxDropDownListComponent functions
-   addItem(item: jqwidgets.DropDownListItem): boolean {
+   addItem(item: jqwidgets.DropDownListItem | string): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -902,7 +920,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       return this.host.jqxDropDownList('getSelectedIndex');
    }
 
-   insertAt(item: jqwidgets.DropDownListItem, index: number): void {
+   insertAt(item: jqwidgets.DropDownListItem | string, index: number): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -983,7 +1001,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.jqxDropDownList('selectIndex', index);
    }
 
-   selectItem(item: jqwidgets.DropDownListItem): void {
+   selectItem(item: jqwidgets.DropDownListItem | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1001,7 +1019,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.jqxDropDownList('setContent', content);
    }
 
-   updateItem(newItem: jqwidgets.DropDownListItem, item: any): void {
+   updateItem(newItem: jqwidgets.DropDownListItem | string, item: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1010,7 +1028,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.jqxDropDownList('updateItem', newItem, item);
    }
 
-   updateAt(item: jqwidgets.DropDownListItem, index: number): void {
+   updateAt(item: jqwidgets.DropDownListItem | string, index: number): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

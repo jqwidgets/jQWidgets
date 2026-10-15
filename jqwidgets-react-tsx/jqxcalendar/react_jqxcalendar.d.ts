@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
-    protected static getDerivedStateFromProps(props: ICalendarProps, state: IState): null | IState;
+declare class JqxCalendar extends React.PureComponent<ICalendarProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ICalendarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ICalendarProps): void;
     getOptions(option: string): any;
@@ -18,8 +29,8 @@ declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
     getMaxDate(): any;
     getDate(): any;
     getRange(): any;
-    navigateForward(months: number): void;
-    navigateBackward(months: number): void;
+    navigateForward(months?: number): void;
+    navigateBackward(months?: number): void;
     renderWidget(): void;
     refresh(): void;
     setMinDate(date: any): void;
@@ -29,14 +40,15 @@ declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
     today(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxCalendar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface ICalendarOptions {
     backText?: string;
     columnHeaderHeight?: number;
@@ -70,16 +82,17 @@ interface ICalendarOptions {
     specialDates?: any[];
     theme?: string;
     titleHeight?: number;
-    titleFormat?: 'd' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
+    titleFormat?: string[];
     todayString?: string;
     value?: Date;
     width?: string | number;
 }
-export interface ICalendarProps extends ICalendarOptions {
+export interface ICalendarProps extends ICalendarOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBackButtonClick?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onNextButtonClick?: (e?: Event) => void;
-    onViewChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBackButtonClick?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onNextButtonClick?: (e?: any) => void;
+    onViewChange?: (e?: any) => void;
 }

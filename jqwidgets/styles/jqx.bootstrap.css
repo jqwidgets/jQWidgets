@@ -1,77 +1,131 @@
-﻿/*Rounded Corners*/
+﻿/* Theme tokens. jqx.base.css and the token-driven widgets (gantt, timeline, split layout,
+   form tooltips, grid dialogs) read these; without them they fall back to another palette.
+   --jqx-border is left to base (#949494, 3.05:1) so no boundary drawn from it gets lighter.
+   Primary is Bootstrap 3.3's #337ab7, 4.56:1 under white text (3.0's #428bca was 3.63:1);
+   the status fills are jqx.base.css's AA set, so the templates agree with the theme. */
+:root {
+    --jqx-primary-rgb: 51, 122, 183;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-secondary-rgb: 85, 85, 85;
+    --jqx-secondary: rgb(var(--jqx-secondary-rgb));
+    --jqx-secondary-color: #fff;
+    --jqx-error-rgb: 212, 63, 58;
+    --jqx-error: rgb(var(--jqx-error-rgb));
+    --jqx-error-color: #fff;
+    --jqx-success-rgb: 92, 184, 92;
+    --jqx-success: rgb(var(--jqx-success-rgb));
+    --jqx-success-color: #fff;
+    --jqx-info-rgb: 91, 192, 222;
+    --jqx-info: rgb(var(--jqx-info-rgb));
+    --jqx-info-color: #fff;
+    --jqx-warning-rgb: 240, 173, 78;
+    --jqx-warning: rgb(var(--jqx-warning-rgb));
+    --jqx-warning-color: #fff;
+    --jqx-light-rgb: 255, 255, 255;
+    --jqx-light: rgb(var(--jqx-light-rgb));
+    --jqx-light-color: #333;
+    --jqx-dark-rgb: 34, 34, 34;
+    --jqx-dark: rgb(var(--jqx-dark-rgb));
+    --jqx-dark-color: #fff;
+    --jqx-background: #fff;
+    --jqx-background-color: #333;
+    --jqx-background-hover-rgb: 235, 235, 235;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: #333;
+    --jqx-surface-rgb: 245, 245, 245;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: #333;
+    --jqx-ui-state-hover: #ebebeb;
+    --jqx-ui-state-color-hover: #333;
+    --jqx-ui-state-border-hover: #adadad;
+    --jqx-ui-state-active: var(--jqx-primary);
+    --jqx-ui-state-color-active: var(--jqx-primary-color);
+    --jqx-ui-state-border-active: #2e6da4;
+    --jqx-ui-state-focus: #e6e6e6;
+    --jqx-ui-state-color-focus: #333;
+    --jqx-ui-state-border-focus: #66afe9;
+    --jqx-ui-state-selected: rgba(var(--jqx-primary-rgb), .15);
+    /* #2a6496 on the tinted selection over white, 5.3:1 */
+    --jqx-ui-state-color-selected: #2a6496;
+    --jqx-ui-state-border-selected: rgba(var(--jqx-primary-rgb), .15);
+    --jqx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --jqx-border-radius: 4px;
+    --jqx-time-picker-background: #fff;
+}
+
+/* jqx.base.css scopes its own token set to .jqx-split-layout, which :root cannot reach. */
+.jqx-split-layout-component-bootstrap .jqx-split-layout {
+    --jqx-primary-rgb: 51, 122, 183;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-background: #fff;
+    --jqx-background-color: #333;
+    --jqx-background-hover-rgb: 235, 235, 235;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: #333;
+    --jqx-surface-rgb: 245, 245, 245;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: #333;
+    --jqx-border: #ddd;
+    --jqx-error-rgb: 212, 63, 58;
+    --jqx-error: rgb(var(--jqx-error-rgb));
+    --jqx-ui-state-hover: #ebebeb;
+    --jqx-ui-state-color-hover: #333;
+    --jqx-ui-state-active: var(--jqx-primary);
+    --jqx-ui-state-color-active: #fff;
+    --jqx-ui-state-focus: #e6e6e6;
+    --jqx-ui-state-selected: rgba(var(--jqx-primary-rgb), .15);
+    --jqx-ui-state-color-selected: #2a6496;
+    --jqx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-color: #ddd;
+}
+
+/*Rounded Corners*/
 /*top-left rounded Corners*/
 .jqx-rc-tl-bootstrap {
-    -moz-border-radius-topleft: 4px;
-    -webkit-border-top-left-radius: 4px;
     border-top-left-radius: 4px;
 }
 /*top-right rounded Corners*/
 .jqx-rc-tr-bootstrap {
-    -moz-border-radius-topright: 4px;
-    -webkit-border-top-right-radius: 4px;
     border-top-right-radius: 4px;
 }
 /*bottom-left rounded Corners*/
 .jqx-rc-bl-bootstrap {
-    -moz-border-radius-bottomleft: 4px;
-    -webkit-border-bottom-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
 /*bottom-right rounded Corners*/
 .jqx-rc-br-bootstrap {
-    -moz-border-radius-bottomright: 4px;
-    -webkit-border-bottom-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-bootstrap {
-    -moz-border-radius-topleft: 4px;
-    -webkit-border-top-left-radius: 4px;
     border-top-left-radius: 4px;
-    -moz-border-radius-topright: 4px;
-    -webkit-border-top-right-radius: 4px;
     border-top-right-radius: 4px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-bootstrap {
-    -moz-border-radius-bottomleft: 4px;
-    -webkit-border-bottom-left-radius: 4px;
     border-bottom-left-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    -webkit-border-bottom-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-bootstrap {
-    -moz-border-radius-topright: 4px;
-    -webkit-border-top-right-radius: 4px;
     border-top-right-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    -webkit-border-bottom-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-bootstrap {
-    -moz-border-radius-topleft: 4px;
-    -webkit-border-top-left-radius: 4px;
     border-top-left-radius: 4px;
-    -moz-border-radius-bottomleft: 4px;
-    -webkit-border-bottom-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-bootstrap {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
     border-radius: 4px;
 }
 
 .jqx-widget-bootstrap, .jqx-widget-header-bootstrap, .jqx-fill-state-normal-bootstrap,
 .jqx-widget-content-bootstrap, .jqx-fill-state-hover-bootstrap, .jqx-fill-state-pressed-bootstrap {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-transition: box-shadow linear 0.2s;
-    -moz-transition: box-shadow linear 0.1s;
-    -o-transition: box-shadow linear 0.1s;
     transition: box-shadow linear 0.1s;
 }
 
@@ -93,10 +147,7 @@
 
 .jqx-button-bootstrap {
      padding: 4px 12px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
     border-radius: 4px;
-    *zoom: 1;
     color: #333333;
     background-color: #ffffff;
     border-color: #cccccc;
@@ -120,14 +171,10 @@
 .jqx-fill-state-pressed-bootstrap {
     background-image: none;
     outline: 0;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .jqx-grid-cell-bootstrap {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -148,15 +195,11 @@
 
 .jqx-expander-header-bootstrap {
     background: #fff;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
     border-color: #e6e6e6;
 }
 
 .jqx-widget-bootstrap, .jqx-widget-header-bootstrap, .jqx-widget-content-bootstrap {
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
     background-clip: padding-box;
 }
 
@@ -177,17 +220,15 @@
 
 .jqx-progressbar-bootstrap {
     background: #f7f7f7 !important;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
 .jqx-progressbar-value-bootstrap, .jqx-splitter-collapse-button-horizontal-bootstrap {
-    background-color: #428bca;
+    background-color: #337ab7;
 }
 
 .jqx-splitter-collapse-button-vertical-bootstrap, .jqx-progressbar-value-vertical-bootstrap {
-    background-color: #428bca;
+    background-color: #337ab7;
 }
 
 .jqx-scrollbar-thumb-state-pressed-bootstrap, .jqx-splitter-splitbar-vertical-bootstrap, .jqx-splitter-splitbar-horizontal-bootstrap, .jqx-scrollbar-thumb-state-pressed-horizontal-bootstrap {
@@ -233,7 +274,7 @@
 
 .jqx-tabs-title-bootstrap,
 .jqx-tabs-title-bottom-bootstrap, .jqx-expander-header-bootstrap {
-    color: #0088cc !important;
+    color: #337ab7 !important; /* Bootstrap 3.3 link blue, 4.54:1 on white (#0088cc was 3.89:1) */
 }
 
     .jqx-expander-header-bootstrap:hover:not(.jqx-fill-state-disabled-bootstrap) {
@@ -246,8 +287,6 @@
     color: #005580 !important;
     background: #eee;
     border-color: #eee;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
 
@@ -272,7 +311,6 @@
 .jqx-tabs-header-bootstrap {
     background: #fff;
     border-color: #ddd;
-    -webkit-box-shadow: none;
     box-shadow: none;
 }
 
@@ -298,8 +336,6 @@
 }
 
 .jqx-radiobutton-bootstrap-bootstrap, .jqx-radiobutton-hover-bootstrap {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     background-repeat: no-repeat;
 }
@@ -308,24 +344,18 @@
     filter: none;
     background: #666;
     background-repeat: no-repeat;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-radiobutton-check-indeterminate-bootstrap {
     filter: none;
     background: #999;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-radiobutton-check-indeterminate-disabled-bootstrap {
     filter: none;
     background: #999;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
@@ -335,98 +365,96 @@
 }
 
 .jqx-slider-button-bootstrap {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-fill-state-normal-bootstrap.jqx-primary {
     color: #ffffff;
-    background-color: #428bca;
-    border-color: #357ebd;
+    background-color: #337ab7;
+    border-color: #2e6da4;
 }
 
 .jqx-fill-state-hover-bootstrap.jqx-primary {
     color: #ffffff;
-    background-color: #3276b1;
-    border-color: #285e8e;
+    background-color: #286090;
+    border-color: #204d74;
 }
 
 .jqx-fill-state-pressed-bootstrap.jqx-primary {
     color: #ffffff;
-    background-color: #3276b1;
-    border-color: #285e8e;
+    background-color: #286090;
+    border-color: #204d74;
 }
 
 .jqx-fill-state-normal-bootstrap.jqx-warning {
     color: #ffffff;
-    background-color: #f0ad4e;
+    background-color: #b35900;
     border-color: #eea236;
 }
 
 .jqx-fill-state-hover-bootstrap.jqx-warning {
     color: #ffffff;
-    background-color: #ed9c28;
+    background-color: #a35100;
     border-color: #d58512;
 }
 
 .jqx-fill-state-pressed-bootstrap.jqx-warning {
     color: #ffffff;
-    background-color: #ed9c28;
+    background-color: #a35100;
     border-color: #d58512;
 }
 
 .jqx-fill-state-normal-bootstrap.jqx-danger {
     color: #ffffff;
-    background-color: #d9534f;
+    background-color: #d43f3a;
     border-color: #d43f3a;
 }
 
 .jqx-fill-state-hover-bootstrap.jqx-danger {
     color: #ffffff;
-    background-color: #d2322d;
+    background-color: #c9302c;
     border-color: #ac2925;
 }
 
 .jqx-fill-state-pressed-bootstrap.jqx-danger {
     color: #ffffff;
-    background-color: #d2322d;
+    background-color: #c9302c;
     border-color: #ac2925;
 }
 
 .jqx-fill-state-normal-bootstrap.jqx-success {
     color: #ffffff;
-    background-color: #5cb85c;
+    background-color: #398439;
     border-color: #4cae4c;
 }
 
 .jqx-fill-state-hover-bootstrap.jqx-success {
     color: #ffffff;
-    background-color: #47a447;
+    background-color: #337a33;
     border-color: #398439;
 }
 
 .jqx-fill-state-pressed-bootstrap.jqx-success {
     color: #ffffff;
-    background-color: #47a447;
+    background-color: #337a33;
     border-color: #398439;
 }
 
 .jqx-fill-state-normal-bootstrap.jqx-info {
     color: #ffffff;
-    background-color: #5bc0de;
+    background-color: #1a7f9c;
     border-color: #46b8da;
 }
 
 .jqx-fill-state-hover-bootstrap.jqx-info {
     color: #ffffff;
-    background-color: #39b3d7;
+    background-color: #177590;
     border-color: #269abc;
 }
 
 .jqx-fill-state-pressed-bootstrap.jqx-info {
     color: #ffffff;
-    background-color: #39b3d7;
+    background-color: #177590;
     border-color: #269abc;
 }
 
@@ -463,25 +491,17 @@
 .jqx-listitem-state-selected-bootstrap, .jqx-menu-item-selected-bootstrap, .jqx-tree-item-selected-bootstrap, .jqx-calendar-cell-selected-bootstrap, .jqx-grid-cell-selected-bootstrap,
 .jqx-menu-vertical-bootstrap .jqx-menu-item-top-selected-bootstrap, .jqx-grid-selectionarea-bootstrap {
     color: #ffffff !important;
-    background-color: #428bca !important;
-    border-color: #357ebd !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
 }
 /*top rounded Corners*/
 .jqx-rc-t-expanded-bootstrap {
-    -moz-border-radius-topleft: 4px !important;
-    -webkit-border-top-left-radius: 4px !important;
     border-top-left-radius: 4px !important;
-    -moz-border-radius-topright: 4px !important;
-    -webkit-border-top-right-radius: 4px !important;
     border-top-right-radius: 4px !important;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-expanded-bootstrap {
-    -moz-border-radius-bottomleft: 4px !important;
-    -webkit-border-bottom-left-radius: 4px !important;
     border-bottom-left-radius: 4px !important;
-    -moz-border-radius-bottomright: 4px !important;
-    -webkit-border-bottom-right-radius: 4px !important;
     border-bottom-right-radius: 4px !important;
 }
 
@@ -506,15 +526,8 @@
 
 .jqx-popup-bootstrap {
     border: 1px solid #ccc;
-    *border-right-width: 2px;
-    *border-bottom-width: 2px;
-    -webkit-border-radius: 4px !important;
-    -moz-border-radius: 4px !important;
     border-radius: 4px !important;
-    -webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    -webkit-background-clip: padding-box !important;
-    -moz-background-clip: padding !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     background-clip: padding-box !important;
 }
 
@@ -770,7 +783,6 @@
     background-image: url(./images/icon-left.png);
 }
 
-
 .jqx-input-button-content-bootstrap {
     font-size: 10px;
 }
@@ -779,12 +791,8 @@
     border-color: #cccccc;
     color: #555555;
     background-color: #ffffff;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-    transition: border linear 0.2s, box-shadow linear 0.2s;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color linear 0.2s, box-shadow linear 0.2s;
 }
 
 .jqx-combobox-content-bootstrap, .jqx-combobox-bootstrap, .jqx-combobox-state-normal-bootstrap {
@@ -795,35 +803,14 @@
 .jqx-numberinput-focus-bootstrap {
     outline: none;
     border-color: rgba(82, 168, 236, 0.8);
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
 .jqx-datetimeinput-content, .jqx-datetimeinput-container {
     overflow: visible !important;
 }
 
-input[type="text"].jqx-input-bootstrap, input[type="text"].jqx-widget-content-bootstrap, input[type="textarea"].jqx-widget-content-bootstrap, textarea.jqx-input-bootstrap {
-    padding-left: 0px !important;
-}
-
-input[type="text"].jqx-input-bootstrap:-moz-placeholder, input[type="text"].jqx-widget-content-bootstrap:-moz-placeholder, input[type="textarea"].jqx-widget-content-bootstrap:-moz-placeholder, textarea.jqx-input-bootstrap:-moz-placeholder {
-    color: #999999;
-}
-
 input[type="text"].jqx-input-bootstrap:-webkit-input-placeholder, input[type="text"].jqx-widget-content-bootstrap:-webkit-input-placeholder, input[type="textarea"].jqx-widget-content-bootstrap:-webkit-input-placeholder, textarea.jqx-input-bootstrap:-webkit-input-placeholder {
-    color: #999999;
-}
-
-input[type="text"].jqx-input-bootstrap:-ms-input-placeholder, input[type="text"].jqx-widget-content-bootstrap:-ms-input-placeholder, input[type="textarea"].jqx-widget-content-bootstrap:-ms-input-placeholder, textarea.jqx-input-bootstrap:-ms-input-placeholder {
-    color: #999999;
-}
-
-input[type="password"].jqx-input-bootstrap, input[type="password"].jqx-widget-content-bootstrap, input[type="textarea"].jqx-widget-content-bootstrap, textarea.jqx-input-bootstrap {
-    padding-left: 0px !important;
-}
-
-input[type="password"].jqx-input-bootstrap:-moz-placeholder, input[type="password"].jqx-widget-content-bootstrap:-moz-placeholder, input[type="textarea"].jqx-widget-content-bootstrap:-moz-placeholder, textarea.jqx-input-bootstrap:-moz-placeholder {
     color: #999999;
 }
 
@@ -831,16 +818,11 @@ input[type="password"].jqx-input-bootstrap:-webkit-input-placeholder, input[type
     color: #999999;
 }
 
-input[type="password"].jqx-input-bootstrap:-ms-input-placeholder, input[type="password"].jqx-widget-content-bootstrap:-ms-input-placeholder, input[type="textarea"].jqx-widget-content-bootstrap:-ms-input-placeholder, textarea.jqx-input-bootstrap:-ms-input-placeholder {
-    color: #999999;
-}
-
+/* the same focus glow as the inputs and the combobox beside them */
 .jqx-dropdownlist-state-normal-bootstrap.jqx-fill-state-focus-bootstrap, .jqx-listbox-bootstrap.jqx-fill-state-focus-bootstrap {
     outline: none;
-    border-color: #b2b2b2;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
 .jqx-dropdownlist-state-normal-bootstrap.jqx-fill-state-focus-bootstrap.jqx-primary {
@@ -869,13 +851,7 @@ input[type="password"].jqx-input-bootstrap:-ms-input-placeholder, input[type="pa
 
 .jqx-popup-bootstrap.jqx-fill-state-focus-bootstrap {
     border: 1px solid #ccc;
-    *border-right-width: 2px;
-    *border-bottom-width: 2px;
-    -webkit-border-radius: 4px !important;
-    -moz-border-radius: 4px !important;
     border-radius: 4px !important;
-    -webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -884,13 +860,11 @@ input[type="password"].jqx-input-bootstrap:-ms-input-placeholder, input[type="pa
 }
 
 .jqx-slider-rangebar-bootstrap {
-    border-color: #428bca;
-    background: #428bca;
+    border-color: #337ab7;
+    background: #337ab7;
 }
 
 .jqx-slider-button-bootstrap {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     padding: 3px;
 }
@@ -925,4 +899,23 @@ input[type="password"].jqx-input-bootstrap:-ms-input-placeholder, input[type="pa
  /*applied to the timepicker*/
 .jqx-svg-picker-bootstrap:hover {
 	background-color: rgb(248, 248, 248);
+}
+.jqx-needle-bootstrap,
+.jqx-needle-central-circle-bootstrap {
+    fill: #337ab7;
+}
+
+.jqx-time-picker-bootstrap .jqx-label-bootstrap {
+    fill: #333;
+}
+
+.jqx-time-picker .jqx-header .jqx-selected-bootstrap:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(82, 168, 236, 0.6);
+}
+
+.jqx-svg-picker-bootstrap:focus {
+    outline: none;
+    border: 1px solid #66afe9 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }

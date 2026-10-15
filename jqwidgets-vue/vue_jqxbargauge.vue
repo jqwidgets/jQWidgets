@@ -30,6 +30,7 @@
             relativeInnerRadius: Number,
             rendered: Function,
             startAngle: Number,
+            theme: String,
             title: [Object, String],
             tooltip: Object,
             useGradient: {
@@ -191,6 +192,13 @@
                     return JQXLite(this.componentSelector).jqxBarGauge('startAngle');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxBarGauge('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxBarGauge('theme');
+                }
+            },
             _title: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxBarGauge('title', arg)
@@ -234,7 +242,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','title','tooltip','useGradient','values','width'];
+                const widgetProps = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','theme','title','tooltip','useGradient','values','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -404,6 +412,16 @@
                     },
                     set: function(newValue) {
                         that._startAngle(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

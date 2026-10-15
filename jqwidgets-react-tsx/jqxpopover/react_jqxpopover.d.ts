@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxPopover extends React.PureComponent<IPopoverProps, IState> {
-    protected static getDerivedStateFromProps(props: IPopoverProps, state: IState): null | IState;
+declare class JqxPopover extends React.PureComponent<IPopoverProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IPopoverProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IPopoverProps): void;
     getOptions(option: string): any;
@@ -14,14 +25,15 @@ declare class JqxPopover extends React.PureComponent<IPopoverProps, IState> {
     destroy(): void;
     open(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxPopover;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IPopoverOptions {
     arrowOffsetValue?: number;
     animationOpenDelay?: number | string;
@@ -41,9 +53,10 @@ interface IPopoverOptions {
     title?: string | number;
     theme?: string;
 }
-export interface IPopoverProps extends IPopoverOptions {
+export interface IPopoverProps extends IPopoverOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
 }

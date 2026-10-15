@@ -44,6 +44,7 @@
                 type: Boolean
             },
             textColor: String,
+            theme: String,
             urlBase: String,
             urlMember: String,
             valueMember: String,
@@ -246,6 +247,13 @@
                     return JQXLite(this.componentSelector).jqxTagCloud('textColor');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxTagCloud('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxTagCloud('theme');
+                }
+            },
             _urlBase: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxTagCloud('urlBase', arg)
@@ -282,7 +290,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','urlBase','urlMember','valueMember','width'];
+                const widgetProps = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -492,6 +500,16 @@
                     },
                     set: function(newValue) {
                         that._textColor(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

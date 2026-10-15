@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,7 +25,7 @@ export class jqxTimelineComponent implements OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('horizontal') attrHorizontal: boolean;
    @Input('position') attrPosition: string;
-   @Input('source') attrSource: [];
+   @Input('source') attrSource: any[];
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -45,6 +45,13 @@ export class jqxTimelineComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -187,7 +194,7 @@ export class jqxTimelineComponent implements OnChanges
       }
    }
 
-   source(arg?: undefined): undefined {
+   source(arg?: any[]): any[] {
       if (arg !== undefined) {
           this.host.jqxTimeline('source', arg);
       } else {
@@ -205,7 +212,7 @@ export class jqxTimelineComponent implements OnChanges
 
 
    // jqxTimelineComponent functions
-   render(): undefined {
+   render(): any[] {
       return this.host.jqxTimeline('render');
    }
 

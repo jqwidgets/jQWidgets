@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxdropdownlist.umd.js",
-    "module": "react_jqxdropdownlist.esm.js",
-    "typings": "react_jqxdropdownlist.d.ts",
-    "name": "jqwidgets-react/jqxdropdownlist",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxdropdownlist",
+  "version": "27.1.0",
+  "main": "react_jqxdropdownlist.umd.js",
+  "module": "react_jqxdropdownlist.esm.js",
+  "typings": "react_jqxdropdownlist.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxdropdownlist.d.ts",
+      "import": "./react_jqxdropdownlist.esm.js",
+      "require": "./react_jqxdropdownlist.umd.js",
+      "default": "./react_jqxdropdownlist.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

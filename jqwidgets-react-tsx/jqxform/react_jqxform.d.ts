@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxForm extends React.PureComponent<IFormProps, IState> {
-    protected static getDerivedStateFromProps(props: IFormProps, state: IState): null | IState;
+declare class JqxForm extends React.PureComponent<IFormProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IFormProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IFormProps): void;
     getOptions(option: string): any;
@@ -19,14 +30,15 @@ declare class JqxForm extends React.PureComponent<IFormProps, IState> {
     submit(action?: string, target?: string, method?: string): void;
     getComponentByName(name?: string): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxForm;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IFormPadding {
     left?: number | string;
     right?: number | string;
@@ -67,15 +79,17 @@ interface IFormOptions {
     padding?: IFormPadding;
     backgroundColor?: string;
     borderColor?: string;
+    theme?: string;
     value?: any;
     template?: IFormTemplateItem[];
     enableSmartPaste?: boolean;
     aiKey?: string;
     aiUrl?: string;
 }
-export interface IFormProps extends IFormOptions {
+export interface IFormProps extends IFormOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onFormDataChange?: (e?: Event) => void;
-    onButtonClick?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onFormDataChange?: (e?: any) => void;
+    onButtonClick?: (e?: any) => void;
 }

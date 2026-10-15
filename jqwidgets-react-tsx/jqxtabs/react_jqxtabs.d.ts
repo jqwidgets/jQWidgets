@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTabs extends React.PureComponent<ITabsProps, IState> {
-    protected static getDerivedStateFromProps(props: ITabsProps, state: IState): null | IState;
+declare class JqxTabs extends React.PureComponent<ITabsProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITabsProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITabsProps): void;
     getOptions(option: string): any;
@@ -32,20 +43,21 @@ declare class JqxTabs extends React.PureComponent<ITabsProps, IState> {
     removeFirst(): void;
     removeLast(): void;
     select(index: number): void;
-    setContentAt(index: number, htmlElement: string): void;
+    setContentAt(index: number, htmlElement: string | HTMLElement): void;
     setTitleAt(index: number, htmlElement: string): void;
     showCloseButtonAt(index: number): void;
     showAllCloseButtons(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTabs;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface ITabsOptions {
     animationType?: 'none' | 'fade';
     autoHeight?: boolean;
@@ -57,7 +69,7 @@ interface ITabsOptions {
     enableScrollAnimation?: boolean;
     enableDropAnimation?: boolean;
     height?: string | number;
-    initTabContent?: (tab?: number) => void;
+    initTabContent?: (tab: number) => void;
     keyboardNavigation?: boolean;
     next?: any;
     previous?: any;
@@ -75,18 +87,19 @@ interface ITabsOptions {
     theme?: string;
     width?: string | number;
 }
-export interface ITabsProps extends ITabsOptions {
+export interface ITabsProps extends ITabsOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onAdd?: (e?: Event) => void;
-    onCollapsed?: (e?: Event) => void;
-    onDragStart?: (e?: Event) => void;
-    onDragEnd?: (e?: Event) => void;
-    onExpanded?: (e?: Event) => void;
-    onRemoved?: (e?: Event) => void;
-    onSelecting?: (e?: Event) => void;
-    onSelected?: (e?: Event) => void;
-    onTabclick?: (e?: Event) => void;
-    onUnselecting?: (e?: Event) => void;
-    onUnselected?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onAdd?: (e?: any) => void;
+    onCollapsed?: (e?: any) => void;
+    onDragStart?: (e?: any) => void;
+    onDragEnd?: (e?: any) => void;
+    onExpanded?: (e?: any) => void;
+    onRemoved?: (e?: any) => void;
+    onSelecting?: (e?: any) => void;
+    onSelected?: (e?: any) => void;
+    onTabclick?: (e?: any) => void;
+    onUnselecting?: (e?: any) => void;
+    onUnselected?: (e?: any) => void;
 }

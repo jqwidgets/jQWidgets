@@ -1,0 +1,4489 @@
+:root {
+  /* jQWidgets Tailwind theme in Office 365's blue, dark variant.
+   *
+   * GENERATED from jqx.tailwind-dark.css by build-tailwind-blue.mjs - edit jqx.tailwind.css or the generators,
+   * not this file. The same rules with the accent ramp in Office's blue (#0078D4 at the 600 step)
+   * and the classes suffixed -tailwind-blue-dark. Use with theme: 'tailwind-blue-dark'.
+   */
+
+  /* -- palette ------------------------------------------------------------ */
+  --tw-white: #FFFFFF;
+  --tw-black: #000000;
+  --tw-gray-50: #F9FAFB;
+  --tw-gray-100: #F3F4F6;
+  --tw-gray-200: #E5E7EB;
+  --tw-gray-300: #D1D5DB;
+  --tw-gray-400: #9CA3AF;
+  --tw-gray-500: #6B7280;
+  --tw-gray-600: #4B5563;
+  --tw-gray-700: #374151;
+  --tw-gray-800: #1F2937;
+  --tw-gray-900: #111827;
+  --tw-gray-950: #030712;
+  --tw-indigo-50: #EFF6FC;
+  --tw-indigo-100: #DEECF9;
+  --tw-indigo-200: #C7E0F4;
+  --tw-indigo-300: #96C6EE;
+  --tw-indigo-400: #71AFE5;
+  --tw-indigo-500: #2B88D8;
+  --tw-indigo-600: #0078D4;
+  --tw-indigo-700: #106EBE;
+  --tw-indigo-800: #005A9E;
+  --tw-indigo-900: #004578;
+  --tw-red-50: #FEF2F2;
+  --tw-red-100: #FEE2E2;
+  --tw-red-400: #F87171;
+  --tw-red-500: #EF4444;
+  --tw-red-600: #DC2626;
+  --tw-red-700: #B91C1C;
+  --tw-red-800: #991B1B;
+  --tw-green-50: #F0FDF4;
+  --tw-green-100: #DCFCE7;
+  --tw-green-400: #4ADE80;
+  --tw-green-500: #22C55E;
+  --tw-green-600: #16A34A;
+  --tw-green-700: #15803D;
+  --tw-green-800: #166534;
+  --tw-amber-50: #FFFBEB;
+  --tw-amber-100: #FEF3C7;
+  --tw-amber-400: #FBBF24;
+  --tw-amber-500: #F59E0B;
+  --tw-amber-600: #D97706;
+  --tw-amber-700: #B45309;
+  --tw-amber-800: #92400E;
+  --tw-orange-50: #FFF7ED;
+  --tw-orange-100: #FFEDD5;
+  --tw-orange-400: #FB923C;
+  --tw-orange-500: #F97316;
+  --tw-orange-600: #EA580C;
+  --tw-orange-700: #C2410C;
+  --tw-orange-800: #9A3412;
+  --tw-sky-50: #F0F9FF;
+  --tw-sky-100: #E0F2FE;
+  --tw-sky-400: #38BDF8;
+  --tw-sky-500: #0EA5E9;
+  --tw-sky-600: #0284C7;
+  --tw-sky-700: #0369A1;
+  --tw-sky-800: #075985;
+
+  /* -- roles ---------------------------------------------------------------- */
+  --tailwind-black: var(--tw-black);
+  --tailwind-white: var(--tw-white);
+  --tailwind-surface: var(--tw-gray-800);
+  --tailwind-surface-rgb: 31, 41, 55;
+  --tailwind-surface-color: var(--tw-gray-100);
+  --tailwind-background: var(--tw-gray-900);
+  --tailwind-background-color: var(--tw-gray-100);
+  --tailwind-type-primary: var(--tw-gray-100);
+  --tailwind-type-secondary: var(--tw-gray-400);
+  --tailwind-type-disabled: var(--tw-gray-500);
+  --tailwind-body-divider: var(--tw-gray-700);
+  --tailwind-input-background: var(--tw-gray-900);
+  --tailwind-input-disabled-background: var(--tw-gray-800);
+  --tailwind-input-border: var(--tw-gray-700);
+  --tailwind-input-border-hover: var(--tw-gray-600);
+  --tailwind-alert-color: var(--tw-gray-100);
+  --tailwind-theme-primary: var(--tw-indigo-600);
+  --tailwind-theme-lighter-alt: var(--tw-gray-800);
+  --tailwind-theme-lighter: var(--tw-indigo-900);
+  --tailwind-theme-light: var(--tw-indigo-800);
+  --tailwind-theme-tertiary: var(--tw-indigo-500);
+  --tailwind-theme-dark-alt: var(--tw-indigo-500);
+  --tailwind-theme-dark: var(--tw-indigo-400);
+  --tailwind-theme-darker: var(--tw-indigo-300);
+  --tailwind-btn-primary-color: var(--tw-white);
+  --tailwind-btn-primary-bg: var(--tw-indigo-600);
+  --tailwind-btn-primary-bg-hover: var(--tw-indigo-700);
+  --tailwind-btn-primary-bg-active: var(--tw-indigo-800);
+  --tailwind-btn-secondary-color: var(--tw-gray-100);
+  --tailwind-btn-secondary-bg: var(--tw-gray-800);
+  --tailwind-btn-secondary-bg-hover: var(--tw-gray-700);
+  --tailwind-btn-secondary-bg-active: var(--tw-gray-600);
+  --tailwind-btn-text-color: var(--tw-gray-100);
+  --tailwind-btn-text-bg: var(--tw-gray-900);
+  --tailwind-btn-text-color-hover: var(--tw-white);
+  --tailwind-btn-text-bg-hover: var(--tw-gray-800);
+  --tailwind-btn-text-color-active: var(--tw-white);
+  --tailwind-btn-text-bg-active: var(--tw-gray-700);
+  --tailwind-window-bg: var(--tw-gray-800);
+  --tailwind-tabs-item-bg-hover: var(--tw-gray-800);
+  --tailwind-list-items-group-bg: var(--tw-gray-800);
+  --tailwind-tooltip-bg: var(--tw-gray-700);
+  --tailwind-tooltip-color: var(--tw-white);
+  --tailwind-tag-bg: var(--tw-gray-700);
+  --tailwind-tag-color: var(--tw-gray-100);
+  --tailwind-breadcrumb-color: var(--tw-gray-400);
+  --tailwind-breadcrumb-bg: transparent;
+  --tailwind-breadcrumb-color-hover: var(--tw-gray-200);
+  --tailwind-breadcrumb-bg-hover: var(--tw-gray-800);
+  --tailwind-accordion-header-color: var(--tw-gray-100);
+  --tailwind-accordion-header-bg: var(--tw-gray-800);
+  --tailwind-pager-color: var(--tw-indigo-400);
+  --tailwind-pager-bg: var(--tw-gray-900);
+  --tailwind-pager-border: var(--tw-gray-600);
+  --tailwind-sortable-border: var(--tw-gray-700);
+  --tailwind-error-bg: var(--tw-red-800);
+  --tailwind-error-color: var(--tw-red-400);
+  --tailwind-success-bg: var(--tw-green-800);
+  --tailwind-success-color: var(--tw-green-400);
+  --tailwind-severe-warning-bg: var(--tw-orange-800);
+  --tailwind-severe-warning-color: var(--tw-orange-400);
+  --tailwind-warning-bg: var(--tw-amber-800);
+  --tailwind-warning-color: var(--tw-amber-400);
+  --tailwind-header-bg: var(--tw-gray-800);
+  --tailwind-header-color: var(--tw-gray-300);
+  --tailwind-track: var(--tw-gray-700);
+  --tailwind-slider-track: var(--tw-gray-600);
+  --tailwind-disabled-bg: var(--tw-gray-800);
+  --tailwind-inverse-bg: var(--tw-gray-600);
+  --tailwind-inverse-color: var(--tw-gray-300);
+  --tailwind-accent: var(--tw-indigo-400);
+  --tailwind-danger: var(--tw-red-600);
+  --tailwind-success: var(--tw-green-600);
+  --tailwind-warning: var(--tw-amber-500);
+  --tailwind-info: var(--tw-sky-500);
+  /* the same colours as text: the 700 step, since a 500/600 fill colour used as text on
+     white is 2.2-3.3:1 */
+  --tailwind-danger-text: var(--tw-red-400);
+  --tailwind-success-text: var(--tw-green-400);
+  --tailwind-warning-text: var(--tw-amber-400);
+  --tailwind-info-text: var(--tw-sky-400);
+  --tailwind-thumb: var(--tw-white);
+  --tailwind-on-accent: var(--tw-white);
+  /* text on the amber-500 and sky-500 fills: white there is 2.15:1 and 2.77:1, gray-900 is
+     8.26:1 and 6.40:1 */
+  --tailwind-on-bright: var(--tw-gray-900);
+  /* even rows of a striped table: Tailwind UI's even:bg-gray-50 */
+  --tailwind-row-alt: rgb(31 41 55 / 0.5);
+  --tailwind-rating-empty: var(--tw-gray-500);
+  --tailwind-editor-icons: url("images/html_editor_white.png");
+  /* black icons drawn as images (the jqx-icon-type-svg set, rasters with no white twin);
+     the dark variant inverts them */
+  --tailwind-icon-invert: invert(0.9);
+  /* raster icons jqx.base.css draws dark; the dark variant swaps in the white set */
+  --tailwind-icon-edit: url("images/icon-edit-white.png");
+  --tailwind-icon-delete: url("images/icon-delete-white.png");
+  --tailwind-icon-save: url("images/icon-save-white.png");
+  --tailwind-icon-cancel: url("images/icon-cancel-white.png");
+  --tailwind-icon-plus: url("images/icon-plus-white.png");
+  --tailwind-icon-menu-minimized: url("images/icon-menu-minimized-white.png");
+  --tailwind-icon-pin: url("images/pin-white.png");
+  --tailwind-icon-pinned: url("images/pinned-white.png");
+  --tailwind-icon-sort-asc: url("images/icon-sort-asc-white.png");
+  --tailwind-icon-sort-desc: url("images/icon-sort-desc-white.png");
+  --tailwind-icon-sort-remove: url("images/icon-sort-remove-white.png");
+  --tailwind-icon-menu-small: url("images/icon-menu-small-white.png");
+  --tailwind-icon-recurrence: url("images/icon-recurrence-white.png");
+  --tailwind-icon-recurrence-exception: url("images/icon-recurrence-exception-white.png");
+  --tailwind-overlay-light: rgba(255, 255, 255, 0.4);
+  --tailwind-overlay-dark: rgba(0, 0, 0, 0.4);
+
+  /* shadows: Tailwind's shadow-sm, shadow, shadow-md, shadow-lg */
+  --tailwind-box-shadow-4: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --tailwind-box-shadow-8: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --tailwind-box-shadow-16: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --tailwind-box-shadow-64: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+
+  /* -- the jQWidgets contract ----------------------------------------------- */
+  --jqx-primary-rgb: 0, 120, 212;
+  --jqx-primary: rgb(var(--jqx-primary-rgb));
+  --jqx-primary-color: var(--tw-white);
+  --jqx-background: var(--tw-gray-900);
+  --jqx-background-color: var(--tw-gray-100);
+  --jqx-background-hover: var(--tw-gray-700);
+  --jqx-background-color-hover: var(--tw-gray-100);
+  --jqx-surface-rgb: var(--tailwind-surface-rgb);
+  --jqx-surface: rgb(var(--jqx-surface-rgb));
+  --jqx-surface-color: var(--tw-gray-100);
+  /* gray-300, the ring Tailwind UI draws on inputs, selects and buttons. It is 1.47:1 on
+     white, below WCAG 1.4.11's 3:1 for a control boundary: the Tailwind UI look was chosen
+     over the stronger gray-500 (4.83:1) that @tailwindcss/forms uses. */
+  --jqx-border: var(--tw-gray-700);
+  --jqx-border-radius: 0.375rem;
+  --jqx-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --jqx-scrollbar-background: var(--tw-gray-800);
+  --jqx-scrollbar-border: var(--tw-gray-700);
+  --jqx-scrollbar-thumb-background: var(--tw-gray-600);
+  --jqx-scrollbar-thumb-border: var(--tw-gray-600);
+  --jqx-scrollbar-thumb-background-hover: var(--tw-gray-500);
+  --jqx-scrollbar-thumb-border-hover: var(--tw-gray-500);
+  --jqx-scrollbar-thumb-background-pressed: var(--tw-gray-500);
+  --jqx-scrollbar-thumb-border-pressed: var(--tw-gray-500);
+  --jqx-scrollbar-button-color-hover: var(--tw-gray-800);
+  --jqx-scrollbar-button-background-hover: var(--tw-gray-800);
+  --jqx-scrollbar-button-border-hover: var(--tw-gray-800);
+  --jqx-scrollbar-button-color-pressed: var(--tw-gray-800);
+  --jqx-scrollbar-button-background-pressed: var(--tw-gray-800);
+  --jqx-scrollbar-button-border-pressed: var(--tw-gray-800);
+  --jqx-font-size: 14px;
+  --jqx-icon-calendar-up: '\e804';
+  --jqx-icon-calendar-down: '\e805';
+  --jqx-icon-sort-up: '\e904';
+  --jqx-icon-sort-down: '\e901';
+}
+
+.jqx-icon-type-svg {
+  --jqx-icon-calendar: url(font/svg/calendar.svg);
+  /* Code of calendar icon */
+  --jqx-icon-filter: url(font/svg/filter.svg);
+  /* Code of filter icon */
+  --jqx-icon-menu: url(font/svg/menu.svg);
+  /* Code of menu icon */
+  --jqx-icon-check: url(font/svg/check-alt-2.svg);
+  /* Code of check icon */
+  --jqx-icon-first-page: url(font/svg/first_page.svg);
+  /* Code of first page icon */
+  --jqx-icon-arrow-down: url(font/svg/arrow-down.svg);
+  /* Code of down arrow icon */
+  --jqx-icon-arrow-left: url(font/svg/arrow-left.svg);
+  /* Code of left arrow icon */
+  --jqx-icon-arrow-right: url(font/svg/arrow-right.svg);
+  /* Code of right arrow icon */
+  --jqx-icon-arrow-up: url(font/svg/arrow-up.svg);
+  /* Code of up arrow icon */
+  --jqx-icon-arrow-down-filled: url(font/svg/down-dir.svg);
+  /* Code of filled down arrow icon */
+  --jqx-icon-arrow-left-filled: url(font/svg/left-dir.svg);
+  /* Code of filled left arrow icon */
+  --jqx-icon-arrow-right-filled: url(font/svg/right-dir.svg);
+  /* Code of filled right arrow icon */
+  --jqx-icon-arrow-up-filled: url(font/svg/up-dir.svg);
+  /* Code of filled up arrow icon */
+  --jqx-icon-visibility: url(font/svg/visibility.svg);
+  /* Code of visibility icon */
+  --jqx-icon-visibility-off: url(font/svg/visibility_off.svg);
+  /* Code of visibility off icon */
+  --jqx-icon-last-page: url(font/svg/last_page.svg);
+  /* Code of last page icon */
+  --jqx-icon-close: url(font/svg/close.svg);
+  /* Code of close icon */
+  --jqx-icon-search: url(font/svg/search.svg);
+  /* Code of search icon */
+  --jqx-icon-clock: url(font/svg/clock.svg);
+  --jqx-icon-down: url(font/svg/arrow-down.svg);
+  --jqx-icon-plus: url(font/svg/plus.svg);
+  --jqx-icon-filter-alt: url(font/svg/filter-alt.svg);
+  --jqx-icon-up: url(font/svg/arrow-up.svg);
+  --jqx-icon-left: url(font/svg/left-dir.svg);
+  --jqx-icon-right: url(font/svg/right-dir.svg);
+  --jqx-icon-edit: url(font/svg/edit.svg);
+  --jqx-icon-calendar-alt: url(font/svg/calendar-alt.svg);
+  --jqx-icon-close-alt: url(font/svg/close-alt.svg);
+  --jqx-icon-delete: url(font/svg/delete.svg);
+  --jqx-icon-download: url(font/svg/download-alt.svg);
+  --jqx-icon-check-alt: url(font/svg/check-alt.svg);
+  --jqx-icon-check-small: url(font/svg/check-alt-2.svg);
+  --jqx-icon-info: url(font/svg/info.svg);
+  --jqx-icon-circle: url(font/svg/circle.svg);
+  --jqx-icon-sort-menu-down: url(font/svg/sort-alt-down.svg);
+  --jqx-icon-sort-menu-up: url(font/svg/sort-alt-up.svg);
+  --jqx-icon-sort-up: url(font/svg/up-dir.svg);
+  --jqx-icon-sort-down: url(font/svg/down-dir.svg);
+  --jqx-icon-menu-alt: url(font/svg/hamburger.svg);
+  --jqx-icon-calendar-up: url(font/svg/arrow-up-long.svg);
+  --jqx-icon-calendar-down: url(font/svg/arrow-down-long.svg);
+}
+
+.jqx-icon-type-svg .jqx-icon-close-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-search-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-filterbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-menubutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-checkbox-check-checked-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-left-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-left:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-combobox-tailwind-blue-dark .jqx-icon-close-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-header-tailwind-blue-dark .jqx-icon-arrow-up:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-close-button-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-close-button-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-close-button-hover-tailwind-blue-dark .jqx-tabs-close-button-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-first-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-last-tailwind-blue-dark:after {
+  width: 16px;
+}
+
+.jqx-icon-type-svg .jqx-checkbox-check-checked-tailwind-blue-dark:after {
+  content: "";
+  -webkit-mask-image: var(--jqx-icon-check);
+  background-color: var(--jqx-primary-color);
+  -webkit-mask-size: cover;
+}
+
+.jqx-icon-type-svg .sorticon.ascending .jqx-grid-column-sorticon-tailwind-blue-dark::after {
+  margin-left: 3px;
+  margin-top: 3px;
+}
+
+.jqx-icon-type-svg .jqx-icon-calendar-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind-blue-dark:after {
+  margin-top: 5px;
+  width: 18px;
+}
+
+.jqx-icon-type-svg .jqx-calendar-title-navigation-tailwind-blue-dark:hover::after {
+  padding: 1px !important;
+}
+
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind-blue-dark {
+  font-family: inherit !important;
+  background-size: 12px;
+  background-image: var(--jqx-icon-arrow-down) !important;
+  background-repeat: no-repeat;
+}
+
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind-blue-dark::after {
+  content: "" !important;
+}
+
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind-blue-dark {
+  font-family: inherit !important;
+  background-size: 12px;
+  background-image: var(--jqx-icon-arrow-up) !important;
+  background-repeat: no-repeat;
+}
+
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind-blue-dark::after {
+  content: "" !important;
+}
+
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark {
+  font-family: inherit !important;
+  background-size: 10px;
+  background-image: var(--jqx-icon-arrow-right) !important;
+  background-repeat: no-repeat;
+}
+
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark::after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark::after {
+  content: "" !important;
+}
+
+.jqx-icon-type-svg .jqx-icon-time-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-tailwind-blue-dark:after {
+  width: 18px;
+  margin-top: 3px;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark.jqx-icon-arrow-left-tailwind-blue-dark:after {
+  content: var(--jqx-icon-calendar-up) !important;
+  font-size: 12px;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark.jqx-icon-arrow-right-tailwind-blue-dark:after {
+  content: var(--jqx-icon-calendar-down) !important;
+  font-size: 12px;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark:hover::after {
+  background: var(--jqx-background-hover) !important;
+  color: var(--jqx-background-color-hover) !important;
+  padding: 5px;
+}
+
+.jqx-icon-search-tailwind-blue-dark,
+.jqx-icon-close-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+.jqx-icon-close-tailwind-blue-dark:after {
+  content: var(--jqx-icon-close-alt);
+  font-size: 12px;
+}
+
+.jqx-icon-search-tailwind-blue-dark:after {
+  content: var(--jqx-icon-search);
+}
+
+.jqx-calendar-tailwind-blue-dark {
+  width: 280px !important;
+  height: 280px !important;
+}
+
+.jqx-fill-state-normal-tailwind-blue-dark {
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+  border-color: var(--jqx-border);
+}
+
+.jqx-fill-state-hover-tailwind-blue-dark {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+  border-color: var(--jqx-background-hover);
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+  border-color: var(--jqx-primary);
+}
+
+@font-face {
+  font-family: jqx-icons;
+  src: local("./font/jqx-icons"), url("./font/jqx-icons.woff2") format("woff2"), url("./font/jqx-icons.woff") format("woff"), url("./font/jqx-icons.ttf") format("truetype"), url("./font/jqx-icons.eot") format("embedded-opentype");
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+/*Rounded Corners*/
+/*top-left rounded Corners*/
+.jqx-rc-tl-tailwind-blue-dark {
+  border-top-left-radius: var(--jqx-border-radius);
+}
+
+/*top-right rounded Corners*/
+.jqx-rc-tr-tailwind-blue-dark {
+  border-top-right-radius: var(--jqx-border-radius);
+}
+
+/*bottom-left rounded Corners*/
+.jqx-rc-bl-tailwind-blue-dark {
+  border-bottom-left-radius: var(--jqx-border-radius);
+}
+
+/*bottom-right rounded Corners*/
+.jqx-rc-br-tailwind-blue-dark {
+  border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*top rounded Corners*/
+.jqx-rc-t-tailwind-blue-dark {
+  border-top-left-radius: var(--jqx-border-radius);
+  border-top-right-radius: var(--jqx-border-radius);
+}
+
+/*bottom rounded Corners*/
+.jqx-rc-b-tailwind-blue-dark {
+  border-bottom-left-radius: var(--jqx-border-radius);
+  border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*right rounded Corners*/
+.jqx-rc-r-tailwind-blue-dark {
+  border-top-right-radius: var(--jqx-border-radius);
+  border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*left rounded Corners*/
+.jqx-rc-l-tailwind-blue-dark {
+  border-top-left-radius: var(--jqx-border-radius);
+  border-bottom-left-radius: var(--jqx-border-radius);
+}
+
+/*all rounded Corners*/
+.jqx-rc-all-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-widget-tailwind-blue-dark,
+.jqx-widget-header-tailwind-blue-dark,
+.jqx-fill-state-normal-tailwind-blue-dark,
+.jqx-widget-content-tailwind-blue-dark,
+.jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-fill-state-pressed-tailwind-blue-dark {
+  font-family: var(--jqx-font-family);
+  font-size: var(--jqx-font-size);
+}
+
+.jqx-widget-tailwind-blue-dark {
+  font-family: var(--jqx-font-family);
+  font-size: var(--jqx-font-size);
+  color: inherit;
+  border-color: var(--jqx-border);
+}
+
+.jqx-widget-content-tailwind-blue-dark {
+  font-family: var(--jqx-font-family);
+  font-size: 14px;
+  color: var(--jqx-background-color);
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-grid-table-tailwind-blue-dark.jqx-grid-table-one-cell {
+  border-right-color: var(--jqx-border);
+}
+
+.jqx-widget-header-tailwind-blue-dark {
+  background-color: var(--jqx-surface);
+  border-color: var(--jqx-border);
+  font-family: var(--jqx-font-family);
+  font-size: var(--jqx-font-size);
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-grid-column-header-tailwind-blue-dark span:not(.jqx-checkbox-check-checked) {
+  font-size: 12px !important;
+  border-color: var(--tailwind-body-divider);
+  font-weight: 600;
+}
+
+.jqx-window-header-tailwind-blue-dark {
+  padding: 10px;
+  color: var(--jqx-surface-color);
+  background: var(--jqx-surface);
+}
+
+.jqx-calendar tr {
+  border-bottom-color: var(--jqx-border);
+}
+
+.jqx-widget-tailwind-blue-dark input::-moz-selection,
+input.jqx-input-widget-tailwind-blue-dark::-moz-selection,
+.jqx-widget-content-tailwind-blue-dark input::-moz-selection {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+}
+
+.jqx-widget-tailwind-blue-dark input::selection,
+input.jqx-input-widget-tailwind-blue-dark::selection,
+.jqx-widget-content-tailwind-blue-dark input::selection {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+}
+
+.jqx-toolbar-tailwind-blue-dark {
+  border-color: var(--jqx-border);
+}
+
+.jqx-toolbar-tailwind-blue-dark {
+  height: auto !important;
+  display: flex;
+  align-items: center;
+}
+
+.jqx-button-tailwind-blue-dark,
+.jqx-button-tailwind-blue-dark.jqx-fill-state-normal-tailwind-blue-dark {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+}
+
+.jqx-scheduler-edit-dialog-field .jqx-button-tailwind-blue-dark {
+  padding: 6px 16px;
+}
+
+.jqx-button-tailwind-blue-dark button,
+jqx-button-tailwind-blue-dark input {
+  background: transparent;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark {
+  cursor: pointer;
+  --jqx-border: var(--tailwind-input-border);
+  --jqx-background: var(--tailwind-btn-secondary-bg);
+  --jqx-background-color: var(--tailwind-btn-secondary-color);
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+  border: 1px solid var(--jqx-border);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark:hover {
+  --jqx-background: var(--tailwind-btn-secondary-bg-hover);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark:active {
+  --jqx-background: var(--tailwind-btn-secondary-bg-active);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark:not(.jqx-navbar-block).jqx-fill-state-pressed,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark:not(.jqx-navbar-block).jqx-fill-state-focus,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark:not(.jqx-navbar-block):focus {
+  outline-offset: 1px;
+  outline: 2px solid var(--tailwind-accent);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-navbar-block.jqx-fill-state-pressed,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-navbar-block.jqx-fill-state-focus,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-navbar-block:focus {
+  background: var(--tailwind-btn-secondary-bg-active);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark[disabled] {
+  opacity: 1;
+  --jqx-border: var(--tailwind-disabled-bg);
+  --jqx-background: var(--tailwind-disabled-bg);
+  --jqx-background-color: var(--tailwind-type-disabled);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-primary,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.primary {
+  --jqx-border: var(--tailwind-btn-primary-bg);
+  --jqx-background: var(--tailwind-btn-primary-bg);
+  --jqx-background-color: var(--tailwind-btn-primary-color);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-primary:hover,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.primary:hover {
+  --jqx-border: var(--tailwind-btn-primary-bg-hover);
+  --jqx-background: var(--tailwind-btn-primary-bg-hover);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-primary:active,
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.primary:active {
+  --jqx-background: var(--tailwind-btn-primary-bg-active);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-primary[disabled],
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.primary[disabled] {
+  opacity: 1;
+  --jqx-border: var(--tailwind-disabled-bg);
+  --jqx-background: var(--tailwind-disabled-bg);
+  --jqx-background-color: var(--tailwind-type-disabled);
+}
+
+.jqx-group-button-normal-tailwind-blue-dark {
+  box-shadow: none;
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+  color: var(--jqx-background-color) !important;
+}
+
+.jqx-group-button-normal.jqx-fill-state-hover {
+  box-shadow: none !important;
+}
+
+.jqx-group-button-normal.jqx-fill-state-pressed {
+  box-shadow: none !important;
+  background: var(--jqx-primary) !important;
+  border-color: var(--jqx-primary) !important;
+  color: var(--jqx-primary-color) !important;
+  outline: none !important;
+}
+
+.jqx-slider-tooltip-tailwind-blue-dark {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.jqx-slider-tailwind-blue-dark {
+  --jqx-primary: var(--tailwind-accent);
+  --jqx-ui-state-active: var(--tailwind-accent);
+  --jqx-disabled: var(--tailwind-slider-track);
+  --jqx-slider-track-size: 4px;
+  --jqx-slider-thumb-width: 16px;
+  --jqx-slider-thumb-height: 16px;
+  border: 1px solid transparent;
+  overflow: unset;
+  opacity: 1;
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-track-container {
+  border-radius: 2px;
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-button {
+  opacity: 0 !important;
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-fill-state-focus-tailwind-blue-dark .jqx-slider-rangebar-tailwind-blue-dark,
+.jqx-slider-tailwind-blue-dark .jqx-fill-state-focus-tailwind-blue-dark .jqx-slider-slider {
+  --jqx-primary: var(--tailwind-theme-primary);
+  --jqx-ui-state-active: var(--tailwind-theme-primary);
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-track {
+  background: var(--jqx-disabled);
+  overflow: unset;
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-track .jqx-fill-state-normal {
+  width: 16px;
+  height: 16px;
+  background-color: var(--jqx-background) !important;
+  border-width: 2px;
+  border-color: var(--jqx-ui-state-active);
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-track:hover {
+  background: var(--tailwind-theme-light);
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-track:hover .jqx-fill-state-pressed {
+  background-color: var(--tailwind-theme-primary);
+}
+
+.jqx-slider-tailwind-blue-dark .jqx-slider-track:hover .jqx-fill-state-normal,
+.jqx-slider-tailwind-blue-dark .jqx-slider-track:hover .jqx-fill-state-hover {
+  border-color: var(--tailwind-theme-primary);
+}
+
+.jqx-slider-tailwind-blue-dark[disabled] {
+  opacity: 1;
+}
+
+.jqx-slider-tailwind-blue-dark[disabled] .jqx-track {
+  --jqx-primary: var(--tailwind-type-disabled);
+  background-color: var(--tailwind-disabled-bg);
+  --jqx-disabled: var(--tailwind-disabled-bg);
+}
+
+.jqx-slider-tailwind-blue-dark[disabled] .jqx-track .jqx-value {
+  background-color: var(--tailwind-type-disabled);
+}
+
+.jqx-button-tailwind-blue-dark.float {
+  border-radius: 100%;
+  min-height: 48px;
+  min-width: 48px;
+  width: 48px;
+  height: 48px;
+  max-height: 48px;
+  max-width: 48px;
+}
+
+.jqx-button-tailwind-blue-dark.outlined {
+  background: transparent;
+  color: var(--tailwind-accent);
+  border-width: 2px;
+}
+
+.jqx-button-tailwind-blue-dark.flat {
+  background: transparent;
+  color: var(--tailwind-accent);
+  border: none;
+}
+
+.jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-fill-state-focus-tailwind-blue-dark {
+  text-decoration: none;
+}
+
+.jqx-expander-header.jqx-fill-state-normal-tailwind-blue-dark {
+  background: var(--jqx-surface);
+  border-color: var(--jqx-border);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-expander-header.jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-expander-header.jqx-fill-state-pressed-tailwind-blue-dark {
+  background: var(--jqx-background-hover);
+  border-color: var(--jqx-border);
+  color: var(--jqx-background-color-hover);
+}
+
+.jqx-expander-header.jqx-fill-state-hover-tailwind-blue-dark {
+  background: var(--jqx-background-hover);
+}
+
+.jqx-expander-content-tailwind-blue-dark {
+  padding: 0px;
+}
+
+.jqx-expander-header-tailwind-blue-dark {
+  padding: 10px;
+}
+
+.jqx-fill-state-disabled-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark {
+  cursor: initial;
+}
+
+.jqx-button-tailwind-blue-dark.jqx-fill-state-pressed.float {
+  box-shadow: var(--tailwind-box-shadow-64);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-fill-state-pressed.outlined,
+.jqx-button-tailwind-blue-dark.jqx-fill-state-pressed.flat {
+  background: rgba(var(--jqx-primary-rgb), 0.15);
+  box-shadow: none;
+  color: var(--tailwind-accent);
+}
+
+.jqx-button-tailwind-blue-dark.jqx-fill-state-focus.outlined,
+.jqx-button-tailwind-blue-dark.jqx-fill-state-focus.flat {
+  box-shadow: none;
+  background: rgba(var(--jqx-primary-rgb), 0.15);
+  color: var(--tailwind-accent);
+}
+
+.jqx-dropdownlist-content-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  height: 100% !important;
+  margin-top: 0px !important;
+}
+
+.jqx-dropdownlist-content-tailwind-blue-dark span {
+  top: 0px !important;
+}
+
+.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-dropdownlist-state-hover-tailwind-blue-dark,
+.jqx-dropdownlist-state-selected-tailwind-blue-dark,
+.jqx-scrollbar-button-state-hover-tailwind-blue-dark,
+.jqx-scrollbar-button-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-hover-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-pressed-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-pressed-tailwind-blue-dark,
+.jqx-tree-item-hover-tailwind-blue-dark,
+.jqx-tree-item-selected-tailwind-blue-dark,
+.jqx-tree-item-tailwind-blue-dark,
+.jqx-menu-item-tailwind-blue-dark,
+.jqx-menu-item-hover-tailwind-blue-dark,
+.jqx-menu-item-selected-tailwind-blue-dark,
+.jqx-menu-item-top-tailwind-blue-dark,
+.jqx-menu-item-top-hover-tailwind-blue-dark,
+.jqx-menu-item-top-selected-tailwind-blue-dark,
+.jqx-slider-button-tailwind-blue-dark,
+.jqx-slider-slider-tailwind-blue-dark {
+  transition: background-color 100ms linear;
+}
+
+.jqx-primary-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-accent) !important;
+}
+
+.jqx-primary-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--jqx-primary) !important;
+}
+
+.jqx-success-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-success-text) !important;
+}
+
+.jqx-success-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--tailwind-success) !important;
+}
+
+.jqx-inverse-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-inverse-color) !important;
+}
+
+.jqx-inverse-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--tailwind-inverse-color) !important;
+}
+
+.jqx-danger-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-danger-text) !important;
+}
+
+.jqx-danger-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--tailwind-danger) !important;
+}
+
+.jqx-warning-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-warning-text) !important;
+}
+
+.jqx-warning-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--tailwind-warning) !important;
+}
+
+.jqx-info-tailwind-blue-dark.jqx-input-label-tailwind-blue-dark {
+  color: var(--tailwind-info-text) !important;
+}
+
+.jqx-info-tailwind-blue-dark.jqx-input-bar-tailwind-blue-dark:before {
+  background: var(--tailwind-info) !important;
+}
+
+.jqx-primary-tailwind-blue-dark {
+  color: var(--tailwind-accent) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--jqx-primary) !important;
+  text-shadow: none !important;
+}
+
+.jqx-primary-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark:hover,
+.jqx-primary-tailwind-blue-dark:focus,
+.jqx-primary-tailwind-blue-dark:active,
+.jqx-primary-tailwind-blue-dark.active,
+.jqx-primary-tailwind-blue-dark.disabled,
+.jqx-primary-tailwind-blue-dark[disabled] {
+  color: var(--tailwind-on-accent) !important;
+  background: var(--jqx-primary) !important;
+  border-color: var(--tailwind-accent) !important;
+  text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-primary-tailwind-blue-dark,
+.jqx-primary-tailwind-blue-dark:active,
+.jqx-primary-tailwind-blue-dark.active {
+  color: var(--tailwind-on-accent) !important;
+  background-color: var(--jqx-primary) !important;
+  border-color: var(--jqx-primary) !important;
+  text-shadow: none !important;
+}
+
+.jqx-success-tailwind-blue-dark {
+  color: var(--tailwind-success-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-success) !important;
+  text-shadow: none !important;
+}
+
+.jqx-success-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark:hover,
+.jqx-success-tailwind-blue-dark:focus,
+.jqx-success-tailwind-blue-dark:active,
+.jqx-success-tailwind-blue-dark.active,
+.jqx-success-tailwind-blue-dark.disabled,
+.jqx-success-tailwind-blue-dark[disabled] {
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-success) !important;
+  border-color: var(--tailwind-success) !important;
+  text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-success-tailwind-blue-dark,
+.jqx-success-tailwind-blue-dark:active,
+.jqx-success-tailwind-blue-dark.active {
+  text-shadow: none !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-success) !important;
+  border-color: var(--tailwind-success) !important;
+}
+
+.jqx-inverse-tailwind-blue-dark {
+  text-shadow: none !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
+}
+
+.jqx-inverse-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark:hover,
+.jqx-inverse-tailwind-blue-dark:focus,
+.jqx-inverse-tailwind-blue-dark:active,
+.jqx-inverse-tailwind-blue-dark.active,
+.jqx-inverse-tailwind-blue-dark.disabled,
+.jqx-inverse-tailwind-blue-dark[disabled] {
+  text-shadow: none !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-inverse-bg) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-inverse-tailwind-blue-dark,
+.jqx-inverse-tailwind-blue-dark:active,
+.jqx-inverse-tailwind-blue-dark.active {
+  text-shadow: none !important;
+  color: var(--tailwind-inverse-color) !important;
+  background: var(--tailwind-inverse-bg) !important;
+  border-color: var(--tailwind-inverse-bg) !important;
+}
+
+.jqx-danger-tailwind-blue-dark {
+  text-shadow: none !important;
+  color: var(--tailwind-danger-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-danger) !important;
+}
+
+.jqx-danger-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark:hover,
+.jqx-danger-tailwind-blue-dark:focus,
+.jqx-danger-tailwind-blue-dark:active,
+.jqx-danger-tailwind-blue-dark.active,
+.jqx-danger-tailwind-blue-dark.disabled,
+.jqx-danger-tailwind-blue-dark[disabled] {
+  text-shadow: none !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-danger) !important;
+  border-color: var(--tailwind-danger) !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-danger-tailwind-blue-dark,
+.jqx-danger-tailwind-blue-dark:active,
+.jqx-danger-tailwind-blue-dark.active {
+  text-shadow: none !important;
+  color: var(--tailwind-on-accent) !important;
+  background: var(--tailwind-danger) !important;
+  border-color: var(--tailwind-danger) !important;
+}
+
+.jqx-validator-error-label-tailwind-blue-dark {
+  color: var(--tailwind-danger-text) !important;
+}
+
+.jqx-warning-tailwind-blue-dark {
+  text-shadow: none !important;
+  color: var(--tailwind-warning-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-warning) !important;
+}
+
+.jqx-warning-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark:hover,
+.jqx-warning-tailwind-blue-dark:focus,
+.jqx-warning-tailwind-blue-dark:active,
+.jqx-warning-tailwind-blue-dark.active,
+.jqx-warning-tailwind-blue-dark.disabled,
+.jqx-warning-tailwind-blue-dark[disabled] {
+  text-shadow: none !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-warning) !important;
+  border-color: var(--tailwind-warning) !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-warning-tailwind-blue-dark,
+.jqx-warning-tailwind-blue-dark:active,
+.jqx-warning-tailwind-blue-dark.active {
+  text-shadow: none !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-warning) !important;
+  border-color: var(--tailwind-warning) !important;
+}
+
+.jqx-info-tailwind-blue-dark {
+  text-shadow: none !important;
+  color: var(--tailwind-info-text) !important;
+  background: var(--tailwind-background) !important;
+  border-color: var(--tailwind-info) !important;
+}
+
+.jqx-info-tailwind-blue-dark.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark.jqx-slider-button-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark.jqx-slider-slider-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark.jqx-combobox-arrow-hover-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark.jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark.jqx-action-button-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark:hover,
+.jqx-info-tailwind-blue-dark:focus,
+.jqx-info-tailwind-blue-dark:active,
+.jqx-info-tailwind-blue-dark.active,
+.jqx-info-tailwind-blue-dark.disabled,
+.jqx-info-tailwind-blue-dark[disabled] {
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-info) !important;
+  border-color: var(--tailwind-info) !important;
+  text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark.jqx-info-tailwind-blue-dark,
+.jqx-info-tailwind-blue-dark:active,
+.jqx-info-tailwind-blue-dark.active {
+  text-shadow: none !important;
+  color: var(--tailwind-on-bright) !important;
+  background: var(--tailwind-info) !important;
+  border-color: var(--tailwind-info) !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark {
+  background-image: none;
+  outline: 0;
+}
+
+.jqx-grid-group-column-tailwind-blue-dark {
+  border-color: transparent;
+}
+
+.jqx-grid-column-menubutton-tailwind-blue-dark {
+  border-width: 0px;
+}
+
+.jqx-grid-groups-row-tailwind-blue-dark>span {
+  padding-left: 4px;
+}
+
+.jqx-grid-column-filterbutton-tailwind-blue-dark,
+.jqx-grid-column-menubutton-tailwind-blue-dark {
+  background-image: none;
+  font-family: "jqx-icons";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.jqx-grid-column-filterbutton-tailwind-blue-dark:after {
+  content: var(--jqx-icon-filter);
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-grid-column-menubutton-tailwind-blue-dark:after {
+  content: var(--jqx-icon-menu) !important;
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+  margin-top: 2px;
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-widget-header-tailwind-blue-dark .jqx-grid-column-header-tailwind-blue-dark {
+  border-right-color: var(--tailwind-body-divider);
+}
+
+.jqx-datatable-tailwind-blue-dark td.jqx-grid-cell-tailwind-blue-dark,
+.jqx-treegrid-tailwind-blue-dark .jqx-grid-cell-tailwind-blue-dark {
+  padding-top: 10px;
+  padding-bottom: 9px;
+  font-size: 14px;
+}
+
+.jqx-grid-cell-tailwind-blue-dark {
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+  box-shadow: none;
+}
+
+.jqx-widget-header-tailwind-blue-dark.jqx-grid-cell-tailwind-blue-dark {
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+/* A Tailwind UI table: rows separated by divide-gray-200, a bg-gray-50 header row, and the
+   control boundary (gray-500) only on the table's outer edge. Without this every cell
+   inherited the boundary colour from .jqx-widget-tailwind-blue-dark and the grid read as a lattice. */
+.jqx-grid-cell-tailwind-blue-dark,
+.jqx-grid-cell-alt-tailwind-blue-dark,
+.jqx-grid-column-header-tailwind-blue-dark,
+.jqx-grid-group-cell-tailwind-blue-dark,
+.jqx-grid-cell-pinned-tailwind-blue-dark,
+.jqx-grid-header-tailwind-blue-dark,
+.jqx-grid-groups-header-tailwind-blue-dark {
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-grid-column-header-tailwind-blue-dark,
+.jqx-widget-header-tailwind-blue-dark.jqx-grid-cell-tailwind-blue-dark,
+.jqx-grid-header-tailwind-blue-dark {
+  background: var(--tailwind-header-bg);
+  color: var(--tailwind-header-color);
+  font-weight: 600;
+}
+
+.jqx-grid-tailwind-blue-dark:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind-blue-dark {
+  background: var(--tailwind-row-alt) !important;
+  color: var(--jqx-surface-color) !important;
+}
+
+.jqx-grid-tailwind-blue-dark:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind-blue-dark.jqx-grid-cell-sort-tailwind-blue-dark {
+  background: var(--tailwind-row-alt) !important;
+  color: var(--jqx-surface-color) !important;
+}
+
+.jqx-grid-tailwind-blue-dark:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind-blue-dark.jqx-grid-cell-hover-tailwind-blue-dark {
+  background: var(--jqx-background-hover) !important;
+  color: var(--jqx-background-color-hover) !important;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-button-tailwind-blue-dark,
+.jqx-grid-pager-tailwind-blue-dark .jqx-button-tailwind-blue-dark {
+  color: inherit !important;
+  border-color: transparent !important;
+  position: relative;
+  top: 0px;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-content: center;
+  outline: none !important;
+  outline-offset: 0px !important;
+  border-radius: 50%;
+}
+
+.jqx-grid-pager-input-tailwind-blue-dark {
+  padding: 0px !important;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-button-tailwind-blue-dark>div,
+.jqx-grid-pager-tailwind-blue-dark .jqx-button-tailwind-blue-dark>div {
+  top: 0px;
+  position: relative;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  margin-left: 0px !important;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-hover,
+.jqx-grid-pager-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-hover {
+  color: var(--jqx-background-color-hover);
+  background: var(--jqx-background-hover);
+  border-color: var(--jqx-background-hover);
+  box-shadow: none;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-pressed,
+.jqx-grid-pager-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-pressed {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color) !important;
+  border-color: var(--jqx-primary) !important;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark,
+.jqx-grid-pager-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark {
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark:hover,
+.jqx-grid-pager-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark:hover {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover) !important;
+  font-size: var(--jqx-font-size);
+}
+
+.jqx-grid-pager-top-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark.jqx-fill-state-pressed-tailwind-blue-dark,
+.jqx-grid-pager-tailwind-blue-dark .jqx-grid-pager-number-tailwind-blue-dark.jqx-fill-state-pressed-tailwind-blue-dark {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color) !important;
+}
+
+.jqx-grid-column-menubutton-tailwind-blue-dark {
+  background-color: transparent;
+  border-color: var(--jqx-border) !important;
+}
+
+.jqx-cell-tailwind-blue-dark {
+  font-size: 13px;
+}
+
+.jqx-calendar-tailwind-blue-dark>div {
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.jqx-calendar-month-tailwind-blue-dark {
+  width: 90%;
+  position: relative;
+  left: 5%;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark.jqx-icon-arrow-left-tailwind-blue-dark:after {
+  content: var(--jqx-icon-calendar-up) !important;
+  font-size: 12px;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark.jqx-icon-arrow-right-tailwind-blue-dark:after {
+  content: var(--jqx-icon-calendar-down) !important;
+  font-size: 12px;
+}
+
+.jqx-calendar-title-navigation-tailwind-blue-dark:hover::after {
+  background: var(--jqx-background-hover) !important;
+  color: var(--jqx-background-color-hover) !important;
+  padding: 5px;
+}
+
+.jqx-calendar-row-header-tailwind-blue-dark,
+.jqx-calendar-top-left-header-tailwind-blue-dark {
+  background-color: var(--jqx-background);
+  border: 0px solid var(--jqx-background);
+}
+
+.jqx-calendar-column-header-tailwind-blue-dark {
+  background-color: var(--jqx-background);
+  border-top: 1px solid var(--jqx-background);
+  border-bottom: 1px solid var(--jqx-border);
+  color: var(--jqx-background-color);
+}
+
+.jqx-expander-header-tailwind-blue-dark {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.jqx-ribbon-header-vertical-tailwind-blue-dark,
+.jqx-widget-header-vertical-tailwind-blue-dark {
+  background: var(--jqx-background);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-state-normal-tailwind-blue-dark {
+  background: transparent;
+  border-color: transparent;
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-button-state-normal-tailwind-blue-dark {
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-tailwind-blue-dark {
+  transform: scaleX(0.3);
+  border-radius: var(--jqx-border-radius);
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark {
+  transform: scaleY(0.3);
+  border-radius: var(--jqx-border-radius);
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-state-normal-tailwind-blue-dark {
+  background: transparent;
+  border-color: transparent;
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-button-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-button-state-normal-tailwind-blue-dark {
+  opacity: 0;
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-tailwind-blue-dark {
+  transform: scaleX(0.4);
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile):hover .jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile)[touched] .jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark {
+  transform: scaleY(0.4);
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-pressed-tailwind-blue-dark,
+.jqx-scrollbar-tailwind-blue-dark:not(.jqx-scrollbar-mobile) .jqx-scrollbar-thumb-state-pressed-horizontal-tailwind-blue-dark {
+  transform: scale(1);
+  border-radius: 0px;
+}
+
+.jqx-scrollbar-state-normal-tailwind-blue-dark {
+  background-color: var(--jqx-scrollbar-background);
+  border: 1px solid var(--jqx-scrollbar-background);
+  border-left-color: var(--jqx-scrollbar-border);
+}
+
+.jqx-scrollbar-thumb-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark {
+  background: var(--jqx-scrollbar-thumb-background);
+  border-color: var(--jqx-scrollbar-thumb-border);
+  border-radius: 0px;
+}
+
+.jqx-scrollbar-thumb-state-hover-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-hover-horizontal-tailwind-blue-dark {
+  background: var(--jqx-scrollbar-thumb-background-hover);
+  border-color: var(--jqx-scrollbar-thumb-border-hover);
+  box-shadow: none;
+}
+
+.jqx-progressbar-tailwind-blue-dark {
+  background: var(--jqx-background) !important;
+  box-shadow: none;
+}
+
+.jqx-progressbar-value-tailwind-blue-dark,
+.jqx-splitter-collapse-button-horizontal-tailwind-blue-dark {
+  background: var(--jqx-primary);
+}
+
+.jqx-splitter-collapse-button-vertical-tailwind-blue-dark,
+.jqx-progressbar-value-vertical-tailwind-blue-dark {
+  background: var(--jqx-primary);
+}
+
+.jqx-scrollbar-mobile-tailwind-blue-dark .jqx-scrollbar-button-state-normal {
+  display: none !important;
+}
+
+.jqx-scrollbar-button-state-hover-tailwind-blue-dark {
+  color: var(--jqx-scrollbar-button-color-hover);
+  background: var(--jqx-scrollbar-button-background-hover);
+  border-color: var(--jqx-scrollbar-button-border-hover);
+}
+
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark {
+  color: var(--jqx-scrollbar-button-color-pressed);
+  background: var(--jqx-scrollbar-button-background-pressed);
+  border-color: var(--jqx-scrollbar-button-border-pressed);
+}
+
+.jqx-splitter-splitbar-vertical-tailwind-blue-dark,
+.jqx-splitter-splitbar-horizontal-tailwind-blue-dark {
+  background: var(--jqx-scrollbar-thumb-background);
+  border-color: var(--jqx-scrollbar-thumb-border);
+}
+
+.jqx-scrollbar-thumb-state-pressed-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-pressed-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark {
+  background: var(--jqx-scrollbar-thumb-background-pressed);
+  border-color: var(--jqx-scrollbar-thumb-border-pressed);
+  box-shadow: none;
+}
+
+.jqx-grid-column-sortdescbutton-tailwind-blue-dark,
+jqx-grid-column-filterbutton-tailwind-blue-dark,
+.jqx-grid-column-sortascbutton-tailwind-blue-dark {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0px 0px 0px 0px;
+  border-color: var(--jqx-border);
+}
+
+.jqx-menu-vertical-tailwind-blue-dark {
+  background: var(--jqx-background);
+  filter: none;
+}
+
+.jqx-grid-bottomright-tailwind-blue-dark,
+.jqx-panel-bottomright-tailwind-blue-dark,
+.jqx-listbox-bottomright-tailwind-blue-dark {
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-background);
+}
+
+.jqx-window-tailwind-blue-dark,
+.jqx-tooltip-tailwind-blue-dark {
+  box-shadow: var(--tailwind-box-shadow-64) !important;
+}
+
+.jqx-layout-group-tabbed-tailwind-blue-dark {
+  box-shadow: none !important;
+}
+
+.jqx-tooltip-tailwind-blue-dark {
+  --jqx-tooltip-arrow-width: 16px;
+  --jqx-tooltip-arrow-translate: 0;
+  opacity: 0.9;
+  box-shadow: var(--tailwind-box-shadow-16) !important;
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-tooltip-tailwind-blue-dark.jqx-popup-light,
+.jqx-tooltip-tailwind-blue-dark .jqx-fill-state-normal-tailwind-blue-dark {
+  background: var(--tailwind-tooltip-bg);
+  border-color: var(--tailwind-tooltip-bg);
+  box-shadow: none;
+  color: var(--tailwind-tooltip-color);
+}
+
+.jqx-tooltip-tailwind-blue-dark .jqx-tooltip-main {
+  border-color: var(--tailwind-tooltip-bg);
+  background-color: var(--tailwind-tooltip-bg);
+  color: var(--tailwind-tooltip-color);
+  border-radius: 2px;
+  box-shadow: var(--tailwind-box-shadow-16) !important;
+}
+
+.jqx-rating-image-default img,
+.jqx-rating-image-hover img,
+.jqx-rating-image-backward img {
+  visibility: hidden;
+}
+
+.jqx-rating-image-default:after,
+.jqx-rating-image-hover:after,
+.jqx-rating-image-backward:after {
+  content: "";
+  top: 0;
+  position: absolute;
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.jqx-rating-image-default.hidden-item:after,
+.jqx-rating-image-hover.hidden-item:after,
+.jqx-rating-image-backward.hidden-item:after {
+  display: none;
+}
+
+.jqx-rating-image-backward:after {
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--tailwind-rating-empty);
+}
+
+/* the empty star lies over the filled one; a page-coloured backing hides it, and the
+   star itself is a mask so the dark variant can recolour it */
+.jqx-rating-image-backward:before {
+  content: "";
+  top: 0;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--jqx-background);
+}
+
+.jqx-rating-image-backward.hidden-item:before {
+  display: none;
+}
+
+.jqx-rating-image-hover:after {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23F59E0B'/%3E%3C/svg%3E");
+}
+
+.jqx-rating-image-default:after {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23FBBF24'/%3E%3C/svg%3E");
+}
+
+.jqx-docking-tailwind-blue-dark .jqx-window-tailwind-blue-dark {
+  box-shadow: none;
+}
+
+.jqx-docking-panel-tailwind-blue-dark .jqx-window-tailwind-blue-dark {
+  box-shadow: none;
+}
+
+.jqx-checkbox-tailwind-blue-dark {
+  line-height: 20px;
+  overflow: visible;
+}
+
+.jqx-radiobutton-tailwind-blue-dark {
+  overflow: visible;
+  box-shadow: none;
+  background-repeat: no-repeat;
+  background: none;
+  line-height: 20px;
+}
+
+.jqx-radiobutton-tailwind-tailwind-blue-dark,
+.jqx-radiobutton-hover-tailwind-blue-dark {
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  transition: background-color ease-in 0.3s;
+}
+
+.jqx-radiobutton-check-checked-tailwind-blue-dark {
+  filter: none;
+  background: var(--tailwind-on-accent);
+  background-repeat: no-repeat;
+  border-radius: 100%;
+}
+
+.jqx-radiobutton-check-indeterminate-tailwind-blue-dark {
+  filter: none;
+  background: var(--jqx-background);
+  border-radius: 100%;
+}
+
+.jqx-radiobutton-check-indeterminate-disabled-tailwind-blue-dark {
+  filter: none;
+  background: var(--jqx-background);
+  opacity: 0.7;
+  border-radius: 100%;
+}
+
+.jqx-checkbox-default-tailwind-blue-dark,
+.jqx-radiobutton-default-tailwind-blue-dark {
+  border-width: 1px;
+  border-color: var(--tailwind-input-border);
+  background-color: var(--jqx-background);
+  overflow: visible;
+}
+
+.jqx-tree-grid-expand-button-tailwind-blue-dark,
+.jqx-tree-grid-collapse-button-tailwind-blue-dark {
+  font-size: 16px;
+}
+
+.jqx-grid-table-tailwind-blue-dark .jqx-grid-cell:first-child {
+  padding-left: 10px;
+}
+
+.jqx-tree-grid-title-tailwind-blue-dark {
+  margin-left: 5px;
+}
+
+.jqx-tree-tailwind-blue-dark .jqx-checkbox-tailwind-blue-dark[checked] .jqx-checkbox-default-tailwind-blue-dark,
+.jqx-checkbox-tailwind-blue-dark[checked] .jqx-checkbox-default-tailwind-blue-dark,
+.jqx-radiobutton-tailwind-blue-dark[checked] .jqx-radiobutton-default-tailwind-blue-dark {
+  color: var(--jqx-primary-color);
+  background-color: var(--jqx-primary);
+  border-color: var(--jqx-primary);
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-tree-grid-checkbox-tailwind-blue-dark {
+  color: var(--jqx-background-color);
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-tree-grid-checkbox-tailwind-blue-dark:hover {
+  border-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-tree-grid-checkbox-tailwind-blue-dark .jqx-checkbox-check-indeterminate,
+.jqx-datatable-tailwind-blue-dark .jqx-tree-grid-checkbox-tailwind-blue-dark[checked=true] {
+  color: var(--jqx-primary-color) !important;
+  background-color: var(--jqx-primary) !important;
+  border-color: var(--jqx-primary) !important;
+}
+
+.jqx-listbox-content-element-tailwind-blue-dark .jqx-checkbox-tailwind-blue-dark .jqx-checkbox-default-tailwind-blue-dark {
+  color: var(--jqx-background-color);
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-listbox-content-element-tailwind-blue-dark .jqx-checkbox-tailwind-blue-dark .jqx-checkbox-default-tailwind-blue-dark:hover {
+  border-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-listbox-content-element-tailwind-blue-dark .jqx-checkbox-tailwind-blue-dark .jqx-checkbox-check-checked {
+  color: var(--jqx-primary-color);
+  background-color: var(--jqx-primary);
+  border-color: var(--jqx-primary);
+  border-radius: var(--jqx-border-radius) !important;
+}
+
+.jqx-menu-item-disabled-tailwind-blue-dark {
+  color: inherit;
+}
+
+.jqx-grid-tailwind-blue-dark .jqx-checkbox-default-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-checkbox-check-checked-tailwind-blue-dark {
+  background: none;
+  font-family: jqx-icons;
+  display: flex;
+  justify-content: center;
+}
+
+.jqx-checkbox-check-checked-tailwind-blue-dark:after {
+  content: var(--jqx-icon-check);
+}
+
+.jqx-checkbox-check-indeterminate-tailwind-blue-dark {
+  width: 14px !important;
+  height: 14px !important;
+  position: relative;
+  top: 1px;
+  left: 1px;
+  background: var(--jqx-background);
+}
+
+.jqx-tree-tailwind-blue-dark .jqx-checkbox-check-indeterminate-tailwind-blue-dark {
+  width: 12px !important;
+  height: 12px !important;
+  top: 2px;
+  left: 2px;
+}
+
+.jqx-checkbox-hover-tailwind-blue-dark,
+.jqx-radiobutton-hover-tailwind-blue-dark {
+  background-color: var(--tailwind-input-background);
+  border-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-tree-item-tailwind-blue-dark,
+.jqx-tree-item-selected {
+  padding: 6px;
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-grid-pager-input-tailwind-blue-dark,
+.jqx-listbox-tailwind-blue-dark input {
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.jqx-grid-pager-input-tailwind-blue-dark:hover,
+.jqx-listbox-tailwind-blue-dark input:hover {
+  border: 1px solid var(--tailwind-input-border-hover) !important;
+}
+
+.jqx-grid-pager-input-tailwind-blue-dark:focus,
+.jqx-listbox-tailwind-blue-dark input:focus {
+  border: 1px solid var(--tailwind-accent) !important;
+  outline: 1px solid var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-listitem-element-tailwind-blue-dark .jqx-checkbox-default-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-listitem-state-hover-tailwind-blue-dark,
+.jqx-listitem-state-selected-tailwind-blue-dark,
+.jqx-listitem-state-normal-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.jqx-scheduler-edit-dialog-label-tailwind-blue-dark {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.jqx-scheduler-edit-dialog-field-tailwind-blue-dark {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.jqx-scheduler-edit-dialog-label-rtl-tailwind-blue-dark {
+  line-height: 35px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.jqx-scheduler-edit-dialog-field-rtl-tailwind-blue-dark {
+  line-height: 35px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.jqx-menu-horizontal-tailwind-blue-dark {
+  height: auto !important;
+}
+
+.jqx-menu-horizontal-tailwind-blue-dark .jqx-menu-item-top-tailwind-blue-dark {
+  padding: 8px;
+}
+
+.jqx-menu-item-top-tailwind-blue-dark,
+.jqx-menu-item-tailwind-blue-dark {
+  padding: 8px;
+}
+
+/*applied to a list item when the item is selected.*/
+.jqx-listitem-state-hover-tailwind-blue-dark,
+.jqx-menu-item-hover-tailwind-blue-dark,
+.jqx-tree-item-hover-tailwind-blue-dark,
+.jqx-calendar-cell-hover-tailwind-blue-dark,
+.jqx-grid-cell-hover-tailwind-blue-dark,
+.jqx-grid-cell-tailwind-blue-dark.jqx-fill-state-hover,
+.jqx-input-popup-tailwind-blue-dark .jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-input-popup-tailwind-blue-dark .jqx-fill-state-pressed-tailwind-blue-dark {
+  color: var(--jqx-background-color-hover);
+  border-color: var(--jqx-background-hover);
+  text-decoration: none;
+  background-color: var(--jqx-background-hover);
+  background-repeat: repeat-x;
+  outline: 0;
+  background: var(--jqx-background-hover);
+  box-shadow: none;
+  background-position: 0 0;
+}
+
+.jqx-scheduler-cell-hover-tailwind-blue-dark {
+  border-color: var(--jqx-primary) !important;
+  background: var(--jqx-primary) !important;
+  color: var(--jqx-primary-color) !important;
+}
+
+.jqx-listitem-state-selected-tailwind-blue-dark,
+.jqx-menu-item-selected-tailwind-blue-dark,
+.jqx-tree-item-selected-tailwind-blue-dark,
+.jqx-calendar-cell-selected-tailwind-blue-dark,
+.jqx-grid-cell-selected-tailwind-blue-dark,
+.jqx-menu-item-top-selected-tailwind-blue-dark,
+.jqx-grid-selectionarea-tailwind-blue-dark,
+.jqx-input-button-header-tailwind-blue-dark,
+.jqx-input-button-innerHeader-tailwind-blue-dark {
+  color: var(--jqx-primary-color) !important;
+  border-color: var(--jqx-primary) !important;
+  background: var(--jqx-primary) !important;
+  /* Old browsers */
+  box-shadow: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark .jqx-button-tailwind-blue-dark,
+.jqx-grid-cell-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-grid-cell-tailwind-blue-dark .jqx-button-tailwind-blue-dark.jqx-fill-state-pressed-tailwind-blue-dark {
+  box-shadow: none;
+  transition: none;
+}
+
+.jqx-menu-popup-tailwind-blue-dark {
+  opacity: 0;
+  transform-origin: top left;
+  box-shadow: var(--tailwind-box-shadow-8) !important;
+  background: var(--jqx-background) !important;
+}
+
+.jqx-menu-popup-tailwind-blue-dark .jqx-popup-tailwind-blue-dark {
+  box-shadow: none !important;
+}
+
+.jqx-menu-popup-tailwind-blue-dark.top {
+  transform: scaleY(0);
+  transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.jqx-menu-popup-tailwind-blue-dark.horizontal {
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.jqx-menu-popup-tailwind-blue-dark.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.jqx-popup-tailwind-blue-dark {
+  border: 1px solid var(--jqx-border);
+  background: var(--jqx-background);
+  box-shadow: var(--tailwind-box-shadow-8) !important;
+}
+
+.jqx-menu-popup-tailwind-blue-dark .jqx-popup-tailwind-blue-dark {
+  box-shadow: none;
+  border: none;
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-grid-column-sortdescbutton-tailwind-blue-dark,
+.jqx-datatable-tailwind-blue-dark .jqx-grid-column-sortascbutton-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+}
+
+.jqx-grid-column-sortascbutton-tailwind-blue-dark,
+.jqx-expander-arrow-bottom-tailwind-blue-dark,
+.jqx-window-collapse-button-tailwind-blue-dark,
+.jqx-menu-item-arrow-up-tailwind-blue-dark,
+.jqx-menu-item-arrow-up-selected-tailwind-blue-dark,
+.jqx-menu-item-arrow-top-up-tailwind-blue-dark,
+.jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-icon-arrow-up-hover-tailwind-blue-dark,
+.jqx-icon-arrow-up-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-column-sortascbutton-tailwind-blue-dark,
+.jqx-expander-arrow-bottom-tailwind-blue-dark,
+.jqx-window-collapse-button-tailwind-blue-dark,
+.jqx-menu-item-arrow-up-tailwind-blue-dark,
+.jqx-menu-item-arrow-up-selected-tailwind-blue-dark,
+.jqx-menu-item-arrow-top-up-tailwind-blue-dark,
+.jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-icon-arrow-up-hover-tailwind-blue-dark,
+.jqx-icon-arrow-up-selected-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+.jqx-window-collapse-button-tailwind-blue-dark {
+  position: relative;
+  right: 10px;
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.jqx-grid-column-sortascbutton-tailwind-blue-dark:after,
+.jqx-expander-arrow-bottom-tailwind-blue-dark:after,
+.jqx-window-collapse-button-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-up-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-up-selected-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-top-up-tailwind-blue-dark:after,
+.jqx-icon-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-arrow-up-hover-tailwind-blue-dark:after,
+.jqx-icon-arrow-up-selected-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-up);
+}
+
+.jqx-grid-column-sortascbutton-tailwind-blue-dark:after,
+.jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-up-tailwind-blue-dark:after {
+  content: var(--jqx-icon-sort-up);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-grid-column-sortdescbutton-tailwind-blue-dark,
+.jqx-expander-arrow-top-tailwind-blue-dark,
+.jqx-window-collapse-button-collapsed-tailwind-blue-dark,
+.jqx-menu-item-arrow-down-tailwind-blue-dark,
+.jqx-menu-item-arrow-down-selected-tailwind-blue-dark,
+.jqx-menu-item-arrow-down-tailwind-blue-dark,
+.jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-icon-arrow-down-hover-tailwind-blue-dark,
+.jqx-icon-arrow-down-selected-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-grid-column-sortdescbutton-tailwind-blue-dark:after,
+.jqx-expander-arrow-top-tailwind-blue-dark:after,
+.jqx-window-collapse-button-collapsed-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-down-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-down-selected-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-arrow-down-hover-tailwind-blue-dark:after,
+.jqx-icon-arrow-down-selected-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-down);
+}
+
+.jqx-grid-column-sortdescbutton-tailwind-blue-dark:after,
+.jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-down-tailwind-blue-dark:after {
+  content: var(--jqx-icon-sort-down);
+}
+
+.jqx-grid-column-header-tailwind-blue-dark[sort][sort-index] .sorticon {
+  display: flex;
+  align-items: center;
+  width: 45px;
+  flex-direction: row-reverse;
+  margin-right: 5px;
+}
+
+.jqx-grid-column-header-tailwind-blue-dark[sort][sort-index] .sorticon:before {
+  content: attr(order);
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+  padding: 5px;
+  margin-left: 5px;
+  height: 8px;
+  box-sizing: content-box;
+}
+
+.jqx-tabs-arrow-left-tailwind-blue-dark,
+.jqx-menu-item-arrow-left-selected-tailwind-blue-dark,
+.jqx-menu-item-arrow-top-left,
+.jqx-icon-arrow-left-tailwind-blue-dark,
+.jqx-icon-arrow-down-left-tailwind-blue-dark,
+.jqx-icon-arrow-left-selected-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.jqx-tabs-arrow-left-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-left-selected-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-top-left:after,
+.jqx-icon-arrow-left-tailwind-blue-dark:after,
+.jqx-icon-arrow-down-left-tailwind-blue-dark:after,
+.jqx-icon-arrow-left-selected-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-left);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-tabs-arrow-right-tailwind-blue-dark,
+.jqx-menu-item-arrow-right-selected-tailwind-blue-dark,
+.jqx-menu-item-arrow-top-right-tailwind-blue-dark,
+.jqx-icon-arrow-right-tailwind-blue-dark,
+.jqx-icon-arrow-right-hover-tailwind-blue-dark,
+.jqx-icon-arrow-right-selected-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-tabs-arrow-right-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-right-selected-tailwind-blue-dark:after,
+.jqx-menu-item-arrow-top-right-tailwind-blue-dark:after,
+.jqx-icon-arrow-right-tailwind-blue-dark:after,
+.jqx-icon-arrow-right-hover-tailwind-blue-dark:after,
+.jqx-icon-arrow-right-selected-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-right);
+}
+
+.jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark,
+.jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark:after,
+.jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-left);
+}
+
+.jqx-menu-item-arrow-left-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-menu-item-arrow-right-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-input-button-content-tailwind-blue-dark {
+  font-size: 10px;
+}
+
+.jqx-widget .jqx-grid-column-header-cell-tailwind-blue-dark {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 30px;
+}
+
+.jqx-widget .jqx-grid-row-cell-tailwind-blue-dark {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 30px;
+}
+
+.jqx-listbox-container-tailwind-blue-dark,
+.jqx-calendar-container-tailwind-blue-dark {
+  margin-left: -10px;
+}
+
+.jqx-calendar-container-tailwind-blue-dark .jqx-popup,
+.jqx-calendar-tailwind-blue-dark.jqx-popup,
+.jqx-listbox-tailwind-blue-dark.jqx-popup {
+  margin-left: 9px;
+}
+
+.jqx-dropdownbutton-popup,
+.jqx-calendar-tailwind-blue-dark.jqx-popup,
+.jqx-listbox-tailwind-blue-dark.jqx-popup,
+.jqx-grid-menu.jqx-popup {
+  transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top left;
+  display: block !important;
+}
+
+.jqx-dropdownbutton-popup.jqx-popup-show,
+.jqx-calendar-tailwind-blue-dark.jqx-popup-show,
+.jqx-listbox-tailwind-blue-dark.jqx-popup-show,
+.jqx-grid-menu.jqx-popup-show {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.jqx-dropdownbutton-popup.jqx-popup-up,
+.jqx-calendar-tailwind-blue-dark.jqx-popup-up,
+.jqx-listbox-tailwind-blue-dark.jqx-popup-up,
+.jqx-grid-menu.jqx-popup-up {
+  transform-origin: bottom left;
+}
+
+/* Cell and header dividers are divide-gray-200, as in a Tailwind UI table. The gray-500
+   control boundary belongs to the table's outer edge only; on every cell it turned the
+   grid into a lattice. */
+.jqx-widget-tailwind-blue-dark .jqx-grid-cell {
+  border-color: var(--tailwind-body-divider);
+  color: var(--jqx-background-color);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-column-header,
+.jqx-widget-tailwind-blue-dark .jqx-grid-group-cell {
+  border-color: var(--tailwind-body-divider);
+  color: var(--tailwind-header-color);
+  background: var(--tailwind-header-bg);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-column-header-tailwind-blue-dark {
+  border-color: var(--tailwind-body-divider);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tailwind-header-color);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-widget-header-tailwind-blue-dark:hover .jqx-grid-column-header-tailwind-blue-dark {
+  border-right-color: var(--tailwind-body-divider) !important;
+  border-bottom-color: var(--tailwind-body-divider) !important;
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-grid-cell-tailwind-blue-dark {
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-scheduler-cell-selected span {
+  color: var(--jqx-primary-color) !important;
+}
+
+.jqx-scheduler-time-column-tailwind-blue-dark,
+.jqx-scheduler-toolbar-tailwind-blue-dark {
+  background: var(--jqx-surface) !important;
+  color: var(--jqx-surface-color) !important;
+  border-color: var(--jqx-border) !important;
+}
+
+.jqx-scheduler-toolbar-tailwind-blue-dark .jqx-widget-tailwind-blue-dark {
+  border-color: transparent;
+  background: transparent;
+}
+
+.jqx-scheduler-toolbar-tailwind-blue-dark .jqx-widget-tailwind-blue-dark .jqx-action-button {
+  margin-left: unset !important;
+}
+
+.jqx-scheduler-toolbar-tailwind-blue-dark .jqx-widget-tailwind-blue-dark:hover {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+}
+
+.jqx-widget-tailwind-blue-dark.jqx-scheduler-tailwind-blue-dark .jqx-grid-cell-tailwind-blue-dark,
+.jqx-widget-tailwind-blue-dark.jqx-scheduler-tailwind-blue-dark .jqx-grid-column-header-tailwind-blue-dark {
+  border-bottom-color: var(--jqx-border);
+}
+
+.jqx-widget-tailwind-blue-dark.jqx-scheduler-tailwind-blue-dark td.jqx-grid-cell-tailwind-blue-dark span {
+  font-size: 10px;
+  color: var(--jqx-background-color);
+}
+
+.jqx-widget-tailwind-blue-dark.jqx-scheduler-tailwind-blue-dark td.jqx-grid-cell-tailwind-blue-dark.jqx-scheduler-cell-hover span,
+.jqx-widget-tailwind-blue-dark.jqx-scheduler-tailwind-blue-dark td.jqx-grid-cell-tailwind-blue-dark.jqx-scheduler-cell-selected span {
+  color: var(--jqx-primary-color) !important;
+  background: var(--jqx-primary) !important;
+}
+
+.jqx-passwordinput-password-icon-tailwind-blue-dark,
+.jqx-passwordinput-password-icon-rtl-tailwind-blue-dark {
+  background-image: none !important;
+  font-family: jqx-icons;
+  color: var(--jqx-background-color);
+}
+
+.jqx-passwordinput-password-icon-tailwind-blue-dark:after,
+.jqx-passwordinput-password-icon-rtl-tailwind-blue-dark:after {
+  content: var(--jqx-icon-visibility);
+}
+
+.jqx-combobox-tailwind-blue-dark .jqx-icon-close-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+.jqx-combobox-multi-item-tailwind-blue-dark {
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jqx-combobox-multi-item-tailwind-blue-dark a {
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.jqx-combobox-multi-item-tailwind-blue-dark .jqx-icon-close {
+  position: static !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+}
+
+.jqx-combobox-tailwind-blue-dark .jqx-icon-close-tailwind-blue-dark:after {
+  content: var(--jqx-icon-close-alt);
+  font-size: 10px;
+}
+
+.jqx-dropdownbutton-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark,
+.jqx-input-tailwind-blue-dark {
+  border-color: var(--jqx-border);
+  color: var(--jqx-background-color);
+  background-color: var(--jqx-background);
+}
+
+.jqx-combobox-content-tailwind-blue-dark,
+.jqx-datetimeinput-content-tailwind-blue-dark {
+  border-color: transparent;
+}
+
+.jqx-combobox-content-focus-tailwind-blue-dark,
+.jqx-combobox-state-focus-tailwind-blue-dark,
+.jqx-numberinput-focus-tailwind-blue-dark {
+  outline: none;
+}
+
+.jqx-input-group-tailwind-blue-dark {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  border: none;
+  box-shadow: none;
+  --jqx-border: var(--tailwind-input-border);
+}
+
+.jqx-input-group-tailwind-blue-dark.jqx-complex-input-group-tailwind-blue-dark {
+  min-height: 30px;
+}
+
+.jqx-input-group-tailwind-blue-dark.jqx-complex-input-group-tailwind-blue-dark .jqx-formatted-input-spin-button-tailwind-blue-dark:hover {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+}
+
+.jqx-input-group-tailwind-blue-dark.jqx-complex-input-group-tailwind-blue-dark .jqx-formatted-input-spin-button-tailwind-blue-dark.jqx-fill-state-pressed {
+  color: var(--jqx-primary-color);
+  background-color: var(--jqx-primary);
+}
+
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-input-tailwind-blue-dark {
+  border: none;
+  border-bottom: 1px solid var(--jqx-border);
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark,
+.jqx-input-group-tailwind-blue-dark input,
+.jqx-input-group-tailwind-blue-dark textarea {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  z-index: 9;
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark.jqx-fill-state-disabled,
+.jqx-input-group-tailwind-blue-dark input.jqx-fill-state-disabled,
+.jqx-input-group-tailwind-blue-dark textarea.jqx-fill-state-disabled {
+  background: var(--tailwind-input-disabled-background);
+  --jqx-background: var(--tailwind-input-disabled-background);
+  --jqx-surface: var(--tailwind-input-disabled-background);
+  pointer-events: none;
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark .jqx-action-button,
+.jqx-input-group-tailwind-blue-dark input .jqx-action-button,
+.jqx-input-group-tailwind-blue-dark textarea .jqx-action-button {
+  margin-left: -3px;
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark:hover,
+.jqx-input-group-tailwind-blue-dark input:hover,
+.jqx-input-group-tailwind-blue-dark textarea:hover {
+  border: 1px solid var(--tailwind-input-border-hover);
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark.underlined:hover,
+.jqx-input-group-tailwind-blue-dark input.underlined:hover,
+.jqx-input-group-tailwind-blue-dark textarea.underlined:hover {
+  border-bottom: 1px solid var(--tailwind-input-border-hover);
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark.underlined:focus,
+.jqx-input-group-tailwind-blue-dark input.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark input.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark input.underlined:focus,
+.jqx-input-group-tailwind-blue-dark textarea.underlined.jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark textarea.underlined.jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark textarea.underlined:focus {
+  border-bottom: 1px solid var(--tailwind-accent);
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark .jqx-input-tailwind-blue-dark:not(.underlined):focus,
+.jqx-input-group-tailwind-blue-dark input:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark input:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark input:not(.underlined):focus,
+.jqx-input-group-tailwind-blue-dark textarea:not(.underlined).jqx-fill-state-pressed,
+.jqx-input-group-tailwind-blue-dark textarea:not(.underlined).jqx-fill-state-focus,
+.jqx-input-group-tailwind-blue-dark textarea:not(.underlined):focus {
+  border: 1px solid var(--tailwind-accent);
+  outline: 1px solid var(--tailwind-accent) !important;
+  outline-offset: 0 !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-input-group-tailwind-blue-dark input {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.jqx-input-group-tailwind-blue-dark textarea {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  resize: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom-color: var(--jqx-border);
+}
+
+.jqx-numberinput-tailwind-blue-dark,
+.jqx-maskedinput-tailwind-blue-dark {
+  position: relative;
+}
+
+.jqx-numberinput-tailwind-blue-dark input {
+  height: 100% !important;
+}
+
+.jqx-input-tailwind-blue-dark.jqx-validator-error-element {
+  border-color: transparent !important;
+  border-bottom: 1px solid var(--tailwind-danger) !important;
+}
+
+.jqx-input-tailwind-blue-dark.underlined input,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark.underlined,
+.jqx-combobox-state-normal-tailwind-blue-dark.underlined,
+.jqx-numberinput-tailwind-blue-dark.underlined,
+.jqx-datetimeinput-tailwind-blue-dark.underlined {
+  background: var(--jqx-surface);
+  border-color: var(--jqx-surface);
+  border-radius: 0;
+  color: var(--jqx-surface-color);
+  box-shadow: none;
+  border-bottom: 1px solid var(--tailwind-body-divider);
+  --jqx-border: var(--tailwind-body-divider);
+  outline: none;
+}
+
+.jqx-input-tailwind-blue-dark.underlined input:not(.jqx-fill-state-focus):hover,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):hover,
+.jqx-combobox-state-normal-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):hover,
+.jqx-numberinput-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):hover,
+.jqx-datetimeinput-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):hover {
+  border-bottom-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-input-tailwind-blue-dark.underlined input:not(.jqx-fill-state-focus):focus,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):focus,
+.jqx-combobox-state-normal-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):focus,
+.jqx-numberinput-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):focus,
+.jqx-datetimeinput-tailwind-blue-dark.underlined:not(.jqx-fill-state-focus):focus {
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark {
+  border-radius: 0;
+}
+
+.jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark>div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark {
+  --jqx-font-size: 12px;
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark input {
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark input:hover {
+  border: 1px solid var(--tailwind-input-border-hover) !important;
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark input:focus {
+  border: 1px solid var(--tailwind-accent) !important;
+  outline: 1px solid var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark td:hover {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+}
+
+.jqx-date-time-input-popup-tailwind-blue-dark table td a {
+  text-decoration: none;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined),
+.jqx-text-area-tailwind-blue-dark:not(.underlined),
+.jqx-numberinput-tailwind-blue-dark:not(.underlined),
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined),
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined),
+.jqx-combobox-tailwind-blue-dark:not(.underlined),
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined) {
+  --jqx-border: var(--tailwind-input-border);
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+  border-color: var(--jqx-background);
+  border: 1px solid var(--jqx-border);
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-datetimeinput-tailwind-blue-dark {
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-disabled {
+  background: var(--tailwind-input-disabled-background);
+  --jqx-background: var(--tailwind-input-disabled-background);
+  --jqx-surface: var(--tailwind-input-disabled-background);
+  pointer-events: none;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-text-area-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-combobox-tailwind-blue-dark:not(.underlined) .jqx-action-button,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined) .jqx-action-button {
+  margin-left: -2px;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button {
+  margin-left: -2px !important;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined):hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined):hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined):hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined):hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined):hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined):hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined):hover {
+  border: 1px solid var(--tailwind-input-border-hover);
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined):focus,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-text-area-tailwind-blue-dark:not(.underlined):focus,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined):focus,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined):focus,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined):focus,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-combobox-tailwind-blue-dark:not(.underlined):focus,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined):focus {
+  border: 1px solid var(--tailwind-accent);
+  outline: 1px solid var(--tailwind-accent) !important;
+  outline-offset: 0 !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-combobox-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-pressed .jqx-icon-time-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-fill-state-focus .jqx-icon-time-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined):focus .jqx-icon-time-tailwind-blue-dark {
+  color: var(--tailwind-type-primary) !important;
+  font-weight: 400;
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-numberinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark:hover,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).jqx-combobox-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark:hover {
+  background-color: var(--jqx-background-hover);
+  border-color: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+}
+
+textarea.jqx-input-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-text-area-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-numberinput-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-dropdownbutton-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-dropdownlist-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-combobox-tailwind-blue-dark:not(.underlined).underlined,
+.jqx-datetimeinput-tailwind-blue-dark:not(.underlined).underlined {
+  border: none;
+  border-bottom: 1px solid var(--jqx-border);
+}
+
+.jqx-combobox-tailwind-blue-dark .jqx-combobox-arrow-normal-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark .jqx-action-button-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark .jqx-action-button-rtl-tailwind-blue-dark {
+  background-color: var(--jqx-background);
+  border-color: var(--jqx-background);
+  color: var(--jqx-background-color);
+}
+
+.jqx-datetimeinput-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark>div,
+.jqx-numberinput-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark>div,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark>div,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark>div>div,
+.jqx-combobox-state-normal-tailwind-blue-dark,
+.jqx-combobox-state-normal-tailwind-blue-dark>div,
+.jqx-combobox-state-normal-tailwind-blue-dark>div>div {
+  overflow: visible !important;
+}
+
+.jqx-input-tailwind-blue-dark input:focus {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: var(--tailwind-accent);
+}
+
+.jqx-input-tailwind-blue-dark input,
+input[type=text].jqx-input-tailwind-blue-dark,
+input[type=password].jqx-input-tailwind-blue-dark,
+input[type=text].jqx-widget-content-tailwind-blue-dark,
+input[type=textarea].jqx-widget-content-tailwind-blue-dark,
+textarea.jqx-input-tailwind-blue-dark {
+  --jqx-border: var(--tailwind-input-border);
+  font-size: var(--jqx-font-size);
+  font-family: var(--jqx-font-family);
+  resize: none;
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+  border-radius: var(--jqx-border-radius);
+  /* rounded-md, as Tailwind UI inputs */
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid var(--jqx-border);
+}
+
+.jqx-input-tailwind-blue-dark input.underlined,
+input[type=text].jqx-input-tailwind-blue-dark.underlined,
+input[type=password].jqx-input-tailwind-blue-dark.underlined,
+input[type=text].jqx-widget-content-tailwind-blue-dark.underlined,
+input[type=textarea].jqx-widget-content-tailwind-blue-dark.underlined,
+textarea.jqx-input-tailwind-blue-dark.underlined {
+  border: none;
+  border-bottom: 1px solid var(--jqx-border);
+}
+
+input[type=text].jqx-widget-content-tailwind-blue-dark,
+input[type=textarea].jqx-widget-content-tailwind-blue-dark {
+  height: 100%;
+}
+
+.jqx-input-label {
+  visibility: inherit;
+}
+
+.jqx-input-bar {
+  visibility: inherit;
+}
+
+input.underlined:focus~.jqx-input-label-tailwind-blue-dark,
+textarea.underlined:focus~.jqx-input-label-tailwind-blue-dark .jqx-input-widget-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-text-area-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-dropdownlist-state-selected-tailwind-blue-dark.underlined .jqx-input-label,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-combobox-state-normal-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-combobox-tailwind-blue-dark.underlined .jqx-input-label.focused,
+.jqx-dropdownlist-tailwind-blue-dark.underlined .jqx-input-label.focused,
+.jqx-datetimeinput-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-maskedinput-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-numberinput-tailwind-blue-dark[hint=true].underlined .jqx-input-label,
+.jqx-formattedinput-tailwind-blue-dark[hint=true].underlined .jqx-input-label {
+  top: -15px;
+  font-size: 12px;
+  color: var(--tailwind-accent);
+  opacity: 1 !important;
+}
+
+.jqx-dropdownlist-tailwind-blue-dark[default-placeholder=true] .jqx-input-label {
+  visibility: hidden;
+}
+
+.jqx-input-widget-tailwind-blue-dark.jqx-rtl>input {
+  direction: rtl;
+}
+
+.jqx-input-label-tailwind-blue-dark {
+  color: var(--jqx-background-color);
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  opacity: 0.5;
+  top: calc(50% - 7px);
+  transition: 300ms ease all;
+}
+
+input:focus~.jqx-input-label-tailwind-blue-dark,
+textarea:focus~.jqx-input-label-tailwind-blue-dark,
+.jqx-widget-tailwind-blue-dark[hint=true] .jqx-input-label-tailwind-blue-dark {
+  opacity: 0 !important;
+}
+
+.jqx-input-group-tailwind-blue-dark.jqx-fill-state-disabled {
+  pointer-events: none;
+}
+
+.jqx-input-label.initial {
+  transition: none;
+}
+
+.jqx-input-group-tailwind-blue-dark.underlined input:focus~.jqx-input-bar:before,
+.jqx-input-group-tailwind-blue-dark.underlined textarea:focus~.jqx-input-bar:before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-dropdownlist-state-selected-tailwind-blue-dark .jqx-input-bar:before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-dropdownlist-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-dropdownbutton-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-combobox-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-input-bar.focused::before,
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-combobox-state-selected-tailwind-blue-dark .jqx-input-bar:before,
+.jqx-widget-tailwind-blue-dark.underlined input:focus~.jqx-input-bar:before,
+.jqx-widget-tailwind-blue-dark.underlined textarea:focus~.jqx-input-bar:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-dropdownlist-state-selected-tailwind-blue-dark .jqx-input-bar:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-dropdownlist-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-dropdownbutton-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-combobox-tailwind-blue-dark .jqx-input-bar.focused:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-input-bar.focused::before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-combobox-state-selected-tailwind-blue-dark .jqx-input-bar:before {
+  width: 100%;
+}
+
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-input-bar-tailwind-blue-dark,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-input-bar-tailwind-blue-dark {
+  position: relative;
+  display: block;
+  z-index: 1;
+}
+
+.jqx-input-group-tailwind-blue-dark.underlined .jqx-input-bar-tailwind-blue-dark:before,
+.jqx-widget-tailwind-blue-dark.underlined .jqx-input-bar-tailwind-blue-dark:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: var(--jqx-primary);
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+.jqx-formatted-input-spin-button-tailwind-blue-dark,
+.jqx-input-group-addon-tailwind-blue-dark {
+  border-color: var(--jqx-background);
+  color: var(--jqx-background-color);
+  background: var(--jqx-background);
+}
+
+.jqx-dropdownlist-state-selected-tailwind-blue-dark,
+.jqx-combobox-state-selected-tailwind-blue-dark {
+  color: var(--tailwind-accent);
+  background: var(--jqx-background);
+  border-color: var(--jqx-background);
+}
+
+.jqx-dropdownlist-state-normal-tailwind-blue-dark .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-combobox-state-normal-tailwind-blue-dark .jqx-icon-arrow-down-tailwind-blue-dark,
+.sorticon.descending .jqx-grid-column-sorticon-tailwind-blue-dark,
+.jqx-tree-item-arrow-expand-tailwind-blue-dark,
+.jqx-expander-header-tailwind-blue-dark .jqx-icon-arrow-down {
+  transform: rotate(0deg);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-out;
+}
+
+.jqx-expander-header-tailwind-blue-dark .jqx-icon-arrow-up {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+  font-family: jqx-icons;
+  background-image: none;
+}
+
+.jqx-expander-header-tailwind-blue-dark .jqx-icon-arrow-up:after {
+  content: var(--jqx-icon-arrow-down);
+  margin-left: 3px;
+}
+
+.jqx-tree-item-arrow-expand-tailwind-blue-dark,
+.jqx-tree-item-arrow-collapse-tailwind-blue-dark {
+  font-size: 16px;
+}
+
+.jqx-tree-item-arrow-expand-tailwind-blue-dark {
+  transform: rotate(180deg);
+}
+
+.jqx-tree-item-arrow-expand-tailwind-blue-dark:after {
+  content: var(--jqx-icon-arrow-up);
+  margin-left: 2px;
+}
+
+.jqx-tree-item-arrow-collapse-tailwind-blue-dark {
+  transform: rotate(0deg);
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease-out;
+}
+
+.jqx-dropdownlist-state-selected-tailwind-blue-dark .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-combobox-state-selected-tailwind-blue-dark .jqx-icon-arrow-down-tailwind-blue-dark,
+.sorticon.ascending .jqx-grid-column-sorticon-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+}
+
+.jqx-combobox-state-selected-tailwind-blue-dark .jqx-icon-arrow-down-tailwind-blue-dark {
+  left: -1px;
+}
+
+.jqx-listbox-container {
+  margin-top: 1px;
+}
+
+input[type=text].jqx-input-tailwind-blue-dark:-webkit-input-placeholder,
+input[type=text].jqx-widget-content-tailwind-blue-dark:-webkit-input-placeholder,
+input[type=textarea].jqx-widget-content-tailwind-blue-dark:-webkit-input-placeholder,
+textarea.jqx-input-tailwind-blue-dark:-webkit-input-placeholder {
+  color: var(--tailwind-type-disabled);
+}
+
+.jqx-combobox-content-focus-tailwind-blue-dark,
+.jqx-combobox-state-focus-tailwind-blue-dark,
+.jqx-fill-state-focus-tailwind-blue-dark,
+.jqx-numberinput-focus-tailwind-blue-dark {
+  outline: none;
+}
+
+.jqx-popup-tailwind-blue-dark.jqx-fill-state-focus-tailwind-blue-dark {
+  outline: none;
+  border-color: var(--jqx-border) !important;
+}
+
+.jqx-datetimeinput-content,
+.jqx-datetimeinput-container {
+  overflow: visible !important;
+}
+
+.jqx-text-area-tailwind-blue-dark,
+.jqx-text-area-tailwind-blue-dark>div {
+  overflow: visible !important;
+}
+
+.jqx-text-area-element-tailwind-blue-dark {
+  box-sizing: border-box;
+}
+
+.jqx-pivotgrid-content-wrapper.jqx-fill-state-normal-tailwind-blue-dark,
+.jqx-pivotgrid-content-wrapper.jqx-grid-cell-normal-tailwind-blue-dark {
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-expand-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-collapse-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-collapse-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-expand-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-tabs-title-selected-top-tailwind-blue-dark,
+.jqx-tabs-selection-tracker-top-tailwind-blue-dark {
+  border-color: transparent;
+  filter: none;
+  background: inherit;
+  color: inherit;
+  box-shadow: none;
+}
+
+.jqx-grid-cell-filter-row-tailwind-blue-dark {
+  background-color: var(--jqx-surface);
+}
+
+.jqx-tabs-title-tailwind-blue-dark,
+.jqx-ribbon-item-tailwind-blue-dark {
+  color: inherit;
+}
+
+.jqx-ribbon-item-selected-tailwind-blue-dark {
+  background: inherit;
+}
+
+.jqx-tabs-title-selected-bottom-tailwind-blue-dark,
+.jqx-tabs-title-selected-top-tailwind-blue-dark {
+  color: var(--tailwind-accent);
+  font-weight: 500;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.jqx-tabs-title.jqx-fill-state-hover-tailwind-blue-dark {
+  border-color: transparent;
+}
+
+.jqx-tabs {
+  border: 0;
+  background: transparent;
+}
+
+.jqx-tabs .jqx-tabs-header .jqx-item {
+  color: var(--tailwind-type-secondary);
+}
+
+/* Tailwind UI's underline tabs: inactive text-gray-500, the selected one text-indigo-600
+   over its border-indigo-500. Matches the specificity of the rule above, which otherwise
+   painted the selected tab the same as the rest. */
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-tabs-title-selected-top-tailwind-blue-dark,
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-tabs-title-selected-bottom-tailwind-blue-dark {
+  color: var(--tailwind-accent);
+}
+
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-fill-state-pressed:hover {
+  background: var(--tailwind-btn-secondary-bg-hover);
+}
+
+.jqx-tabs .jqx-tabs-header .jqx-item.jqx-fill-state-hover {
+  border-color: var(--tailwind-btn-secondary-bg-hover);
+  background: var(--tailwind-btn-secondary-bg-hover);
+}
+
+.jqx-ribbon-item-tailwind-blue-dark {
+  cursor: pointer;
+}
+
+.jqx-ribbon-item-selected-tailwind-blue-dark {
+  color: var(--tailwind-accent);
+  font-weight: 500;
+  border-color: transparent;
+}
+
+.jqx-ribbon-item-hover-tailwind-blue-dark {
+  background: var(--jqx-background-hover);
+  color: var(--jqx-background-color-hover);
+}
+
+.jqx-ribbon-header-top-tailwind-blue-dark {
+  border-color: transparent;
+  border-bottom-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-bottom-tailwind-blue-dark {
+  border-color: transparent;
+  border-top-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-right-tailwind-blue-dark {
+  border-color: transparent;
+  border-left-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-left-tailwind-blue-dark {
+  border-color: transparent;
+  border-right-color: var(--jqx-border);
+}
+
+.jqx-tabs-title-selected-bottom-tailwind-blue-dark,
+.jqx-tabs-selection-tracker-bottom-tailwind-blue-dark {
+  border-color: transparent;
+  border-top: 1px solid var(--jqx-background);
+  filter: none;
+  background: var(--jqx-background);
+  box-shadow: none;
+}
+
+.jqx-tabs-tailwind-blue-dark,
+.jqx-ribbon-tailwind-blue-dark {
+  border-color: transparent;
+}
+
+.jqx-tabs-header-tailwind-blue-dark {
+  background: transparent;
+}
+
+.jqx-ribbon-header-tailwind-blue-dark {
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-tabs-position-bottom .jqx-tabs-header-tailwind-blue-dark {
+  border-color: transparent;
+}
+
+.jqx-layout-tailwind-blue-dark .jqx-tabs-header-tailwind-blue-dark,
+.jqx-layout-tailwind-blue-dark .jqx-ribbon-header-tailwind-blue-dark {
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-tabs-title-bottom {
+  border-color: transparent;
+}
+
+.jqx-tabs-title-hover-top-tailwind-blue-dark,
+.jqx-tabs-title-hover-bottom-tailwind-blue-dark,
+.jqx-tabs-header-tailwind-blue-dark {
+  box-shadow: none !important;
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-tabs-content-tailwind-blue-dark {
+  box-sizing: border-box;
+  border: 1px solid var(--jqx-border);
+  border-top-color: transparent;
+  padding: 5px;
+}
+
+.jqx-tabs-bar-tailwind-blue-dark {
+  position: absolute;
+  bottom: 0;
+  background: var(--jqx-primary);
+  height: 2px;
+  z-index: 10;
+  transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+.jqx-tabs-bar-tailwind-blue-dark.vertical {
+  width: 2px;
+}
+
+.jqx-tabs-position-bottom .jqx-tabs-bar-tailwind-blue-dark {
+  top: 0;
+}
+
+.jqx-layout-tailwind-blue-dark {
+  background-color: var(--jqx-background);
+}
+
+.jqx-kanban-column-header-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jqx-kanban-column-header-collapsed-tailwind-blue-dark {
+  background: var(--jqx-surface);
+  color: var(--jqx-surface-color);
+}
+
+.jqx-kanban-column-header-button-tailwind-blue-dark {
+  width: unset;
+  height: unset;
+  position: static;
+  margin-top: unset;
+  top: unset;
+  right: unset;
+}
+
+.jqx-kanban-column-header-button-tailwind-blue-dark .jqx-window-collapse-button {
+  right: unset;
+}
+
+.jqx-kanban-column-header-collapsed .jqx-kanban-column-header-button-tailwind-blue-dark {
+  position: absolute;
+  bottom: 10px;
+  right: 50%;
+  margin-left: -10px;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark {
+  border-radius: 0px;
+  font-size: 12px !important;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark.jqx-fill-state-hover-tailwind-blue-dark {
+  outline: 2px var(--tailwind-body-divider);
+  overflow: hidden;
+  position: relative;
+  border-radius: 9999px;
+  border-color: var(--tailwind-body-divider) !important;
+  background: var(--tailwind-track) !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark.jqx-fill-state-pressed {
+  border-color: var(--jqx-primary) !important;
+  background: var(--jqx-primary) !important;
+  color: var(--jqx-primary-color) !important;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+}
+
+/* Today is the Tailwind UI calendar's: text-indigo-600 font-semibold on the page, no fill.
+   It was gray-500 on a gray-200 fill, 3.90:1, and gray-400 on gray-700 in the dark variant,
+   4.06:1 - both under 4.5. The accent is 6.29:1 on white and 5.95:1 on gray-900. */
+.jqx-calendar-cell-today-tailwind-blue-dark {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: var(--tailwind-accent) !important;
+  font-weight: 600;
+}
+
+.jqx-calendar-cell-year-tailwind-blue-dark,
+.jqx-calendar-cell-decade-tailwind-blue-dark {
+  border-radius: 0px !important;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark.jqx-fill-state-pressed-tailwind-blue-dark:after {
+  content: "";
+  width: calc(100% - 4px);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: calc(100% - 4px);
+}
+
+.jqx-calendar-cell-year-tailwind-blue-dark,
+.jqx-calendar-cell-decade-tailwind-blue-dark {
+  border-radius: 0px;
+}
+
+.jqx-calendar-title-container-tailwind-blue-dark {
+  height: 40px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 30px 30px 20px;
+}
+
+.jqx-calendar-title-container-tailwind-blue-dark td {
+  height: 100%;
+}
+
+.jqx-calendar-title-container-tailwind-blue-dark td:first-child {
+  order: 1;
+}
+
+.jqx-calendar-title-container-tailwind-blue-dark td:last-child {
+  order: 2;
+}
+
+.jqx-calendar-title-content-tailwind-blue-dark {
+  font-weight: bold;
+  padding-left: 26px !important;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.jqx-calendar-column-cell-tailwind-blue-dark {
+  color: var(--jqx-background-color);
+}
+
+.jqx-icon-time-tailwind-blue-dark,
+.jqx-icon-time-hover-tailwind-blue-dark,
+.jqx-icon-time-pressed-tailwind-blue-dark {
+  background-image: none !important;
+  font-family: "jqx-icons";
+  display: flex;
+  font-family: "jqx-icons";
+  font-size: 16px;
+  align-content: center;
+  justify-content: center;
+  left: initial !important;
+  margin-top: 0px;
+  top: 0px;
+  left: 0px;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.jqx-icon-time-tailwind-blue-dark:after,
+.jqx-icon-time-hover-tailwind-blue-dark:after,
+.jqx-icon-time-pressed-tailwind-blue-dark:after {
+  content: var(--jqx-icon-clock);
+  font-size: 12px;
+}
+
+.jqx-icon-calendar-tailwind-blue-dark,
+.jqx-icon-calendar-hover-tailwind-blue-dark,
+.jqx-icon-calendar-pressed-tailwind-blue-dark {
+  background-image: none !important;
+  font-family: "jqx-icons";
+  left: 0;
+  top: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.jqx-icon-calendar-tailwind-blue-dark:after,
+.jqx-icon-calendar-hover-tailwind-blue-dark:after,
+.jqx-icon-calendar-pressed-tailwind-blue-dark:after {
+  content: var(--jqx-icon-calendar-alt);
+}
+
+.jqx-tabs-close-button-tailwind-blue-dark,
+.jqx-tabs-close-button-selected-tailwind-blue-dark,
+.jqx-tabs-close-button-hover-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+/* jqx.base.css sets the button's font-size to 1px, so the glyph needs a real size. */
+.jqx-tabs-close-button-tailwind-blue-dark:after {
+  content: var(--jqx-icon-close);
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark .jqx-icon-arrow-up-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark .jqx-icon-arrow-down-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark .jqx-icon-arrow-left-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-tailwind-blue-dark .jqx-icon-arrow-right-selected-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-expand-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-collapse-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-collapse-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-cell-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark>.jqx-grid-group-expand-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-group-collapse-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-group-collapse-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-grid-group-expand-rtl-tailwind-blue-dark {
+  background-image: none;
+}
+
+.jqx-icon-arrow-first-tailwind-blue-dark,
+.jqx-icon-arrow-last-tailwind-blue-dark {
+  background-image: none;
+  font-family: jqx-icons;
+}
+
+.jqx-icon-arrow-first-tailwind-blue-dark:after {
+  content: var(--jqx-icon-first-page);
+}
+
+.jqx-icon-arrow-last-tailwind-blue-dark:after {
+  content: var(--jqx-icon-last-page);
+}
+
+/* Ripple effect */
+.ripple {
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+}
+
+.ink {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  border-radius: 0%;
+  transform: scaleX(0);
+  background: rgba(var(--jqx-primary-rgb), 0.5);
+  opacity: 0.25;
+}
+
+.jqx-scrollbar-tailwind-blue-dark .jqx-icon-arrow-up,
+.jqx-scrollbar-tailwind-blue-dark .jqx-icon-arrow-down,
+.jqx-scrollbar-tailwind-blue-dark .jqx-icon-arrow-right,
+.jqx-scrollbar-tailwind-blue-dark .jqx-icon-arrow-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outlined .ink,
+.flat .ink {
+  background: rgba(var(--jqx-primary-rgb), 0.5);
+  overflow: hidden;
+}
+
+.ink.animate {
+  animation: ripple 0.7s ease;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jqx-tree-tailwind-blue-dark .jqx-checkbox-tailwind-blue-dark {
+  margin-top: 6px !important;
+  border-radius: var(--jqx-border-radius) !important;
+}
+
+.jqx-tree-item-arrow-expand-tailwind-blue-dark,
+.jqx-tree-item-arrow-collapse-tailwind-blue-dark {
+  margin-top: 6px !important;
+}
+
+.jqx-checkbox-tailwind-blue-dark .ripple,
+.jqx-radiobutton-tailwind-blue-dark .ripple {
+  overflow: visible;
+}
+
+.jqx-checkbox-tailwind-blue-dark .ink,
+.jqx-radiobutton-tailwind-blue-dark .ink {
+  transform: scale(0);
+  background: var(--jqx-primary);
+  border-radius: 50%;
+}
+
+.jqx-checkbox-tailwind-blue-dark.effect .ink.animate,
+.jqx-radiobutton-tailwind-blue-dark.effect .ink.animate {
+  animation: checkRipple 0.3s ease;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jqx-checkbox-tailwind-blue-dark.effect .ink.active,
+.jqx-radiobutton-tailwind-blue-dark.effect .ink.active {
+  opacity: 0.2;
+  transform: scale(2);
+}
+
+.jqx-checkbox-default-tailwind-blue-dark.active .ink,
+.jqx-radiobutton-default-tailwind-blue-dark.active .ink {
+  opacity: 0.2;
+  transform: scale(2);
+}
+
+@keyframes checkRipple {
+  100% {
+    opacity: 0.2;
+    transform: scale(2);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-delete-tailwind-blue-dark {
+  background-image: url("images/icon-delete-white.png");
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-edit-tailwind-blue-dark {
+  background-image: url("images/icon-edit-white.png");
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-save-tailwind-blue-dark {
+  background-image: url("images/icon-save-white.png");
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-cancel-tailwind-blue-dark {
+  background-image: url("images/icon-cancel-white.png");
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-search-tailwind-blue-dark {
+  background-image: url("images/search_white.png");
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-icon-plus-tailwind-blue-dark {
+  background-image: url("images/plus_white.png");
+}
+
+.jqx-menu-minimized-button-tailwind-blue-dark {
+  padding: 0px !important;
+}
+
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-menu-minimized-button-tailwind-blue-dark {
+  background-image: url("images/icon-menu-minimized-white.png");
+}
+
+.jqx-editor-tailwind-blue-dark {
+  --jqx-border: var(--tailwind-body-divider) !important;
+}
+
+.jqx-editor-toolbar-icon-tailwind-blue-dark {
+  background: var(--tailwind-editor-icons) no-repeat;
+}
+
+.jqx-fill-state-hover-tailwind-blue-dark .jqx-editor-toolbar-icon-fontsize-tailwind-blue-dark,
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-editor-toolbar-icon-fontsize-tailwind-blue-dark,
+.jqx-fill-state-hover-tailwind-blue-dark .jqx-editor-toolbar-icon-forecolor-tailwind-blue-dark,
+.jqx-fill-state-pressed-tailwind-blue-dark .jqx-editor-toolbar-icon-forecolor-tailwind-blue-dark {
+  background: var(--tailwind-editor-icons) no-repeat;
+}
+
+.jqx-editor-toolbar-button-tailwind-blue-dark {
+  border-color: var(--jqx-border);
+  box-shadow: none !important;
+  color: var(--jqx-background-color);
+}
+
+.jqx-time-picker .jqx-main-container {
+  background: var(--jqx-background);
+}
+
+/*applied to the timepicker*/
+.jqx-needle-central-circle-tailwind-blue-dark {
+  fill: var(--jqx-primary);
+}
+
+.jqx-time-picker-tailwind-blue-dark .jqx-label-tailwind-blue-dark {
+  fill: var(--jqx-background-color);
+}
+
+.jqx-needle-tailwind-blue-dark {
+  fill: var(--jqx-primary);
+}
+
+.jqx-time-picker .jqx-header .jqx-selected-tailwind-blue-dark:focus {
+  outline: 2px solid var(--tailwind-accent);
+  box-shadow: 0px 0px 4px 2px rgba(var(--jqx-primary-rgb), 0.125);
+}
+
+.jqx-svg-picker-tailwind-blue-dark:focus {
+  border: 1px solid var(--tailwind-accent) !important;
+}
+
+.jqx-validator-hint-tailwind-blue-dark {
+  background: var(--tailwind-danger);
+  border-color: var(--tailwind-danger);
+  padding: 10px;
+}
+
+.jqx-validator-hint-tailwind-blue-dark img {
+  display: none;
+}
+
+.jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-grid-group-collapse-tailwind-blue-dark:after {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.jqx-datatable-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-datatable-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark:after {
+  margin-left: -10px;
+}
+
+.jqx-grid-pager-tailwind-blue-dark .jqx-dropdownlist-tailwind-blue-dark {
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+}
+
+.jqx-grid-pager-input-tailwind-blue-dark {
+  padding-right: 4px !important;
+}
+
+.jqx-grid-cell-selected-tailwind-blue-dark {
+  background: rgba(var(--jqx-primary-rgb), 1) !important;
+}
+
+.jqx-grid-cell-selected-tailwind-blue-dark span {
+  color: inherit !important;
+}
+
+@keyframes css-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.jqx-loader-tailwind-blue-dark {
+  background: transparent;
+  color: var(--tailwind-theme-primary);
+  box-shadow: unset !important;
+  border: none !important;
+}
+
+.jqx-loader-tailwind-blue-dark .jqx-loader-icon {
+  background-image: unset;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--tailwind-accent) var(--tailwind-track) var(--tailwind-track);
+  border-image: initial;
+  animation-name: css-spinner;
+  animation-duration: 1.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
+  width: 28px;
+  height: 28px;
+  position: relative;
+  margin: 0 auto 25px auto;
+}
+
+/* ALERT */
+.jqx-notification-tailwind-blue-dark {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  padding: 3px 10px;
+  border: 0;
+  font-size: 12px;
+  color: var(--tailwind-alert-color);
+  box-shadow: unset !important;
+}
+
+.jqx-notification-tailwind-blue-dark>div {
+  display: flex;
+  align-items: center;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-primary {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-theme-light) !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-info {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--jqx-background-hover) !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-success {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-success-bg) !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-warning {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-warning-bg) !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-severe-warning {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-severe-warning-bg) !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-error {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-error-bg) !important;
+}
+
+/* The mail and time templates kept the base theme's blue and charcoal fills and white
+   rasters; they follow the primary and info alerts instead. */
+.jqx-notification-tailwind-blue-dark.jqx-notification-mail {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--tailwind-theme-light) !important;
+  text-shadow: none !important;
+}
+
+.jqx-notification-tailwind-blue-dark.jqx-notification-time {
+  color: var(--tailwind-alert-color) !important;
+  background-color: var(--jqx-background-hover) !important;
+  text-shadow: none !important;
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-mail,
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-time {
+  background-image: none;
+  -webkit-mask: url("images/time.png") left center / auto no-repeat;
+  mask: url("images/time.png") left center / auto no-repeat;
+  background-color: var(--tailwind-type-secondary);
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-mail {
+  -webkit-mask-image: url("images/mail.png");
+  mask-image: url("images/mail.png");
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-info,
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-primary,
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-warning {
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-type-secondary);
+  width: 30px;
+  height: 25px;
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-serve-warning {
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-severe-warning-color);
+  width: 30px;
+  height: 25px;
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-success {
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-success-color);
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-error {
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23000'/%3E%3C/svg%3E") left center / auto no-repeat;
+  background-color: var(--tailwind-error-color);
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-icon.jqx-notification-icon-rtl {
+  -webkit-mask-position: right center;
+  mask-position: right center;
+}
+
+.jqx-notification-tailwind-blue-dark .jqx-notification-close-button {
+  background-image: none !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23000'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  background-color: var(--tailwind-alert-color) !important;
+  right: 0 !important;
+  top: 0 !important;
+  background-position: center center !important;
+}
+
+.jqx-editor-tailwind-blue-dark .jqx-button-tailwind-blue-dark {
+  --jqx-border: var(--tailwind-body-divider);
+}
+
+.jqx-editor-tailwind-blue-dark .jqx-button-tailwind-blue-dark:hover {
+  border-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-editor-tailwind-blue-dark .jqx-button-tailwind-blue-dark:focus {
+  border-color: var(--tailwind-accent);
+  outline-color: var(--tailwind-accent);
+  color: var(--tailwind-type-primary);
+}
+
+/* Structural edges inside a widget (a popup list, a grid's panes) are dividers. Editable
+   controls nested in a widget - a grid's filter row and pager, the scheduler's dialog - keep
+   the control border: at gray-200 they are 1.2:1 on white (WCAG 1.4.11). */
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) .jqx-widget-tailwind-blue-dark:not(.jqx-button-tailwind-blue-dark):not(.jqx-input):not(.jqx-dropdownlist):not(.jqx-combobox):not(.jqx-datetimeinput):not(.jqx-numberinput),
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input:not(.jqx-input):not(.jqx-grid-pager-input):not(.jqx-input-tailwind-blue-dark > input) {
+  --jqx-border: var(--tailwind-body-divider) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) .jqx-widget-tailwind-blue-dark:not(.jqx-button-tailwind-blue-dark),
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input {
+  border-radius: var(--jqx-border-radius) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) .jqx-widget-tailwind-blue-dark:not(.jqx-button-tailwind-blue-dark).jqx-input:hover,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-input:hover {
+  border-color: var(--tailwind-input-border-hover) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) .jqx-widget-tailwind-blue-dark:not(.jqx-button-tailwind-blue-dark).jqx-input:focus,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-input:focus {
+  border-color: var(--tailwind-accent) !important;
+  outline-color: var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input {
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea.jqx-grid-cell-edit,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-grid-cell-edit {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  width: calc(100% - 2px) !important;
+  height: calc(100% - 2px) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--tailwind-input-border) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea.jqx-grid-cell-edit:hover,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-grid-cell-edit:hover {
+  border-color: var(--tailwind-input-border-hover) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea.jqx-grid-cell-edit:focus,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-grid-cell-edit:focus {
+  border-color: var(--tailwind-accent) !important;
+  outline-color: var(--tailwind-accent) !important;
+  color: var(--tailwind-type-primary) !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea:hover,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input:hover {
+  border-color: var(--tailwind-input-border-hover);
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea.jqx-filter-input,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-filter-input {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea.jqx-filter-input:focus,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input.jqx-filter-input:focus {
+  outline: 1px solid var(--tailwind-accent);
+}
+
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) textarea:focus,
+.jqx-widget-tailwind-blue-dark:not(.jqx-input-group):not(.jqx-form-tailwind-blue-dark) input:focus {
+  border-color: var(--tailwind-accent);
+  outline-color: var(--tailwind-accent);
+  color: var(--tailwind-type-primary);
+}
+
+.jqx-form-tailwind-blue-dark .jqx-widget-tailwind-blue-dark:not(.jqx-button-tailwind-blue-dark),
+.jqx-form-tailwind-blue-dark input {
+  --jqx-border: var(--tailwind-input-border);
+}
+
+.jqx-switchbutton-tailwind-blue-dark {
+  /* The Tailwind UI toggle: a gray-200 pill with a white thumb when off, indigo when on.
+     Tailwind UI draws the off state with no ring, and gray-200 on white is 1.24:1 - the
+     one place its pattern fails 1.4.11. A gray-500 ring is what @tailwindcss/forms would
+     give the same control, and keeps the boundary at 4.83:1. */
+  background: var(--tailwind-track);
+  border-color: var(--jqx-border);
+  border-radius: 9999px;
+}
+
+.jqx-switchbutton-tailwind-blue-dark .jqx-switchbutton-label {
+  font-size: inherit;
+  font-family: inherit;
+  text-align: center;
+  text-transform: inherit;
+  font-weight: normal;
+}
+
+.jqx-switchbutton-tailwind-blue-dark .jqx-switchbutton-thumb-tailwind-blue-dark {
+  border-radius: 50%;
+  transform: scale(0.7);
+  background: var(--tailwind-thumb);
+  color: var(--tailwind-thumb);
+  box-shadow: var(--tailwind-box-shadow-8);
+  border-color: var(--tailwind-type-primary);
+}
+
+.jqx-switchbutton-tailwind-blue-dark.jqx-switchbutton-on {
+  background: var(--jqx-primary);
+  border-color: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+}
+
+.jqx-switchbutton-tailwind-blue-dark.jqx-switchbutton-on .jqx-switchbutton-thumb-tailwind-blue-dark {
+  background: var(--tailwind-thumb);
+  border-color: var(--tailwind-thumb);
+  color: var(--tailwind-thumb);
+}
+
+.jqx-navigationbar-tailwind-blue-dark .jqx-expander-header-expanded {
+  background: var(--jqx-background);
+  color: var(--tailwind-accent);
+}
+
+.jqx-navigationbar-tailwind-blue-dark .jqx-expander-header {
+  font-size: 16px;
+}
+
+.jqx-navigationbar-tailwind-blue-dark .jqx-expander-arrow {
+  font-size: 24px;
+  margin-top: 6px;
+  height: 24px;
+  width: 24px;
+}
+
+.jqx-expander-arrow-tailwind-blue-dark.jqx-icon-arrow-up {
+  left: 2px;
+}
+
+/*applied to a pinned grid cell.*/
+.jqx-grid-cell-pinned-tailwind-blue-dark {
+  background-color: var(--tailwind-header-bg) !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-tailwind-blue-dark {
+  background-color: var(--tailwind-header-bg) !important;
+}
+
+.jqx-grid-cell-pinned-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark {
+  background-color: var(--jqx-primary) !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-tailwind-blue-dark.jqx-grid-cell-selected-tailwind-blue-dark {
+  background-color: var(--jqx-primary) !important;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Polish. Each item is a Tailwind UI convention rather than a preference, and the block sits
+ * at the end so it wins at equal specificity over anything earlier in the file.
+ * ---------------------------------------------------------------------------------------- */
+
+/* shadow-sm on controls. Tailwind UI puts it on every input and button; it is a large part
+   of what makes a control read as raised from the page. */
+.jqx-button-tailwind-blue-dark:not(.jqx-slider-button-tailwind-blue-dark):not(.jqx-scrollbar-button-tailwind-blue-dark):not(.jqx-grid-pager-tailwind-blue-dark .jqx-button-tailwind-blue-dark),
+.jqx-input-tailwind-blue-dark,
+.jqx-dropdownlist-state-normal-tailwind-blue-dark,
+.jqx-combobox-state-normal-tailwind-blue-dark,
+.jqx-numberinput-tailwind-blue-dark,
+.jqx-maskedinput-tailwind-blue-dark,
+.jqx-datetimeinput-tailwind-blue-dark,
+.jqx-buttongroup-tailwind-blue-dark {
+  box-shadow: var(--tailwind-box-shadow-4);
+}
+
+/* Containers are rounded-md like the controls; these had square corners left over. */
+.jqx-tree-tailwind-blue-dark,
+.jqx-expander-tailwind-blue-dark,
+.jqx-expander-header-tailwind-blue-dark,
+.jqx-listbox-tailwind-blue-dark,
+.jqx-panel-tailwind-blue-dark,
+.jqx-navbar-tailwind-blue-dark,
+.jqx-tabs-content-element-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+}
+
+/* An expander's header keeps its top corners and the body its bottom ones, so the two
+   read as one rounded card. */
+.jqx-expander-tailwind-blue-dark .jqx-expander-content-tailwind-blue-dark {
+  border-radius: 0 0 var(--jqx-border-radius) var(--jqx-border-radius);
+}
+
+.jqx-expander-tailwind-blue-dark .jqx-expander-header-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius) var(--jqx-border-radius) 0 0;
+}
+
+/* Windows and popups are rounded-lg with shadow-lg, as a Tailwind UI dialog or popover. */
+.jqx-window-tailwind-blue-dark,
+.jqx-popover-tailwind-blue-dark,
+.jqx-menu-popup-tailwind-blue-dark,
+.jqx-listbox-tailwind-blue-dark.jqx-popup-tailwind-blue-dark,
+.jqx-calendar-tailwind-blue-dark.jqx-popup-tailwind-blue-dark {
+  border-radius: 0.5rem;
+  box-shadow: var(--tailwind-box-shadow-64);
+}
+
+.jqx-window-header-tailwind-blue-dark {
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--jqx-background);
+  border-bottom: 1px solid var(--tailwind-body-divider);
+  font-weight: 600;
+  color: var(--tailwind-type-primary);
+}
+
+/* Progress bar: the percentage sat in gray-900 over the indigo fill. White on the fill and
+   the fill kept rounded. */
+.jqx-progressbar-tailwind-blue-dark {
+  border-radius: 9999px;
+  background: var(--tailwind-track) !important;
+  border-color: var(--tailwind-body-divider);
+}
+
+.jqx-progressbar-value-tailwind-blue-dark {
+  border-radius: 9999px;
+}
+
+.jqx-progressbar-text-tailwind-blue-dark {
+  color: var(--tailwind-on-accent);
+  font-weight: 600;
+  text-shadow: 0 0 2px rgb(0 0 0 / 0.35);
+}
+
+/* Calendar: the header row of weekday names in gray-500 text-xs, cells rounded-full when
+   selected or today - the Tailwind UI calendar. */
+.jqx-calendar-tailwind-blue-dark .jqx-calendar-column-cell-tailwind-blue-dark {
+  color: var(--tailwind-type-secondary);
+  font-size: 12px;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark {
+  border-radius: 9999px;
+}
+
+.jqx-calendar-cell-tailwind-blue-dark.jqx-fill-state-pressed,
+.jqx-calendar-cell-today-tailwind-blue-dark {
+  border-radius: 9999px;
+}
+
+.jqx-calendar-cell-today-tailwind-blue-dark {
+  color: var(--tailwind-accent);
+  font-weight: 600;
+}
+
+/* Menu items and list items: rounded-md hover in gray-100, indigo-600 selection - the
+   Tailwind UI dropdown and select-list patterns. */
+.jqx-menu-item-tailwind-blue-dark,
+.jqx-menu-item-top-tailwind-blue-dark,
+.jqx-listitem-state-normal-tailwind-blue-dark,
+.jqx-listitem-state-hover-tailwind-blue-dark,
+.jqx-listitem-state-selected-tailwind-blue-dark {
+  border-radius: var(--jqx-border-radius);
+}
+
+.jqx-menu-item-tailwind-blue-dark.jqx-fill-state-hover-tailwind-blue-dark,
+.jqx-menu-item-top-tailwind-blue-dark.jqx-fill-state-hover-tailwind-blue-dark {
+  background: var(--jqx-background-hover);
+  color: var(--tailwind-type-primary);
+}
+
+/* Tooltips are dark in Tailwind UI: gray-900 with white text. */
+.jqx-tooltip-tailwind-blue-dark,
+.jqx-tooltip-main-tailwind-blue-dark {
+  background: var(--tailwind-tooltip-bg);
+  border-color: var(--tailwind-tooltip-bg);
+  color: var(--tailwind-tooltip-color);
+  border-radius: var(--jqx-border-radius);
+  box-shadow: var(--tailwind-box-shadow-16);
+}
+
+.jqx-tooltip-arrow-t-b-tailwind-blue-dark,
+.jqx-tooltip-arrow-l-r-tailwind-blue-dark {
+  background: var(--tailwind-tooltip-bg);
+  border-color: var(--tailwind-tooltip-bg);
+}
+
+/* Scrollbars: a thin gray-300 thumb on a gray-100 track, rounded-full. */
+.jqx-scrollbar-thumb-state-normal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-normal-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-hover-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-hover-horizontal-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-pressed-tailwind-blue-dark,
+.jqx-scrollbar-thumb-state-pressed-horizontal-tailwind-blue-dark {
+  border-radius: 9999px;
+}
+/* A form is a card: the header surface with a divider edge, rounded-md. Themed through the
+   role tokens, so the dark variant follows. */
+.jqx-form-table.jqx-form-table-tailwind-blue-dark {
+  background-color: var(--tailwind-header-bg);
+  border: 1px solid var(--tailwind-body-divider);
+  border-radius: var(--jqx-border-radius);
+}
+/* Calendar cells outside the month, and weekend cells. The base stylesheet colours these
+   #757575 with !important - 4.61:1 on white, but 3.85:1 on a gray-900 page - so a themed
+   rule has to carry !important too. type-secondary is gray-500 in light (4.83:1 on white)
+   and gray-400 in dark (6.99:1 on gray-900). */
+.jqx-calendar-cell-othermonth-tailwind-blue-dark,
+.jqx-calendar-cell-weekend-tailwind-blue-dark {
+  color: var(--tailwind-type-secondary) !important;
+}
+
+/* WCAG 1.4.11 and 2.4.7: a focus ring the theme owns. Where a widget draws none, the
+   browser's default applies, and Chrome's computes to near-black - fine on white,
+   invisible on the dark variant's gray-900 at 1.07:1 (16 of 20 such elements measured
+   below 3:1 there). Tailwind's own focus-visible pattern: outline-2 outline-offset-2 in
+   the accent, which is indigo-600 on white at 6.29:1 and indigo-400 on gray-900 at
+   5.95:1. Scoped to jQWidgets' own DOM so a host page's controls keep their styling. */
+[class*="jqx-"]:focus-visible,
+[class*="jqx-"] :focus-visible {
+  outline: 2px solid var(--tailwind-accent);
+  outline-offset: 2px;
+}
+
+/* A text field draws its focus ring on its own edge, as Tailwind UI's ring-inset: offset
+   outward, the ring stood 2px off the accent border and read as a second box. Inside a
+   combobox, date or number input the field is part of a control that already draws the
+   ring, and a second one around the text alone showed as an empty pill. */
+input[class*="jqx-"]:focus-visible,
+textarea[class*="jqx-"]:focus-visible,
+[class*="jqx-"] input:focus-visible,
+[class*="jqx-"] textarea:focus-visible {
+  outline-offset: -1px;
+}
+
+.jqx-combobox-tailwind-blue-dark input:focus-visible,
+.jqx-datetimeinput-tailwind-blue-dark input:focus-visible,
+.jqx-numberinput-tailwind-blue-dark input:focus-visible,
+.jqx-formattedinput-tailwind-blue-dark input:focus-visible,
+.jqx-complex-input-group-tailwind-blue-dark input:focus-visible,
+.jqx-dropdownlist-tailwind-blue-dark input:focus-visible,
+.jqx-text-area-tailwind-blue-dark textarea:focus-visible {
+  outline: none;
+}
+
+/* jqxInput's field sits in an input group that is rounded-md, but the field itself had
+   square corners, so its border and focus ring were square inside a rounded control. */
+.jqx-input-group-tailwind-blue-dark.jqx-input-widget-tailwind-blue-dark > input:not(.underlined) {
+  border-radius: var(--jqx-border-radius);
+}
+
+/* jqxNumberInput's text is right-aligned and had no padding, so the last digit touched
+   the border; the same 5px the other fields keep. */
+.jqx-numberinput-tailwind-blue-dark input.jqx-input-content-tailwind-blue-dark {
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* jqxTagCloud: tags without a textColor are plain links, the browser's link blue - 2.2:1 on
+   the dark variant's gray-900 and off-palette on both. */
+.jqx-tag-cloud-item-tailwind-blue-dark a {
+  color: var(--tailwind-accent);
+}
+
+/* jqxPopover: jqx.base.css fills the arrow white. The bottom arrow points into the
+   title, which is a header surface. */
+.jqx-popover-tailwind-blue-dark.top .jqx-popover-arrow-tailwind-blue-dark:after {
+  border-top-color: var(--jqx-background);
+}
+
+.jqx-popover-tailwind-blue-dark.right .jqx-popover-arrow-tailwind-blue-dark:after {
+  border-right-color: var(--jqx-background);
+}
+
+.jqx-popover-tailwind-blue-dark.bottom .jqx-popover-arrow-tailwind-blue-dark:after {
+  border-bottom-color: var(--jqx-surface);
+}
+
+.jqx-popover-tailwind-blue-dark.left .jqx-popover-arrow-tailwind-blue-dark:after {
+  border-left-color: var(--jqx-background);
+}
+
+/* jqx.base.css gives .jqx-split-layout a light palette of its own, which hides this
+   theme's roles (white panes on the dark variant). Inherit them; the split bars are
+   dividers, as the grid's rules are. */
+.jqx-split-layout-component-tailwind-blue-dark .jqx-split-layout {
+  --jqx-primary-rgb: inherit;
+  --jqx-primary: inherit;
+  --jqx-primary-color: inherit;
+  --jqx-background: inherit;
+  --jqx-background-color: inherit;
+  --jqx-background-hover: inherit;
+  --jqx-background-color-hover: inherit;
+  --jqx-surface-rgb: inherit;
+  --jqx-surface: inherit;
+  --jqx-surface-color: inherit;
+  --jqx-border: var(--tailwind-body-divider);
+  --jqx-scrollbar-background: inherit;
+  --jqx-scrollbar-border: inherit;
+  --jqx-scrollbar-thumb-background: inherit;
+  --jqx-scrollbar-thumb-border: inherit;
+  --jqx-scrollbar-thumb-background-hover: inherit;
+  --jqx-scrollbar-thumb-border-hover: inherit;
+  --jqx-scrollbar-thumb-background-pressed: inherit;
+  --jqx-scrollbar-thumb-border-pressed: inherit;
+  --jqx-scrollbar-button-color-hover: inherit;
+  --jqx-scrollbar-button-background-hover: inherit;
+  --jqx-scrollbar-button-border-hover: inherit;
+  --jqx-scrollbar-button-color-pressed: inherit;
+  --jqx-scrollbar-button-background-pressed: inherit;
+  --jqx-scrollbar-button-border-pressed: inherit;
+  color: var(--jqx-background-color);
+  background: var(--jqx-background);
+}
+
+/* The grid's ever-present new row: jqx.base.css paints it a pale yellow with black text, a
+   light strip in the dark variant. The header surface marks it instead. */
+.jqx-grid-cell-add-new-row-tailwind-blue-dark {
+  background: var(--tailwind-header-bg) !important;
+  color: var(--jqx-background-color) !important;
+}
+
+/* Raster icons from jqx.base.css, through roles so the dark variant can use the white set
+   (they were dark on gray-900). The pressed-state rules above still switch to white. */
+.jqx-icon-edit-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-edit);
+}
+
+.jqx-icon-delete-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-delete);
+}
+
+.jqx-icon-save-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-save);
+}
+
+.jqx-icon-cancel-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-cancel);
+}
+
+.jqx-icon-plus-alt-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-plus);
+}
+
+.jqx-menu-minimized-button-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-menu-minimized);
+}
+
+.jqx-layout-pseudo-window-pin-icon-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-pin);
+}
+
+.jqx-layout-pseudo-window-pinned-icon-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-pinned);
+}
+
+/* With body.jqx-icon-type-svg the icons are black SVG files drawn as images, which no
+   colour reaches; the role inverts them in the dark variant. */
+.jqx-icon-type-svg .jqx-icon-close-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-search-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-filterbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-menubutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-up-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-tailwind-blue-dark.jqx-icon-arrow-down-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-left-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-left:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-left-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-rtl-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-combobox-tailwind-blue-dark .jqx-icon-close-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-expander-header-tailwind-blue-dark .jqx-icon-arrow-up:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-expand-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-tabs-close-button-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-close-button-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-tabs-close-button-hover-tailwind-blue-dark .jqx-tabs-close-button-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-first-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-icon-arrow-last-tailwind-blue-dark:after,
+.jqx-icon-type-svg .jqx-widget-tailwind-blue-dark .jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-group-expand-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-expander-arrow-top-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-window-collapse-button-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-tailwind-blue-dark,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-tailwind-blue-dark {
+  filter: var(--tailwind-icon-invert);
+}
+
+/* the sort items of the grid and pivot grid column menus; the icons carry no theme class */
+.jqx-menu-tailwind-blue-dark .jqx-grid-sortasc-icon,
+.jqx-menu-tailwind-blue-dark .jqx-pivotgrid-sortasc-icon {
+  background-image: var(--tailwind-icon-sort-asc);
+}
+
+.jqx-menu-tailwind-blue-dark .jqx-grid-sortdesc-icon,
+.jqx-menu-tailwind-blue-dark .jqx-pivotgrid-sortdesc-icon {
+  background-image: var(--tailwind-icon-sort-desc);
+}
+
+.jqx-menu-tailwind-blue-dark .jqx-grid-sortremove-icon,
+.jqx-menu-tailwind-blue-dark .jqx-pivotgrid-sortremove-icon {
+  background-image: var(--tailwind-icon-sort-remove);
+}
+
+/* jqxPivotDesigner: its section labels are bare .jqx-widget, which jqx.base.css colours
+   black - invisible on the dark variant. */
+.jqx-designer-host.jqx-widget-content-tailwind-blue-dark > .jqx-widget {
+  color: var(--jqx-background-color);
+}
+
+.jqx-pivotgrid-settings-icon {
+  background-image: var(--tailwind-icon-menu-small);
+}
+
+/* jqxPivotGrid row and column expanders: a dark raster with no white twin. */
+.jqx-widget-content-tailwind-blue-dark .jqx-pivotgrid-expand-button,
+.jqx-widget-content-tailwind-blue-dark .jqx-pivotgrid-collapse-button {
+  filter: var(--tailwind-icon-invert);
+}
+
+/* jqxScheduler month view: jqx.base.css paints each day's date strip, and its "more" popup,
+   a light gray with black text at 80% opacity, and the half-hour rule of the day and week
+   views a light gray with !important - light blocks and bright lines on the dark variant.
+   Today's strip was Fluent's blue. */
+.jqx-scheduler-month-cell-tailwind-blue-dark {
+  background: var(--tailwind-header-bg);
+  color: var(--jqx-background-color);
+  opacity: 1;
+}
+
+.jqx-scheduler-month-cell-popup-tailwind-blue-dark {
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+.jqx-scheduler-month-outer-cell-tailwind-blue-dark.jqx-scheduler-month-cell-tailwind-blue-dark {
+  color: var(--tailwind-type-secondary);
+}
+
+.jqx-scheduler-tailwind-blue-dark[show-current] .jqx-scheduler-month-day-today-cell .jqx-scheduler-month-cell-tailwind-blue-dark {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+  border-bottom-color: var(--jqx-primary);
+}
+
+.jqx-scheduler-tailwind-blue-dark .current-appointment .jqx-scheduler-appointment-content {
+  border-color: var(--jqx-primary);
+}
+
+.jqx-widget-tailwind-blue-dark .jqx-scheduler-middle-cell {
+  border-bottom-color: var(--tailwind-body-divider) !important;
+}
+
+/* the recurrence marks on appointments */
+.jqx-icon-recurrence-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-recurrence);
+}
+
+.jqx-icon-recurrence-exception-tailwind-blue-dark {
+  background-image: var(--tailwind-icon-recurrence-exception);
+}
+
+/* A pressed button - a toggled jqxToggleButton, an open dropdown button - drew exactly as an
+   idle one, because the button's own background rule outranks .jqx-fill-state-pressed. The
+   selected look is indigo-100 with an indigo-600 edge (indigo-900 and indigo-400 in the
+   dark variant); text stays the primary type colour, 14.40:1 and 10.38:1. */
+.jqx-button-tailwind-blue-dark.jqx-button-tailwind-blue-dark.jqx-fill-state-pressed:not(.jqx-navbar-block):not(.jqx-primary):not(.primary):not(.jqx-group-button-normal) {
+  --jqx-background: var(--tailwind-theme-lighter);
+  --jqx-border: var(--tailwind-accent);
+  --jqx-background-color: var(--tailwind-type-primary);
+}
+
+/* Out-of-hours, weekend and disabled cells: jqx.base.css tints them, but the grid cell rule
+   above repainted every cell the page colour, so work hours did not show. */
+.jqx-scheduler-tailwind-blue-dark .jqx-scheduler-not-work-time-cell,
+.jqx-scheduler-tailwind-blue-dark .jqx-scheduler-month-weekend-cell {
+  background: var(--tailwind-header-bg);
+}
+
+.jqx-scheduler-tailwind-blue-dark .jqx-scheduler-disabled-cell {
+  background: var(--tailwind-disabled-bg);
+}
+
+/* jqxDropDownButton's popup is its own container: it takes the container's -10px but has no
+   inner popup to take it back, so it hung 10px left of the button. */
+.jqx-dropdownbutton-popup-tailwind-blue-dark.jqx-listbox-container-tailwind-blue-dark {
+  margin-left: 0;
+}

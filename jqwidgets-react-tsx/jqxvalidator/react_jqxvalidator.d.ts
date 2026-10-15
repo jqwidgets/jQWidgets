@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxValidator extends React.PureComponent<IValidatorProps, IState> {
-    protected static getDerivedStateFromProps(props: IValidatorProps, state: IState): null | IState;
+declare class JqxValidator extends React.PureComponent<IValidatorProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IValidatorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IValidatorProps): void;
     getOptions(option: string): any;
@@ -16,14 +26,15 @@ declare class JqxValidator extends React.PureComponent<IValidatorProps, IState> 
     validate(htmlElement?: any): void;
     validateInput(id: string): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxValidator;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IValidatorRule {
     input?: string;
     message?: string;
@@ -44,10 +55,12 @@ interface IValidatorOptions {
     position?: string;
     rules?: IValidatorRule[];
     rtl?: boolean;
+    theme?: string;
 }
-export interface IValidatorProps extends IValidatorOptions {
+export interface IValidatorProps extends IValidatorOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onValidationError?: (e?: Event) => void;
-    onValidationSuccess?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onValidationError?: (e?: any) => void;
+    onValidationSuccess?: (e?: any) => void;
 }

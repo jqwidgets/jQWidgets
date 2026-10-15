@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
-    protected static getDerivedStateFromProps(props: ITreeGridProps, state: IState): null | IState;
+declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITreeGridProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITreeGridProps): void;
     getOptions(option: string): any;
@@ -23,7 +34,7 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
     collapseRow(rowKey: number | string): void;
     collapseAll(): void;
     destroy(): void;
-    deleteRow(rowKey: string[] | string): void;
+    deleteRow(rowKey: Array<number | string> | number | string): void;
     expandRow(rowKey: Array<number | string> | string | number): void;
     expandAll(): void;
     endUpdate(): void;
@@ -53,23 +64,24 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
     setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void;
     showColumn(dataField: string): void;
     selectRow(rowId: string | number | Array<number | string>): void;
-    setCellValue(rowId: string, dataField: string, cellValue: any): void;
-    sortBy(dataField: number | string, sortOrder?: 'asc' | 'desc' | null): void;
+    setCellValue(rowId: number | string, dataField: string, cellValue: any): void;
+    sortBy(dataField: number | string | null, sortOrder?: 'asc' | 'desc' | null): void;
     updating(): boolean;
     updateBoundData(): void;
     unselectRow(rowId: string | number | Array<number | string>): void;
-    uncheckRow(rowId: string): void;
+    uncheckRow(rowId: number | string): void;
     updateRow(rowId: number | string, data: any): void;
     unlockRow(rowId: string | number | Array<number | string>): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTreeGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ITreeGridEditSettings {
     saveOnEnter?: boolean;
     saveOnPageChange?: boolean;
@@ -102,14 +114,14 @@ export interface ITreeGridGetRow {
     uid?: number | string;
 }
 export interface ITreeGridRowDetailsRenderer {
-    key?: number;
-    dataRow?: number;
+    key: number | string;
+    dataRow: any;
 }
 export interface ITreeGridRenderStatusBar {
-    statusbar?: object;
+    statusbar: any;
 }
 export interface ITreeGridRenderToolbar {
-    toolbar?: object;
+    toolbar: any;
 }
 export interface ITreeGridScrollOffset {
     top?: number;
@@ -152,8 +164,8 @@ interface ITreeGridOptions {
     ready?: () => void;
     rowDetails?: boolean;
     rowDetailsRenderer?: (key: ITreeGridRowDetailsRenderer['key'], dataRow: ITreeGridRowDetailsRenderer['dataRow']) => any;
-    renderToolbar?: (toolBar?: ITreeGridRenderToolbar['toolbar']) => void;
-    renderStatusBar?: (statusBar?: ITreeGridRenderStatusBar['statusbar']) => void;
+    renderToolbar?: (toolBar: ITreeGridRenderToolbar['toolbar']) => void;
+    renderStatusBar?: (statusBar: ITreeGridRenderStatusBar['statusbar']) => void;
     rendering?: () => void;
     rendered?: () => void;
     rtl?: boolean;
@@ -170,30 +182,31 @@ interface ITreeGridOptions {
     theme?: string;
     toolbarHeight?: number;
     width?: string | number;
-    virtualModeCreateRecords?: (expandedRecord?: any, done?: any) => void;
-    virtualModeRecordCreating?: (record?: any) => any;
+    virtualModeCreateRecords?: (expandedRecord: any, done: any) => void;
+    virtualModeRecordCreating?: (record: any) => any;
 }
-export interface ITreeGridProps extends ITreeGridOptions {
+export interface ITreeGridProps extends ITreeGridOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onCellBeginEdit?: (e?: Event) => void;
-    onCellEndEdit?: (e?: Event) => void;
-    onCellValueChanged?: (e?: Event) => void;
-    onColumnResized?: (e?: Event) => void;
-    onColumnReordered?: (e?: Event) => void;
-    onFilter?: (e?: Event) => void;
-    onPageChanged?: (e?: Event) => void;
-    onPageSizeChanged?: (e?: Event) => void;
-    onRowClick?: (e?: Event) => void;
-    onRowDoubleClick?: (e?: Event) => void;
-    onRowSelect?: (e?: Event) => void;
-    onRowUnselect?: (e?: Event) => void;
-    onRowBeginEdit?: (e?: Event) => void;
-    onRowEndEdit?: (e?: Event) => void;
-    onRowExpand?: (e?: Event) => void;
-    onRowCollapse?: (e?: Event) => void;
-    onRowCheck?: (e?: Event) => void;
-    onRowUncheck?: (e?: Event) => void;
-    onSort?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onCellBeginEdit?: (e?: any) => void;
+    onCellEndEdit?: (e?: any) => void;
+    onCellValueChanged?: (e?: any) => void;
+    onColumnResized?: (e?: any) => void;
+    onColumnReordered?: (e?: any) => void;
+    onFilter?: (e?: any) => void;
+    onPageChanged?: (e?: any) => void;
+    onPageSizeChanged?: (e?: any) => void;
+    onRowClick?: (e?: any) => void;
+    onRowDoubleClick?: (e?: any) => void;
+    onRowSelect?: (e?: any) => void;
+    onRowUnselect?: (e?: any) => void;
+    onRowBeginEdit?: (e?: any) => void;
+    onRowEndEdit?: (e?: any) => void;
+    onRowExpand?: (e?: any) => void;
+    onRowCollapse?: (e?: any) => void;
+    onRowCheck?: (e?: any) => void;
+    onRowUncheck?: (e?: any) => void;
+    onSort?: (e?: any) => void;
 }

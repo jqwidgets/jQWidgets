@@ -17,7 +17,7 @@
             animationShowDelay: Number,
             autoCloseInterval: Number,
             autoSizeMainItems: {
-                default: true,
+                default: false,
                 type: Boolean
             },
             autoCloseOnClick: {

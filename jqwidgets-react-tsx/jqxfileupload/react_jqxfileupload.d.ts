@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxFileUpload extends React.PureComponent<IFileUploadProps, IState> {
-    protected static getDerivedStateFromProps(props: IFileUploadProps, state: IState): null | IState;
+declare class JqxFileUpload extends React.PureComponent<IFileUploadProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IFileUploadProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IFileUploadProps): void;
     getOptions(option: string): any;
@@ -19,14 +30,15 @@ declare class JqxFileUpload extends React.PureComponent<IFileUploadProps, IState
     uploadFile(fileIndex: number): void;
     uploadAll(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxFileUpload;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IFileUploadLocalization {
     browseButton?: string;
     uploadButton?: string;
@@ -35,7 +47,7 @@ export interface IFileUploadLocalization {
     cancelFileTooltip?: string;
 }
 export interface IFileUploadRenderFiles {
-    fileName?: string;
+    fileName: string;
 }
 interface IFileUploadOptions {
     autoUpload?: boolean;
@@ -47,18 +59,19 @@ interface IFileUploadOptions {
     height?: number | string;
     localization?: IFileUploadLocalization;
     multipleFilesUpload?: boolean;
-    renderFiles?: (filename: IFileUploadRenderFiles['fileName']) => void;
+    renderFiles?: (filename: IFileUploadRenderFiles['fileName']) => string;
     rtl?: boolean;
     theme?: string;
     uploadUrl?: string;
     uploadTemplate?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'inverse' | 'info' | 'link';
     width?: string | number;
 }
-export interface IFileUploadProps extends IFileUploadOptions {
+export interface IFileUploadProps extends IFileUploadOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onRemove?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
-    onUploadStart?: (e?: Event) => void;
-    onUploadEnd?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onRemove?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
+    onUploadStart?: (e?: any) => void;
+    onUploadEnd?: (e?: any) => void;
 }

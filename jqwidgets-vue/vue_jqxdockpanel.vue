@@ -19,6 +19,7 @@
                 default: true,
                 type: Boolean
             },
+            theme: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -72,6 +73,13 @@
                     return JQXLite(this.componentSelector).jqxDockPanel('lastchildfill');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDockPanel('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDockPanel('theme');
+                }
+            },
             _width: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDockPanel('width', arg)
@@ -87,7 +95,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','height','lastchildfill','width'];
+                const widgetProps = ['disabled','height','lastchildfill','theme','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -127,6 +135,16 @@
                     },
                     set: function(newValue) {
                         that._lastchildfill(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

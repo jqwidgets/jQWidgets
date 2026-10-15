@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,7 +32,7 @@ export class jqxTreeMapComponent implements OnChanges
    @Input('legendLabel') attrLegendLabel: string;
    @Input('legendPosition') attrLegendPosition: jqwidgets.TreeMapLegendPosition;
    @Input('legendScaleCallback') attrLegendScaleCallback: (v: jqwidgets.TreeMapLegendScaleCallback['v']) => string | number;
-   @Input('renderCallbacks') attrRenderCallbacks: any;
+   @Input('renderCallbacks') attrRenderCallbacks: { [label: string]: (element: any, data: any) => boolean | void };
    @Input('selectionEnabled') attrSelectionEnabled: boolean;
    @Input('showLegend') attrShowLegend: boolean;
    @Input('source') attrSource: any;
@@ -55,6 +55,18 @@ export class jqxTreeMapComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxTreeMap('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -247,7 +259,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   renderCallbacks(arg?: any): any {
+   renderCallbacks(arg?: { [label: string]: (element: any, data: any) => boolean | void }): { [label: string]: (element: any, data: any) => boolean | void } {
       if (arg !== undefined) {
           this.host.jqxTreeMap('renderCallbacks', arg);
       } else {

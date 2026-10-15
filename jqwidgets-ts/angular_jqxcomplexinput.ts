@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -12,7 +12,7 @@ import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxcomplexinput.js';
 
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
@@ -25,6 +25,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'jqxComplexInput',
+    imports: [FormsModule],
     template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -54,6 +55,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -62,6 +64,18 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxComplexInput('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -179,6 +193,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
            this.host.jqxComplexInput('val', value);
@@ -190,6 +208,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {

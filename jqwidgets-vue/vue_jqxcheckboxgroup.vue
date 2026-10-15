@@ -9,10 +9,7 @@
 
     export default {
         props: {
-            change: {
-                default: null,
-                type: Boolean
-            },
+            change: Function,
             disabled: {
                 default: false,
                 type: Boolean

@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,10 +21,10 @@ declare let JQXLite: any;
 
 export class jqxRadioButtonGroupComponent implements OnChanges
 {
-   @Input('change') attrChange: (item?: any) => void;
+   @Input('change') attrChange: (item: any) => void;
    @Input('disabled') attrDisabled: boolean;
-   @Input('items') attrItems: [];
-   @Input('value') attrValue: [];
+   @Input('items') attrItems: any[];
+   @Input('value') attrValue: any[];
    @Input('layout') attrLayout: string;
    @Input('labelPosition') attrLabelPosition: string;
    @Input('rtl') attrRtl: boolean;
@@ -46,6 +46,18 @@ export class jqxRadioButtonGroupComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxRadioButtonGroup('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -149,7 +161,7 @@ export class jqxRadioButtonGroupComponent implements OnChanges
    }
 
    // jqxRadioButtonGroupComponent properties
-   change(arg?: (item?: any) => void): (item?: any) => void {
+   change(arg?: (item: any) => void): (item: any) => void {
       if (arg !== undefined) {
           this.host.jqxRadioButtonGroup('change', arg);
       } else {
@@ -165,7 +177,7 @@ export class jqxRadioButtonGroupComponent implements OnChanges
       }
    }
 
-   items(arg?: undefined): undefined {
+   items(arg?: any[]): any[] {
       if (arg !== undefined) {
           this.host.jqxRadioButtonGroup('items', arg);
       } else {
@@ -173,7 +185,7 @@ export class jqxRadioButtonGroupComponent implements OnChanges
       }
    }
 
-   value(arg?: undefined): undefined {
+   value(arg?: any[]): any[] {
       if (arg !== undefined) {
           this.host.jqxRadioButtonGroup('value', arg);
       } else {
@@ -215,7 +227,7 @@ export class jqxRadioButtonGroupComponent implements OnChanges
 
 
    // jqxRadioButtonGroupComponent functions
-   getValue(): undefined {
+   getValue(): any[] {
       return this.host.jqxRadioButtonGroup('getValue');
    }
 
@@ -267,7 +279,7 @@ export class jqxRadioButtonGroupComponent implements OnChanges
       this.host.jqxRadioButtonGroup('render');
    }
 
-   val(value?: undefined): any {
+   val(value?: any[]): any {
       if (value !== undefined) {
          return this.host.jqxRadioButtonGroup('val', value);
       } else {

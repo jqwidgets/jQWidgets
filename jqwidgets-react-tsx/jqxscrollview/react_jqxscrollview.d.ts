@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxScrollView extends React.PureComponent<IScrollViewProps, IState> {
-    protected static getDerivedStateFromProps(props: IScrollViewProps, state: IState): null | IState;
+declare class JqxScrollView extends React.PureComponent<IScrollViewProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IScrollViewProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IScrollViewProps): void;
     getOptions(option: string): any;
@@ -15,14 +25,15 @@ declare class JqxScrollView extends React.PureComponent<IScrollViewProps, IState
     forward(): void;
     refresh(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxScrollView;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IScrollViewOptions {
     animationDuration?: number;
     bounceEnabled?: boolean;
@@ -37,8 +48,9 @@ interface IScrollViewOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IScrollViewProps extends IScrollViewOptions {
+export interface IScrollViewProps extends IScrollViewOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onPageChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onPageChanged?: (e?: any) => void;
 }

@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxmaskedinput.umd.js",
-    "module": "react_jqxmaskedinput.esm.js",
-    "typings": "react_jqxmaskedinput.d.ts",
-    "name": "jqwidgets-react/jqxmaskedinput",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxmaskedinput",
+  "version": "27.1.0",
+  "main": "react_jqxmaskedinput.umd.js",
+  "module": "react_jqxmaskedinput.esm.js",
+  "typings": "react_jqxmaskedinput.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxmaskedinput.d.ts",
+      "import": "./react_jqxmaskedinput.esm.js",
+      "require": "./react_jqxmaskedinput.umd.js",
+      "default": "./react_jqxmaskedinput.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

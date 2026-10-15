@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxtoolbar.umd.js",
-    "module": "react_jqxtoolbar.esm.js",
-    "typings": "react_jqxtoolbar.d.ts",
-    "name": "jqwidgets-react/jqxtoolbar",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxtoolbar",
+  "version": "27.1.0",
+  "main": "react_jqxtoolbar.umd.js",
+  "module": "react_jqxtoolbar.esm.js",
+  "typings": "react_jqxtoolbar.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxtoolbar.d.ts",
+      "import": "./react_jqxtoolbar.esm.js",
+      "require": "./react_jqxtoolbar.umd.js",
+      "default": "./react_jqxtoolbar.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

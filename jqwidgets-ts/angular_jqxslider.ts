@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -54,7 +54,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    @Input('ticksPosition') attrTicksPosition: string;
    @Input('ticksFrequency') attrTicksFrequency: number;
    @Input('tickSize') attrTickSize: number;
-   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string;
+   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number;
    @Input('tooltip') attrTooltip: boolean;
    @Input('tooltipHideDelay') attrTooltipHideDelay: number;
    @Input('tooltipPosition') attrTooltipPosition: string;
@@ -73,6 +73,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -81,6 +82,18 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxSlider('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -194,6 +207,10 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
        }
@@ -204,6 +221,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -399,7 +417,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   tickLabelFormatFunction(arg?: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string): (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string {
+   tickLabelFormatFunction(arg?: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number): (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number {
       if (arg !== undefined) {
           this.host.jqxSlider('tickLabelFormatFunction', arg);
       } else {

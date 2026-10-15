@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxProgressBar extends React.PureComponent<IProgressBarProps, IState> {
-    protected static getDerivedStateFromProps(props: IProgressBarProps, state: IState): null | IState;
+declare class JqxProgressBar extends React.PureComponent<IProgressBarProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IProgressBarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IProgressBarProps): void;
     getOptions(option: string): any;
@@ -14,21 +25,22 @@ declare class JqxProgressBar extends React.PureComponent<IProgressBarProps, ISta
     destroy(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxProgressBar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IProgressBarColorRanges {
     stop?: number | string;
     color?: string;
 }
 export interface IProgressBarRenderText {
-    text?: string;
-    value?: number;
+    text: string;
+    value: number;
 }
 interface IProgressBarOptions {
     animationDuration?: number;
@@ -40,17 +52,18 @@ interface IProgressBarOptions {
     min?: number | string;
     orientation?: 'vertical' | 'horizontal';
     rtl?: boolean;
-    renderText?: (text?: IProgressBarRenderText['text'], value?: IProgressBarRenderText['value']) => string;
+    renderText?: (text: IProgressBarRenderText['text'], value: IProgressBarRenderText['value']) => string;
     showText?: boolean;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
     value?: string | number;
     width?: string | number;
 }
-export interface IProgressBarProps extends IProgressBarOptions {
+export interface IProgressBarProps extends IProgressBarOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onComplete?: (e?: Event) => void;
-    onInvalidValue?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onComplete?: (e?: any) => void;
+    onInvalidValue?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

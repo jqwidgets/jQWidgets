@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,6 +39,7 @@ export class jqxGaugeComponent implements OnChanges
    @Input('startAngle') attrStartAngle: number | string;
    @Input('showRanges') attrShowRanges: boolean;
    @Input('styles') attrStyles: jqwidgets.GaugeStyle;
+   @Input('theme') attrTheme: string;
    @Input('ticksMajor') attrTicksMajor: jqwidgets.GaugeTicks;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.GaugeTicks;
    @Input('ticksDistance') attrTicksDistance: string;
@@ -48,7 +49,7 @@ export class jqxGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','ticksMajor','ticksMinor','ticksDistance','value','width'];
+   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','theme','ticksMajor','ticksMinor','ticksDistance','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGauge;
@@ -61,6 +62,13 @@ export class jqxGaugeComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -312,6 +320,14 @@ export class jqxGaugeComponent implements OnChanges
           this.host.jqxGauge('styles', arg);
       } else {
           return this.host.jqxGauge('styles');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGauge('theme', arg);
+      } else {
+          return this.host.jqxGauge('theme');
       }
    }
 

@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxKanban extends React.PureComponent<IKanbanProps, IState> {
-    protected static getDerivedStateFromProps(props: IKanbanProps, state: IState): null | IState;
+declare class JqxKanban extends React.PureComponent<IKanbanProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IKanbanProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IKanbanProps): void;
     getOptions(option: string): any;
@@ -15,17 +26,18 @@ declare class JqxKanban extends React.PureComponent<IKanbanProps, IState> {
     getColumn(dataField: string): IKanbanColumns;
     getColumnItems(dataField: string): IKanbanSource[];
     getItems(): IKanbanSource;
-    removeItem(itemId: string): void;
+    removeItem(itemId: string | number): void;
     updateItem(itemId: string, newContent: IKanbanUpdateItem): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxKanban;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IKanbanColumns {
     text?: string;
     dataField?: string;
@@ -37,14 +49,14 @@ export interface IKanbanColumns {
     iconClassName?: string;
 }
 export interface IKanbanColumnRenderer {
-    element?: any;
-    collapsedElement?: any;
-    column?: any;
+    element: any;
+    collapsedElement: any;
+    column: any;
 }
 export interface IKanbanItemRenderer {
-    element?: any;
-    item?: any;
-    resource?: any;
+    element: any;
+    item: any;
+    resource: any;
 }
 export interface IKanbanSource {
     id?: number;
@@ -66,13 +78,13 @@ export interface IKanbanUpdateItem {
     className?: string;
 }
 interface IKanbanOptions {
-    columnRenderer?: (element?: IKanbanColumnRenderer['element'], collapsedElement?: IKanbanColumnRenderer['collapsedElement'], column?: IKanbanColumnRenderer['column']) => void;
+    columnRenderer?: (element: IKanbanColumnRenderer['element'], collapsedElement: IKanbanColumnRenderer['collapsedElement'], column: IKanbanColumnRenderer['column']) => void;
     columns?: IKanbanColumns[];
     connectWith?: string;
     headerHeight?: number | string;
     headerWidth?: number;
     height?: string | number;
-    itemRenderer?: (element?: IKanbanItemRenderer['element'], item?: IKanbanItemRenderer['item'], resource?: IKanbanItemRenderer['resource']) => void;
+    itemRenderer?: (element: IKanbanItemRenderer['element'], item: IKanbanItemRenderer['item'], resource: IKanbanItemRenderer['resource']) => void;
     ready?: () => void;
     rtl?: boolean;
     source?: any;
@@ -82,12 +94,13 @@ interface IKanbanOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IKanbanProps extends IKanbanOptions {
+export interface IKanbanProps extends IKanbanOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onColumnAttrClicked?: (e?: Event) => void;
-    onColumnCollapsed?: (e?: Event) => void;
-    onColumnExpanded?: (e?: Event) => void;
-    onItemAttrClicked?: (e?: Event) => void;
-    onItemMoved?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onColumnAttrClicked?: (e?: any) => void;
+    onColumnCollapsed?: (e?: any) => void;
+    onColumnExpanded?: (e?: any) => void;
+    onItemAttrClicked?: (e?: any) => void;
+    onItemMoved?: (e?: any) => void;
 }

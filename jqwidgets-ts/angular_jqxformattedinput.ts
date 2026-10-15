@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -11,7 +11,7 @@ import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxformattedinput.js';
 
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
@@ -24,6 +24,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'jqxFormattedInput',
+    imports: [FormsModule],
     template: '<div><input type="text" [(ngModel)]="ngValue"><div></div><div></div></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -60,6 +61,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -68,6 +70,18 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxFormattedInput('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -198,6 +212,9 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           return;
+       }
        if(this.widgetObject) {
            this.host.jqxFormattedInput('val', value);
        }
@@ -208,6 +225,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -355,7 +373,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   value(arg?: undefined): undefined {
+   value(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('value', arg);
       } else {

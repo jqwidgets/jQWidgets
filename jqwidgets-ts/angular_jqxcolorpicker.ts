@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,12 +27,13 @@ export class jqxColorPickerComponent implements OnChanges
    @Input('colorMode') attrColorMode: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('showTransparent') attrShowTransparent: boolean;
+   @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['color','colorMode','disabled','height','showTransparent','width'];
+   properties: string[] = ['color','colorMode','disabled','height','showTransparent','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxColorPicker;
@@ -45,6 +46,13 @@ export class jqxColorPickerComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -187,6 +195,14 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('theme', arg);
+      } else {
+          return this.host.jqxColorPicker('theme');
+      }
+   }
+
    width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxColorPicker('width', arg);
@@ -201,7 +217,7 @@ export class jqxColorPickerComponent implements OnChanges
       return this.host.jqxColorPicker('getColor');
    }
 
-   setColor(color: undefined): void {
+   setColor(color: object | string): void {
       this.host.jqxColorPicker('setColor', color);
    }
 

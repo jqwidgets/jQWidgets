@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxcomplexinput.umd.js",
-    "module": "react_jqxcomplexinput.esm.js",
-    "typings": "react_jqxcomplexinput.d.ts",
-    "name": "jqwidgets-react/jqxcomplexinput",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxcomplexinput",
+  "version": "27.1.0",
+  "main": "react_jqxcomplexinput.umd.js",
+  "module": "react_jqxcomplexinput.esm.js",
+  "typings": "react_jqxcomplexinput.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxcomplexinput.d.ts",
+      "import": "./react_jqxcomplexinput.esm.js",
+      "require": "./react_jqxcomplexinput.umd.js",
+      "default": "./react_jqxcomplexinput.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

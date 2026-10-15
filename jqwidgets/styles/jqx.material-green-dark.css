@@ -1,0 +1,3065 @@
+﻿:root {
+    /* jQWidgets Material Green theme, dark variant. GENERATED from jqx.dark.css by
+       build-material-dark.mjs - edit that file or the generator, not this one. Material
+       dark baseline; primary green 200, the dark tone of jqx.material-green.css's #558B2F. Use theme: 'material-green-dark'. */
+    --jqx-primary-rgb: 165, 214, 167;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #000000;
+    --jqx-background: #121212;
+    --jqx-background-color: #DEDEDE;
+    --jqx-surface: #1E1E1E;
+    --jqx-surface-color: #A6A6A6;
+    --jqx-border: #6B6B6B;
+    --jqx-divider: #2C2C2C;
+    --jqx-row-alt: #181818;
+    --jqx-background-hover-rgb: 44, 44, 44;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(255, 255, 255, .87);
+    --jqx-scrollbar-background: #1E1E1E;
+    --jqx-scrollbar-border: #121212;
+    --jqx-scrollbar-thumb-background: #4A4A4A;
+    --jqx-scrollbar-thumb-border: #1E1E1E;
+    --jqx-scrollbar-thumb-background-hover: #6B6B6B;
+    --jqx-scrollbar-thumb-border-hover: #6B6B6B;
+    --jqx-scrollbar-thumb-background-pressed: #8A8A8A;
+    --jqx-scrollbar-thumb-border-pressed: #8A8A8A;
+    --jqx-scrollbar-button-color-hover: #121212;
+    --jqx-scrollbar-button-background-hover: #6B6B6B;
+    --jqx-scrollbar-button-border-hover: #6B6B6B;
+    --jqx-scrollbar-button-color-pressed: #121212;
+    --jqx-scrollbar-button-background-pressed: #8A8A8A;
+    --jqx-scrollbar-button-border-pressed: #8A8A8A;
+}
+
+.jqx-icon-search-material-green-dark,
+.jqx-icon-close-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+.jqx-icon-close-material-green-dark:after {
+    content: var(--jqx-icon-close);
+}
+
+.jqx-icon-search-material-green-dark:after {
+    content: var(--jqx-icon-search);
+}
+
+.jqx-calendar-material-green-dark {
+    width: 280px !important;
+    height: 280px !important;
+}
+
+.jqx-fill-state-normal-material-green-dark {
+    background: var(--jqx-background);
+    color: var(--jqx-background-color);
+    border-color: var(--jqx-border);
+}
+
+.jqx-fill-state-hover-material-green-dark {
+    background: var(--jqx-background-hover);
+    color: var(--jqx-background-color-hover);
+    border-color: var(--jqx-background-hover);
+}
+
+.jqx-fill-state-pressed-material-green-dark {
+    background: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+    border-color: var(--jqx-primary);
+}
+
+@font-face {
+    font-family: jqx-icons;
+    src: local('./font/jqx-icons'), url('./font/jqx-icons.woff2') format('woff2'), url('./font/jqx-icons.woff') format('woff'), url('./font/jqx-icons.ttf') format('truetype'), url('./font/jqx-icons.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Rounded Corners*/
+/*top-left rounded Corners*/
+.jqx-rc-tl-material-green-dark {
+    border-top-left-radius: var(--jqx-border-radius);
+}
+
+/*top-right rounded Corners*/
+.jqx-rc-tr-material-green-dark {
+    border-top-right-radius: var(--jqx-border-radius);
+}
+
+/*bottom-left rounded Corners*/
+.jqx-rc-bl-material-green-dark {
+    border-bottom-left-radius: var(--jqx-border-radius);
+}
+
+/*bottom-right rounded Corners*/
+.jqx-rc-br-material-green-dark {
+    border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*top rounded Corners*/
+.jqx-rc-t-material-green-dark {
+    border-top-left-radius: var(--jqx-border-radius);
+    border-top-right-radius: var(--jqx-border-radius);
+}
+
+/*bottom rounded Corners*/
+.jqx-rc-b-material-green-dark {
+    border-bottom-left-radius: var(--jqx-border-radius);
+    border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*right rounded Corners*/
+.jqx-rc-r-material-green-dark {
+    border-top-right-radius: var(--jqx-border-radius);
+    border-bottom-right-radius: var(--jqx-border-radius);
+}
+
+/*left rounded Corners*/
+.jqx-rc-l-material-green-dark {
+    border-top-left-radius: var(--jqx-border-radius);
+    border-bottom-left-radius: var(--jqx-border-radius);
+}
+
+/*all rounded Corners*/
+.jqx-rc-all-material-green-dark {
+    border-radius: var(--jqx-border-radius);
+}
+
+.jqx-widget-material-green-dark,
+.jqx-widget-header-material-green-dark,
+.jqx-fill-state-normal-material-green-dark,
+.jqx-widget-content-material-green-dark,
+.jqx-fill-state-hover-material-green-dark,
+.jqx-fill-state-pressed-material-green-dark {
+    font-family: var(--jqx-font-family);
+    font-size: var(--jqx-font-size);
+}
+
+.jqx-widget-material-green-dark {
+    font-family: var(--jqx-font-family);
+    font-size: var(--jqx-font-size);
+    color: inherit;
+    border-color: var(--jqx-border);
+}
+
+.jqx-widget-content-material-green-dark {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: var(--jqx-background-color);
+    background-color: var(--jqx-background);
+    border-color: var(--jqx-border);
+}
+
+.jqx-grid-table-material-green-dark.jqx-grid-table-one-cell {
+    border-right-color: var(--jqx-border);
+}
+
+.jqx-widget-header-material-green-dark {
+    background-color: var(--jqx-surface);
+    border-color: var(--jqx-border);
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-window-header-material-green-dark {
+    padding: 10px;
+    color: var(--jqx-surface-color);
+    background: var(--jqx-surface);
+}
+
+.jqx-calendar-material-green-dark tr {
+    border-bottom-color: var(--jqx-divider);
+}
+
+.jqx-widget-material-green-dark input::selection,
+input.jqx-input-widget-material-green-dark::selection,
+.jqx-widget-content-material-green-dark input::selection {
+    background: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+}
+
+.jqx-toolbar-material-green-dark {
+    border-color: var(--jqx-border);
+}
+
+.jqx-toolbar-material-green-dark {
+    height: auto !important;
+    display: flex;
+    align-items: center;
+}
+
+.jqx-button-material-green-dark,
+.jqx-button-material-green-dark.jqx-fill-state-normal-material-green-dark {
+    color: var(--jqx-background-color);
+    background-color: var(--jqx-background);
+    border-color: var(--jqx-border);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    outline: none;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, .2), 0 0 0 0 rgba(0, 0, 0, .14), 0 0 0 0 var(--jqx-border);
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-hover-material-green-dark,
+.jqx-button-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    background-color: var(--jqx-background-hover);
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color-hover);
+}
+
+.jqx-button-material-green-dark.primary {
+    color: var(--jqx-primary-color);
+    background-color: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-hover-material-green-dark.primary,
+.jqx-button-material-green-dark.jqx-fill-state-pressed-material-green-dark.primary {
+    color: var(--jqx-primary-color);
+    background-color: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+}
+
+.jqx-button-material-green-dark.secondary,
+.jqx-button-material-green-dark.jqx-toolbar-tool {
+    background-color: var(--jqx-surface);
+    border-color: var(--jqx-border);
+    color: var(--jqx-surface-color) !important;
+}
+
+.jqx-button-material-green-dark.secondary:hover,
+.jqx-button-material-green-dark.jqx-toolbar-tool:hover {
+    background-color: var(--jqx-background-hover);
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color-hover) !important;
+}
+
+.jqx-button-material-green-dark.secondary:active,
+.jqx-button-material-green-dark.jqx-toolbar-tool:active {
+    background-color: var(--jqx-surface);
+    border-color: var(--jqx-border);
+    color: var(--jqx-surface-color) !important;
+}
+
+.jqx-scheduler-edit-dialog-field .jqx-button-material-green-dark {
+    padding: 6px 16px;
+}
+
+.jqx-button-material-green-dark button,
+.jqx-button-material-green-dark input {
+    background: transparent;
+    color: inherit;
+    border: none;
+    outline: none;
+}
+
+.jqx-group-button-normal-material-green-dark {
+    box-shadow: none;
+    background: var(--jqx-background);
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color) !important;
+    border-radius: 0px;
+}
+
+.jqx-group-button-normal-material-green-dark.jqx-fill-state-hover-material-green-dark {
+    box-shadow: none !important;
+}
+
+.jqx-group-button-normal-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    box-shadow: none !important;
+    background: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+    color: var(--jqx-primary-color) !important;
+    border-radius: 0px;
+}
+
+.jqx-slider-button-material-green-dark {
+    padding: 3px;
+    background: transparent;
+    border: transparent;
+}
+
+.jqx-button-material-green-dark.float {
+    border-radius: 100%;
+    min-height: 48px;
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+    max-height: 48px;
+    max-width: 48px;
+}
+
+.jqx-button-material-green-dark.outlined {
+    background: transparent;
+    color: var(--jqx-primary);
+    border-width: 2px;
+}
+
+.jqx-button-material-green-dark.flat {
+    background: transparent;
+    color: var(--jqx-primary);
+    border: none;
+}
+
+.jqx-fill-state-hover-material-green-dark,
+.jqx-fill-state-focus-material-green-dark {
+    text-decoration: none;
+}
+
+/* Expander and navigation bar headers rest on the raised surface, like every other header,
+   and take the hover fill only under the pointer. */
+.jqx-expander-header.jqx-fill-state-normal-material-green-dark,
+.jqx-expander-header.jqx-fill-state-pressed-material-green-dark {
+    background: var(--jqx-surface);
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color);
+}
+
+.jqx-expander-header.jqx-fill-state-hover-material-green-dark {
+    background: var(--jqx-background-hover);
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color-hover);
+}
+
+.jqx-expander-header.jqx-fill-state-hover-material-green-dark {
+    background: var(--jqx-background-hover);
+}
+
+.jqx-expander-header-material-green-dark {
+    padding: 10px;
+}
+
+/* No .9 opacity on hover: fading a control is how this theme shows disabled. The hover fill
+   and elevation already mark the state. */
+.jqx-button-material-green-dark.jqx-fill-state-hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.jqx-expander-content-material-green-dark {
+    padding: 0px;
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-hover.outlined,
+.jqx-button-material-green-dark.jqx-fill-state-hover.flat {
+    color: var(--jqx-primary);
+    box-shadow: none;
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-pressed {
+    cursor: pointer;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-pressed.float {
+    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+}
+
+.jqx-slider-button-material-green-dark.jqx-fill-state-pressed-material-green-dark,
+.jqx-button-material-green-dark.jqx-fill-state-pressed.outlined,
+.jqx-button-material-green-dark.jqx-fill-state-pressed.flat {
+    background: rgba(var(--jqx-primary-rgb), 0.16);
+    box-shadow: none;
+    color: var(--jqx-primary);
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-focus {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.jqx-slider-button-material-green-dark.jqx-fill-state-focus-material-green-dark {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.jqx-button-material-green-dark.jqx-fill-state-focus.outlined,
+.jqx-button-material-green-dark.jqx-fill-state-focus.flat {
+    box-shadow: none;
+    background: rgba(var(--jqx-primary-rgb), 0.16);
+    color: var(--jqx-primary);
+}
+
+.jqx-dropdownlist-content-material-green-dark {
+    display: flex;
+    align-items: center;
+    height: 100% !important;
+    margin-top: 0px !important;
+}
+
+.jqx-dropdownlist-content-material-green-dark span {
+    top: 0px !important;
+}
+
+.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-dropdownlist-state-hover-material-green-dark,
+.jqx-dropdownlist-state-selected-material-green-dark,
+.jqx-scrollbar-button-state-hover-material-green-dark,
+.jqx-scrollbar-button-state-normal-material-green-dark,
+.jqx-scrollbar-button-state-pressed-material-green-dark,
+.jqx-scrollbar-thumb-state-normal-horizontal-material-green-dark,
+.jqx-scrollbar-thumb-state-hover-horizontal-material-green-dark,
+.jqx-scrollbar-thumb-state-pressed-horizontal-material-green-dark,
+.jqx-scrollbar-thumb-state-normal-material-green-dark,
+.jqx-scrollbar-thumb-state-pressed-material-green-dark,
+.jqx-tree-item-hover-material-green-dark,
+.jqx-tree-item-selected-material-green-dark,
+.jqx-tree-item-material-green-dark,
+.jqx-menu-item-material-green-dark,
+.jqx-menu-item-hover-material-green-dark,
+.jqx-menu-item-selected-material-green-dark,
+.jqx-menu-item-top-material-green-dark,
+.jqx-menu-item-top-hover-material-green-dark,
+.jqx-menu-item-top-selected-material-green-dark,
+.jqx-slider-button-material-green-dark,
+.jqx-slider-slider-material-green-dark {
+    transition: background-color 100ms linear;
+}
+
+.jqx-primary-material-green-dark.jqx-input-label-material-green-dark {
+    color: var(--jqx-primary) !important;
+}
+
+.jqx-primary-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: var(--jqx-primary) !important;
+}
+
+.jqx-success-material-green-dark.jqx-input-label-material-green-dark {
+    color: #5cb85c !important;
+}
+
+.jqx-success-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: #5cb85c !important;
+}
+
+.jqx-inverse-material-green-dark.jqx-input-label-material-green-dark {
+    color: #CCCCCC !important;
+}
+
+.jqx-inverse-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: #CCCCCC !important;
+}
+
+.jqx-danger-material-green-dark.jqx-input-label-material-green-dark {
+    color: #E57373 !important;
+}
+
+.jqx-danger-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: #d9534f !important;
+}
+
+.jqx-warning-material-green-dark.jqx-input-label-material-green-dark {
+    color: #f0ad4e !important;
+}
+
+.jqx-warning-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: #f0ad4e !important;
+}
+
+.jqx-info-material-green-dark.jqx-input-label-material-green-dark {
+    color: #5bc0de !important;
+}
+
+.jqx-info-material-green-dark.jqx-input-bar-material-green-dark:before {
+    background: #5bc0de !important;
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-primary-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-primary-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: var(--jqx-primary);
+    background: var(--jqx-primary);
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-success-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-success-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: #5cb85c;
+    background: #5cb85c;
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-inverse-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-inverse-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: #CCCCCC;
+    background: #CCCCCC;
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-danger-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-danger-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: #d9534f;
+    background: #d9534f;
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-warning-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-warning-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: #f0ad4e;
+    background: #f0ad4e;
+}
+
+.jqx-slider-tooltip-material-green-dark.jqx-info-slider,
+.jqx-slider-tooltip-material-green-dark.jqx-info-slider .jqx-fill-state-normal-material-green-dark {
+    border-color: #5bc0de;
+    background: #5bc0de;
+}
+
+.jqx-primary-material-green-dark {
+    color: var(--jqx-primary) !important;
+    background: var(--jqx-background) !important;
+    border-color: var(--jqx-primary) !important;
+    text-shadow: none !important;
+}
+
+.jqx-primary-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-primary-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-primary-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-primary-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-primary-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-primary-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-primary-material-green-dark:hover,
+.jqx-primary-material-green-dark:focus,
+.jqx-primary-material-green-dark:active,
+.jqx-primary-material-green-dark.active,
+.jqx-primary-material-green-dark.disabled,
+.jqx-primary-material-green-dark[disabled] {
+    color: var(--jqx-primary-color) !important;
+    background: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+    text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-primary-material-green-dark,
+.jqx-primary-material-green-dark:active,
+.jqx-primary-material-green-dark.active {
+    color: var(--jqx-primary-color) !important;
+    background-color: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+    text-shadow: none !important;
+}
+
+.jqx-success-material-green-dark {
+    color: #5cb85c !important;
+    background: var(--jqx-background) !important;
+    border-color: #5cb85c !important;
+    text-shadow: none !important;
+}
+
+.jqx-success-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-success-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-success-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-success-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-success-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-success-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-success-material-green-dark:hover,
+.jqx-success-material-green-dark:focus,
+.jqx-success-material-green-dark:active,
+.jqx-success-material-green-dark.active,
+.jqx-success-material-green-dark.disabled,
+.jqx-success-material-green-dark[disabled] {
+    color: var(--jqx-primary-color) !important;
+    background: #5cb85c !important;
+    border-color: #5cb85c !important;
+    text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-success-material-green-dark,
+.jqx-success-material-green-dark:active,
+.jqx-success-material-green-dark.active {
+    text-shadow: none !important;
+    color: var(--jqx-primary-color) !important;
+    background: #5cb85c !important;
+    border-color: #5cb85c !important;
+}
+
+/* Inverse is the light variant on a dark theme: #666 text was 2.67:1 on #252526. #CCCCCC
+   is 9.54:1 as text, and #1A1A1A on the #CCCCCC fill is 10.84:1. */
+.jqx-inverse-material-green-dark {
+    text-shadow: none !important;
+    color: #CCCCCC !important;
+    background: var(--jqx-background) !important;
+    border-color: #cccccc !important;
+}
+
+.jqx-inverse-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-inverse-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-inverse-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-inverse-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-inverse-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-inverse-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-inverse-material-green-dark:hover,
+.jqx-inverse-material-green-dark:focus,
+.jqx-inverse-material-green-dark:active,
+.jqx-inverse-material-green-dark.active,
+.jqx-inverse-material-green-dark.disabled,
+.jqx-inverse-material-green-dark[disabled] {
+    text-shadow: none !important;
+    color: #1A1A1A !important;
+    background: #cccccc !important;
+    border-color: #cccccc !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-inverse-material-green-dark,
+.jqx-inverse-material-green-dark:active,
+.jqx-inverse-material-green-dark.active {
+    text-shadow: none !important;
+    color: #1A1A1A !important;
+    background: #cccccc !important;
+    border-color: #cccccc !important;
+}
+
+/* WCAG 1.4.3 - #d9534f is 3.87:1 as text on #252526; #E57373 is 5.13:1. The fill keeps
+   #d9534f, with #121212 text at 4.73:1 (white on it is 3.96:1). */
+.jqx-danger-material-green-dark {
+    text-shadow: none !important;
+    color: #E57373 !important;
+    background: var(--jqx-background) !important;
+    border-color: #d9534f !important;
+}
+
+.jqx-danger-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-danger-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-danger-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-danger-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-danger-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-danger-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-danger-material-green-dark:hover,
+.jqx-danger-material-green-dark:focus,
+.jqx-danger-material-green-dark:active,
+.jqx-danger-material-green-dark.active,
+.jqx-danger-material-green-dark.disabled,
+.jqx-danger-material-green-dark[disabled] {
+    text-shadow: none !important;
+    color: #121212 !important;
+    background: #d9534f !important;
+    border-color: #d9534f !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-danger-material-green-dark,
+.jqx-danger-material-green-dark:active,
+.jqx-danger-material-green-dark.active {
+    text-shadow: none !important;
+    color: #121212 !important;
+    background: #d9534f !important;
+    border-color: #d9534f !important;
+}
+
+.jqx-validator-error-label-material-green-dark {
+    color: #E57373 !important;
+}
+
+.jqx-warning-material-green-dark {
+    text-shadow: none !important;
+    color: #f0ad4e !important;
+    background: var(--jqx-background) !important;
+    border-color: #f0ad4e !important;
+}
+
+.jqx-warning-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-warning-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-warning-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-warning-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-warning-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-warning-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-warning-material-green-dark:hover,
+.jqx-warning-material-green-dark:focus,
+.jqx-warning-material-green-dark:active,
+.jqx-warning-material-green-dark.active,
+.jqx-warning-material-green-dark.disabled,
+.jqx-warning-material-green-dark[disabled] {
+    text-shadow: none !important;
+    color: var(--jqx-primary-color) !important;
+    background: #f0ad4e !important;
+    border-color: #f0ad4e !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-warning-material-green-dark,
+.jqx-warning-material-green-dark:active,
+.jqx-warning-material-green-dark.active {
+    text-shadow: none !important;
+    color: var(--jqx-primary-color) !important;
+    background: #f0ad4e !important;
+    border-color: #f0ad4e !important;
+}
+
+.jqx-info-material-green-dark {
+    text-shadow: none !important;
+    color: #5bc0de !important;
+    background: var(--jqx-background) !important;
+    border-color: #5bc0de !important;
+}
+
+.jqx-info-material-green-dark.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-info-material-green-dark.jqx-slider-button-material-green-dark,
+.jqx-info-material-green-dark.jqx-slider-slider-material-green-dark,
+.jqx-info-material-green-dark.jqx-combobox-arrow-hover-material-green-dark,
+.jqx-info-material-green-dark.jqx-combobox-arrow-normal-material-green-dark,
+.jqx-info-material-green-dark.jqx-action-button-material-green-dark,
+.jqx-info-material-green-dark:hover,
+.jqx-info-material-green-dark:focus,
+.jqx-info-material-green-dark:active,
+.jqx-info-material-green-dark.active,
+.jqx-info-material-green-dark.disabled,
+.jqx-info-material-green-dark[disabled] {
+    color: var(--jqx-primary-color) !important;
+    background: #5bc0de !important;
+    border-color: #5bc0de !important;
+    text-shadow: none !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark.jqx-info-material-green-dark,
+.jqx-info-material-green-dark:active,
+.jqx-info-material-green-dark.active {
+    text-shadow: none !important;
+    color: var(--jqx-primary-color) !important;
+    background: #5bc0de !important;
+    border-color: #5bc0de !important;
+}
+
+.jqx-fill-state-pressed-material-green-dark {
+    background-image: none;
+    outline: 0;
+}
+
+.jqx-grid-group-column-material-green-dark {
+    border-color: transparent;
+}
+
+.jqx-grid-column-menubutton-material-green-dark {
+    border-width: 0px;
+}
+
+.jqx-grid-groups-row-material-green-dark>span {
+    padding-left: 4px;
+}
+
+.jqx-grid-column-filterbutton-material-green-dark,
+.jqx-grid-column-menubutton-material-green-dark {
+    background-image: none;
+    font-family: 'jqx-icons';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.jqx-grid-column-filterbutton-material-green-dark:after {
+    content: var(--jqx-icon-filter);
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-grid-column-menubutton-material-green-dark:after {
+    content: var(--jqx-icon-menu) !important;
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-datatable-material-green-dark .jqx-widget-header-material-green-dark .jqx-grid-column-header-material-green-dark {
+    border-right-color: var(--jqx-divider);
+}
+
+.jqx-datatable-material-green-dark td.jqx-grid-cell-material-green-dark,
+.jqx-treegrid-material-green-dark .jqx-grid-cell-material-green-dark {
+    padding-top: 10px;
+    padding-bottom: 9px;
+    font-size: 14px;
+}
+
+.jqx-grid-cell-material-green-dark {
+    background: var(--jqx-background);
+    color: var(--jqx-background-color);
+    box-shadow: none;
+}
+
+.jqx-grid-cell-alt-material-green-dark {
+    background: var(--jqx-row-alt);
+    color: var(--jqx-background-color);
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark,
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark {
+    color: inherit !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    position: relative;
+    top: 0px;
+    border-radius: 4px;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-content: center;
+}
+
+.jqx-grid-pager-input-material-green-dark {
+    padding: 0px !important;
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark>div,
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark>div {
+    top: 0px;
+    position: relative;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    margin-left: 0px !important;
+}
+
+/* Hover and pressed carry !important because the resting rule above does; without it the
+   pager buttons never showed either state. */
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-hover,
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-hover {
+    color: var(--jqx-background-color-hover) !important;
+    background: var(--jqx-background-hover) !important;
+    border-color: var(--jqx-background-hover) !important;
+    box-shadow: none;
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-pressed,
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-pressed {
+    background: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+    color: var(--jqx-primary-color) !important;
+}
+
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark:hover:after,
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark:hover:after,
+.jqx-grid-pager-top-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-pressed-material-green-dark:after,
+.jqx-grid-pager-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-pressed-material-green-dark:after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border: 2px solid var(--jqx-background);
+    border-radius: 4px;
+    left: 0px;
+    top: 0px;
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-grid-pager-number-material-green-dark,
+.jqx-grid-pager-material-green-dark .jqx-grid-pager-number-material-green-dark {
+    background-color: transparent;
+    border-color: transparent;
+    color: inherit;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-grid-pager-number-material-green-dark:hover,
+.jqx-grid-pager-material-green-dark .jqx-grid-pager-number-material-green-dark:hover {
+    background: var(--jqx-background-hover);
+    color: var(--jqx-background-color-hover) !important;
+    font-size: var(--jqx-font-size);
+}
+
+.jqx-grid-pager-material-green-dark .jqx-grid-pager-number-material-green-dark:hover:after,
+.jqx-grid-pager-top-material-green-dark .jqx-grid-pager-number-material-green-dark:hover:after,
+.jqx-grid-pager-top-material-green-dark .jqx-grid-pager-number-material-green-dark.jqx-fill-state-pressed-material-green-dark:after,
+.jqx-grid-pager-material-green-dark .jqx-grid-pager-number-material-green-dark.jqx-fill-state-pressed-material-green-dark:after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border: 2px solid var(--jqx-background);
+    border-radius: var(--jqx-border-radius);
+    left: 0px;
+    top: 0px;
+}
+
+.jqx-grid-pager-top-material-green-dark .jqx-grid-pager-number-material-green-dark.jqx-fill-state-pressed-material-green-dark,
+.jqx-grid-pager-material-green-dark .jqx-grid-pager-number-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    font-weight: bold !important;
+    background: var(--jqx-primary);
+    color: var(--jqx-background) !important;
+}
+
+.jqx-grid-column-menubutton-material-green-dark {
+    background-color: transparent;
+    border-color: var(--jqx-border) !important;
+}
+
+.jqx-cell-material-green-dark {
+    font-size: 13px;
+}
+
+.jqx-calendar-material-green-dark>div {
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.jqx-calendar-month-material-green-dark {
+    width: 90%;
+    position: relative;
+    left: 5%;
+}
+
+.jqx-calendar-title-navigation-material-green-dark {
+    font-size: 20px;
+    padding: 0px 20px;
+}
+
+.jqx-calendar-row-header-material-green-dark,
+.jqx-calendar-top-left-header-material-green-dark {
+    background-color: var(--jqx-background);
+    border: 0px solid var(--jqx-background);
+}
+
+.jqx-calendar-column-header-material-green-dark {
+    background-color: var(--jqx-background);
+    border-top: 1px solid var(--jqx-background);
+    border-bottom: 1px solid var(--jqx-divider);
+    font-size: 12px;
+    color: var(--jqx-surface-color);
+}
+
+.jqx-expander-header-material-green-dark {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.jqx-ribbon-header-vertical-material-green-dark,
+.jqx-widget-header-vertical-material-green-dark {
+    background: var(--jqx-background);
+}
+
+.jqx-scrollbar-state-normal-material-green-dark {
+    background-color: var(--jqx-scrollbar-background);
+    border: 1px solid var(--jqx-scrollbar-background);
+    border-left-color: var(--jqx-scrollbar-border);
+}
+
+.jqx-scrollbar-thumb-state-normal-material-green-dark,
+.jqx-scrollbar-thumb-state-normal-horizontal-material-green-dark {
+    background: var(--jqx-scrollbar-thumb-background);
+    border-color: var(--jqx-scrollbar-thumb-border);
+    border-radius: 0px;
+}
+
+.jqx-scrollbar-thumb-state-hover-material-green-dark,
+.jqx-scrollbar-thumb-state-hover-horizontal-material-green-dark {
+    background: var(--jqx-scrollbar-thumb-background-hover);
+    border-color: var(--jqx-scrollbar-thumb-border-hover);
+    box-shadow: none;
+}
+
+.jqx-progressbar-material-green-dark {
+    background: var(--jqx-background) !important;
+    box-shadow: none;
+}
+
+.jqx-progressbar-value-material-green-dark,
+.jqx-splitter-collapse-button-horizontal-material-green-dark {
+    background: var(--jqx-primary);
+}
+
+.jqx-splitter-collapse-button-vertical-material-green-dark,
+.jqx-progressbar-value-vertical-material-green-dark {
+    background: var(--jqx-primary);
+}
+
+.jqx-scrollbar-mobile-material-green-dark .jqx-scrollbar-button-state-normal {
+    display: none !important;
+}
+
+.jqx-scrollbar-button-state-hover-material-green-dark {
+    color: var(--jqx-scrollbar-button-color-hover);
+    background: var(--jqx-scrollbar-button-background-hover);
+    border-color: var(--jqx-scrollbar-button-border-hover);
+}
+
+.jqx-scrollbar-button-state-pressed-material-green-dark {
+    color: var(--jqx-scrollbar-button-color-pressed);
+    background: var(--jqx-scrollbar-button-background-pressed);
+    border-color: var(--jqx-scrollbar-button-border-pressed);
+}
+
+.jqx-splitter-splitbar-vertical-material-green-dark,
+.jqx-splitter-splitbar-horizontal-material-green-dark {
+    background: var(--jqx-scrollbar-thumb-background);
+    border-color: var(--jqx-scrollbar-thumb-border);
+}
+
+.jqx-scrollbar-thumb-state-pressed-material-green-dark,
+.jqx-scrollbar-thumb-state-pressed-horizontal-material-green-dark,
+.jqx-scrollbar-button-state-pressed-material-green-dark {
+    background: var(--jqx-scrollbar-thumb-background-pressed);
+    border-color: var(--jqx-scrollbar-thumb-border-pressed);
+    box-shadow: none;
+}
+
+.jqx-grid-column-sortdescbutton-material-green-dark,
+.jqx-grid-column-filterbutton-material-green-dark,
+.jqx-grid-column-sortascbutton-material-green-dark {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: var(--jqx-border);
+}
+
+.jqx-menu-vertical-material-green-dark {
+    background: var(--jqx-background);
+    filter: none;
+}
+
+.jqx-grid-bottomright-material-green-dark,
+.jqx-panel-bottomright-material-green-dark,
+.jqx-listbox-bottomright-material-green-dark {
+    background-color: var(--jqx-scrollbar-background);
+}
+
+.jqx-window-material-green-dark,
+.jqx-tooltip-material-green-dark {
+    box-shadow: 0 4px 23px 5px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.jqx-tooltip-material-green-dark,
+.jqx-tooltip-material-green-dark.jqx-popup-material-green-dark,
+.jqx-tooltip-material-green-dark .jqx-fill-state-normal-material-green-dark {
+    background: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+    box-shadow: none;
+    color: var(--jqx-primary-color);
+}
+
+.jqx-docking-material-green-dark .jqx-window-material-green-dark {
+    box-shadow: none;
+}
+
+.jqx-docking-panel-material-green-dark .jqx-window-material-green-dark {
+    box-shadow: none;
+}
+
+.jqx-checkbox-material-green-dark {
+    line-height: 20px;
+    overflow: visible;
+}
+
+.jqx-radiobutton-material-green-dark {
+    overflow: visible;
+    box-shadow: none;
+    background-repeat: no-repeat;
+    background: none;
+    line-height: 20px;
+}
+
+.jqx-radiobutton-dark-material-green-dark,
+.jqx-radiobutton-hover-material-green-dark {
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    transition: background-color ease-in .3s;
+}
+
+.jqx-radiobutton-check-checked-material-green-dark {
+    filter: none;
+    background: var(--jqx-background);
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+
+.jqx-radiobutton-check-indeterminate-material-green-dark {
+    filter: none;
+    background: var(--jqx-background);
+    border-radius: 100%;
+}
+
+.jqx-radiobutton-check-indeterminate-disabled-material-green-dark {
+    filter: none;
+    background: var(--jqx-background);
+    opacity: 0.7;
+    border-radius: 100%;
+}
+
+.jqx-checkbox-default-material-green-dark,
+.jqx-radiobutton-default-material-green-dark {
+    border-width: 1px;
+    border-color: var(--jqx-border);
+    background-color: var(--jqx-background);
+    overflow: visible;
+}
+
+.jqx-tree-grid-expand-button-material-green-dark,
+.jqx-tree-grid-collapse-button-material-green-dark {
+    font-size: 16px;
+}
+
+.jqx-grid-table-material-green-dark .jqx-grid-cell:first-child {
+    padding-left: 10px;
+}
+
+.jqx-tree-grid-title-material-green-dark {
+    margin-left: 5px;
+}
+
+/* The box fills when it holds the tick. The tree rule used before filled every box in a
+   jqxTree whatever its state; jqxTree also sets [checked] on an indeterminate box, and
+   jqxTreeGrid writes checked='undefined' on an unchecked one, so neither attribute says
+   the box is checked. */
+.jqx-checkbox-default-material-green-dark:has(.jqx-checkbox-check-checked-material-green-dark),
+.jqx-tree-grid-checkbox[checked="true"].jqx-checkbox-default-material-green-dark,
+.jqx-radiobutton-material-green-dark[checked] .jqx-radiobutton-default-material-green-dark {
+    color: var(--jqx-primary-color);
+    background-color: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+}
+
+.jqx-menu-item-disabled-material-green-dark {
+    color: inherit;
+}
+
+.jqx-grid-material-green-dark .jqx-checkbox-default-material-green-dark {
+    border-radius: 0px;
+}
+
+.jqx-checkbox-check-checked-material-green-dark {
+    background: none;
+    font-family: jqx-icons;
+    display: flex;
+    justify-content: center;
+}
+
+.jqx-checkbox-check-checked-material-green-dark:after {
+    content: var(--jqx-icon-check);
+}
+
+/* The indeterminate mark was a square of the page colour inside a box of the page colour,
+   so an indeterminate box looked unchecked. A centred primary square, as in the light theme. */
+.jqx-checkbox-check-indeterminate-material-green-dark {
+    width: 8px !important;
+    height: 8px !important;
+    position: relative;
+    top: 4px;
+    left: 4px;
+    border-radius: 1px;
+    background: var(--jqx-primary);
+}
+
+.jqx-tree-material-green-dark .jqx-checkbox-check-indeterminate-material-green-dark {
+    width: 8px !important;
+    height: 8px !important;
+    top: 4px;
+    left: 4px;
+}
+
+/* Hover outlines the box in the primary colour. Filling it made an unchecked box under the
+   pointer look checked - more so than the checked ones, whose fill carries a mark. */
+.jqx-checkbox-hover-material-green-dark,
+.jqx-radiobutton-hover-material-green-dark {
+    border-color: var(--jqx-primary);
+}
+
+.jqx-slider-slider-material-green-dark {
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+.jqx-slider-slider-material-green-dark:active {
+    transform: scale(1.2);
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+}
+
+.jqx-slider-material-green-dark[discrete] .jqx-slider-slider-material-green-dark:active {
+    transform: scaleX(0);
+
+}
+
+.jqx-slider-slider-horizontal-material-green-dark {
+    background: var(--jqx-primary);
+}
+
+.jqx-slider-slider-vertical-material-green-dark {
+    background: var(--jqx-primary);
+}
+
+.jqx-slider-tooltip-material-green-dark {
+    width: 25px;
+    height: 25px;
+    transform-origin: 50% 100%;
+    border-radius: 50%;
+    transform: scale(0) rotate(45deg);
+    padding: 0px;
+    background: transparent !important;
+}
+
+.jqx-slider-tooltip-material-green-dark.init {
+    transform: scale(1) rotate(45deg);
+}
+
+.jqx-slider-tooltip-material-green-dark.hide {
+    transition: transform 0.2s ease;
+    transform-origin: 50% 100%;
+    transform: scale(0) rotate(45deg);
+}
+
+.jqx-slider-tooltip-material-green-dark.show {
+    transition: transform 0.2s ease;
+    transform: scale(1) rotate(45deg);
+}
+
+.jqx-slider-tooltip-material-green-dark .jqx-tooltip-arrow-t-b,
+.jqx-slider-tooltip-material-green-dark .jqx-tooltip-arrow-l-r {
+    display: none;
+    visibility: hidden;
+}
+
+.jqx-slider-tooltip-material-green-dark,
+.jqx-slider-tooltip-material-green-dark .jqx-fill-state-normal-material-green-dark {
+    border-radius: 15px 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+    font-size: 11px;
+}
+
+.jqx-slider-tooltip-material-green-dark.far,
+.jqx-slider-tooltip-material-green-dark.far .jqx-fill-state-normal-material-green-dark {
+    border-radius: 0px 15px 15px 15px;
+}
+
+.jqx-slider-tooltip-material-green-dark.vertical,
+.jqx-slider-tooltip-material-green-dark.vertical .jqx-fill-state-normal-material-green-dark {
+    border-radius: 15px 0px 15px 15px;
+}
+
+.jqx-slider-tooltip-material-green-dark.vertical.far,
+.jqx-slider-tooltip-material-green-dark.vertical.far .jqx-fill-state-normal-material-green-dark {
+    border-radius: 15px 15px 15px 0px;
+}
+
+.jqx-slider-tooltip-material-green-dark {
+    background: transparent;
+    border: none !important;
+    box-shadow: none;
+}
+
+.jqx-slider-tooltip-material-green-dark .jqx-tooltip-main-material-green-dark {
+    top: -7px;
+    right: 11px;
+}
+
+.jqx-slider-tooltip-material-green-dark.far .jqx-tooltip-main-material-green-dark {
+    top: 3px;
+    right: 4px;
+}
+
+.jqx-slider-tooltip-material-green-dark.vertical .jqx-tooltip-main-material-green-dark {
+    top: -3px;
+    right: 3px;
+}
+
+.jqx-slider-tooltip-material-green-dark .jqx-tooltip-text {
+    background: transparent;
+    border: none;
+    padding: 0px;
+    overflow: visible;
+}
+
+.jqx-slider-tooltip-material-green-dark .jqx-tooltip-text>span {
+    transform: rotate(-45deg);
+}
+
+.jqx-slider-tooltip-material-green-dark.range {
+    width: 35px;
+    height: 35px;
+}
+
+.jqx-slider-rangebar-material-green-dark {
+    border-color: var(--jqx-primary);
+    background: var(--jqx-primary);
+}
+
+.jqx-slider-track-horizontal-material-green-dark,
+.jqx-slider-track-vertical-material-green-dark {
+    border-color: var(--jqx-border);
+    background: var(--jqx-background);
+}
+
+.jqx-slider-button-material-green-dark {
+    border-radius: 100%;
+}
+
+.jqx-slider-button-material-green-dark.jqx-fill-state-normal-material-green-dark,
+.jqx-slider-button-material-green-dark.jqx-fill-state-hover-material-green-dark,
+.jqx-slider-button-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    background: transparent !important;
+}
+
+.jqx-tree-item-material-green-dark,
+.jqx-tree-item-selected {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.jqx-listitem-element-material-green-dark .jqx-checkbox-default-material-green-dark {
+    border-radius: 0px;
+}
+
+.jqx-listitem-state-hover-material-green-dark,
+.jqx-listitem-state-selected-material-green-dark,
+.jqx-listitem-state-normal-material-green-dark {
+    border-radius: 0;
+    margin: 0px;
+}
+
+.jqx-scheduler-edit-dialog-label-material-green-dark {
+    font-size: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+}
+
+.jqx-scheduler-edit-dialog-field-material-green-dark {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.jqx-scheduler-edit-dialog-label-rtl-material-green-dark {
+    line-height: 35px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.jqx-scheduler-edit-dialog-field-rtl-material-green-dark {
+    line-height: 35px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.jqx-menu-horizontal-material-green-dark {
+    height: auto !important;
+}
+
+.jqx-menu-horizontal-material-green-dark .jqx-menu-item-top-material-green-dark {
+    padding: 8px;
+}
+
+.jqx-menu-item-top-material-green-dark,
+.jqx-menu-item-material-green-dark {
+    padding: 8px;
+}
+
+/*applied to a list item when the item is selected.*/
+.jqx-listitem-state-hover-material-green-dark,
+.jqx-menu-item-hover-material-green-dark,
+.jqx-tree-item-hover-material-green-dark,
+.jqx-calendar-cell-hover-material-green-dark,
+.jqx-grid-cell-hover-material-green-dark,
+.jqx-input-popup-material-green-dark .jqx-fill-state-hover-material-green-dark,
+.jqx-input-popup-material-green-dark .jqx-fill-state-pressed-material-green-dark {
+    color: var(--jqx-background-color-hover) !important;
+    border-color: var(--jqx-background-hover);
+    text-decoration: none;
+    background-color: var(--jqx-background-hover);
+    background-repeat: repeat-x;
+    outline: 0;
+    background: var(--jqx-background-hover);
+    box-shadow: none;
+    background-position: 0 0;
+}
+
+.jqx-scheduler-cell-hover-material-green-dark {
+    border-color: var(--jqx-primary) !important;
+    background: var(--jqx-primary) !important;
+    color: var(--jqx-background) !important;
+}
+
+.jqx-listitem-state-selected-material-green-dark,
+.jqx-menu-item-selected-material-green-dark,
+.jqx-tree-item-selected-material-green-dark,
+.jqx-calendar-cell-selected-material-green-dark,
+.jqx-grid-cell-selected-material-green-dark,
+.jqx-menu-item-top-selected-material-green-dark,
+.jqx-grid-selectionarea-material-green-dark,
+.jqx-input-button-header-material-green-dark,
+.jqx-input-button-innerHeader-material-green-dark {
+    color: var(--jqx-primary-color) !important;
+    border-color: var(--jqx-primary) !important;
+    background: var(--jqx-primary) !important;
+    /* Old browsers */
+    box-shadow: none;
+}
+
+.jqx-grid-cell-material-green-dark .jqx-button-material-green-dark,
+.jqx-grid-cell-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-hover-material-green-dark,
+.jqx-grid-cell-material-green-dark .jqx-button-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    box-shadow: none;
+    transition: none;
+}
+
+.jqx-menu-popup-material-green-dark {
+    opacity: 0;
+    transform-origin: top left;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 3px rgba(0, 0, 0, .12), 0 4px 15px 0 rgba(0, 0, 0, .2);
+    background: var(--jqx-background) !important;
+}
+
+.jqx-menu-popup-material-green-dark.top {
+    transform: scaleY(0);
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.jqx-menu-popup-material-green-dark.horizontal {
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.jqx-menu-popup-material-green-dark.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.jqx-popup-material-green-dark {
+    border: 1px solid var(--jqx-border);
+    background: var(--jqx-background);
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 3px rgba(0, 0, 0, .12), 0 4px 15px 0 rgba(0, 0, 0, .2);
+}
+
+.jqx-menu-popup-material-green-dark .jqx-popup-material-green-dark {
+    box-shadow: none;
+    border: none;
+}
+
+.jqx-datatable-material-green-dark .jqx-grid-column-sortdescbutton-material-green-dark,
+.jqx-datatable-material-green-dark .jqx-grid-column-sortascbutton-material-green-dark {
+    display: flex;
+    align-items: center;
+}
+
+.jqx-grid-column-sortascbutton-material-green-dark,
+.jqx-expander-arrow-bottom-material-green-dark,
+.jqx-window-collapse-button-material-green-dark,
+.jqx-menu-item-arrow-up-material-green-dark,
+.jqx-menu-item-arrow-up-selected-material-green-dark,
+.jqx-menu-item-arrow-top-up-material-green-dark,
+.jqx-icon-arrow-up-material-green-dark,
+.jqx-icon-arrow-up-hover-material-green-dark,
+.jqx-icon-arrow-up-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-column-sortascbutton-material-green-dark,
+.jqx-expander-arrow-bottom-material-green-dark,
+.jqx-window-collapse-button-material-green-dark,
+.jqx-menu-item-arrow-up-material-green-dark,
+.jqx-menu-item-arrow-up-selected-material-green-dark,
+.jqx-menu-item-arrow-top-up-material-green-dark,
+.jqx-icon-arrow-up-material-green-dark,
+.jqx-icon-arrow-up-hover-material-green-dark,
+.jqx-icon-arrow-up-selected-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+.jqx-grid-column-sortascbutton-material-green-dark:after,
+.jqx-expander-arrow-bottom-material-green-dark:after,
+.jqx-window-collapse-button-material-green-dark:after,
+.jqx-menu-item-arrow-up-material-green-dark:after,
+.jqx-menu-item-arrow-up-selected-material-green-dark:after,
+.jqx-menu-item-arrow-top-up-material-green-dark:after,
+.jqx-icon-arrow-up-material-green-dark:after,
+.jqx-icon-arrow-up-hover-material-green-dark:after,
+.jqx-icon-arrow-up-selected-material-green-dark:after {
+    content: var(--jqx-icon-arrow-up);
+}
+
+.jqx-widget-material-green-dark .jqx-grid-group-expand-material-green-dark,
+.jqx-grid-group-expand-material-green-dark,
+.jqx-grid-column-sortdescbutton-material-green-dark,
+.jqx-expander-arrow-top-material-green-dark,
+.jqx-window-collapse-button-collapsed-material-green-dark,
+.jqx-menu-item-arrow-down-material-green-dark,
+.jqx-menu-item-arrow-down-selected-material-green-dark,
+.jqx-menu-item-arrow-down-material-green-dark,
+.jqx-icon-arrow-down-material-green-dark,
+.jqx-icon-arrow-down-hover-material-green-dark,
+.jqx-icon-arrow-down-selected-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+.jqx-widget-material-green-dark .jqx-grid-group-expand-material-green-dark:after,
+.jqx-grid-group-expand-material-green-dark:after,
+.jqx-grid-column-sortdescbutton-material-green-dark:after,
+.jqx-expander-arrow-top-material-green-dark:after,
+.jqx-window-collapse-button-collapsed-material-green-dark:after,
+.jqx-menu-item-arrow-down-material-green-dark:after,
+.jqx-menu-item-arrow-down-selected-material-green-dark:after,
+.jqx-menu-item-arrow-down-material-green-dark:after,
+.jqx-icon-arrow-down-material-green-dark:after,
+.jqx-icon-arrow-down-hover-material-green-dark:after,
+.jqx-icon-arrow-down-selected-material-green-dark:after {
+    content: var(--jqx-icon-arrow-down);
+}
+
+.jqx-grid-column-header-material-green-dark[sort][sort-index] .sorticon {
+    display: flex;
+    align-items: center;
+    width: 45px;
+    flex-direction: row-reverse;
+    margin-right: 5px;
+}
+
+.jqx-grid-column-header-material-green-dark[sort][sort-index] .sorticon:before {
+    content: attr(order);
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+    padding: 5px;
+    margin-left: 5px;
+    height: 8px;
+    box-sizing: content-box;
+}
+
+.jqx-tabs-arrow-left-material-green-dark,
+.jqx-menu-item-arrow-left-selected-material-green-dark,
+.jqx-menu-item-arrow-top-left,
+.jqx-icon-arrow-left-material-green-dark,
+.jqx-icon-arrow-down-left-material-green-dark,
+.jqx-icon-arrow-left-selected-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jqx-tabs-arrow-left-material-green-dark:after,
+.jqx-menu-item-arrow-left-selected-material-green-dark:after,
+.jqx-menu-item-arrow-top-left:after,
+.jqx-icon-arrow-left-material-green-dark:after,
+.jqx-icon-arrow-down-left-material-green-dark:after,
+.jqx-icon-arrow-left-selected-material-green-dark:after {
+    content: var(--jqx-icon-arrow-left);
+}
+
+.jqx-widget-material-green-dark .jqx-grid-group-collapse-material-green-dark,
+.jqx-grid-group-collapse-material-green-dark,
+.jqx-tabs-arrow-right-material-green-dark,
+.jqx-menu-item-arrow-right-selected-material-green-dark,
+.jqx-menu-item-arrow-top-right-material-green-dark,
+.jqx-icon-arrow-right-material-green-dark,
+.jqx-icon-arrow-right-hover-material-green-dark,
+.jqx-icon-arrow-right-selected-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jqx-widget-material-green-dark .jqx-grid-group-collapse-material-green-dark:after,
+.jqx-grid-group-collapse-material-green-dark:after,
+.jqx-tabs-arrow-right-material-green-dark:after,
+.jqx-menu-item-arrow-right-selected-material-green-dark:after,
+.jqx-menu-item-arrow-top-right-material-green-dark:after,
+.jqx-icon-arrow-right-material-green-dark:after,
+.jqx-icon-arrow-right-hover-material-green-dark:after,
+.jqx-icon-arrow-right-selected-material-green-dark:after {
+    content: var(--jqx-icon-arrow-right);
+}
+
+.jqx-tree-item-arrow-collapse-rtl-material-green-dark,
+.jqx-tree-item-arrow-collapse-hover-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-tree-item-arrow-collapse-rtl-material-green-dark:after,
+.jqx-tree-item-arrow-collapse-hover-rtl-material-green-dark:after {
+    content: var(--jqx-icon-arrow-left);
+}
+
+.jqx-menu-item-arrow-left-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-menu-item-arrow-right-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-input-button-content-material-green-dark {
+    font-size: 10px;
+}
+
+.jqx-widget .jqx-grid-column-header-cell-material-green-dark {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 30px;
+}
+
+.jqx-widget .jqx-grid-row-cell-material-green-dark {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 30px;
+}
+
+.jqx-listbox-container-material-green-dark,
+.jqx-calendar-container-material-green-dark {
+    margin-left: -10px;
+}
+
+.jqx-calendar-container-material-green-dark .jqx-popup,
+.jqx-calendar-material-green-dark.jqx-popup,
+.jqx-listbox-material-green-dark.jqx-popup {
+    margin-left: 9px;
+}
+
+.jqx-dropdownbutton-popup-material-green-dark,
+.jqx-calendar-material-green-dark.jqx-popup,
+.jqx-listbox-material-green-dark.jqx-popup,
+.jqx-grid-menu.jqx-popup-material-green-dark {
+    transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
+    transform: scaleY(0);
+    opacity: 0;
+    transform-origin: top left;
+    display: block !important;
+}
+
+.jqx-dropdownbutton-popup-material-green-dark.jqx-popup-show,
+.jqx-calendar-material-green-dark.jqx-popup-show,
+.jqx-listbox-material-green-dark.jqx-popup-show,
+.jqx-grid-menu.jqx-popup-material-green-dark.jqx-popup-show {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.jqx-widget-material-green-dark .jqx-grid-cell {
+    border-color: var(--jqx-divider);
+    color: var(--jqx-background-color);
+}
+
+/* Column headers take the body text colour: at 12px the secondary #B8B8B8 read as
+   disabled beside 14px #E7E7E7 cells. The raised surface and the weight mark them. */
+.jqx-widget-material-green-dark .jqx-grid-column-header,
+.jqx-widget-material-green-dark .jqx-grid-group-cell {
+    border-color: var(--jqx-divider);
+    color: var(--jqx-background-color);
+    background: var(--jqx-surface);
+}
+
+.jqx-widget-material-green-dark .jqx-grid-column-header-material-green-dark {
+    border-color: var(--jqx-divider);
+    font-size: 12px;
+    color: var(--jqx-background-color);
+    font-weight: 500;
+}
+
+.jqx-widget-material-green-dark .jqx-grid-cell-material-green-dark {
+    border-color: var(--jqx-divider);
+}
+
+.jqx-widget-material-green-dark .jqx-widget-header-material-green-dark:hover .jqx-grid-column-header-material-green-dark {
+    border-right-color: var(--jqx-divider) !important;
+    border-bottom-color: var(--jqx-divider) !important;
+}
+
+.jqx-widgets-material-green-dark .jqx-scheduler-cell-selected span {
+    color: var(--jqx-background) !important;
+}
+
+.jqx-scheduler-time-column-material-green-dark,
+.jqx-scheduler-toolbar-material-green-dark {
+    background: var(--jqx-surface) !important;
+    color: var(--jqx-surface-color) !important;
+    border-color: var(--jqx-border) !important;
+}
+
+.jqx-widget-material-green-dark.jqx-scheduler-material-green-dark .jqx-grid-cell-material-green-dark,
+.jqx-widget-material-green-dark.jqx-scheduler-material-green-dark .jqx-grid-column-header-material-green-dark {
+    border-color: var(--jqx-divider);
+}
+
+.jqx-widget-material-green-dark.jqx-scheduler-material-green-dark td.jqx-grid-cell-material-green-dark span {
+    font-size: 10px;
+    color: var(--jqx-background-color);
+}
+
+.jqx-widget-material-green-dark.jqx-scheduler-material-green-dark td.jqx-grid-cell-material-green-dark.jqx-scheduler-cell-hover span,
+.jqx-widget-material-green-dark.jqx-scheduler-material-green-dark td.jqx-grid-cell-material-green-dark.jqx-scheduler-cell-selected span {
+    color: var(--jqx-primary-color);
+}
+
+.jqx-passwordinput-password-icon-material-green-dark,
+.jqx-passwordinput-password-icon-rtl-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+    color: var(--jqx-background-color);
+}
+
+.jqx-passwordinput-password-icon-material-green-dark:after,
+.jqx-passwordinput-password-icon-rtl-material-green-dark:after {
+    content: var(--jqx-icon-visibility);
+}
+
+.jqx-combobox-material-green-dark .jqx-icon-close-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+.jqx-combobox-multi-item-material-green-dark {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jqx-combobox-multi-item-material-green-dark a {
+    margin-right: 10px;
+}
+
+.jqx-combobox-material-green-dark .jqx-icon-close-material-green-dark:after {
+    content: var(--jqx-icon-close);
+}
+
+.jqx-combobox-material-green-dark,
+.jqx-input-material-green-dark {
+    border-color: var(--jqx-border);
+    color: var(--jqx-background-color);
+    background-color: var(--jqx-background);
+}
+
+.jqx-combobox-content-material-green-dark,
+.jqx-datetimeinput-content-material-green-dark {
+    border-color: transparent;
+}
+
+.jqx-combobox-content-focus-material-green-dark,
+.jqx-combobox-state-focus-material-green-dark,
+.jqx-numberinput-focus-material-green-dark {
+    outline: none;
+}
+
+.jqx-input-group-material-green-dark {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+}
+
+.jqx-input-group-material-green-dark input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.jqx-input-group-material-green-dark textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-color: var(--jqx-border);
+}
+
+.jqx-numberinput-material-green-dark,
+.jqx-maskedinput-material-green-dark {
+    position: relative;
+}
+
+.jqx-numberinput-material-green-dark input {
+    height: 100% !important;
+}
+
+.jqx-input-material-green-dark.jqx-validator-error-element {
+    border-color: transparent !important;
+    border-bottom: 1px solid #df2227 !important;
+}
+
+/* Every text field is the underlined Material field on the page colour. The drop-down list
+   and number input sat on the raised surface in the secondary text colour, so next to an
+   input, combo box or date field they looked like a different control, or a disabled one. */
+.jqx-input-material-green-dark input,
+.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-combobox-state-normal-material-green-dark,
+.jqx-numberinput-material-green-dark,
+.jqx-maskedinput-material-green-dark,
+.jqx-datetimeinput-material-green-dark {
+    background: var(--jqx-background);
+    border-color: var(--jqx-background);
+    border-radius: 0;
+    color: var(--jqx-background-color);
+    box-shadow: none;
+    border-bottom: 1px solid var(--jqx-border);
+    outline: none;
+}
+
+.jqx-numberinput-material-green-dark .jqx-action-button-material-green-dark {
+    border-radius: 0;
+    font-size: 12px;
+}
+
+.jqx-numberinput-material-green-dark .jqx-action-button-material-green-dark>div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jqx-maskedinput-material-green-dark,
+.jqx-combobox-material-green-dark,
+.jqx-datetimeinput-material-green-dark {
+    background: var(--jqx-background);
+    color: var(--jqx-background-color);
+    border-color: var(--jqx-background);
+    border-bottom: 1px solid var(--jqx-border);
+}
+
+.jqx-combobox-material-green-dark .jqx-combobox-arrow-normal-material-green-dark,
+.jqx-datetimeinput-material-green-dark .jqx-action-button-material-green-dark,
+.jqx-datetimeinput-material-green-dark .jqx-action-button-rtl-material-green-dark {
+    background-color: var(--jqx-surface);
+    border-color: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-datetimeinput-material-green-dark,
+.jqx-datetimeinput-material-green-dark>div,
+.jqx-numberinput-material-green-dark,
+.jqx-numberinput-material-green-dark>div,
+.jqx-maskedinput-material-green-dark,
+.jqx-maskedinput-material-green-dark>div,
+.jqx-dropdownlist-state-normal-material-green-dark,
+.jqx-dropdownlist-state-normal-material-green-dark>div,
+.jqx-dropdownlist-state-normal-material-green-dark>div>div,
+.jqx-combobox-state-normal-material-green-dark,
+.jqx-combobox-state-normal-material-green-dark>div,
+.jqx-combobox-state-normal-material-green-dark>div>div {
+    overflow: visible !important;
+}
+
+.jqx-input-material-green-dark input:focus {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* input.jqx-input-material-green-dark, not only [type=text]: jqxFormattedInput and jqxComplexInput render an
+   input with no type attribute and were drawn as a full box beside the underlined fields. */
+.jqx-input-material-green-dark input,
+input.jqx-input-material-green-dark,
+input[type="text"].jqx-input-material-green-dark,
+input[type="password"].jqx-input-material-green-dark,
+input[type="text"].jqx-widget-content-material-green-dark,
+input[type="textarea"].jqx-widget-content-material-green-dark,
+textarea.jqx-input-material-green-dark {
+    font-size: var(--jqx-font-size);
+    font-family: var(--jqx-font-family);
+    resize: none;
+    background: var(--jqx-background);
+    color: var(--jqx-background-color);
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-bottom: 1px solid var(--jqx-border);
+}
+
+input[type="text"].jqx-widget-content-material-green-dark,
+input[type="textarea"].jqx-widget-content-material-green-dark {
+    height: 100%;
+}
+
+.jqx-input-label-material-green-dark {
+    visibility: inherit;
+}
+
+.jqx-input-bar-material-green-dark {
+    visibility: inherit;
+}
+
+input:focus~.jqx-input-label-material-green-dark,
+textarea:focus~.jqx-input-label-material-green-dark,
+.jqx-input-widget-material-green-dark[hint=true] .jqx-input-label,
+.jqx-text-area-material-green-dark[hint=true] .jqx-input-label,
+.jqx-dropdownlist-state-selected-material-green-dark .jqx-input-label,
+.jqx-dropdownlist-state-normal-material-green-dark[hint=true] .jqx-input-label,
+.jqx-combobox-state-normal-material-green-dark[hint=true] .jqx-input-label,
+.jqx-combobox-material-green-dark .jqx-input-label.focused,
+.jqx-dropdownlist-material-green-dark .jqx-input-label.focused,
+.jqx-datetimeinput-material-green-dark[hint=true] .jqx-input-label,
+.jqx-maskedinput-material-green-dark[hint=true] .jqx-input-label,
+.jqx-numberinput-material-green-dark[hint=true] .jqx-input-label,
+.jqx-formattedinput-material-green-dark[hint=true] .jqx-input-label {
+    top: -15px;
+    font-size: 12px;
+    color: var(--jqx-primary);
+    opacity: 1;
+}
+
+.jqx-dropdownlist-material-green-dark[default-placeholder="true"] .jqx-input-label {
+    visibility: hidden;
+}
+
+input:focus~.jqx-input-bar:before,
+textarea:focus~.jqx-input-bar:before,
+.jqx-dropdownlist-state-selected-material-green-dark .jqx-input-bar:before,
+.jqx-dropdownlist-material-green-dark .jqx-input-bar.focused:before,
+.jqx-combobox-material-green-dark .jqx-input-bar.focused:before,
+.jqx-complex-input-group-material-green-dark .jqx-input-bar.focused::before,
+.jqx-combobox-state-selected-material-green-dark .jqx-input-bar:before {
+    width: 100%;
+}
+
+.jqx-complex-input-group-material-green-dark .jqx-fill-state-normal-material-green-dark {
+    border-color: var(--jqx-border);
+}
+
+.jqx-input-widget-material-green-dark.jqx-rtl>input {
+    direction: rtl
+}
+
+.jqx-input-label-material-green-dark {
+    color: var(--jqx-background-color);
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 2px;
+    top: 10px;
+    opacity: 0.5;
+    top: calc(50% - 7px);
+    transition: 300ms ease all;
+}
+
+.jqx-input-group-material-green-dark.jqx-fill-state-disabled {
+    pointer-events: none;
+}
+
+.jqx-fill-state-disabled-material-green-dark .jqx-action-button-material-green-dark {
+    cursor: initial;
+}
+
+.jqx-input-label.initial {
+    transition: none;
+}
+
+.jqx-input-bar-material-green-dark {
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+
+.jqx-input-bar-material-green-dark:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: var(--jqx-primary);
+    transition: 300ms ease all;
+    left: 0%;
+}
+
+.jqx-formatted-input-spin-button-material-green-dark,
+.jqx-input-group-addon-material-green-dark {
+    border-color: var(--jqx-background);
+    color: var(--jqx-background-color);
+    background: var(--jqx-background);
+}
+
+/* The open field. It took the text colour meant for primary fills as its background -
+   near-black here and pure black in the Material variants - so the field went darker than
+   the page when opened. The surface, with primary text (5.60:1). */
+.jqx-dropdownlist-state-selected-material-green-dark,
+.jqx-combobox-state-selected-material-green-dark {
+    color: var(--jqx-primary);
+    background: var(--jqx-surface);
+    border-color: var(--jqx-surface);
+}
+
+.jqx-window-collapse-button-material-green-dark {
+    position: relative;
+    right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 0px;
+}
+
+.jqx-dropdownlist-state-normal-material-green-dark .jqx-icon-arrow-down-material-green-dark,
+.jqx-combobox-state-normal-material-green-dark .jqx-icon-arrow-down-material-green-dark,
+.sorticon.descending .jqx-grid-column-sorticon-material-green-dark,
+.jqx-tree-item-arrow-expand-material-green-dark,
+.jqx-expander-header-material-green-dark .jqx-icon-arrow-down {
+    transform: rotate(0deg);
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease-out;
+}
+
+.jqx-expander-header-material-green-dark .jqx-icon-arrow-up {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-out;
+    font-family: jqx-icons;
+    background-image: none;
+}
+
+.jqx-expander-header-material-green-dark .jqx-icon-arrow-up:after {
+    content: var(--jqx-icon-arrow-down);
+}
+
+.jqx-tree-item-arrow-expand-material-green-dark,
+.jqx-tree-item-arrow-collapse-material-green-dark {
+    font-size: 16px;
+}
+
+.jqx-tree-item-arrow-expand-material-green-dark {
+    transform: rotate(180deg);
+}
+
+.jqx-tree-item-arrow-expand-material-green-dark:after {
+    content: var(--jqx-icon-arrow-up);
+    margin-left: 2px;
+}
+
+.jqx-tree-item-arrow-collapse-material-green-dark {
+    transform: rotate(0deg);
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s ease-out;
+}
+
+.jqx-dropdownlist-state-selected-material-green-dark .jqx-icon-arrow-down-material-green-dark,
+.jqx-combobox-state-selected-material-green-dark .jqx-icon-arrow-down-material-green-dark,
+.sorticon.ascending .jqx-grid-column-sorticon-material-green-dark {
+    display: flex;
+    align-items: center;
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-out;
+    left: -1px;
+}
+
+.jqx-combobox-state-selected-material-green-dark .jqx-icon-arrow-down-material-green-dark {
+    left: -1px;
+}
+
+.jqx-listbox-container {
+    margin-top: 1px;
+}
+
+/* The single-colon pseudo-classes used before match nothing in current browsers, so the
+   placeholder took the browser's grey. #9A9A9A is 5.44:1 on #252526. */
+.jqx-input-material-green-dark::placeholder,
+.jqx-input-material-green-dark input::placeholder,
+input.jqx-widget-content-material-green-dark::placeholder,
+textarea.jqx-widget-content-material-green-dark::placeholder {
+    color: #9A9A9A;
+    opacity: 1;
+}
+
+.jqx-combobox-content-focus-material-green-dark,
+.jqx-combobox-state-focus-material-green-dark,
+.jqx-fill-state-focus-material-green-dark,
+.jqx-numberinput-focus-material-green-dark {
+    outline: none;
+}
+
+.jqx-popup-material-green-dark.jqx-fill-state-focus-material-green-dark {
+    outline: none;
+    border-color: var(--jqx-border) !important;
+}
+
+.jqx-datetimeinput-content,
+.jqx-datetimeinput-container {
+    overflow: visible !important;
+}
+
+.jqx-text-area-material-green-dark,
+.jqx-text-area-material-green-dark>div {
+    overflow: visible !important;
+}
+
+.jqx-text-area-element-material-green-dark {
+    box-sizing: border-box;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-expand-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-collapse-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-collapse-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-expand-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-tabs-title-selected-top-material-green-dark,
+.jqx-tabs-selection-tracker-top-material-green-dark {
+    border-color: transparent;
+    filter: none;
+    background: inherit;
+    color: inherit;
+    box-shadow: none;
+}
+
+.jqx-grid-cell-filter-row-material-green-dark {
+    background-color: var(--jqx-surface);
+}
+
+.jqx-tabs-title-material-green-dark,
+.jqx-ribbon-item-material-green-dark {
+    color: inherit;
+}
+
+.jqx-ribbon-item-selected-material-green-dark {
+    background: inherit;
+}
+
+.jqx-tabs-title-selected-bottom-material-green-dark,
+.jqx-tabs-title-selected-top-material-green-dark {
+    color: var(--jqx-primary);
+    font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.jqx-tabs-title.jqx-fill-state-hover-material-green-dark {
+    border-color: transparent;
+}
+
+.jqx-ribbon-item-material-green-dark {
+    cursor: pointer;
+}
+
+.jqx-ribbon-item-selected-material-green-dark {
+    color: var(--jqx-primary);
+    font-weight: 500;
+    border-color: transparent;
+}
+
+.jqx-ribbon-item-hover-material-green-dark {
+    background: transparent;
+}
+
+.jqx-ribbon-header-top-material-green-dark {
+    border-color: transparent;
+    border-bottom-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-bottom-material-green-dark {
+    border-color: transparent;
+    border-top-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-right-material-green-dark {
+    border-color: transparent;
+    border-left-color: var(--jqx-border);
+}
+
+.jqx-ribbon-header-left-material-green-dark {
+    border-color: transparent;
+    border-right-color: var(--jqx-border);
+}
+
+.jqx-tabs-title-selected-bottom-material-green-dark,
+.jqx-tabs-selection-tracker-bottom-material-green-dark {
+    border-color: transparent;
+    border-top: 1px solid var(--jqx-background);
+    filter: none;
+    background: var(--jqx-background);
+    box-shadow: none;
+}
+
+.jqx-tabs-material-green-dark,
+.jqx-ribbon-material-green-dark {
+    border-color: transparent;
+}
+
+.jqx-tabs-header-material-green-dark {
+    background: transparent;
+}
+
+.jqx-ribbon-header-material-green-dark {
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-tabs-position-bottom .jqx-tabs-header-material-green-dark {
+    border-color: transparent;
+}
+
+.jqx-layout-material-green-dark .jqx-tabs-header-material-green-dark,
+.jqx-layout-material-green-dark .jqx-ribbon-header-material-green-dark {
+    background: var(--jqx-background);
+    border-color: var(--jqx-border);
+}
+
+.jqx-tabs-title-bottom {
+    border-color: transparent;
+}
+
+.jqx-tabs-title-hover-top-material-green-dark,
+.jqx-tabs-title-hover-bottom-material-green-dark,
+.jqx-tabs-header-material-green-dark {
+    box-shadow: none !important;
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-tabs-content-material-green-dark {
+    box-sizing: border-box;
+    border: 1px solid var(--jqx-border);
+    border-top-color: transparent;
+    padding: 5px;
+}
+
+.jqx-tabs-bar-material-green-dark {
+    position: absolute;
+    bottom: 0;
+    background: var(--jqx-primary);
+    height: 2px;
+    z-index: 10;
+    transition: .5s cubic-bezier(.35, 0, .25, 1);
+}
+
+.jqx-tabs-bar-material-green-dark.vertical {
+    width: 2px;
+}
+
+.jqx-tabs-position-bottom .jqx-tabs-bar-material-green-dark {
+    top: 0;
+}
+
+.jqx-layout-material-green-dark {
+    background-color: var(--jqx-background);
+}
+
+.jqx-kanban-column-header-collapsed-material-green-dark {
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
+.jqx-calendar-cell-material-green-dark {
+    border-radius: 0px;
+    font-size: 12px;
+}
+
+.jqx-calendar-cell-material-green-dark.jqx-fill-state-pressed-material-green-dark {
+    outline: 2px var(--jqx-primary);
+    overflow: hidden;
+    position: relative;
+}
+
+.jqx-calendar-cell-material-green-dark.jqx-fill-state-pressed-material-green-dark:after {
+    content: '';
+    width: calc(100% - 4px);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: calc(100% - 4px);
+    border: 2px solid var(--jqx-background);
+}
+
+.jqx-calendar-cell-year-material-green-dark,
+.jqx-calendar-cell-decade-material-green-dark {
+    border-radius: 0x;
+}
+
+.jqx-calendar-title-content-material-green-dark {
+    font-weight: bold;
+}
+
+.jqx-calendar-column-cell-material-green-dark {
+    color: var(--jqx-background-color);
+    font-size: 12px;
+}
+
+.jqx-icon-time-material-green-dark,
+.jqx-icon-time-hover-material-green-dark,
+.jqx-icon-time-pressed-material-green-dark {
+    background-image: none !important;
+    font-family: 'jqx-icons';
+    display: flex;
+    font-family: 'jqx-icons';
+    font-size: 16px;
+    align-content: center;
+    justify-content: center;
+    left: initial !important;
+    margin-top: 0px;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.jqx-icon-time-material-green-dark:after,
+.jqx-icon-time-hover-material-green-dark:after,
+.jqx-icon-time-pressed-material-green-dark:after {
+    content: var(--jqx-icon-arrow-down);
+}
+
+.jqx-icon-calendar-material-green-dark,
+.jqx-icon-calendar-hover-material-green-dark,
+.jqx-icon-calendar-pressed-material-green-dark {
+    background-image: none !important;
+    font-family: 'jqx-icons';
+    left: 0;
+    top: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.jqx-icon-calendar-material-green-dark:after,
+.jqx-icon-calendar-hover-material-green-dark:after,
+.jqx-icon-calendar-pressed-material-green-dark:after {
+    content: var(--jqx-icon-calendar);
+}
+
+/* The close glyph is a jqx-icons code point; without the icon font and a real size it drew
+   nothing. */
+.jqx-tabs-close-button-material-green-dark,
+.jqx-tabs-close-button-selected-material-green-dark,
+.jqx-tabs-close-button-hover-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+/* jqx.base.css sets the button's font-size to 1px (it once hid a text fallback). */
+.jqx-tabs-close-button-material-green-dark:after {
+    content: var(--jqx-icon-close);
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.jqx-scrollbar-button-state-pressed-material-green-dark .jqx-icon-arrow-up-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-material-green-dark .jqx-icon-arrow-down-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-material-green-dark .jqx-icon-arrow-left-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-scrollbar-button-state-pressed-material-green-dark .jqx-icon-arrow-right-selected-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-expand-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-collapse-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-collapse-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-cell-material-green-dark.jqx-grid-cell-selected-material-green-dark>.jqx-grid-group-expand-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-group-collapse-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-group-collapse-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-grid-group-expand-material-green-dark,
+.jqx-grid-group-expand-rtl-material-green-dark {
+    background-image: none;
+}
+
+.jqx-icon-arrow-first-material-green-dark,
+.jqx-icon-arrow-last-material-green-dark {
+    background-image: none;
+    font-family: jqx-icons;
+}
+
+.jqx-icon-arrow-first-material-green-dark:after {
+    content: var(--jqx-icon-first-page);
+}
+
+.jqx-icon-arrow-last-material-green-dark:after {
+    content: var(--jqx-icon-last-page);
+}
+
+/* Ripple effect */
+.ripple {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    overflow: hidden;
+}
+
+.ink {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    border-radius: 0%;
+    transform: scaleX(0);
+    background: rgba(var(--jqx-primary-rgb), 0.5);
+    opacity: 0.25;
+}
+
+.jqx-scrollbar-material-green-dark .jqx-icon-arrow-up,
+.jqx-scrollbar-material-green-dark .jqx-icon-arrow-down,
+.jqx-scrollbar-material-green-dark .jqx-icon-arrow-right,
+.jqx-scrollbar-material-green-dark .jqx-icon-arrow-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outlined .ink,
+.flat .ink {
+    background: rgba(var(--jqx-primary-rgb), 0.5);
+    overflow: hidden;
+}
+
+.ink.animate {
+    animation: ripple .7s ease;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jqx-tree-material-green-dark .jqx-checkbox-material-green-dark {
+    margin-top: 6px !important;
+    border-radius: 0px !important;
+}
+
+.jqx-tree-item-arrow-expand-material-green-dark,
+.jqx-tree-item-arrow-collapse-material-green-dark {
+    margin-top: 6px !important;
+}
+
+.jqx-checkbox-material-green-dark .ripple,
+.jqx-radiobutton-material-green-dark .ripple {
+    overflow: visible;
+}
+
+.jqx-checkbox-material-green-dark .ink,
+.jqx-radiobutton-material-green-dark .ink {
+    transform: scale(0);
+    background: var(--jqx-primary);
+    border-radius: 50%;
+}
+
+.jqx-checkbox-material-green-dark .ink.animate,
+.jqx-radiobutton-material-green-dark .ink.animate {
+    animation: checkRipple 0.3s ease;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jqx-checkbox-material-green-dark .ink.active,
+.jqx-radiobutton-material-green-dark .ink.active {
+    opacity: 0.2;
+    transform: scale(2);
+}
+
+.jqx-checkbox-default-material-green-dark.active .ink,
+.jqx-radiobutton-default-material-green-dark.active .ink {
+    opacity: 0.2;
+    transform: scale(2);
+}
+
+/* Ripple effect */
+/* Ripple effect */
+.buttonRipple {
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.buttonRipple.jqx-button-material-green-dark.jqx-fill-state-hover {
+    color: var(--jqx-background-color-hover);
+    background: var(--jqx-background-hover) radial-gradient(circle, transparent 1%, var(--jqx-background-hover) 1%) center/15000%;
+}
+
+.buttonRipple.jqx-button-material-green-dark.jqx-fill-state-pressed {
+    color: var(--jqx-background-color-hover);
+    background-color: rgba(var(--jqx-background-hover-rgb), 0.5);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.buttonRipple.jqx-button-material-green-dark.jqx-fill-state-hover.primary {
+    color: var(--jqx-primary-color);
+    background: var(--jqx-primary) radial-gradient(circle, transparent 1%, var(--jqx-primary) 1%) center/15000%;
+}
+
+.buttonRipple.jqx-button-material-green-dark.jqx-fill-state-pressed.primary {
+    color: var(--jqx-primary-color);
+    background-color: rgba(var(--jqx-primary-rgb), 0.8);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+@keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(5);
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@keyframes checkRipple {
+    100% {
+        opacity: 0.2;
+        transform: scale(2);
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Raster icons. jqx.base.css draws them dark, for a light surface; here they are the white
+   variants, and the dark ones again on the light primary fill of a pressed or selected item.
+   (The search icon is a jqx-icons glyph, so it takes no image in either state.) */
+.jqx-icon-delete-material-green-dark {
+    background-image: url('images/icon-delete-white.png');
+}
+
+.jqx-icon-edit-material-green-dark {
+    background-image: url('images/icon-edit-white.png');
+}
+
+.jqx-icon-save-material-green-dark {
+    background-image: url('images/icon-save-white.png');
+}
+
+.jqx-icon-cancel-material-green-dark {
+    background-image: url('images/icon-cancel-white.png');
+}
+
+.jqx-icon-plus-material-green-dark {
+    background-image: url('images/plus_white.png');
+}
+
+.jqx-icon-plus-alt-material-green-dark {
+    background-image: url('images/icon-plus-white.png');
+}
+
+.jqx-menu-minimized-button-material-green-dark {
+    padding: 0px !important;
+    background-image: url('images/icon-menu-minimized-white.png');
+}
+
+.jqx-icon-recurrence-material-green-dark {
+    background-image: url('images/icon-recurrence-white.png');
+}
+
+.jqx-icon-recurrence-exception-material-green-dark {
+    background-image: url('images/icon-recurrence-exception-white.png');
+}
+
+.jqx-layout-pseudo-window-pin-icon-material-green-dark {
+    background-image: url('images/pin-white.png');
+}
+
+.jqx-layout-pseudo-window-pinned-icon-material-green-dark {
+    background-image: url('images/pinned-white.png');
+}
+
+/* The grid's and pivot grid's column menus and the pivot grid's settings icon carry no theme
+   class; the menu around them does. */
+.jqx-menu-material-green-dark .jqx-grid-sortasc-icon,
+.jqx-menu-material-green-dark .jqx-pivotgrid-sortasc-icon {
+    background-image: url('images/icon-sort-asc-white.png');
+}
+
+.jqx-menu-material-green-dark .jqx-grid-sortdesc-icon,
+.jqx-menu-material-green-dark .jqx-pivotgrid-sortdesc-icon {
+    background-image: url('images/icon-sort-desc-white.png');
+}
+
+.jqx-menu-material-green-dark .jqx-grid-sortremove-icon,
+.jqx-menu-material-green-dark .jqx-pivotgrid-sortremove-icon {
+    background-image: url('images/icon-sort-remove-white.png');
+}
+
+.jqx-widget-material-green-dark .jqx-pivotgrid-settings-icon,
+.jqx-widget-header-material-green-dark .jqx-pivotgrid-menu-button {
+    background-image: url('images/icon-menu-small-white.png');
+}
+
+/* The pivot grid's boxed plus and minus exist only in dark ink on white. */
+.jqx-widget-header-material-green-dark .jqx-pivotgrid-expand-button,
+.jqx-widget-header-material-green-dark .jqx-pivotgrid-collapse-button {
+    filter: invert(1);
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-icon-delete-material-green-dark {
+    background-image: url('images/icon-delete.png');
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-icon-edit-material-green-dark {
+    background-image: url('images/icon-edit.png');
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-icon-save-material-green-dark {
+    background-image: url('images/icon-save.png');
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-icon-cancel-material-green-dark {
+    background-image: url('images/icon-cancel.png');
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-icon-plus-material-green-dark {
+    background-image: url('images/plus.png');
+}
+
+.jqx-fill-state-pressed-material-green-dark .jqx-menu-minimized-button-material-green-dark {
+    background-image: url('images/icon-menu-minimized.png');
+}
+
+.jqx-editor-toolbar-icon-material-green-dark {
+    background: url('images/html_editor_white.png') no-repeat;
+}
+
+.jqx-fill-state-hover-material-green-dark .jqx-editor-toolbar-icon-fontsize-material-green-dark,
+.jqx-fill-state-pressed-material-green-dark .jqx-editor-toolbar-icon-fontsize-material-green-dark,
+.jqx-fill-state-hover-material-green-dark .jqx-editor-toolbar-icon-forecolor-material-green-dark,
+.jqx-fill-state-pressed-material-green-dark .jqx-editor-toolbar-icon-forecolor-material-green-dark {
+    background: url('images/html_editor.png') no-repeat;
+}
+
+.jqx-editor-toolbar-button-material-green-dark {
+    border-color: var(--jqx-border);
+    box-shadow: none !important;
+    color: var(--jqx-background-color);
+}
+
+.jqx-time-picker-material-green-dark .jqx-main-container {
+    background: var(--jqx-background);
+}
+
+/*applied to the timepicker*/
+.jqx-needle-central-circle-material-green-dark {
+    fill: var(--jqx-primary);
+}
+
+.jqx-time-picker-material-green-dark .jqx-label-material-green-dark {
+    fill: var(--jqx-background-color);
+}
+
+.jqx-needle-material-green-dark {
+    fill: var(--jqx-primary);
+}
+
+.jqx-time-picker .jqx-header .jqx-selected-material-green-dark:focus {
+    outline: 2px solid var(--jqx-primary);
+    box-shadow: 0px 0px 4px 2px rgba(0, 119, 190, 0.125);
+}
+
+.jqx-svg-picker-material-green-dark:focus {
+    border: 1px solid var(--jqx-primary) !important;
+}
+
+/* White on #D94F43 was 4.08:1; on #C62828 it is 5.62:1. */
+.jqx-validator-hint-material-green-dark {
+    background: #C62828;
+    border-color: #C62828;
+    padding: 10px;
+}
+
+.jqx-validator-hint-material-green-dark img {
+    display: none;
+}
+
+.jqx-grid-group-expand-material-green-dark:after,
+.jqx-grid-group-collapse-material-green-dark:after {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* jqx.base.css gives .jqx-split-layout a light palette of its own, which hides the :root
+   roles, so they are restated here with the same values as :root (build-material-material-green-dark.mjs
+   substitutes this block like the :root). This block used to mix in a light hover and
+   Material Purple's #6200EE border, which drew every split bar purple. */
+.jqx-split-layout-component-material-green-dark .jqx-split-layout {
+    --jqx-primary-rgb: 165, 214, 167;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #000000;
+    --jqx-background: #121212;
+    --jqx-background-color: #DEDEDE;
+    --jqx-surface: #1E1E1E;
+    --jqx-surface-color: #A6A6A6;
+    --jqx-border: #6B6B6B;
+    --jqx-background-hover-rgb: 44, 44, 44;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(255, 255, 255, .87);
+    --jqx-scrollbar-background: #1E1E1E;
+    --jqx-scrollbar-border: #121212;
+    --jqx-scrollbar-thumb-background: #4A4A4A;
+    --jqx-scrollbar-thumb-border: #1E1E1E;
+    --jqx-scrollbar-thumb-background-hover: #6B6B6B;
+    --jqx-scrollbar-thumb-border-hover: #6B6B6B;
+    --jqx-scrollbar-thumb-background-pressed: #8A8A8A;
+    --jqx-scrollbar-thumb-border-pressed: #8A8A8A;
+    --jqx-scrollbar-button-color-hover: #121212;
+    --jqx-scrollbar-button-background-hover: #6B6B6B;
+    --jqx-scrollbar-button-border-hover: #6B6B6B;
+    --jqx-scrollbar-button-color-pressed: #121212;
+    --jqx-scrollbar-button-background-pressed: #8A8A8A;
+    --jqx-scrollbar-button-border-pressed: #8A8A8A;
+    --jqx-ui-state-hover: var(--jqx-background-hover);
+    --jqx-ui-state-color-hover: var(--jqx-background-color);
+    --jqx-ui-state-focus: var(--jqx-background-hover);
+    --jqx-ui-state-color-focus: var(--jqx-background-color);
+    color: var(--jqx-background-color);
+    background: var(--jqx-background);
+    border-color: var(--jqx-border);
+    font-family: var(--jqx-font-family);
+}
+.jqx-kanban-column-header-material-green-dark {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.jqx-kanban-column-header-button-material-green-dark {
+    width: unset;
+    height: unset;
+    position:static;
+    margin-top:unset;
+    top: unset;
+    right: unset; 
+  }
+
+  .jqx-kanban-column-header-button-material-green-dark .jqx-window-collapse-button {
+    right: unset;
+  }
+  .jqx-kanban-column-header-collapsed .jqx-kanban-column-header-button-material-green-dark  
+    {
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      margin-left: -10px;
+    }
+  
+  
+/*applied to a pinned grid cell.*/
+.jqx-grid-cell-pinned-material-green-dark {
+    background-color: var(--jqx-surface) !important;
+}
+
+/*applied to a pinned grid cell. Represents the alternating cell background.*/
+.jqx-grid-cell-pinned-alt-material-green-dark {
+    background-color: var(--jqx-surface) !important;
+}
+
+/* WCAG 1.4.11 Non-text Contrast, and 2.4.7 Focus Visible.
+ *
+ * Where a widget does not draw its own focus indicator the browser's default ring is what
+ * the user gets. Chrome's computes to rgb(16, 16, 16), which against this theme's #252526
+ * surface is 1.24:1 - present in the accessibility tree, invisible on the screen.
+ *
+ * Measured across all 83 fixtures: 15 focusable elements in 14 widgets fall back to that
+ * ring under this theme, and every one of them is below 3:1. The same sweep on base,
+ * light, tailwind and fluent finds 0 below 3:1, because a near-black ring is perfectly
+ * visible on a pale surface. So the gap belongs to this stylesheet, not to the widgets.
+ *
+ * --jqx-primary is #33ADFF here: 6.25:1 against the surface.
+ *
+ * :focus-visible, not :focus, so this appears for keyboard focus and does not put a ring
+ * on anything the user clicked. Scoped inside jQWidgets' own DOM - all 15 sit within an
+ * element carrying a jqx- class - so a host application's controls keep their own styling.
+ */
+[class*="jqx-"]:focus-visible,
+[class*="jqx-"] :focus-visible {
+    outline: 2px solid var(--jqx-primary);
+    outline-offset: -2px;
+}
+
+/* WCAG 1.4.3. The base stylesheet darkens these cells to clear 4.5:1 on a white page, which
+   moves them the wrong way on a dark one - #757575 is 3.37:1 against #252526. #9A9A9A is
+   5.44:1. The base rules carry !important, so these have to as well. */
+.jqx-calendar-cell-othermonth-material-green-dark,
+.jqx-calendar-cell-weekend-material-green-dark {
+    color: #9A9A9A !important;
+}
+/* Padding must never push an item past its row. With itemHeight set, jqxListBox sizes the
+   ROW and leaves a custom-rendered item's height to its content, so an item that fit the
+   row exactly overflowed it by the padding and painted over the item below - measured at
+   4px on the filtering demo. Clipping at the row keeps every width as it was (the item is
+   sized to overflow the row's right edge by its side padding on purpose, so a full-width
+   highlight reaches the border) and stops the overflow from painting where it should not. */
+.jqx-listbox-material-green-dark .jqx-listitem-element {
+  overflow: hidden;
+}
+
+/* jqxForm's table. The widget used to write a pale grey background inline on every theme;
+   it now takes it from the stylesheet, so this theme can give the form its own surface. */
+.jqx-form-table-material-green-dark {
+    background-color: var(--jqx-surface);
+    border: 1px solid var(--jqx-border);
+    color: var(--jqx-surface-color);
+}
+
+/* jqxSwitchButton. The thumb is a fill-state-normal, the same colour as the track, so in
+   this theme it was only a 1px outline - the off state read as an empty box. A light thumb
+   (surface text colour, 7.72:1 on #252526) is Material's own dark switch. */
+.jqx-switchbutton-thumb-material-green-dark {
+    background: var(--jqx-surface-color);
+    border-color: var(--jqx-surface-color);
+}
+
+.jqx-switchbutton-on-material-green-dark .jqx-switchbutton-label-on-material-green-dark {
+    color: var(--jqx-primary);
+}
+
+/* jqxNavBar. The selected item is a pressed button, which this theme draws as the hover
+   fill - the selection looked like a pointer resting on an item. Selected is the primary
+   fill, as in the list box, menu and tree. */
+.jqx-navbar-block-material-green-dark.jqx-fill-state-pressed-material-green-dark,
+.jqx-navbar-block-material-green-dark.jqx-fill-state-pressed-material-green-dark.jqx-fill-state-hover-material-green-dark {
+    background: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+}
+
+/* jqxPopover. jqx.base.css fills the arrow with #ffffff. Below the target the arrow meets
+   the title bar; elsewhere it meets the content. */
+.jqx-popover-material-green-dark.top .jqx-popover-arrow-material-green-dark:after {
+    border-top-color: var(--jqx-background);
+}
+
+.jqx-popover-material-green-dark.right .jqx-popover-arrow-material-green-dark:after {
+    border-right-color: var(--jqx-background);
+}
+
+.jqx-popover-material-green-dark.bottom .jqx-popover-arrow-material-green-dark:after {
+    border-bottom-color: var(--jqx-surface);
+}
+
+.jqx-popover-material-green-dark.left .jqx-popover-arrow-material-green-dark:after {
+    border-left-color: var(--jqx-background);
+}
+
+/* jqxTagCloud. Tags without a textColor are plain links, #0000EE - 1.93:1 here. */
+.jqx-tag-cloud-item-material-green-dark a {
+    color: var(--jqx-primary);
+}
+
+/* jqxPivotGrid cells are grid cells: lines between them are dividers, as in jqxGrid. The
+   pivot grid's own root carries no theme class, hence the unthemed ancestor. */
+.jqx-pivotgrid .jqx-pivotgrid-content-wrapper.jqx-widget-content-material-green-dark,
+.jqx-pivotgrid-content-wrapper.jqx-fill-state-normal-material-green-dark {
+    border-color: var(--jqx-divider);
+}
+
+/* A toggled jqxToggleButton (and the toolbar's toggle tools) is a pressed button, which
+   this theme draws like hover - on and off looked the same once the pointer left. On is
+   the primary fill, as in jqxButtonGroup. Keyed on the role: a toggle button's aria-checked
+   is not kept in step with its state. */
+.jqx-button-material-green-dark[role="checkbox"].jqx-fill-state-pressed-material-green-dark {
+    background: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+    /* !important because the toolbar's tools set their text colour that way. */
+    color: var(--jqx-primary-color) !important;
+}
+
+/* Notifications. jqx.base.css puts white text on #5bc0de (2.14:1), #f0ad4e (1.97:1),
+   #5cb85c (2.53:1) and #d9534f (3.96:1). Deeper fills keep the white text and white icons:
+   #1a7f9c 4.61:1, #398439 4.63:1, #b35900 4.83:1, #C62828 5.62:1. Mail is the primary fill
+   with its dark text, and its white icons inverted to match. */
+.jqx-notification-material-green-dark.jqx-notification-info,
+.jqx-notification-material-green-dark.jqx-notification-success,
+.jqx-notification-material-green-dark.jqx-notification-warning,
+.jqx-notification-material-green-dark.jqx-notification-error,
+.jqx-notification-material-green-dark.jqx-notification-mail {
+    text-shadow: none !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-info {
+    background-color: #1a7f9c !important;
+    border-color: #1a7f9c !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-success {
+    background-color: #398439 !important;
+    border-color: #398439 !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-warning {
+    background-color: #b35900 !important;
+    border-color: #b35900 !important;
+    color: #fff !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-error {
+    background-color: #C62828 !important;
+    border-color: #C62828 !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-mail {
+    background-color: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+    color: var(--jqx-primary-color) !important;
+}
+
+.jqx-notification-material-green-dark.jqx-notification-mail .jqx-notification-icon,
+.jqx-notification-material-green-dark.jqx-notification-mail .jqx-notification-close-button {
+    filter: invert(1);
+}
+
+.jqx-notification-material-green-dark.jqx-notification-warning .jqx-notification-close-button {
+    background-image: url('images/close_white.png');
+}
+
+/* A selected cell in a pinned column: the pinned surface is !important, so it hid the
+   selection and left the dark selected-text colour on it (1.27:1). */
+.jqx-grid-cell-pinned-material-green-dark.jqx-grid-cell-selected-material-green-dark,
+.jqx-grid-cell-pinned-alt-material-green-dark.jqx-grid-cell-selected-material-green-dark {
+    background-color: var(--jqx-primary) !important;
+}
+
+/* The grid's add-new-row (everpresent row). jqx.base.css paints it cream with black text. */
+.jqx-grid-cell-add-new-row-material-green-dark,
+.jqx-grid-cell-add-new-row-material-green-dark input {
+    background: var(--jqx-surface) !important;
+    color: var(--jqx-background-color) !important;
+}
+
+/* Today in jqxCalendar. jqx.base.css marks it with a pale yellow fill and orange border; here
+   it is a primary outline and primary text (6.24:1), as in the light theme. */
+.jqx-calendar-cell-today-material-green-dark:not(.jqx-calendar-cell-hover-material-green-dark):not(.jqx-calendar-cell-selected-material-green-dark) {
+    background: var(--jqx-background);
+    border-color: var(--jqx-primary);
+    color: var(--jqx-primary) !important;
+    font-weight: 500;
+}
+
+/* jqxScheduler month view: the date strip of each day, and its "more" popup, are #f2f2f2 with
+   black text in jqx.base.css; the half-hour rule in day and week views is #ddd. */
+.jqx-scheduler-month-cell-material-green-dark {
+    background: var(--jqx-surface);
+    color: var(--jqx-background-color);
+    opacity: 1;
+}
+
+.jqx-scheduler-month-cell-popup-material-green-dark {
+    background: var(--jqx-background);
+    border-color: var(--jqx-border);
+}
+
+.jqx-widget-material-green-dark .jqx-scheduler-middle-cell {
+    border-bottom-color: var(--jqx-divider) !important;
+}
+
+/* jqxPivotDesigner's captions ("Pivot Table Fields", "Rows" ...) are unthemed .jqx-widget
+   divs, which jqx.base.css colours #000 - 1.37:1 on this surface. */
+.jqx-pivotgrid.jqx-widget-content-material-green-dark > .jqx-widget {
+    color: var(--jqx-background-color);
+}
+
+/* The link template. jqx.base.css colours it #0088cc (3.93:1 here) and #005580 on hover
+   (1.94:1); both !important. */
+.jqx-link-material-green-dark,
+.jqx-link-material-green-dark:hover,
+.jqx-link-material-green-dark:focus {
+    color: var(--jqx-primary) !important;
+}
+
+/* jqxProgressBar's text sits over the page and the primary fill at once, and no single
+   colour clears 4.5:1 on both (#E7E7E7 on the fill is 1.95:1). Light text with a halo of
+   the page colour reads on either. */
+.jqx-progressbar-text-material-green-dark {
+    color: var(--jqx-background-color);
+    font-weight: 500;
+    text-shadow: 0 0 2px var(--jqx-background), 0 0 3px var(--jqx-background), 0 0 4px var(--jqx-background);
+}
+
+/* jqxKanban cards: jqx.base.css casts a #ddd shadow, which glows on a dark board. */
+.jqx-kanban-item-material-green-dark {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* jqxScheduler's dialog marks its Delete button with the unthemed .jqx-danger, whose white
+   text is 3.96:1 on #d9534f. Buttons with the themed danger template are styled above. */
+.jqx-button-material-green-dark.jqx-danger:not(.jqx-danger-material-green-dark) {
+    color: #121212 !important;
+    text-shadow: none !important;
+}
+
+/* Tab and ribbon items under the pointer. The hover state drew the same surface as the tab
+   strip, so hovering showed nothing; it takes the hover fill, as list and menu items do.
+   Not on the selected item, whose primary text would drop to 4.4:1 on the fill. */
+.jqx-tabs-title-hover-top-material-green-dark:not(.jqx-tabs-title-selected-top-material-green-dark),
+.jqx-tabs-title-hover-bottom-material-green-dark:not(.jqx-tabs-title-selected-bottom-material-green-dark),
+.jqx-ribbon-item-hover-material-green-dark:not(.jqx-ribbon-item-selected-material-green-dark) {
+    background: var(--jqx-background-hover);
+    color: var(--jqx-background-color-hover);
+}
+
+/* The grid's text editor is created with an inline border: none, so it had no visible edge
+   or focus mark. It takes the primary focus bar the other inputs show. */
+input.jqx-grid-cell-edit.jqx-input-material-green-dark {
+    border-bottom: 2px solid var(--jqx-primary) !important;
+}
+
+/* The unselected AM/PM is 14px text at the base .5 opacity, 2.89:1 on the header. At .8 it
+   is 4.9:1 and still reads as the unselected one. */
+.jqx-time-picker-material-green-dark .jqx-am-container,
+.jqx-time-picker-material-green-dark .jqx-pm-container {
+    opacity: .8;
+}
+
+.jqx-time-picker-material-green-dark .jqx-am-container.jqx-selected,
+.jqx-time-picker-material-green-dark .jqx-pm-container.jqx-selected {
+    opacity: 1;
+}
+
+/* Plain links in widget content (templates, panels, tab and window bodies) keep the browser's
+   #0000EE, 1.93:1 here. :where() keeps this at element specificity, so every rule that
+   already styles an anchor - the menu's, the tree's, the tabs', a class of its own - wins. */
+:where(.jqx-widget-material-green-dark, .jqx-widget-content-material-green-dark) a:where(:not([class])) {
+    color: var(--jqx-primary);
+}
+
+/* A selected cell being edited: jqx.base.css paints it white with #333 text, !important. */
+.jqx-grid-cell-selected-material-green-dark.jqx-grid-cell-edit-material-green-dark {
+    border-color: var(--jqx-primary) !important;
+    background-color: var(--jqx-background) !important;
+    color: var(--jqx-background-color) !important;
+}
+
+/* jqxGrid's card view: jqx.base.css draws the card in #bbb and its labels in #5A5A5A. */
+.jqx-grid-material-green-dark .jqx-grid-card-cell table {
+    border-color: var(--jqx-border);
+}
+
+.jqx-grid-material-green-dark .jqx-grid-card-cell-label {
+    color: var(--jqx-surface-color);
+}
+
+/* jqxScheduler's week-number column is #e8e8e8 in jqx.base.css. */
+.jqx-scheduler-week-number-column-material-green-dark {
+    background: var(--jqx-surface) !important;
+    color: var(--jqx-surface-color);
+}
+
+.jqx-kanban-item-material-green-dark .jqx-kanban-item-avatar {
+    background: transparent;
+}
+
+/* jqxDropDownButton's popup is its own container: it takes the container's -10px but has no
+   inner popup to take it back, so it hung 10px left of the button. */
+.jqx-dropdownbutton-popup-material-green-dark.jqx-listbox-container-material-green-dark {
+    margin-left: 0;
+}

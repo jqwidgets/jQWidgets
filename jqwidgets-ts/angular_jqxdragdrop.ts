@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,24 +28,25 @@ export class jqxDragDropComponent implements OnChanges
    @Input('dropTarget') attrDropTarget: any;
    @Input('dragZIndex') attrDragZIndex: number;
    @Input('feedback') attrFeedback: string;
-   @Input('initFeedback') attrInitFeedback: (feedback?:any) => void;
+   @Input('initFeedback') attrInitFeedback: (feedback: any) => void;
    @Input('opacity') attrOpacity: number;
    @Input('onDragEnd') attrOnDragEnd: () => void;
-   @Input('onDrag') attrOnDrag: (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void;
-   @Input('onDragStart') attrOnDragStart: (position?: jqwidgets.DragDropOnDragStart['position']) => void;
-   @Input('onTargetDrop') attrOnTargetDrop: (data?: jqwidgets.DragDropOnTargetDrop['data']) => void;
+   @Input('onDrag') attrOnDrag: (data: jqwidgets.DragDropOnDrag['data'], position: jqwidgets.DragDropOnDrag['position']) => void;
+   @Input('onDragStart') attrOnDragStart: (position: jqwidgets.DragDropOnDragStart['position']) => void;
+   @Input('onTargetDrop') attrOnTargetDrop: (data: jqwidgets.DragDropOnTargetDrop['data']) => void;
    @Input('onDropTargetEnter') attrOnDropTargetEnter: () => void;
-   @Input('onDropTargetLeave') attrOnDropTargetLeave: (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void;
+   @Input('onDropTargetLeave') attrOnDropTargetLeave: (data: jqwidgets.DragDropOnDropTargetLeave['data']) => void;
    @Input('restricter') attrRestricter: string | object;
    @Input('revert') attrRevert: boolean;
    @Input('revertDuration') attrRevertDuration: number;
+   @Input('theme') attrTheme: string;
    @Input('tolerance') attrTolerance: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','tolerance'];
+   properties: string[] = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDragDrop;
@@ -58,6 +59,13 @@ export class jqxDragDropComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -224,7 +232,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   initFeedback(arg?: (feedback?:any) => void): (feedback?:any) => void {
+   initFeedback(arg?: (feedback: any) => void): (feedback: any) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('initFeedback', arg);
       } else {
@@ -248,7 +256,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDrag(arg?: (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void): (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void {
+   onDrag(arg?: (data: jqwidgets.DragDropOnDrag['data'], position: jqwidgets.DragDropOnDrag['position']) => void): (data: jqwidgets.DragDropOnDrag['data'], position: jqwidgets.DragDropOnDrag['position']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDrag', arg);
       } else {
@@ -256,7 +264,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDragStart(arg?: (position?: jqwidgets.DragDropOnDragStart['position']) => void): (position?: jqwidgets.DragDropOnDragStart['position']) => void {
+   onDragStart(arg?: (position: jqwidgets.DragDropOnDragStart['position']) => void): (position: jqwidgets.DragDropOnDragStart['position']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDragStart', arg);
       } else {
@@ -264,7 +272,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onTargetDrop(arg?: (data?: jqwidgets.DragDropOnTargetDrop['data']) => void): (data?: jqwidgets.DragDropOnTargetDrop['data']) => void {
+   onTargetDrop(arg?: (data: jqwidgets.DragDropOnTargetDrop['data']) => void): (data: jqwidgets.DragDropOnTargetDrop['data']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onTargetDrop', arg);
       } else {
@@ -280,7 +288,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDropTargetLeave(arg?: (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void): (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void {
+   onDropTargetLeave(arg?: (data: jqwidgets.DragDropOnDropTargetLeave['data']) => void): (data: jqwidgets.DragDropOnDropTargetLeave['data']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDropTargetLeave', arg);
       } else {
@@ -309,6 +317,14 @@ export class jqxDragDropComponent implements OnChanges
           this.host.jqxDragDrop('revertDuration', arg);
       } else {
           return this.host.jqxDragDrop('revertDuration');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDragDrop('theme', arg);
+      } else {
+          return this.host.jqxDragDrop('theme');
       }
    }
 

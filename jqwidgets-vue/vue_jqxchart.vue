@@ -35,6 +35,7 @@
             legendLayout: Object,
             padding: Object,
             titlePadding: Object,
+            theme: String,
             colorScheme: String,
             greyScale: {
                 default: false,
@@ -260,6 +261,13 @@
                     return JQXLite(this.componentSelector).jqxChart('titlePadding');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxChart('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxChart('theme');
+                }
+            },
             _colorScheme: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxChart('colorScheme', arg)
@@ -429,7 +437,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
+                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -559,6 +567,16 @@
                     },
                     set: function(newValue) {
                         that._titlePadding(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

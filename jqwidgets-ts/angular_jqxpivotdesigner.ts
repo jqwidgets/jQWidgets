@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -19,6 +19,7 @@ declare let JQXLite: any;
 
 export class jqxPivotDesignerComponent implements OnChanges
 {
+   @Input('theme') attrTheme: string;
    @Input('type') attrType: string;
    @Input('target') attrTarget: any;
    @Input('width') attrWidth: string | number;
@@ -26,7 +27,7 @@ export class jqxPivotDesignerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['type','target'];
+   properties: string[] = ['theme','type','target'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPivotDesigner;
@@ -42,6 +43,13 @@ export class jqxPivotDesignerComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -146,6 +154,14 @@ export class jqxPivotDesignerComponent implements OnChanges
    }
 
    // jqxPivotDesignerComponent properties
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxPivotDesigner('theme', arg);
+      } else {
+          return this.host.jqxPivotDesigner('theme');
+      }
+   }
+
    type(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPivotDesigner('type', arg);

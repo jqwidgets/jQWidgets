@@ -38,6 +38,7 @@
             },
             scaleStyle: Object,
             scaleLength: [String, Number],
+            theme: String,
             ticksOffset: Array,
             ticksPosition: String,
             ticksMinor: Object,
@@ -211,6 +212,13 @@
                     return JQXLite(this.componentSelector).jqxLinearGauge('scaleLength');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxLinearGauge('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxLinearGauge('theme');
+                }
+            },
             _ticksOffset: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxLinearGauge('ticksOffset', arg)
@@ -261,7 +269,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
+                const widgetProps = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','theme','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -451,6 +459,16 @@
                     },
                     set: function(newValue) {
                         that._scaleLength(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

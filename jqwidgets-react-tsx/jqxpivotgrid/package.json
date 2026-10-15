@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxpivotgrid.umd.js",
-    "module": "react_jqxpivotgrid.esm.js",
-    "typings": "react_jqxpivotgrid.d.ts",
-    "name": "jqwidgets-react/jqxpivotgrid",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxpivotgrid",
+  "version": "27.1.0",
+  "main": "react_jqxpivotgrid.umd.js",
+  "module": "react_jqxpivotgrid.esm.js",
+  "typings": "react_jqxpivotgrid.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxpivotgrid.d.ts",
+      "import": "./react_jqxpivotgrid.esm.js",
+      "require": "./react_jqxpivotgrid.umd.js",
+      "default": "./react_jqxpivotgrid.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

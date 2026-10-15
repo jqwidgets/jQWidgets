@@ -58,7 +58,7 @@
 .jqx-window-collapse-button-ui-overcast{background-position:0 -16px; background-image:url(./images/overcast/ui-icons_454545_256x240.png)}
 .jqx-window-collapse-button-hover-ui-overcast{background-image:url(./images/overcast/ui-icons_70b2e1_256x240.png); background-color:#fff; border-radius:6px; moz-border-radius:6px; webkit-border-radius:6px}
 .jqx-window-collapse-button-collapsed-ui-overcast, .jqx-window-collapse-button-collapsed-hover-ui-overcast{background-position:-64px -16px}
-.jqx-window-modal-ui-overcast{background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30);}
+.jqx-window-modal-ui-overcast{background: #aaaaaa; opacity: .30;}
 /*Common Settings*/
 .jqx-widget-ui-overcast{line-height: 17px; font-family: Trebuchet MS, Helvetica, Arial, sans-serif; font-size:12px; font-style:normal; webkit-tap-highlight-color:rgba(0,0,0,0)}
 .jqx-widget-content-ui-overcast{ font-family: Trebuchet MS, Helvetica, Arial, sans-serif; border-color: #aaaaaa; background: #c9c9c9; color: #333333; font-size:12px}
@@ -72,7 +72,7 @@
 .jqx-fill-state-focus-ui-overcast {border-color: #555555;}
 .jqx-fill-state-pressed-ui-overcast{border-color: #999999; background: #999999 url(./images/overcast/ui-bg_inset-hard_75_999999_1x100.png) 50% 50% repeat-x; color: #ffffff; }
 .jqx-fill-state-pressed-ui-overcast a, .jqx-fill-state-pressed-ui-overcast a:link, .jqx-fill-state-pressed-ui-overcast a:visited{color:#ffffff; text-decoration:none}
-.jqx-fill-state-disabled-ui-overcast {cursor: default; color: #000; opacity: .55; filter:Alpha(Opacity=45);}
+.jqx-fill-state-disabled-ui-overcast {cursor: default; color: #000; opacity: .55;}
 
 .jqx-input-button-content-ui-overcast{font-size:10px}
 .jqx-input-icon-ui-overcast{margin-left:2px; margin-top:-1px}
@@ -134,14 +134,8 @@
 }
 .jqx-menu-dropdown-ui-overcast
 {
-    -moz-border-radius-bottomleft: 6px;
-    -webkit-border-bottom-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    -moz-border-radius-topright: 6px;
-    -webkit-border-top-right-radius: 6px;
     border-top-right-radius: 6px;
-    -moz-border-radius-bottomright: 6px;
-    -webkit-border-bottom-right-radius: 6px;
     border-bottom-right-radius: 6px;
     right: -1px;
 }
@@ -175,7 +169,6 @@
 {
     background-image: none;
 }
-
 
 .jqx-grid-pager-ui-overcast .jqx-button {
 	overflow: hidden;

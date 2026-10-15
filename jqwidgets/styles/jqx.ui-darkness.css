@@ -78,7 +78,7 @@
 .jqx-fill-state-hover-ui-darkness a, .jqx-fill-state-hover-ui-darkness a:hover{color:#fff; text-decoration:none}
 .jqx-fill-state-pressed-ui-darkness{border-color: #ffaf0f; background: #f58400 url(./images/darkness/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x; color: #ffffff; }
 .jqx-fill-state-pressed-ui-darkness a, .jqx-fill-state-pressed-ui-darkness a:link, .jqx-fill-state-pressed-ui-darkness a:visited{color:#ffffff; text-decoration:none}
-.jqx-fill-state-disabled-ui-darkness {cursor: default; color: #fff; opacity: .55; filter:Alpha(Opacity=45);}
+.jqx-fill-state-disabled-ui-darkness {cursor: default; color: #fff; opacity: .55;}
 
 .jqx-input-button-content-ui-darkness{font-size:10px}
 .jqx-input-icon-ui-darkness{margin-left:2px; margin-top:-1px}
@@ -258,7 +258,6 @@
 .jqx-svg-picker-ui-darkness:focus {
 	border: 1px solid rgb(73, 68, 55) !important;
 }
-
 
 .jqx-grid-pager-ui-darkness .jqx-button {
 	overflow: hidden;

@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTagCloud extends React.PureComponent<ITagCloudProps, IState> {
-    protected static getDerivedStateFromProps(props: ITagCloudProps, state: IState): null | IState;
+declare class JqxTagCloud extends React.PureComponent<ITagCloudProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITagCloudProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITagCloudProps): void;
     getOptions(option: string): any;
@@ -21,18 +32,19 @@ declare class JqxTagCloud extends React.PureComponent<ITagCloudProps, IState> {
     updateAt(index: number, item: any): void;
     showItem(index: number): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTagCloud;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ITagCloudTagRenderer {
-    itemData?: any;
-    minValue?: number;
-    valueRange?: number;
+    itemData: any;
+    minValue: number;
+    valueRange: number;
 }
 export interface ITagCloudSource {
     url?: string;
@@ -65,14 +77,16 @@ interface ITagCloudOptions {
     tagRenderer?: (itemData: ITagCloudTagRenderer['itemData'], minValue: ITagCloudTagRenderer['minValue'], valueRange: ITagCloudTagRenderer['valueRange']) => any;
     takeTopWeightedItems?: boolean;
     textColor?: string;
+    theme?: string;
     urlBase?: string;
     urlMember?: string;
     valueMember?: string;
     width?: string | number;
 }
-export interface ITagCloudProps extends ITagCloudOptions {
+export interface ITagCloudProps extends ITagCloudOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onItemClick?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onItemClick?: (e?: any) => void;
 }

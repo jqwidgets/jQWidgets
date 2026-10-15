@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -12,7 +12,7 @@ import '../jqwidgets/jqxtooltip.js';
 import '../jqwidgets/jqxpasswordinput.js';
 
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
@@ -25,6 +25,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'jqxPasswordInput',
+    imports: [FormsModule],
     template: '<input type="password" [(ngModel)]="ngValue">',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -56,6 +57,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -65,6 +67,13 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -177,6 +186,9 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           return;
+       }
        if(this.widgetObject) {
            this.host.jqxPasswordInput('val', value);
        }
@@ -187,6 +199,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {

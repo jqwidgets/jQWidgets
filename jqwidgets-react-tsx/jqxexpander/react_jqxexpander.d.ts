@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxExpander extends React.PureComponent<IExpanderProps, IState> {
-    protected static getDerivedStateFromProps(props: IExpanderProps, state: IState): null | IState;
+declare class JqxExpander extends React.PureComponent<IExpanderProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IExpanderProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IExpanderProps): void;
     getOptions(option: string): any;
@@ -24,14 +35,15 @@ declare class JqxExpander extends React.PureComponent<IExpanderProps, IState> {
     setHeaderContent(headerContent: string): void;
     setContent(content: string): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxExpander;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IExpanderOptions {
     animationType?: 'none' | 'slide' | 'fade';
     arrowPosition?: 'left' | 'right';
@@ -48,11 +60,12 @@ interface IExpanderOptions {
     toggleMode?: 'click' | 'dblclick' | 'none';
     width?: number | string;
 }
-export interface IExpanderProps extends IExpanderOptions {
+export interface IExpanderProps extends IExpanderOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onCollapsing?: (e?: Event) => void;
-    onCollapsed?: (e?: Event) => void;
-    onExpanding?: (e?: Event) => void;
-    onExpanded?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onCollapsing?: (e?: any) => void;
+    onCollapsed?: (e?: any) => void;
+    onExpanding?: (e?: any) => void;
+    onExpanded?: (e?: any) => void;
 }

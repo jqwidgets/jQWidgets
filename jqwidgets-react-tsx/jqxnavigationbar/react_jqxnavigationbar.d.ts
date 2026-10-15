@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps, IState> {
-    protected static getDerivedStateFromProps(props: INavigationBarProps, state: IState): null | IState;
+declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: INavigationBarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: INavigationBarProps): void;
     getOptions(option: string): any;
@@ -33,14 +44,15 @@ declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps, 
     update(index: number, header: number | string, content: number | string): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxNavigationBar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface INavigationBarOptions {
     animationType?: 'none' | 'slide' | 'fade';
     arrowPosition?: 'left' | 'right';
@@ -57,11 +69,12 @@ interface INavigationBarOptions {
     toggleMode?: 'click' | 'dblclick' | 'none';
     width?: string | number;
 }
-export interface INavigationBarProps extends INavigationBarOptions {
+export interface INavigationBarProps extends INavigationBarOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onCollapsingItem?: (e?: Event) => void;
-    onCollapsedItem?: (e?: Event) => void;
-    onExpandingItem?: (e?: Event) => void;
-    onExpandedItem?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onCollapsingItem?: (e?: any) => void;
+    onCollapsedItem?: (e?: any) => void;
+    onExpandingItem?: (e?: any) => void;
+    onExpandedItem?: (e?: any) => void;
 }

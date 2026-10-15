@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxbulletchart.umd.js",
-    "module": "react_jqxbulletchart.esm.js",
-    "typings": "react_jqxbulletchart.d.ts",
-    "name": "jqwidgets-react/jqxbulletchart",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxbulletchart",
+  "version": "27.1.0",
+  "main": "react_jqxbulletchart.umd.js",
+  "module": "react_jqxbulletchart.esm.js",
+  "typings": "react_jqxbulletchart.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxbulletchart.d.ts",
+      "import": "./react_jqxbulletchart.esm.js",
+      "require": "./react_jqxbulletchart.umd.js",
+      "default": "./react_jqxbulletchart.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

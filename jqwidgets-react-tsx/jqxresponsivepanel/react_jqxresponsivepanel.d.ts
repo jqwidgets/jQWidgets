@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxResponsivePanel extends React.PureComponent<IResponsivePanelProps, IState> {
-    protected static getDerivedStateFromProps(props: IResponsivePanelProps, state: IState): null | IState;
+declare class JqxResponsivePanel extends React.PureComponent<IResponsivePanelProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IResponsivePanelProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IResponsivePanelProps): void;
     getOptions(option: string): any;
@@ -18,14 +29,15 @@ declare class JqxResponsivePanel extends React.PureComponent<IResponsivePanelPro
     refresh(): void;
     renderWidget(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxResponsivePanel;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IResponsivePanelOptions {
     animationDirection?: 'left' | 'right' | 'top' | 'bottom';
     animationHideDelay?: number | string;
@@ -41,11 +53,12 @@ interface IResponsivePanelOptions {
     toggleButtonSize?: number | string;
     width?: string | number;
 }
-export interface IResponsivePanelProps extends IResponsivePanelOptions {
+export interface IResponsivePanelProps extends IResponsivePanelOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onCollapse?: (e?: Event) => void;
-    onExpand?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onCollapse?: (e?: any) => void;
+    onExpand?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
 }

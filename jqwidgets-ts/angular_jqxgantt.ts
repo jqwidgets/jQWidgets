@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -85,7 +85,7 @@ export class jqxGanttComponent implements OnChanges
    @Input('resourceTimelineFormatFunction') attrResourceTimelineFormatFunction: any;
    @Input('resourceTimelineMode') attrResourceTimelineMode: string;
    @Input('resourceTimelineView') attrResourceTimelineView: string;
-   @Input('rightToLeft') attrRightToLeft: boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('selectedTaskIds') attrSelectedTaskIds: number[] | string[];
    @Input('selectedResourceIds') attrSelectedResourceIds: number[] | string[];
    @Input('shadeUntilCurrentTime') attrShadeUntilCurrentTime: boolean;
@@ -115,7 +115,7 @@ export class jqxGanttComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rightToLeft','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
+   properties: string[] = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGantt;
@@ -131,6 +131,13 @@ export class jqxGanttComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
     ngAfterViewInit() {
@@ -279,7 +286,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   columnMinWidth(arg?: undefined): undefined {
+   columnMinWidth(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('columnMinWidth', arg);
       } else {
@@ -303,7 +310,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   currentTime(arg?: undefined): undefined {
+   currentTime(arg?: string | Date): string | Date {
       if (arg !== undefined) {
           this.host.jqxGantt('currentTime', arg);
       } else {
@@ -335,7 +342,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   source(arg?: undefined): undefined {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('source', arg);
       } else {
@@ -351,7 +358,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   dateEnd(arg?: undefined): undefined {
+   dateEnd(arg?: string | Date): string | Date {
       if (arg !== undefined) {
           this.host.jqxGantt('dateEnd', arg);
       } else {
@@ -359,7 +366,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   dateStart(arg?: undefined): undefined {
+   dateStart(arg?: string | Date): string | Date {
       if (arg !== undefined) {
           this.host.jqxGantt('dateStart', arg);
       } else {
@@ -367,7 +374,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   dateMarkers(arg?: undefined): undefined {
+   dateMarkers(arg?: {label?: string, date: Date | string, className?: string }[]): {label?: string, date: Date | string, className?: string }[] {
       if (arg !== undefined) {
           this.host.jqxGantt('dateMarkers', arg);
       } else {
@@ -479,7 +486,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   headerTemplate(arg?: undefined): undefined {
+   headerTemplate(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('headerTemplate', arg);
       } else {
@@ -575,7 +582,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   max(arg?: undefined): undefined {
+   max(arg?: string | Date): string | Date {
       if (arg !== undefined) {
           this.host.jqxGantt('max', arg);
       } else {
@@ -583,7 +590,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   min(arg?: undefined): undefined {
+   min(arg?: string | Date): string | Date {
       if (arg !== undefined) {
           this.host.jqxGantt('min', arg);
       } else {
@@ -607,7 +614,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   nonworkingDays(arg?: undefined): undefined {
+   nonworkingDays(arg?: number[]): number[] {
       if (arg !== undefined) {
           this.host.jqxGantt('nonworkingDays', arg);
       } else {
@@ -615,7 +622,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   nonworkingHours(arg?: undefined): undefined {
+   nonworkingHours(arg?: number[] | number[][]): number[] | number[][] {
       if (arg !== undefined) {
           this.host.jqxGantt('nonworkingHours', arg);
       } else {
@@ -623,7 +630,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   onTaskRender(arg?: undefined): undefined {
+   onTaskRender(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('onTaskRender', arg);
       } else {
@@ -631,7 +638,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   popupWindowCustomizationFunction(arg?: undefined): undefined {
+   popupWindowCustomizationFunction(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('popupWindowCustomizationFunction', arg);
       } else {
@@ -639,7 +646,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   popupWindowTabs(arg?: undefined): undefined {
+   popupWindowTabs(arg?: string[]): string[] {
       if (arg !== undefined) {
           this.host.jqxGantt('popupWindowTabs', arg);
       } else {
@@ -647,7 +654,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   progressLabelFormatFunction(arg?: undefined): undefined {
+   progressLabelFormatFunction(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('progressLabelFormatFunction', arg);
       } else {
@@ -663,7 +670,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resources(arg?: undefined): undefined {
+   resources(arg?: {label: string, capacity: number, value: string, workload: number, progress: number, id: string,  class: string }[]): {label: string, capacity: number, value: string, workload: number, progress: number, id: string,  class: string }[] {
       if (arg !== undefined) {
           this.host.jqxGantt('resources', arg);
       } else {
@@ -671,7 +678,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourceColumns(arg?: undefined): undefined {
+   resourceColumns(arg?: {label: string, value: string}[]): {label: string, value: string}[] {
       if (arg !== undefined) {
           this.host.jqxGantt('resourceColumns', arg);
       } else {
@@ -687,7 +694,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourceGroupFormatFunction(arg?: undefined): undefined {
+   resourceGroupFormatFunction(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('resourceGroupFormatFunction', arg);
       } else {
@@ -695,7 +702,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourcePanelHeaderTemplate(arg?: undefined): undefined {
+   resourcePanelHeaderTemplate(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('resourcePanelHeaderTemplate', arg);
       } else {
@@ -703,7 +710,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourcePanelMin(arg?: undefined): undefined {
+   resourcePanelMin(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGantt('resourcePanelMin', arg);
       } else {
@@ -711,7 +718,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourcePanelSize(arg?: undefined): undefined {
+   resourcePanelSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGantt('resourcePanelSize', arg);
       } else {
@@ -727,7 +734,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   resourceTimelineFormatFunction(arg?: undefined): undefined {
+   resourceTimelineFormatFunction(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('resourceTimelineFormatFunction', arg);
       } else {
@@ -751,15 +758,15 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   rightToLeft(arg?: boolean): boolean {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
-          this.host.jqxGantt('rightToLeft', arg);
+          this.host.jqxGantt('rtl', arg);
       } else {
-          return this.host.jqxGantt('rightToLeft');
+          return this.host.jqxGantt('rtl');
       }
    }
 
-   selectedTaskIds(arg?: undefined): undefined {
+   selectedTaskIds(arg?: number[] | string[]): number[] | string[] {
       if (arg !== undefined) {
           this.host.jqxGantt('selectedTaskIds', arg);
       } else {
@@ -767,7 +774,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   selectedResourceIds(arg?: undefined): undefined {
+   selectedResourceIds(arg?: number[] | string[]): number[] | string[] {
       if (arg !== undefined) {
           this.host.jqxGantt('selectedResourceIds', arg);
       } else {
@@ -815,7 +822,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   sortFunction(arg?: undefined): undefined {
+   sortFunction(arg?: { (dataSource: any, sortColumns: string[], directions: string[], defaultCompareFunctions: { (firstRecord: any, secondRecord: any): number }[]): void }): { (dataSource: any, sortColumns: string[], directions: string[], defaultCompareFunctions: { (firstRecord: any, secondRecord: any): number }[]): void } {
       if (arg !== undefined) {
           this.host.jqxGantt('sortFunction', arg);
       } else {
@@ -831,7 +838,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   tasks(arg?: undefined): undefined {
+   tasks(arg?: {label: string, dateStart: string | Date, dateEnd: string | Date, expanded?: boolean, progress?: number, type?: string}[]): {label: string, dateStart: string | Date, dateEnd: string | Date, expanded?: boolean, progress?: number, type?: string}[] {
       if (arg !== undefined) {
           this.host.jqxGantt('tasks', arg);
       } else {
@@ -839,7 +846,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   taskColumns(arg?: undefined): undefined {
+   taskColumns(arg?: {label: string, value: string}[]): {label: string, value: string}[] {
       if (arg !== undefined) {
           this.host.jqxGantt('taskColumns', arg);
       } else {
@@ -855,7 +862,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   taskPanelMin(arg?: undefined): undefined {
+   taskPanelMin(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('taskPanelMin', arg);
       } else {
@@ -863,7 +870,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   taskPanelSize(arg?: undefined): undefined {
+   taskPanelSize(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('taskPanelSize', arg);
       } else {
@@ -871,7 +878,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   timelineMin(arg?: undefined): undefined {
+   timelineMin(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('timelineMin', arg);
       } else {
@@ -879,7 +886,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   treeMin(arg?: undefined): undefined {
+   treeMin(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('treeMin', arg);
       } else {
@@ -887,7 +894,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   treeSize(arg?: undefined): undefined {
+   treeSize(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGantt('treeSize', arg);
       } else {
@@ -895,7 +902,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   timelineHeaderFormatFunction(arg?: undefined): undefined {
+   timelineHeaderFormatFunction(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxGantt('timelineHeaderFormatFunction', arg);
       } else {
@@ -953,7 +960,7 @@ export class jqxGanttComponent implements OnChanges
 
 
    // jqxGanttComponent functions
-   addFilter(columns: undefined, filterGroup: any): void {
+   addFilter(columns: object | object[], filterGroup: any): void {
       this.host.jqxGantt('addFilter', columns, filterGroup);
    }
 
@@ -981,11 +988,11 @@ export class jqxGanttComponent implements OnChanges
       this.host.jqxGantt('clearResources');
    }
 
-   createConnection(startTaskIndex: undefined, taskEndIndex?: undefined, connectionType?: number, lag?: number): void {
+   createConnection(startTaskIndex: number | string, taskEndIndex?: number | string, connectionType?: number, lag?: number): void {
       this.host.jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);
    }
 
-   collapse(id: undefined): void {
+   collapse(id: string | number): void {
       this.host.jqxGantt('collapse', id);
    }
 
@@ -997,27 +1004,27 @@ export class jqxGanttComponent implements OnChanges
       this.host.jqxGantt('endUpdate');
    }
 
-   ensureVisible(taskId: undefined): void {
+   ensureVisible(taskId: string | number): void {
       this.host.jqxGantt('ensureVisible', taskId);
    }
 
-   expand(id: undefined): void {
+   expand(id: string | number): void {
       this.host.jqxGantt('expand', id);
    }
 
-   exportData(dataFormat: string, callback?: undefined): void {
+   exportData(dataFormat: string, callback?: Function): void {
       this.host.jqxGantt('exportData', dataFormat, callback);
    }
 
-   getConnections(): undefined {
+   getConnections(): any[] {
       return this.host.jqxGantt('getConnections');
    }
 
-   getConnectionDetails(connectionId: string): undefined {
+   getConnectionDetails(connectionId: string): object | undefined {
       return this.host.jqxGantt('getConnectionDetails', connectionId);
    }
 
-   getState(): undefined {
+   getState(): any[] {
       return this.host.jqxGantt('getState');
    }
 
@@ -1025,11 +1032,11 @@ export class jqxGanttComponent implements OnChanges
       return this.host.jqxGantt('getItemPath', item);
    }
 
-   getTask(itemId: undefined): any {
+   getTask(itemId: string | number): any {
       return this.host.jqxGantt('getTask', itemId);
    }
 
-   getTasks(): undefined {
+   getTasks(): any[] {
       return this.host.jqxGantt('getTasks');
    }
 
@@ -1037,19 +1044,19 @@ export class jqxGanttComponent implements OnChanges
       return this.host.jqxGantt('getTaskIndex', task);
    }
 
-   getTaskConnections(taskId: undefined): undefined {
+   getTaskConnections(taskId: string | number | object): any {
       return this.host.jqxGantt('getTaskConnections', taskId);
    }
 
-   getTaskProject(task: any): undefined {
+   getTaskProject(task: any): object | undefined {
       return this.host.jqxGantt('getTaskProject', task);
    }
 
-   getResource(itemId: undefined): any {
+   getResource(itemId: string | number): any {
       return this.host.jqxGantt('getResource', itemId);
    }
 
-   getResources(): undefined {
+   getResources(): any[] {
       return this.host.jqxGantt('getResources');
    }
 
@@ -1057,35 +1064,35 @@ export class jqxGanttComponent implements OnChanges
       return this.host.jqxGantt('getResourceIndex', resource);
    }
 
-   getResourceTasks(resource: undefined): undefined {
+   getResourceTasks(resource: object | string | number): any[] {
       return this.host.jqxGantt('getResourceTasks', resource);
    }
 
-   getSelectedIds(): undefined {
+   getSelectedIds(): any[] | null {
       return this.host.jqxGantt('getSelectedIds');
    }
 
-   getSelectedTasks(): undefined {
+   getSelectedTasks(): any[] | null {
       return this.host.jqxGantt('getSelectedTasks');
    }
 
-   getSelectedResources(): undefined {
+   getSelectedResources(): any[] | null {
       return this.host.jqxGantt('getSelectedResources');
    }
 
-   getWorkingHours(): undefined {
+   getWorkingHours(): any[] {
       return this.host.jqxGantt('getWorkingHours');
    }
 
-   hideTooltip(): undefined {
+   hideTooltip(): any[] {
       return this.host.jqxGantt('hideTooltip');
    }
 
-   isWorkingDay(date: undefined): void {
+   isWorkingDay(date: Date): void {
       this.host.jqxGantt('isWorkingDay', date);
    }
 
-   loadState(state?: undefined): void {
+   loadState(state?: any[]): void {
       this.host.jqxGantt('loadState', state);
    }
 
@@ -1093,47 +1100,47 @@ export class jqxGanttComponent implements OnChanges
       this.host.jqxGantt('removeAllConnections');
    }
 
-   removeConnection(startTaskIndex: undefined, taskEndIndex?: number, connectionType?: number): any {
+   removeConnection(startTaskIndex: number | string, taskEndIndex?: number, connectionType?: number): any {
       return this.host.jqxGantt('removeConnection', startTaskIndex, taskEndIndex, connectionType);
    }
 
-   removeTaskConnection(taskStart: undefined, taskEnd?: undefined): void {
+   removeTaskConnection(taskStart: number | string | object, taskEnd?: number | string | object): void {
       this.host.jqxGantt('removeTaskConnection', taskStart, taskEnd);
    }
 
-   showTooltip(target: undefined, content?: string): void {
+   showTooltip(target: HTMLElement, content?: string): void {
       this.host.jqxGantt('showTooltip', target, content);
    }
 
-   saveState(state?: undefined): void {
+   saveState(state?: any[]): void {
       this.host.jqxGantt('saveState', state);
    }
 
-   insertTask(taskObject: any, project?: undefined, index?: number): undefined {
+   insertTask(taskObject: any, project?: string | number | object, index?: number): string | number | undefined {
       return this.host.jqxGantt('insertTask', taskObject, project, index);
    }
 
-   updateTask(taskId: undefined, taskObject: any): void {
+   updateTask(taskId: string | number | object, taskObject: any): void {
       this.host.jqxGantt('updateTask', taskId, taskObject);
    }
 
-   removeTask(taskId: undefined): void {
+   removeTask(taskId: string | number | object): void {
       this.host.jqxGantt('removeTask', taskId);
    }
 
-   insertResource(resourceId: undefined, resourceObject?: any): void {
+   insertResource(resourceId: string | number, resourceObject?: any): void {
       this.host.jqxGantt('insertResource', resourceId, resourceObject);
    }
 
-   updateResource(resourceId: undefined, taskObject: any): void {
+   updateResource(resourceId: string | number | object, taskObject: any): void {
       this.host.jqxGantt('updateResource', resourceId, taskObject);
    }
 
-   removeResource(resourceId: undefined): void {
+   removeResource(resourceId: string | number | object): void {
       this.host.jqxGantt('removeResource', resourceId);
    }
 
-   openWindow(taskId: undefined): void {
+   openWindow(taskId: string | number | object): void {
       this.host.jqxGantt('openWindow', taskId);
    }
 
@@ -1145,31 +1152,31 @@ export class jqxGanttComponent implements OnChanges
       this.host.jqxGantt('print');
    }
 
-   setWorkTime(settings: undefined): void {
+   setWorkTime(settings: { days?: (number | string | number[])[], hours?: (number | string | number[])[] }): void {
       this.host.jqxGantt('setWorkTime', settings);
    }
 
-   selectTask(id: undefined): void {
+   selectTask(id: string | number): void {
       this.host.jqxGantt('selectTask', id);
    }
 
-   selectResource(id: undefined): void {
+   selectResource(id: string | number): void {
       this.host.jqxGantt('selectResource', id);
    }
 
-   unselectTask(id: undefined): void {
+   unselectTask(id: string | number): void {
       this.host.jqxGantt('unselectTask', id);
    }
 
-   unselectResource(id: undefined): void {
+   unselectResource(id: string | number): void {
       this.host.jqxGantt('unselectResource', id);
    }
 
-   unsetWorkTime(settings: undefined): void {
+   unsetWorkTime(settings: { days?: (number | string | number[])[], hours?: (number | string | number[])[] }): void {
       this.host.jqxGantt('unsetWorkTime', settings);
    }
 
-   sort(columns: undefined): void {
+   sort(columns: any[] | undefined): void {
       this.host.jqxGantt('sort', columns);
    }
 

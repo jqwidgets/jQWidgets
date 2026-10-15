@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
-    protected static getDerivedStateFromProps(props: ITreeProps, state: IState): null | IState;
+declare class JqxTree extends React.PureComponent<ITreeProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITreeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITreeProps): void;
     getOptions(option: string): any;
@@ -45,19 +56,20 @@ declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
     updateItem(item: any, newItem: any): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTree;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ITreeDragStart {
-    item?: object;
+    item: ITreeItem;
 }
 export interface ITreeDragEnd {
-    dragItem?: any;
+    dragItem: any;
     dropItem?: any;
     args?: any;
     dropPosition?: any;
@@ -80,7 +92,7 @@ interface ITreeOptions {
     allowDrop?: boolean;
     checkboxes?: boolean;
     dragStart?: (item: ITreeDragStart['item']) => boolean;
-    dragEnd?: (dragItem?: ITreeDragEnd['dragItem'], dropItem?: ITreeDragEnd['dropItem'], args?: ITreeDragEnd['args'], dropPosition?: ITreeDragEnd['dropPosition'], tree?: ITreeDragEnd['tree']) => boolean;
+    dragEnd?: (dragItem: ITreeDragEnd['dragItem'], dropItem?: ITreeDragEnd['dropItem'], args?: ITreeDragEnd['args'], dropPosition?: ITreeDragEnd['dropPosition'], tree?: ITreeDragEnd['tree']) => boolean;
     disabled?: boolean;
     easing?: string;
     enableHover?: boolean;
@@ -95,16 +107,17 @@ interface ITreeOptions {
     theme?: string;
     width?: string | number;
 }
-export interface ITreeProps extends ITreeOptions {
+export interface ITreeProps extends ITreeOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onAdded?: (e?: Event) => void;
-    onCheckChange?: (e?: Event) => void;
-    onCollapse?: (e?: Event) => void;
-    onDragStart?: (e?: Event) => void;
-    onDragEnd?: (e?: Event) => void;
-    onExpand?: (e?: Event) => void;
-    onItemClick?: (e?: Event) => void;
-    onRemoved?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onAdded?: (e?: any) => void;
+    onCheckChange?: (e?: any) => void;
+    onCollapse?: (e?: any) => void;
+    onDragStart?: (e?: any) => void;
+    onDragEnd?: (e?: any) => void;
+    onExpand?: (e?: any) => void;
+    onItemClick?: (e?: any) => void;
+    onRemoved?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
 }

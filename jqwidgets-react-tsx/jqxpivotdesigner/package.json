@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxpivotdesigner.umd.js",
-    "module": "react_jqxpivotdesigner.esm.js",
-    "typings": "react_jqxpivotdesigner.d.ts",
-    "name": "jqwidgets-react/jqxpivotdesigner",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxpivotdesigner",
+  "version": "27.1.0",
+  "main": "react_jqxpivotdesigner.umd.js",
+  "module": "react_jqxpivotdesigner.esm.js",
+  "typings": "react_jqxpivotdesigner.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxpivotdesigner.d.ts",
+      "import": "./react_jqxpivotdesigner.esm.js",
+      "require": "./react_jqxpivotdesigner.umd.js",
+      "default": "./react_jqxpivotdesigner.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

@@ -5,19 +5,26 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxdata.js';
     import '../jqwidgets/jqxdata.export.js';
+    import '../jqwidgets/jqxexport.js';
     import '../jqwidgets/jqxbuttons.js';
-    import '../jqwidgets/jqxcheckbox.js';
-    import '../jqwidgets/jqxtooltip.js';
+    import '../jqwidgets/jqxbuttongroup.js';
     import '../jqwidgets/jqxscrollbar.js';
+    import '../jqwidgets/jqxmenu.js';
     import '../jqwidgets/jqxlistbox.js';
+    import '../jqwidgets/jqxdropdownlist.js';
     import '../jqwidgets/jqxcombobox.js';
     import '../jqwidgets/jqxnumberinput.js';
-    import '../jqwidgets/jqxdropdownlist.js';
+    import '../jqwidgets/jqxcheckbox.js';
+    import '../jqwidgets/globalization/globalize.js';
+    import '../jqwidgets/jqxcalendar.js';
+    import '../jqwidgets/jqxdatetimeinput.js';
     import '../jqwidgets/jqxdatatable.js';
+    import '../jqwidgets/jqxtooltip.js';
 
     export default {
         props: {
@@ -144,8 +151,10 @@
         },
         emits: ["bindingComplete","cellBeginEdit","cellEndEdit","cellValueChanged","columnResized","columnReordered","sort","filter","pageChanged","pageSizeChanged","rowClick","rowDoubleClick","rowSelect","rowUnselect","rowBeginEdit","rowEndEdit","rowExpand","rowCollapse"],
         setup(props, context) {
-			const id = "jqxDataTable" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxDataTable" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -668,6 +677,9 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxDataTable(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
                 __wireEvents__();
             }
             function __manageProps__() {
@@ -1028,11 +1040,40 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxDataTable(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxDataTable(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
+				try { element.jqxDataTable('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addRow,addFilter,applyFilters,beginUpdate,beginRowEdit,beginCellEdit,clearSelection,clearFilters,clear,destroy,deleteRow,endUpdate,ensureRowVisible,endRowEdit,endCellEdit,exportData,focus,getColumnProperty,goToPage,goToPrevPage,goToNextPage,getSelection,getRows,getView,getCellValue,hideColumn,hideDetails,isBindingCompleted,lockRow,refresh,render,removeFilter,scrollOffset,setColumnProperty,showColumn,selectRow,showDetails,setCellValue,sortBy,updating,updateBoundData,unselectRow,updateRow,unlockRow, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addRow, addFilter, applyFilters, beginUpdate, beginRowEdit, beginCellEdit, clearSelection, clearFilters, clear, destroy, deleteRow, endUpdate, ensureRowVisible, endRowEdit, endCellEdit, exportData, focus, getColumnProperty, goToPage, goToPrevPage, goToNextPage, getSelection, getRows, getView, getCellValue, hideColumn, hideDetails, isBindingCompleted, lockRow, refresh, render, removeFilter, scrollOffset, setColumnProperty, showColumn, selectRow, showDetails, setCellValue, sortBy, updating, updateBoundData, unselectRow, updateRow, unlockRow, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

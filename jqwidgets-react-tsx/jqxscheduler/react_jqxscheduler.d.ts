@@ -1,26 +1,54 @@
 import * as React from 'react';
-declare class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> {
-    protected static getDerivedStateFromProps(props: ISchedulerProps, state: IState): null | IState;
+declare class JqxScheduler extends React.PureComponent<ISchedulerProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ISchedulerProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ISchedulerProps): void;
     getOptions(option: string): any;
-    addAppointment(item: ISchedulerAppointmentDataFields): void;
+    aiConfig(config?: object): object;
+    aiCommand(text: string, callback?: Function): Object;
+    aiScheduleAppointment(text: string, callback?: Function): Object;
+    aiFindSlot(text: string, callback?: Function): Object;
+    aiBookSlot(slot: object, details?: object): Object;
+    aiResolveConflicts(options?: object, callback?: Function): Object;
+    aiApplyResolution(proposals: Array<{
+        id: number | string;
+        proposedFrom: Date | string;
+        proposedTo: Date | string;
+    }>): Number;
+    aiAsk(text: string, callback?: Function): Object;
+    aiSummarize(callback?: Function): Object;
+    aiExplainAppointment(key: string, callback?: Function): Object;
+    aiClassifyAppointments(options: object, callback?: Function): Object;
+    addAppointment(item: ISchedulerAppointmentDataFields): boolean;
     beginAppointmentsUpdate(): void;
     clearAppointmentsSelection(): void;
     clearSelection(): void;
     closeMenu(): void;
     closeDialog(): void;
-    deleteAppointment(appointmenId: string): void;
+    deleteAppointment(appointmenId: string): boolean;
     destroy(): void;
     endAppointmentsUpdate(): void;
     ensureAppointmentVisible(id: string): void;
     ensureVisible(item: any, resourceId?: string): void;
+    findAvailableSlots(options?: object): any[];
+    importData(data: string, options?: object): object;
     exportData(format: string): any;
     focus(): void;
     getAppointmentProperty(appointmentId: string, name: string): any;
@@ -32,21 +60,28 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> 
     openDialog(left: number, top: number): void;
     selectAppointment(appointmentId: string): void;
     setAppointmentProperty(appointmentId: string, name: string, value: any): void;
-    selectCell(date: any, allday: boolean, resourceId: string): void;
+    selectCell(date: any, allday: boolean, resourceId: string | null): void;
     showAppointmentsByResource(resourceId: string): void;
     scrollWidth(): number;
     scrollHeight(): number;
     scrollLeft(left: number): void;
     scrollTop(top: number): void;
+    scrollToTime(time: any): boolean;
+    undo(): boolean;
+    redo(): boolean;
+    canUndo(): boolean;
+    canRedo(): boolean;
+    clearUndoRedo(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxScheduler;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ISchedulerAppointmentDataFields {
     allDay?: boolean | string;
     background?: string;
@@ -84,57 +119,57 @@ export interface ISchedulerChangedAppointments {
     appointment?: ISchedulerAppointmentDataFields;
 }
 export interface ISchedulerContextMenuOpen {
-    menu?: any;
-    appointment?: any;
-    event?: any;
+    menu: any;
+    appointment: any;
+    event: any;
 }
 export interface ISchedulerContextMenuClose {
-    menu?: any;
-    appointment?: any;
-    event?: any;
+    menu: any;
+    appointment: any;
+    event: any;
 }
 export interface ISchedulerContextMenuItemClick {
-    menu?: any;
-    appointment?: any;
-    event?: any;
+    menu: any;
+    appointment: any;
+    event: any;
 }
 export interface ISchedulerContextMenuCreate {
-    menu?: any;
-    settings?: any;
+    menu: any;
+    settings: any;
 }
 export interface ISchedulerEditDialogCreate {
-    dialog?: any;
-    fields?: any;
-    editAppointment?: any;
+    dialog: any;
+    fields: any;
+    editAppointment: any;
 }
 export interface ISchedulerEditDialogOpen {
-    dialog?: any;
-    fields?: any;
-    editAppointment?: any;
+    dialog: any;
+    fields: any;
+    editAppointment: any;
 }
 export interface ISchedulerEditDialogClose {
-    dialog?: any;
-    fields?: any;
-    editAppointment?: any;
+    dialog: any;
+    fields: any;
+    editAppointment: any;
 }
 export interface ISchedulerEditDialogKeyDown {
-    dialog?: any;
-    fields?: any;
-    editAppointment?: any;
-    event?: any;
+    dialog: any;
+    fields: any;
+    editAppointment: any;
+    event: any;
 }
 export interface ISchedulerExportSettings {
-    serverURL?: string;
-    characterSet?: string;
+    serverURL?: string | null;
+    characterSet?: string | null;
     fileName?: string | null;
     dateTimeFormatString?: string;
     resourcesInMultipleICSFiles?: boolean;
 }
 export interface ISchedulerRenderAppointment {
-    data?: any;
+    data: any;
 }
 export interface ISchedulerResources {
-    source?: string;
+    source?: any;
     colorScheme?: string;
     orientation?: 'none' | 'horizontal' | 'vertical';
     dataField?: string;
@@ -154,6 +189,10 @@ export interface ISchedulerGetSelection {
     ResourceId?: any;
 }
 interface ISchedulerOptions {
+    allowOverlap?: boolean;
+    blockedTimes?: any[];
+    maxDuration?: number;
+    minDuration?: number;
     appointmentOpacity?: number;
     appointmentsMinHeight?: number;
     appointmentDataFields?: ISchedulerAppointmentDataFields;
@@ -162,7 +201,7 @@ interface ISchedulerOptions {
     contextMenu?: boolean;
     contextMenuOpen?: (menu: ISchedulerContextMenuOpen['menu'], appointment: ISchedulerContextMenuOpen['appointment'], event: ISchedulerContextMenuOpen['event']) => void;
     contextMenuClose?: (menu: ISchedulerContextMenuClose['menu'], appointment: ISchedulerContextMenuClose['appointment'], event: ISchedulerContextMenuClose['event']) => void;
-    contextMenuItemClick?: (menu: ISchedulerContextMenuItemClick['menu'], appointment: ISchedulerContextMenuItemClick['appointment'], event: ISchedulerContextMenuItemClick['event']) => boolean;
+    contextMenuItemClick?: (menu: ISchedulerContextMenuItemClick['menu'], appointment: ISchedulerContextMenuItemClick['appointment'], event: ISchedulerContextMenuItemClick['event']) => boolean | void;
     contextMenuCreate?: (menu: ISchedulerContextMenuCreate['menu'], settings: ISchedulerContextMenuCreate['settings']) => void;
     changedAppointments?: ISchedulerChangedAppointments[];
     disabled?: boolean;
@@ -172,10 +211,10 @@ interface ISchedulerOptions {
     editDialog?: boolean;
     editDialogDateTimeFormatString?: string;
     editDialogDateFormatString?: string;
-    editDialogOpen?: (dialog?: ISchedulerEditDialogOpen['dialog'], fields?: ISchedulerEditDialogOpen['fields'], editAppointment?: ISchedulerEditDialogOpen['editAppointment']) => void;
-    editDialogCreate?: (dialog?: ISchedulerEditDialogCreate['dialog'], fields?: ISchedulerEditDialogCreate['fields'], editAppointment?: ISchedulerEditDialogCreate['editAppointment']) => void;
-    editDialogKeyDown?: (dialog?: ISchedulerEditDialogKeyDown['dialog'], fields?: ISchedulerEditDialogKeyDown['fields'], editAppointment?: ISchedulerEditDialogKeyDown['editAppointment'], event?: ISchedulerEditDialogKeyDown['event']) => boolean;
-    editDialogClose?: (dialog?: ISchedulerEditDialogClose['dialog'], fields?: ISchedulerEditDialogClose['fields'], editAppointment?: ISchedulerEditDialogClose['editAppointment']) => void;
+    editDialogOpen?: (dialog: ISchedulerEditDialogOpen['dialog'], fields: ISchedulerEditDialogOpen['fields'], editAppointment: ISchedulerEditDialogOpen['editAppointment']) => void;
+    editDialogCreate?: (dialog: ISchedulerEditDialogCreate['dialog'], fields: ISchedulerEditDialogCreate['fields'], editAppointment: ISchedulerEditDialogCreate['editAppointment']) => void;
+    editDialogKeyDown?: (dialog: ISchedulerEditDialogKeyDown['dialog'], fields: ISchedulerEditDialogKeyDown['fields'], editAppointment: ISchedulerEditDialogKeyDown['editAppointment'], event: ISchedulerEditDialogKeyDown['event']) => boolean | void;
+    editDialogClose?: (dialog: ISchedulerEditDialogClose['dialog'], fields: ISchedulerEditDialogClose['fields'], editAppointment: ISchedulerEditDialogClose['editAppointment']) => void;
     exportSettings?: ISchedulerExportSettings;
     height?: number | string;
     legendPosition?: string;
@@ -206,30 +245,38 @@ interface ISchedulerOptions {
     toolBarRangeFormat?: string;
     toolBarRangeFormatAbbr?: string;
     toolbarHeight?: number;
+    undoRedo?: boolean;
+    undoRedoLimit?: number;
     views?: any[];
-    view?: 'dayView' | 'weekView' | 'monthView' | 'timelineDayView' | 'timelineWeekView' | 'timelineMonthView' | 'agendaView';
+    view?: 'dayView' | 'weekView' | 'monthView' | 'timelineDayView' | 'timelineWeekView' | 'timelineMonthView' | 'agendaView' | 'yearView' | 'timelineYearView';
     width?: number | string;
 }
-export interface ISchedulerProps extends ISchedulerOptions {
+export interface ISchedulerProps extends ISchedulerOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onAppointmentChange?: (e?: Event) => void;
-    onAppointmentClick?: (e?: Event) => void;
-    onAppointmentDoubleClick?: (e?: Event) => void;
-    onAppointmentDelete?: (e?: Event) => void;
-    onAppointmentAdd?: (e?: Event) => void;
-    onBindingComplete?: (e?: Event) => void;
-    onCellClick?: (e?: Event) => void;
-    onCellDoubleClick?: (e?: Event) => void;
-    onContextMenuOpen?: (e?: Event) => void;
-    onContextMenuClose?: (e?: Event) => void;
-    onContextMenuItemClick?: (e?: Event) => void;
-    onContextMenuCreate?: (e?: Event) => void;
-    onDateChange?: (e?: Event) => void;
-    onEditRecurrenceDialogOpen?: (e?: Event) => void;
-    onEditRecurrenceDialogClose?: (e?: Event) => void;
-    onEditDialogCreate?: (e?: Event) => void;
-    onEditDialogOpen?: (e?: Event) => void;
-    onEditDialogClose?: (e?: Event) => void;
-    onViewChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onScheduleraiResult?: (e?: any) => void;
+    onAppointmentChange?: (e?: any) => void;
+    onAppointmentClick?: (e?: any) => void;
+    onAppointmentDoubleClick?: (e?: any) => void;
+    onAppointmentDelete?: (e?: any) => void;
+    onAppointmentAdd?: (e?: any) => void;
+    onAppointmentAdding?: (e?: any) => void;
+    onAppointmentChanging?: (e?: any) => void;
+    onAppointmentDeleting?: (e?: any) => void;
+    onUndoRedoChange?: (e?: any) => void;
+    onBindingComplete?: (e?: any) => void;
+    onCellClick?: (e?: any) => void;
+    onCellDoubleClick?: (e?: any) => void;
+    onContextMenuOpen?: (e?: any) => void;
+    onContextMenuClose?: (e?: any) => void;
+    onContextMenuItemClick?: (e?: any) => void;
+    onContextMenuCreate?: (e?: any) => void;
+    onDateChange?: (e?: any) => void;
+    onEditRecurrenceDialogOpen?: (e?: any) => void;
+    onEditRecurrenceDialogClose?: (e?: any) => void;
+    onEditDialogCreate?: (e?: any) => void;
+    onEditDialogOpen?: (e?: any) => void;
+    onEditDialogClose?: (e?: any) => void;
+    onViewChange?: (e?: any) => void;
 }

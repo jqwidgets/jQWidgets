@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,10 +21,10 @@ declare let JQXLite: any;
 
 export class jqxCheckBoxGroupComponent implements OnChanges
 {
-   @Input('change') attrChange: (item?: any) => void;
+   @Input('change') attrChange: (item: any) => void;
    @Input('disabled') attrDisabled: boolean;
-   @Input('items') attrItems: [];
-   @Input('value') attrValue: [];
+   @Input('items') attrItems: any[];
+   @Input('value') attrValue: any[];
    @Input('layout') attrLayout: string;
    @Input('labelPosition') attrLabelPosition: string;
    @Input('rtl') attrRtl: boolean;
@@ -46,6 +46,18 @@ export class jqxCheckBoxGroupComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxCheckBoxGroup('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -149,7 +161,7 @@ export class jqxCheckBoxGroupComponent implements OnChanges
    }
 
    // jqxCheckBoxGroupComponent properties
-   change(arg?: (item?: any) => void): (item?: any) => void {
+   change(arg?: (item: any) => void): (item: any) => void {
       if (arg !== undefined) {
           this.host.jqxCheckBoxGroup('change', arg);
       } else {
@@ -165,7 +177,7 @@ export class jqxCheckBoxGroupComponent implements OnChanges
       }
    }
 
-   items(arg?: undefined): undefined {
+   items(arg?: any[]): any[] {
       if (arg !== undefined) {
           this.host.jqxCheckBoxGroup('items', arg);
       } else {
@@ -173,7 +185,7 @@ export class jqxCheckBoxGroupComponent implements OnChanges
       }
    }
 
-   value(arg?: undefined): undefined {
+   value(arg?: any[]): any[] {
       if (arg !== undefined) {
           this.host.jqxCheckBoxGroup('value', arg);
       } else {
@@ -215,7 +227,7 @@ export class jqxCheckBoxGroupComponent implements OnChanges
 
 
    // jqxCheckBoxGroupComponent functions
-   getValue(): undefined {
+   getValue(): any[] {
       return this.host.jqxCheckBoxGroup('getValue');
    }
 
@@ -271,7 +283,7 @@ export class jqxCheckBoxGroupComponent implements OnChanges
       this.host.jqxCheckBoxGroup('render');
    }
 
-   val(value?: undefined): any {
+   val(value?: any[]): any {
       if (value !== undefined) {
          return this.host.jqxCheckBoxGroup('val', value);
       } else {

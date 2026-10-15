@@ -75,11 +75,14 @@
                 default: false,
                 type: Boolean
             },
-            contextmenuitems: [],
-            contextmenuenabled: [],
-            contextmenuwidth: [],
-            contextmenuheight: [],
-            contextmenuitemclick: [],
+            contextmenuitems: Array,
+            contextmenuenabled: {
+                default: false,
+                type: Boolean
+            },
+            contextmenuwidth: [Number, String],
+            contextmenuheight: [Number, String],
+            contextmenuitemclick: Function,
             adaptivewidth: Number,
             commandcolumn: {
                 default: false,
@@ -389,7 +392,7 @@
                 return resultToReturn;
             },
             aiConfig: function(config) {
-                JQXLite(this.componentSelector).jqxGrid('aiConfig', config);  
+                return JQXLite(this.componentSelector).jqxGrid('aiConfig', config);  
             },
             aiCommand: function(text, callback) {
                 return JQXLite(this.componentSelector).jqxGrid('aiCommand', text, callback);  
@@ -571,8 +574,8 @@
             insertgroup: function(groupIndex, dataField) {
                 JQXLite(this.componentSelector).jqxGrid('insertgroup', groupIndex, dataField);  
             },
-            iscolumngroupable: function() {
-                return JQXLite(this.componentSelector).jqxGrid('iscolumngroupable');  
+            iscolumngroupable: function(dataField) {
+                return JQXLite(this.componentSelector).jqxGrid('iscolumngroupable', dataField);  
             },
             removegroupat: function(groupIndex) {
                 JQXLite(this.componentSelector).jqxGrid('removegroupat', groupIndex);  

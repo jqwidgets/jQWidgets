@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxEditor extends React.PureComponent<IEditorProps, IState> {
-    protected static getDerivedStateFromProps(props: IEditorProps, state: IState): null | IState;
+declare class JqxEditor extends React.PureComponent<IEditorProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IEditorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IEditorProps): void;
     getOptions(option: string): any;
@@ -16,14 +27,15 @@ declare class JqxEditor extends React.PureComponent<IEditorProps, IState> {
     setMode(mode: boolean): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxEditor;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IEditorLocalization {
     bold?: string;
     italic?: string;
@@ -46,10 +58,10 @@ export interface IEditorLocalization {
     clean?: string;
 }
 export interface IEditorCreateCommand {
-    name?: string;
+    name: string;
 }
 interface IEditorOptions {
-    createCommand?: (name: IEditorCreateCommand['name']) => void;
+    createCommand?: (name: IEditorCreateCommand['name']) => any;
     disabled?: boolean;
     editable?: boolean;
     height?: string | number;
@@ -63,8 +75,9 @@ interface IEditorOptions {
     tools?: string;
     width?: string | number;
 }
-export interface IEditorProps extends IEditorOptions {
+export interface IEditorProps extends IEditorOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
 }

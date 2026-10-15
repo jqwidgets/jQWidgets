@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxDocking extends React.PureComponent<IDockingProps, IState> {
-    protected static getDerivedStateFromProps(props: IDockingProps, state: IState): null | IState;
+declare class JqxDocking extends React.PureComponent<IDockingProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IDockingProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDockingProps): void;
     getOptions(option: string): any;
@@ -36,14 +47,15 @@ declare class JqxDocking extends React.PureComponent<IDockingProps, IState> {
     showAllCollapseButtons(): void;
     unpinWindow(windowId: string): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDocking;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IDockingCookieOptions {
     domain?: string;
     expires?: number;
@@ -63,9 +75,10 @@ interface IDockingOptions {
     windowsMode?: object;
     windowsOffset?: number;
 }
-export interface IDockingProps extends IDockingOptions {
+export interface IDockingProps extends IDockingOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onDragStart?: (e?: Event) => void;
-    onDragEnd?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onDragStart?: (e?: any) => void;
+    onDragEnd?: (e?: any) => void;
 }

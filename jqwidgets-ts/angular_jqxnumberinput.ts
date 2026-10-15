@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -33,7 +33,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('allowNull') attrAllowNull: boolean;
-   @Input('autoHidePromptChart') attrAutoHidePromptChart: boolean;
+   @Input('autoHidePromptChar') attrAutoHidePromptChar: boolean;
    @Input('decimal') attrDecimal: number | string;
    @Input('disabled') attrDisabled: boolean;
    @Input('decimalDigits') attrDecimalDigits: number | string;
@@ -64,13 +64,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowNull','autoHidePromptChart','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+   properties: string[] = ['allowNull','autoHidePromptChar','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNumberInput;
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -79,6 +80,18 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxNumberInput('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -179,6 +192,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           return;
+       }
        if(this.widgetObject) {
            this.host.jqxNumberInput('val', value);
        }
@@ -189,6 +205,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -208,11 +225,11 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   autoHidePromptChart(arg?: boolean): boolean {
+   autoHidePromptChar(arg?: boolean): boolean {
       if (arg !== undefined) {
-          this.host.jqxNumberInput('autoHidePromptChart', arg);
+          this.host.jqxNumberInput('autoHidePromptChar', arg);
       } else {
-          return this.host.jqxNumberInput('autoHidePromptChart');
+          return this.host.jqxNumberInput('autoHidePromptChar');
       }
    }
 

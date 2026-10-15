@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxNumberInput extends React.PureComponent<INumberInputProps, IState> {
-    protected static getDerivedStateFromProps(props: INumberInputProps, state: IState): null | IState;
+declare class JqxNumberInput extends React.PureComponent<INumberInputProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: INumberInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: INumberInputProps): void;
     getOptions(option: string): any;
@@ -17,17 +28,18 @@ declare class JqxNumberInput extends React.PureComponent<INumberInputProps, ISta
     setDecimal(index: number | string): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxNumberInput;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface INumberInputOptions {
     allowNull?: boolean;
-    autoHidePromptChart?: boolean;
+    autoHidePromptChar?: boolean;
     decimal?: number | string;
     disabled?: boolean;
     decimalDigits?: number | string;
@@ -56,10 +68,11 @@ interface INumberInputOptions {
     value?: number | string;
     width?: string | number;
 }
-export interface INumberInputProps extends INumberInputOptions {
+export interface INumberInputProps extends INumberInputOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
-    onTextchanged?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
+    onTextchanged?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

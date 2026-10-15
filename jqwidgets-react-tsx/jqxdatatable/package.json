@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxdatatable.umd.js",
-    "module": "react_jqxdatatable.esm.js",
-    "typings": "react_jqxdatatable.d.ts",
-    "name": "jqwidgets-react/jqxdatatable",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxdatatable",
+  "version": "27.1.0",
+  "main": "react_jqxdatatable.umd.js",
+  "module": "react_jqxdatatable.esm.js",
+  "typings": "react_jqxdatatable.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxdatatable.d.ts",
+      "import": "./react_jqxdatatable.esm.js",
+      "require": "./react_jqxdatatable.umd.js",
+      "default": "./react_jqxdatatable.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

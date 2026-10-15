@@ -5,7 +5,8 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/globalization/globalize.js';
     import '../jqwidgets/jqxbuttons.js';
@@ -15,7 +16,7 @@
 
     export default {
         props: {
-            modelValue: String,
+            modelValue: null,
             animationType: String,
             allowNullDate: {
                 default: true,
@@ -98,8 +99,10 @@
         },
         emits: ["update:modelValue","change","close","open","textchanged","valueChanged"],
         setup(props, context) {
-			const id = "jqxDateTimeInput" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxDateTimeInput" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -417,6 +420,10 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxDateTimeInput(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
+                __pushModel__();
                 __wireEvents__();
             }
             function __manageProps__() {
@@ -649,11 +656,19 @@
                      _yearCutoff(newValue);
                  },
             }
+            let __model__, __syncingModel__ = false;
+            function __pushModel__() {
+                const v = props.modelValue;
+                __model__ = v;
+                if (v === undefined || v === null) return;
+                __syncingModel__ = true;
+                try { JQXLite(componentSelector).jqxDateTimeInput('val', v); } finally { __syncingModel__ = false; }
+            }
             function twoWayBinding() {
-				const element = JQXLite(componentSelector).jqxDateTimeInput('element');
+                if (__syncingModel__) return;
                 const value = JQXLite(componentSelector).jqxDateTimeInput('value');
-                context.emit('input', value);
-                context.emit('update:modelValue', element.value);
+                __model__ = value;
+                context.emit('update:modelValue', value);
             }
             function __wireEvents__() {
                 const that = context;
@@ -668,11 +683,45 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxDateTimeInput(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxDateTimeInput(changed);
+				if ('source' in changed) __pushModel__();
+			}, { flush: 'post' });
+			// v-model: a model changed outside goes into the widget
+			watch(() => props.modelValue, (value) => {
+				if (__hasJQXLite__ && __created__ && value !== __model__) __pushModel__();
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
+				try { element.jqxDateTimeInput('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, close,destroy,focus,getRange,getText,getDate,getMaxDate,getMinDate,open,setRange,setMinDate,setMaxDate,setDate,val,twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, close, destroy, focus, getRange, getText, getDate, getMaxDate, getMinDate, open, setRange, setMinDate, setMaxDate, setDate, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

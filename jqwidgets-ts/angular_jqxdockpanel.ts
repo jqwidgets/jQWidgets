@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,12 +22,13 @@ export class jqxDockPanelComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
    @Input('lastchildfill') attrLastchildfill: boolean;
+   @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','lastchildfill','width'];
+   properties: string[] = ['disabled','height','lastchildfill','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDockPanel;
@@ -40,6 +41,13 @@ export class jqxDockPanelComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -163,6 +171,14 @@ export class jqxDockPanelComponent implements OnChanges
           this.host.jqxDockPanel('lastchildfill', arg);
       } else {
           return this.host.jqxDockPanel('lastchildfill');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDockPanel('theme', arg);
+      } else {
+          return this.host.jqxDockPanel('theme');
       }
    }
 

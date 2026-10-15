@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxdocking.umd.js",
-    "module": "react_jqxdocking.esm.js",
-    "typings": "react_jqxdocking.d.ts",
-    "name": "jqwidgets-react/jqxdocking",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxdocking",
+  "version": "27.1.0",
+  "main": "react_jqxdocking.umd.js",
+  "module": "react_jqxdocking.esm.js",
+  "typings": "react_jqxdocking.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxdocking.d.ts",
+      "import": "./react_jqxdocking.esm.js",
+      "require": "./react_jqxdocking.umd.js",
+      "default": "./react_jqxdocking.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

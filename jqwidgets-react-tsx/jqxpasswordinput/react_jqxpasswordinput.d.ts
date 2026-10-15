@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxPasswordInput extends React.PureComponent<IPasswordInputProps, IState> {
-    protected static getDerivedStateFromProps(props: IPasswordInputProps, state: IState): null | IState;
+declare class JqxPasswordInput extends React.PureComponent<IPasswordInputProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IPasswordInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IPasswordInputProps): void;
     getOptions(option: string): any;
@@ -14,14 +24,15 @@ declare class JqxPasswordInput extends React.PureComponent<IPasswordInputProps, 
     refresh(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxPasswordInput;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IPasswordInputLocalization {
     passwordStrengthString?: string;
     tooShort?: string;
@@ -38,14 +49,22 @@ export interface IPasswordInputStrengthColors {
     strong?: string;
 }
 export interface IPasswordInputPasswordStrength {
-    password?: string | number;
-    characters?: object;
-    defaultStrength?: string;
+    password: string;
+    characters: {
+        letters: number;
+        numbers: number;
+        specialKeys: number;
+    };
+    defaultStrength: string;
 }
 export interface IPasswordInputStrengthTypeRenderer {
-    password?: string | number;
-    characters?: object;
-    defaultStrength?: string;
+    password: string;
+    characters: {
+        letters: number;
+        numbers: number;
+        specialKeys: number;
+    };
+    defaultStrength: string;
 }
 interface IPasswordInputOptions {
     disabled?: boolean;
@@ -63,8 +82,8 @@ interface IPasswordInputOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IPasswordInputProps extends IPasswordInputOptions {
+export interface IPasswordInputProps extends IPasswordInputOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
+    onChange?: (e?: any) => void;
 }

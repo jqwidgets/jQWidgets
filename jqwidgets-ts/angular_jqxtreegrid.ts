@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -55,8 +55,8 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('ready') attrReady: () => void;
    @Input('rowDetails') attrRowDetails: boolean;
    @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: jqwidgets.TreeGridRowDetailsRenderer['key'], dataRow: jqwidgets.TreeGridRowDetailsRenderer['dataRow']) => any;
-   @Input('renderToolbar') attrRenderToolbar: (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void;
-   @Input('renderStatusBar') attrRenderStatusBar: (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void;
+   @Input('renderToolbar') attrRenderToolbar: (toolBar: jqwidgets.TreeGridRenderToolbar['toolbar']) => void;
+   @Input('renderStatusBar') attrRenderStatusBar: (statusBar: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -72,8 +72,8 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('showHeader') attrShowHeader: boolean;
    @Input('theme') attrTheme: string;
    @Input('toolbarHeight') attrToolbarHeight: number;
-   @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords: (expandedRecord?: any, done?: any) => void;
-   @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating: (record?: any) => any;
+   @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords: (expandedRecord: any, done: any) => void;
+   @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating: (record: any) => any;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -91,6 +91,18 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    }
 
    ngOnInit() {
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxTreeGrid('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -707,7 +719,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   renderToolbar(arg?: (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void): (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void {
+   renderToolbar(arg?: (toolBar: jqwidgets.TreeGridRenderToolbar['toolbar']) => void): (toolBar: jqwidgets.TreeGridRenderToolbar['toolbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -720,7 +732,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   renderStatusBar(arg?: (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void): (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void {
+   renderStatusBar(arg?: (statusBar: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void): (statusBar: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -941,7 +953,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   virtualModeCreateRecords(arg?: (expandedRecord?: any, done?: any) => void): (expandedRecord?: any, done?: any) => void {
+   virtualModeCreateRecords(arg?: (expandedRecord: any, done: any) => void): (expandedRecord: any, done: any) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -954,7 +966,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   virtualModeRecordCreating(arg?: (record?: any) => any): (record?: any) => any {
+   virtualModeRecordCreating(arg?: (record: any) => any): (record: any) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1086,7 +1098,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('destroy');
    }
 
-   deleteRow(rowKey: string[] | string): void {
+   deleteRow(rowKey: Array<number | string> | number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1355,7 +1367,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('selectRow', rowId);
    }
 
-   setCellValue(rowId: string, dataField: string, cellValue: any): void {
+   setCellValue(rowId: number | string, dataField: string, cellValue: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1364,7 +1376,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('setCellValue', rowId, dataField, cellValue);
    }
 
-   sortBy(dataField: number | string, sortOrder?: 'asc' | 'desc' | null): void {
+   sortBy(dataField: number | string | null, sortOrder?: 'asc' | 'desc' | null): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1400,7 +1412,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('unselectRow', rowId);
    }
 
-   uncheckRow(rowId: string): void {
+   uncheckRow(rowId: number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -38,6 +38,7 @@ export class jqxLinearGaugeComponent implements OnChanges
    @Input('showRanges') attrShowRanges: boolean;
    @Input('scaleStyle') attrScaleStyle: any;
    @Input('scaleLength') attrScaleLength: number | string;
+   @Input('theme') attrTheme: string;
    @Input('ticksOffset') attrTicksOffset: Array<number | string>;
    @Input('ticksPosition') attrTicksPosition: string;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.LinearGaugeTicks;
@@ -48,7 +49,7 @@ export class jqxLinearGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
+   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','theme','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinearGauge;
@@ -61,6 +62,13 @@ export class jqxLinearGaugeComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -304,6 +312,14 @@ export class jqxLinearGaugeComponent implements OnChanges
           this.host.jqxLinearGauge('scaleLength', arg);
       } else {
           return this.host.jqxLinearGauge('scaleLength');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('theme', arg);
+      } else {
+          return this.host.jqxLinearGauge('theme');
       }
    }
 

@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps, IState> {
-    protected static getDerivedStateFromProps(props: ILinearGaugeProps, state: IState): null | IState;
+declare class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: ILinearGaugeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ILinearGaugeProps): void;
     getOptions(option: string): any;
@@ -14,14 +24,15 @@ declare class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps, ISta
     enable(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxLinearGauge;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ILinearGaugeRanges {
     startValue?: number;
     endValue?: number;
@@ -43,7 +54,7 @@ export interface ILinearGaugeLabels {
     visible?: boolean;
 }
 export interface ILinearGaugePointer {
-    pointerType?: 'default' | 'rectangle';
+    pointerType?: 'default' | 'arrow';
     style?: any;
     size?: number | string;
     offset?: number;
@@ -74,6 +85,7 @@ interface ILinearGaugeOptions {
     showRanges?: boolean;
     scaleStyle?: any;
     scaleLength?: number | string;
+    theme?: string;
     ticksOffset?: Array<number | string>;
     ticksPosition?: 'far' | 'near' | 'both';
     ticksMinor?: ILinearGaugeTicks;
@@ -81,9 +93,10 @@ interface ILinearGaugeOptions {
     value?: number;
     width?: number | string;
 }
-export interface ILinearGaugeProps extends ILinearGaugeOptions {
+export interface ILinearGaugeProps extends ILinearGaugeOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onValueChanging?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onValueChanging?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

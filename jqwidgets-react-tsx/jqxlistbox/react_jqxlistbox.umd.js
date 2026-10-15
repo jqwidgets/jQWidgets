@@ -39,183 +39,274 @@ require('../../jqwidgets/jqxdragdrop');
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    var __ssrIdCounter__ = 0;
+    function __sameValue__(x, y) {
+        return x === y ? (x !== 0 || 1 / x === 1 / y) : (x !== x && y !== y);
+    }
+    function __afterTask__(callback) {
+        if (typeof Promise !== 'undefined') {
+            Promise.resolve().then(callback);
+        }
+        else {
+            setTimeout(callback, 0);
+        }
+    }
     var JqxListBox = /** @class */ (function (_super) {
         __extends(JqxListBox, _super);
         function JqxListBox(props) {
             var _this = _super.call(this, props) || this;
             /* tslint:disable:variable-name */
             _this._jqx = JQXLite;
-            _this._id = 'JqxListBox' + _this._jqx.generateID();
+            /* tslint:disable:variable-name */
+            _this._rendered = null;
+            /* tslint:disable:variable-name */
+            _this._host = null;
+            /* tslint:disable:variable-name */
+            _this._appliedOptions = null;
+            /* tslint:disable:variable-name */
+            _this._eventHandlers = {};
+            /* tslint:disable:variable-name */
+            _this._eventElement = null;
+            /* tslint:disable:variable-name */
+            _this._teardownPending = false;
+            /* tslint:disable:variable-name */
+            _this._hostParent = null;
+            /* tslint:disable:variable-name */
+            _this._hostNext = null;
+            /* tslint:disable:variable-name */
+            _this._widgetPlace = null;
+            /* tslint:disable:variable-name */
+            _this._hostChildren = [];
+            _this._id = 'JqxListBox' + (_this._jqx ? _this._jqx.generateID() : 'SSR' + (++__ssrIdCounter__));
             _this._componentSelector = '#' + _this._id;
-            _this.state = { lastProps: props };
             return _this;
         }
-        JqxListBox.getDerivedStateFromProps = function (props, state) {
-            if (!Object.is) {
-                Object.is = function (x, y) {
-                    if (x === y) {
-                        return x !== 0 || 1 / x === 1 / y;
-                    }
-                    else {
-                        return x !== x && y !== y;
-                    }
-                };
-            }
-            var areEqual = Object.is(props, state.lastProps);
-            if (!areEqual) {
-                var newState = { lastProps: props };
-                return newState;
-            }
-            return null;
-        };
         JqxListBox.prototype.componentDidMount = function () {
+            if (this._teardownPending) {
+                this._teardownPending = false;
+                var place = this._widgetPlace;
+                if (place && this._host) {
+                    place.parent.insertBefore(this._host, place.next && place.next.parentNode === place.parent ? place.next : null);
+                }
+                this._widgetPlace = null;
+                return;
+            }
+            var element = this._jqx(this._target());
+            this._host = element[0] || null;
+            this._hostParent = this._host ? this._host.parentNode : null;
+            this._hostNext = this._host ? this._host.nextSibling : null;
+            this._hostChildren = this._host ? Array.prototype.slice.call(this._host.childNodes) : [];
             var widgetOptions = this._manageProps();
-            this._jqx(this._componentSelector).jqxListBox(widgetOptions);
+            element.jqxListBox(widgetOptions);
+            this._appliedOptions = widgetOptions;
+            this._applyHostAttributes();
             this._wireEvents();
         };
         JqxListBox.prototype.componentDidUpdate = function () {
+            if (!this._appliedOptions) {
+                return;
+            }
             var widgetOptions = this._manageProps();
-            this.setOptions(widgetOptions);
+            var changed = {};
+            var hasChanges = false;
+            for (var key in widgetOptions) {
+                if (!__sameValue__(widgetOptions[key], this._appliedOptions[key])) {
+                    changed[key] = widgetOptions[key];
+                    hasChanges = true;
+                }
+            }
+            if ('source' in changed) {
+                for (var _i = 0, _a = ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']; _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    if (!(key in changed) && widgetOptions[key] !== undefined) {
+                        changed[key] = widgetOptions[key];
+                    }
+                }
+            }
+            this._appliedOptions = widgetOptions;
+            if (hasChanges) {
+                this.setOptions(changed);
+                this._applyHostAttributes();
+            }
             this._wireEvents();
         };
+        JqxListBox.prototype.componentWillUnmount = function () {
+            var _this = this;
+            if (!this._jqx || !this._host) {
+                return;
+            }
+            var host = this._host;
+            var parent = this._hostParent;
+            if (parent && host.parentNode !== parent) {
+                this._widgetPlace = host.parentNode ? { parent: host.parentNode, next: host.nextSibling } : null;
+                var wrapper = host;
+                while (wrapper && wrapper.parentNode !== parent) {
+                    wrapper = wrapper.parentNode;
+                }
+                var sibling = this._hostNext && this._hostNext.parentNode === parent ? this._hostNext : null;
+                parent.insertBefore(host, wrapper || sibling);
+            }
+            this._teardownPending = true;
+            __afterTask__(function () {
+                if (_this._teardownPending) {
+                    _this._teardownPending = false;
+                    _this._teardown();
+                }
+            });
+        };
+        JqxListBox.prototype._target = function () {
+            return (typeof document !== 'undefined' && document.getElementById(this._id)) || this._rendered || this._componentSelector;
+        };
         JqxListBox.prototype.render = function () {
-            return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
+            var _this = this;
+            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style }, this._hostAttributes()), this.props.children));
         };
         JqxListBox.prototype.setOptions = function (options) {
-            this._jqx(this._componentSelector).jqxListBox(options);
+            this._jqx(this._target()).jqxListBox(options);
         };
         JqxListBox.prototype.getOptions = function (option) {
-            return this._jqx(this._componentSelector).jqxListBox(option);
+            return this._jqx(this._target()).jqxListBox(option);
         };
         JqxListBox.prototype.addItem = function (Item) {
-            return this._jqx(this._componentSelector).jqxListBox('addItem', Item);
+            return this._jqx(this._target()).jqxListBox('addItem', Item);
         };
         JqxListBox.prototype.beginUpdate = function () {
-            this._jqx(this._componentSelector).jqxListBox('beginUpdate');
+            this._jqx(this._target()).jqxListBox('beginUpdate');
         };
         JqxListBox.prototype.clear = function () {
-            this._jqx(this._componentSelector).jqxListBox('clear');
+            this._jqx(this._target()).jqxListBox('clear');
         };
         JqxListBox.prototype.clearSelection = function () {
-            this._jqx(this._componentSelector).jqxListBox('clearSelection');
+            this._jqx(this._target()).jqxListBox('clearSelection');
         };
         JqxListBox.prototype.checkIndex = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('checkIndex', Index);
+            this._jqx(this._target()).jqxListBox('checkIndex', Index);
         };
         JqxListBox.prototype.checkItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('checkItem', Item);
+            this._jqx(this._target()).jqxListBox('checkItem', Item);
         };
         JqxListBox.prototype.checkAll = function () {
-            this._jqx(this._componentSelector).jqxListBox('checkAll');
+            this._jqx(this._target()).jqxListBox('checkAll');
         };
         JqxListBox.prototype.clearFilter = function () {
-            this._jqx(this._componentSelector).jqxListBox('clearFilter');
+            this._jqx(this._target()).jqxListBox('clearFilter');
         };
         JqxListBox.prototype.destroy = function () {
-            this._jqx(this._componentSelector).jqxListBox('destroy');
+            this._jqx(this._target()).jqxListBox('destroy');
         };
         JqxListBox.prototype.disableItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('disableItem', Item);
+            this._jqx(this._target()).jqxListBox('disableItem', Item);
         };
         JqxListBox.prototype.disableAt = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('disableAt', Index);
+            this._jqx(this._target()).jqxListBox('disableAt', Index);
         };
         JqxListBox.prototype.enableItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('enableItem', Item);
+            this._jqx(this._target()).jqxListBox('enableItem', Item);
         };
         JqxListBox.prototype.enableAt = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('enableAt', Index);
+            this._jqx(this._target()).jqxListBox('enableAt', Index);
         };
         JqxListBox.prototype.ensureVisible = function (item) {
-            this._jqx(this._componentSelector).jqxListBox('ensureVisible', item);
+            this._jqx(this._target()).jqxListBox('ensureVisible', item);
         };
         JqxListBox.prototype.endUpdate = function () {
-            this._jqx(this._componentSelector).jqxListBox('endUpdate');
+            this._jqx(this._target()).jqxListBox('endUpdate');
         };
         JqxListBox.prototype.focus = function () {
-            this._jqx(this._componentSelector).jqxListBox('focus');
+            this._jqx(this._target()).jqxListBox('focus');
         };
         JqxListBox.prototype.getItems = function () {
-            return this._jqx(this._componentSelector).jqxListBox('getItems');
+            return this._jqx(this._target()).jqxListBox('getItems');
         };
         JqxListBox.prototype.getSelectedItems = function () {
-            return this._jqx(this._componentSelector).jqxListBox('getSelectedItems');
+            return this._jqx(this._target()).jqxListBox('getSelectedItems');
         };
         JqxListBox.prototype.getCheckedItems = function () {
-            return this._jqx(this._componentSelector).jqxListBox('getCheckedItems');
+            return this._jqx(this._target()).jqxListBox('getCheckedItems');
         };
         JqxListBox.prototype.getItem = function (Index) {
-            return this._jqx(this._componentSelector).jqxListBox('getItem', Index);
+            return this._jqx(this._target()).jqxListBox('getItem', Index);
         };
         JqxListBox.prototype.getItemByValue = function (Item) {
-            return this._jqx(this._componentSelector).jqxListBox('getItemByValue', Item);
+            return this._jqx(this._target()).jqxListBox('getItemByValue', Item);
         };
         JqxListBox.prototype.getSelectedItem = function () {
-            return this._jqx(this._componentSelector).jqxListBox('getSelectedItem');
+            return this._jqx(this._target()).jqxListBox('getSelectedItem');
         };
         JqxListBox.prototype.getSelectedIndex = function () {
-            return this._jqx(this._componentSelector).jqxListBox('getSelectedIndex');
+            return this._jqx(this._target()).jqxListBox('getSelectedIndex');
         };
         JqxListBox.prototype.insertAt = function (Item, Index) {
-            this._jqx(this._componentSelector).jqxListBox('insertAt', Item, Index);
+            this._jqx(this._target()).jqxListBox('insertAt', Item, Index);
         };
         JqxListBox.prototype.invalidate = function () {
-            this._jqx(this._componentSelector).jqxListBox('invalidate');
+            this._jqx(this._target()).jqxListBox('invalidate');
         };
         JqxListBox.prototype.indeterminateItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('indeterminateItem', Item);
+            this._jqx(this._target()).jqxListBox('indeterminateItem', Item);
         };
         JqxListBox.prototype.indeterminateIndex = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('indeterminateIndex', Index);
+            this._jqx(this._target()).jqxListBox('indeterminateIndex', Index);
         };
         JqxListBox.prototype.loadFromSelect = function (selector) {
-            this._jqx(this._componentSelector).jqxListBox('loadFromSelect', selector);
+            this._jqx(this._target()).jqxListBox('loadFromSelect', selector);
         };
         JqxListBox.prototype.removeItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('removeItem', Item);
+            this._jqx(this._target()).jqxListBox('removeItem', Item);
         };
         JqxListBox.prototype.removeAt = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('removeAt', Index);
+            this._jqx(this._target()).jqxListBox('removeAt', Index);
         };
         JqxListBox.prototype.renderWidget = function () {
-            this._jqx(this._componentSelector).jqxListBox('render');
+            this._jqx(this._target()).jqxListBox('render');
         };
         JqxListBox.prototype.refresh = function () {
-            this._jqx(this._componentSelector).jqxListBox('refresh');
+            this._jqx(this._target()).jqxListBox('refresh');
         };
         JqxListBox.prototype.selectItem = function (Item) {
-            this._jqx(this._componentSelector).jqxListBox('selectItem', Item);
+            this._jqx(this._target()).jqxListBox('selectItem', Item);
         };
         JqxListBox.prototype.selectIndex = function (Index) {
-            this._jqx(this._componentSelector).jqxListBox('selectIndex', Index);
+            this._jqx(this._target()).jqxListBox('selectIndex', Index);
         };
         JqxListBox.prototype.updateItem = function (Item, Value) {
-            this._jqx(this._componentSelector).jqxListBox('updateItem', Item, Value);
+            this._jqx(this._target()).jqxListBox('updateItem', Item, Value);
         };
         JqxListBox.prototype.updateAt = function (item, index) {
-            this._jqx(this._componentSelector).jqxListBox('updateAt', item, index);
+            this._jqx(this._target()).jqxListBox('updateAt', item, index);
         };
         JqxListBox.prototype.unselectIndex = function (index) {
-            this._jqx(this._componentSelector).jqxListBox('unselectIndex', index);
+            this._jqx(this._target()).jqxListBox('unselectIndex', index);
         };
         JqxListBox.prototype.unselectItem = function (item) {
-            this._jqx(this._componentSelector).jqxListBox('unselectItem', item);
+            this._jqx(this._target()).jqxListBox('unselectItem', item);
         };
         JqxListBox.prototype.uncheckIndex = function (index) {
-            this._jqx(this._componentSelector).jqxListBox('uncheckIndex', index);
+            this._jqx(this._target()).jqxListBox('uncheckIndex', index);
         };
         JqxListBox.prototype.uncheckItem = function (item) {
-            this._jqx(this._componentSelector).jqxListBox('uncheckItem', item);
+            this._jqx(this._target()).jqxListBox('uncheckItem', item);
         };
         JqxListBox.prototype.uncheckAll = function () {
-            this._jqx(this._componentSelector).jqxListBox('uncheckAll');
+            this._jqx(this._target()).jqxListBox('uncheckAll');
         };
         JqxListBox.prototype.val = function (value) {
-            if (value) {
-                this._jqx(this._componentSelector).jqxListBox('val', value);
+            if (value !== undefined) {
+                this._jqx(this._target()).jqxListBox('val', value);
             }
             else {
-                return this._jqx(this._componentSelector).jqxListBox('val');
+                return this._jqx(this._target()).jqxListBox('val');
             }
         };
         JqxListBox.prototype._manageProps = function () {
@@ -228,20 +319,93 @@ require('../../jqwidgets/jqxdragdrop');
             }
             return options;
         };
+        JqxListBox.prototype._hostAttributes = function () {
+            var attributes = {};
+            for (var prop in this.props) {
+                if (prop.indexOf('aria-') === 0 || prop.indexOf('data-') === 0) {
+                    attributes[prop] = this.props[prop];
+                }
+            }
+            return attributes;
+        };
+        JqxListBox.prototype._applyHostAttributes = function () {
+            var host = this._host;
+            if (!host) {
+                return;
+            }
+            var attributes = this._hostAttributes();
+            for (var name_1 in attributes) {
+                var value = attributes[name_1];
+                if (value !== undefined && value !== null && host.getAttribute(name_1) !== String(value)) {
+                    host.setAttribute(name_1, String(value));
+                }
+            }
+        };
         JqxListBox.prototype._wireEvents = function () {
             for (var prop in this.props) {
-                if (prop.indexOf('on') === 0) {
-                    var originalEventName = prop.slice(2);
-                    originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
-                    this._jqx(this._componentSelector).off(originalEventName);
-                    this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
+                if (prop.indexOf('on') === 0 && !this._eventHandlers[prop]) {
+                    if (!this._eventElement) {
+                        this._eventElement = this._jqx(this._target());
+                    }
+                    this._eventHandlers[prop] = this._eventHandler(prop);
+                    this._eventElement.on(__eventName__(prop), this._eventHandlers[prop]);
                 }
+            }
+        };
+        JqxListBox.prototype._eventHandler = function (prop) {
+            var that = this;
+            return function () {
+                var handler = that.props[prop];
+                return typeof handler === 'function' ? handler.apply(this, arguments) : undefined;
+            };
+        };
+        JqxListBox.prototype._teardown = function () {
+            var node = this._host;
+            var place = this._widgetPlace;
+            var kept = !!node.ownerDocument && node.ownerDocument.documentElement.contains(node);
+            for (var prop in this._eventHandlers) {
+                if (this._eventHandlers.hasOwnProperty(prop)) {
+                    this._eventElement.off(__eventName__(prop), this._eventHandlers[prop]);
+                }
+            }
+            this._eventHandlers = {};
+            this._eventElement = null;
+            this._appliedOptions = null;
+            this._host = null;
+            this._widgetPlace = null;
+            var parent = node.parentNode;
+            var next = node.nextSibling;
+            if (place) {
+                place.parent.insertBefore(node, place.next && place.next.parentNode === place.parent ? place.next : null);
+            }
+            try {
+                this._jqx(node).jqxListBox('destroy');
+            }
+            catch (e) {
+                /* widget was already destroyed or never created */
+            }
+            if (kept && parent) {
+                if (node.parentNode !== parent) {
+                    parent.insertBefore(node, next && next.parentNode === parent ? next : null);
+                }
+                node.id = this._id;
+                while (node.firstChild) {
+                    node.removeChild(node.firstChild);
+                }
+                this._hostChildren.forEach(function (child) { return node.appendChild(child); });
+            }
+            else if (place && node.parentNode === place.parent) {
+                place.parent.removeChild(node);
             }
         };
         return JqxListBox;
     }(React.PureComponent));
-    var jqx = window.jqx;
-    var JQXLite = window.JQXLite;
+    function __eventName__(prop) {
+        return prop.charAt(2).toLowerCase() + prop.slice(3);
+    }
+    var __hasWindow__ = typeof window !== 'undefined';
+    var jqx = (__hasWindow__ ? window.jqx : undefined);
+    var JQXLite = (__hasWindow__ ? window.JQXLite : undefined);
 
     exports.default = JqxListBox;
     exports.jqx = jqx;

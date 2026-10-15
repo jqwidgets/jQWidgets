@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,7 +28,7 @@ export class jqxProgressBarComponent implements OnChanges
    @Input('min') attrMin: number | string;
    @Input('orientation') attrOrientation: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('renderText') attrRenderText: (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string;
+   @Input('renderText') attrRenderText: (text: jqwidgets.ProgressBarRenderText['text'], value: jqwidgets.ProgressBarRenderText['value']) => string;
    @Input('showText') attrShowText: boolean;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
@@ -50,6 +50,18 @@ export class jqxProgressBarComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxProgressBar('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -225,7 +237,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   renderText(arg?: (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string): (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string {
+   renderText(arg?: (text: jqwidgets.ProgressBarRenderText['text'], value: jqwidgets.ProgressBarRenderText['value']) => string): (text: jqwidgets.ProgressBarRenderText['text'], value: jqwidgets.ProgressBarRenderText['value']) => string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('renderText', arg);
       } else {

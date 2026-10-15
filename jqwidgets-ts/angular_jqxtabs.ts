@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -30,7 +30,7 @@ export class jqxTabsComponent implements OnChanges
    @Input('enabledHover') attrEnabledHover: boolean;
    @Input('enableScrollAnimation') attrEnableScrollAnimation: boolean;
    @Input('enableDropAnimation') attrEnableDropAnimation: boolean;
-   @Input('initTabContent') attrInitTabContent: (tab?: number) => void;
+   @Input('initTabContent') attrInitTabContent: (tab: number) => void;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('next') attrNext: any;
    @Input('previous') attrPrevious: any;
@@ -63,6 +63,18 @@ export class jqxTabsComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxTabs('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -246,7 +258,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   initTabContent(arg?: (tab?: number) => void): (tab?: number) => void {
+   initTabContent(arg?: (tab: number) => void): (tab: number) => void {
       if (arg !== undefined) {
           this.host.jqxTabs('initTabContent', arg);
       } else {
@@ -472,7 +484,7 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('select', index);
    }
 
-   setContentAt(index: number, htmlElement: string): void {
+   setContentAt(index: number, htmlElement: string | HTMLElement): void {
       this.host.jqxTabs('setContentAt', index, htmlElement);
    }
 

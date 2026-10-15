@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxCheckBox extends React.PureComponent<ICheckBoxProps, IState> {
-    protected static getDerivedStateFromProps(props: ICheckBoxProps, state: IState): null | IState;
+declare class JqxCheckBox extends React.PureComponent<ICheckBoxProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ICheckBoxProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ICheckBoxProps): void;
     getOptions(option: string): any;
@@ -21,14 +32,15 @@ declare class JqxCheckBox extends React.PureComponent<ICheckBoxProps, IState> {
     uncheck(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxCheckBox;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface ICheckBoxOptions {
     animationShowDelay?: number;
     animationHideDelay?: number;
@@ -44,11 +56,12 @@ interface ICheckBoxOptions {
     theme?: string;
     width?: number | string;
 }
-export interface ICheckBoxProps extends ICheckBoxOptions {
+export interface ICheckBoxProps extends ICheckBoxOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChecked?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onIndeterminate?: (e?: Event) => void;
-    onUnchecked?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChecked?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onIndeterminate?: (e?: any) => void;
+    onUnchecked?: (e?: any) => void;
 }

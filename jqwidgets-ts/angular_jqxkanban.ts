@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,12 +23,12 @@ declare let JQXLite: any;
 
 export class jqxKanbanComponent implements OnChanges
 {
-   @Input('columnRenderer') attrColumnRenderer: (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void;
+   @Input('columnRenderer') attrColumnRenderer: (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void;
    @Input('columns') attrColumns: Array<jqwidgets.KanbanColumns>;
    @Input('connectWith') attrConnectWith: string;
    @Input('headerHeight') attrHeaderHeight: number | string;
    @Input('headerWidth') attrHeaderWidth: number;
-   @Input('itemRenderer') attrItemRenderer: (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void;
+   @Input('itemRenderer') attrItemRenderer: (element: jqwidgets.KanbanItemRenderer['element'], item: jqwidgets.KanbanItemRenderer['item'], resource: jqwidgets.KanbanItemRenderer['resource']) => void;
    @Input('ready') attrReady: () => void;
    @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
@@ -53,6 +53,18 @@ export class jqxKanbanComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxKanban('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -156,7 +168,7 @@ export class jqxKanbanComponent implements OnChanges
    }
 
    // jqxKanbanComponent properties
-   columnRenderer(arg?: (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void): (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void {
+   columnRenderer(arg?: (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void): (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void {
       if (arg !== undefined) {
           this.host.jqxKanban('columnRenderer', arg);
       } else {
@@ -204,7 +216,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   itemRenderer(arg?: (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void): (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void {
+   itemRenderer(arg?: (element: jqwidgets.KanbanItemRenderer['element'], item: jqwidgets.KanbanItemRenderer['item'], resource: jqwidgets.KanbanItemRenderer['resource']) => void): (element: jqwidgets.KanbanItemRenderer['element'], item: jqwidgets.KanbanItemRenderer['item'], resource: jqwidgets.KanbanItemRenderer['resource']) => void {
       if (arg !== undefined) {
           this.host.jqxKanban('itemRenderer', arg);
       } else {
@@ -298,7 +310,7 @@ export class jqxKanbanComponent implements OnChanges
       return this.host.jqxKanban('getItems');
    }
 
-   removeItem(itemId: string): void {
+   removeItem(itemId: string | number): void {
       this.host.jqxKanban('removeItem', itemId);
    }
 

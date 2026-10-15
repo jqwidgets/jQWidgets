@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxwindow.umd.js",
-    "module": "react_jqxwindow.esm.js",
-    "typings": "react_jqxwindow.d.ts",
-    "name": "jqwidgets-react/jqxwindow",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxwindow",
+  "version": "27.1.0",
+  "main": "react_jqxwindow.umd.js",
+  "module": "react_jqxwindow.esm.js",
+  "typings": "react_jqxwindow.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxwindow.d.ts",
+      "import": "./react_jqxwindow.esm.js",
+      "require": "./react_jqxwindow.umd.js",
+      "default": "./react_jqxwindow.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

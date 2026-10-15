@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxMenu extends React.PureComponent<IMenuProps, IState> {
-    protected static getDerivedStateFromProps(props: IMenuProps, state: IState): null | IState;
+declare class JqxMenu extends React.PureComponent<IMenuProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IMenuProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IMenuProps): void;
     getOptions(option: string): any;
@@ -21,14 +32,15 @@ declare class JqxMenu extends React.PureComponent<IMenuProps, IState> {
     restore(): void;
     setItemOpenDirection(item: number | string, horizontaldirection: string, verticaldirection: string): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxMenu;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IMenuOptions {
     animationShowDuration?: number;
     animationHideDuration?: number;
@@ -55,10 +67,11 @@ interface IMenuOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IMenuProps extends IMenuOptions {
+export interface IMenuProps extends IMenuOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClosed?: (e?: Event) => void;
-    onItemclick?: (e?: Event) => void;
-    onShown?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClosed?: (e?: any) => void;
+    onItemclick?: (e?: any) => void;
+    onShown?: (e?: any) => void;
 }

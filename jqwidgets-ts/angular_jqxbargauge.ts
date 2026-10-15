@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,13 +29,14 @@ export class jqxBarGaugeComponent implements OnChanges
    @Input('customColorScheme') attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
    @Input('disabled') attrDisabled: boolean;
    @Input('endAngle') attrEndAngle: number;
-   @Input('formatFunction') attrFormatFunction: (value: number, index?: number, color?: string) => string;
+   @Input('formatFunction') attrFormatFunction: (value: number, index: number, color: string) => string;
    @Input('labels') attrLabels: jqwidgets.BarGaugeLabels;
    @Input('max') attrMax: number | string;
    @Input('min') attrMin: number;
    @Input('relativeInnerRadius') attrRelativeInnerRadius: number | string;
    @Input('rendered') attrRendered: () => void;
    @Input('startAngle') attrStartAngle: number;
+   @Input('theme') attrTheme: string;
    @Input('title') attrTitle: jqwidgets.BarGaugeTitle;
    @Input('tooltip') attrTooltip: jqwidgets.BarGaugeTooltip;
    @Input('useGradient') attrUseGradient: boolean;
@@ -45,7 +46,7 @@ export class jqxBarGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','title','tooltip','useGradient','values','width'];
+   properties: string[] = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','theme','title','tooltip','useGradient','values','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxBarGauge;
@@ -58,6 +59,13 @@ export class jqxBarGaugeComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -230,7 +238,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   formatFunction(arg?: (value: number, index?: number, color?: string) => string): (value: number, index?: number, color?: string) => string {
+   formatFunction(arg?: (value: number, index: number, color: string) => string): (value: number, index: number, color: string) => string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('formatFunction', arg);
       } else {
@@ -291,6 +299,14 @@ export class jqxBarGaugeComponent implements OnChanges
           this.host.jqxBarGauge('startAngle', arg);
       } else {
           return this.host.jqxBarGauge('startAngle');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxBarGauge('theme', arg);
+      } else {
+          return this.host.jqxBarGauge('theme');
       }
    }
 

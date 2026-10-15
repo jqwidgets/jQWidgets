@@ -1,0 +1,21 @@
+{
+  "name": "jqwidgets-react/jqxqrcode",
+  "version": "27.1.0",
+  "main": "react_jqxqrcode.umd.js",
+  "module": "react_jqxqrcode.esm.js",
+  "typings": "react_jqxqrcode.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxqrcode.d.ts",
+      "import": "./react_jqxqrcode.esm.js",
+      "require": "./react_jqxqrcode.umd.js",
+      "default": "./react_jqxqrcode.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

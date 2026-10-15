@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxChart extends React.PureComponent<IChartProps, IState> {
-    protected static getDerivedStateFromProps(props: IChartProps, state: IState): null | IState;
+declare class JqxChart extends React.PureComponent<IChartProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IChartProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IChartProps): void;
     getOptions(option: string): any;
@@ -33,31 +44,48 @@ declare class JqxChart extends React.PureComponent<IChartProps, IState> {
     getXAxisValue(offset?: number, groupIndex?: number): any;
     getValueAxisValue(offset?: number, groupIndex?: number): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxChart;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IChartDraw {
-    renderer?: object;
-    rect?: object;
+    renderer: IChartRenderer;
+    rect: IChartRect;
 }
 export interface IChartDrawBefore {
-    renderer?: object;
-    rect?: object;
+    renderer: IChartRenderer;
+    rect: IChartRect;
+}
+export interface IChartRenderer {
+    attr: (element: object, attributes: object) => void;
+    getAttr: (element: object, attributeName: string) => string;
+    circle: (cx: number, cy: number, r: number, attributes?: object) => object;
+    line: (x1: number, y1: number, x2: number, y2: number, attributes?: object) => object;
+    path: (path: string, attributes?: object) => object;
+    pieslice: (cx: number, cy: number, innerRadius: number, outerRadius: number, fromAngle: number, endAngle: number, centerOffset?: number, attributes?: object) => object;
+    rect: (x: number, y: number, width: number | string, height: number | string, attributes?: object) => object;
+    text: (text: string, x: number, y: number, width?: number | string, height?: number | string, angle?: number, attributes?: object, clip?: boolean, halign?: string, valign?: string, rotateAround?: string) => object;
+    measureText: (text: string, angle?: number, attributes?: object) => {
+        width: number;
+        height: number;
+    };
+    on: (element: object, event: string, handler: Function) => void;
+    off: (element: object, event: string, handler: Function) => void;
 }
 export interface IChartOffset {
     x?: number;
     y?: number;
 }
 export interface IChartRect {
-    x?: number;
-    y?: number;
-    width?: number | string;
-    height?: number | string;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
 }
 export interface IChartPadding {
     left?: number;
@@ -105,12 +133,13 @@ export interface IChartAxisLabels {
     offset?: IChartOffset;
     custom?: IChartCustomOffset[];
     formatSettings?: IChartFormatSettings;
-    formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string;
+    formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string | number;
     autoRotate?: boolean;
 }
 export interface IChartFormatSettings {
     prefix?: string;
     sufix?: string;
+    suffix?: string;
     decimalSeparator?: string;
     thousandsSeparator?: string;
     decimalPlaces?: number;
@@ -119,14 +148,14 @@ export interface IChartFormatSettings {
 }
 export interface IChartSeriesLabels {
     visible?: boolean;
-    class?: string;
+    class?: string | ((value: any, itemIndex: number, serie: any, group: any) => string);
     angle?: number;
     horizontalAlignment?: 'left' | 'center' | 'right';
     verticalAlignment?: 'top' | 'middle' | 'bottom';
     offset?: IChartOffset;
-    backgroundColor?: string;
+    backgroundColor?: string | ((value: any, itemIndex: number, serie: any, group: any) => string);
     backgroundOpacity?: number;
-    borderColor?: string;
+    borderColor?: string | ((value: any, itemIndex: number, serie: any, group: any) => string);
     borderOpacity?: number;
     padding?: IChartPadding;
     linesEnabled?: boolean;
@@ -167,6 +196,7 @@ export interface IChartXAxis {
     flip?: boolean;
     position?: 'left' | 'top' | 'right' | 'bottom';
     padding?: IChartPadding;
+    description?: string;
     title?: IChartAxisTitle;
     tickMarks?: IChartTickMarks;
     gridLines?: IChartGridLines;
@@ -222,16 +252,16 @@ export interface IChartSerie {
     fillColorSymbolSelected?: string;
     fillColorAlt?: string;
     fillColorAltSelected?: string;
-    colorFunction?: (dataValue: any, itemIndex?: number, serie?: any, group?: any) => any;
+    colorFunction?: (dataValue: any, itemIndex: number, serie: any, group: any) => any;
     labels?: IChartSeriesLabels;
     formatSettings?: IChartFormatSettings;
-    formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string;
+    formatFunction?: (value: any, itemIndex: number, serieIndex: number, groupIndex: number) => string | number;
     legendFormatSettings?: IChartFormatSettings;
-    legendFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string;
+    legendFormatFunction?: (value: any, itemIndex: number, serieIndex: number, groupIndex: number) => string;
     legendLineColor?: string;
     legnedFillColor?: string;
     toolTipFormatSettings?: IChartFormatSettings;
-    toolTipFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string;
+    toolTipFormatFunction?: (value: any, itemIndex: number, serie?: any, group?: any, xAxisValue?: any, xAxis?: IChartXAxis) => string;
     toolTipLineColor?: string;
     toolTipBackground?: string;
     toolTipClass?: string;
@@ -264,6 +294,7 @@ export interface IChartValueAxis {
     logarithmicScaleBase?: number;
     valuesOnTicks?: boolean;
     unitInterval?: number;
+    description?: string;
     title?: IChartAxisTitle;
     labels?: IChartAxisLabels;
     gridLines?: IChartGridLines;
@@ -324,14 +355,15 @@ interface IChartOptions {
     legendLayout?: IChartLegendLayout;
     padding?: IChartPadding;
     titlePadding?: IChartPadding;
+    theme?: string;
     colorScheme?: string;
     greyScale?: boolean;
     showToolTips?: boolean;
     toolTipShowDelay?: number;
     toolTipHideDelay?: number;
     toolTipMoveDuration?: number;
-    drawBefore?: (renderer?: IChartDrawBefore['renderer'], rect?: IChartDrawBefore['rect']) => void;
-    draw?: (renderer?: IChartDraw['renderer'], rect?: IChartDraw['rect']) => void;
+    drawBefore?: (renderer: IChartRenderer, rect: IChartRect) => void;
+    draw?: (renderer: IChartRenderer, rect: IChartRect) => void;
     rtl?: boolean;
     enableCrosshairs?: boolean;
     crosshairsColor?: string;
@@ -348,13 +380,14 @@ interface IChartOptions {
     categoryAxis?: any;
     seriesGroups?: IChartSeriesGroup[];
 }
-export interface IChartProps extends IChartOptions {
+export interface IChartProps extends IChartOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onToggle?: (e?: Event) => void;
-    onClick?: (e?: Event) => void;
-    onRefreshBegin?: (e?: Event) => void;
-    onRefreshEnd?: (e?: Event) => void;
-    onRangeSelectionChanging?: (e?: Event) => void;
-    onRangeSelectionChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onToggle?: (e?: any) => void;
+    onClick?: (e?: any) => void;
+    onRefreshBegin?: (e?: any) => void;
+    onRefreshEnd?: (e?: any) => void;
+    onRangeSelectionChanging?: (e?: any) => void;
+    onRangeSelectionChanged?: (e?: any) => void;
 }

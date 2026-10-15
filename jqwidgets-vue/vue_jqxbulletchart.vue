@@ -34,6 +34,7 @@
                 type: Boolean
             },
             target: Object,
+            theme: String,
             ticks: Object,
             title: String,
             tooltipFormatFunction: Function,
@@ -173,6 +174,13 @@
                     return JQXLite(this.componentSelector).jqxBulletChart('target');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxBulletChart('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxBulletChart('theme');
+                }
+            },
             _ticks: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxBulletChart('ticks', arg)
@@ -209,7 +217,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','ticks','title','tooltipFormatFunction','width'];
+                const widgetProps = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','theme','ticks','title','tooltipFormatFunction','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -349,6 +357,16 @@
                     },
                     set: function(newValue) {
                         that._target(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

@@ -1610,5 +1610,5 @@ Globalize.culture = function( cultureSelector ) {
 };
 
 document.Globalize = Globalize;
-}(this));
+}(typeof window !== "undefined" ? window : this)); // (in an ES module, as bundlers and dev servers load it, this is undefined)
 })();

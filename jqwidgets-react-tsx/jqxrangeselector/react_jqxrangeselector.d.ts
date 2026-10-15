@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps, IState> {
-    protected static getDerivedStateFromProps(props: IRangeSelectorProps, state: IState): null | IState;
+declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IRangeSelectorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IRangeSelectorProps): void;
     getOptions(option: string): any;
@@ -16,14 +27,15 @@ declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps, 
     refresh(): void;
     setRange(from: any, to: any): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxRangeSelector;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IRangeSelectorRange {
     from?: number | string | Date;
     to?: number | string | Date;
@@ -35,15 +47,15 @@ export interface IRangeSelectorGetRange {
     to?: number | string;
 }
 export interface IRangeSelectorLabelsFormatFunction {
-    value?: number | string;
+    value: any;
 }
 export interface IRangeSelectorMarkersFormatFunction {
-    value?: number | string;
-    position?: string;
+    value: any;
+    position: 'left' | 'right';
 }
 export interface IRangeSelectorGroupLabelsFormatFunction {
-    value?: string;
-    date?: object;
+    value: string;
+    date: Date;
 }
 interface IRangeSelectorOptions {
     disabled?: boolean;
@@ -66,13 +78,13 @@ interface IRangeSelectorOptions {
     showGroupLabels?: boolean;
     showMinorTicks?: boolean;
     snapToTicks?: boolean;
-    showMajorLabels?: boolean;
     showMarkers?: boolean;
     theme?: string;
     width?: string | number;
 }
-export interface IRangeSelectorProps extends IRangeSelectorOptions {
+export interface IRangeSelectorProps extends IRangeSelectorOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
 }

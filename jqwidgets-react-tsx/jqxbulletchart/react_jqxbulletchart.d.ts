@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxBulletChart extends React.PureComponent<IBulletChartProps, IState> {
-    protected static getDerivedStateFromProps(props: IBulletChartProps, state: IState): null | IState;
+declare class JqxBulletChart extends React.PureComponent<IBulletChartProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IBulletChartProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IBulletChartProps): void;
     getOptions(option: string): any;
@@ -15,21 +26,22 @@ declare class JqxBulletChart extends React.PureComponent<IBulletChartProps, ISta
     refresh(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxBulletChart;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IBulletChartLabelsFormatFunction {
-    value?: string;
-    position?: string;
+    value: number;
+    position: string;
 }
 export interface IBulletChartTooltipFormatFunction {
-    pointerValue?: number;
-    targetValue?: number;
+    pointerValue: number;
+    targetValue: number;
 }
 export interface IBulletChartPointer {
     value?: number;
@@ -55,20 +67,22 @@ interface IBulletChartOptions {
     disabled?: boolean;
     height?: string | number;
     labelsFormat?: 'null' | 'd' | 'f' | 'n' | 'c' | 'p';
-    labelsFormatFunction?: (value?: IBulletChartLabelsFormatFunction['value'], position?: IBulletChartLabelsFormatFunction['position']) => any;
+    labelsFormatFunction?: (value: number, position: 'near' | 'far') => any;
     orientation?: 'horizontal' | 'vertical';
     pointer?: IBulletChartPointer;
     rtl?: boolean;
     ranges?: IBulletChartRanges[];
     showTooltip?: boolean;
     target?: IBulletChartPointer;
+    theme?: string;
     ticks?: IBulletChartTicks;
     title?: string;
-    tooltipFormatFunction?: (pointerValue?: IBulletChartTooltipFormatFunction['pointerValue'], targetValue?: IBulletChartTooltipFormatFunction['targetValue']) => string;
+    tooltipFormatFunction?: (pointerValue: number, targetValue: number) => string;
     width?: string | number;
 }
-export interface IBulletChartProps extends IBulletChartOptions {
+export interface IBulletChartProps extends IBulletChartOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
 }

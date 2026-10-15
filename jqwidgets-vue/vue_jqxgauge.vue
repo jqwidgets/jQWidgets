@@ -39,6 +39,7 @@
                 type: Boolean
             },
             styles: Object,
+            theme: String,
             ticksMajor: Object,
             ticksMinor: Object,
             ticksDistance: String,
@@ -218,6 +219,13 @@
                     return JQXLite(this.componentSelector).jqxGauge('styles');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGauge('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGauge('theme');
+                }
+            },
             _ticksMajor: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxGauge('ticksMajor', arg)
@@ -261,7 +269,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','ticksMajor','ticksMinor','ticksDistance','value','width'];
+                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','theme','ticksMajor','ticksMinor','ticksDistance','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -462,6 +470,16 @@
                     },
                     set: function(newValue) {
                         that._styles(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

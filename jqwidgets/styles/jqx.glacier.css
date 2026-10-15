@@ -127,8 +127,6 @@
 }
 .jqx-slider-button-glacier
 {
-    -moz-border-radius: 9px;
-    -webkit-border-radius: 9px;
     border-radius: 9px;
     border-color: #cdcdcd;
 }
@@ -143,15 +141,9 @@
 .jqx-tree-item-glacier, .jqx-menu-item-glacier, .jqx-menu-item-hover-glacier, .jqx-menu-item-selected-glacier, .jqx-menu-item-top-glacier, .jqx-menu-item-top-hover-glacier, 
 .jqx-menu-item-top-selected-glacier, .jqx-slider-button-glacier, .jqx-slider-slider-glacier
  {
-    -webkit-transition: background-color 100ms linear;
-     -moz-transition: background-color 100ms linear;
-     -o-transition: background-color 100ms linear;
-     -ms-transition: background-color 100ms linear;
      transition: background-color 100ms linear;
 }
-.jqx-switchbutton-glacier {
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
+.jqx-switchbutton-glacier { 
     border-radius: 0px;
     border: 2px solid #a6a6a6;
 }

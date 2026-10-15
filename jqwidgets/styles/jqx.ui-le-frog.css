@@ -124,14 +124,8 @@
 /*Menu*/
 .jqx-menu-dropdown-ui-le-frog
 {
-    -moz-border-radius-bottomleft: 10px;
-    -webkit-border-bottom-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    -webkit-border-top-right-radius: 10px;
     border-top-right-radius: 10px;
-    -moz-border-radius-bottomright: 10px;
-    -webkit-border-bottom-right-radius: 10px;
     border-bottom-right-radius: 10px;
     right: -1px;
 }
@@ -340,7 +334,6 @@
     color: #E7E7E7;
 	background: var(--jqx-background);
 }
-
 
 .jqx-grid-pager-ui-le-frog .jqx-button {
 	overflow: hidden;

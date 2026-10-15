@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxSplitter extends React.PureComponent<ISplitterProps, IState> {
-    protected static getDerivedStateFromProps(props: ISplitterProps, state: IState): null | IState;
+declare class JqxSplitter extends React.PureComponent<ISplitterProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ISplitterProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ISplitterProps): void;
     getOptions(option: string): any;
@@ -18,14 +29,15 @@ declare class JqxSplitter extends React.PureComponent<ISplitterProps, IState> {
     renderWidget(): void;
     refresh(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxSplitter;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ISplitterPanel {
     size?: number | string;
     min?: number | string;
@@ -43,11 +55,12 @@ interface ISplitterOptions {
     theme?: string;
     width?: string | number;
 }
-export interface ISplitterProps extends ISplitterOptions {
+export interface ISplitterProps extends ISplitterOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onCollapsed?: (e?: Event) => void;
-    onExpanded?: (e?: Event) => void;
-    onResize?: (e?: Event) => void;
-    onResizeStart?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onCollapsed?: (e?: any) => void;
+    onExpanded?: (e?: any) => void;
+    onResize?: (e?: any) => void;
+    onResizeStart?: (e?: any) => void;
 }

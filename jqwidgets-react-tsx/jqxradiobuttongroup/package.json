@@ -1,0 +1,21 @@
+{
+  "name": "jqwidgets-react/jqxradiobuttongroup",
+  "version": "27.1.0",
+  "main": "react_jqxradiobuttongroup.umd.js",
+  "module": "react_jqxradiobuttongroup.esm.js",
+  "typings": "react_jqxradiobuttongroup.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxradiobuttongroup.d.ts",
+      "import": "./react_jqxradiobuttongroup.esm.js",
+      "require": "./react_jqxradiobuttongroup.umd.js",
+      "default": "./react_jqxradiobuttongroup.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

@@ -28,6 +28,7 @@
             padding: Object,
             backgroundColor: String,
             borderColor: String,
+            theme: String,
             value: Object,
             template: Array,
             enableSmartPaste: {
@@ -113,6 +114,13 @@
                     return JQXLite(this.componentSelector).jqxForm('borderColor');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxForm('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxForm('theme');
+                }
+            },
             _value: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxForm('value', arg)
@@ -156,7 +164,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['padding','backgroundColor','borderColor','value','template','enableSmartPaste','aiKey','aiUrl'];
+                const widgetProps = ['padding','backgroundColor','borderColor','theme','value','template','enableSmartPaste','aiKey','aiUrl'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -196,6 +204,16 @@
                     },
                     set: function(newValue) {
                         that._borderColor(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

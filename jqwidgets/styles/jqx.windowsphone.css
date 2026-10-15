@@ -1,72 +1,46 @@
 ﻿.jqx-rc-tl-windowsphone
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
 }
 .jqx-rc-tr-windowsphone
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 .jqx-rc-bl-windowsphone
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 .jqx-rc-br-windowsphone
 {
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-windowsphone
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-windowsphone
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-windowsphone
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-windowsphone
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-windowsphone
 {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
 .jqx-widget-windowsphone {
@@ -216,8 +190,6 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 }
 .jqx-scrollbar-thumb-state-normal-horizontal-windowsphone, .jqx-scrollbar-thumb-state-normal-windowsphone {
     background: #686868; border-color: #686868;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 .jqx-scrollbar-thumb-state-hover-horizontal-windowsphone, .jqx-scrollbar-thumb-state-hover-windowsphone {
@@ -313,15 +285,11 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 }
 .jqx-slider-button-windowsphone
 {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
     padding: 4px !important;
 }
 .jqx-slider-slider-windowsphone {
     width: 6px;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
     background: #fff;
     border-color: #D5D5D5;
@@ -359,15 +327,9 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 .jqx-tree-item-windowsphone, .jqx-menu-item-windowsphone, .jqx-menu-item-hover-windowsphone, .jqx-menu-item-selected-windowsphone, .jqx-menu-item-top-windowsphone, .jqx-menu-item-top-hover-windowsphone, 
 .jqx-menu-item-top-selected-windowsphone, .jqx-slider-button-windowsphone, .jqx-slider-slider-windowsphone
  {
-    -webkit-transition: background-color 100ms linear;
-     -moz-transition: background-color 100ms linear;
-     -o-transition: background-color 100ms linear;
-     -ms-transition: background-color 100ms linear;
      transition: background-color 100ms linear;
 }
-.jqx-switchbutton-windowsphone {
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
+.jqx-switchbutton-windowsphone { 
     border-radius: 0px;
     border: 2px solid #FFFFFF;
 }

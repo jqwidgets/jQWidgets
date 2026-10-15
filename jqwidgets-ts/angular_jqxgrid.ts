@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,20 +31,20 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('showcolumnheaderlines') attrShowcolumnheaderlines: boolean;
    @Input('adaptive') attrAdaptive: boolean;
    @Input('compact') attrCompact: boolean;
-   @Input('contextmenuitems') attrContextmenuitems: [];
-   @Input('contextmenuenabled') attrContextmenuenabled: [];
-   @Input('contextmenuwidth') attrContextmenuwidth: [];
-   @Input('contextmenuheight') attrContextmenuheight: [];
-   @Input('contextmenuitemclick') attrContextmenuitemclick: [];
+   @Input('contextmenuitems') attrContextmenuitems: Array<string | object>;
+   @Input('contextmenuenabled') attrContextmenuenabled: boolean;
+   @Input('contextmenuwidth') attrContextmenuwidth: number | string;
+   @Input('contextmenuheight') attrContextmenuheight: number | string;
+   @Input('contextmenuitemclick') attrContextmenuitemclick: (event: any, cell: jqwidgets.GridGetCell) => void;
    @Input('adaptivewidth') attrAdaptivewidth: number;
    @Input('commandcolumn') attrCommandcolumn: boolean;
-   @Input('commandcolumnrenderer') attrCommandcolumnrenderer: (row?: number, columnfield?: string, active?: any) => string;
+   @Input('commandcolumnrenderer') attrCommandcolumnrenderer: (row: number, columnfield: string, active: any) => string;
    @Input('clipboard') attrClipboard: boolean;
    @Input('closeablegroups') attrCloseablegroups: boolean;
    @Input('columnsmenuwidth') attrColumnsmenuwidth: number;
-   @Input('columnmenuopening') attrColumnmenuopening: (menu?: jqwidgets.GridColumnmenuopening['menu'], datafield?: jqwidgets.GridColumnmenuopening['datafield'], height?: jqwidgets.GridColumnmenuopening['height']) => boolean | void;
-   @Input('columnmenuclosing') attrColumnmenuclosing: (menu?: jqwidgets.GridColumnmenuclosing['menu'], datafield?: jqwidgets.GridColumnmenuclosing['datafield'], height?: jqwidgets.GridColumnmenuclosing['height']) => boolean;
-   @Input('cellhover') attrCellhover: (cellhtmlElement?: jqwidgets.GridCellhover['cellhtmlElement'], x?: jqwidgets.GridCellhover['x'], y?: jqwidgets.GridCellhover['y']) => void;
+   @Input('columnmenuopening') attrColumnmenuopening: (menu: jqwidgets.GridColumnmenuopening['menu'], datafield: jqwidgets.GridColumnmenuopening['datafield'], height: jqwidgets.GridColumnmenuopening['height']) => boolean | void;
+   @Input('columnmenuclosing') attrColumnmenuclosing: (menu: jqwidgets.GridColumnmenuclosing['menu'], datafield: jqwidgets.GridColumnmenuclosing['datafield'], height: jqwidgets.GridColumnmenuclosing['height']) => boolean | void;
+   @Input('cellhover') attrCellhover: (cellhtmlElement: jqwidgets.GridCellhover['cellhtmlElement'], x: jqwidgets.GridCellhover['x'], y: jqwidgets.GridCellhover['y']) => void;
    @Input('enablekeyboarddelete') attrEnablekeyboarddelete: boolean;
    @Input('enableellipsis') attrEnableellipsis: boolean;
    @Input('enablemousewheel') attrEnablemousewheel: boolean;
@@ -58,11 +58,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('everpresentrowactionsmode') attrEverpresentrowactionsmode: string;
    @Input('filterrowheight') attrFilterrowheight: number;
    @Input('filtermode') attrFiltermode: string;
-   @Input('groupsrenderer') attrGroupsrenderer: (text?: jqwidgets.GridGroupsrenderer['text'], group?: jqwidgets.GridGroupsrenderer['group'], expanded?: jqwidgets.GridGroupsrenderer['expanded'], data?: jqwidgets.GridGroupsrenderer['data']) => string;
-   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: (text?: jqwidgets.GridGroupcolumnrenderer['text']) => string;
+   @Input('groupsrenderer') attrGroupsrenderer: (text: jqwidgets.GridGroupsrenderer['text'], group: jqwidgets.GridGroupsrenderer['group'], expanded: jqwidgets.GridGroupsrenderer['expanded'], data: jqwidgets.GridGroupsrenderer['data']) => string;
+   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: (text: jqwidgets.GridGroupcolumnrenderer['text']) => string;
    @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: boolean;
-   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean;
-   @Input('pagerrenderer') attrPagerrenderer: () => any[];
+   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean | void;
+   @Input('pagerrenderer') attrPagerrenderer: () => any;
    @Input('rtl') attrRtl: boolean;
    @Input('showdefaultloadelement') attrShowdefaultloadelement: boolean;
    @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: boolean;
@@ -85,8 +85,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('showfilterbar') attrShowfilterbar: boolean;
    @Input('filterbarmode') attrFilterbarmode: string;
    @Input('selectionmode') attrSelectionmode: string;
-   @Input('updatefilterconditions') attrUpdatefilterconditions: (type?: string, defaultconditions?: any) => any;
-   @Input('updatefilterpanel') attrUpdatefilterpanel: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
+   @Input('updatefilterconditions') attrUpdatefilterconditions: (type: string, defaultconditions: any) => any;
+   @Input('updatefilterpanel') attrUpdatefilterpanel: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any;
    @Input('theme') attrTheme: string;
    @Input('toolbarheight') attrToolbarheight: number;
    @Input('autoheight') attrAutoheight: boolean;
@@ -118,7 +118,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('editable') attrEditable: boolean;
    @Input('batcheditable') attrBatcheditable: boolean;
    @Input('editmode') attrEditmode: string;
-   @Input('filter') attrFilter: (cellValue?: jqwidgets.GridFilter['cellValue'], rowData?: jqwidgets.GridFilter['rowData'], dataField?: jqwidgets.GridFilter['dataField'], filterGroup?: jqwidgets.GridFilter['filterGroup'], defaultFilterResult?: jqwidgets.GridFilter['defaultFilterResult']) => any;
+   @Input('filter') attrFilter: (cellValue: jqwidgets.GridFilter['cellValue'], rowData: jqwidgets.GridFilter['rowData'], dataField: jqwidgets.GridFilter['dataField'], filterGroup: jqwidgets.GridFilter['filterGroup'], defaultFilterResult: jqwidgets.GridFilter['defaultFilterResult']) => any;
    @Input('filterable') attrFilterable: boolean;
    @Input('filternlpinput') attrFilternlpinput: string;
    @Input('aiKey') attrAiKey: string;
@@ -133,8 +133,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('groups') attrGroups: Array<string>;
    @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: number;
    @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: number;
-   @Input('initrowdetails') attrInitrowdetails: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
-   @Input('disablerowdetails') attrDisablerowdetails: (index?: number) => boolean;
+   @Input('initrowdetails') attrInitrowdetails: (index: number, parentElement: any, gridElement: any, datarecord: any) => void;
+   @Input('disablerowdetails') attrDisablerowdetails: (index: number) => boolean;
    @Input('keyboardnavigation') attrKeyboardnavigation: boolean;
    @Input('localization') attrLocalization: jqwidgets.GridLocalizationobject;
    @Input('pagesize') attrPagesize: number;
@@ -147,9 +147,9 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('rowdetailstemplate') attrRowdetailstemplate: any;
    @Input('ready') attrReady: () => void;
    @Input('rendered') attrRendered: (type: any) => void;
-   @Input('renderstatusbar') attrRenderstatusbar: (statusbar?: jqwidgets.GridRenderstatusbar['statusbar']) => void;
-   @Input('rendertoolbar') attrRendertoolbar: (toolbar?: jqwidgets.GridRendertoolbar['toolbar']) => void;
-   @Input('rendergridrows') attrRendergridrows: (params?: any) => any;
+   @Input('renderstatusbar') attrRenderstatusbar: (statusbar: jqwidgets.GridRenderstatusbar['statusbar']) => void;
+   @Input('rendertoolbar') attrRendertoolbar: (toolbar: jqwidgets.GridRendertoolbar['toolbar']) => void;
+   @Input('rendergridrows') attrRendergridrows: (params: any) => any;
    @Input('sortable') attrSortable: boolean;
    @Input('sortmode') attrSortmode: string;
    @Input('sortmodekey') attrSortmodekey: string;
@@ -178,6 +178,18 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    ngOnInit() {
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxGrid('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -469,7 +481,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   contextmenuitems(arg?: undefined): undefined {
+   contextmenuitems(arg?: Array<string | object>): Array<string | object> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -482,7 +494,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   contextmenuenabled(arg?: undefined): undefined {
+   contextmenuenabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -495,7 +507,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   contextmenuwidth(arg?: undefined): undefined {
+   contextmenuwidth(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -508,7 +520,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   contextmenuheight(arg?: undefined): undefined {
+   contextmenuheight(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -521,7 +533,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   contextmenuitemclick(arg?: undefined): undefined {
+   contextmenuitemclick(arg?: (event: any, cell: jqwidgets.GridGetCell) => void): (event: any, cell: jqwidgets.GridGetCell) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -560,7 +572,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   commandcolumnrenderer(arg?: (row?: number, columnfield?: string, active?: any) => string): (row?: number, columnfield?: string, active?: any) => string {
+   commandcolumnrenderer(arg?: (row: number, columnfield: string, active: any) => string): (row: number, columnfield: string, active: any) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -612,7 +624,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   columnmenuopening(arg?: (menu?: jqwidgets.GridColumnmenuopening['menu'], datafield?: jqwidgets.GridColumnmenuopening['datafield'], height?: jqwidgets.GridColumnmenuopening['height']) => boolean | void): (menu?: jqwidgets.GridColumnmenuopening['menu'], datafield?: jqwidgets.GridColumnmenuopening['datafield'], height?: jqwidgets.GridColumnmenuopening['height']) => boolean | void {
+   columnmenuopening(arg?: (menu: jqwidgets.GridColumnmenuopening['menu'], datafield: jqwidgets.GridColumnmenuopening['datafield'], height: jqwidgets.GridColumnmenuopening['height']) => boolean | void): (menu: jqwidgets.GridColumnmenuopening['menu'], datafield: jqwidgets.GridColumnmenuopening['datafield'], height: jqwidgets.GridColumnmenuopening['height']) => boolean | void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -625,7 +637,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   columnmenuclosing(arg?: (menu?: jqwidgets.GridColumnmenuclosing['menu'], datafield?: jqwidgets.GridColumnmenuclosing['datafield'], height?: jqwidgets.GridColumnmenuclosing['height']) => boolean): (menu?: jqwidgets.GridColumnmenuclosing['menu'], datafield?: jqwidgets.GridColumnmenuclosing['datafield'], height?: jqwidgets.GridColumnmenuclosing['height']) => boolean {
+   columnmenuclosing(arg?: (menu: jqwidgets.GridColumnmenuclosing['menu'], datafield: jqwidgets.GridColumnmenuclosing['datafield'], height: jqwidgets.GridColumnmenuclosing['height']) => boolean | void): (menu: jqwidgets.GridColumnmenuclosing['menu'], datafield: jqwidgets.GridColumnmenuclosing['datafield'], height: jqwidgets.GridColumnmenuclosing['height']) => boolean | void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -638,7 +650,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   cellhover(arg?: (cellhtmlElement?: jqwidgets.GridCellhover['cellhtmlElement'], x?: jqwidgets.GridCellhover['x'], y?: jqwidgets.GridCellhover['y']) => void): (cellhtmlElement?: jqwidgets.GridCellhover['cellhtmlElement'], x?: jqwidgets.GridCellhover['x'], y?: jqwidgets.GridCellhover['y']) => void {
+   cellhover(arg?: (cellhtmlElement: jqwidgets.GridCellhover['cellhtmlElement'], x: jqwidgets.GridCellhover['x'], y: jqwidgets.GridCellhover['y']) => void): (cellhtmlElement: jqwidgets.GridCellhover['cellhtmlElement'], x: jqwidgets.GridCellhover['x'], y: jqwidgets.GridCellhover['y']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -820,7 +832,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   groupsrenderer(arg?: (text?: jqwidgets.GridGroupsrenderer['text'], group?: jqwidgets.GridGroupsrenderer['group'], expanded?: jqwidgets.GridGroupsrenderer['expanded'], data?: jqwidgets.GridGroupsrenderer['data']) => string): (text?: jqwidgets.GridGroupsrenderer['text'], group?: jqwidgets.GridGroupsrenderer['group'], expanded?: jqwidgets.GridGroupsrenderer['expanded'], data?: jqwidgets.GridGroupsrenderer['data']) => string {
+   groupsrenderer(arg?: (text: jqwidgets.GridGroupsrenderer['text'], group: jqwidgets.GridGroupsrenderer['group'], expanded: jqwidgets.GridGroupsrenderer['expanded'], data: jqwidgets.GridGroupsrenderer['data']) => string): (text: jqwidgets.GridGroupsrenderer['text'], group: jqwidgets.GridGroupsrenderer['group'], expanded: jqwidgets.GridGroupsrenderer['expanded'], data: jqwidgets.GridGroupsrenderer['data']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -833,7 +845,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   groupcolumnrenderer(arg?: (text?: jqwidgets.GridGroupcolumnrenderer['text']) => string): (text?: jqwidgets.GridGroupcolumnrenderer['text']) => string {
+   groupcolumnrenderer(arg?: (text: jqwidgets.GridGroupcolumnrenderer['text']) => string): (text: jqwidgets.GridGroupcolumnrenderer['text']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -859,7 +871,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   handlekeyboardnavigation(arg?: (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean): (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean {
+   handlekeyboardnavigation(arg?: (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean | void): (event: jqwidgets.GridHandlekeyboardnavigation['event']) => boolean | void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -872,7 +884,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   pagerrenderer(arg?: () => any[]): () => any[] {
+   pagerrenderer(arg?: () => any): () => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1171,7 +1183,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   updatefilterconditions(arg?: (type?: string, defaultconditions?: any) => any): (type?: string, defaultconditions?: any) => any {
+   updatefilterconditions(arg?: (type: string, defaultconditions: any) => any): (type: string, defaultconditions: any) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1184,7 +1196,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   updatefilterpanel(arg?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any): (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any {
+   updatefilterpanel(arg?: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any): (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1626,7 +1638,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   filter(arg?: (cellValue?: jqwidgets.GridFilter['cellValue'], rowData?: jqwidgets.GridFilter['rowData'], dataField?: jqwidgets.GridFilter['dataField'], filterGroup?: jqwidgets.GridFilter['filterGroup'], defaultFilterResult?: jqwidgets.GridFilter['defaultFilterResult']) => any): (cellValue?: jqwidgets.GridFilter['cellValue'], rowData?: jqwidgets.GridFilter['rowData'], dataField?: jqwidgets.GridFilter['dataField'], filterGroup?: jqwidgets.GridFilter['filterGroup'], defaultFilterResult?: jqwidgets.GridFilter['defaultFilterResult']) => any {
+   filter(arg?: (cellValue: jqwidgets.GridFilter['cellValue'], rowData: jqwidgets.GridFilter['rowData'], dataField: jqwidgets.GridFilter['dataField'], filterGroup: jqwidgets.GridFilter['filterGroup'], defaultFilterResult: jqwidgets.GridFilter['defaultFilterResult']) => any): (cellValue: jqwidgets.GridFilter['cellValue'], rowData: jqwidgets.GridFilter['rowData'], dataField: jqwidgets.GridFilter['dataField'], filterGroup: jqwidgets.GridFilter['filterGroup'], defaultFilterResult: jqwidgets.GridFilter['defaultFilterResult']) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1743,7 +1755,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   aiSendRequest(arg?: undefined): undefined {
+   aiSendRequest(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1821,7 +1833,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   initrowdetails(arg?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void): (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void {
+   initrowdetails(arg?: (index: number, parentElement: any, gridElement: any, datarecord: any) => void): (index: number, parentElement: any, gridElement: any, datarecord: any) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1834,7 +1846,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   disablerowdetails(arg?: (index?: number) => boolean): (index?: number) => boolean {
+   disablerowdetails(arg?: (index: number) => boolean): (index: number) => boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2003,7 +2015,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   renderstatusbar(arg?: (statusbar?: jqwidgets.GridRenderstatusbar['statusbar']) => void): (statusbar?: jqwidgets.GridRenderstatusbar['statusbar']) => void {
+   renderstatusbar(arg?: (statusbar: jqwidgets.GridRenderstatusbar['statusbar']) => void): (statusbar: jqwidgets.GridRenderstatusbar['statusbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2016,7 +2028,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   rendertoolbar(arg?: (toolbar?: jqwidgets.GridRendertoolbar['toolbar']) => void): (toolbar?: jqwidgets.GridRendertoolbar['toolbar']) => void {
+   rendertoolbar(arg?: (toolbar: jqwidgets.GridRendertoolbar['toolbar']) => void): (toolbar: jqwidgets.GridRendertoolbar['toolbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2029,7 +2041,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   rendergridrows(arg?: (params?: any) => any): (params?: any) => any {
+   rendergridrows(arg?: (params: any) => any): (params: any) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2187,16 +2199,16 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
 
    // jqxGridComponent functions
-   aiConfig(config: any): void {
+   aiConfig(config?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
       }
 
-      this.host.jqxGrid('aiConfig', config);
+      return this.host.jqxGrid('aiConfig', config);
    }
 
-   aiCommand(text: string, callback?: undefined): undefined {
+   aiCommand(text: string, callback?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2205,7 +2217,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('aiCommand', text, callback);
    }
 
-   aiAsk(text: string, callback?: undefined): undefined {
+   aiAsk(text: string, callback?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2214,7 +2226,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('aiAsk', text, callback);
    }
 
-   aiSummarize(rows?: undefined, callback?: undefined): undefined {
+   aiSummarize(rows?: any, callback?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2223,7 +2235,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('aiSummarize', rows, callback);
    }
 
-   aiExplainRow(rowindex: number, callback?: undefined): undefined {
+   aiExplainRow(rowindex: number, callback?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2232,7 +2244,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('aiExplainRow', rowindex, callback);
    }
 
-   aiClassifyColumn(options: any, callback?: undefined): undefined {
+   aiClassifyColumn(options: any, callback?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2277,7 +2289,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('clear');
    }
 
-   createChart(type: string, dataSource?: undefined): void {
+   createChart(type: string, dataSource?: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2331,7 +2343,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getcolumnindex', dataField);
    }
 
-   getcolumn(dataField: string): jqwidgets.GridGetColumn {
+   getcolumn(dataField: string): jqwidgets.GridColumn {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2367,7 +2379,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getrowdata', rowBoundIndex);
    }
 
-   getrowdatabyid(rowID: string): any {
+   getrowdatabyid(rowID: number | string): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2376,7 +2388,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getrowdatabyid', rowID);
    }
 
-   getrowboundindexbyid(rowID: string): number {
+   getrowboundindexbyid(rowID: number | string): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2736,13 +2748,13 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('insertgroup', groupIndex, dataField);
    }
 
-   iscolumngroupable(): boolean {
+   iscolumngroupable(dataField: string): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
       }
 
-      return this.host.jqxGrid('iscolumngroupable');
+      return this.host.jqxGrid('iscolumngroupable', dataField);
    }
 
    removegroupat(groupIndex: number): void {
@@ -2808,7 +2820,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getcolumnat', index);
    }
 
-   removefilter(dataField: string, refreshGrid: boolean): void {
+   removefilter(dataField: string, refreshGrid?: boolean): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2943,7 +2955,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getcelltext', rowBoundIndex, dataField);
    }
 
-   getcelltextbyid(rowID: string, dataField: string): string {
+   getcelltextbyid(rowID: number | string, dataField: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2952,7 +2964,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getcelltextbyid', rowID, dataField);
    }
 
-   getcellvaluebyid(rowID: string, dataField: string): any {
+   getcellvaluebyid(rowID: number | string, dataField: string): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -2997,7 +3009,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('setcellvalue', rowBoundIndex, dataField, value);
    }
 
-   setcellvaluebyid(rowID: string, dataField: string, value: any): void {
+   setcellvaluebyid(rowID: number | string, dataField: string, value: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -3195,7 +3207,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       return this.host.jqxGrid('getstate');
    }
 
-   loadstate(stateobject: any): void {
+   loadstate(stateobject?: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

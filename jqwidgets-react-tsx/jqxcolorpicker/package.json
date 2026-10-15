@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxcolorpicker.umd.js",
-    "module": "react_jqxcolorpicker.esm.js",
-    "typings": "react_jqxcolorpicker.d.ts",
-    "name": "jqwidgets-react/jqxcolorpicker",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxcolorpicker",
+  "version": "27.1.0",
+  "main": "react_jqxcolorpicker.umd.js",
+  "module": "react_jqxcolorpicker.esm.js",
+  "typings": "react_jqxcolorpicker.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxcolorpicker.d.ts",
+      "import": "./react_jqxcolorpicker.esm.js",
+      "require": "./react_jqxcolorpicker.umd.js",
+      "default": "./react_jqxcolorpicker.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

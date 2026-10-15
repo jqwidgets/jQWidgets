@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -54,6 +54,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -62,6 +63,18 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxCheckBox('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -162,15 +175,14 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
-       if(this.widgetObject) {
-       }
-       if (this.host && (value === null || value === undefined)) {
-               this.host.jqxCheckBox('val', '');
+       if (this.host) {
+           this.host.jqxCheckBox('val', value === null || value === undefined ? (this.attrHasThreeStates ? null : false) : !!value);
        }
    }
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {

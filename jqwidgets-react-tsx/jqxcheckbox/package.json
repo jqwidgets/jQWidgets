@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxcheckbox.umd.js",
-    "module": "react_jqxcheckbox.esm.js",
-    "typings": "react_jqxcheckbox.d.ts",
-    "name": "jqwidgets-react/jqxcheckbox",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxcheckbox",
+  "version": "27.1.0",
+  "main": "react_jqxcheckbox.umd.js",
+  "module": "react_jqxcheckbox.esm.js",
+  "typings": "react_jqxcheckbox.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxcheckbox.d.ts",
+      "import": "./react_jqxcheckbox.esm.js",
+      "require": "./react_jqxcheckbox.umd.js",
+      "default": "./react_jqxcheckbox.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

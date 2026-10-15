@@ -11,6 +11,7 @@
     export default {
         props: {
             renderEngine: String,
+            theme: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -94,6 +95,13 @@
                     return JQXLite(this.componentSelector).jqxDraw('renderEngine');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDraw('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDraw('theme');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -102,7 +110,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['renderEngine'];
+                const widgetProps = ['renderEngine','theme'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -122,6 +130,16 @@
                     },
                     set: function(newValue) {
                         that._renderEngine(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

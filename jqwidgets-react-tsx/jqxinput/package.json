@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxinput.umd.js",
-    "module": "react_jqxinput.esm.js",
-    "typings": "react_jqxinput.d.ts",
-    "name": "jqwidgets-react/jqxinput",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxinput",
+  "version": "27.1.0",
+  "main": "react_jqxinput.umd.js",
+  "module": "react_jqxinput.esm.js",
+  "typings": "react_jqxinput.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxinput.d.ts",
+      "import": "./react_jqxinput.esm.js",
+      "require": "./react_jqxinput.umd.js",
+      "default": "./react_jqxinput.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

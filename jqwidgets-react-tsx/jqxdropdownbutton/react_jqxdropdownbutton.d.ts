@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxDropDownButton extends React.PureComponent<IDropDownButtonProps, IState> {
-    protected static getDerivedStateFromProps(props: IDropDownButtonProps, state: IState): null | IState;
+declare class JqxDropDownButton extends React.PureComponent<IDropDownButtonProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IDropDownButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDropDownButtonProps): void;
     getOptions(option: string): any;
@@ -16,16 +27,17 @@ declare class JqxDropDownButton extends React.PureComponent<IDropDownButtonProps
     getContent(): any;
     isOpened(): boolean;
     open(): void;
-    setContent(content: string): void;
+    setContent(content: string | HTMLElement): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDropDownButton;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IDropDownButtonOptions {
     animationType?: 'none' | 'slide' | 'fade';
     arrowSize?: number;
@@ -45,9 +57,10 @@ interface IDropDownButtonOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IDropDownButtonProps extends IDropDownButtonOptions {
+export interface IDropDownButtonProps extends IDropDownButtonOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
 }

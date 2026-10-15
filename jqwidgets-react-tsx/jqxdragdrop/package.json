@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxdragdrop.umd.js",
-    "module": "react_jqxdragdrop.esm.js",
-    "typings": "react_jqxdragdrop.d.ts",
-    "name": "jqwidgets-react/jqxdragdrop",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxdragdrop",
+  "version": "27.1.0",
+  "main": "react_jqxdragdrop.umd.js",
+  "module": "react_jqxdragdrop.esm.js",
+  "typings": "react_jqxdragdrop.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxdragdrop.d.ts",
+      "import": "./react_jqxdragdrop.esm.js",
+      "require": "./react_jqxdragdrop.umd.js",
+      "default": "./react_jqxdragdrop.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

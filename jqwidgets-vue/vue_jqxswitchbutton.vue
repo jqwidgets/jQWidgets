@@ -22,6 +22,7 @@
             orientation: String,
             onLabel: String,
             offLabel: String,
+            theme: String,
             thumbSize: String,
             rtl: {
                 default: false,
@@ -120,6 +121,13 @@
                     return JQXLite(this.componentSelector).jqxSwitchButton('offLabel');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxSwitchButton('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxSwitchButton('theme');
+                }
+            },
             _thumbSize: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxSwitchButton('thumbSize', arg)
@@ -149,7 +157,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','rtl','width'];
+                const widgetProps = ['checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','rtl','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -219,6 +227,16 @@
                     },
                     set: function(newValue) {
                         that._offLabel(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

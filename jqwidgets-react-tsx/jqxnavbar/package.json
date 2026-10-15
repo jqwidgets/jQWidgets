@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxnavbar.umd.js",
-    "module": "react_jqxnavbar.esm.js",
-    "typings": "react_jqxnavbar.d.ts",
-    "name": "jqwidgets-react/jqxnavbar",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxnavbar",
+  "version": "27.1.0",
+  "main": "react_jqxnavbar.umd.js",
+  "module": "react_jqxnavbar.esm.js",
+  "typings": "react_jqxnavbar.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxnavbar.d.ts",
+      "import": "./react_jqxnavbar.esm.js",
+      "require": "./react_jqxnavbar.umd.js",
+      "default": "./react_jqxnavbar.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

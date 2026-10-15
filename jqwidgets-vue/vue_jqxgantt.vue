@@ -73,7 +73,7 @@
             resourceTimelineFormatFunction: Any,
             resourceTimelineMode: String,
             resourceTimelineView: String,
-            rightToLeft: Boolean,
+            rtl: Boolean,
             selectedTaskIds: [Number[], String[]],
             selectedResourceIds: [Number[], String[]],
             shadeUntilCurrentTime: Boolean,
@@ -739,11 +739,11 @@
                     return JQXLite(this.componentSelector).jqxGantt('resourceTimelineView');
                 }
             },
-            _rightToLeft: function(arg) {
+            _rtl: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxGantt('rightToLeft', arg)
+                    JQXLite(this.componentSelector).jqxGantt('rtl', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxGantt('rightToLeft');
+                    return JQXLite(this.componentSelector).jqxGantt('rtl');
                 }
             },
             _selectedTaskIds: function(arg) {
@@ -922,7 +922,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rightToLeft','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
+                const widgetProps = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -1576,12 +1576,12 @@
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'rightToLeft', {
+                Object.defineProperty(that, 'rtl', {
                     get: function() {
-                        return that._rightToLeft();
+                        return that._rtl();
                     },
                     set: function(newValue) {
-                        that._rightToLeft(newValue);
+                        that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true

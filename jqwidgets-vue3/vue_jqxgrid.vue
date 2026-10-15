@@ -5,36 +5,39 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxdata.js';
     import '../jqwidgets/jqxdata.export.js';
+    import '../jqwidgets/jqxexport.js';
     import '../jqwidgets/jqxbuttons.js';
     import '../jqwidgets/jqxbuttongroup.js';
-    import '../jqwidgets/jqxscrollbar.js'
-    import '../jqwidgets/jqxmenu.js'
-    import '../jqwidgets/jqxlistbox.js'
-    import '../jqwidgets/jqxdropdownlist.js'
-    import '../jqwidgets/jqxcombobox.js'
-    import '../jqwidgets/jqxnumberinput.js'
-    import '../jqwidgets/jqxcheckbox.js'
-    import '../jqwidgets/globalization/globalize.js'
-    import '../jqwidgets/jqxcalendar.js'
-    import '../jqwidgets/jqxnumberinput.js'
-    import '../jqwidgets/jqxdatetimeinput.js'
-    import '../jqwidgets/jqxgrid.js'
-    import '../jqwidgets/jqxgrid.edit.js'
-    import '../jqwidgets/jqxgrid.pager.js'
-    import '../jqwidgets/jqxgrid.selection.js'
-    import '../jqwidgets/jqxgrid.filter.js'
-    import '../jqwidgets/jqxgrid.sort.js'
-    import '../jqwidgets/jqxgrid.storage.js'
-    import '../jqwidgets/jqxgrid.grouping.js'
-    import '../jqwidgets/jqxgrid.export.js'
-    import '../jqwidgets/jqxgrid.columnsresize.js'
-    import '../jqwidgets/jqxgrid.columnsreorder.js'
-    import '../jqwidgets/jqxgrid.aggregates.js'
-    import '../jqwidgets/jqxgrid.chart.js'
+    import '../jqwidgets/jqxscrollbar.js';
+    import '../jqwidgets/jqxmenu.js';
+    import '../jqwidgets/jqxlistbox.js';
+    import '../jqwidgets/jqxdropdownlist.js';
+    import '../jqwidgets/jqxcombobox.js';
+    import '../jqwidgets/jqxnumberinput.js';
+    import '../jqwidgets/jqxcheckbox.js';
+    import '../jqwidgets/globalization/globalize.js';
+    import '../jqwidgets/jqxcalendar.js';
+    import '../jqwidgets/jqxdatetimeinput.js';
+    import '../jqwidgets/jqxgrid.js';
+    import '../jqwidgets/jqxgrid.edit.js';
+    import '../jqwidgets/jqxgrid.pager.js';
+    import '../jqwidgets/jqxgrid.selection.js';
+    import '../jqwidgets/jqxgrid.filter.js';
+    import '../jqwidgets/jqxgrid.sort.js';
+    import '../jqwidgets/jqxgrid.storage.js';
+    import '../jqwidgets/jqxgrid.grouping.js';
+    import '../jqwidgets/jqxgrid.export.js';
+    import '../jqwidgets/jqxgrid.columnsresize.js';
+    import '../jqwidgets/jqxgrid.columnsreorder.js';
+    import '../jqwidgets/jqxgrid.aggregates.js';
+    import '../jqwidgets/jqxgrid.chart.js';
+    import '../jqwidgets/jqxgrid.ai.js';
+    import '../jqwidgets/jqxgrid.celltemplates.js';
 
     export default {
         props: {
@@ -76,11 +79,14 @@
                 default: false,
                 type: Boolean
             },
-            contextmenuitems: [],
-            contextmenuenabled: [],
-            contextmenuwidth: [],
-            contextmenuheight: [],
-            contextmenuitemclick: [],
+            contextmenuitems: Array,
+            contextmenuenabled: {
+                default: false,
+                type: Boolean
+            },
+            contextmenuwidth: [Number, String],
+            contextmenuheight: [Number, String],
+            contextmenuitemclick: Function,
             adaptivewidth: Number,
             commandcolumn: {
                 default: false,
@@ -260,7 +266,7 @@
                 default: false,
                 type: Boolean
             },
-            cardviewcolumns: [],
+            cardviewcolumns: null,
             cardheight: Number,
             cardsize: Number,
             columngroups: Array,
@@ -306,7 +312,7 @@
             aiModel: String,
             aiProxyUrl: String,
             aiHeaders: Object,
-            aiSendRequest: Any,
+            aiSendRequest: null,
             aiMaxRows: Number,
             groupable: {
                 default: false,
@@ -368,8 +374,10 @@
         },
         emits: ["gridaiResult","gridaiError","bindingcomplete","columnresized","columnreordered","columnclick","cellclick","celldoubleclick","cellselect","cellunselect","cellvaluechanged","cellbeginedit","cellendedit","filter","groupschanged","groupexpand","groupcollapse","pagechanged","pagesizechanged","rowclick","rowdoubleclick","rowselect","rowunselect","rowexpand","rowcollapse","sort"],
         setup(props, context) {
-			const id = "jqxGrid" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxGrid" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -386,7 +394,7 @@
                 return resultToReturn;
             }
             function aiConfig(config) {
-                JQXLite(componentSelector).jqxGrid('aiConfig', config);  
+                return JQXLite(componentSelector).jqxGrid('aiConfig', config);  
             }
             function aiCommand(text, callback) {
                 return JQXLite(componentSelector).jqxGrid('aiCommand', text, callback);  
@@ -568,8 +576,8 @@
             function insertgroup(groupIndex, dataField) {
                 JQXLite(componentSelector).jqxGrid('insertgroup', groupIndex, dataField);  
             }
-            function iscolumngroupable() {
-                return JQXLite(componentSelector).jqxGrid('iscolumngroupable');  
+            function iscolumngroupable(dataField) {
+                return JQXLite(componentSelector).jqxGrid('iscolumngroupable', dataField);  
             }
             function removegroupat(groupIndex) {
                 JQXLite(componentSelector).jqxGrid('removegroupat', groupIndex);  
@@ -1732,6 +1740,9 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxGrid(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
                 __wireEvents__();
             }
             function __manageProps__() {
@@ -2640,11 +2651,40 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxGrid(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxGrid(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
+				try { element.jqxGrid('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, aiConfig,aiCommand,aiAsk,aiSummarize,aiExplainRow,aiClassifyColumn,autoresizecolumns,autoresizecolumn,beginupdate,clear,createChart,destroy,endupdate,ensurerowvisible,focus,getcolumnindex,getcolumn,getcolumnproperty,getrowid,getrowdata,getrowdatabyid,getrowboundindexbyid,getrowboundindex,getrows,getboundrows,getdisplayrows,getdatainformation,getsortinformation,getpaginginformation,hidecolumn,hideloadelement,hiderowdetails,iscolumnvisible,iscolumnpinned,localizestrings,pincolumn,refreshdata,refresh,render,scrolloffset,scrollposition,showloadelement,showrowdetails,setcolumnindex,setcolumnproperty,showcolumn,unpincolumn,updatebounddata,updating,getsortcolumn,removesort,sortby,addgroup,cleargroups,collapsegroup,collapseallgroups,expandallgroups,expandgroup,getrootgroupscount,getgroup,insertgroup,iscolumngroupable,removegroupat,removegroup,addfilter,applyfilters,clearfilters,getfilterinformation,getcolumnat,removefilter,refreshfilterrow,gotopage,gotoprevpage,gotonextpage,addrow,begincelledit,beginrowedit,closemenu,deleterow,endcelledit,endrowedit,getcell,getcellatposition,getcelltext,getcelltextbyid,getcellvaluebyid,getcellvalue,isBindingCompleted,openmenu,setcellvalue,setcellvaluebyid,showvalidationpopup,updaterow,clearselection,getselectedrowindex,getselectedrowindexes,getselectedcell,getselectedcells,showSidePanel,closeSidePanel,selectcell,selectallrows,selectrow,unselectrow,unselectcell,getcolumnaggregateddata,refreshaggregates,renderaggregates,exportdata,exportview,openColumnChooser,getstate,loadstate,savestate, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, aiConfig, aiCommand, aiAsk, aiSummarize, aiExplainRow, aiClassifyColumn, autoresizecolumns, autoresizecolumn, beginupdate, clear, createChart, destroy, endupdate, ensurerowvisible, focus, getcolumnindex, getcolumn, getcolumnproperty, getrowid, getrowdata, getrowdatabyid, getrowboundindexbyid, getrowboundindex, getrows, getboundrows, getdisplayrows, getdatainformation, getsortinformation, getpaginginformation, hidecolumn, hideloadelement, hiderowdetails, iscolumnvisible, iscolumnpinned, localizestrings, pincolumn, refreshdata, refresh, render, scrolloffset, scrollposition, showloadelement, showrowdetails, setcolumnindex, setcolumnproperty, showcolumn, unpincolumn, updatebounddata, updating, getsortcolumn, removesort, sortby, addgroup, cleargroups, collapsegroup, collapseallgroups, expandallgroups, expandgroup, getrootgroupscount, getgroup, insertgroup, iscolumngroupable, removegroupat, removegroup, addfilter, applyfilters, clearfilters, getfilterinformation, getcolumnat, removefilter, refreshfilterrow, gotopage, gotoprevpage, gotonextpage, addrow, begincelledit, beginrowedit, closemenu, deleterow, endcelledit, endrowedit, getcell, getcellatposition, getcelltext, getcelltextbyid, getcellvaluebyid, getcellvalue, isBindingCompleted, openmenu, setcellvalue, setcellvaluebyid, showvalidationpopup, updaterow, clearselection, getselectedrowindex, getselectedrowindexes, getselectedcell, getselectedcells, showSidePanel, closeSidePanel, selectcell, selectallrows, selectrow, unselectrow, unselectcell, getcolumnaggregateddata, refreshaggregates, renderaggregates, exportdata, exportview, openColumnChooser, getstate, loadstate, savestate, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

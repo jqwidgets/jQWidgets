@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,12 +41,13 @@ export class jqxPivotGridComponent implements OnChanges
    @Input('autoResize') attrAutoResize: boolean;
    @Input('itemsRenderer') attrItemsRenderer: (pivotItem: jqwidgets.PivotGridItemsRenderer['pivotItem']) => string;
    @Input('cellsRenderer') attrCellsRenderer: (pivotCell: jqwidgets.PivotGridCellsRenderer['pivotCell']) => string;
+   @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['source','localization','scrollBarsEnabled','selectionEnabled','multipleSelectionEnabled','treeStyleRows','autoResize','itemsRenderer','cellsRenderer'];
+   properties: string[] = ['source','localization','scrollBarsEnabled','selectionEnabled','multipleSelectionEnabled','treeStyleRows','autoResize','itemsRenderer','cellsRenderer','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPivotGrid;
@@ -62,6 +63,13 @@ export class jqxPivotGridComponent implements OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -235,6 +243,14 @@ export class jqxPivotGridComponent implements OnChanges
           this.host.jqxPivotGrid('cellsRenderer', arg);
       } else {
           return this.host.jqxPivotGrid('cellsRenderer');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxPivotGrid('theme', arg);
+      } else {
+          return this.host.jqxPivotGrid('theme');
       }
    }
 

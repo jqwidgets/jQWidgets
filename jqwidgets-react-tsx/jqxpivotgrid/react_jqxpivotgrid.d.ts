@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps, IState> {
-    protected static getDerivedStateFromProps(props: IPivotGridProps, state: IState): null | IState;
+declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IPivotGridProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IPivotGridProps): void;
     getOptions(option: string): any;
@@ -16,19 +26,20 @@ declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps, IState> 
     getPivotColumns(): IPivotGridColumns;
     getPivotCells(): object;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxPivotGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IPivotGridItemsRenderer {
-    pivotItem?: any;
+    pivotItem: any;
 }
 export interface IPivotGridCellsRenderer {
-    pivotCell?: any;
+    pivotCell: any;
 }
 export interface IPivotGridColumns {
     resizable?: boolean;
@@ -68,25 +79,27 @@ interface IPivotGridOptions {
     autoResize?: boolean;
     itemsRenderer?: (pivotItem: IPivotGridItemsRenderer['pivotItem']) => string;
     cellsRenderer?: (pivotCell: IPivotGridCellsRenderer['pivotCell']) => string;
+    theme?: string;
 }
-export interface IPivotGridProps extends IPivotGridOptions {
+export interface IPivotGridProps extends IPivotGridOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onPivotitemexpanding?: (e?: Event) => void;
-    onPivotitemexpanded?: (e?: Event) => void;
-    onPivotitemcollapsing?: (e?: Event) => void;
-    onPivotitemcollapsed?: (e?: Event) => void;
-    onSortchanging?: (e?: Event) => void;
-    onSortchanged?: (e?: Event) => void;
-    onSortremoving?: (e?: Event) => void;
-    onSortremoved?: (e?: Event) => void;
-    onPivotitemselectionchanged?: (e?: Event) => void;
-    onPivotcellmousedown?: (e?: Event) => void;
-    onPivotcellmouseup?: (e?: Event) => void;
-    onPivotcellclick?: (e?: Event) => void;
-    onPivotcelldblclick?: (e?: Event) => void;
-    onPivotitemmousedown?: (e?: Event) => void;
-    onPivotitemmouseup?: (e?: Event) => void;
-    onPivotitemclick?: (e?: Event) => void;
-    onPivotitemdblclick?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onPivotitemexpanding?: (e?: any) => void;
+    onPivotitemexpanded?: (e?: any) => void;
+    onPivotitemcollapsing?: (e?: any) => void;
+    onPivotitemcollapsed?: (e?: any) => void;
+    onSortchanging?: (e?: any) => void;
+    onSortchanged?: (e?: any) => void;
+    onSortremoving?: (e?: any) => void;
+    onSortremoved?: (e?: any) => void;
+    onPivotitemselectionchanged?: (e?: any) => void;
+    onPivotcellmousedown?: (e?: any) => void;
+    onPivotcellmouseup?: (e?: any) => void;
+    onPivotcellclick?: (e?: any) => void;
+    onPivotcelldblclick?: (e?: any) => void;
+    onPivotitemmousedown?: (e?: any) => void;
+    onPivotitemmouseup?: (e?: any) => void;
+    onPivotitemclick?: (e?: any) => void;
+    onPivotitemdblclick?: (e?: any) => void;
 }

@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxListBox extends React.PureComponent<IListBoxProps, IState> {
-    protected static getDerivedStateFromProps(props: IListBoxProps, state: IState): null | IState;
+declare class JqxListBox extends React.PureComponent<IListBoxProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IListBoxProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IListBoxProps): void;
     getOptions(option: string): any;
@@ -53,25 +64,38 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps, IState> {
     uncheckAll(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxListBox;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
+export interface IListBoxItem {
+    label?: string;
+    value?: any;
+    index?: number;
+    visibleIndex?: number;
+    disabled?: boolean;
+    checked?: boolean;
+    html?: string;
+    group?: string;
+    title?: string;
+    originalItem?: any;
 }
 export interface IListBoxDragStart {
-    item?: object;
+    item: IListBoxItem;
 }
 export interface IListBoxDragEnd {
-    dragItem?: object;
-    dropItem?: object;
+    dragItem: IListBoxItem;
+    dropItem?: IListBoxItem;
 }
 export interface IListBoxRenderer {
-    index?: number;
-    label?: string | number;
-    value?: string | number;
+    index: number;
+    label: string | number;
+    value: string | number;
 }
 interface IListBoxOptions {
     autoHeight?: boolean;
@@ -109,14 +133,15 @@ interface IListBoxOptions {
     valueMember?: number | string;
     width?: string | number;
 }
-export interface IListBoxProps extends IListBoxOptions {
+export interface IListBoxProps extends IListBoxOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onCheckChange?: (e?: Event) => void;
-    onDragStart?: (e?: Event) => void;
-    onDragEnd?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
-    onUnselect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onCheckChange?: (e?: any) => void;
+    onDragStart?: (e?: any) => void;
+    onDragEnd?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
+    onUnselect?: (e?: any) => void;
 }

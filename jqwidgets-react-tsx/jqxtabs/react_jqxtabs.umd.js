@@ -36,138 +36,229 @@ require('../../jqwidgets/jqxtabs');
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    var __ssrIdCounter__ = 0;
+    function __sameValue__(x, y) {
+        return x === y ? (x !== 0 || 1 / x === 1 / y) : (x !== x && y !== y);
+    }
+    function __afterTask__(callback) {
+        if (typeof Promise !== 'undefined') {
+            Promise.resolve().then(callback);
+        }
+        else {
+            setTimeout(callback, 0);
+        }
+    }
     var JqxTabs = /** @class */ (function (_super) {
         __extends(JqxTabs, _super);
         function JqxTabs(props) {
             var _this = _super.call(this, props) || this;
             /* tslint:disable:variable-name */
             _this._jqx = JQXLite;
-            _this._id = 'JqxTabs' + _this._jqx.generateID();
+            /* tslint:disable:variable-name */
+            _this._rendered = null;
+            /* tslint:disable:variable-name */
+            _this._host = null;
+            /* tslint:disable:variable-name */
+            _this._appliedOptions = null;
+            /* tslint:disable:variable-name */
+            _this._eventHandlers = {};
+            /* tslint:disable:variable-name */
+            _this._eventElement = null;
+            /* tslint:disable:variable-name */
+            _this._teardownPending = false;
+            /* tslint:disable:variable-name */
+            _this._hostParent = null;
+            /* tslint:disable:variable-name */
+            _this._hostNext = null;
+            /* tslint:disable:variable-name */
+            _this._widgetPlace = null;
+            /* tslint:disable:variable-name */
+            _this._hostChildren = [];
+            _this._id = 'JqxTabs' + (_this._jqx ? _this._jqx.generateID() : 'SSR' + (++__ssrIdCounter__));
             _this._componentSelector = '#' + _this._id;
-            _this.state = { lastProps: props };
             return _this;
         }
-        JqxTabs.getDerivedStateFromProps = function (props, state) {
-            if (!Object.is) {
-                Object.is = function (x, y) {
-                    if (x === y) {
-                        return x !== 0 || 1 / x === 1 / y;
-                    }
-                    else {
-                        return x !== x && y !== y;
-                    }
-                };
-            }
-            var areEqual = Object.is(props, state.lastProps);
-            if (!areEqual) {
-                var newState = { lastProps: props };
-                return newState;
-            }
-            return null;
-        };
         JqxTabs.prototype.componentDidMount = function () {
+            if (this._teardownPending) {
+                this._teardownPending = false;
+                var place = this._widgetPlace;
+                if (place && this._host) {
+                    place.parent.insertBefore(this._host, place.next && place.next.parentNode === place.parent ? place.next : null);
+                }
+                this._widgetPlace = null;
+                return;
+            }
+            var element = this._jqx(this._target());
+            this._host = element[0] || null;
+            this._hostParent = this._host ? this._host.parentNode : null;
+            this._hostNext = this._host ? this._host.nextSibling : null;
+            this._hostChildren = this._host ? Array.prototype.slice.call(this._host.childNodes) : [];
             var widgetOptions = this._manageProps();
-            this._jqx(this._componentSelector).jqxTabs(widgetOptions);
+            element.jqxTabs(widgetOptions);
+            this._appliedOptions = widgetOptions;
+            this._applyHostAttributes();
             this._wireEvents();
         };
         JqxTabs.prototype.componentDidUpdate = function () {
+            if (!this._appliedOptions) {
+                return;
+            }
             var widgetOptions = this._manageProps();
-            this.setOptions(widgetOptions);
+            var changed = {};
+            var hasChanges = false;
+            for (var key in widgetOptions) {
+                if (!__sameValue__(widgetOptions[key], this._appliedOptions[key])) {
+                    changed[key] = widgetOptions[key];
+                    hasChanges = true;
+                }
+            }
+            if ('source' in changed) {
+                for (var _i = 0, _a = ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']; _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    if (!(key in changed) && widgetOptions[key] !== undefined) {
+                        changed[key] = widgetOptions[key];
+                    }
+                }
+            }
+            this._appliedOptions = widgetOptions;
+            if (hasChanges) {
+                this.setOptions(changed);
+                this._applyHostAttributes();
+            }
             this._wireEvents();
         };
+        JqxTabs.prototype.componentWillUnmount = function () {
+            var _this = this;
+            if (!this._jqx || !this._host) {
+                return;
+            }
+            var host = this._host;
+            var parent = this._hostParent;
+            if (parent && host.parentNode !== parent) {
+                this._widgetPlace = host.parentNode ? { parent: host.parentNode, next: host.nextSibling } : null;
+                var wrapper = host;
+                while (wrapper && wrapper.parentNode !== parent) {
+                    wrapper = wrapper.parentNode;
+                }
+                var sibling = this._hostNext && this._hostNext.parentNode === parent ? this._hostNext : null;
+                parent.insertBefore(host, wrapper || sibling);
+            }
+            this._teardownPending = true;
+            __afterTask__(function () {
+                if (_this._teardownPending) {
+                    _this._teardownPending = false;
+                    _this._teardown();
+                }
+            });
+        };
+        JqxTabs.prototype._target = function () {
+            return (typeof document !== 'undefined' && document.getElementById(this._id)) || this._rendered || this._componentSelector;
+        };
         JqxTabs.prototype.render = function () {
-            return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
+            var _this = this;
+            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style }, this._hostAttributes()), this.props.children));
         };
         JqxTabs.prototype.setOptions = function (options) {
-            this._jqx(this._componentSelector).jqxTabs(options);
+            this._jqx(this._target()).jqxTabs(options);
         };
         JqxTabs.prototype.getOptions = function (option) {
-            return this._jqx(this._componentSelector).jqxTabs(option);
+            return this._jqx(this._target()).jqxTabs(option);
         };
         JqxTabs.prototype.addAt = function (index, title, content) {
-            this._jqx(this._componentSelector).jqxTabs('addAt', index, title, content);
+            this._jqx(this._target()).jqxTabs('addAt', index, title, content);
         };
         JqxTabs.prototype.addFirst = function (htmlElement1, htmlElement2) {
-            this._jqx(this._componentSelector).jqxTabs('addFirst', htmlElement1, htmlElement2);
+            this._jqx(this._target()).jqxTabs('addFirst', htmlElement1, htmlElement2);
         };
         JqxTabs.prototype.addLast = function (htmlElement1, htmlElement2) {
-            this._jqx(this._componentSelector).jqxTabs('addLast', htmlElement1, htmlElement2);
+            this._jqx(this._target()).jqxTabs('addLast', htmlElement1, htmlElement2);
         };
         JqxTabs.prototype.collapse = function () {
-            this._jqx(this._componentSelector).jqxTabs('collapse');
+            this._jqx(this._target()).jqxTabs('collapse');
         };
         JqxTabs.prototype.disable = function () {
-            this._jqx(this._componentSelector).jqxTabs('disable');
+            this._jqx(this._target()).jqxTabs('disable');
         };
         JqxTabs.prototype.disableAt = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('disableAt', index);
+            this._jqx(this._target()).jqxTabs('disableAt', index);
         };
         JqxTabs.prototype.destroy = function () {
-            this._jqx(this._componentSelector).jqxTabs('destroy');
+            this._jqx(this._target()).jqxTabs('destroy');
         };
         JqxTabs.prototype.ensureVisible = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('ensureVisible', index);
+            this._jqx(this._target()).jqxTabs('ensureVisible', index);
         };
         JqxTabs.prototype.enableAt = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('enableAt', index);
+            this._jqx(this._target()).jqxTabs('enableAt', index);
         };
         JqxTabs.prototype.expand = function () {
-            this._jqx(this._componentSelector).jqxTabs('expand');
+            this._jqx(this._target()).jqxTabs('expand');
         };
         JqxTabs.prototype.enable = function () {
-            this._jqx(this._componentSelector).jqxTabs('enable');
+            this._jqx(this._target()).jqxTabs('enable');
         };
         JqxTabs.prototype.focus = function () {
-            this._jqx(this._componentSelector).jqxTabs('focus');
+            this._jqx(this._target()).jqxTabs('focus');
         };
         JqxTabs.prototype.getTitleAt = function (index) {
-            return this._jqx(this._componentSelector).jqxTabs('getTitleAt', index);
+            return this._jqx(this._target()).jqxTabs('getTitleAt', index);
         };
         JqxTabs.prototype.getContentAt = function (index) {
-            return this._jqx(this._componentSelector).jqxTabs('getContentAt', index);
+            return this._jqx(this._target()).jqxTabs('getContentAt', index);
         };
         JqxTabs.prototype.getDisabledTabsCount = function () {
-            return this._jqx(this._componentSelector).jqxTabs('getDisabledTabsCount');
+            return this._jqx(this._target()).jqxTabs('getDisabledTabsCount');
         };
         JqxTabs.prototype.hideCloseButtonAt = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('hideCloseButtonAt', index);
+            this._jqx(this._target()).jqxTabs('hideCloseButtonAt', index);
         };
         JqxTabs.prototype.hideAllCloseButtons = function () {
-            this._jqx(this._componentSelector).jqxTabs('hideAllCloseButtons');
+            this._jqx(this._target()).jqxTabs('hideAllCloseButtons');
         };
         JqxTabs.prototype.length = function () {
-            return this._jqx(this._componentSelector).jqxTabs('length');
+            return this._jqx(this._target()).jqxTabs('length');
         };
         JqxTabs.prototype.removeAt = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('removeAt', index);
+            this._jqx(this._target()).jqxTabs('removeAt', index);
         };
         JqxTabs.prototype.removeFirst = function () {
-            this._jqx(this._componentSelector).jqxTabs('removeFirst');
+            this._jqx(this._target()).jqxTabs('removeFirst');
         };
         JqxTabs.prototype.removeLast = function () {
-            this._jqx(this._componentSelector).jqxTabs('removeLast');
+            this._jqx(this._target()).jqxTabs('removeLast');
         };
         JqxTabs.prototype.select = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('select', index);
+            this._jqx(this._target()).jqxTabs('select', index);
         };
         JqxTabs.prototype.setContentAt = function (index, htmlElement) {
-            this._jqx(this._componentSelector).jqxTabs('setContentAt', index, htmlElement);
+            this._jqx(this._target()).jqxTabs('setContentAt', index, htmlElement);
         };
         JqxTabs.prototype.setTitleAt = function (index, htmlElement) {
-            this._jqx(this._componentSelector).jqxTabs('setTitleAt', index, htmlElement);
+            this._jqx(this._target()).jqxTabs('setTitleAt', index, htmlElement);
         };
         JqxTabs.prototype.showCloseButtonAt = function (index) {
-            this._jqx(this._componentSelector).jqxTabs('showCloseButtonAt', index);
+            this._jqx(this._target()).jqxTabs('showCloseButtonAt', index);
         };
         JqxTabs.prototype.showAllCloseButtons = function () {
-            this._jqx(this._componentSelector).jqxTabs('showAllCloseButtons');
+            this._jqx(this._target()).jqxTabs('showAllCloseButtons');
         };
         JqxTabs.prototype.val = function (value) {
-            if (value) {
-                this._jqx(this._componentSelector).jqxTabs('val', value);
+            if (value !== undefined) {
+                this._jqx(this._target()).jqxTabs('val', value);
             }
             else {
-                return this._jqx(this._componentSelector).jqxTabs('val');
+                return this._jqx(this._target()).jqxTabs('val');
             }
         };
         JqxTabs.prototype._manageProps = function () {
@@ -180,20 +271,93 @@ require('../../jqwidgets/jqxtabs');
             }
             return options;
         };
+        JqxTabs.prototype._hostAttributes = function () {
+            var attributes = {};
+            for (var prop in this.props) {
+                if (prop.indexOf('aria-') === 0 || prop.indexOf('data-') === 0) {
+                    attributes[prop] = this.props[prop];
+                }
+            }
+            return attributes;
+        };
+        JqxTabs.prototype._applyHostAttributes = function () {
+            var host = this._host;
+            if (!host) {
+                return;
+            }
+            var attributes = this._hostAttributes();
+            for (var name_1 in attributes) {
+                var value = attributes[name_1];
+                if (value !== undefined && value !== null && host.getAttribute(name_1) !== String(value)) {
+                    host.setAttribute(name_1, String(value));
+                }
+            }
+        };
         JqxTabs.prototype._wireEvents = function () {
             for (var prop in this.props) {
-                if (prop.indexOf('on') === 0) {
-                    var originalEventName = prop.slice(2);
-                    originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
-                    this._jqx(this._componentSelector).off(originalEventName);
-                    this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
+                if (prop.indexOf('on') === 0 && !this._eventHandlers[prop]) {
+                    if (!this._eventElement) {
+                        this._eventElement = this._jqx(this._target());
+                    }
+                    this._eventHandlers[prop] = this._eventHandler(prop);
+                    this._eventElement.on(__eventName__(prop), this._eventHandlers[prop]);
                 }
+            }
+        };
+        JqxTabs.prototype._eventHandler = function (prop) {
+            var that = this;
+            return function () {
+                var handler = that.props[prop];
+                return typeof handler === 'function' ? handler.apply(this, arguments) : undefined;
+            };
+        };
+        JqxTabs.prototype._teardown = function () {
+            var node = this._host;
+            var place = this._widgetPlace;
+            var kept = !!node.ownerDocument && node.ownerDocument.documentElement.contains(node);
+            for (var prop in this._eventHandlers) {
+                if (this._eventHandlers.hasOwnProperty(prop)) {
+                    this._eventElement.off(__eventName__(prop), this._eventHandlers[prop]);
+                }
+            }
+            this._eventHandlers = {};
+            this._eventElement = null;
+            this._appliedOptions = null;
+            this._host = null;
+            this._widgetPlace = null;
+            var parent = node.parentNode;
+            var next = node.nextSibling;
+            if (place) {
+                place.parent.insertBefore(node, place.next && place.next.parentNode === place.parent ? place.next : null);
+            }
+            try {
+                this._jqx(node).jqxTabs('destroy');
+            }
+            catch (e) {
+                /* widget was already destroyed or never created */
+            }
+            if (kept && parent) {
+                if (node.parentNode !== parent) {
+                    parent.insertBefore(node, next && next.parentNode === parent ? next : null);
+                }
+                node.id = this._id;
+                while (node.firstChild) {
+                    node.removeChild(node.firstChild);
+                }
+                this._hostChildren.forEach(function (child) { return node.appendChild(child); });
+            }
+            else if (place && node.parentNode === place.parent) {
+                place.parent.removeChild(node);
             }
         };
         return JqxTabs;
     }(React.PureComponent));
-    var jqx = window.jqx;
-    var JQXLite = window.JQXLite;
+    function __eventName__(prop) {
+        return prop.charAt(2).toLowerCase() + prop.slice(3);
+    }
+    var __hasWindow__ = typeof window !== 'undefined';
+    var jqx = (__hasWindow__ ? window.jqx : undefined);
+    var JQXLite = (__hasWindow__ ? window.JQXLite : undefined);
 
     exports.default = JqxTabs;
     exports.jqx = jqx;

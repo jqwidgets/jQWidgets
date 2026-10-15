@@ -35,6 +35,7 @@
                 type: Boolean
             },
             revertDuration: Number,
+            theme: String,
             tolerance: String,
             autoCreate: {
                 default: true,
@@ -197,6 +198,13 @@
                     return JQXLite(this.componentSelector).jqxDragDrop('revertDuration');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDragDrop('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDragDrop('theme');
+                }
+            },
             _tolerance: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDragDrop('tolerance', arg)
@@ -212,7 +220,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','tolerance'];
+                const widgetProps = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -412,6 +420,16 @@
                     },
                     set: function(newValue) {
                         that._revertDuration(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

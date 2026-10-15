@@ -1,72 +1,46 @@
 ﻿.jqx-rc-tl-office
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
 }
 .jqx-rc-tr-office
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 .jqx-rc-bl-office
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 .jqx-rc-br-office
 {
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-office
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-office
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-office
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-office
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-office
 {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
 .jqx-widget-office {
@@ -200,8 +174,6 @@
 }
 .jqx-slider-button-office
 {
-    -moz-border-radius: 9px;
-    -webkit-border-radius: 9px;
     border-radius: 9px;
 }
 .jqx-input-button-content-office
@@ -216,15 +188,9 @@
 .jqx-tree-item-office, .jqx-menu-item-office, .jqx-menu-item-hover-office, .jqx-menu-item-selected-office, .jqx-menu-item-top-office, .jqx-menu-item-top-hover-office, 
 .jqx-menu-item-top-selected-office, .jqx-slider-button-office, .jqx-slider-slider-office
  {
-    -webkit-transition: background-color 100ms linear;
-     -moz-transition: background-color 100ms linear;
-     -o-transition: background-color 100ms linear;
-     -ms-transition: background-color 100ms linear;
      transition: background-color 100ms linear;
 }
-.jqx-switchbutton-office {
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
+.jqx-switchbutton-office { 
     border-radius: 0px;
     border: 2px solid #a6a6a6;
 }

@@ -33,6 +33,7 @@
                 default: false,
                 type: Boolean
             },
+            theme: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -153,6 +154,13 @@
                     return JQXLite(this.componentSelector).jqxValidator('rtl');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxValidator('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxValidator('theme');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -161,7 +169,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl'];
+                const widgetProps = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl','theme'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -281,6 +289,16 @@
                     },
                     set: function(newValue) {
                         that._rtl(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

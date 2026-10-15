@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTooltip extends React.PureComponent<ITooltipProps, IState> {
-    protected static getDerivedStateFromProps(props: ITooltipProps, state: IState): null | IState;
+declare class JqxTooltip extends React.PureComponent<ITooltipProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITooltipProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITooltipProps): void;
     getOptions(option: string): any;
@@ -15,14 +26,15 @@ declare class JqxTooltip extends React.PureComponent<ITooltipProps, IState> {
     open(left?: number, top?: number): void;
     refresh(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTooltip;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface ITooltipOptions {
     absolutePositionX?: number;
     absolutePositionY?: number;
@@ -47,11 +59,12 @@ interface ITooltipOptions {
     theme?: string;
     width?: number | string;
 }
-export interface ITooltipProps extends ITooltipOptions {
+export interface ITooltipProps extends ITooltipOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onClosing?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onOpening?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onClosing?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onOpening?: (e?: any) => void;
 }

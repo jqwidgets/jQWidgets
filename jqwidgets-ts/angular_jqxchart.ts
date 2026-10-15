@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,14 +39,15 @@ export class jqxChartComponent implements OnChanges
    @Input('legendLayout') attrLegendLayout: jqwidgets.ChartLegendLayout;
    @Input('padding') attrPadding: jqwidgets.ChartPadding;
    @Input('titlePadding') attrTitlePadding: jqwidgets.ChartPadding;
+   @Input('theme') attrTheme: string;
    @Input('colorScheme') attrColorScheme: string;
    @Input('greyScale') attrGreyScale: boolean;
    @Input('showToolTips') attrShowToolTips: boolean;
    @Input('toolTipShowDelay') attrToolTipShowDelay: number;
    @Input('toolTipHideDelay') attrToolTipHideDelay: number;
    @Input('toolTipMoveDuration') attrToolTipMoveDuration: number;
-   @Input('drawBefore') attrDrawBefore: (renderer?: jqwidgets.ChartDrawBefore['renderer'], rect?: jqwidgets.ChartDrawBefore['rect']) => void;
-   @Input('draw') attrDraw: (renderer?: jqwidgets.ChartDraw['renderer'], rect?: jqwidgets.ChartDraw['rect']) => void;
+   @Input('drawBefore') attrDrawBefore: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void;
+   @Input('draw') attrDraw: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void;
    @Input('rtl') attrRtl: boolean;
    @Input('enableCrosshairs') attrEnableCrosshairs: boolean;
    @Input('crosshairsColor') attrCrosshairsColor: string;
@@ -67,7 +68,7 @@ export class jqxChartComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
+   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxChart;
@@ -82,6 +83,18 @@ export class jqxChartComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxChart('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -286,6 +299,14 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxChart('theme', arg);
+      } else {
+          return this.host.jqxChart('theme');
+      }
+   }
+
    colorScheme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxChart('colorScheme', arg);
@@ -334,7 +355,7 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
-   drawBefore(arg?: (renderer?: jqwidgets.ChartDrawBefore['renderer'], rect?: jqwidgets.ChartDrawBefore['rect']) => void): (renderer?: jqwidgets.ChartDrawBefore['renderer'], rect?: jqwidgets.ChartDrawBefore['rect']) => void {
+   drawBefore(arg?: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void): (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void {
       if (arg !== undefined) {
           this.host.jqxChart('drawBefore', arg);
       } else {
@@ -342,7 +363,7 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
-   draw(arg?: (renderer?: jqwidgets.ChartDraw['renderer'], rect?: jqwidgets.ChartDraw['rect']) => void): (renderer?: jqwidgets.ChartDraw['renderer'], rect?: jqwidgets.ChartDraw['rect']) => void {
+   draw(arg?: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void): (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void {
       if (arg !== undefined) {
           this.host.jqxChart('draw', arg);
       } else {

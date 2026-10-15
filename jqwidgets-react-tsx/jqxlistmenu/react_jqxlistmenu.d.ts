@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxListMenu extends React.PureComponent<IListMenuProps, IState> {
-    protected static getDerivedStateFromProps(props: IListMenuProps, state: IState): null | IState;
+declare class JqxListMenu extends React.PureComponent<IListMenuProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IListMenuProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IListMenuProps): void;
     getOptions(option: string): any;
@@ -14,17 +25,18 @@ declare class JqxListMenu extends React.PureComponent<IListMenuProps, IState> {
     changePage(Item: any): void;
     destroy(): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxListMenu;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IListMenuFilterCallback {
-    text?: string;
-    searchValue?: string | number;
+    text: string;
+    searchValue: string;
 }
 interface IListMenuOptions {
     alwaysShowNavigationArrows?: boolean;
@@ -48,7 +60,8 @@ interface IListMenuOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IListMenuProps extends IListMenuOptions {
+export interface IListMenuProps extends IListMenuOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
+    children?: React.ReactNode;
 }

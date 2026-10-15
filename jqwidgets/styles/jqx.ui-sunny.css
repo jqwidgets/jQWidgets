@@ -71,7 +71,7 @@
 .jqx-fill-state-focus-ui-sunny {border-color: #494437;}
 .jqx-fill-state-pressed-ui-sunny{ border-color:#655e4e; background: #ffffff url(./images/sunny/ui-bg_inset-soft_30_ffffff_1x100.png) 50% 50% repeat-x; color: #0074c7;}
 .jqx-fill-state-pressed-ui-sunny a, .jqx-fill-state-pressed-ui-sunny a:link, .jqx-fill-state-pressed-ui-sunny a:visited{color:#0074c7; text-decoration:none}
-.jqx-fill-state-disabled-ui-sunny {cursor: default; color: #000; opacity: .55; filter:Alpha(Opacity=45);}
+.jqx-fill-state-disabled-ui-sunny {cursor: default; color: #000; opacity: .55;}
 
 .jqx-input-button-content-ui-sunny{font-size:10px}
 .jqx-input-icon-ui-sunny{margin-left:2px; margin-top:-1px}
@@ -120,14 +120,8 @@
 /*Menu*/
 .jqx-menu-dropdown-ui-sunny
 {
-    -moz-border-radius-bottomleft: 8px;
-    -webkit-border-bottom-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    -moz-border-radius-topright: 8px;
-    -webkit-border-top-right-radius: 8px;
     border-top-right-radius: 8px;
-    -moz-border-radius-bottomright: 8px;
-    -webkit-border-bottom-right-radius: 8px;
     border-bottom-right-radius: 8px;
     right: -1px;
 }

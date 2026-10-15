@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps, IState> {
-    protected static getDerivedStateFromProps(props: IDateTimeInputProps, state: IState): null | IState;
+declare class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IDateTimeInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDateTimeInputProps): void;
     getOptions(option: string): any;
@@ -25,14 +36,15 @@ declare class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps, 
     setDate(date: any): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDateTimeInput;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IDateTimeInputOptions {
     animationType?: 'fade' | 'slide' | 'none';
     allowNullDate?: boolean;
@@ -71,12 +83,13 @@ interface IDateTimeInputOptions {
     width?: string | number;
     yearCutoff?: number;
 }
-export interface IDateTimeInputProps extends IDateTimeInputOptions {
+export interface IDateTimeInputProps extends IDateTimeInputOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
-    onClose?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onTextchanged?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
+    onClose?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onTextchanged?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

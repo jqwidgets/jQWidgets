@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -66,7 +66,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    @Input('specialDates') attrSpecialDates: Array<any>;
    @Input('theme') attrTheme: string;
    @Input('titleHeight') attrTitleHeight: number;
-   @Input('titleFormat') attrTitleFormat: string;
+   @Input('titleFormat') attrTitleFormat: string[];
    @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date;
    @Input('width') attrWidth: string | number;
@@ -81,6 +81,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -89,6 +90,18 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxCalendar('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -188,6 +201,10 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
        }
@@ -198,6 +215,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -377,7 +395,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   restrictedDates(arg?: Date): Date {
+   restrictedDates(arg?: Array<Date>): Array<Date> {
       if (arg !== undefined) {
           this.host.jqxCalendar('restrictedDates', arg);
       } else {
@@ -465,7 +483,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   titleFormat(arg?: string): string {
+   titleFormat(arg?: string[]): string[] {
       if (arg !== undefined) {
           this.host.jqxCalendar('titleFormat', arg);
       } else {
@@ -531,11 +549,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       return this.host.jqxCalendar('getRange');
    }
 
-   navigateForward(months: number): void {
+   navigateForward(months?: number): void {
       this.host.jqxCalendar('navigateForward', months);
    }
 
-   navigateBackward(months: number): void {
+   navigateBackward(months?: number): void {
       this.host.jqxCalendar('navigateBackward', months);
    }
 
@@ -567,7 +585,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       this.host.jqxCalendar('today');
    }
 
-   val(value?: Date, value2?: Date): any {
+   val(value?: Date | string, value2?: Date | string): any {
       if (value !== undefined) {
          return this.host.jqxCalendar('val', value, value2);
       } else {

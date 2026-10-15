@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxSortable extends React.PureComponent<ISortableProps, IState> {
-    protected static getDerivedStateFromProps(props: ISortableProps, state: IState): null | IState;
+declare class JqxSortable extends React.PureComponent<ISortableProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ISortableProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ISortableProps): void;
     getOptions(option: string): any;
@@ -16,17 +27,18 @@ declare class JqxSortable extends React.PureComponent<ISortableProps, IState> {
     enable(): void;
     refresh(): void;
     refreshPositions(): void;
-    serialize(object: any): string;
+    serialize(object?: any): string;
     toArray(): any[];
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxSortable;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ISortableCursorAt {
     left?: number;
     top?: number;
@@ -49,7 +61,7 @@ interface ISortableOptions {
     forcePlaceholderSize?: boolean;
     grid?: number[];
     handle?: string | boolean;
-    helper?: (originalEvent?: any, content?: any) => void | 'original' | 'clone';
+    helper?: ((originalEvent: any, content: any) => any) | 'original' | 'clone';
     items?: string;
     opacity?: number | boolean;
     placeholderShow?: string | boolean;
@@ -57,22 +69,24 @@ interface ISortableOptions {
     scroll?: boolean;
     scrollSensitivity?: number;
     scrollSpeed?: number;
+    theme?: string;
     tolerance?: 'intersect' | 'pointer';
     zIndex?: number;
 }
-export interface ISortableProps extends ISortableOptions {
+export interface ISortableProps extends ISortableOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onActivate?: (e?: Event) => void;
-    onBeforeStop?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onDeactivate?: (e?: Event) => void;
-    onOut?: (e?: Event) => void;
-    onOver?: (e?: Event) => void;
-    onReceive?: (e?: Event) => void;
-    onRemove?: (e?: Event) => void;
-    onSort?: (e?: Event) => void;
-    onStart?: (e?: Event) => void;
-    onStop?: (e?: Event) => void;
-    onUpdate?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onActivate?: (e?: any) => void;
+    onBeforeStop?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onDeactivate?: (e?: any) => void;
+    onOut?: (e?: any) => void;
+    onOver?: (e?: any) => void;
+    onReceive?: (e?: any) => void;
+    onRemove?: (e?: any) => void;
+    onSort?: (e?: any) => void;
+    onStart?: (e?: any) => void;
+    onStop?: (e?: any) => void;
+    onUpdate?: (e?: any) => void;
 }

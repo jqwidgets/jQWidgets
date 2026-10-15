@@ -9,13 +9,10 @@
 
     export default {
         props: {
-            disabled: {
-                default: false,
-                type: Boolean
-            },
             dataSource: Object,
             ready: Function,
             orientation: String,
+            theme: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -47,13 +44,6 @@
             refresh: function() {
                 JQXLite(this.componentSelector).jqxSplitLayout('refresh');  
             },
-            _disabled: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxSplitLayout('disabled', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxSplitLayout('disabled');
-                }
-            },
             _dataSource: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxSplitLayout('dataSource', arg)
@@ -75,6 +65,13 @@
                     return JQXLite(this.componentSelector).jqxSplitLayout('orientation');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxSplitLayout('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxSplitLayout('theme');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -83,7 +80,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','dataSource','ready','orientation'];
+                const widgetProps = ['dataSource','ready','orientation','theme'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -97,16 +94,6 @@
             __extendProps__: function () {
                 const that = this;
 
-                Object.defineProperty(that, 'disabled', {
-                    get: function() {
-                        return that._disabled();
-                    },
-                    set: function(newValue) {
-                        that._disabled(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
                 Object.defineProperty(that, 'dataSource', {
                     get: function() {
                         return that._dataSource();
@@ -133,6 +120,16 @@
                     },
                     set: function(newValue) {
                         that._orientation(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

@@ -5,7 +5,8 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxbuttons.js';
     import '../jqwidgets/jqxdropdownbutton.js';
@@ -25,6 +26,7 @@
                 default: false,
                 type: Boolean
             },
+            theme: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -33,8 +35,10 @@
         },
         emits: ["colorchange"],
         setup(props, context) {
-			const id = "jqxColorPicker" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxColorPicker" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -91,6 +95,13 @@
                     return JQXLite(componentSelector).jqxColorPicker('showTransparent');
                 }
             }
+            function _theme (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('theme', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('theme');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxColorPicker('width', arg)
@@ -102,10 +113,13 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxColorPicker(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['color','colorMode','disabled','height','showTransparent','width'];
+                const widgetProps = ['color','colorMode','disabled','height','showTransparent','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -147,6 +161,12 @@
                  set showTransparent(newValue) {
                      _showTransparent(newValue);
                  },
+                 get theme() {
+                     return _theme();
+                 },
+                 set theme(newValue) {
+                     _theme(newValue);
+                 },
                  get width() {
                      return _width();
                  },
@@ -163,11 +183,39 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxColorPicker(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxColorPicker(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
 			})
-			return {id, componentSelector, getColor,setColor, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, getColor, setColor, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

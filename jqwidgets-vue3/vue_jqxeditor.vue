@@ -1,9 +1,10 @@
 <template>
-        <textarea :value="modelValue" v-bind:id="id"></textarea>
+        <textarea v-bind:id="id"></textarea>
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxdata.js';
     import '../jqwidgets/jqxbuttons.js';
@@ -48,8 +49,10 @@
         },
         emits: ["change"],
         setup(props, context) {
-			const id = "jqxEditor" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxEditor" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -179,8 +182,11 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxEditor(widgetOptions);
-                if ($slots.default) {
-                    JQXLite(componentSelector).jqxEditor('val', $slots.default[0].text);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
+                if (context.slots.default) {
+                    JQXLite(componentSelector).jqxEditor('val', context.slots.default().map((node) => typeof node.children === 'string' ? node.children : '').join(''));
                 }
                 __wireEvents__();
             }
@@ -285,11 +291,40 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxEditor(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxEditor(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
+				try { element.jqxEditor('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, destroy,focus,print,setMode,val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, focus, print, setMode, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

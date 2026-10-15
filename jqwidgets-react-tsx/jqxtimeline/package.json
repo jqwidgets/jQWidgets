@@ -1,0 +1,21 @@
+{
+  "name": "jqwidgets-react/jqxtimeline",
+  "version": "27.1.0",
+  "main": "react_jqxtimeline.umd.js",
+  "module": "react_jqxtimeline.esm.js",
+  "typings": "react_jqxtimeline.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxtimeline.d.ts",
+      "import": "./react_jqxtimeline.esm.js",
+      "require": "./react_jqxtimeline.umd.js",
+      "default": "./react_jqxtimeline.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

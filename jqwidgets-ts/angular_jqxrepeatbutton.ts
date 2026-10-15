@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,14 +32,13 @@ export class jqxRepeatButtonComponent implements OnChanges
    @Input('textImageRelation') attrTextImageRelation: string;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
-   @Input('toggled') attrToggled: boolean;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRepeatButton;
@@ -51,6 +50,18 @@ export class jqxRepeatButtonComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxRepeatButton('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -255,14 +266,6 @@ export class jqxRepeatButtonComponent implements OnChanges
           this.host.jqxRepeatButton('template', arg);
       } else {
           return this.host.jqxRepeatButton('template');
-      }
-   }
-
-   toggled(arg?: boolean): boolean {
-      if (arg !== undefined) {
-          this.host.jqxRepeatButton('toggled', arg);
-      } else {
-          return this.host.jqxRepeatButton('toggled');
       }
    }
 

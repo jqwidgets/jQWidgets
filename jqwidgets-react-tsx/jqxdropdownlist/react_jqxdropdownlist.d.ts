@@ -1,16 +1,27 @@
 import * as React from 'react';
-declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IState> {
-    protected static getDerivedStateFromProps(props: IDropDownListProps, state: IState): null | IState;
+declare class JqxDropDownList extends React.PureComponent<IDropDownListProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IDropDownListProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDropDownListProps): void;
     getOptions(option: string): any;
-    addItem(item: IDropDownListItem): boolean;
+    addItem(item: IDropDownListItem | string): boolean;
     clearSelection(): void;
     clear(): void;
     close(): void;
@@ -31,7 +42,7 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IS
     getCheckedItems(): IDropDownListItem[];
     getSelectedItem(): IDropDownListItem;
     getSelectedIndex(): number;
-    insertAt(item: IDropDownListItem, index: number): void;
+    insertAt(item: IDropDownListItem | string, index: number): void;
     isOpened(): boolean;
     indeterminateIndex(index: number): void;
     indeterminateItem(item: any): void;
@@ -40,10 +51,10 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IS
     removeItem(item: any): void;
     removeAt(index: number): void;
     selectIndex(index: number): void;
-    selectItem(item: IDropDownListItem): void;
+    selectItem(item: IDropDownListItem | string): void;
     setContent(content: string): void;
-    updateItem(newItem: IDropDownListItem, item: any): void;
-    updateAt(item: IDropDownListItem, index: number): void;
+    updateItem(newItem: IDropDownListItem | string, item: any): void;
+    updateAt(item: IDropDownListItem | string, index: number): void;
     unselectIndex(index: number): void;
     unselectItem(item: any): void;
     uncheckIndex(index: number): void;
@@ -51,14 +62,15 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IS
     uncheckAll(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDropDownList;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IDropDownListItem {
     label?: string;
     value?: any;
@@ -69,15 +81,15 @@ export interface IDropDownListItem {
     group?: string;
 }
 export interface IDropDownListRenderer {
-    index?: number;
-    label?: string;
-    value?: string;
+    index: number;
+    label: string;
+    value: string;
 }
 export interface IDropDownListSelectionRenderer {
-    element?: object;
-    index?: number;
-    label?: string;
-    value?: any;
+    element: object;
+    index: number;
+    label: string;
+    value: any;
 }
 interface IDropDownListOptions {
     autoOpen?: boolean;
@@ -106,8 +118,8 @@ interface IDropDownListOptions {
     placeHolder?: string;
     popupZIndex?: number;
     rtl?: boolean;
-    renderer?: (index?: IDropDownListRenderer['index'], label?: IDropDownListRenderer['label'], value?: IDropDownListRenderer['value']) => string;
-    selectionRenderer?: (element?: IDropDownListSelectionRenderer['element'], index?: IDropDownListSelectionRenderer['index'], label?: IDropDownListSelectionRenderer['label'], value?: IDropDownListSelectionRenderer['value']) => string;
+    renderer?: (index: IDropDownListRenderer['index'], label: IDropDownListRenderer['label'], value: IDropDownListRenderer['value']) => string;
+    selectionRenderer?: (element: IDropDownListSelectionRenderer['element'], index: IDropDownListSelectionRenderer['index'], label: IDropDownListSelectionRenderer['label'], value: IDropDownListSelectionRenderer['value']) => string;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     source?: any[];
     selectedIndex?: number;
@@ -117,14 +129,15 @@ interface IDropDownListOptions {
     valueMember?: string;
     width?: number | string;
 }
-export interface IDropDownListProps extends IDropDownListOptions {
+export interface IDropDownListProps extends IDropDownListOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onClose?: (e?: Event) => void;
-    onCheckChange?: (e?: Event) => void;
-    onChange?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
-    onUnselect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onClose?: (e?: any) => void;
+    onCheckChange?: (e?: any) => void;
+    onChange?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
+    onUnselect?: (e?: any) => void;
 }

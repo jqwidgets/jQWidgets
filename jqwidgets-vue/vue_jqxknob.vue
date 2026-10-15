@@ -49,6 +49,7 @@
                 default: true,
                 type: Boolean
             },
+            theme: String,
             value: [Number, Array],
             width: [Number, String],
             autoCreate: {
@@ -250,6 +251,13 @@
                     return JQXLite(this.componentSelector).jqxKnob('snapToStep');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxKnob('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxKnob('theme');
+                }
+            },
             _value: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxKnob('value', arg)
@@ -272,7 +280,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','styles','step','snapToStep','value','width'];
+                const widgetProps = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','styles','step','snapToStep','theme','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -512,6 +520,16 @@
                     },
                     set: function(newValue) {
                         that._snapToStep(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

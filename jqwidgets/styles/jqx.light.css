@@ -6,11 +6,17 @@
     --jqx-background-color: rgba(0, 0, 0, .88);
     --jqx-background-hover-rgb: 225, 225, 225;
     --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
-    --jqx-background-color-hover: rgba(0, 0, 0, .54);
+    /* Hovered text keeps the resting text colour: #1B1B1B on the #E1E1E1 hover fill, 13.3:1.
+       The .54/.58 grey used before made a hovered item look disabled, and the expander
+       header draws its resting state from this token as well. */
+    --jqx-background-color-hover: rgba(0, 0, 0, .88);
     --jqx-surface-rgb: 250, 250, 250;
     --jqx-surface: rgb(var(--jqx-surface-rgb));
     --jqx-surface-color: rgba(0, 0, 0, .88);
-    --jqx-border: #E9EAED;
+    --jqx-border: #939393; /* WCAG 1.4.11 component boundary - 3.05:1 on white, as light as the threshold allows */
+    /* Lines between grid, tree-grid and scheduler cells are dividers, not control boundaries
+       (1.4.11 asks 3:1 of the latter); at the boundary colour they drew a heavy lattice. */
+    --light-grid-line: #E0E0E0;
     --jqx-scrollbar-background: #f5f5f5;
     --jqx-scrollbar-border: #ddd;
     --jqx-scrollbar-thumb-background: #C1C1C1;
@@ -169,10 +175,9 @@
     background: var(--jqx-surface);
 }
 
-.jqx-calendar tr {
+.jqx-calendar-light tr {
     border-bottom-color: var(--jqx-border);
 }
-
 
 .jqx-widget-light input::selection,
 input.jqx-input-widget-light::selection,
@@ -200,7 +205,7 @@ input.jqx-input-widget-light::selection,
     overflow: hidden;
     white-space: nowrap;
     outline: none;
-    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, .2), 0 0 0 0 rgba(0, 0, 0, .14), 0 0 0 0 var(--jqx-border);
 }
@@ -250,8 +255,20 @@ input.jqx-input-widget-light::selection,
     padding: 6px 16px;
 }
 
+/* jqxScheduler marks its Delete button with the unthemed jqx-danger class, whose base
+   #d9534f puts white text at 3.96:1. */
+.jqx-button-light.jqx-danger:not(.jqx-danger-light),
+.jqx-button-light.jqx-danger:not(.jqx-danger-light):hover,
+.jqx-button-light.jqx-danger:not(.jqx-danger-light):focus,
+.jqx-button-light.jqx-danger:not(.jqx-danger-light):active {
+    text-shadow: none !important;
+    color: #fff !important;
+    background: #d43f3a !important;
+    border-color: #d43f3a !important;
+}
+
 .jqx-button-light button,
-jqx-button-light input {
+.jqx-button-light input {
     background: transparent;
     color: inherit;
     border: none;
@@ -266,18 +283,17 @@ jqx-button-light input {
     border-radius: 0px;
 }
 
-.jqx-group-button-normal.jqx-fill-state-hover {
+.jqx-group-button-normal-light.jqx-fill-state-hover-light {
     box-shadow: none !important;
 }
 
-.jqx-group-button-normal.jqx-fill-state-pressed {
+.jqx-group-button-normal-light.jqx-fill-state-pressed-light {
     box-shadow: none !important;
     background: var(--jqx-primary) !important;
     border-color: var(--jqx-primary) !important;
     color: var(--jqx-primary-color) !important;
     border-radius: 0px;
 }
-
 
 .jqx-slider-button-light {
     padding: 3px;
@@ -332,11 +348,11 @@ jqx-button-light input {
     padding: 10px;
 }
 
+/* No .9 opacity on hover: it faded white text on the primary and status fills below 4.5:1
+   (4.24:1 on the primary). The hover fill and elevation already mark the state. */
 .jqx-button-light.jqx-fill-state-hover {
-    opacity: 0.9;
     cursor: pointer;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    *zoom: 1;
 }
 
 .jqx-button-light.jqx-fill-state-hover.outlined,
@@ -379,7 +395,7 @@ jqx-button-light input {
 .jqx-button-light.jqx-fill-state-focus.outlined,
 .jqx-button-light.jqx-fill-state-focus.flat {
     box-shadow: none;
-    background: rgba(rgb(var(--jqx-primary-rgb)), 0.15);
+    background: rgba(var(--jqx-primary-rgb), 0.15);
     color: var(--jqx-primary);
 }
 
@@ -416,13 +432,8 @@ jqx-button-light input {
 .jqx-menu-item-top-selected-light,
 .jqx-slider-button-light,
 .jqx-slider-slider-light {
-    -webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
 }
-
 
 .jqx-primary-light.jqx-input-label-light {
     color: var(--jqx-primary) !important;
@@ -432,12 +443,14 @@ jqx-button-light input {
     background: var(--jqx-primary) !important;
 }
 
+/* Status colours darkened within their hue to clear 4.5:1 on white (success 4.63, info 4.61,
+   warning 4.83, danger 4.59), as outline text and under white text alike. */
 .jqx-success-light.jqx-input-label-light {
-    color: #5cb85c !important;
+    color: #398439 !important;
 }
 
 .jqx-success-light.jqx-input-bar-light:before {
-    background: #5cb85c !important;
+    background: #398439 !important;
 }
 
 .jqx-inverse-light.jqx-input-label-light {
@@ -449,27 +462,27 @@ jqx-button-light input {
 }
 
 .jqx-danger-light.jqx-input-label-light {
-    color: #d9534f !important;
+    color: #d43f3a !important;
 }
 
 .jqx-danger-light.jqx-input-bar-light:before {
-    background: #d9534f !important;
+    background: #d43f3a !important;
 }
 
 .jqx-warning-light.jqx-input-label-light {
-    color: #f0ad4e !important;
+    color: #b35900 !important;
 }
 
 .jqx-warning-light.jqx-input-bar-light:before {
-    background: #f0ad4e !important;
+    background: #b35900 !important;
 }
 
 .jqx-info-light.jqx-input-label-light {
-    color: #5bc0de !important;
+    color: #1a7f9c !important;
 }
 
 .jqx-info-light.jqx-input-bar-light:before {
-    background: #5bc0de !important;
+    background: #1a7f9c !important;
 }
 
 .jqx-slider-tooltip-light.jqx-primary-slider,
@@ -480,8 +493,8 @@ jqx-button-light input {
 
 .jqx-slider-tooltip-light.jqx-success-slider,
 .jqx-slider-tooltip-light.jqx-success-slider .jqx-fill-state-normal-light {
-    border-color: #5cb85c;
-    background: #5cb85c;
+    border-color: #398439;
+    background: #398439;
 }
 
 .jqx-slider-tooltip-light.jqx-inverse-slider,
@@ -492,22 +505,21 @@ jqx-button-light input {
 
 .jqx-slider-tooltip-light.jqx-danger-slider,
 .jqx-slider-tooltip-light.jqx-danger-slider .jqx-fill-state-normal-light {
-    border-color: #d9534f;
-    background: #d9534f;
+    border-color: #d43f3a;
+    background: #d43f3a;
 }
 
 .jqx-slider-tooltip-light.jqx-warning-slider,
 .jqx-slider-tooltip-light.jqx-warning-slider .jqx-fill-state-normal-light {
-    border-color: #f0ad4e;
-    background: #f0ad4e;
+    border-color: #b35900;
+    background: #b35900;
 }
 
 .jqx-slider-tooltip-light.jqx-info-slider,
 .jqx-slider-tooltip-light.jqx-info-slider .jqx-fill-state-normal-light {
-    border-color: #5bc0de;
-    background: #5bc0de;
+    border-color: #1a7f9c;
+    background: #1a7f9c;
 }
-
 
 .jqx-primary-light {
     color: var(--jqx-primary) !important;
@@ -544,9 +556,9 @@ jqx-button-light input {
 }
 
 .jqx-success-light {
-    color: #5cb85c !important;
+    color: #398439 !important;
     background: #fff !important;
-    border-color: #5cb85c !important;
+    border-color: #398439 !important;
     text-shadow: none !important;
 }
 
@@ -563,8 +575,8 @@ jqx-button-light input {
 .jqx-success-light.disabled,
 .jqx-success-light[disabled] {
     color: #fff !important;
-    background: #5cb85c !important;
-    border-color: #5cb85c !important;
+    background: #398439 !important;
+    border-color: #398439 !important;
     text-shadow: none !important;
 }
 
@@ -573,8 +585,8 @@ jqx-button-light input {
 .jqx-success-light.active {
     text-shadow: none !important;
     color: #fff !important;
-    background: #5cb85c !important;
-    border-color: #5cb85c !important;
+    background: #398439 !important;
+    border-color: #398439 !important;
 }
 
 .jqx-inverse-light {
@@ -584,6 +596,7 @@ jqx-button-light input {
     border-color: #cccccc !important;
 }
 
+/* #333 on #ccc is 7.9:1; the #666 used before was 3.6:1 */
 .jqx-inverse-light.jqx-dropdownlist-state-normal-light,
 .jqx-inverse-light.jqx-slider-button-light,
 .jqx-inverse-light.jqx-slider-slider-light,
@@ -597,7 +610,7 @@ jqx-button-light input {
 .jqx-inverse-light.disabled,
 .jqx-inverse-light[disabled] {
     text-shadow: none !important;
-    color: #666 !important;
+    color: #333 !important;
     background: #cccccc !important;
     border-color: #cccccc !important;
 }
@@ -606,17 +619,16 @@ jqx-button-light input {
 .jqx-inverse-light:active,
 .jqx-inverse-light.active {
     text-shadow: none !important;
-    color: #666 !important;
+    color: #333 !important;
     background: #cccccc !important;
     border-color: #cccccc !important;
 }
 
-
 .jqx-danger-light {
     text-shadow: none !important;
-    color: #d9534f !important;
+    color: #d43f3a !important;
     background: #fff !important;
-    border-color: #d9534f !important;
+    border-color: #d43f3a !important;
 }
 
 .jqx-danger-light.jqx-dropdownlist-state-normal-light,
@@ -633,8 +645,8 @@ jqx-button-light input {
 .jqx-danger-light[disabled] {
     text-shadow: none !important;
     color: #fff !important;
-    background: #d9534f !important;
-    border-color: #d9534f !important;
+    background: #d43f3a !important;
+    border-color: #d43f3a !important;
 }
 
 .jqx-fill-state-pressed-light.jqx-danger-light,
@@ -642,19 +654,19 @@ jqx-button-light input {
 .jqx-danger-light.active {
     text-shadow: none !important;
     color: #fff !important;
-    background: #d9534f !important;
-    border-color: #d9534f !important;
+    background: #d43f3a !important;
+    border-color: #d43f3a !important;
 }
 
 .jqx-validator-error-label-light {
-    color: #d9534f !important;
+    color: #d43f3a !important;
 }
 
 .jqx-warning-light {
     text-shadow: none !important;
-    color: #f0ad4e !important;
+    color: #b35900 !important;
     background: #fff !important;
-    border-color: #f0ad4e !important;
+    border-color: #b35900 !important;
 }
 
 .jqx-warning-light.jqx-dropdownlist-state-normal-light,
@@ -671,8 +683,8 @@ jqx-button-light input {
 .jqx-warning-light[disabled] {
     text-shadow: none !important;
     color: #fff !important;
-    background: #f0ad4e !important;
-    border-color: #f0ad4e !important;
+    background: #b35900 !important;
+    border-color: #b35900 !important;
 }
 
 .jqx-fill-state-pressed-light.jqx-warning-light,
@@ -680,16 +692,15 @@ jqx-button-light input {
 .jqx-warning-light.active {
     text-shadow: none !important;
     color: #fff !important;
-    background: #f0ad4e !important;
-    border-color: #f0ad4e !important;
+    background: #b35900 !important;
+    border-color: #b35900 !important;
 }
-
 
 .jqx-info-light {
     text-shadow: none !important;
-    color: #5bc0de !important;
+    color: #1a7f9c !important;
     background: #fff !important;
-    border-color: #5bc0de !important;
+    border-color: #1a7f9c !important;
 }
 
 .jqx-info-light.jqx-dropdownlist-state-normal-light,
@@ -705,8 +716,8 @@ jqx-button-light input {
 .jqx-info-light.disabled,
 .jqx-info-light[disabled] {
     color: #fff !important;
-    background: #5bc0de !important;
-    border-color: #5bc0de !important;
+    background: #1a7f9c !important;
+    border-color: #1a7f9c !important;
     text-shadow: none !important;
 }
 
@@ -715,8 +726,8 @@ jqx-button-light input {
 .jqx-info-light.active {
     text-shadow: none !important;
     color: #fff !important;
-    background: #5bc0de !important;
-    border-color: #5bc0de !important;
+    background: #1a7f9c !important;
+    border-color: #1a7f9c !important;
 }
 
 .jqx-fill-state-pressed-light {
@@ -758,8 +769,8 @@ jqx-button-light input {
     color: var(--jqx-surface-color);
 }
 
-.jqx-datatable-dark .jqx-widget-header-dark .jqx-grid-column-header-dark {
-    border-right-color: var(--jqx-border);
+.jqx-datatable-light .jqx-widget-header-light .jqx-grid-column-header-light {
+    border-right-color: var(--light-grid-line);
 }
 
 .jqx-datatable-light td.jqx-grid-cell-light,
@@ -772,8 +783,6 @@ jqx-button-light input {
 .jqx-grid-cell-light {
     background: var(--jqx-background);
     color: var(--jqx-background-color);
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -817,15 +826,17 @@ jqx-button-light input {
 
 .jqx-grid-pager-top-light .jqx-button-light.jqx-fill-state-hover,
 .jqx-grid-pager-light .jqx-button-light.jqx-fill-state-hover {
-    color: var(--jqx-background-color-hover);
-    background: var(--jqx-background-hover);
-    border-color: var(--jqx-background-hover);
+    color: var(--jqx-background-color-hover) !important;
+    background: var(--jqx-background-hover) !important;
+    border-color: var(--jqx-background-hover) !important;
     box-shadow: none;
 }
 
 .jqx-grid-pager-top-light .jqx-button-light.jqx-fill-state-pressed,
 .jqx-grid-pager-light .jqx-button-light.jqx-fill-state-pressed {
-    background: var(--jqx-primary);
+    color: var(--jqx-primary-color) !important;
+    background: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
 }
 
 .jqx-grid-pager-light .jqx-button-light:hover:after,
@@ -949,15 +960,21 @@ jqx-button-light input {
     background: var(--jqx-scrollbar-thumb-background-hover);
     border-color: var(--jqx-scrollbar-thumb-border-hover);
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
 }
 
 .jqx-progressbar-light {
     background: var(--jqx-background) !important;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
+}
+
+/* The percentage sits over the fill and the track at once, so no single text colour clears
+   4.5:1 on both (dark text on the primary fill was 3.8:1). A near-white chip behind it,
+   drawn with a spread shadow so the widget's centring is unchanged, keeps it at 15:1. */
+.jqx-progressbar-text-light {
+    color: var(--jqx-background-color);
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .9);
+    border-radius: 1px;
 }
 
 .jqx-progressbar-value-light,
@@ -979,7 +996,6 @@ jqx-button-light input {
     background: var(--jqx-scrollbar-button-background-hover);
     border-color: var(--jqx-scrollbar-button-border-hover);
 }
-
 
 .jqx-scrollbar-button-state-pressed-light {
     color: var(--jqx-scrollbar-button-color-pressed);
@@ -1026,11 +1042,13 @@ jqx-grid-column-filterbutton-light,
     box-shadow: 0 4px 23px 5px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* jqxTooltip shows at .9 opacity, which lifts the primary behind white text to 4.24:1.
+   #116DA2 (the primary at 94%) comes out at 4.62:1 once faded. */
 .jqx-tooltip-light,
 .jqx-tooltip-light.jqx-popup-light,
 .jqx-tooltip-light .jqx-fill-state-normal-light {
-    background: var(--jqx-primary);
-    border-color: var(--jqx-primary);
+    background: #116DA2;
+    border-color: #116DA2;
     box-shadow: none;
     color: var(--jqx-primary-color);
 }
@@ -1051,8 +1069,6 @@ jqx-grid-column-filterbutton-light,
 .jqx-radiobutton-light {
     overflow: visible;
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     background-repeat: no-repeat;
     background: none;
     line-height: 20px;
@@ -1106,9 +1122,10 @@ jqx-grid-column-filterbutton-light,
     margin-left: 5px;
 }
 
-.jqx-tree-light .jqx-checkbox-light .jqx-checkbox-default-light,
-.jqx-checkbox-light[checked] .jqx-checkbox-default-light,
-.jqx-tree-grid-checkbox[checked].jqx-checkbox-default-light,
+/* The box fills when it holds the tick. The tree rule used before filled every box in a
+   tree whatever its state, and jqxTree also sets [checked] on an indeterminate box. */
+.jqx-checkbox-default-light:has(.jqx-checkbox-check-checked-light),
+.jqx-tree-grid-checkbox[checked="true"].jqx-checkbox-default-light,
 .jqx-radiobutton-light[checked] .jqx-radiobutton-default-light {
     color: var(--jqx-primary-color);
     background-color: var(--jqx-primary);
@@ -1123,6 +1140,11 @@ jqx-grid-column-filterbutton-light,
     border-radius: 0px;
 }
 
+/* On a selected (primary) row a checked box is primary on primary; the white edge keeps it a box. */
+.jqx-grid-cell-selected-light .jqx-checkbox-default-light {
+    border-color: var(--jqx-primary-color);
+}
+
 .jqx-checkbox-check-checked-light {
     background: none;
     font-family: jqx-icons;
@@ -1134,28 +1156,31 @@ jqx-grid-column-filterbutton-light,
     content: var(--jqx-icon-check);
 }
 
+/* The indeterminate mark is a primary square centred in the box; the white 14px square
+   used before covered the box and drew nothing, so the state was invisible. */
 .jqx-checkbox-check-indeterminate-light {
-    width: 14px !important;
-    height: 14px !important;
+    width: 8px !important;
+    height: 8px !important;
     position: relative;
-    top: 1px;
-    left: 1px;
-    background: var(--jqx-background);
+    top: 4px;
+    left: 4px;
+    border-radius: 1px;
+    background: var(--jqx-primary);
 }
 
 .jqx-tree-light .jqx-checkbox-check-indeterminate-light {
-    width: 12px !important;
-    height: 12px !important;
-    top: 2px;
-    left: 2px;
+    width: 8px !important;
+    height: 8px !important;
+    top: 4px;
+    left: 4px;
 }
 
+/* Hover marks the box with the primary border only. Filling it made an unchecked box
+   look checked (a solid blue square with no tick, a solid blue radio with no dot). */
 .jqx-checkbox-hover-light,
 .jqx-radiobutton-hover-light {
-    background-color: var(--jqx-primary);
     border-color: var(--jqx-primary);
 }
-
 
 .jqx-slider-slider-light {
     transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
@@ -1203,7 +1228,6 @@ jqx-grid-column-filterbutton-light,
     transition: transform 0.2s ease;
     transform: scale(1) rotate(45deg);
 }
-
 
 .jqx-slider-tooltip-light .jqx-tooltip-arrow-t-b,
 .jqx-slider-tooltip-light .jqx-tooltip-arrow-l-r {
@@ -1286,8 +1310,6 @@ jqx-grid-column-filterbutton-light,
 }
 
 .jqx-slider-button-light {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
@@ -1390,6 +1412,12 @@ jqx-grid-column-filterbutton-light,
     background: var(--jqx-primary) !important;
     /* Old browsers */
     box-shadow: none;
+}
+
+/* The grid's text editor is created with an inline border: none, so it had no visible edge
+   or focus mark. It takes the primary focus bar that light's other inputs show. */
+input.jqx-grid-cell-edit.jqx-input-light {
+    border-bottom: 2px solid var(--jqx-primary) !important;
 }
 
 .jqx-grid-cell-light .jqx-button-light,
@@ -1626,10 +1654,10 @@ jqx-grid-column-filterbutton-light,
     margin-left: 9px;
 }
 
-.jqx-dropdownbutton-popup,
+.jqx-dropdownbutton-popup-light,
 .jqx-calendar-light.jqx-popup,
 .jqx-listbox-light.jqx-popup,
-.jqx-grid-menu.jqx-popup {
+.jqx-grid-menu.jqx-popup-light {
     transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
     transform: scaleY(0);
     opacity: 0;
@@ -1637,40 +1665,39 @@ jqx-grid-column-filterbutton-light,
     display: block !important;
 }
 
-.jqx-dropdownbutton-popup.jqx-popup-show,
+.jqx-dropdownbutton-popup-light.jqx-popup-show,
 .jqx-calendar-light.jqx-popup-show,
 .jqx-listbox-light.jqx-popup-show,
-.jqx-grid-menu.jqx-popup-show {
+.jqx-grid-menu.jqx-popup-light.jqx-popup-show {
     transform: scaleY(1);
     opacity: 1;
 }
 
 .jqx-widget-light .jqx-grid-cell {
-    border-color: var(--jqx-border);
+    border-color: var(--light-grid-line);
     color: var(--jqx-background-color);
 }
 
 .jqx-widget-light .jqx-grid-column-header,
 .jqx-widget-light .jqx-grid-group-cell {
-    border-color: var(--jqx-border);
+    border-color: var(--light-grid-line);
     color: var(--jqx-surface-color);
     background: var(--jqx-surface);
 }
 
 .jqx-widget-light .jqx-grid-column-header-light {
-    border-color: var(--jqx-border);
+    border-color: var(--light-grid-line);
     font-size: 14px;
     color: var(--jqx-surface-color);
 }
 
-
 .jqx-widget-light .jqx-widget-header-light:hover .jqx-grid-column-header-light {
-    border-right-color: var(--jqx-border) !important;
-    border-bottom-color: var(--jqx-border) !important;
+    border-right-color: var(--light-grid-line) !important;
+    border-bottom-color: var(--light-grid-line) !important;
 }
 
 .jqx-widget-light .jqx-grid-cell-light {
-    border-color: var(--jqx-border);
+    border-color: var(--light-grid-line);
 }
 
 .jqx-widgets-light .jqx-scheduler-cell-selected span {
@@ -1684,9 +1711,13 @@ jqx-grid-column-filterbutton-light,
     border-color: var(--jqx-border) !important;
 }
 
+.jqx-scheduler-time-column-light {
+    border-color: var(--light-grid-line) !important;
+}
+
 .jqx-widget-light.jqx-scheduler-light .jqx-grid-cell-light,
 .jqx-widget-light.jqx-scheduler-light .jqx-grid-column-header-light {
-    border-bottom-color: var(--jqx-border);
+    border-bottom-color: var(--light-grid-line);
 }
 
 .jqx-widget-light.jqx-scheduler-light td.jqx-grid-cell-light span {
@@ -1743,7 +1774,6 @@ jqx-grid-column-filterbutton-light,
     border-color: transparent;
 }
 
-
 .jqx-combobox-content-focus-light,
 .jqx-combobox-state-focus-light,
 .jqx-numberinput-focus-light {
@@ -1795,13 +1825,22 @@ jqx-grid-column-filterbutton-light,
 .jqx-numberinput-light,
 .jqx-maskedinput-light,
 .jqx-datetimeinput-light {
-    background: var(--jqx-surface);
-    border-color: var(--jqx-surface);
+    /* white like the plain, masked and formatted inputs (the surface fill reached only the
+       drop-down list and button; the others stayed white) */
+    background: var(--jqx-background);
+    border-color: var(--jqx-background);
     border-radius: 0;
     color: var(--jqx-surface-color);
     box-shadow: none;
     border-bottom: 1px solid var(--jqx-border);
     outline: none;
+}
+
+/* the number input's text field and spin-button column are white boxes inside it; they take the
+   field's fill like the other fields */
+.jqx-numberinput-light .jqx-input-content-light,
+.jqx-numberinput-light .jqx-input-light {
+    background: transparent;
 }
 
 .jqx-numberinput-light .jqx-action-button-light {
@@ -1876,7 +1915,6 @@ input[type="textarea"].jqx-widget-content-light {
     height: 100%;
 }
 
-
 .jqx-input-label {
     visibility: inherit;
 }
@@ -1907,7 +1945,6 @@ textarea:focus~.jqx-input-label-light,
 .jqx-dropdownlist-light[default-placeholder="true"] .jqx-input-label {
     visibility: hidden;
 }
-
 
 input:focus~.jqx-input-bar:before,
 textarea:focus~.jqx-input-bar:before,
@@ -1980,7 +2017,6 @@ textarea:focus~.jqx-input-bar:before,
     border-color: var(--jqx-primary-color);
 }
 
-
 .jqx-dropdownlist-state-normal-light .jqx-icon-arrow-down-light,
 .jqx-combobox-state-normal-light .jqx-icon-arrow-down-light,
 .sorticon.descending .jqx-grid-column-sorticon-light,
@@ -2043,25 +2079,14 @@ textarea:focus~.jqx-input-bar:before,
     margin-top: 1px;
 }
 
-input[type="text"].jqx-input-light:-moz-placeholder,
-input[type="text"].jqx-widget-content-light:-moz-placeholder,
-input[type="textarea"].jqx-widget-content-light:-moz-placeholder,
-textarea.jqx-input-light:-moz-placeholder {
-    color: #999999;
-}
-
-input[type="text"].jqx-input-light:-webkit-input-placeholder,
-input[type="text"].jqx-widget-content-light:-webkit-input-placeholder,
-input[type="textarea"].jqx-widget-content-light:-webkit-input-placeholder,
-textarea.jqx-input-light:-webkit-input-placeholder {
-    color: #999999;
-}
-
-input[type="text"].jqx-input-light:-ms-input-placeholder,
-input[type="text"].jqx-widget-content-light:-ms-input-placeholder,
-input[type="textarea"].jqx-widget-content-light:-ms-input-placeholder,
-textarea.jqx-input-light:-ms-input-placeholder {
-    color: #999999;
+/* The single-colon pseudo-classes used before matched nothing in current browsers.
+   #757575 is 4.61:1 on white; the #999 they asked for was 2.85:1. */
+.jqx-input-light::placeholder,
+.jqx-input-light input::placeholder,
+input.jqx-widget-content-light::placeholder,
+textarea.jqx-widget-content-light::placeholder {
+    color: #757575;
+    opacity: 1;
 }
 
 .jqx-combobox-content-focus-light,
@@ -2116,8 +2141,6 @@ textarea.jqx-input-light:-ms-input-placeholder {
     filter: none;
     background: inherit;
     color: inherit;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -2156,8 +2179,8 @@ textarea.jqx-input-light:-ms-input-placeholder {
     border-color: transparent;
 }
 
-.jqx-ribbon-item-hover-light {
-    background: transparent;
+.jqx-ribbon-item-hover-light.jqx-ribbon-item-selected-light {
+    color: var(--jqx-primary);
 }
 
 .jqx-ribbon-header-top-light {
@@ -2186,8 +2209,6 @@ textarea.jqx-input-light:-ms-input-placeholder {
     border-top: 1px solid var(--jqx-background);
     filter: none;
     background: var(--jqx-background);
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -2222,11 +2243,18 @@ textarea.jqx-input-light:-ms-input-placeholder {
 .jqx-tabs-title-hover-top-light,
 .jqx-tabs-title-hover-bottom-light,
 .jqx-tabs-header-light {
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
     box-shadow: none !important;
     background: var(--jqx-surface);
     color: var(--jqx-surface-color);
+}
+
+/* A hovered tab painted the header's own surface, so hover showed nothing. */
+.jqx-tabs-title-hover-top-light,
+.jqx-tabs-title-hover-bottom-light,
+.jqx-ribbon-item-hover-light {
+    background: var(--jqx-background-hover);
+    color: var(--jqx-background-color-hover);
+    border-color: transparent;
 }
 
 .jqx-tabs-content-light {
@@ -2252,7 +2280,6 @@ textarea.jqx-input-light:-ms-input-placeholder {
 .jqx-tabs-position-bottom .jqx-tabs-bar-light {
     top: 0;
 }
-
 
 .jqx-layout-light {
     background-color: var(--jqx-background);
@@ -2289,6 +2316,14 @@ textarea.jqx-input-light:-ms-input-placeholder {
     border-radius: 0px;
 }
 
+/* Today is outlined in the primary colour (5.1:1 on white) instead of the base pale-yellow cell. */
+.jqx-calendar-cell-today-light:not(.jqx-calendar-cell-hover-light):not(.jqx-calendar-cell-selected-light) {
+    background: var(--jqx-background);
+    border-color: var(--jqx-primary);
+    color: var(--jqx-primary);
+    font-weight: 500;
+}
+
 .jqx-calendar-title-content-light {
     font-weight: bold;
 }
@@ -2321,7 +2356,7 @@ textarea.jqx-input-light:-ms-input-placeholder {
 .jqx-icon-time-light:after,
 .jqx-icon-time-hover-light:after,
 .jqx-icon-time-pressed-light:after {
-    content: var(--jqx-icon-arrow-down);
+    content: var(--jqx-icon-clock);
 }
 
 .jqx-icon-calendar-light,
@@ -2349,10 +2384,16 @@ textarea.jqx-input-light:-ms-input-placeholder {
 .jqx-tabs-close-button-selected-light,
 .jqx-tabs-close-button-hover-light {
     background-image: none;
+    font-family: jqx-icons;
 }
 
+/* jqx.base.css sets the button's font-size to 1px, so the glyph needs a real size. */
 .jqx-tabs-close-button-light:after {
     content: var(--jqx-icon-close);
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
 }
 
 .jqx-scrollbar-button-state-pressed-light .jqx-icon-arrow-up-selected-light {
@@ -2515,9 +2556,11 @@ textarea.jqx-input-light:-ms-input-placeholder {
     background: var(--jqx-primary) radial-gradient(circle, transparent 1%, var(--jqx-primary) 1%) center/15000%;
 }
 
+/* Pressed darkens the primary (to 80%, 7.1:1 under white text) rather than fading it to .8 over
+   white, which was 3.54:1. */
 .buttonRipple.jqx-button-light.jqx-fill-state-pressed.primary {
     color: var(--jqx-primary-color);
-    background-color: rgba(var(--jqx-primary-rgb), 0.8);
+    background-color: rgb(14, 93, 138);
     background-size: 100%;
     transition: background 0s;
 }
@@ -2570,7 +2613,6 @@ textarea.jqx-input-light:-ms-input-placeholder {
     background-image: url('images/icon-menu-minimized-white.png');
 }
 
-
 .jqx-editor-toolbar-icon-light {
     background: url('images/html_editor.png') no-repeat;
 }
@@ -2588,7 +2630,7 @@ textarea.jqx-input-light:-ms-input-placeholder {
     color: var(--jqx-background-color);
 }
 
-.jqx-time-picker .jqx-main-container {
+.jqx-time-picker-light .jqx-main-container {
     background: var(--jqx-background);
 }
 
@@ -2599,6 +2641,18 @@ textarea.jqx-input-light:-ms-input-placeholder {
 
 .jqx-time-picker-light .jqx-label-light {
     fill: var(--jqx-background-color);
+}
+
+/* The unselected AM/PM is 14px text at the base .5 opacity, 3.2:1 on the header. At .7 it is 6.0:1
+   and still reads as the unselected one. */
+.jqx-time-picker-light .jqx-am-container,
+.jqx-time-picker-light .jqx-pm-container {
+    opacity: .7;
+}
+
+.jqx-time-picker-light .jqx-am-container.jqx-selected,
+.jqx-time-picker-light .jqx-pm-container.jqx-selected {
+    opacity: 1;
 }
 
 .jqx-needle-light {
@@ -2615,8 +2669,8 @@ textarea.jqx-input-light:-ms-input-placeholder {
 }
 
 .jqx-validator-hint-light {
-    background: #D94F43;
-    border-color: #D94F43;
+    background: #d43f3a;
+    border-color: #d43f3a;
     padding: 10px;
 }
 
@@ -2624,6 +2678,40 @@ textarea.jqx-input-light:-ms-input-placeholder {
     display: none;
 }
 
+/* Notifications take the theme's status colours. The base ones put white text on #5bc0de
+   (2.1:1), #f0ad4e (1.9:1) and #5cb85c (2.5:1). */
+.jqx-notification-light.jqx-notification-info,
+.jqx-notification-light.jqx-notification-success,
+.jqx-notification-light.jqx-notification-warning,
+.jqx-notification-light.jqx-notification-error,
+.jqx-notification-light.jqx-notification-mail {
+    text-shadow: none !important;
+}
+
+.jqx-notification-light.jqx-notification-info {
+    background-color: #1a7f9c !important;
+    border-color: #1a7f9c !important;
+}
+
+.jqx-notification-light.jqx-notification-success {
+    background-color: #398439 !important;
+    border-color: #398439 !important;
+}
+
+.jqx-notification-light.jqx-notification-warning {
+    background-color: #b35900 !important;
+    border-color: #b35900 !important;
+}
+
+.jqx-notification-light.jqx-notification-error {
+    background-color: #d43f3a !important;
+    border-color: #d43f3a !important;
+}
+
+.jqx-notification-light.jqx-notification-mail {
+    background-color: var(--jqx-primary) !important;
+    border-color: var(--jqx-primary) !important;
+}
 
 .jqx-grid-group-expand-light:after,
 .jqx-grid-group-collapse-light:after {
@@ -2634,7 +2722,6 @@ textarea.jqx-input-light:-ms-input-placeholder {
     height: 100%;
 }
 
-
 .jqx-grid-pager-light .jqx-dropdownlist-light  {
 	background: var(--jqx-background);
 	color: var(--jqx-background-color);
@@ -2642,13 +2729,13 @@ textarea.jqx-input-light:-ms-input-placeholder {
 .jqx-grid-pager-input-light {
  padding-right: 4px !important;
 }
+/* Full primary rather than .8 of it: white text on the .8 blend is 3.54:1, on the primary 5.1:1. */
 .jqx-grid-cell-selected-light {
-    background: rgba(var(--jqx-primary-rgb), 0.8) !important;
+    background: var(--jqx-primary) !important;
     }
     .jqx-grid-cell-selected-light span {
         color: inherit !important;
     }
-
 
 .jqx-kanban-column-header-light {
     display: flex;
@@ -2684,4 +2771,72 @@ textarea.jqx-input-light:-ms-input-placeholder {
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt-light {
     background-color: #e5e5e5 !important;
+}
+/* Padding must never push an item past its row. With itemHeight set, jqxListBox sizes the
+   ROW and leaves a custom-rendered item's height to its content, so an item that fit the
+   row exactly overflowed it by the padding and painted over the item below - measured at
+   4px on the filtering demo. Clipping at the row keeps every width as it was (the item is
+   sized to overflow the row's right edge by its side padding on purpose, so a full-width
+   highlight reaches the border) and stops the overflow from painting where it should not. */
+.jqx-listbox-light .jqx-listitem-element {
+  overflow: hidden;
+}
+
+/* jqxSwitchButton: a pill with a round thumb, primary when on, instead of the base
+   uppercase bold box. The off thumb is #757575, 4.6:1 on white. */
+.jqx-switchbutton-light {
+    border-color: var(--jqx-border);
+    border-radius: 15px;
+}
+
+.jqx-switchbutton-light .jqx-switchbutton-label {
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    text-transform: inherit;
+    font-weight: normal;
+}
+
+.jqx-switchbutton-light .jqx-switchbutton-thumb-light {
+    border-radius: 50%;
+    transform: scale(0.7);
+    background: #757575;
+    border-color: #757575;
+    color: #757575;
+}
+
+.jqx-switchbutton-light.jqx-switchbutton-on {
+    background: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+    color: var(--jqx-primary-color);
+}
+
+.jqx-switchbutton-light.jqx-switchbutton-on .jqx-switchbutton-thumb-light {
+    background: var(--jqx-background);
+    border-color: var(--jqx-background);
+    color: var(--jqx-background);
+}
+
+/* jqxTagCloud: tags without a textColor are plain #0000EE links, off-brand. */
+.jqx-tag-cloud-item-light a {
+    color: var(--jqx-primary);
+}
+
+/* Link-template buttons: jqx.base.css forces #0088cc, 3.6:1 on white. The primary is 5.1:1. */
+.jqx-button-light.jqx-link-light {
+    color: var(--jqx-primary) !important;
+}
+
+/* A disabled button keeps its outline at the base .55 opacity but drops the resting
+   elevation and takes the surface fill, so it reads as unavailable next to enabled ones. */
+.jqx-button-light.jqx-fill-state-disabled-light {
+    background-color: var(--jqx-surface);
+    box-shadow: none;
+    cursor: default;
+}
+
+/* jqxDropDownButton's popup is its own container: it takes the container's -10px but has no
+   inner popup to take it back, so it hung 10px left of the button. */
+.jqx-dropdownbutton-popup-light.jqx-listbox-container-light {
+    margin-left: 0;
 }

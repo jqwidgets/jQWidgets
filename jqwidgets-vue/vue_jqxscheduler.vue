@@ -30,6 +30,13 @@
 
     export default {
         props: {
+            allowOverlap: {
+                default: true,
+                type: Boolean
+            },
+            blockedTimes: Array,
+            maxDuration: Number,
+            minDuration: Number,
             appointmentOpacity: Number,
             appointmentsMinHeight: Number,
             appointmentDataFields: Object,
@@ -112,6 +119,11 @@
             toolBarRangeFormat: String,
             toolBarRangeFormatAbbr: String,
             toolbarHeight: Number,
+            undoRedo: {
+                default: true,
+                type: Boolean
+            },
+            undoRedoLimit: Number,
             views: Array,
             view: [Number, String],
             width: [Number, String],
@@ -143,8 +155,41 @@
                 }
                 return resultToReturn;
             },
+            aiConfig: function(config) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiConfig', config);  
+            },
+            aiCommand: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiCommand', text, callback);  
+            },
+            aiScheduleAppointment: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiScheduleAppointment', text, callback);  
+            },
+            aiFindSlot: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiFindSlot', text, callback);  
+            },
+            aiBookSlot: function(slot, details) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiBookSlot', slot, details);  
+            },
+            aiResolveConflicts: function(options, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiResolveConflicts', options, callback);  
+            },
+            aiApplyResolution: function(proposals) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiApplyResolution', proposals);  
+            },
+            aiAsk: function(text, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiAsk', text, callback);  
+            },
+            aiSummarize: function(callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiSummarize', callback);  
+            },
+            aiExplainAppointment: function(key, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiExplainAppointment', key, callback);  
+            },
+            aiClassifyAppointments: function(options, callback) {
+                return JQXLite(this.componentSelector).jqxScheduler('aiClassifyAppointments', options, callback);  
+            },
             addAppointment: function(item) {
-                JQXLite(this.componentSelector).jqxScheduler('addAppointment', item);  
+                return JQXLite(this.componentSelector).jqxScheduler('addAppointment', item);  
             },
             beginAppointmentsUpdate: function() {
                 JQXLite(this.componentSelector).jqxScheduler('beginAppointmentsUpdate');  
@@ -162,7 +207,7 @@
                 JQXLite(this.componentSelector).jqxScheduler('closeDialog');  
             },
             deleteAppointment: function(appointmenId) {
-                JQXLite(this.componentSelector).jqxScheduler('deleteAppointment', appointmenId);  
+                return JQXLite(this.componentSelector).jqxScheduler('deleteAppointment', appointmenId);  
             },
             destroy: function() {
                 JQXLite(this.componentSelector).jqxScheduler('destroy');  
@@ -175,6 +220,12 @@
             },
             ensureVisible: function(item, resourceId) {
                 JQXLite(this.componentSelector).jqxScheduler('ensureVisible', item, resourceId);  
+            },
+            findAvailableSlots: function(options) {
+                return JQXLite(this.componentSelector).jqxScheduler('findAvailableSlots', options);  
+            },
+            importData: function(data, options) {
+                return JQXLite(this.componentSelector).jqxScheduler('importData', data, options);  
             },
             exportData: function(format) {
                 JQXLite(this.componentSelector).jqxScheduler('exportData', format);  
@@ -226,6 +277,52 @@
             },
             scrollTop: function(top) {
                 JQXLite(this.componentSelector).jqxScheduler('scrollTop', top);  
+            },
+            scrollToTime: function(time) {
+                return JQXLite(this.componentSelector).jqxScheduler('scrollToTime', time);  
+            },
+            undo: function() {
+                return JQXLite(this.componentSelector).jqxScheduler('undo');  
+            },
+            redo: function() {
+                return JQXLite(this.componentSelector).jqxScheduler('redo');  
+            },
+            canUndo: function() {
+                return JQXLite(this.componentSelector).jqxScheduler('canUndo');  
+            },
+            canRedo: function() {
+                return JQXLite(this.componentSelector).jqxScheduler('canRedo');  
+            },
+            clearUndoRedo: function() {
+                JQXLite(this.componentSelector).jqxScheduler('clearUndoRedo');  
+            },
+            _allowOverlap: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('allowOverlap', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('allowOverlap');
+                }
+            },
+            _blockedTimes: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('blockedTimes', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('blockedTimes');
+                }
+            },
+            _maxDuration: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('maxDuration', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('maxDuration');
+                }
+            },
+            _minDuration: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('minDuration', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('minDuration');
+                }
             },
             _appointmentOpacity: function(arg) {
                 if (arg !== undefined) {
@@ -591,6 +688,20 @@
                     return JQXLite(this.componentSelector).jqxScheduler('toolbarHeight');
                 }
             },
+            _undoRedo: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('undoRedo', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('undoRedo');
+                }
+            },
+            _undoRedoLimit: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('undoRedoLimit', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('undoRedoLimit');
+                }
+            },
             _views: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxScheduler('views', arg)
@@ -620,7 +731,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+                const widgetProps = ['allowOverlap','blockedTimes','maxDuration','minDuration','appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','undoRedo','undoRedoLimit','views','view','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -634,6 +745,46 @@
             __extendProps__: function () {
                 const that = this;
 
+                Object.defineProperty(that, 'allowOverlap', {
+                    get: function() {
+                        return that._allowOverlap();
+                    },
+                    set: function(newValue) {
+                        that._allowOverlap(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'blockedTimes', {
+                    get: function() {
+                        return that._blockedTimes();
+                    },
+                    set: function(newValue) {
+                        that._blockedTimes(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'maxDuration', {
+                    get: function() {
+                        return that._maxDuration();
+                    },
+                    set: function(newValue) {
+                        that._maxDuration(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'minDuration', {
+                    get: function() {
+                        return that._minDuration();
+                    },
+                    set: function(newValue) {
+                        that._minDuration(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(that, 'appointmentOpacity', {
                     get: function() {
                         return that._appointmentOpacity();
@@ -1154,6 +1305,26 @@
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(that, 'undoRedo', {
+                    get: function() {
+                        return that._undoRedo();
+                    },
+                    set: function(newValue) {
+                        that._undoRedo(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'undoRedoLimit', {
+                    get: function() {
+                        return that._undoRedoLimit();
+                    },
+                    set: function(newValue) {
+                        that._undoRedoLimit(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(that, 'views', {
                     get: function() {
                         return that._views();
@@ -1188,11 +1359,16 @@
             __wireEvents__: function () {
                 const that = this;
 
+                JQXLite(this.componentSelector).on('scheduleraiResult', function (event) { that.$emit('scheduleraiResult', event); });
                 JQXLite(this.componentSelector).on('appointmentChange', function (event) { that.$emit('appointmentChange', event); });
                 JQXLite(this.componentSelector).on('appointmentClick', function (event) { that.$emit('appointmentClick', event); });
                 JQXLite(this.componentSelector).on('appointmentDoubleClick', function (event) { that.$emit('appointmentDoubleClick', event); });
                 JQXLite(this.componentSelector).on('appointmentDelete', function (event) { that.$emit('appointmentDelete', event); });
                 JQXLite(this.componentSelector).on('appointmentAdd', function (event) { that.$emit('appointmentAdd', event); });
+                JQXLite(this.componentSelector).on('appointmentAdding', function (event) { that.$emit('appointmentAdding', event); });
+                JQXLite(this.componentSelector).on('appointmentChanging', function (event) { that.$emit('appointmentChanging', event); });
+                JQXLite(this.componentSelector).on('appointmentDeleting', function (event) { that.$emit('appointmentDeleting', event); });
+                JQXLite(this.componentSelector).on('undoRedoChange', function (event) { that.$emit('undoRedoChange', event); });
                 JQXLite(this.componentSelector).on('bindingComplete', function (event) { that.$emit('bindingComplete', event); });
                 JQXLite(this.componentSelector).on('cellClick', function (event) { that.$emit('cellClick', event); });
                 JQXLite(this.componentSelector).on('cellDoubleClick', function (event) { that.$emit('cellDoubleClick', event); });

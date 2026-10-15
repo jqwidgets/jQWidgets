@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,8 +39,8 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('filterHeight') attrFilterHeight: number;
    @Input('filterMode') attrFilterMode: string;
    @Input('groups') attrGroups: Array<any>;
-   @Input('groupsRenderer') attrGroupsRenderer: (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string;
-   @Input('initRowDetails') attrInitRowDetails: (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void;
+   @Input('groupsRenderer') attrGroupsRenderer: (value: jqwidgets.DataTableGroupsRenderer['value'], rowData: jqwidgets.DataTableGroupsRenderer['rowdata'], level: jqwidgets.DataTableGroupsRenderer['level']) => string;
+   @Input('initRowDetails') attrInitRowDetails: (id: jqwidgets.DataTableInitRowDetails['id'], row: jqwidgets.DataTableInitRowDetails['row'], element: jqwidgets.DataTableInitRowDetails['element'], rowInfo: jqwidgets.DataTableInitRowDetails['rowinfo']) => void;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
    @Input('pagerHeight') attrPagerHeight: number;
@@ -53,8 +53,8 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('pagerRenderer') attrPagerRenderer: () => any;
    @Input('ready') attrReady: () => void;
    @Input('rowDetails') attrRowDetails: boolean;
-   @Input('renderToolbar') attrRenderToolbar: (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void;
-   @Input('renderStatusBar') attrRenderStatusBar: (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void;
+   @Input('renderToolbar') attrRenderToolbar: (toolbar: jqwidgets.DataTableRenderToolbar['toolbar']) => void;
+   @Input('renderStatusBar') attrRenderStatusBar: (statusbar: jqwidgets.DataTableRenderStatusBar['statusbar']) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -88,6 +88,18 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    ngOnInit() {
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxDataTable('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -483,7 +495,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   groupsRenderer(arg?: (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string): (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string {
+   groupsRenderer(arg?: (value: jqwidgets.DataTableGroupsRenderer['value'], rowData: jqwidgets.DataTableGroupsRenderer['rowdata'], level: jqwidgets.DataTableGroupsRenderer['level']) => string): (value: jqwidgets.DataTableGroupsRenderer['value'], rowData: jqwidgets.DataTableGroupsRenderer['rowdata'], level: jqwidgets.DataTableGroupsRenderer['level']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -509,7 +521,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   initRowDetails(arg?: (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void): (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void {
+   initRowDetails(arg?: (id: jqwidgets.DataTableInitRowDetails['id'], row: jqwidgets.DataTableInitRowDetails['row'], element: jqwidgets.DataTableInitRowDetails['element'], rowInfo: jqwidgets.DataTableInitRowDetails['rowinfo']) => void): (id: jqwidgets.DataTableInitRowDetails['id'], row: jqwidgets.DataTableInitRowDetails['row'], element: jqwidgets.DataTableInitRowDetails['element'], rowInfo: jqwidgets.DataTableInitRowDetails['rowinfo']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -678,7 +690,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   renderToolbar(arg?: (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void): (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void {
+   renderToolbar(arg?: (toolbar: jqwidgets.DataTableRenderToolbar['toolbar']) => void): (toolbar: jqwidgets.DataTableRenderToolbar['toolbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -691,7 +703,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   renderStatusBar(arg?: (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void): (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void {
+   renderStatusBar(arg?: (statusbar: jqwidgets.DataTableRenderStatusBar['statusbar']) => void): (statusbar: jqwidgets.DataTableRenderStatusBar['statusbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -927,7 +939,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
 
 
    // jqxDataTableComponent functions
-   addRow(rowIndex: number, rowData: any, rowPosition: any): void {
+   addRow(rowIndex: number | string | null, rowData: any, rowPosition: any): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1161,7 +1173,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       this.host.jqxDataTable('hideColumn', dataField);
    }
 
-   hideDetails(rowIndex: boolean): void {
+   hideDetails(rowIndex: number): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

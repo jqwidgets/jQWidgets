@@ -81,7 +81,7 @@ declare module jqwidgets {
     export interface BarGaugeTooltip {
         // BarGaugeTooltip properties
         classname?: string;
-        formatFunction?: (value: string, index?: number, color?: string) => string;
+        formatFunction?: (value: string, index: number) => string;
         visible?: boolean;
         precision?: number;
     }// BarGaugeTooltip
@@ -102,7 +102,7 @@ declare module jqwidgets {
         customColorScheme?: BarGaugeCustomColorScheme;
         disabled?: boolean;
         endAngle?: number;
-        formatFunction?: (value: number, index?: number, color?: string) => string;
+        formatFunction?: (value: number, index: number, color: string) => string;
         height?: string | number;
         labels?: BarGaugeLabels;
         max?: number | string;
@@ -110,6 +110,7 @@ declare module jqwidgets {
         relativeInnerRadius?: number | string;
         rendered?: () => void;
         startAngle?: number;
+        theme?: string;
         title?: BarGaugeTitle;
         tooltip?: BarGaugeTooltip;
         useGradient?: boolean;
@@ -122,19 +123,19 @@ declare module jqwidgets {
         // jqxBarGauge functions
         refresh(): void;
         render(): void;
-        val(value: Array<number>): Array<number>;
+        val(value?: Array<number>): Array<number>;
     }// jqxBarGauge
 
     export interface BulletChartLabelsFormatFunction {
         // BulletChartLabelsFormatFunction properties
-        value?: string;
-        position?: string;
+        value: number;
+        position: string;
     }// BulletChartLabelsFormatFunction
 
     export interface BulletChartTooltipFormatFunction {
         // BulletChartTooltipFormatFunction properties
-        pointerValue?: number;
-        targetValue?: number;
+        pointerValue: number;
+        targetValue: number;
     }// BulletChartTooltipFormatFunction
 
     export interface BulletChartPointer {
@@ -168,16 +169,17 @@ declare module jqwidgets {
         disabled?: boolean;
         height?: string | number;
         labelsFormat?: string;
-        labelsFormatFunction?: (value?: BulletChartLabelsFormatFunction['value'], position?: BulletChartLabelsFormatFunction['position']) => any;
+        labelsFormatFunction?: (value: number, position: 'near' | 'far') => any;
         orientation?: string;
         pointer?: BulletChartPointer;
         rtl?: boolean;
         ranges?: Array<BulletChartRanges>;
         showTooltip?: boolean;
         target?: BulletChartPointer;
+        theme?: string;
         ticks?: BulletChartTicks;
         title?: string;
-        tooltipFormatFunction?: (pointerValue?: BulletChartTooltipFormatFunction['pointerValue'], targetValue?: BulletChartTooltipFormatFunction['targetValue']) => string;
+        tooltipFormatFunction?: (pointerValue: number, targetValue: number) => string;
         width?: string | number;
     }// BulletChartOptions
 
@@ -187,7 +189,7 @@ declare module jqwidgets {
         destroy(): void;
         render(): void;
         refresh(): void;
-        val(value: number): number;
+        val(value?: number): number;
     }// jqxBulletChart
 
     export interface ButtonGroupOptions {
@@ -224,7 +226,7 @@ declare module jqwidgets {
         roundedCorners?: string;
         rtl?: boolean;
         enableDefault?: boolean;
-        cursor?: boolean;
+        cursor?: string;
         textPosition?: string;
         textImageRelation?: string;
         theme?: string;
@@ -239,7 +241,7 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         render(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxButton
 
     export interface CalendarOptions {
@@ -276,7 +278,7 @@ declare module jqwidgets {
         specialDates?: Array<any>;
         theme?: string;
         titleHeight?: number;
-        titleFormat?: string;
+        titleFormat?: string[];
         todayString?: string;
         value?: Date;
         width?: string | number;
@@ -293,8 +295,8 @@ declare module jqwidgets {
         getMaxDate(): any;
         getDate(): any;
         getRange(): any;
-        navigateForward(months: number): void;
-        navigateBackward(months: number): void;
+        navigateForward(months?: number): void;
+        navigateBackward(months?: number): void;
         render(): void;
         refresh(): void;
         setMinDate(date: any): void;
@@ -302,20 +304,35 @@ declare module jqwidgets {
         setDate(date: any): void;
         setRange(date: any, date2: any): void;
         today(): void;
-        val(value: Date | string, value2: Date | string): Date | string;
+        val(value?: Date | string, value2?: Date | string): Date | string;
     }// jqxCalendar
 
     export interface ChartDraw {
         // ChartDraw properties
-        renderer?: any;
-        rect?: any;
+        renderer: ChartRenderer;
+        rect: ChartRect;
     }// ChartDraw
 
     export interface ChartDrawBefore {
         // ChartDrawBefore properties
-        renderer?: any;
-        rect?: any;
+        renderer: ChartRenderer;
+        rect: ChartRect;
     }// ChartDrawBefore
+
+    export interface ChartRenderer {
+        // ChartRenderer properties
+        attr: (element: object, attributes: object) => void;
+        getAttr: (element: object, attributeName: string) => string;
+        circle: (cx: number, cy: number, r: number, attributes?: object) => object;
+        line: (x1: number, y1: number, x2: number, y2: number, attributes?: object) => object;
+        path: (path: string, attributes?: object) => object;
+        pieslice: (cx: number, cy: number, innerRadius: number, outerRadius: number, fromAngle: number, endAngle: number, centerOffset?: number, attributes?: object) => object;
+        rect: (x: number, y: number, width: number | string, height: number | string, attributes?: object) => object;
+        text: (text: string, x: number, y: number, width?: number | string, height?: number | string, angle?: number, attributes?: object, clip?: boolean, halign?: string, valign?: string, rotateAround?: string) => object;
+        measureText: (text: string, angle?: number, attributes?: object) => { width: number, height: number };
+        on: (element: object, event: string, handler: Function) => void;
+        off: (element: object, event: string, handler: Function) => void;
+    }// ChartRenderer
 
     export interface ChartOffset {
         // ChartOffset properties
@@ -327,8 +344,8 @@ declare module jqwidgets {
         // ChartRect properties
         x: number;
         y: number;
-        width: number | string;
-        height: number | string;
+        width: number;
+        height: number;
     }// ChartRect
 
     export interface ChartPadding {
@@ -388,7 +405,7 @@ declare module jqwidgets {
         offset?: ChartOffset;
         custom?: Array<ChartCustomOffset>;
         formatSettings?: ChartFormatSettings;
-        formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
+        formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string | number;
         autoRotate?: boolean;
     }// ChartAxisLabels
 
@@ -396,6 +413,7 @@ declare module jqwidgets {
         // ChartFormatSettings properties
         prefix?: string;
         sufix?: string;
+        suffix?: string;
         decimalSeparator?: string;
         thousandsSeparator?: string;
         decimalPlaces?: number;
@@ -406,14 +424,14 @@ declare module jqwidgets {
     export interface ChartSeriesLabels {
         // ChartSeriesLabels properties
         visible?: boolean;
-        class?: string;
+        class?: any;
         angle?: number;
         horizontalAlignment?: string;
         verticalAlignment?: string;
         offset?: ChartOffset;
-        backgroundColor?: string;
+        backgroundColor?: any;
         backgroundOpacity?: number;
-        borderColor?: string;
+        borderColor?: any;
         borderOpacity?: number;
         padding?: ChartPadding;
         linesEnabled?: boolean;
@@ -460,6 +478,7 @@ declare module jqwidgets {
         flip?: boolean;
         position?: string;
         padding?: ChartPadding;
+        description?: string;
         title?: ChartAxisTitle;
         tickMarks?: ChartTickMarks;
         gridLines?: ChartGridLines;
@@ -517,16 +536,16 @@ declare module jqwidgets {
         fillColorSymbolSelected?: string;
         fillColorAlt?: string;
         fillColorAltSelected?: string;
-        colorFunction?: (dataValue: any, itemIndex?: number, serie?: any, group?: any) => any;
+        colorFunction?: (dataValue: any, itemIndex: number, serie: any, group: any) => any;
         labels?: ChartSeriesLabels;
         formatSettings?: ChartFormatSettings;
-        formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
+        formatFunction?: (value: any, itemIndex: number, serieIndex: number, groupIndex: number) => string | number;
         legendFormatSettings?: ChartFormatSettings;
-        legendFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
+        legendFormatFunction?: (value: any, itemIndex: number, serieIndex: number, groupIndex: number) => string;
         legendLineColor?: string;
         legnedFillColor?: string;
         toolTipFormatSettings?: ChartFormatSettings;
-        toolTipFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
+        toolTipFormatFunction?: (value: any, itemIndex: number, serie?: any, group?: any, xAxisValue?: any, xAxis?: ChartXAxis) => string;
         toolTipLineColor?: string;
         toolTipBackground?: string;
         toolTipClass?: string;
@@ -561,6 +580,7 @@ declare module jqwidgets {
         logarithmicScaleBase?: number;
         valuesOnTicks?: boolean;
         unitInterval?: number;
+        description?: string;
         title?: ChartAxisTitle;
         labels?: ChartAxisLabels;
         gridLines?: ChartGridLines;
@@ -627,14 +647,15 @@ declare module jqwidgets {
         legendLayout?: ChartLegendLayout;
         padding?: ChartPadding;
         titlePadding?: ChartPadding;
+        theme?: string;
         colorScheme?: string;
         greyScale?: boolean;
         showToolTips?: boolean;
         toolTipShowDelay?: number;
         toolTipHideDelay?: number;
         toolTipMoveDuration?: number;
-        drawBefore?: (renderer?: ChartDrawBefore['renderer'], rect?: ChartDrawBefore['rect']) => void;
-        draw?: (renderer?: ChartDraw['renderer'], rect?: ChartDraw['rect']) => void;
+        drawBefore?: (renderer: ChartRenderer, rect: ChartRect) => void;
+        draw?: (renderer: ChartRenderer, rect: ChartRect) => void;
         rtl?: boolean;
         enableCrosshairs?: boolean;
         crosshairsColor?: string;
@@ -708,7 +729,7 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value?: boolean): boolean;
     }// jqxCheckBox
 
     export interface ColorPickerOptions {
@@ -718,6 +739,7 @@ declare module jqwidgets {
         disabled?: boolean;
         height?: string | number;
         showTransparent?: boolean;
+        theme?: string;
         width?: string | number;
     }// ColorPickerOptions
 
@@ -730,25 +752,25 @@ declare module jqwidgets {
 
     export interface ComboBoxRenderer {
         // ComboBoxRenderer properties
-        index?: number;
-        label?: number | string;
-        value?: number | string;
+        index: number;
+        label: number | string;
+        value: number | string;
     }// ComboBoxRenderer
 
     export interface ComboBoxRenderSelectedItem {
         // ComboBoxRenderSelectedItem properties
-        index?: number;
-        item?: any;
+        index: number;
+        item: any;
     }// ComboBoxRenderSelectedItem
 
     export interface ComboBoxSearch {
         // ComboBoxSearch properties
-        searchString?: string;
+        searchString: string;
     }// ComboBoxSearch
 
     export interface ComboBoxValidateSelection {
         // ComboBoxValidateSelection properties
-        itemValue?: string;
+        itemValue: string;
     }// ComboBoxValidateSelection
 
     export interface ComboBoxOptions {
@@ -778,19 +800,19 @@ declare module jqwidgets {
         placeHolder?: string;
         remoteAutoComplete?: boolean;
         remoteAutoCompleteDelay?: number;
-        renderer?: (index?: ComboBoxRenderer['index'], label?: ComboBoxRenderer['label'], value?: ComboBoxRenderer['value']) => string;
-        renderSelectedItem?: (index?: ComboBoxRenderSelectedItem['index'], item?: ComboBoxRenderSelectedItem['item']) => string;
+        renderer?: (index: ComboBoxRenderer['index'], label: ComboBoxRenderer['label'], value: ComboBoxRenderer['value']) => string;
+        renderSelectedItem?: (index: ComboBoxRenderSelectedItem['index'], item: ComboBoxRenderSelectedItem['item']) => string;
         rtl?: boolean;
         selectedIndex?: number;
         showArrow?: boolean;
         showCloseButtons?: boolean;
         searchMode?: string;
-        search?: (searchString?: ComboBoxSearch['searchString']) => void;
+        search?: (searchString: ComboBoxSearch['searchString']) => void;
         source?: any;
         scrollBarSize?: number | string;
         template?: string;
         theme?: string;
-        validateSelection?: (itemValue?: ComboBoxValidateSelection['itemValue']) => boolean;
+        validateSelection?: (itemValue: ComboBoxValidateSelection['itemValue']) => boolean;
         valueMember?: string;
         width?: string | number;
     }// ComboBoxOptions
@@ -838,7 +860,7 @@ declare module jqwidgets {
         uncheckIndex(index: number): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxComboBox
 
     export interface ComplexInputOptions {
@@ -862,11 +884,11 @@ declare module jqwidgets {
         // jqxComplexInput functions
         destroy(): void;
         getDecimalNotation(part: string, decimalNotation: string): string;
-        getReal(complexnumber: number): number;
-        getImaginary(complexnumber: number): number;
+        getReal(complexnumber?: number): number;
+        getImaginary(complexnumber?: number): number;
         render(): void;
         refresh(): void;
-        val(value: any): string;
+        val(value?: any): string;
     }// jqxComplexInput
 
     export interface DataTableColumns {
@@ -879,17 +901,17 @@ declare module jqwidgets {
         hidden?: boolean;
         columnGroup ?: string;
         autoCellHeight?: boolean;
-        renderer?: (text:string, align?:string, height?: string | number) => string;
-        rendered?: (element:any, align?:string, height?: string | number) => boolean;
-        cellsRenderer?: (row:number, column?:any, value?: any, rowData?:any) => string;
+        renderer?: (text: string, align: string, height: number) => string;
+        rendered?: (element: any, align: string, height: number) => boolean;
+        cellsRenderer?: (row: number, column: string, value: any, rowData: any) => string;
         columnType?: string;
-        validation?: (cell:number, value?:any) => any;
-        initEditor?: (row:number, cellValue?:any, editor?:any, cellText?:string, width?:string | number, height?:string | number) => void;
-        createEditor?: (row:number, cellValue?:any, editor?:any, cellText?:string, width?:string | number, height?:string | number) => void;
-        getEditorValue?: (row:number, cellValue?:any, editor?:any) => void;
+        validation?: (cell: any, value: any) => any;
+        initEditor?: (row: number, cellValue: any, editor: any, cellText: string, width: number, height: number) => void;
+        createEditor?: (row: number, cellValue: any, editor: any, cellText: string, width: number, height: number) => void;
+        getEditorValue?: (row: number, cellValue: any, editor: any) => any;
         cellsFormat?: string;
         aggregates?: Array<any>;
-        aggregatesRenderer?: (aggregates?: any, column?: any, element?: any) => string;
+        aggregatesRenderer?: (aggregates: any, column: any, element: any) => string;
         align?: string;
         cellsAlign?: string;
         width?: number | string;
@@ -913,27 +935,27 @@ declare module jqwidgets {
 
     export interface DataTableGroupsRenderer {
         // DataTableGroupsRenderer properties
-        value?: string;
-        rowdata?: any;
-        level?: number;
+        value: string;
+        rowdata: any;
+        level: number;
     }// DataTableGroupsRenderer
 
     export interface DataTableInitRowDetails {
         // DataTableInitRowDetails properties
-        id?: number;
-        row?: number;
-        element?: any;
-        rowinfo?: any;
+        id: any;
+        row: any;
+        element: any;
+        rowinfo: any;
     }// DataTableInitRowDetails
 
     export interface DataTableRenderToolbar {
         // DataTableRenderToolbar properties
-        toolbar?: any;
+        toolbar: any;
     }// DataTableRenderToolbar
 
     export interface DataTableRenderStatusBar {
         // DataTableRenderStatusBar properties
-        statusbar?: any;
+        statusbar: any;
     }// DataTableRenderStatusBar
 
     export interface DataTableEditSettings {
@@ -955,7 +977,7 @@ declare module jqwidgets {
         serverURL?: any;
         characterSet?: any;
         recordsInView?: boolean;
-        fileName?: string;
+        fileName?: any;
     }// DataTableExportSettings
 
     export interface DataTableOptions {
@@ -979,9 +1001,9 @@ declare module jqwidgets {
         filterHeight?: number;
         filterMode?: string;
         groups?: Array<any>;
-        groupsRenderer?: (value?:DataTableGroupsRenderer['value'], rowData?:DataTableGroupsRenderer['rowdata'], level?:DataTableGroupsRenderer['level']) => string;
+        groupsRenderer?: (value: DataTableGroupsRenderer['value'], rowData: DataTableGroupsRenderer['rowdata'], level: DataTableGroupsRenderer['level']) => string;
         height?: number | string;
-        initRowDetails?: (id?:DataTableInitRowDetails['id'], row?:DataTableInitRowDetails['row'], element?:DataTableInitRowDetails['element'], rowInfo?:DataTableInitRowDetails['rowinfo']) => void;
+        initRowDetails?: (id: DataTableInitRowDetails['id'], row: DataTableInitRowDetails['row'], element: DataTableInitRowDetails['element'], rowInfo: DataTableInitRowDetails['rowinfo']) => void;
         incrementalSearch?: boolean;
         localization?: any;
         pagerHeight?: number;
@@ -994,8 +1016,8 @@ declare module jqwidgets {
         pagerRenderer?: () => any;
         ready?: () => void;
         rowDetails?: boolean;
-        renderToolbar?: (toolbar?:DataTableRenderToolbar['toolbar']) => void;
-        renderStatusBar?: (statusbar?:DataTableRenderStatusBar['statusbar']) => void;
+        renderToolbar?: (toolbar: DataTableRenderToolbar['toolbar']) => void;
+        renderStatusBar?: (statusbar: DataTableRenderStatusBar['statusbar']) => void;
         rendering?: () => void;
         rendered?: () => void;
         rtl?: boolean;
@@ -1018,7 +1040,7 @@ declare module jqwidgets {
     export interface jqxDataTable extends widget, DataTableOptions {
 
         // jqxDataTable functions
-        addRow(rowIndex: number, rowData: any, rowPosition: any): void;
+        addRow(rowIndex: any, rowData: any, rowPosition: any): void;
         addFilter(dataField: string, filerGroup: any): void;
         applyFilters(): void;
         beginUpdate(): void;
@@ -1044,7 +1066,7 @@ declare module jqwidgets {
         getView(): Array<any>;
         getCellValue(rowIndex: number, dataField: string): any;
         hideColumn(dataField: string): void;
-        hideDetails(rowIndex: boolean): void;
+        hideDetails(rowIndex: number): void;
         isBindingCompleted(): boolean;
         lockRow(rowIndex: number): void;
         refresh(): void;
@@ -1120,7 +1142,7 @@ declare module jqwidgets {
         setMinDate(date: any): void;
         setMaxDate(date: any): void;
         setDate(date: any): void;
-        val(value: any, value2: any): any;
+        val(value?: any, value2?: any): any;
     }// jqxDateTimeInput
 
     export interface DockingCookieOptions {
@@ -1185,7 +1207,7 @@ declare module jqwidgets {
         allowUnpin?: boolean;
         contentContainer?: string;
         height?: number | string;
-        initContent?: () => void;
+        initContent?: (panel: any) => void;
         minHeight?: number | string;
         minWidth?: number | string;
         orientation?: string;
@@ -1222,7 +1244,7 @@ declare module jqwidgets {
     export interface jqxDockingLayout extends widget, DockingLayoutOptions {
 
         // jqxDockingLayout functions
-        addFloatGroup(width: number | string, height: number | string, position: DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void;
+        addFloatGroup(width: number | string, height: number | string, position: DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent?: any): void;
         destroy(): void;
         loadLayout(layout: any): void;
         refresh(): void;
@@ -1235,6 +1257,7 @@ declare module jqwidgets {
         disabled?: boolean;
         height?: string | number;
         lastchildfill?: boolean;
+        theme?: string;
         width?: string | number;
     }// DockPanelOptions
 
@@ -1246,23 +1269,23 @@ declare module jqwidgets {
 
     export interface DragDropOnDrag {
         // DragDropOnDrag properties
-        data?: any;
-        position?: object;
+        data: any;
+        position: { left: number, top: number };
     }// DragDropOnDrag
 
     export interface DragDropOnDragStart {
         // DragDropOnDragStart properties
-        position?: object;
+        position: { left: number, top: number };
     }// DragDropOnDragStart
 
     export interface DragDropOnTargetDrop {
         // DragDropOnTargetDrop properties
-        data?: any;
+        data: any;
     }// DragDropOnTargetDrop
 
     export interface DragDropOnDropTargetLeave {
         // DragDropOnDropTargetLeave properties
-        data?: any;
+        data: any;
     }// DragDropOnDropTargetLeave
 
     export interface DragDropOptions {
@@ -1275,17 +1298,18 @@ declare module jqwidgets {
         dropTarget?: any;
         dragZIndex?: number;
         feedback?: string;
-        initFeedback?: (feedback?:any) => void;
+        initFeedback?: (feedback: any) => void;
         opacity?: number;
         onDragEnd?: () => void;
-        onDrag?: (data?: DragDropOnDrag['data'], position?: DragDropOnDrag['position']) => void;
-        onDragStart?: (position?: DragDropOnDragStart['position']) => void;
-        onTargetDrop?: (data?: DragDropOnTargetDrop['data']) => void;
+        onDrag?: (data: DragDropOnDrag['data'], position: DragDropOnDrag['position']) => void;
+        onDragStart?: (position: DragDropOnDragStart['position']) => void;
+        onTargetDrop?: (data: DragDropOnTargetDrop['data']) => void;
         onDropTargetEnter?: () => void;
-        onDropTargetLeave?: (data?: DragDropOnDropTargetLeave['data']) => void;
+        onDropTargetLeave?: (data: DragDropOnDropTargetLeave['data']) => void;
         restricter?: string | object;
         revert?: boolean;
         revertDuration?: number;
+        theme?: string;
         tolerance?: string;
     }// DragDropOptions
 
@@ -1298,27 +1322,28 @@ declare module jqwidgets {
     export interface DrawOptions {
         // DrawOptions properties
         renderEngine?: string;
+        theme?: string;
     }// DrawOptions
 
     export interface jqxDraw extends widget, DrawOptions {
 
         // jqxDraw functions
-        attr(element: any, attributes: any): void;
-        circle(cx: number, cy: number, r: number, attributes: any): any;
+        attr(element?: any, attributes?: any): void;
+        circle(cx?: number, cy?: number, r?: number, attributes?: any): any;
         clear(): void;
-        getAttr(element: any, attributes: any): string;
+        getAttr(element?: any, attributes?: any): string;
         getSize(): any;
-        line(x1: number, y1: number, x2: number, y2: number, attributes: any): any;
-        measureText(text: string, angle: number, attributes: any): any;
-        on(element: any, event: string, func: any): void;
-        off(element: any, event: string, func: any): void;
-        path(path: string, attributes: any): any;
-        pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any;
+        line(x1?: number, y1?: number, x2?: number, y2?: number, attributes?: any): any;
+        measureText(text?: string, angle?: number, attributes?: any): any;
+        on(element?: any, event?: string, func?: any): void;
+        off(element?: any, event?: string, func?: any): void;
+        path(path?: string, attributes?: any): any;
+        pieslice(cx?: number, xy?: number, innerRadius?: any, outerRadius?: any, fromAngle?: number, endAngle?: number, centerOffset?: number, attributes?: any): any;
         refresh(): void;
-        rect(x: number, y: number, width: number | string, height: number | string, attributes: any): any;
-        saveAsJPEG(image: string, url: string): void;
-        saveAsPNG(image: string, url: string): void;
-        text(text: string, x: number, y: number, width: number | string, height: number | string, angle: number, attributes: any, clip: boolean, halign: string, valign: string, rotateAround: string): any;
+        rect(x?: number, y?: number, width?: number | string, height?: number | string, attributes?: any): any;
+        saveAsJPEG(image?: string, url?: string): void;
+        saveAsPNG(image?: string, url?: string): void;
+        text(text?: string, x?: number, y?: number, width?: number | string, height?: number | string, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any;
     }// jqxDraw
 
     export interface DropDownButtonOptions {
@@ -1351,7 +1376,7 @@ declare module jqwidgets {
         getContent(): any;
         isOpened(): boolean;
         open(): void;
-        setContent(content: string): void;
+        setContent(content: any): void;
     }// jqxDropDownButton
 
     export interface DropDownListItem {
@@ -1367,17 +1392,17 @@ declare module jqwidgets {
 
     export interface DropDownListRenderer {
         // DropDownListRenderer properties
-        index?: number;
-        label?: string;
-        value?: string;
+        index: number;
+        label: string;
+        value: string;
     }// DropDownListRenderer
 
     export interface DropDownListSelectionRenderer {
         // DropDownListSelectionRenderer properties
-        element?: any;
-        index?: number;
-        label?: string;
-        value?: any;
+        element: any;
+        index: number;
+        label: string;
+        value: any;
     }// DropDownListSelectionRenderer
 
     export interface DropDownListOptions {
@@ -1408,8 +1433,8 @@ declare module jqwidgets {
         placeHolder?: string;
         popupZIndex?: number;
         rtl?: boolean;
-        renderer?: (index?: DropDownListRenderer['index'], label?: DropDownListRenderer['label'], value?: DropDownListRenderer['value']) => string;
-        selectionRenderer?: (element?: DropDownListSelectionRenderer['element'], index?: DropDownListSelectionRenderer['index'], label?: DropDownListSelectionRenderer['label'], value?: DropDownListSelectionRenderer['value']) => string;
+        renderer?: (index: DropDownListRenderer['index'], label: DropDownListRenderer['label'], value: DropDownListRenderer['value']) => string;
+        selectionRenderer?: (element: DropDownListSelectionRenderer['element'], index: DropDownListSelectionRenderer['index'], label: DropDownListSelectionRenderer['label'], value: DropDownListSelectionRenderer['value']) => string;
         searchMode?: string;
         source?: Array<any>;
         selectedIndex?: number;
@@ -1423,7 +1448,7 @@ declare module jqwidgets {
     export interface jqxDropDownList extends widget, DropDownListOptions {
 
         // jqxDropDownList functions
-        addItem(item: DropDownListItem): boolean;
+        addItem(item: DropDownListItem | string): boolean;
         clearSelection(): void;
         clear(): void;
         close(): void;
@@ -1444,7 +1469,7 @@ declare module jqwidgets {
         getCheckedItems(): Array<DropDownListItem>;
         getSelectedItem(): DropDownListItem;
         getSelectedIndex(): number;
-        insertAt(item: DropDownListItem, index: number): void;
+        insertAt(item: DropDownListItem | string, index: number): void;
         isOpened(): boolean;
         indeterminateIndex(index: number): void;
         indeterminateItem(item: any): void;
@@ -1453,16 +1478,16 @@ declare module jqwidgets {
         removeItem(item: any): void;
         removeAt(index: number): void;
         selectIndex(index: number): void;
-        selectItem(item: DropDownListItem): void;
+        selectItem(item: DropDownListItem | string): void;
         setContent(content: string): void;
-        updateItem(newItem: DropDownListItem, item: any): void;
-        updateAt(item: DropDownListItem, index: number): void;
+        updateItem(newItem: DropDownListItem | string, item: any): void;
+        updateAt(item: DropDownListItem | string, index: number): void;
         unselectIndex(index: number): void;
         unselectItem(item: any): void;
         uncheckIndex(index: number): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxDropDownList
 
     export interface EditorLocalization {
@@ -1490,12 +1515,12 @@ declare module jqwidgets {
 
     export interface EditorCreateCommand {
         // EditorCreateCommand properties
-        name?: string;
+        name: string;
     }// EditorCreateCommand
 
     export interface EditorOptions {
         // EditorOptions properties
-        createCommand?: (name:EditorCreateCommand['name']) => void;
+        createCommand?: (name: EditorCreateCommand['name']) => any;
         disabled?: boolean;
         editable?: boolean;
         height?: string  | number;
@@ -1517,7 +1542,7 @@ declare module jqwidgets {
         focus(): void;
         print(): void;
         setMode(mode: boolean): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxEditor
 
     export interface ExpanderOptions {
@@ -1567,7 +1592,7 @@ declare module jqwidgets {
 
     export interface FileUploadRenderFiles {
         // FileUploadRenderFiles properties
-        fileName?: string;
+        fileName: string;
     }// FileUploadRenderFiles
 
     export interface FileUploadOptions {
@@ -1581,7 +1606,7 @@ declare module jqwidgets {
         height?: number | string;
         localization?: FileUploadLocalization;
         multipleFilesUpload?: boolean;
-        renderFiles?: (filename:FileUploadRenderFiles['fileName']) => void;
+        renderFiles?: (filename: FileUploadRenderFiles['fileName']) => string;
         rtl?: boolean;
         theme?: string;
         uploadUrl?: string;
@@ -1647,6 +1672,7 @@ declare module jqwidgets {
         padding?: FormPadding;
         backgroundColor?: string;
         borderColor?: string;
+        theme?: string;
         value?: any;
         template: Array<FormTemplateItem>;
         enableSmartPaste: boolean;
@@ -1702,7 +1728,7 @@ declare module jqwidgets {
         selectAll(): void;
         selectFirst(): void;
         selectLast(): void;
-        val(value: number | string): any;
+        val(value?: number | string): any;
     }// jqxFormattedInput
 
     export interface GaugeStyle {
@@ -1741,7 +1767,7 @@ declare module jqwidgets {
         interval?: number | string;
         offset?: Array<number>;
         visible?: boolean;
-        formatValue?: (value?: number) => string;
+        formatValue?: (value: any) => string | number;
     }// GaugeLabels
 
     export interface GaugePointer {
@@ -1793,6 +1819,7 @@ declare module jqwidgets {
         startAngle?: number | string;
         showRanges?: boolean;
         styles?: GaugeStyle;
+        theme?: string;
         ticksMajor?: GaugeTicks;
         ticksMinor?: GaugeTicks;
         ticksDistance?: string;
@@ -1805,7 +1832,7 @@ declare module jqwidgets {
         // jqxGauge functions
         disable(): void;
         enable(): void;
-        val(value: number): number;
+        val(value?: number): number;
     }// jqxGauge
 
     export interface ValidationResult {
@@ -1831,7 +1858,7 @@ declare module jqwidgets {
         threestatecheckbox?: boolean;
         sortable?: boolean;
         filterable?: boolean;
-        filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
+        filter?: any;
         buttonclick?: (row: number) => void;
         hideable?: boolean;
         hidden?: boolean;
@@ -1841,12 +1868,12 @@ declare module jqwidgets {
         columngroup?: string;
         enabletooltips?: boolean;
         columntype?: string;
-        renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
-        rendered?: (columnHeaderElement?: any) => void;
-        cellTemplate?: string | { type?: string; [prop: string]: any } | ((value?: any, rowData?: any) => string);
-        cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
-        aggregatesrenderer?: (aggregates?: any, column?: any, element?: any, summaryData?: any)  => string;
-        validation?: (cell?: any, value?: number) => any;
+        renderer?: (defaultText: string, alignment: string, height: number) => string;
+        rendered?: (columnHeaderElement: any) => void;
+        cellTemplate?: string | { type?: string; [prop: string]: any } | ((value: any, rowData: any) => string);
+        cellsrenderer?: (row: number, columnfield: string, value: any, defaulthtml: string, columnproperties: any, rowdata: any) => string;
+        aggregatesrenderer?: (aggregates: any, column: any, element: any, summaryData: any) => string;
+        validation?: (cell: any, value: any) => any;
         createwidget?: (row: any, column: any, value: string, cellElement: any) => void;
         initwidget?: (row: number, column: string, value: string, cellElement: any) => void;
         createfilterwidget?: (column: any, htmlElement: HTMLElement, editor: any) => void;
@@ -1858,15 +1885,15 @@ declare module jqwidgets {
         cellbeginedit?: (row: number, datafield: string, columntype: string, value: any) => boolean;
         cellendedit?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => boolean;
         cellvaluechanging?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => string | void;
-        createeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any, addRowCallback: any) => any;
-        initeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any) => void;
-        reseteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => void;
-        geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => any;
-        destroyeverpresentrowwidget?: (htmlElement: HTMLElement) => void;
+        createeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any, addRowCallback: any) => any;
+        initeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any) => void;
+        reseteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => void;
+        geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => any;
+        destroyeverpresentrowwidget?: (htmlElement: any) => void;
         validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean | object;
         cellsformat?: string;
         cellclassname?: any;
-        aggregates?: any;
+        aggregates?: Array<string | { [name: string]: (aggregatedValue: any, currentValue: any, column: string, record: any, level: number) => any }>;
         align?: string;
         cellsalign?: string;
         width?: number | string;
@@ -1908,14 +1935,14 @@ declare module jqwidgets {
         datafields?: Array<GridSourceDataFields>;
         pagenum?: number;
         pagesize?: number;
-        pager?: (pagenum?: number, pagesize?: number, oldpagenum?: number) => any;
+        pager?: (pageNumber: number, pageSize: number, oldPageNumber: number) => any;
         sortcolumn?: string;
         sortdirection?: string;
-        sort?: (column?: any, direction?: any) => void;
-        filter?: (filters?: any, recordsArray?: any) => void;
-        addrow?: (rowid?: any, rowdata?: any, position?: any, commit?: boolean) => void;
-        deleterow?: (rowid?: any, commit?: boolean) => void;
-        updaterow?: (rowid?: any, newdata?: any, commit? : any) => void;
+        sort?: (column: any, direction: any) => void;
+        filter?: (filters: any, recordsArray: any) => void;
+        addrow?: (rowid: any, rowdata: any, position: any, commit: (result: boolean) => void) => void;
+        deleterow?: (rowid: any, commit: (result: boolean) => void) => void;
+        updaterow?: (rowid: any, newdata: any, commit: (result: boolean) => void) => void;
         processdata?: (data: any) => void;
         formatdata?: (data: any) => any;
         async?: boolean;
@@ -1961,9 +1988,9 @@ declare module jqwidgets {
 
     export interface GridGetPagingInformation {
         // GridGetPagingInformation properties
-        pagenum?: string;
-        pagesize?: any;
-        pagescount?: any;
+        pagenum?: number;
+        pagesize?: number;
+        pagescount?: number;
     }// GridGetPagingInformation
 
     export interface GridDateNaming {
@@ -2020,9 +2047,9 @@ declare module jqwidgets {
 
     export interface GridGetCell {
         // GridGetCell properties
-        value?: number;
+        value?: any;
         row?: number;
-        column?: number;
+        column?: string;
     }// GridGetCell
 
     export interface GridGetSelectedCell {
@@ -2061,36 +2088,36 @@ declare module jqwidgets {
 
     export interface GridColumnmenuopening {
         // GridColumnmenuopening properties
-        menu?: any;
-        datafield?: any;
-        height?: any;
+        menu: any;
+        datafield: any;
+        height: any;
     }// GridColumnmenuopening
 
     export interface GridColumnmenuclosing {
         // GridColumnmenuclosing properties
-        menu?: any;
-        datafield?: any;
-        height?: any;
+        menu: any;
+        datafield: any;
+        height: any;
     }// GridColumnmenuclosing
 
     export interface GridCellhover {
         // GridCellhover properties
-        cellhtmlElement?: any;
-        x?: any;
-        y?: any;
+        cellhtmlElement: any;
+        x: any;
+        y: any;
     }// GridCellhover
 
     export interface GridGroupsrenderer {
         // GridGroupsrenderer properties
-        text?: string;
-        group?: number;
-        expanded?: boolean;
-        data?: object;
+        text: string;
+        group: any;
+        expanded: boolean;
+        data: any;
     }// GridGroupsrenderer
 
     export interface GridGroupcolumnrenderer {
         // GridGroupcolumnrenderer properties
-        text?: any;
+        text: any;
     }// GridGroupcolumnrenderer
 
     export interface GridHandlekeyboardnavigation  {
@@ -2100,26 +2127,26 @@ declare module jqwidgets {
 
     export interface GridScrollfeedback {
         // GridScrollfeedback properties
-        row?: any;
+        row: any;
     }// GridScrollfeedback
 
     export interface GridFilter {
         // GridFilter properties
-        cellValue?: any;
-        rowData?: any;
-        dataField?: string;
-        filterGroup?: any;
-        defaultFilterResult?: boolean;
+        cellValue: any;
+        rowData: any;
+        dataField: string;
+        filterGroup: any;
+        defaultFilterResult: boolean;
     }// GridFilter
 
     export interface GridRendertoolbar {
         // GridRendertoolbar properties
-        toolbar?: any;
+        toolbar: any;
     }// GridRendertoolbar
 
     export interface GridRenderstatusbar {
         // GridRenderstatusbar properties
-        statusbar?: any;
+        statusbar: any;
     }// GridRenderstatusbar
 
     export interface GridOptions {
@@ -2135,20 +2162,20 @@ declare module jqwidgets {
         showcolumnheaderlines?: boolean;
         adaptive?: boolean;
         compact?: boolean;
-        contextmenuitems?: any;
-        contextmenuenabled?: any;
+        contextmenuitems?: Array<string | object>;
+        contextmenuenabled?: boolean;
         contextmenuwidth?: any;
         contextmenuheight?: any;
-        contextmenuitemclick?: any;
+        contextmenuitemclick?: (event: any, cell: GridGetCell) => void;
         adaptivewidth?: number;
         commandcolumn?: boolean;
-        commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;
+        commandcolumnrenderer?: (row: number, columnfield: string, active: any) => string;
         clipboard?: boolean;
         closeablegroups?: boolean;
         columnsmenuwidth?: number;
-        columnmenuopening?: (menu?: GridColumnmenuopening['menu'], datafield?: GridColumnmenuopening['datafield'], height?: GridColumnmenuopening['height']) => boolean | void;
-        columnmenuclosing?: (menu?: GridColumnmenuclosing['menu'], datafield?: GridColumnmenuclosing['datafield'], height?: GridColumnmenuclosing['height']) => boolean;
-        cellhover?: (cellhtmlElement?: GridCellhover['cellhtmlElement'], x?: GridCellhover['x'], y?: GridCellhover['y']) => void;
+        columnmenuopening?: (menu: GridColumnmenuopening['menu'], datafield: GridColumnmenuopening['datafield'], height: GridColumnmenuopening['height']) => boolean | void;
+        columnmenuclosing?: (menu: GridColumnmenuclosing['menu'], datafield: GridColumnmenuclosing['datafield'], height: GridColumnmenuclosing['height']) => boolean | void;
+        cellhover?: (cellhtmlElement: GridCellhover['cellhtmlElement'], x: GridCellhover['x'], y: GridCellhover['y']) => void;
         enablekeyboarddelete?: boolean;
         enableellipsis?: boolean;
         enablemousewheel?: boolean;
@@ -2162,11 +2189,11 @@ declare module jqwidgets {
         everpresentrowactionsmode?: string;
         filterrowheight?: number;
         filtermode?: string;
-        groupsrenderer?: (text?: GridGroupsrenderer['text'], group?: GridGroupsrenderer['group'], expanded?: GridGroupsrenderer['expanded'], data?: GridGroupsrenderer['data']) => string;
-        groupcolumnrenderer?: (text?: GridGroupcolumnrenderer['text']) => string;
+        groupsrenderer?: (text: GridGroupsrenderer['text'], group: GridGroupsrenderer['group'], expanded: GridGroupsrenderer['expanded'], data: GridGroupsrenderer['data']) => string;
+        groupcolumnrenderer?: (text: GridGroupcolumnrenderer['text']) => string;
         groupsexpandedbydefault?: boolean;
-        handlekeyboardnavigation?: (event: GridHandlekeyboardnavigation['event']) => boolean;
-        pagerrenderer?: () => any[];
+        handlekeyboardnavigation?: (event: GridHandlekeyboardnavigation['event']) => boolean | void;
+        pagerrenderer?: () => any;
         rtl?: boolean;
         showdefaultloadelement?: boolean;
         showfiltercolumnbackground?: boolean;
@@ -2189,8 +2216,8 @@ declare module jqwidgets {
         showfilterbar?: boolean;
         filterbarmode?: string;
         selectionmode?: string;
-        updatefilterconditions?: (type?: string, defaultconditions?: any) => any;
-        updatefilterpanel?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
+        updatefilterconditions?: (type: string, defaultconditions: any) => any;
+        updatefilterpanel?: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any;
         theme?: string;
         toolbarheight?: number;
         autoheight?: boolean;
@@ -2224,7 +2251,7 @@ declare module jqwidgets {
         editable?: boolean;
         batcheditable?: boolean;
         editmode?: string;
-        filter?: (cellValue?: GridFilter['cellValue'], rowData?: GridFilter['rowData'], dataField?: GridFilter['dataField'], filterGroup?: GridFilter['filterGroup'], defaultFilterResult?: GridFilter['defaultFilterResult']) => any;
+        filter?: (cellValue: GridFilter['cellValue'], rowData: GridFilter['rowData'], dataField: GridFilter['dataField'], filterGroup: GridFilter['filterGroup'], defaultFilterResult: GridFilter['defaultFilterResult']) => any;
         filterable?: boolean;
         filternlpinput?: string;
         aiKey?: string;
@@ -2239,8 +2266,8 @@ declare module jqwidgets {
         groups?: Array<string>;
         horizontalscrollbarstep?: number;
         horizontalscrollbarlargestep?: number;
-        initrowdetails?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
-        disablerowdetails?: (index?: number) => boolean;
+        initrowdetails?: (index: number, parentElement: any, gridElement: any, datarecord: any) => void;
+        disablerowdetails?: (index: number) => boolean;
         keyboardnavigation?: boolean;
         localization?: GridLocalizationobject;
         pagesize?: number;
@@ -2253,9 +2280,9 @@ declare module jqwidgets {
         rowdetailstemplate?: any;
         ready?: () => void;
         rendered?: (type: any) => void;
-        renderstatusbar?: (statusbar?: GridRenderstatusbar['statusbar']) => void;
-        rendertoolbar?: (toolbar?: GridRendertoolbar['toolbar']) => void;
-        rendergridrows?: (params?: any) => any;
+        renderstatusbar?: (statusbar: GridRenderstatusbar['statusbar']) => void;
+        rendertoolbar?: (toolbar: GridRendertoolbar['toolbar']) => void;
+        rendergridrows?: (params: any) => any;
         sortable?: boolean;
         sortmode?: string;
         sortmodekey?: string;
@@ -2272,28 +2299,28 @@ declare module jqwidgets {
     export interface jqxGrid extends widget, GridOptions {
 
         // jqxGrid functions
-        aiConfig(config: any): void;
-        aiCommand(text: string, callback: any): any;
-        aiAsk(text: string, callback: any): any;
-        aiSummarize(rows: any, callback: any): any;
-        aiExplainRow(rowindex: number, callback: any): any;
-        aiClassifyColumn(options: any, callback: any): any;
-        autoresizecolumns(type: string): void;
-        autoresizecolumn(dataField: string, type: string): void;
+        aiConfig(config?: any): any;
+        aiCommand(text: string, callback?: any): any;
+        aiAsk(text: string, callback?: any): any;
+        aiSummarize(rows?: any, callback?: any): any;
+        aiExplainRow(rowindex: number, callback?: any): any;
+        aiClassifyColumn(options: any, callback?: any): any;
+        autoresizecolumns(type?: string): void;
+        autoresizecolumn(dataField: string, type?: string): void;
         beginupdate(): void;
         clear(): void;
-        createChart(type: string, dataSource: any): void;
+        createChart(type: string, dataSource?: any): void;
         destroy(): void;
         endupdate(): void;
         ensurerowvisible(rowBoundIndex: number): void;
         focus(): void;
         getcolumnindex(dataField: string): number;
-        getcolumn(dataField: string): GridGetColumn;
+        getcolumn(dataField: string): GridColumn;
         getcolumnproperty(dataField: string, propertyName: string): any;
         getrowid(rowBoundIndex: number): string;
         getrowdata(rowBoundIndex: number): any;
-        getrowdatabyid(rowID: string): any;
-        getrowboundindexbyid(rowID: string): number;
+        getrowdatabyid(rowID: number | string): any;
+        getrowboundindexbyid(rowID: number | string): number;
         getrowboundindex(rowDisplayIndex: number): number;
         getrows(): Array<any>;
         getboundrows(): Array<any>;
@@ -2319,7 +2346,7 @@ declare module jqwidgets {
         setcolumnproperty(dataField: string, propertyName: any, propertyValue: any): void;
         showcolumn(dataField: string): void;
         unpincolumn(dataField: string): void;
-        updatebounddata(type: any): void;
+        updatebounddata(type?: any): void;
         updating(): boolean;
         getsortcolumn(): string;
         removesort(): void;
@@ -2333,20 +2360,20 @@ declare module jqwidgets {
         getrootgroupscount(): number;
         getgroup(groupIndex: number): GridGetGroup;
         insertgroup(groupIndex: number, dataField: string): void;
-        iscolumngroupable(): boolean;
+        iscolumngroupable(dataField: string): boolean;
         removegroupat(groupIndex: number): void;
         removegroup(dataField: string): void;
-        addfilter(dataField: string, filterGroup: any, refreshGrid: boolean): void;
+        addfilter(dataField: string, filterGroup: any, refreshGrid?: boolean): void;
         applyfilters(): void;
         clearfilters(): void;
         getfilterinformation(): any;
         getcolumnat(index: number): any;
-        removefilter(dataField: string, refreshGrid: boolean): void;
+        removefilter(dataField: string, refreshGrid?: boolean): void;
         refreshfilterrow(): void;
         gotopage(pagenumber: number): void;
         gotoprevpage(): void;
         gotonextpage(): void;
-        addrow(rowIds: any, data: any, rowPosition: any): void;
+        addrow(rowIds: any, data: any, rowPosition?: any): void;
         begincelledit(rowBoundIndex: number, dataField: string): void;
         beginrowedit(rowBoundIndex: number): void;
         closemenu(): void;
@@ -2356,13 +2383,13 @@ declare module jqwidgets {
         getcell(rowBoundIndex: number, datafield: string): GridGetCell;
         getcellatposition(left: number, top: number): GridGetCell;
         getcelltext(rowBoundIndex: number, dataField: string): string;
-        getcelltextbyid(rowID: string, dataField: string): string;
-        getcellvaluebyid(rowID: string, dataField: string): any;
+        getcelltextbyid(rowID: number | string, dataField: string): string;
+        getcellvaluebyid(rowID: number | string, dataField: string): any;
         getcellvalue(rowBoundIndex: number, dataField: string): any;
         isBindingCompleted(): boolean;
         openmenu(dataField: string): void;
         setcellvalue(rowBoundIndex: number, dataField: string, value: any): void;
-        setcellvaluebyid(rowID: string, dataField: string, value: any): void;
+        setcellvaluebyid(rowID: number | string, dataField: string, value: any): void;
         showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void;
         updaterow(rowIds: string | number | Array<number | string>, data: any): void;
         clearselection(): void;
@@ -2370,7 +2397,7 @@ declare module jqwidgets {
         getselectedrowindexes(): Array<number>;
         getselectedcell(): GridGetSelectedCell;
         getselectedcells(): Array<GridGetSelectedCell>;
-        showSidePanel(selector: string | HTMLElement, width: number, callbackFn: any): void;
+        showSidePanel(selector: string | HTMLElement, width?: number, callbackFn?: any): void;
         closeSidePanel(): void;
         selectcell(rowBoundIndex: number, dataField: string): void;
         selectallrows(): void;
@@ -2380,11 +2407,11 @@ declare module jqwidgets {
         getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string;
         refreshaggregates(): void;
         renderaggregates(): void;
-        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): any;
-        exportview(dataType: string, fileName: string): any;
-        openColumnChooser(columns: any, header: string): void;
+        exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: Array<number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): any;
+        exportview(dataType: string, fileName?: string): any;
+        openColumnChooser(columns?: any, header?: string): void;
         getstate(): GridGetState;
-        loadstate(stateobject: any): void;
+        loadstate(stateobject?: any): void;
         savestate(): GridGetState;
     }// jqxGrid
 
@@ -2403,7 +2430,7 @@ declare module jqwidgets {
         placeHolder?: string;
         popupZIndex?: number;
         query?: string;
-        renderer?: (itemValue?: string, inputValue?: string) => string;
+        renderer?: (itemValue: string, inputValue: string) => string;
         rtl?: boolean;
         searchMode?: string;
         source?: any;
@@ -2419,7 +2446,7 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         selectAll(): void;
-        val(value: number | string): string;
+        val(value?: number | string): string;
     }// jqxInput
 
     export interface KanbanColumns {
@@ -2436,16 +2463,16 @@ declare module jqwidgets {
 
     export interface KanbanColumnRenderer {
         // KanbanColumnRenderer properties
-        element?: any;
-        collapsedElement?: any;
-        column?: any;
+        element: any;
+        collapsedElement: any;
+        column: any;
     }// KanbanColumnRenderer
 
     export interface KanbanItemRenderer {
         // KanbanItemRenderer properties
-        element?: any;
-        item?: any;
-        resource?: any;
+        element: any;
+        item: any;
+        resource: any;
     }// KanbanItemRenderer
 
     export interface KanbanSource {
@@ -2473,13 +2500,13 @@ declare module jqwidgets {
 
     export interface KanbanOptions {
         // KanbanOptions properties
-        columnRenderer?: (element?: KanbanColumnRenderer['element'], collapsedElement?: KanbanColumnRenderer['collapsedElement'], column?: KanbanColumnRenderer['column']) => void;
+        columnRenderer?: (element: KanbanColumnRenderer['element'], collapsedElement: KanbanColumnRenderer['collapsedElement'], column: KanbanColumnRenderer['column']) => void;
         columns?: Array<KanbanColumns>;
         connectWith?: string;
         headerHeight?: number | string;
         headerWidth?: number;
         height?: string | number;
-        itemRenderer?: (element?: KanbanItemRenderer['element'], item?: KanbanItemRenderer['item'], resource?: KanbanItemRenderer['resource']) => void;
+        itemRenderer?: (element: KanbanItemRenderer['element'], item: KanbanItemRenderer['item'], resource: KanbanItemRenderer['resource']) => void;
         ready?: () => void;
         rtl?: boolean;
         source?: any;
@@ -2498,14 +2525,14 @@ declare module jqwidgets {
         getColumn(dataField: string): KanbanColumns;
         getColumnItems(dataField: string): Array<KanbanSource>;
         getItems(): KanbanSource;
-        removeItem(itemId: string): void;
+        removeItem(itemId: string | number): void;
         updateItem(itemId: string, newContent: KanbanUpdateItem): void;
     }// jqxKanban
 
     export interface KnobChanging {
         // KnobChanging properties
-        oldValue?: number;
-        newValue?: number;
+        oldValue: number;
+        newValue: number;
     }// KnobChanging
 
     export interface KnobLabelsFormatFunction {
@@ -2607,6 +2634,7 @@ declare module jqwidgets {
         styles?: KnobStyle;
         step?: number | string;
         snapToStep?: boolean;
+        theme?: string;
         value?: any;
         width?: number | string;
     }// KnobOptions
@@ -2615,7 +2643,7 @@ declare module jqwidgets {
 
         // jqxKnob functions
         destroy(): void;
-        val(value: number | string): number;
+        val(value?: number | string): number;
     }// jqxKnob
 
     export interface Layout {
@@ -2627,7 +2655,7 @@ declare module jqwidgets {
         allowUnpin?: boolean;
         contentContainer?: string;
         height?: number | string;
-        initContent?: () => void;
+        initContent?: (panel: any) => void;
         minHeight?: number | string;
         minWidth?: number | string;
         orientation?: string;
@@ -2727,6 +2755,7 @@ declare module jqwidgets {
         showRanges?: boolean;
         scaleStyle?: any;
         scaleLength?: number | string;
+        theme?: string;
         ticksOffset?: Array<number | string>;
         ticksPosition?: string;
         ticksMinor?: LinearGaugeTicks;
@@ -2740,7 +2769,7 @@ declare module jqwidgets {
         // jqxLinearGauge functions
         disable(): void;
         enable(): void;
-        val(value: number | string): number;
+        val(value?: number | string): number;
     }// jqxLinearGauge
 
     export interface LinkButtonOptions {
@@ -2756,22 +2785,36 @@ declare module jqwidgets {
 
     }// jqxLinkButton
 
+    export interface ListBoxItem {
+        // ListBoxItem properties
+        label?: string;
+        value?: any;
+        index?: number;
+        visibleIndex?: number;
+        disabled?: boolean;
+        checked?: boolean;
+        html?: string;
+        group?: string;
+        title?: string;
+        originalItem?: any;
+    }// ListBoxItem
+
     export interface ListBoxDragStart {
         // ListBoxDragStart properties
-        item?: object;
+        item: ListBoxItem;
     }// ListBoxDragStart
 
     export interface ListBoxDragEnd {
         // ListBoxDragEnd properties
-        dragItem?: object;
-        dropItem?: object;
+        dragItem: ListBoxItem;
+        dropItem?: ListBoxItem;
     }// ListBoxDragEnd
 
     export interface ListBoxRenderer {
         // ListBoxRenderer properties
-        index?: number;
-        label?: string | number;
-        value?: string | number;
+        index: number;
+        label: string | number;
+        value: string | number;
     }// ListBoxRenderer
 
     export interface ListBoxOptions {
@@ -2856,13 +2899,13 @@ declare module jqwidgets {
         uncheckIndex(index: number | string): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: number | string): string;
+        val(value?: number | string): string;
     }// jqxListBox
 
     export interface ListMenuFilterCallback {
         // ListMenuFilterCallback properties
-        text?: string;
-        searchValue?: string | number;
+        text: string;
+        searchValue: string;
     }// ListMenuFilterCallback
 
     export interface ListMenuOptions {
@@ -2915,7 +2958,7 @@ declare module jqwidgets {
 
         // jqxLoader functions
         close(): void;
-        open(left: number | string, top: number | string): void;
+        open(left?: number | string, top?: number | string): void;
     }// jqxLoader
 
     export interface MaskedInputOptions {
@@ -2938,7 +2981,7 @@ declare module jqwidgets {
         clear(): void;
         destroy(): void;
         focus(): void;
-        val(value: number | string): string;
+        val(value?: number | string): string;
     }// jqxMaskedInput
 
     export interface MenuOptions {
@@ -3054,7 +3097,7 @@ declare module jqwidgets {
         setHeaderContentAt(index: number, item: number | string): void;
         showArrowAt(index: number | string): void;
         update(index: number, header: number | string, content: number | string): void;
-        val(value: number | string): string | number;
+        val(value?: number | string): string | number;
     }// jqxNavigationBar
 
     export interface NotificationIcon {
@@ -3085,7 +3128,7 @@ declare module jqwidgets {
         position?: string;
         rtl?: boolean;
         showCloseButton?: boolean;
-        template?: string;
+        template?: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null;
         theme?: string;
         width?: string | number;
     }// NotificationOptions
@@ -3104,7 +3147,7 @@ declare module jqwidgets {
     export interface NumberInputOptions {
         // NumberInputOptions properties
         allowNull?: boolean;
-        autoHidePromptChart?: boolean;
+        autoHidePromptChar?: boolean;
         decimal?: number | string;
         disabled?: boolean;
         decimalDigits?: number | string;
@@ -3142,7 +3185,7 @@ declare module jqwidgets {
         focus(): void;
         getDecimal(): number;
         setDecimal(index: number | string): void;
-        val(value: number | string): number;
+        val(value?: number | string): number;
     }// jqxNumberInput
 
     export interface PanelOptions {
@@ -3194,16 +3237,16 @@ declare module jqwidgets {
 
     export interface PasswordInputPasswordStrength {
         // PasswordInputPasswordStrength properties
-        password?: any;
-        characters?: any;
-        defaultStrength?: string;
+        password: string;
+        characters: { letters: number, numbers: number, specialKeys: number };
+        defaultStrength: string;
     }// PasswordInputPasswordStrength
 
     export interface PasswordInputStrengthTypeRenderer {
         // PasswordInputStrengthTypeRenderer properties
-        password?: any;
-        characters?: any;
-        defaultStrength?: string;
+        password: string;
+        characters: { letters: number, numbers: number, specialKeys: number };
+        defaultStrength: string;
     }// PasswordInputStrengthTypeRenderer
 
     export interface PasswordInputOptions {
@@ -3229,11 +3272,12 @@ declare module jqwidgets {
         // jqxPasswordInput functions
         render(): void;
         refresh(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxPasswordInput
 
     export interface PivotDesignerOptions {
         // PivotDesignerOptions properties
+        theme?: string;
         type?: string;
         target: any;
     }// PivotDesignerOptions
@@ -3246,12 +3290,12 @@ declare module jqwidgets {
 
     export interface PivotGridItemsRenderer {
         // PivotGridItemsRenderer properties
-        pivotItem?: any;
+        pivotItem: any;
     }// PivotGridItemsRenderer
 
     export interface PivotGridCellsRenderer {
         // PivotGridCellsRenderer properties
-        pivotCell?: any;
+        pivotCell: any;
     }// PivotGridCellsRenderer
 
     export class PivotGridDesigner {
@@ -3423,6 +3467,7 @@ declare module jqwidgets {
         autoResize?: boolean;
         itemsRenderer?: (pivotItem: PivotGridItemsRenderer['pivotItem']) => string;
         cellsRenderer?: (pivotCell: PivotGridCellsRenderer['pivotCell']) => string;
+        theme?: string;
     }// PivotGridOptions
 
     export interface jqxPivotGrid extends widget, PivotGridOptions {
@@ -3472,8 +3517,8 @@ declare module jqwidgets {
 
     export interface ProgressBarRenderText {
         // ProgressBarRenderText properties
-        text?: string;
-        value?: number;
+        text: string;
+        value: number;
     }// ProgressBarRenderText
 
     export interface ProgressBarOptions {
@@ -3487,7 +3532,7 @@ declare module jqwidgets {
         min?: number | string;
         orientation?: string;
         rtl?: boolean;
-        renderText?: (text?: ProgressBarRenderText['text'], value?: ProgressBarRenderText['value']) => string;
+        renderText?: (text: ProgressBarRenderText['text'], value: ProgressBarRenderText['value']) => string;
         showText?: boolean;
         template?: string;
         theme?: string;
@@ -3500,7 +3545,7 @@ declare module jqwidgets {
         // jqxProgressBar functions
         actualValue(value: number | string): void;
         destroy(): void;
-        val(value: number | string): number;
+        val(value?: number | string): number;
     }// jqxProgressBar
 
     export interface RadioButtonOptions {
@@ -3529,7 +3574,7 @@ declare module jqwidgets {
         focus(): void;
         render(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value?: boolean): boolean;
     }// jqxRadioButton
 
     export interface RangeSelectorRange {
@@ -3548,19 +3593,19 @@ declare module jqwidgets {
 
     export interface RangeSelectorLabelsFormatFunction {
         // RangeSelectorLabelsFormatFunction properties
-        value?: number | string;
+        value: any;
     }// RangeSelectorLabelsFormatFunction
 
     export interface RangeSelectorMarkersFormatFunction {
         // RangeSelectorMarkersFormatFunction properties
-        value?: number | string;
-        position?: string;
+        value: any;
+        position: any;
     }// RangeSelectorMarkersFormatFunction
 
     export interface RangeSelectorGroupLabelsFormatFunction {
         // RangeSelectorGroupLabelsFormatFunction properties
-        value?: string;
-        date?: any;
+        value: string;
+        date: any;
     }// RangeSelectorGroupLabelsFormatFunction
 
     export interface RangeSelectorOptions {
@@ -3585,7 +3630,6 @@ declare module jqwidgets {
         showGroupLabels?: boolean;
         showMinorTicks?: boolean;
         snapToTicks?: boolean;
-        showMajorLabels?: boolean;
         showMarkers?: boolean;
         theme?: string;
         width?: string | number;
@@ -3610,6 +3654,7 @@ declare module jqwidgets {
         itemWidth?: number;
         precision?: number;
         singleVote?: boolean;
+        theme?: string;
         value?: number;
         width?: string | number;
     }// RatingOptions
@@ -3621,7 +3666,7 @@ declare module jqwidgets {
         enable(): void;
         getValue(): number;
         setValue(value: number): void;
-        val(value: number): number;
+        val(value?: number): number;
     }// jqxRating
 
     export interface RepeatButtonOptions {
@@ -3639,7 +3684,6 @@ declare module jqwidgets {
         textImageRelation?: string;
         theme?: string;
         template?: string;
-        toggled?: boolean;
         width?: string | number;
         value?: string;
     }// RepeatButtonOptions
@@ -3650,7 +3694,7 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         render(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxRepeatButton
 
     export interface ResponsivePanelOptions {
@@ -3723,7 +3767,7 @@ declare module jqwidgets {
         showAt(index: number): void;
         setPopupLayout(index: number, layout: any, width: number | string, height: number | string): void;
         updateAt(index: number, item: RibbonItem): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxRibbon
 
     export interface SchedulerAppointmentDataFields {
@@ -3770,64 +3814,64 @@ declare module jqwidgets {
 
     export interface SchedulerContextMenuOpen {
         // SchedulerContextMenuOpen properties
-        menu?: any;
-        appointment?: any;
-        event?: any;
+        menu: any;
+        appointment: any;
+        event: any;
     }// SchedulerContextMenuOpen
 
     export interface SchedulerContextMenuClose {
         // SchedulerContextMenuClose properties
-        menu?: any;
-        appointment?: any;
-        event?: any;
+        menu: any;
+        appointment: any;
+        event: any;
     }// SchedulerContextMenuClose
 
     export interface SchedulerContextMenuItemClick {
         // SchedulerContextMenuItemClick properties
-        menu?: any;
-        appointment?: any;
-        event?: any;
+        menu: any;
+        appointment: any;
+        event: any;
     }// SchedulerContextMenuItemClick
 
     export interface SchedulerContextMenuCreate {
         // SchedulerContextMenuCreate properties
-        menu?: any;
-        settings?: any;
+        menu: any;
+        settings: any;
     }// SchedulerContextMenuCreate
 
     export interface SchedulerEditDialogCreate {
         // SchedulerEditDialogCreate properties
-        dialog?: any;
-        fields?: any;
-        editAppointment?: any;
+        dialog: any;
+        fields: any;
+        editAppointment: any;
     }// SchedulerEditDialogCreate
 
     export interface SchedulerEditDialogOpen {
         // SchedulerEditDialogOpen properties
-        dialog?: any;
-        fields?: any;
-        editAppointment?: any;
+        dialog: any;
+        fields: any;
+        editAppointment: any;
     }// SchedulerEditDialogOpen
 
     export interface SchedulerEditDialogClose {
         // SchedulerEditDialogClose properties
-        dialog?: any;
-        fields?: any;
-        editAppointment?: any;
+        dialog: any;
+        fields: any;
+        editAppointment: any;
     }// SchedulerEditDialogClose
 
     export interface SchedulerEditDialogKeyDown {
         // SchedulerEditDialogKeyDown properties
-        dialog?: any;
-        fields?: any;
-        editAppointment?: any;
-        event?: any;
+        dialog: any;
+        fields: any;
+        editAppointment: any;
+        event: any;
     }// SchedulerEditDialogKeyDown
 
     export interface SchedulerExportSettings {
         // SchedulerExportSettings properties
-        serverURL?: string;
-        characterSet?: string;
+        serverURL?: string | null;
+        characterSet?: string | null;
         fileName?: string | null;
         dateTimeFormatString?: string;
         resourcesInMultipleICSFiles?: boolean;
@@ -3835,12 +3879,12 @@ declare module jqwidgets {
 
     export interface SchedulerRenderAppointment {
         // SchedulerRenderAppointment properties
-        data?: any;
+        data: any;
     }// SchedulerRenderAppointment
 
     export interface SchedulerResources {
         // SchedulerResources properties
-        source?: string;
+        source?: any;
         colorScheme?: string;
         orientation?: string;
         dataField?: string;
@@ -3866,6 +3910,10 @@ declare module jqwidgets {
 
     export interface SchedulerOptions {
         // SchedulerOptions properties
+        allowOverlap?: boolean;
+        blockedTimes?: any;
+        maxDuration?: number;
+        minDuration?: number;
         appointmentOpacity?: number;
         appointmentsMinHeight?: number;
         appointmentDataFields?: SchedulerAppointmentDataFields;
@@ -3874,7 +3922,7 @@ declare module jqwidgets {
         contextMenu?: boolean;
         contextMenuOpen?: (menu: SchedulerContextMenuOpen['menu'], appointment: SchedulerContextMenuOpen['appointment'], event: SchedulerContextMenuOpen['event']) => void;
         contextMenuClose?: (menu: SchedulerContextMenuClose['menu'], appointment: SchedulerContextMenuClose['appointment'], event: SchedulerContextMenuClose['event']) => void;
-        contextMenuItemClick?: (menu: SchedulerContextMenuItemClick['menu'], appointment: SchedulerContextMenuItemClick['appointment'], event: SchedulerContextMenuItemClick['event']) => boolean;
+        contextMenuItemClick?: (menu: SchedulerContextMenuItemClick['menu'], appointment: SchedulerContextMenuItemClick['appointment'], event: SchedulerContextMenuItemClick['event']) => boolean | void;
         contextMenuCreate?: (menu: SchedulerContextMenuCreate['menu'], settings: SchedulerContextMenuCreate['settings']) => void;
         changedAppointments?: Array<SchedulerChangedAppointments>;
         disabled?: boolean;
@@ -3884,10 +3932,10 @@ declare module jqwidgets {
         editDialog?: boolean;
         editDialogDateTimeFormatString?: string;
         editDialogDateFormatString?: string;
-        editDialogOpen?: (dialog?: SchedulerEditDialogOpen['dialog'], fields?: SchedulerEditDialogOpen['fields'], editAppointment?: SchedulerEditDialogOpen['editAppointment']) => void;
-        editDialogCreate?: (dialog?: SchedulerEditDialogCreate['dialog'], fields?: SchedulerEditDialogCreate['fields'], editAppointment?: SchedulerEditDialogCreate['editAppointment']) => void;
-        editDialogKeyDown?: (dialog?: SchedulerEditDialogKeyDown['dialog'], fields?: SchedulerEditDialogKeyDown['fields'], editAppointment?: SchedulerEditDialogKeyDown['editAppointment'], event?: SchedulerEditDialogKeyDown['event']) => boolean;
-        editDialogClose?: (dialog?: SchedulerEditDialogClose['dialog'], fields?: SchedulerEditDialogClose['fields'], editAppointment?: SchedulerEditDialogClose['editAppointment']) => void;
+        editDialogOpen?: (dialog: SchedulerEditDialogOpen['dialog'], fields: SchedulerEditDialogOpen['fields'], editAppointment: SchedulerEditDialogOpen['editAppointment']) => void;
+        editDialogCreate?: (dialog: SchedulerEditDialogCreate['dialog'], fields: SchedulerEditDialogCreate['fields'], editAppointment: SchedulerEditDialogCreate['editAppointment']) => void;
+        editDialogKeyDown?: (dialog: SchedulerEditDialogKeyDown['dialog'], fields: SchedulerEditDialogKeyDown['fields'], editAppointment: SchedulerEditDialogKeyDown['editAppointment'], event: SchedulerEditDialogKeyDown['event']) => boolean | void;
+        editDialogClose?: (dialog: SchedulerEditDialogClose['dialog'], fields: SchedulerEditDialogClose['fields'], editAppointment: SchedulerEditDialogClose['editAppointment']) => void;
         exportSettings?: SchedulerExportSettings;
         height?: number | string;
         legendPosition?: string;
@@ -3918,6 +3966,8 @@ declare module jqwidgets {
         toolBarRangeFormat?: string;
         toolBarRangeFormatAbbr?: string;
         toolbarHeight?: number;
+        undoRedo?: boolean;
+        undoRedoLimit?: number;
         views?: Array<any>;
         view?: string;
         width?: number | string;
@@ -3926,17 +3976,30 @@ declare module jqwidgets {
     export interface jqxScheduler extends widget, SchedulerOptions {
 
         // jqxScheduler functions
-        addAppointment(item: SchedulerAppointmentDataFields): void;
+        aiConfig(config?: any): any;
+        aiCommand(text: string, callback?: any): any;
+        aiScheduleAppointment(text: string, callback?: any): any;
+        aiFindSlot(text: string, callback?: any): any;
+        aiBookSlot(slot: any, details?: any): any;
+        aiResolveConflicts(options?: any, callback?: any): any;
+        aiApplyResolution(proposals: Array<{ id: number | string, proposedFrom: Date | string, proposedTo: Date | string }>): any;
+        aiAsk(text: string, callback?: any): any;
+        aiSummarize(callback?: any): any;
+        aiExplainAppointment(key: string, callback?: any): any;
+        aiClassifyAppointments(options: any, callback?: any): any;
+        addAppointment(item: SchedulerAppointmentDataFields): boolean;
         beginAppointmentsUpdate(): void;
         clearAppointmentsSelection(): void;
         clearSelection(): void;
         closeMenu(): void;
         closeDialog(): void;
-        deleteAppointment(appointmenId: string): void;
+        deleteAppointment(appointmenId: string): boolean;
         destroy(): void;
         endAppointmentsUpdate(): void;
         ensureAppointmentVisible(id: string): void;
-        ensureVisible(item: any, resourceId: string): void;
+        ensureVisible(item: any, resourceId?: string): void;
+        findAvailableSlots(options?: any): Array<any>;
+        importData(data: string, options?: any): any;
         exportData(format: string): any;
         focus(): void;
         getAppointmentProperty(appointmentId: string, name: string): any;
@@ -3948,12 +4011,18 @@ declare module jqwidgets {
         openDialog(left: number, top: number): void;
         selectAppointment(appointmentId: string): void;
         setAppointmentProperty(appointmentId: string, name: string, value: any): void;
-        selectCell(date: any, allday: boolean, resourceId: string): void;
+        selectCell(date: any, allday: boolean, resourceId: any): void;
         showAppointmentsByResource(resourceId: string): void;
         scrollWidth(): number;
         scrollHeight(): number;
         scrollLeft(left: number): void;
         scrollTop(top: number): void;
+        scrollToTime(time: any): boolean;
+        undo(): boolean;
+        redo(): boolean;
+        canUndo(): boolean;
+        canRedo(): boolean;
+        clearUndoRedo(): void;
     }// jqxScheduler
 
     export interface ScrollBarOptions {
@@ -4008,12 +4077,12 @@ declare module jqwidgets {
 
     export interface SliderTickLabelFormatFunction {
         // SliderTickLabelFormatFunction properties
-        value?: number;
+        value: any;
     }// SliderTickLabelFormatFunction
 
     export interface SliderTooltipFormatFunction {
         // SliderTooltipFormatFunction properties
-        value?: number;
+        value: number;
     }// SliderTooltipFormatFunction
 
     export interface SliderOptions {
@@ -4041,7 +4110,7 @@ declare module jqwidgets {
         ticksPosition?: string;
         ticksFrequency?: number;
         tickSize?: number;
-        tickLabelFormatFunction?: (value: SliderTickLabelFormatFunction['value']) => string;
+        tickLabelFormatFunction?: (value: SliderTickLabelFormatFunction['value']) => string | number;
         tooltip?: boolean;
         tooltipHideDelay?: number;
         tooltipPosition?: string;
@@ -4062,7 +4131,7 @@ declare module jqwidgets {
         getValue(): number;
         incrementValue(): void;
         setValue(index: number | number[]): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxSlider
 
     export interface SortableCursorAt {
@@ -4090,7 +4159,7 @@ declare module jqwidgets {
         forcePlaceholderSize?: boolean;
         grid?: Array<number>;
         handle?: string | boolean;
-        helper?: (originalEvent?: any, content?: any) => void | 'original' | 'clone';
+        helper?: ((originalEvent: any, content: any) => any) | 'original' | 'clone';
         items?: string;
         opacity?: number | boolean;
         placeholderShow?: string | boolean;
@@ -4098,6 +4167,7 @@ declare module jqwidgets {
         scroll?: boolean;
         scrollSensitivity?: number;
         scrollSpeed?: number;
+        theme?: string;
         tolerance?: string;
         zIndex?: number;
     }// SortableOptions
@@ -4111,7 +4181,7 @@ declare module jqwidgets {
         enable(): void;
         refresh(): void;
         refreshPositions(): void;
-        serialize(object: any): string;
+        serialize(object?: any): string;
         toArray(): Array<any>;
     }// jqxSortable
 
@@ -4156,6 +4226,7 @@ declare module jqwidgets {
         orientation?: string;
         onLabel?: string;
         offLabel?: string;
+        theme?: string;
         thumbSize?: string;
         rtl?: boolean;
         width?: string | number;
@@ -4169,7 +4240,7 @@ declare module jqwidgets {
         enable(): void;
         toggle(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value?: boolean): boolean;
     }// jqxSwitchButton
 
     export interface TabsOptions {
@@ -4184,7 +4255,7 @@ declare module jqwidgets {
         enableScrollAnimation?: boolean;
         enableDropAnimation?: boolean;
         height?: string | number;
-        initTabContent?: (tab?: number) => void;
+        initTabContent?: (tab: number) => void;
         keyboardNavigation?: boolean;
         next?: any;
         previous?: any;
@@ -4208,7 +4279,7 @@ declare module jqwidgets {
         // jqxTabs functions
         addAt(index: number, title: string, content: string): void;
         addFirst(htmlElement1: any, htmlElement2: any): void;
-        addLast(htmlElement1: any, htmlElement2: any): void;
+        addLast(htmlElement1: any, htmlElement2?: any): void;
         collapse(): void;
         disable(): void;
         disableAt(index: number): void;
@@ -4228,18 +4299,18 @@ declare module jqwidgets {
         removeFirst(): void;
         removeLast(): void;
         select(index: number): void;
-        setContentAt(index: number, htmlElement: string): void;
+        setContentAt(index: number, htmlElement: string | HTMLElement): void;
         setTitleAt(index: number, htmlElement: string): void;
         showCloseButtonAt(index: number): void;
         showAllCloseButtons(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxTabs
 
     export interface TagCloudTagRenderer {
         // TagCloudTagRenderer properties
-        itemData?: any;
-        minValue?: number;
-        valueRange?: number;
+        itemData: any;
+        minValue: number;
+        valueRange: number;
     }// TagCloudTagRenderer
 
     export interface TagCloudSource {
@@ -4276,6 +4347,7 @@ declare module jqwidgets {
         tagRenderer?: (itemData: TagCloudTagRenderer['itemData'], minValue: TagCloudTagRenderer['minValue'], valueRange: TagCloudTagRenderer['valueRange']) => any;
         takeTopWeightedItems?: boolean;
         textColor?: string;
+        theme?: string;
         urlBase?: string;
         urlMember?: string;
         valueMember?: string;
@@ -4325,7 +4397,7 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         unCheck(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxToggleButton
 
     export interface TextAreaOptions {
@@ -4360,7 +4432,7 @@ declare module jqwidgets {
         refresh(): void;
         render(): void;
         selectAll(): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxTextArea
 
     export interface ToolBarToolItem {
@@ -4378,7 +4450,7 @@ declare module jqwidgets {
         // ToolBarOptions properties
         disabled?: boolean;
         height?: string | number;
-        initTools?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void;
+        initTools?: (type: string, index: number, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void;
         minimizeWidth?: number;
         minWidth?: number | string;
         maxWidth?: number | string;
@@ -4391,7 +4463,7 @@ declare module jqwidgets {
     export interface jqxToolBar extends widget, ToolBarOptions {
 
         // jqxToolBar functions
-        addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: string, tool?: any, menuToolIninitialization?: boolean) => void): void;
+        addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type: string, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void): void;
         disableTool(index: number, disable: boolean): void;
         destroy(): void;
         destroyTool(index: number): void;
@@ -4429,20 +4501,20 @@ declare module jqwidgets {
     export interface jqxTooltip extends widget, TooltipOptions {
 
         // jqxTooltip functions
-        close(index: number): void;
+        close(index?: number): void;
         destroy(): void;
-        open(left: number, top: number): void;
+        open(left?: number, top?: number): void;
         refresh(): void;
     }// jqxTooltip
 
     export interface TreeDragStart {
         // TreeDragStart properties
-        item?: any;
+        item: any;
     }// TreeDragStart
 
     export interface TreeDragEnd {
         // TreeDragEnd properties
-        dragItem?: any;
+        dragItem: any;
         dropItem?: any;
         args?: any;
         dropPosition?: any;
@@ -4475,7 +4547,7 @@ declare module jqwidgets {
         allowDrop?: boolean;
         checkboxes?: boolean;
         dragStart?: (item: TreeDragStart['item']) => boolean;
-        dragEnd?: (dragItem?: TreeDragEnd['dragItem'], dropItem?: TreeDragEnd['dropItem'], args?: TreeDragEnd['args'], dropPosition?: TreeDragEnd['dropPosition'], tree?: TreeDragEnd['tree']) => boolean;
+        dragEnd?: (dragItem: TreeDragEnd['dragItem'], dropItem?: TreeDragEnd['dropItem'], args?: TreeDragEnd['args'], dropPosition?: TreeDragEnd['dropPosition'], tree?: TreeDragEnd['tree']) => boolean;
         disabled?: boolean;
         easing?: string;
         enableHover?: boolean;
@@ -4527,7 +4599,7 @@ declare module jqwidgets {
         uncheckAll(): void;
         uncheckItem(item: any): void;
         updateItem(item: any, newItem: any): void;
-        val(value: string): string;
+        val(value?: string): string;
     }// jqxTree
 
     export interface TreeGridEditSettings {
@@ -4569,18 +4641,18 @@ declare module jqwidgets {
 
     export interface TreeGridRowDetailsRenderer {
         // TreeGridRowDetailsRenderer properties
-        key?: number;
-        dataRow?: number;
+        key: number | string;
+        dataRow: any;
     }// TreeGridRowDetailsRenderer
 
     export interface TreeGridRenderStatusBar {
         // TreeGridRenderStatusBar properties
-        statusbar?: any;
+        statusbar: any;
     }// TreeGridRenderStatusBar
 
     export interface TreeGridRenderToolbar {
         // TreeGridRenderToolbar properties
-        toolbar?: any;
+        toolbar: any;
     }// TreeGridRenderToolbar
 
     export interface TreeGridScrollOffset {
@@ -4627,8 +4699,8 @@ declare module jqwidgets {
         ready?: () => void;
         rowDetails?: boolean;
         rowDetailsRenderer?: (key: TreeGridRowDetailsRenderer['key'], dataRow: TreeGridRowDetailsRenderer['dataRow']) => any;
-        renderToolbar?: (toolBar?: TreeGridRenderToolbar['toolbar']) => void;
-        renderStatusBar?: (statusBar?: TreeGridRenderStatusBar['statusbar']) => void;
+        renderToolbar?: (toolBar: TreeGridRenderToolbar['toolbar']) => void;
+        renderStatusBar?: (statusBar: TreeGridRenderStatusBar['statusbar']) => void;
         rendering?: () => void;
         rendered?: () => void;
         rtl?: boolean;
@@ -4645,14 +4717,14 @@ declare module jqwidgets {
         theme?: string;
         toolbarHeight?: number;
         width?: string | number;
-        virtualModeCreateRecords?: (expandedRecord?: any, done?: any) => void;
-        virtualModeRecordCreating?: (record?: any) => any;
+        virtualModeCreateRecords?: (expandedRecord: any, done: any) => void;
+        virtualModeRecordCreating?: (record: any) => any;
     }// TreeGridOptions
 
     export interface jqxTreeGrid extends widget, TreeGridOptions {
 
         // jqxTreeGrid functions
-        addRow(rowKey: number | string | null, rowData: any, rowPosition: string, parent: string): void;
+        addRow(rowKey: number | string | null, rowData: any, rowPosition: string, parent?: string): void;
         addFilter(dataField: string, filerGroup: any): void;
         applyFilters(): void;
         beginUpdate(): void;
@@ -4665,13 +4737,13 @@ declare module jqwidgets {
         collapseRow(rowKey: number | string): void;
         collapseAll(): void;
         destroy(): void;
-        deleteRow(rowKey: string[] | string): void;
+        deleteRow(rowKey: Array<number | string> | number | string): void;
         expandRow(rowKey: Array<number | string> | string | number): void;
         expandAll(): void;
         endUpdate(): void;
         ensureRowVisible(rowKey: number | string): void;
-        endRowEdit(rowKey: number | string, cancelChanges: boolean): void;
-        endCellEdit(rowKey: number | string, dataField: string, cancelChanges: boolean): void;
+        endRowEdit(rowKey: number | string, cancelChanges?: boolean): void;
+        endCellEdit(rowKey: number | string, dataField: string, cancelChanges?: boolean): void;
         exportData(exportDataType: any): any;
         focus(): void;
         getColumnProperty(dataField: string, propertyName: string): any;
@@ -4691,16 +4763,16 @@ declare module jqwidgets {
         refresh(): void;
         render(): void;
         removeFilter(dataField: string): void;
-        scrollOffset(top: number, left: number): TreeGridScrollOffset;
+        scrollOffset(top?: number, left?: number): TreeGridScrollOffset;
         setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void;
         showColumn(dataField: string): void;
         selectRow(rowId: string | number | Array<number | string>): void;
-        setCellValue(rowId: string, dataField: string, cellValue: any): void;
-        sortBy(dataField: number | string, sortOrder: 'asc' | 'desc' | null): void;
+        setCellValue(rowId: number | string, dataField: string, cellValue: any): void;
+        sortBy(dataField: number | string | null, sortOrder?: 'asc' | 'desc' | null): void;
         updating(): boolean;
         updateBoundData(): void;
         unselectRow(rowId: string | number | Array<number | string>): void;
-        uncheckRow(rowId: string): void;
+        uncheckRow(rowId: number | string): void;
         updateRow(rowId: number | string, data: any): void;
         unlockRow(rowId: string | number | Array<number | string>): void;
     }// jqxTreeGrid
@@ -4720,7 +4792,7 @@ declare module jqwidgets {
 
     export interface TreeMapLegendScaleCallback {
         // TreeMapLegendScaleCallback properties
-        v?: number;
+        v: number;
     }// TreeMapLegendScaleCallback
 
     export interface TreeMapOptions {
@@ -4736,7 +4808,7 @@ declare module jqwidgets {
         legendLabel?: string;
         legendPosition?: TreeMapLegendPosition;
         legendScaleCallback?: (v: TreeMapLegendScaleCallback['v']) => string | number;
-        renderCallbacks?: any;
+        renderCallbacks?: { [label: string]: (element: any, data: any) => boolean | void };
         selectionEnabled?: boolean;
         showLegend?: boolean;
         source?: any;
@@ -4775,6 +4847,7 @@ declare module jqwidgets {
         position?: string;
         rules?: Array<ValidatorRule>;
         rtl?: boolean;
+        theme?: string;
     }// ValidatorOptions
 
     export interface jqxValidator extends widget, ValidatorOptions {
@@ -4783,7 +4856,7 @@ declare module jqwidgets {
         hideHint(id: string): void;
         hide(): void;
         updatePosition(): void;
-        validate(htmlElement: any): void;
+        validate(htmlElement?: any): void;
         validateInput(id: string): void;
     }// jqxValidator
 
@@ -4895,11 +4968,11 @@ declare module jqwidgets {
 
     export interface HeatMapTooltipRender {
         // HeatMapTooltipRender properties
-        xLabel?: any[];
-        yLabel?: any[];
-        value?: string;
-        content?: string;
-        date?: Date;
+        xLabel: any;
+        yLabel: any;
+        value: string;
+        content: string;
+        date?: string | null;
     }// HeatMapTooltipRender
 
     export interface HeatMapOptions {
@@ -4918,7 +4991,7 @@ declare module jqwidgets {
 
         // jqxHeatMap functions
         destroy(): void;
-        setLegendPosition(position: string): void;
+        setLegendPosition(position?: string): void;
         setOpposedXAxisPosition(opposedPosition: boolean): void;
         setOpposedYAxisPosition(opposedPosition: boolean): void;
         reverseXAxisPosition(isInversed: boolean): void;
@@ -4954,10 +5027,10 @@ declare module jqwidgets {
 
     export interface SplitLayoutOptions {
         // SplitLayoutOptions properties
-        disabled?: boolean;
         dataSource?: any;
         ready?: any;
         orientation?: string;
+        theme?: string;
     }// SplitLayoutOptions
 
     export interface jqxSplitLayout extends widget, SplitLayoutOptions {
@@ -4987,7 +5060,7 @@ declare module jqwidgets {
     export interface jqxBarcode extends widget, BarcodeOptions {
 
         // jqxBarcode functions
-        export(format: string, fileName: string): any;
+        export(format: string, fileName?: string): any;
         getDataURL(format: string): string;
         getDataURLAsync(format: string): any;
         isValid(): boolean;
@@ -5016,7 +5089,7 @@ declare module jqwidgets {
     export interface jqxQRcode extends widget, QRcodeOptions {
 
         // jqxQRcode functions
-        export(format: string, fileName: string): any;
+        export(format: string, fileName?: string): any;
         getDataURL(format: string): string;
         getDataURLAsync(format: string): any;
         isValid(): boolean;
@@ -5024,7 +5097,7 @@ declare module jqwidgets {
 
     export interface CheckBoxGroupOptions {
         // CheckBoxGroupOptions properties
-        change?: (item?: any) => void;
+        change?: (item: any) => void;
         disabled?: boolean;
         items?: any;
         value?: any;
@@ -5051,12 +5124,12 @@ declare module jqwidgets {
         destroy(): void;
         enable(): void;
         render(): void;
-        val(value: any): any;
+        val(value?: any): any;
     }// jqxCheckBoxGroup
 
     export interface RadioButtonGroupOptions {
         // RadioButtonGroupOptions properties
-        change?: (item?: any) => void;
+        change?: (item: any) => void;
         disabled?: boolean;
         items?: any;
         value?: any;
@@ -5082,7 +5155,7 @@ declare module jqwidgets {
         destroy(): void;
         enable(): void;
         render(): void;
-        val(value: any): any;
+        val(value?: any): any;
     }// jqxRadioButtonGroup
 
     export interface GanttOptions {
@@ -5151,7 +5224,7 @@ declare module jqwidgets {
         resourceTimelineFormatFunction?: any;
         resourceTimelineMode?: string;
         resourceTimelineView?: string;
-        rightToLeft?: boolean;
+        rtl?: boolean;
         selectedTaskIds?: any;
         selectedResourceIds?: any;
         shadeUntilCurrentTime?: boolean;
@@ -5188,13 +5261,13 @@ declare module jqwidgets {
         clearState(): void;
         clearTasks(): void;
         clearResources(): void;
-        createConnection(startTaskIndex: any, taskEndIndex: any, connectionType: number, lag: number): void;
+        createConnection(startTaskIndex: any, taskEndIndex?: any, connectionType?: number, lag?: number): void;
         collapse(id: any): void;
         beginUpdate(): void;
         endUpdate(): void;
         ensureVisible(taskId: any): void;
         expand(id: any): void;
-        exportData(dataFormat: string, callback: any): void;
+        exportData(dataFormat: string, callback?: any): void;
         getConnections(): any;
         getConnectionDetails(connectionId: string): any;
         getState(): any;
@@ -5214,16 +5287,16 @@ declare module jqwidgets {
         getWorkingHours(): any;
         hideTooltip(): any;
         isWorkingDay(date: any): void;
-        loadState(state: any): void;
+        loadState(state?: any): void;
         removeAllConnections(): void;
-        removeConnection(startTaskIndex: any, taskEndIndex: number, connectionType: number): any;
-        removeTaskConnection(taskStart: any, taskEnd: any): void;
-        showTooltip(target: any, content: string): void;
-        saveState(state: any): void;
-        insertTask(taskObject: any, project: any, index: number): any;
+        removeConnection(startTaskIndex: any, taskEndIndex?: number, connectionType?: number): any;
+        removeTaskConnection(taskStart: any, taskEnd?: any): void;
+        showTooltip(target: any, content?: string): void;
+        saveState(state?: any): void;
+        insertTask(taskObject: any, project?: any, index?: number): any;
         updateTask(taskId: any, taskObject: any): void;
         removeTask(taskId: any): void;
-        insertResource(resourceId: any, resourceObject: any): void;
+        insertResource(resourceId: any, resourceObject?: any): void;
         updateResource(resourceId: any, taskObject: any): void;
         removeResource(resourceId: any): void;
         openWindow(taskId: any): void;
@@ -5309,7 +5382,7 @@ declare module jqwidgets {
     export interface jqxChat extends widget, ChatOptions {
 
         // jqxChat functions
-        sendMessage(text: string): void;
+        sendMessage(text?: string): void;
         stop(): void;
         addMessage(role: string, content: string): void;
         appendDelta(delta: string): void;
@@ -5319,11 +5392,76 @@ declare module jqwidgets {
         openPopup(): void;
         closePopup(): void;
         toggle(): void;
-        val(value: any): ChatMessage[];
+        val(value?: any): ChatMessage[];
         render(): void;
         refresh(): void;
         destroy(): void;
     }// jqxChat
+
+    export interface PickListChange {
+        // PickListChange properties
+        added?: any[];
+        removed?: any[];
+        selectedItems?: any[];
+    }// PickListChange
+
+    export interface PickListItems {
+        // PickListItems properties
+        items?: any[];
+    }// PickListItems
+
+    export interface PickListRenderer {
+        // PickListRenderer properties
+        item: any;
+        label: string;
+        value: string;
+        index: number;
+    }// PickListRenderer
+
+    export interface PickListOptions {
+        // PickListOptions properties
+        width?: string | number;
+        height?: string | number;
+        source?: any;
+        selectedItems?: any[];
+        displayMember?: string;
+        valueMember?: string;
+        sourceHeader?: string;
+        targetHeader?: string;
+        showCounts?: boolean;
+        filterable?: boolean;
+        filterPlaceHolder?: string;
+        searchMode?: string;
+        checkboxes?: boolean;
+        reorderable?: boolean;
+        renderer?: (item: PickListRenderer['item'], label: PickListRenderer['label'], value: PickListRenderer['value'], index: PickListRenderer['index']) => string;
+        buttons?: string[];
+        itemHeight?: number;
+        sourceLabel?: string;
+        targetLabel?: string;
+        disabled?: boolean;
+        rtl?: boolean;
+        theme?: string;
+    }// PickListOptions
+
+    export interface jqxPickList extends widget, PickListOptions {
+
+        // jqxPickList functions
+        getSelectedItems(): any[];
+        getSelectedValues(): any[];
+        getSource(): any[];
+        add(values: any): void;
+        remove(values: any): void;
+        addAll(): void;
+        removeAll(): void;
+        moveUp(): void;
+        moveDown(): void;
+        val(value?: any): any[];
+        focus(): void;
+        refresh(): void;
+        render(): void;
+        destroy(): void;
+    }// jqxPickList
 
 
 

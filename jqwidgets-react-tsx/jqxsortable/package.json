@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxsortable.umd.js",
-    "module": "react_jqxsortable.esm.js",
-    "typings": "react_jqxsortable.d.ts",
-    "name": "jqwidgets-react/jqxsortable",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxsortable",
+  "version": "27.1.0",
+  "main": "react_jqxsortable.umd.js",
+  "module": "react_jqxsortable.esm.js",
+  "typings": "react_jqxsortable.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxsortable.d.ts",
+      "import": "./react_jqxsortable.esm.js",
+      "require": "./react_jqxsortable.umd.js",
+      "default": "./react_jqxsortable.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

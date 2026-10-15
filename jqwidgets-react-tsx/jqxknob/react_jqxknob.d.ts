@@ -1,29 +1,41 @@
 import * as React from 'react';
-declare class JqxKnob extends React.PureComponent<IKnobProps, IState> {
-    protected static getDerivedStateFromProps(props: IKnobProps, state: IState): null | IState;
+declare class JqxKnob extends React.PureComponent<IKnobProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IKnobProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IKnobProps): void;
     getOptions(option: string): any;
     destroy(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxKnob;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IKnobChanging {
-    oldValue?: number;
-    newValue?: number;
+    oldValue: number;
+    newValue: number;
 }
 export interface IKnobLabelsFormatFunction {
     formatFunction?: (label: string | number) => string | number;
@@ -107,11 +119,13 @@ interface IKnobOptions {
     styles?: IKnobStyle;
     step?: number | string;
     snapToStep?: boolean;
+    theme?: string;
     value?: any;
     width?: number | string;
 }
-export interface IKnobProps extends IKnobOptions {
+export interface IKnobProps extends IKnobOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
 }

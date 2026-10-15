@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxscrollview.umd.js",
-    "module": "react_jqxscrollview.esm.js",
-    "typings": "react_jqxscrollview.d.ts",
-    "name": "jqwidgets-react/jqxscrollview",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxscrollview",
+  "version": "27.1.0",
+  "main": "react_jqxscrollview.umd.js",
+  "module": "react_jqxscrollview.esm.js",
+  "typings": "react_jqxscrollview.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxscrollview.d.ts",
+      "import": "./react_jqxscrollview.esm.js",
+      "require": "./react_jqxscrollview.umd.js",
+      "default": "./react_jqxscrollview.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

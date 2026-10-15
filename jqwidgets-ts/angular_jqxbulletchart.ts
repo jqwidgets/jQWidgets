@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,22 +27,23 @@ export class jqxBulletChartComponent implements OnChanges
    @Input('description') attrDescription: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('labelsFormat') attrLabelsFormat: string;
-   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value: number, position: 'near' | 'far') => any;
    @Input('orientation') attrOrientation: string;
    @Input('pointer') attrPointer: jqwidgets.BulletChartPointer;
    @Input('rtl') attrRtl: boolean;
    @Input('ranges') attrRanges: Array<jqwidgets.BulletChartRanges>;
    @Input('showTooltip') attrShowTooltip: boolean;
    @Input('target') attrTarget: jqwidgets.BulletChartPointer;
+   @Input('theme') attrTheme: string;
    @Input('ticks') attrTicks: jqwidgets.BulletChartTicks;
    @Input('title') attrTitle: string;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue: number, targetValue: number) => string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','ticks','title','tooltipFormatFunction','width'];
+   properties: string[] = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','theme','ticks','title','tooltipFormatFunction','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxBulletChart;
@@ -54,6 +55,18 @@ export class jqxBulletChartComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxBulletChart('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -205,7 +218,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   labelsFormatFunction(arg?: (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any): (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any {
+   labelsFormatFunction(arg?: (value: number, position: 'near' | 'far') => any): (value: number, position: 'near' | 'far') => any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('labelsFormatFunction', arg);
       } else {
@@ -261,6 +274,14 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxBulletChart('theme', arg);
+      } else {
+          return this.host.jqxBulletChart('theme');
+      }
+   }
+
    ticks(arg?: jqwidgets.BulletChartTicks): jqwidgets.BulletChartTicks {
       if (arg !== undefined) {
           this.host.jqxBulletChart('ticks', arg);
@@ -277,7 +298,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   tooltipFormatFunction(arg?: (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string): (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string {
+   tooltipFormatFunction(arg?: (pointerValue: number, targetValue: number) => string): (pointerValue: number, targetValue: number) => string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('tooltipFormatFunction', arg);
       } else {

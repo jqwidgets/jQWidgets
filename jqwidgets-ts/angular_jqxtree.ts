@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,7 +32,7 @@ export class jqxTreeComponent implements OnChanges
    @Input('allowDrop') attrAllowDrop: boolean;
    @Input('checkboxes') attrCheckboxes: boolean;
    @Input('dragStart') attrDragStart: (item: jqwidgets.TreeDragStart['item']) => boolean;
-   @Input('dragEnd') attrDragEnd: (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('easing') attrEasing: string;
    @Input('enableHover') attrEnableHover: boolean;
@@ -61,6 +61,18 @@ export class jqxTreeComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxTree('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -212,7 +224,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   dragEnd(arg?: (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean): (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean {
+   dragEnd(arg?: (dragItem: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean): (dragItem: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean {
       if (arg !== undefined) {
           this.host.jqxTree('dragEnd', arg);
       } else {

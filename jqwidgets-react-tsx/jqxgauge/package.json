@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxgauge.umd.js",
-    "module": "react_jqxgauge.esm.js",
-    "typings": "react_jqxgauge.d.ts",
-    "name": "jqwidgets-react/jqxgauge",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxgauge",
+  "version": "27.1.0",
+  "main": "react_jqxgauge.umd.js",
+  "module": "react_jqxgauge.esm.js",
+  "typings": "react_jqxgauge.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxgauge.d.ts",
+      "import": "./react_jqxgauge.esm.js",
+      "require": "./react_jqxgauge.umd.js",
+      "default": "./react_jqxgauge.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

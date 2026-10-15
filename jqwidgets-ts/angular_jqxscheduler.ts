@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,6 +20,10 @@ declare let JQXLite: any;
 
 export class jqxSchedulerComponent implements OnChanges
 {
+   @Input('allowOverlap') attrAllowOverlap: boolean;
+   @Input('blockedTimes') attrBlockedTimes: any[];
+   @Input('maxDuration') attrMaxDuration: number;
+   @Input('minDuration') attrMinDuration: number;
    @Input('appointmentOpacity') attrAppointmentOpacity: number;
    @Input('appointmentsMinHeight') attrAppointmentsMinHeight: number;
    @Input('appointmentDataFields') attrAppointmentDataFields: jqwidgets.SchedulerAppointmentDataFields;
@@ -28,7 +32,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('contextMenu') attrContextMenu: boolean;
    @Input('contextMenuOpen') attrContextMenuOpen: (menu: jqwidgets.SchedulerContextMenuOpen['menu'], appointment: jqwidgets.SchedulerContextMenuOpen['appointment'], event: jqwidgets.SchedulerContextMenuOpen['event']) => void;
    @Input('contextMenuClose') attrContextMenuClose: (menu: jqwidgets.SchedulerContextMenuClose['menu'], appointment: jqwidgets.SchedulerContextMenuClose['appointment'], event: jqwidgets.SchedulerContextMenuClose['event']) => void;
-   @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean;
+   @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean | void;
    @Input('contextMenuCreate') attrContextMenuCreate: (menu: jqwidgets.SchedulerContextMenuCreate['menu'], settings: jqwidgets.SchedulerContextMenuCreate['settings']) => void;
    @Input('changedAppointments') attrChangedAppointments: Array<jqwidgets.SchedulerChangedAppointments>;
    @Input('disabled') attrDisabled: boolean;
@@ -38,10 +42,10 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('editDialog') attrEditDialog: boolean;
    @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString: string;
    @Input('editDialogDateFormatString') attrEditDialogDateFormatString: string;
-   @Input('editDialogOpen') attrEditDialogOpen: (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void;
-   @Input('editDialogCreate') attrEditDialogCreate: (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void;
-   @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean;
-   @Input('editDialogClose') attrEditDialogClose: (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void;
+   @Input('editDialogOpen') attrEditDialogOpen: (dialog: jqwidgets.SchedulerEditDialogOpen['dialog'], fields: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void;
+   @Input('editDialogCreate') attrEditDialogCreate: (dialog: jqwidgets.SchedulerEditDialogCreate['dialog'], fields: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void;
+   @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean | void;
+   @Input('editDialogClose') attrEditDialogClose: (dialog: jqwidgets.SchedulerEditDialogClose['dialog'], fields: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void;
    @Input('exportSettings') attrExportSettings: jqwidgets.SchedulerExportSettings;
    @Input('legendPosition') attrLegendPosition: string;
    @Input('legendHeight') attrLegendHeight: number;
@@ -71,6 +75,8 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('toolBarRangeFormat') attrToolBarRangeFormat: string;
    @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr: string;
    @Input('toolbarHeight') attrToolbarHeight: number;
+   @Input('undoRedo') attrUndoRedo: boolean;
+   @Input('undoRedoLimit') attrUndoRedoLimit: number;
    @Input('views') attrViews: Array<any>;
    @Input('view') attrView: string;
    @Input('width') attrWidth: string | number;
@@ -78,7 +84,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+   properties: string[] = ['allowOverlap','blockedTimes','maxDuration','minDuration','appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','undoRedo','undoRedoLimit','views','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScheduler;
@@ -90,6 +96,18 @@ export class jqxSchedulerComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxScheduler('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -193,6 +211,38 @@ export class jqxSchedulerComponent implements OnChanges
    }
 
    // jqxSchedulerComponent properties
+   allowOverlap(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('allowOverlap', arg);
+      } else {
+          return this.host.jqxScheduler('allowOverlap');
+      }
+   }
+
+   blockedTimes(arg?: any[]): any[] {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('blockedTimes', arg);
+      } else {
+          return this.host.jqxScheduler('blockedTimes');
+      }
+   }
+
+   maxDuration(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('maxDuration', arg);
+      } else {
+          return this.host.jqxScheduler('maxDuration');
+      }
+   }
+
+   minDuration(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('minDuration', arg);
+      } else {
+          return this.host.jqxScheduler('minDuration');
+      }
+   }
+
    appointmentOpacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('appointmentOpacity', arg);
@@ -257,7 +307,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuItemClick(arg?: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean): (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean {
+   contextMenuItemClick(arg?: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean | void): (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean | void {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuItemClick', arg);
       } else {
@@ -337,7 +387,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogOpen(arg?: (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void {
+   editDialogOpen(arg?: (dialog: jqwidgets.SchedulerEditDialogOpen['dialog'], fields: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void): (dialog: jqwidgets.SchedulerEditDialogOpen['dialog'], fields: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogOpen', arg);
       } else {
@@ -345,7 +395,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogCreate(arg?: (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void {
+   editDialogCreate(arg?: (dialog: jqwidgets.SchedulerEditDialogCreate['dialog'], fields: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void): (dialog: jqwidgets.SchedulerEditDialogCreate['dialog'], fields: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogCreate', arg);
       } else {
@@ -353,7 +403,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogKeyDown(arg?: (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean): (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean {
+   editDialogKeyDown(arg?: (dialog: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean | void): (dialog: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean | void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogKeyDown', arg);
       } else {
@@ -361,7 +411,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogClose(arg?: (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void {
+   editDialogClose(arg?: (dialog: jqwidgets.SchedulerEditDialogClose['dialog'], fields: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void): (dialog: jqwidgets.SchedulerEditDialogClose['dialog'], fields: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogClose', arg);
       } else {
@@ -609,6 +659,22 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
+   undoRedo(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('undoRedo', arg);
+      } else {
+          return this.host.jqxScheduler('undoRedo');
+      }
+   }
+
+   undoRedoLimit(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('undoRedoLimit', arg);
+      } else {
+          return this.host.jqxScheduler('undoRedoLimit');
+      }
+   }
+
    views(arg?: Array<any>): Array<any> {
       if (arg !== undefined) {
           this.host.jqxScheduler('views', arg);
@@ -635,8 +701,52 @@ export class jqxSchedulerComponent implements OnChanges
 
 
    // jqxSchedulerComponent functions
-   addAppointment(item: jqwidgets.SchedulerAppointmentDataFields): void {
-      this.host.jqxScheduler('addAppointment', item);
+   aiConfig(config?: any): any {
+      return this.host.jqxScheduler('aiConfig', config);
+   }
+
+   aiCommand(text: string, callback?: Function): any {
+      return this.host.jqxScheduler('aiCommand', text, callback);
+   }
+
+   aiScheduleAppointment(text: string, callback?: Function): any {
+      return this.host.jqxScheduler('aiScheduleAppointment', text, callback);
+   }
+
+   aiFindSlot(text: string, callback?: Function): any {
+      return this.host.jqxScheduler('aiFindSlot', text, callback);
+   }
+
+   aiBookSlot(slot: any, details?: any): any {
+      return this.host.jqxScheduler('aiBookSlot', slot, details);
+   }
+
+   aiResolveConflicts(options?: any, callback?: Function): any {
+      return this.host.jqxScheduler('aiResolveConflicts', options, callback);
+   }
+
+   aiApplyResolution(proposals: Array<{ id: number | string, proposedFrom: Date | string, proposedTo: Date | string }>): number {
+      return this.host.jqxScheduler('aiApplyResolution', proposals);
+   }
+
+   aiAsk(text: string, callback?: Function): any {
+      return this.host.jqxScheduler('aiAsk', text, callback);
+   }
+
+   aiSummarize(callback?: Function): any {
+      return this.host.jqxScheduler('aiSummarize', callback);
+   }
+
+   aiExplainAppointment(key: string, callback?: Function): any {
+      return this.host.jqxScheduler('aiExplainAppointment', key, callback);
+   }
+
+   aiClassifyAppointments(options: any, callback?: Function): any {
+      return this.host.jqxScheduler('aiClassifyAppointments', options, callback);
+   }
+
+   addAppointment(item: jqwidgets.SchedulerAppointmentDataFields): boolean {
+      return this.host.jqxScheduler('addAppointment', item);
    }
 
    beginAppointmentsUpdate(): void {
@@ -659,8 +769,8 @@ export class jqxSchedulerComponent implements OnChanges
       this.host.jqxScheduler('closeDialog');
    }
 
-   deleteAppointment(appointmenId: string): void {
-      this.host.jqxScheduler('deleteAppointment', appointmenId);
+   deleteAppointment(appointmenId: string): boolean {
+      return this.host.jqxScheduler('deleteAppointment', appointmenId);
    }
 
    destroy(): void {
@@ -677,6 +787,14 @@ export class jqxSchedulerComponent implements OnChanges
 
    ensureVisible(item: any, resourceId?: string): void {
       this.host.jqxScheduler('ensureVisible', item, resourceId);
+   }
+
+   findAvailableSlots(options?: any): Array<any> {
+      return this.host.jqxScheduler('findAvailableSlots', options);
+   }
+
+   importData(data: string, options?: any): any {
+      return this.host.jqxScheduler('importData', data, options);
    }
 
    exportData(format: string): any {
@@ -723,7 +841,7 @@ export class jqxSchedulerComponent implements OnChanges
       this.host.jqxScheduler('setAppointmentProperty', appointmentId, name, value);
    }
 
-   selectCell(date: any, allday: boolean, resourceId: string): void {
+   selectCell(date: any, allday: boolean, resourceId: string | null): void {
       this.host.jqxScheduler('selectCell', date, allday, resourceId);
    }
 
@@ -747,13 +865,42 @@ export class jqxSchedulerComponent implements OnChanges
       this.host.jqxScheduler('scrollTop', top);
    }
 
+   scrollToTime(time: any): boolean {
+      return this.host.jqxScheduler('scrollToTime', time);
+   }
+
+   undo(): boolean {
+      return this.host.jqxScheduler('undo');
+   }
+
+   redo(): boolean {
+      return this.host.jqxScheduler('redo');
+   }
+
+   canUndo(): boolean {
+      return this.host.jqxScheduler('canUndo');
+   }
+
+   canRedo(): boolean {
+      return this.host.jqxScheduler('canRedo');
+   }
+
+   clearUndoRedo(): void {
+      this.host.jqxScheduler('clearUndoRedo');
+   }
+
 
    // jqxSchedulerComponent events
+   @Output() onScheduleraiResult = new EventEmitter();
    @Output() onAppointmentChange = new EventEmitter();
    @Output() onAppointmentClick = new EventEmitter();
    @Output() onAppointmentDoubleClick = new EventEmitter();
    @Output() onAppointmentDelete = new EventEmitter();
    @Output() onAppointmentAdd = new EventEmitter();
+   @Output() onAppointmentAdding = new EventEmitter();
+   @Output() onAppointmentChanging = new EventEmitter();
+   @Output() onAppointmentDeleting = new EventEmitter();
+   @Output() onUndoRedoChange = new EventEmitter();
    @Output() onBindingComplete = new EventEmitter();
    @Output() onCellClick = new EventEmitter();
    @Output() onCellDoubleClick = new EventEmitter();
@@ -770,11 +917,16 @@ export class jqxSchedulerComponent implements OnChanges
    @Output() onViewChange = new EventEmitter();
 
    __wireEvents__(): void {
+      this.host.on('scheduleraiResult', (eventData: any) => { this.onScheduleraiResult.emit(eventData); });
       this.host.on('appointmentChange', (eventData: any) => { this.onAppointmentChange.emit(eventData); });
       this.host.on('appointmentClick', (eventData: any) => { this.onAppointmentClick.emit(eventData); });
       this.host.on('appointmentDoubleClick', (eventData: any) => { this.onAppointmentDoubleClick.emit(eventData); });
       this.host.on('appointmentDelete', (eventData: any) => { this.onAppointmentDelete.emit(eventData); });
       this.host.on('appointmentAdd', (eventData: any) => { this.onAppointmentAdd.emit(eventData); });
+      this.host.on('appointmentAdding', (eventData: any) => { this.onAppointmentAdding.emit(eventData); });
+      this.host.on('appointmentChanging', (eventData: any) => { this.onAppointmentChanging.emit(eventData); });
+      this.host.on('appointmentDeleting', (eventData: any) => { this.onAppointmentDeleting.emit(eventData); });
+      this.host.on('undoRedoChange', (eventData: any) => { this.onUndoRedoChange.emit(eventData); });
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
       this.host.on('cellClick', (eventData: any) => { this.onCellClick.emit(eventData); });
       this.host.on('cellDoubleClick', (eventData: any) => { this.onCellDoubleClick.emit(eventData); });

@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxbargauge.umd.js",
-    "module": "react_jqxbargauge.esm.js",
-    "typings": "react_jqxbargauge.d.ts",
-    "name": "jqwidgets-react/jqxbargauge",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxbargauge",
+  "version": "27.1.0",
+  "main": "react_jqxbargauge.umd.js",
+  "module": "react_jqxbargauge.esm.js",
+  "typings": "react_jqxbargauge.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxbargauge.d.ts",
+      "import": "./react_jqxbargauge.esm.js",
+      "require": "./react_jqxbargauge.umd.js",
+      "default": "./react_jqxbargauge.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

@@ -1,16 +1,27 @@
 import * as React from 'react';
-declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
-    protected static getDerivedStateFromProps(props: IGridProps, state: IState): null | IState;
+declare class JqxGrid extends React.PureComponent<IGridProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IGridProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IGridProps): void;
     getOptions(option: string): any;
-    aiConfig(config: object): void;
+    aiConfig(config?: object): object;
     aiCommand(text: string, callback?: any): Object;
     aiAsk(text: string, callback?: any): Object;
     aiSummarize(rows?: any, callback?: any): Object;
@@ -26,12 +37,12 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     ensurerowvisible(rowBoundIndex: number): void;
     focus(): void;
     getcolumnindex(dataField: string): number;
-    getcolumn(dataField: string): IGridGetColumn;
+    getcolumn(dataField: string): IGridColumn;
     getcolumnproperty(dataField: string, propertyName: string): any;
     getrowid(rowBoundIndex: number): string;
     getrowdata(rowBoundIndex: number): any;
-    getrowdatabyid(rowID: string): any;
-    getrowboundindexbyid(rowID: string): number;
+    getrowdatabyid(rowID: number | string): any;
+    getrowboundindexbyid(rowID: number | string): number;
     getrowboundindex(rowDisplayIndex: number): number;
     getrows(): any[];
     getboundrows(): any[];
@@ -71,7 +82,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     getrootgroupscount(): number;
     getgroup(groupIndex: number): IGridGetGroup;
     insertgroup(groupIndex: number, dataField: string): void;
-    iscolumngroupable(): boolean;
+    iscolumngroupable(dataField: string): boolean;
     removegroupat(groupIndex: number): void;
     removegroup(dataField: string): void;
     addfilter(dataField: string, filterGroup: any, refreshGrid?: boolean): void;
@@ -79,7 +90,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     clearfilters(): void;
     getfilterinformation(): any;
     getcolumnat(index: number): any;
-    removefilter(dataField: string, refreshGrid: boolean): void;
+    removefilter(dataField: string, refreshGrid?: boolean): void;
     refreshfilterrow(): void;
     gotopage(pagenumber: number): void;
     gotoprevpage(): void;
@@ -94,13 +105,13 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     getcell(rowBoundIndex: number, datafield: string): IGridGetCell;
     getcellatposition(left: number, top: number): IGridGetCell;
     getcelltext(rowBoundIndex: number, dataField: string): string;
-    getcelltextbyid(rowID: string, dataField: string): string;
-    getcellvaluebyid(rowID: string, dataField: string): any;
+    getcelltextbyid(rowID: number | string, dataField: string): string;
+    getcellvaluebyid(rowID: number | string, dataField: string): any;
     getcellvalue(rowBoundIndex: number, dataField: string): any;
     isBindingCompleted(): boolean;
     openmenu(dataField: string): void;
     setcellvalue(rowBoundIndex: number, dataField: string, value: any): void;
-    setcellvaluebyid(rowID: string, dataField: string, value: any): void;
+    setcellvaluebyid(rowID: number | string, dataField: string, value: any): void;
     showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void;
     updaterow(rowIds: string | number | Array<number | string>, data: any): void;
     clearselection(): void;
@@ -122,17 +133,18 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     exportview(dataType: string, fileName?: string): any;
     openColumnChooser(columns?: any, header?: string): void;
     getstate(): IGridGetState;
-    loadstate(stateobject: any): void;
+    loadstate(stateobject?: any): void;
     savestate(): IGridGetState;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IGridCharting {
     appendTo?: string;
     colorScheme?: string;
@@ -147,7 +159,7 @@ export interface IGridColumn {
     threestatecheckbox?: boolean;
     sortable?: boolean;
     filterable?: boolean;
-    filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
+    filter?: any;
     buttonclick?: (row: number) => void;
     hideable?: boolean;
     hidden?: boolean;
@@ -157,15 +169,15 @@ export interface IGridColumn {
     columngroup?: string;
     enabletooltips?: boolean;
     columntype?: 'number' | 'checkbox' | 'button' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'rating' | 'progressbar' | 'template' | 'custom';
-    renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
-    rendered?: (columnHeaderElement?: any) => void;
+    renderer?: (defaultText: string, alignment: string, height: number) => string;
+    rendered?: (columnHeaderElement: any) => void;
     cellTemplate?: string | {
         type?: string;
         [prop: string]: any;
-    } | ((value?: any, rowData?: any) => string);
-    cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
-    aggregatesrenderer?: (aggregates?: any, column?: any, element?: any, summaryData?: any) => string;
-    validation?: (cell?: any, value?: number) => any;
+    } | ((value: any, rowData: any) => string);
+    cellsrenderer?: (row: number, columnfield: string, value: any, defaulthtml: string, columnproperties: any, rowdata: any) => string;
+    aggregatesrenderer?: (aggregates: any, column: any, element: any, summaryData: any) => string;
+    validation?: (cell: any, value: any) => any;
     createwidget?: (row: any, column: any, value: string, cellElement: any) => void;
     initwidget?: (row: number, column: string, value: string, cellElement: any) => void;
     createfilterwidget?: (column: any, htmlElement: HTMLElement, editor: any) => void;
@@ -177,15 +189,17 @@ export interface IGridColumn {
     cellbeginedit?: (row: number, datafield: string, columntype: string, value: any) => boolean;
     cellendedit?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => boolean;
     cellvaluechanging?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => string | void;
-    createeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any, addRowCallback: any) => any;
-    initeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any) => void;
-    reseteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => void;
-    geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => any;
-    destroyeverpresentrowwidget?: (htmlElement: HTMLElement) => void;
+    createeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any, addRowCallback: any) => any;
+    initeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any) => void;
+    reseteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => void;
+    geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => any;
+    destroyeverpresentrowwidget?: (htmlElement: any) => void;
     validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean | object;
     cellsformat?: string;
     cellclassname?: any;
-    aggregates?: any;
+    aggregates?: Array<string | {
+        [name: string]: (aggregatedValue: any, currentValue: any, column: string, record: any, level: number) => any;
+    }>;
     align?: 'left' | 'center' | 'right';
     cellsalign?: 'left' | 'center' | 'right';
     width?: number | string;
@@ -223,14 +237,14 @@ export interface IGridSource {
     datafields?: IGridSourceDataFields[];
     pagenum?: number;
     pagesize?: number;
-    pager?: (pagenum?: number, pagesize?: number, oldpagenum?: number) => any;
+    pager?: (pageNumber: number, pageSize: number, oldPageNumber: number) => any;
     sortcolumn?: string;
     sortdirection?: 'asc' | 'desc';
-    sort?: (column?: any, direction?: any) => void;
-    filter?: (filters?: any, recordsArray?: any) => void;
-    addrow?: (rowid?: any, rowdata?: any, position?: any, commit?: boolean) => void;
-    deleterow?: (rowid?: any, commit?: boolean) => void;
-    updaterow?: (rowid?: any, newdata?: any, commit?: any) => void;
+    sort?: (column: any, direction: any) => void;
+    filter?: (filters: any, recordsArray: any) => void;
+    addrow?: (rowid: any, rowdata: any, position: any, commit: (result: boolean) => void) => void;
+    deleterow?: (rowid: any, commit: (result: boolean) => void) => void;
+    updaterow?: (rowid: any, newdata: any, commit: (result: boolean) => void) => void;
     processdata?: (data: any) => void;
     formatdata?: (data: any) => any;
     async?: boolean;
@@ -268,9 +282,9 @@ export interface IGridGetSortInformation {
     sortdirection?: any;
 }
 export interface IGridGetPagingInformation {
-    pagenum?: string;
-    pagesize?: any;
-    pagescount?: any;
+    pagenum?: number;
+    pagesize?: number;
+    pagescount?: number;
 }
 export interface IGridDateNaming {
     names?: string[];
@@ -317,9 +331,9 @@ export interface IGridGetGroup {
     subrows?: number;
 }
 export interface IGridGetCell {
-    value?: number;
+    value?: any;
     row?: number;
-    column?: number;
+    column?: string;
 }
 export interface IGridGetSelectedCell {
     rowindex?: number;
@@ -350,47 +364,47 @@ export interface IGridGetState {
     columns?: IGridGetStateColumns;
 }
 export interface IGridColumnmenuopening {
-    menu?: any;
-    datafield?: any;
-    height?: any;
+    menu: any;
+    datafield: any;
+    height: any;
 }
 export interface IGridColumnmenuclosing {
-    menu?: any;
-    datafield?: any;
-    height?: any;
+    menu: any;
+    datafield: any;
+    height: any;
 }
 export interface IGridCellhover {
-    cellhtmlElement?: any;
-    x?: any;
-    y?: any;
+    cellhtmlElement: any;
+    x: any;
+    y: any;
 }
 export interface IGridGroupsrenderer {
-    text?: string;
-    group?: number;
-    expanded?: boolean;
-    data?: object;
+    text: string;
+    group: any;
+    expanded: boolean;
+    data: any;
 }
 export interface IGridGroupcolumnrenderer {
-    text?: any;
+    text: any;
 }
 export interface IGridHandlekeyboardnavigation {
     event?: any;
 }
 export interface IGridScrollfeedback {
-    row?: object;
+    row: any;
 }
 export interface IGridFilter {
-    cellValue?: any;
-    rowData?: any;
-    dataField?: string;
-    filterGroup?: any;
-    defaultFilterResult?: boolean;
+    cellValue: any;
+    rowData: any;
+    dataField: string;
+    filterGroup: any;
+    defaultFilterResult: boolean;
 }
 export interface IGridRendertoolbar {
-    toolbar?: any;
+    toolbar: any;
 }
 export interface IGridRenderstatusbar {
-    statusbar?: any;
+    statusbar: any;
 }
 interface IGridOptions {
     altrows?: boolean;
@@ -404,20 +418,20 @@ interface IGridOptions {
     showcolumnheaderlines?: boolean;
     adaptive?: boolean;
     compact?: boolean;
-    contextmenuitems?: [];
-    contextmenuenabled?: [];
-    contextmenuwidth?: [];
-    contextmenuheight?: [];
-    contextmenuitemclick?: [];
+    contextmenuitems?: Array<string | object>;
+    contextmenuenabled?: boolean;
+    contextmenuwidth?: number | string;
+    contextmenuheight?: number | string;
+    contextmenuitemclick?: (event: any, cell: IGridGetCell) => void;
     adaptivewidth?: number;
     commandcolumn?: boolean;
-    commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;
+    commandcolumnrenderer?: (row: number, columnfield: string, active: any) => string;
     clipboard?: boolean;
     closeablegroups?: boolean;
     columnsmenuwidth?: number;
-    columnmenuopening?: (menu?: IGridColumnmenuopening['menu'], datafield?: IGridColumnmenuopening['datafield'], height?: IGridColumnmenuopening['height']) => boolean | void;
-    columnmenuclosing?: (menu?: IGridColumnmenuclosing['menu'], datafield?: IGridColumnmenuclosing['datafield'], height?: IGridColumnmenuclosing['height']) => boolean;
-    cellhover?: (cellhtmlElement?: IGridCellhover['cellhtmlElement'], x?: IGridCellhover['x'], y?: IGridCellhover['y']) => void;
+    columnmenuopening?: (menu: IGridColumnmenuopening['menu'], datafield: IGridColumnmenuopening['datafield'], height: IGridColumnmenuopening['height']) => boolean | void;
+    columnmenuclosing?: (menu: IGridColumnmenuclosing['menu'], datafield: IGridColumnmenuclosing['datafield'], height: IGridColumnmenuclosing['height']) => boolean | void;
+    cellhover?: (cellhtmlElement: IGridCellhover['cellhtmlElement'], x: IGridCellhover['x'], y: IGridCellhover['y']) => void;
     enablekeyboarddelete?: boolean;
     enableellipsis?: boolean;
     enablemousewheel?: boolean;
@@ -431,11 +445,11 @@ interface IGridOptions {
     everpresentrowactionsmode?: 'popup' | 'columns';
     filterrowheight?: number;
     filtermode?: 'default' | 'excel';
-    groupsrenderer?: (text?: IGridGroupsrenderer['text'], group?: IGridGroupsrenderer['group'], expanded?: IGridGroupsrenderer['expanded'], data?: IGridGroupsrenderer['data']) => string;
-    groupcolumnrenderer?: (text?: IGridGroupcolumnrenderer['text']) => string;
+    groupsrenderer?: (text: IGridGroupsrenderer['text'], group: IGridGroupsrenderer['group'], expanded: IGridGroupsrenderer['expanded'], data: IGridGroupsrenderer['data']) => string;
+    groupcolumnrenderer?: (text: IGridGroupcolumnrenderer['text']) => string;
     groupsexpandedbydefault?: boolean;
-    handlekeyboardnavigation?: (event: IGridHandlekeyboardnavigation['event']) => boolean;
-    pagerrenderer?: () => any[];
+    handlekeyboardnavigation?: (event: IGridHandlekeyboardnavigation['event']) => boolean | void;
+    pagerrenderer?: () => any;
     rtl?: boolean;
     showdefaultloadelement?: boolean;
     showfiltercolumnbackground?: boolean;
@@ -458,8 +472,8 @@ interface IGridOptions {
     showfilterbar?: boolean;
     filterbarmode?: string;
     selectionmode?: 'none' | 'singlerow' | 'multiplerows' | 'multiplerowsextended' | 'singlecell' | 'multiplecells' | 'multiplecellsextended' | 'multiplecellsadvanced' | 'checkbox';
-    updatefilterconditions?: (type?: string, defaultconditions?: any) => any;
-    updatefilterpanel?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
+    updatefilterconditions?: (type: string, defaultconditions: any) => any;
+    updatefilterpanel?: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any;
     theme?: string;
     toolbarheight?: number;
     autoheight?: boolean;
@@ -493,7 +507,7 @@ interface IGridOptions {
     editable?: boolean;
     batcheditable?: boolean;
     editmode?: 'click' | 'selectedcell' | 'selectedrow' | 'dblclick' | 'programmatic';
-    filter?: (cellValue?: IGridFilter['cellValue'], rowData?: IGridFilter['rowData'], dataField?: IGridFilter['dataField'], filterGroup?: IGridFilter['filterGroup'], defaultFilterResult?: IGridFilter['defaultFilterResult']) => any;
+    filter?: (cellValue: IGridFilter['cellValue'], rowData: IGridFilter['rowData'], dataField: IGridFilter['dataField'], filterGroup: IGridFilter['filterGroup'], defaultFilterResult: IGridFilter['defaultFilterResult']) => any;
     filterable?: boolean;
     filternlpinput?: string;
     aiKey?: string;
@@ -508,8 +522,8 @@ interface IGridOptions {
     groups?: string[];
     horizontalscrollbarstep?: number;
     horizontalscrollbarlargestep?: number;
-    initrowdetails?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
-    disablerowdetails?: (index?: number) => boolean;
+    initrowdetails?: (index: number, parentElement: any, gridElement: any, datarecord: any) => void;
+    disablerowdetails?: (index: number) => boolean;
     keyboardnavigation?: boolean;
     localization?: IGridLocalizationobject;
     pagesize?: number;
@@ -522,9 +536,9 @@ interface IGridOptions {
     rowdetailstemplate?: any;
     ready?: () => void;
     rendered?: (type: any) => void;
-    renderstatusbar?: (statusbar?: IGridRenderstatusbar['statusbar']) => void;
-    rendertoolbar?: (toolbar?: IGridRendertoolbar['toolbar']) => void;
-    rendergridrows?: (params?: any) => any;
+    renderstatusbar?: (statusbar: IGridRenderstatusbar['statusbar']) => void;
+    rendertoolbar?: (toolbar: IGridRendertoolbar['toolbar']) => void;
+    rendergridrows?: (params: any) => any;
     sortable?: boolean;
     sortmode?: string;
     sortmodekey?: string;
@@ -537,33 +551,34 @@ interface IGridOptions {
     verticalscrollbarstep?: number;
     verticalscrollbarlargestep?: number;
 }
-export interface IGridProps extends IGridOptions {
+export interface IGridProps extends IGridOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onGridaiResult?: (e?: Event) => void;
-    onGridaiError?: (e?: Event) => void;
-    onBindingcomplete?: (e?: Event) => void;
-    onColumnresized?: (e?: Event) => void;
-    onColumnreordered?: (e?: Event) => void;
-    onColumnclick?: (e?: Event) => void;
-    onCellclick?: (e?: Event) => void;
-    onCelldoubleclick?: (e?: Event) => void;
-    onCellselect?: (e?: Event) => void;
-    onCellunselect?: (e?: Event) => void;
-    onCellvaluechanged?: (e?: Event) => void;
-    onCellbeginedit?: (e?: Event) => void;
-    onCellendedit?: (e?: Event) => void;
-    onFilter?: (e?: Event) => void;
-    onGroupschanged?: (e?: Event) => void;
-    onGroupexpand?: (e?: Event) => void;
-    onGroupcollapse?: (e?: Event) => void;
-    onPagechanged?: (e?: Event) => void;
-    onPagesizechanged?: (e?: Event) => void;
-    onRowclick?: (e?: Event) => void;
-    onRowdoubleclick?: (e?: Event) => void;
-    onRowselect?: (e?: Event) => void;
-    onRowunselect?: (e?: Event) => void;
-    onRowexpand?: (e?: Event) => void;
-    onRowcollapse?: (e?: Event) => void;
-    onSort?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onGridaiResult?: (e?: any) => void;
+    onGridaiError?: (e?: any) => void;
+    onBindingcomplete?: (e?: any) => void;
+    onColumnresized?: (e?: any) => void;
+    onColumnreordered?: (e?: any) => void;
+    onColumnclick?: (e?: any) => void;
+    onCellclick?: (e?: any) => void;
+    onCelldoubleclick?: (e?: any) => void;
+    onCellselect?: (e?: any) => void;
+    onCellunselect?: (e?: any) => void;
+    onCellvaluechanged?: (e?: any) => void;
+    onCellbeginedit?: (e?: any) => void;
+    onCellendedit?: (e?: any) => void;
+    onFilter?: (e?: any) => void;
+    onGroupschanged?: (e?: any) => void;
+    onGroupexpand?: (e?: any) => void;
+    onGroupcollapse?: (e?: any) => void;
+    onPagechanged?: (e?: any) => void;
+    onPagesizechanged?: (e?: any) => void;
+    onRowclick?: (e?: any) => void;
+    onRowdoubleclick?: (e?: any) => void;
+    onRowselect?: (e?: any) => void;
+    onRowunselect?: (e?: any) => void;
+    onRowexpand?: (e?: any) => void;
+    onRowcollapse?: (e?: any) => void;
+    onSort?: (e?: any) => void;
 }

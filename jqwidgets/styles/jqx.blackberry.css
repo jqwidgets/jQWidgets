@@ -1,72 +1,46 @@
 ﻿.jqx-rc-tl-blackberry
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
 }
 .jqx-rc-tr-blackberry
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 .jqx-rc-bl-blackberry
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 .jqx-rc-br-blackberry
 {
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-blackberry
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-blackberry
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-blackberry
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-blackberry
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-blackberry
 {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
 .jqx-widget-blackberry {
@@ -99,10 +73,6 @@
 .jqx-button-blackberry, .jqx-fill-state-normal-blackberry, .jqx-fill-state-hover-blackberry   {
     border-color: #CECACE;
     font-family: Slate Pro, Slate, Helvetica, sans-serif;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c6c3c6), color-stop(100%, #e7e7e7));
-    background: -webkit-linear-gradient(#c6c3c6, #e7e7e7);
-    background: -moz-linear-gradient(#c6c3c6, #e7e7e7);
-    background: -o-linear-gradient(#c6c3c6, #e7e7e7);
     background: linear-gradient(#c6c3c6, #e7e7e7);
     font-size: 16px;
     color: #000;
@@ -124,10 +94,6 @@
 }
 .jqx-button-blackberry {
     border-width: 2px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
     border-radius: 5px;
 }
 .jqx-widget-blackberry .jqx-grid-column-menubutton-blackberry, .jqx-grid-column-menubutton-blackberry {
@@ -154,8 +120,6 @@
 .jqx-scrollbar-thumb-state-normal-blackberry, .jqx-scrollbar-thumb-state-normal-horizontal-blackberry {
     background: #9b9b9b;
     border-color: #b3b3b3;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
@@ -163,14 +127,10 @@
     background: #e6e6e6;
     border-color: #b3b3b3;
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
 }
 
 .jqx-progressbar-blackberry {
     background: #f7f7f7 !important;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -189,9 +149,7 @@
 .jqx-scrollbar-thumb-state-pressed-blackberry, .jqx-splitter-splitbar-vertical-blackberry, .jqx-splitter-splitbar-horizontal-blackberry, .jqx-scrollbar-thumb-state-pressed-horizontal-blackberry {
     background: #d9d9d9;
     border-color: #b3b3b3;
-     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .jqx-grid-column-sortdescbutton-blackberry, jqx-grid-column-filterbutton-blackberry, .jqx-grid-column-sortascbutton-blackberry {
@@ -215,8 +173,6 @@
 }
 .jqx-checkbox-hover {
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
 }
 .jqx-combobox-content-blackberry, .jqx-input-blackberry {
 }
@@ -247,18 +203,12 @@
 
 .jqx-radiobutton-blackberry {
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     background-repeat: no-repeat;
     background: none;
 }
 
 .jqx-radiobutton-blackberry-blackberry, .jqx-radiobutton-hover-blackberry {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     background-repeat: no-repeat;
 }
@@ -267,24 +217,18 @@
     filter: none;
     background: #666;
     background-repeat: no-repeat;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-radiobutton-check-indeterminate-blackberry {
     filter: none;
     background: #999;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-radiobutton-check-indeterminate-disabled-blackberry {
     filter: none;
     background: #999;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
@@ -294,17 +238,12 @@
 }
 
 .jqx-slider-button-blackberry {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 
 .jqx-popup-blackberry {
     border: 1px solid #ccc;
-    *border-right-width: 2px;
-    *border-bottom-width: 2px;
-    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
 .jqx-grid-column-sortascbutton-blackberry, .jqx-expander-arrow-bottom-blackberry, .jqx-window-collapse-button-blackberry, .jqx-menu-item-arrow-up-blackberry, .jqx-menu-item-arrow-up-selected-blackberry, .jqx-menu-item-arrow-top-up-blackberry, .jqx-icon-arrow-up-blackberry, .jqx-icon-arrow-up-hover-blackberry, .jqx-icon-arrow-up-selected-blackberry {
     background-image: url('images/icon-up.png');
@@ -364,8 +303,7 @@
     border-color: rgba(0,0,0,0.2);
     color: #555555;
     background-color: #ffffff;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .jqx-combobox-content-blackberry, .jqx-combobox-blackberry, .jqx-combobox-state-normal-blackberry {
@@ -379,15 +317,7 @@
     border-color: #959595;
 }
 
-input[type="text"].jqx-input-blackberry:-moz-placeholder, input[type="text"].jqx-widget-content-blackberry:-moz-placeholder, input[type="textarea"].jqx-widget-content-blackberry:-moz-placeholder, textarea.jqx-input-blackberry:-moz-placeholder {
-    color: #999999;
-}
-
 input[type="text"].jqx-input-blackberry:-webkit-input-placeholder, input[type="text"].jqx-widget-content-blackberry:-webkit-input-placeholder, input[type="textarea"].jqx-widget-content-blackberry:-webkit-input-placeholder, textarea.jqx-input-blackberry:-webkit-input-placeholder {
-    color: #999999;
-}
-
-input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"].jqx-widget-content-blackberry:-ms-input-placeholder, input[type="textarea"].jqx-widget-content-blackberry:-ms-input-placeholder, textarea.jqx-input-blackberry:-ms-input-placeholder {
     color: #999999;
 }
 
@@ -406,24 +336,10 @@ input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    -webkit-border-radius: 0px;
-    -webkit-border-top-left-radius: 0px;
-    -webkit-border-top-right-radius: 0px;
-    -webkit-border-bottom-left-radius: 0px;
-    -webkit-border-bottom-right-radius: 0px;
-    -moz-border-radius: 0px;
-    -moz-border-top-left-radius: 0px;
-    -moz-border-top-right-radius: 0px;
-    -moz-border-bottom-left-radius: 0px;
-    -moz-border-bottom-right-radius: 0px;
 }
 .jqx-tabs-header-blackberry, .jqx-tabs-arrow-background {
     background-color: #1a1a1a;
-    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(255,255,255,0.18)),color-stop(1,rgba(255,255,255,0)));
-    background-image: -moz-linear-gradient(top,rgba(255,255,255,0.18),rgba(255,255,255,0));
-    background-image: linear-gradient(top,rgba(255,255,255,0.18),rgba(255,255,255,0));
-    background-image: -ms-linear-gradient(top,rgba(255,255,255,0.18),rgba(255,255,255,0));
-    background-image: -o-linear-gradient(top,rgba(255,255,255,0.18),rgba(255,255,255,0));
+    background-image: linear-gradient(rgba(255,255,255,0.18), rgba(255,255,255,0));
     color: #fff;
     border-color: #000;
 }
@@ -432,13 +348,8 @@ input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"
     border-top: 2px solid #057fe4;
     color: #fff;
     background: #3a3a3a;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3f3f3f), color-stop(100%, #353535));
-    background-image: -webkit-linear-gradient(top, #3f3f3f, #353535);
-    background-image: -moz-linear-gradient(top, #3f3f3f, #353535);
-    background-image: -o-linear-gradient(top, #3f3f3f, #353535);
-    background-image: linear-gradient(top, #3f3f3f, #353535);
+    background-image: linear-gradient(#3f3f3f, #353535);
     box-shadow: 0 0px 5px #000;
-    -webkit-box-shadow: 0 0px 5px #000;
     padding-top: 4px;
     padding-bottom: 4px;
 }
@@ -448,13 +359,8 @@ input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"
     color: #fff;
     margin-top: 0px;
     background: #3a3a3a;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3f3f3f), color-stop(100%, #353535));
-    background-image: -webkit-linear-gradient(top, #3f3f3f, #353535);
-    background-image: -moz-linear-gradient(top, #3f3f3f, #353535);
-    background-image: -o-linear-gradient(top, #3f3f3f, #353535);
-    background-image: linear-gradient(top, #3f3f3f, #353535);
+    background-image: linear-gradient(#3f3f3f, #353535);
     box-shadow: 0 0px 5px #000;
-    -webkit-box-shadow: 0 0px 5px #000;
     padding-top: 4px;
     padding-bottom: 4px;
 }
@@ -531,20 +437,10 @@ input[type=text].jqx-input-blackberry, input[type=password].jqx-input-blackberry
 }
 
 .jqx-group-button-normal-blackberry{
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
-     -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 .jqx-progressbar-text-blackberry {
@@ -553,16 +449,12 @@ input[type=text].jqx-input-blackberry, input[type=password].jqx-input-blackberry
 .jqx-slider-button-blackberry
 {
     border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     padding: 4px !important;
 }
 .jqx-slider-slider-blackberry {
     width: 25px;
     height: 25px;
     margin-top: -10px;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
 }
 .jqx-slider-button-blackberry.jqx-fill-state-pressed-blackberry .jqx-icon-arrow-right-blackberry {

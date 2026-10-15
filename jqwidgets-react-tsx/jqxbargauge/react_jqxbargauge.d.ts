@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxBarGauge extends React.PureComponent<IBarGaugeProps, IState> {
-    protected static getDerivedStateFromProps(props: IBarGaugeProps, state: IState): null | IState;
+declare class JqxBarGauge extends React.PureComponent<IBarGaugeProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IBarGaugeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IBarGaugeProps): void;
     getOptions(option: string): any;
@@ -14,14 +24,15 @@ declare class JqxBarGauge extends React.PureComponent<IBarGaugeProps, IState> {
     renderWidget(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxBarGauge;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IBarGaugeLabelsFont {
     color?: string;
     size?: number | string;
@@ -63,7 +74,7 @@ export interface IBarGaugeTitle {
 }
 export interface IBarGaugeTooltip {
     classname?: string;
-    formatFunction?: (value: string, index?: number, color?: string) => string;
+    formatFunction?: (value: string, index: number) => string;
     visible?: boolean;
     precision?: number;
 }
@@ -80,7 +91,7 @@ interface IBarGaugeOptions {
     customColorScheme?: IBarGaugeCustomColorScheme;
     disabled?: boolean;
     endAngle?: number;
-    formatFunction?: (value: number, index?: number, color?: string) => string;
+    formatFunction?: (value: number, index: number, color: string) => string;
     height?: string | number;
     labels?: IBarGaugeLabels;
     max?: number | string;
@@ -88,19 +99,21 @@ interface IBarGaugeOptions {
     relativeInnerRadius?: number | string;
     rendered?: () => void;
     startAngle?: number;
+    theme?: string;
     title?: IBarGaugeTitle;
     tooltip?: IBarGaugeTooltip;
     useGradient?: boolean;
     values?: number[];
     width?: string | number;
 }
-export interface IBarGaugeProps extends IBarGaugeOptions {
+export interface IBarGaugeProps extends IBarGaugeOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onDrawEnd?: (e?: Event) => void;
-    onDrawStart?: (e?: Event) => void;
-    onInitialized?: (e?: Event) => void;
-    onTooltipClose?: (e?: Event) => void;
-    onTooltipOpen?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onDrawEnd?: (e?: any) => void;
+    onDrawStart?: (e?: any) => void;
+    onInitialized?: (e?: any) => void;
+    onTooltipClose?: (e?: any) => void;
+    onTooltipOpen?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

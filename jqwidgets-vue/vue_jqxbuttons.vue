@@ -28,10 +28,7 @@
                 default: true,
                 type: Boolean
             },
-            cursor: {
-                default: 'pointer',
-                type: Boolean
-            },
+            cursor: String,
             textPosition: String,
             textImageRelation: String,
             theme: String,

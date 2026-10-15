@@ -46,6 +46,7 @@
             },
             itemsRenderer: Function,
             cellsRenderer: Function,
+            theme: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -152,6 +153,13 @@
                     return JQXLite(this.componentSelector).jqxPivotGrid('cellsRenderer');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxPivotGrid('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxPivotGrid('theme');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -160,7 +168,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['source','localization','scrollBarsEnabled','selectionEnabled','multipleSelectionEnabled','treeStyleRows','autoResize','itemsRenderer','cellsRenderer'];
+                const widgetProps = ['source','localization','scrollBarsEnabled','selectionEnabled','multipleSelectionEnabled','treeStyleRows','autoResize','itemsRenderer','cellsRenderer','theme'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -260,6 +268,16 @@
                     },
                     set: function(newValue) {
                         that._cellsRenderer(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

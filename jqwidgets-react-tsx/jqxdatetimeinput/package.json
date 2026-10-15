@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxdatetimeinput.umd.js",
-    "module": "react_jqxdatetimeinput.esm.js",
-    "typings": "react_jqxdatetimeinput.d.ts",
-    "name": "jqwidgets-react/jqxdatetimeinput",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxdatetimeinput",
+  "version": "27.1.0",
+  "main": "react_jqxdatetimeinput.umd.js",
+  "module": "react_jqxdatetimeinput.esm.js",
+  "typings": "react_jqxdatetimeinput.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxdatetimeinput.d.ts",
+      "import": "./react_jqxdatetimeinput.esm.js",
+      "require": "./react_jqxdatetimeinput.umd.js",
+      "default": "./react_jqxdatetimeinput.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

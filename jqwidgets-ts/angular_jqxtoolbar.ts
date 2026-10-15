@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,7 +27,7 @@ declare let JQXLite: any;
 export class jqxToolBarComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
-   @Input('initTools') attrInitTools: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void;
+   @Input('initTools') attrInitTools: (type: string, index: number, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void;
    @Input('minimizeWidth') attrMinimizeWidth: number;
    @Input('minWidth') attrMinWidth: number | string;
    @Input('maxWidth') attrMaxWidth: number | string;
@@ -51,6 +51,18 @@ export class jqxToolBarComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxToolBar('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -170,7 +182,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   initTools(arg?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void): (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void {
+   initTools(arg?: (type: string, index: number, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void): (type: string, index: number, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void {
       if (arg !== undefined) {
           this.host.jqxToolBar('initTools', arg);
       } else {
@@ -236,7 +248,7 @@ export class jqxToolBarComponent implements OnChanges
 
 
    // jqxToolBarComponent functions
-   addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: string, tool?: any, menuToolIninitialization?: boolean) => void): void {
+   addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type: string, tool: any, menuToolIninitialization: boolean) => { minimizable?: boolean, menuTool?: boolean } | void): void {
       this.host.jqxToolBar('addTool', type, position, separator, menuToolIninitialization);
    }
 

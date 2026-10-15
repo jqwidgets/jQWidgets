@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxvalidator.umd.js",
-    "module": "react_jqxvalidator.esm.js",
-    "typings": "react_jqxvalidator.d.ts",
-    "name": "jqwidgets-react/jqxvalidator",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxvalidator",
+  "version": "27.1.0",
+  "main": "react_jqxvalidator.umd.js",
+  "module": "react_jqxvalidator.esm.js",
+  "typings": "react_jqxvalidator.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxvalidator.d.ts",
+      "import": "./react_jqxvalidator.esm.js",
+      "require": "./react_jqxvalidator.umd.js",
+      "default": "./react_jqxvalidator.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

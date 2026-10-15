@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxLayout extends React.PureComponent<ILayoutProps, IState> {
-    protected static getDerivedStateFromProps(props: ILayoutProps, state: IState): null | IState;
+declare class JqxLayout extends React.PureComponent<ILayoutProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ILayoutProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ILayoutProps): void;
     getOptions(option: string): any;
@@ -16,14 +27,15 @@ declare class JqxLayout extends React.PureComponent<ILayoutProps, IState> {
     renderWidget(): void;
     saveLayout(): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxLayout;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface ILayout {
     type?: 'layoutGroup' | 'tabbedGroup' | 'documentGroup' | 'autoHideGroup' | 'layoutPanel' | 'documentPanel';
     alignment?: 'left' | 'right' | 'top' | 'bottom';
@@ -32,7 +44,7 @@ export interface ILayout {
     allowUnpin?: boolean;
     contentContainer?: string;
     height?: number | string;
-    initContent?: () => void;
+    initContent?: (panel: any) => void;
     minHeight?: number | string;
     minWidth?: number | string;
     orientation?: 'horizontal' | 'vertical';
@@ -56,10 +68,11 @@ interface ILayoutOptions {
     theme?: string;
     width?: string | number;
 }
-export interface ILayoutProps extends ILayoutOptions {
+export interface ILayoutProps extends ILayoutOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onPin?: (e?: Event) => void;
-    onResize?: (e?: Event) => void;
-    onUnpin?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onPin?: (e?: any) => void;
+    onResize?: (e?: any) => void;
+    onUnpin?: (e?: any) => void;
 }

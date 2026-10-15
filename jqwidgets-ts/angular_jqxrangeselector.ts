@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,7 +41,6 @@ export class jqxRangeSelectorComponent implements OnChanges
    @Input('showGroupLabels') attrShowGroupLabels: boolean;
    @Input('showMinorTicks') attrShowMinorTicks: boolean;
    @Input('snapToTicks') attrSnapToTicks: boolean;
-   @Input('showMajorLabels') attrShowMajorLabels: boolean;
    @Input('showMarkers') attrShowMarkers: boolean;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
@@ -49,7 +48,7 @@ export class jqxRangeSelectorComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+   properties: string[] = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMarkers','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRangeSelector;
@@ -61,6 +60,18 @@ export class jqxRangeSelectorComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxRangeSelector('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -321,14 +332,6 @@ export class jqxRangeSelectorComponent implements OnChanges
           this.host.jqxRangeSelector('snapToTicks', arg);
       } else {
           return this.host.jqxRangeSelector('snapToTicks');
-      }
-   }
-
-   showMajorLabels(arg?: boolean): boolean {
-      if (arg !== undefined) {
-          this.host.jqxRangeSelector('showMajorLabels', arg);
-      } else {
-          return this.host.jqxRangeSelector('showMajorLabels');
       }
    }
 

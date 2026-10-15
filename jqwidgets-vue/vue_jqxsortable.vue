@@ -52,6 +52,7 @@
             },
             scrollSensitivity: Number,
             scrollSpeed: Number,
+            theme: String,
             tolerance: String,
             zIndex: Number,
             autoCreate: {
@@ -267,6 +268,13 @@
                     return JQXLite(this.componentSelector).jqxSortable('scrollSpeed');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxSortable('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxSortable('theme');
+                }
+            },
             _tolerance: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxSortable('tolerance', arg)
@@ -289,7 +297,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
+                const widgetProps = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -529,6 +537,16 @@
                     },
                     set: function(newValue) {
                         that._scrollSpeed(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

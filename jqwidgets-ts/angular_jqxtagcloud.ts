@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,6 +41,7 @@ export class jqxTagCloudComponent implements OnChanges
    @Input('tagRenderer') attrTagRenderer: (itemData: jqwidgets.TagCloudTagRenderer['itemData'], minValue: jqwidgets.TagCloudTagRenderer['minValue'], valueRange: jqwidgets.TagCloudTagRenderer['valueRange']) => any;
    @Input('takeTopWeightedItems') attrTakeTopWeightedItems: boolean;
    @Input('textColor') attrTextColor: string;
+   @Input('theme') attrTheme: string;
    @Input('urlBase') attrUrlBase: string;
    @Input('urlMember') attrUrlMember: string;
    @Input('valueMember') attrValueMember: string;
@@ -49,7 +50,7 @@ export class jqxTagCloudComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','urlBase','urlMember','valueMember','width'];
+   properties: string[] = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTagCloud;
@@ -61,6 +62,18 @@ export class jqxTagCloudComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxTagCloud('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -321,6 +334,14 @@ export class jqxTagCloudComponent implements OnChanges
           this.host.jqxTagCloud('textColor', arg);
       } else {
           return this.host.jqxTagCloud('textColor');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxTagCloud('theme', arg);
+      } else {
+          return this.host.jqxTagCloud('theme');
       }
    }
 

@@ -1,72 +1,46 @@
 ﻿.jqx-rc-tl-android
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
 }
 .jqx-rc-tr-android
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 .jqx-rc-bl-android
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 .jqx-rc-br-android
 {
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-android
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-android
 {
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-android
 {
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-android
 {
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    -webkit-border-bottom-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-android
 {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
     border-radius: 0px;
 }
 .jqx-widget-android {
@@ -222,8 +196,6 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 
 .jqx-scrollbar-thumb-state-normal-horizontal-android, .jqx-scrollbar-thumb-state-normal-android {
     background: #686868; border-color: #686868;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 .jqx-scrollbar-thumb-state-hover-horizontal-android, .jqx-scrollbar-thumb-state-hover-android {
@@ -312,19 +284,14 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-slider-button-android
 {
     border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     padding: 4px !important;
 }
 .jqx-slider-slider-android {
     width: 25px;
     height: 25px;
     margin-top: -10px;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     background: rgba(51,181,229,0.6);
-    background-image: -moz-radial-gradient(#33b5e5 10%,transparent 90%);
     background-image: radial-gradient(#33b5e5 10%,transparent 90%);
     border: none;
 }
@@ -338,15 +305,9 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-tree-item-android, .jqx-menu-item-android, .jqx-menu-item-hover-android, .jqx-menu-item-selected-android, .jqx-menu-item-top-android, .jqx-menu-item-top-hover-android, 
 .jqx-menu-item-top-selected-android, .jqx-slider-button-android, .jqx-slider-slider-android
  {
-    -webkit-transition: background-color 100ms linear;
-     -moz-transition: background-color 100ms linear;
-     -o-transition: background-color 100ms linear;
-     -ms-transition: background-color 100ms linear;
      transition: background-color 100ms linear;
 }
-.jqx-switchbutton-android {
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
+.jqx-switchbutton-android { 
     border-radius: 0px;
     border: 2px solid #010f18;
 }
@@ -374,16 +335,6 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    -webkit-border-radius: 0px;
-    -webkit-border-top-left-radius: 0px;
-    -webkit-border-top-right-radius: 0px;
-    -webkit-border-bottom-left-radius: 0px;
-    -webkit-border-bottom-right-radius: 0px;
-    -moz-border-radius: 0px;
-    -moz-border-top-left-radius: 0px;
-    -moz-border-top-right-radius: 0px;
-    -moz-border-bottom-left-radius: 0px;
-    -moz-border-bottom-right-radius: 0px;
 }
 .jqx-tabs-header-android, .jqx-tabs-arrow-background {
     background: #000;
@@ -403,7 +354,6 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
     color: #fff;
     background: #000;
     box-shadow: 0 0px 5px #000;
-    -webkit-box-shadow: 0 0px 5px #000;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -411,9 +361,8 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-tabs-title-selected-bottom-android, .jqx-tabs-selection-tracker-bottom-android {
     border-top: 2px solid #32b3e3;
     color: #fff;
-   background: #000;  
+   background: #000;
     box-shadow: 0 0px 5px #000;
-    -webkit-box-shadow: 0 0px 5px #000;
     padding-top: 6px;
     padding-bottom: 6px;
 }

@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxTextArea extends React.PureComponent<ITextAreaProps, IState> {
-    protected static getDerivedStateFromProps(props: ITextAreaProps, state: IState): null | IState;
+declare class JqxTextArea extends React.PureComponent<ITextAreaProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: ITextAreaProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: ITextAreaProps): void;
     getOptions(option: string): any;
@@ -17,14 +28,15 @@ declare class JqxTextArea extends React.PureComponent<ITextAreaProps, IState> {
     selectAll(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxTextArea;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface ITextAreaOptions {
     disabled?: boolean;
     displayMember?: string;
@@ -47,11 +59,12 @@ interface ITextAreaOptions {
     valueMember?: string;
     width?: string | number;
 }
-export interface ITextAreaProps extends ITextAreaOptions {
+export interface ITextAreaProps extends ITextAreaOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
-    onClose?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
+    onClose?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
 }

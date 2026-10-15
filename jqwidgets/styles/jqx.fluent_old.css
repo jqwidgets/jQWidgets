@@ -629,15 +629,6 @@ input.jqx-input {
   background: var(--fluent-theme-primary);
 }
 
-@-webkit-keyframes css-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes css-spinner {
   0% {
     transform: rotate(0deg);
@@ -658,15 +649,10 @@ input.jqx-input {
   border-width: 1.5px;
   border-style: solid;
   border-color: rgb(0, 120, 212) rgb(199, 224, 244) rgb(199, 224, 244);
-  -o-border-image: initial;
      border-image: initial;
-  -webkit-animation-name: css-spinner;
           animation-name: css-spinner;
-  -webkit-animation-duration: 1.3s;
           animation-duration: 1.3s;
-  -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
           animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
   width: 28px;
   height: 28px;

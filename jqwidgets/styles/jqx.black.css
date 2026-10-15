@@ -1,66 +1,40 @@
 ﻿.jqx-rc-tl-black {
-    -moz-border-radius-topleft: 5px;
-    -webkit-border-top-left-radius: 5px;
     border-top-left-radius: 5px;
 }
 /*top-right rounded Corners*/
 .jqx-rc-tr-black {
-    -moz-border-radius-topright: 5px;
-    -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
 }
 /*bottom-left rounded Corners*/
 .jqx-rc-bl-black {
-    -moz-border-radius-bottomleft: 5px;
-    -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 /*bottom-right rounded Corners*/
 .jqx-rc-br-black {
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 /*top rounded Corners*/
 .jqx-rc-t-black {
-    -moz-border-radius-topleft: 5px;
-    -webkit-border-top-left-radius: 5px;
     border-top-left-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
 }
 /*bottom rounded Corners*/
 .jqx-rc-b-black {
-    -moz-border-radius-bottomleft: 5px;
-    -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 /*right rounded Corners*/
 .jqx-rc-r-black {
-    -moz-border-radius-topright: 5px;
-    -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 /*left rounded Corners*/
 .jqx-rc-l-black {
-    -moz-border-radius-topleft: 5px;
-    -webkit-border-top-left-radius: 5px;
     border-top-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 /*all rounded Corners*/
 .jqx-rc-all-black {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -122,34 +96,19 @@
     color: #fff;
     border-color: #000;
     background: #a4a4a4;
-    background: -moz-linear-gradient(top, #a4a4a4 0%, #757575 4%, #4f4f4f 37%, #464646 48%, #000000 52%, #000000 56%, #0c0c0c 67%, #1e1e1e 78%, #414141 96%, #666666 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a4a4a4), color-stop(4%,#757575), color-stop(37%,#4f4f4f), color-stop(48%,#464646), color-stop(52%,#000000), color-stop(56%,#000000), color-stop(67%,#0c0c0c), color-stop(78%,#1e1e1e), color-stop(96%,#414141), color-stop(100%,#666666));
-    background: -webkit-linear-gradient(top, #a4a4a4 0%,#757575 4%,#4f4f4f 37%,#464646 48%,#000000 52%,#000000 56%,#0c0c0c 67%,#1e1e1e 78%,#414141 96%,#666666 100%);
-    background: -o-linear-gradient(top, #a4a4a4 0%,#757575 4%,#4f4f4f 37%,#464646 48%,#000000 52%,#000000 56%,#0c0c0c 67%,#1e1e1e 78%,#414141 96%,#666666 100%);
-    background: -ms-linear-gradient(top, #a4a4a4 0%,#757575 4%,#4f4f4f 37%,#464646 48%,#000000 52%,#000000 56%,#0c0c0c 67%,#1e1e1e 78%,#414141 96%,#666666 100%);
-    background: linear-gradient(top, #a4a4a4 0%,#757575 4%,#4f4f4f 37%,#464646 48%,#000000 52%,#000000 56%,#0c0c0c 67%,#1e1e1e 78%,#414141 96%,#666666 100%);
+    background: linear-gradient(#a4a4a4 0%,#757575 4%,#4f4f4f 37%,#464646 48%,#000000 52%,#000000 56%,#0c0c0c 67%,#1e1e1e 78%,#414141 96%,#666666 100%);
 }
 
 .jqx-fill-state-hover-black, .jqx-input-button-header-black, .jqx-widget-black .jqx-grid-cell-hover-black {
     background: #f87948;
-    background: -moz-linear-gradient(top, #f87948 0%, #fb4e0b 4%, #f44501 11%, #e24000 19%, #983600 44%, #983600 48%, #5c2900 52%, #692b00 67%, #c23700 96%, #bd3800 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f87948), color-stop(4%,#fb4e0b), color-stop(11%,#f44501), color-stop(19%,#e24000), color-stop(44%,#983600), color-stop(48%,#983600), color-stop(52%,#5c2900), color-stop(67%,#692b00), color-stop(96%,#c23700), color-stop(100%,#bd3800));
-    background: -webkit-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: -o-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: -ms-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
+    background: linear-gradient(#f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
     border-color: #262626;
     color: #fff;
 }
 
 .jqx-fill-state-pressed-black, .jqx-menu-item-top-hover-black, .jqx-widget-black .jqx-grid-cell-selected-black {
     background: #db4200;
-    background: -moz-linear-gradient(top, #db4200 0%, #902e00 4%, #7d2a01 19%, #531c03 44%, #531c03 48%, #0f0906 52%, #221105 63%, #2b1705 67%, #592903 89%, #642e02 96%, #902e00 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#db4200), color-stop(4%,#902e00), color-stop(19%,#7d2a01), color-stop(44%,#531c03), color-stop(48%,#531c03), color-stop(52%,#0f0906), color-stop(63%,#221105), color-stop(67%,#2b1705), color-stop(89%,#592903), color-stop(96%,#642e02), color-stop(100%,#902e00));
-    background: -webkit-linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
-    background: -o-linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
-    background: -ms-linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
-    background: linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
+    background: linear-gradient(#db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
     border-color: #262626;
     color: #fff;
 }
@@ -157,7 +116,6 @@
 .jqx-fill-state-disabled-black {
     cursor: default;
     opacity: .55;
-    filter: Alpha(Opacity=45);
 }
 
 .jqx-checkbox-check-checked-black {
@@ -210,12 +168,7 @@
 
 .jqx-scrollbar-button-state-hover-black {
     background: #f87948;
-    background: -moz-linear-gradient(top, #f87948 0%, #fb4e0b 4%, #f44501 11%, #e24000 19%, #983600 44%, #983600 48%, #5c2900 52%, #692b00 67%, #c23700 96%, #bd3800 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f87948), color-stop(4%,#fb4e0b), color-stop(11%,#f44501), color-stop(19%,#e24000), color-stop(44%,#983600), color-stop(48%,#983600), color-stop(52%,#5c2900), color-stop(67%,#692b00), color-stop(96%,#c23700), color-stop(100%,#bd3800));
-    background: -webkit-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: -o-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: -ms-linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
-    background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
+    background: linear-gradient(#f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#983600 44%,#983600 48%,#5c2900 52%,#692b00 67%,#c23700 96%,#bd3800 100%);
     border: 1px solid #000;
 }
 
@@ -226,49 +179,37 @@
 
 .jqx-scrollbar-thumb-state-normal-horizontal-black {
     background: #555;
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#717171),to(#494949));
-    background-image: -moz-linear-gradient(top,#717171,#494949);
-    background-image: -o-linear-gradient(top,#717171,#494949);
+    background-image: linear-gradient(#717171, #494949);
     border: 1px solid #000;
 }
 
 .jqx-scrollbar-thumb-state-hover-horizontal-black {
     background: #983600;
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#fb4e0b),to(#983600));
-    background-image: -moz-linear-gradient(top,#fb4e0b,#983600);
-    background-image: -o-linear-gradient(top,#fb4e0b,#983600);
+    background-image: linear-gradient(#fb4e0b, #983600);
     border: 1px solid #000;
 }
 
 .jqx-scrollbar-thumb-state-pressed-horizontal-black {
     background: #902e00;
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#902e00),to(#531c03));
-    background-image: -moz-linear-gradient(top,#902e00,#531c03);
-    background-image: -o-linear-gradient(top,#902e00,#531c03);
+    background-image: linear-gradient(#902e00, #531c03);
     border: 1px solid #000;
 }
 
 .jqx-scrollbar-thumb-state-normal-black {
     background: #555;
-    background-image: -webkit-gradient(linear,left top,left top,from(#717171),to(#494949));
-    background-image: -moz-linear-gradient(left,#717171,#494949);
-    background-image: -o-linear-gradient(left,#717171,#494949);
+    background-image: linear-gradient(#494949, #494949);
     border: 1px solid #000;
 }
 
 .jqx-scrollbar-thumb-state-hover-black {
     background: #983600;
-    background-image: -webkit-gradient(linear,left top,left top,from(#fb4e0b),to(#983600));
-    background-image: -moz-linear-gradient(left,#fb4e0b,#983600);
-    background-image: -o-linear-gradient(left,#fb4e0b,#983600);
+    background-image: linear-gradient(#983600, #983600);
     border: 1px solid #000;
 }
 
 .jqx-scrollbar-thumb-state-pressed-black {
     background: #902e00;
-    background-image: -webkit-gradient(linear,left top,left top,from(#902e00),to(#531c03));
-    background-image: -moz-linear-gradient(left,#902e00,#531c03);
-    background-image: -o-linear-gradient(left,#902e00,#531c03);
+    background-image: linear-gradient(#531c03, #531c03);
     border: 1px solid #000;
 }
 
@@ -341,7 +282,6 @@
 }
 
 .jqx-widget-black, .jqx-widget-header-black, .jqx-widget-content-black {
-    -webkit-background-clip: padding-box;
     background-clip: padding-box;
 }
 
@@ -458,7 +398,6 @@
     box-shadow: none;
 }
 
-
 .jqx-grid-column-menubutton-black {
     border-style: solid;
     border-width: 0px 0px 0px 1px;
@@ -512,4 +451,20 @@
 /*applied to the timepicker needle circle*/
 .jqx-needle-central-circle-black {
     fill: darkgray;
+}
+
+/* jqx.base.css forces other-month calendar days to #757575, under 4.5:1 on this theme's
+   dark ground (WCAG 1.4.3); #999999 is 5.3:1 or better here. */
+.jqx-calendar-cell-othermonth-black,
+.jqx-calendar-cell-weekend-black {
+    color: #999999 !important;
+}
+
+/* WCAG 1.4.11 / 2.4.7. The tab panel has no focus style of its own and falls back to the
+   browser ring, near-black (#101010) and invisible on this theme's dark panel. Only the
+   panel: this theme's inputs, buttons and check boxes have white faces, where the
+   browser ring is the right one. #4DA3FF is 5.8:1 or better on the panel. */
+.jqx-tabs-content-element-black:focus-visible {
+    outline: 2px solid #4DA3FF;
+    outline-offset: -2px;
 }

@@ -9,6 +9,7 @@
 
     export default {
         props: {
+            theme: String,
             type: String,
             target: Object,
             autoCreate: {
@@ -42,6 +43,13 @@
             refresh: function() {
                 return JQXLite(this.componentSelector).jqxPivotDesigner('refresh');  
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxPivotDesigner('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxPivotDesigner('theme');
+                }
+            },
             _type: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxPivotDesigner('type', arg)
@@ -64,7 +72,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['type','target'];
+                const widgetProps = ['theme','type','target'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -78,6 +86,16 @@
             __extendProps__: function () {
                 const that = this;
 
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(that, 'type', {
                     get: function() {
                         return that._type();

@@ -29,14 +29,14 @@
     --jqx-surface-color: #323232;
     --jqx-disabled: #CCCCCC;
     --jqx-disabled-color: #555;
-    --jqx-ui-state-hover: #ebebeb;
-    --jqx-ui-state-color-hover: #333;
+    --jqx-ui-state-hover: var(--jqx-background-hover, #ebebeb);
+    --jqx-ui-state-color-hover: var(--jqx-background-color-hover, #333);
     --jqx-ui-state-border-hover: var(--jqx-ui-state-hover);
     --jqx-ui-state-active: var(--jqx-primary);
     --jqx-ui-state-color-active: var(--jqx-primary-color);
     --jqx-ui-state-border-active: var(--jqx-primary);
-    --jqx-ui-state-focus: #e2e0e0;
-    --jqx-ui-state-color-focus: #333;
+    --jqx-ui-state-focus: var(--jqx-background-hover, #e2e0e0);
+    --jqx-ui-state-color-focus: var(--jqx-background-color-hover, #333);
     --jqx-ui-state-border-focus: var(--jqx-ui-state-focus);
     --jqx-ui-state-selected: rgba(var(--jqx-primary-rgb), .1);
     --jqx-ui-state-color-selected: var(--jqx-primary);
@@ -474,19 +474,21 @@
     --jqx-gantt-chart-task-bar-fill-padding: 5px;
     --jqx-gantt-chart-task-label-padding: 2px var(--jqx-gantt-chart-task-bar-fill-padding);
     --jqx-gantt-chart-task-thumb-color: rgba(0, 0, 0, .55);
-    --jqx-gantt-chart-task-progress-color: rgba(0, 0, 0, .15);
+    --jqx-gantt-chart-task-progress-color: rgba(0, 0, 0, .22);
     --jqx-gantt-chart-project-color: #F89911;
     --jqx-gantt-chart-project-label-color: #333;
     --jqx-gantt-chart-project-label-color-selected: #000;
     --jqx-gantt-chart-project-progress-color: var(--jqx-gantt-chart-task-progress-color);
-    --jqx-gantt-chart-task-color: #0099FF;
+    --jqx-gantt-chart-task-color: var(--jqx-primary);
+    --jqx-gantt-chart-task-label-color: var(--jqx-primary-color);
+    --jqx-gantt-chart-task-label-color-selected: var(--jqx-primary-color);
     --jqx-gantt-chart-milestone-color: #800080;
     --jqx-gantt-chart-timeline-task-background-color: transparent;
-    --jqx-gantt-chart-timeline-task-connection-feedback-color: #e6510a;
+    --jqx-gantt-chart-timeline-task-connection-feedback-color: var(--jqx-primary);
     --jqx-gantt-chart-timeline-task-connection-feedback-width: 1px;
     --jqx-gantt-chart-timeline-task-connection-feedback-style: dashed;
-    --jqx-gantt-chart-timeline-task-connection-color: var(--jqx-gantt-chart-timeline-task-connection-feedback-color);
-    --jqx-gantt-chart-timeline-task-connection-color-hover: var(--jqx-gantt-chart-timeline-task-connection-color);
+    --jqx-gantt-chart-timeline-task-connection-color: #8a8a8a;
+    --jqx-gantt-chart-timeline-task-connection-color-hover: var(--jqx-primary);
     --jqx-gantt-chart-timeline-task-connection-width: var(--jqx-gantt-chart-timeline-task-connection-feedback-width);
     --jqx-gantt-chart-timeline-task-connection-style: solid;
     --jqx-gantt-chart-timeline-task-connection-arrow-type: solid;
@@ -498,7 +500,7 @@
     --jqx-gantt-chart-timeline-cell-size: auto;
     --jqx-gantt-chart-timeline-cell-min-size: 70px;
     --jqx-gantt-chart-timeline-task-min-width: 5px;
-    --jqx-gantt-chart-timeline-weekend-color: #EFF5FD;
+    --jqx-gantt-chart-timeline-weekend-color: rgba(var(--jqx-primary-rgb), .07);
     --jqx-gantt-chart-timeline-nonworking-color: #F5F5F5;
     --jqx-gantt-chart-default-width: auto;
     --jqx-gantt-chart-default-height: 600px;
@@ -510,7 +512,7 @@
     --jqx-gantt-chart-header-placeholder: ' - ';
     --jqx-gantt-chart-progress-label-padding: 0 10px 0 10px;
     --jqx-gantt-chart-filter-row-height: 30px;
-    --jqx-gantt-chart-task-fill-border-radius: 0;
+    --jqx-gantt-chart-task-fill-border-radius: 4px;
     --jqx-gantt-chart-segment-link-color: var(--jqx-gantt-chart-task-color);
     --jqx-gantt-chart-segment-link-size: var(--jqx-border-width);
     --jqx-gantt-chart-date-marker-height: 25px;
@@ -713,14 +715,14 @@
     --jqx-scroll-bar-size: 18px;
     --jqx-scroll-bar-default-width: var(--jqx-editor-width);
     --jqx-scroll-bar-default-height: var(--jqx-scroll-bar-size);
-    --jqx-scroll-bar-background: #F1F1F1;
+    --jqx-scroll-bar-background: var(--jqx-scrollbar-background, #F1F1F1);
     --jqx-scroll-bar-track-background: var(--jqx-scroll-bar-background);
-    --jqx-scroll-bar-border: #F1F1F1;
+    --jqx-scroll-bar-border: var(--jqx-scrollbar-border, #F1F1F1);
     --jqx-scroll-bar-thumb-border-top-right-radius: 0px;
     --jqx-scroll-bar-thumb-border-top-left-radius: 0px;
     --jqx-scroll-bar-thumb-border-bottom-left-radius: 0px;
     --jqx-scroll-bar-thumb-border-bottom-right-radius: 0px;
-    --jqx-scroll-bar-thumb-background: #C1C1C1;
+    --jqx-scroll-bar-thumb-background: var(--jqx-scrollbar-thumb-background, #C1C1C1);
     --jqx-scroll-bar-thumb-border: transparent;
     --jqx-scroll-bar-thumb-size: 100%;
     --jqx-scroll-bar-thumb-padding: 1px;
@@ -728,14 +730,14 @@
     --jqx-scroll-bar-thumb-border-hover: transparent;
     --jqx-scroll-bar-thumb-background-active: #787878;
     --jqx-scroll-bar-thumb-border-active: transparent;
-    --jqx-scroll-bar-button-background: #F1F1F1;
-    --jqx-scroll-bar-button-border: #F1F1F1;
+    --jqx-scroll-bar-button-background: var(--jqx-scrollbar-background, #F1F1F1);
+    --jqx-scroll-bar-button-border: var(--jqx-scrollbar-border, #F1F1F1);
     --jqx-scroll-bar-button-color: #505050;
     --jqx-scroll-bar-button-background-hover: #D2D2D2;
-    --jqx-scroll-bar-button-border-hover: #F1F1F1;
+    --jqx-scroll-bar-button-border-hover: var(--jqx-scrollbar-border, #F1F1F1);
     --jqx-scroll-bar-button-color-hover: #505050;
     --jqx-scroll-bar-button-background-active: #787878;
-    --jqx-scroll-bar-button-border-active: #F1F1F1;
+    --jqx-scroll-bar-button-border-active: var(--jqx-scrollbar-border, #F1F1F1);
     --jqx-scroll-bar-button-color-active: #fff;
     --jqx-table-default-width: 100%;
     --jqx-table-default-height: auto;
@@ -978,6 +980,15 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --pseudo-element-height: 0
+}
+
+/* Theme-derived colours (2026): non-working time and connection lines from the loaded theme's
+   background and text, so dark themes no longer show light cells. */
+@supports (color: color-mix(in srgb, red, blue)) {
+    :root {
+        --jqx-gantt-chart-timeline-nonworking-color: color-mix(in srgb, var(--jqx-background-color) 7%, var(--jqx-background));
+        --jqx-gantt-chart-timeline-task-connection-color: color-mix(in srgb, var(--jqx-background-color) 50%, var(--jqx-background));
+    }
 }
 
 .jqx-ui-component[theme=dark],
@@ -1999,10 +2010,10 @@ jqx-scroll-bar[discrete] {
     --jqx-scroll-bar-thumb-padding: 3px;
     --jqx-scroll-bar-default-width: var(--jqx-editor-width);
     --jqx-scroll-bar-default-height: var(--jqx-scroll-bar-size);
-    --jqx-scroll-bar-background: #fafafa;
+    --jqx-scroll-bar-background: var(--jqx-scrollbar-background, #fafafa);
     --jqx-scroll-bar-track-background: var(--jqx-scroll-bar-background);
-    --jqx-scroll-bar-border: #F1F1F1;
-    --jqx-scroll-bar-thumb-background: #C1C1C1;
+    --jqx-scroll-bar-border: var(--jqx-scrollbar-border, #F1F1F1);
+    --jqx-scroll-bar-thumb-background: var(--jqx-scrollbar-thumb-background, #C1C1C1);
     --jqx-scroll-bar-thumb-border: transparent
 }
 

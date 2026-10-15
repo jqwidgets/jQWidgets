@@ -41,159 +41,250 @@ require('../../jqwidgets/jqxcheckbox');
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    var __ssrIdCounter__ = 0;
+    function __sameValue__(x, y) {
+        return x === y ? (x !== 0 || 1 / x === 1 / y) : (x !== x && y !== y);
+    }
+    function __afterTask__(callback) {
+        if (typeof Promise !== 'undefined') {
+            Promise.resolve().then(callback);
+        }
+        else {
+            setTimeout(callback, 0);
+        }
+    }
     var JqxTree = /** @class */ (function (_super) {
         __extends(JqxTree, _super);
         function JqxTree(props) {
             var _this = _super.call(this, props) || this;
             /* tslint:disable:variable-name */
             _this._jqx = JQXLite;
-            _this._id = 'JqxTree' + _this._jqx.generateID();
+            /* tslint:disable:variable-name */
+            _this._rendered = null;
+            /* tslint:disable:variable-name */
+            _this._host = null;
+            /* tslint:disable:variable-name */
+            _this._appliedOptions = null;
+            /* tslint:disable:variable-name */
+            _this._eventHandlers = {};
+            /* tslint:disable:variable-name */
+            _this._eventElement = null;
+            /* tslint:disable:variable-name */
+            _this._teardownPending = false;
+            /* tslint:disable:variable-name */
+            _this._hostParent = null;
+            /* tslint:disable:variable-name */
+            _this._hostNext = null;
+            /* tslint:disable:variable-name */
+            _this._widgetPlace = null;
+            /* tslint:disable:variable-name */
+            _this._hostChildren = [];
+            _this._id = 'JqxTree' + (_this._jqx ? _this._jqx.generateID() : 'SSR' + (++__ssrIdCounter__));
             _this._componentSelector = '#' + _this._id;
-            _this.state = { lastProps: props };
             return _this;
         }
-        JqxTree.getDerivedStateFromProps = function (props, state) {
-            if (!Object.is) {
-                Object.is = function (x, y) {
-                    if (x === y) {
-                        return x !== 0 || 1 / x === 1 / y;
-                    }
-                    else {
-                        return x !== x && y !== y;
-                    }
-                };
-            }
-            var areEqual = Object.is(props, state.lastProps);
-            if (!areEqual) {
-                var newState = { lastProps: props };
-                return newState;
-            }
-            return null;
-        };
         JqxTree.prototype.componentDidMount = function () {
+            if (this._teardownPending) {
+                this._teardownPending = false;
+                var place = this._widgetPlace;
+                if (place && this._host) {
+                    place.parent.insertBefore(this._host, place.next && place.next.parentNode === place.parent ? place.next : null);
+                }
+                this._widgetPlace = null;
+                return;
+            }
+            var element = this._jqx(this._target());
+            this._host = element[0] || null;
+            this._hostParent = this._host ? this._host.parentNode : null;
+            this._hostNext = this._host ? this._host.nextSibling : null;
+            this._hostChildren = this._host ? Array.prototype.slice.call(this._host.childNodes) : [];
             var widgetOptions = this._manageProps();
-            this._jqx(this._componentSelector).jqxTree(widgetOptions);
+            element.jqxTree(widgetOptions);
+            this._appliedOptions = widgetOptions;
+            this._applyHostAttributes();
             this._wireEvents();
         };
         JqxTree.prototype.componentDidUpdate = function () {
+            if (!this._appliedOptions) {
+                return;
+            }
             var widgetOptions = this._manageProps();
-            this.setOptions(widgetOptions);
+            var changed = {};
+            var hasChanges = false;
+            for (var key in widgetOptions) {
+                if (!__sameValue__(widgetOptions[key], this._appliedOptions[key])) {
+                    changed[key] = widgetOptions[key];
+                    hasChanges = true;
+                }
+            }
+            if ('source' in changed) {
+                for (var _i = 0, _a = ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']; _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    if (!(key in changed) && widgetOptions[key] !== undefined) {
+                        changed[key] = widgetOptions[key];
+                    }
+                }
+            }
+            this._appliedOptions = widgetOptions;
+            if (hasChanges) {
+                this.setOptions(changed);
+                this._applyHostAttributes();
+            }
             this._wireEvents();
         };
+        JqxTree.prototype.componentWillUnmount = function () {
+            var _this = this;
+            if (!this._jqx || !this._host) {
+                return;
+            }
+            var host = this._host;
+            var parent = this._hostParent;
+            if (parent && host.parentNode !== parent) {
+                this._widgetPlace = host.parentNode ? { parent: host.parentNode, next: host.nextSibling } : null;
+                var wrapper = host;
+                while (wrapper && wrapper.parentNode !== parent) {
+                    wrapper = wrapper.parentNode;
+                }
+                var sibling = this._hostNext && this._hostNext.parentNode === parent ? this._hostNext : null;
+                parent.insertBefore(host, wrapper || sibling);
+            }
+            this._teardownPending = true;
+            __afterTask__(function () {
+                if (_this._teardownPending) {
+                    _this._teardownPending = false;
+                    _this._teardown();
+                }
+            });
+        };
+        JqxTree.prototype._target = function () {
+            return (typeof document !== 'undefined' && document.getElementById(this._id)) || this._rendered || this._componentSelector;
+        };
         JqxTree.prototype.render = function () {
-            return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
+            var _this = this;
+            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style }, this._hostAttributes()), this.props.children));
         };
         JqxTree.prototype.setOptions = function (options) {
-            this._jqx(this._componentSelector).jqxTree(options);
+            this._jqx(this._target()).jqxTree(options);
         };
         JqxTree.prototype.getOptions = function (option) {
-            return this._jqx(this._componentSelector).jqxTree(option);
+            return this._jqx(this._target()).jqxTree(option);
         };
         JqxTree.prototype.addBefore = function (item, id) {
-            this._jqx(this._componentSelector).jqxTree('addBefore', item, id);
+            this._jqx(this._target()).jqxTree('addBefore', item, id);
         };
         JqxTree.prototype.addAfter = function (item, id) {
-            this._jqx(this._componentSelector).jqxTree('addAfter', item, id);
+            this._jqx(this._target()).jqxTree('addAfter', item, id);
         };
         JqxTree.prototype.addTo = function (item, id) {
-            this._jqx(this._componentSelector).jqxTree('addTo', item, id);
+            this._jqx(this._target()).jqxTree('addTo', item, id);
         };
         JqxTree.prototype.clear = function () {
-            this._jqx(this._componentSelector).jqxTree('clear');
+            this._jqx(this._target()).jqxTree('clear');
         };
         JqxTree.prototype.checkAll = function () {
-            this._jqx(this._componentSelector).jqxTree('checkAll');
+            this._jqx(this._target()).jqxTree('checkAll');
         };
         JqxTree.prototype.checkItem = function (item, checked) {
-            this._jqx(this._componentSelector).jqxTree('checkItem', item, checked);
+            this._jqx(this._target()).jqxTree('checkItem', item, checked);
         };
         JqxTree.prototype.collapseAll = function () {
-            this._jqx(this._componentSelector).jqxTree('collapseAll');
+            this._jqx(this._target()).jqxTree('collapseAll');
         };
         JqxTree.prototype.collapseItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('collapseItem', item);
+            this._jqx(this._target()).jqxTree('collapseItem', item);
         };
         JqxTree.prototype.destroy = function () {
-            this._jqx(this._componentSelector).jqxTree('destroy');
+            this._jqx(this._target()).jqxTree('destroy');
         };
         JqxTree.prototype.disableCheckbox = function (item) {
-            this._jqx(this._componentSelector).jqxTree('disableCheckbox', item);
+            this._jqx(this._target()).jqxTree('disableCheckbox', item);
         };
         JqxTree.prototype.disableItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('disableItem', item);
+            this._jqx(this._target()).jqxTree('disableItem', item);
         };
         JqxTree.prototype.ensureVisible = function (item) {
-            this._jqx(this._componentSelector).jqxTree('ensureVisible', item);
+            this._jqx(this._target()).jqxTree('ensureVisible', item);
         };
         JqxTree.prototype.enableCheckbox = function (item) {
-            this._jqx(this._componentSelector).jqxTree('enableCheckbox', item);
+            this._jqx(this._target()).jqxTree('enableCheckbox', item);
         };
         JqxTree.prototype.enableItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('enableItem', item);
+            this._jqx(this._target()).jqxTree('enableItem', item);
         };
         JqxTree.prototype.enableAll = function () {
-            this._jqx(this._componentSelector).jqxTree('enableAll');
+            this._jqx(this._target()).jqxTree('enableAll');
         };
         JqxTree.prototype.expandAll = function () {
-            this._jqx(this._componentSelector).jqxTree('expandAll');
+            this._jqx(this._target()).jqxTree('expandAll');
         };
         JqxTree.prototype.expandItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('expandItem', item);
+            this._jqx(this._target()).jqxTree('expandItem', item);
         };
         JqxTree.prototype.focus = function () {
-            this._jqx(this._componentSelector).jqxTree('focus');
+            this._jqx(this._target()).jqxTree('focus');
         };
         JqxTree.prototype.getCheckedItems = function () {
-            return this._jqx(this._componentSelector).jqxTree('getCheckedItems');
+            return this._jqx(this._target()).jqxTree('getCheckedItems');
         };
         JqxTree.prototype.getUncheckedItems = function () {
-            return this._jqx(this._componentSelector).jqxTree('getUncheckedItems');
+            return this._jqx(this._target()).jqxTree('getUncheckedItems');
         };
         JqxTree.prototype.getItems = function () {
-            return this._jqx(this._componentSelector).jqxTree('getItems');
+            return this._jqx(this._target()).jqxTree('getItems');
         };
         JqxTree.prototype.getItem = function (element) {
-            return this._jqx(this._componentSelector).jqxTree('getItem', element);
+            return this._jqx(this._target()).jqxTree('getItem', element);
         };
         JqxTree.prototype.getSelectedItem = function () {
-            return this._jqx(this._componentSelector).jqxTree('getSelectedItem');
+            return this._jqx(this._target()).jqxTree('getSelectedItem');
         };
         JqxTree.prototype.getPrevItem = function (item) {
-            return this._jqx(this._componentSelector).jqxTree('getPrevItem', item);
+            return this._jqx(this._target()).jqxTree('getPrevItem', item);
         };
         JqxTree.prototype.getNextItem = function (item) {
-            return this._jqx(this._componentSelector).jqxTree('getNextItem', item);
+            return this._jqx(this._target()).jqxTree('getNextItem', item);
         };
         JqxTree.prototype.hitTest = function (left, top) {
-            return this._jqx(this._componentSelector).jqxTree('hitTest', left, top);
+            return this._jqx(this._target()).jqxTree('hitTest', left, top);
         };
         JqxTree.prototype.removeItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('removeItem', item);
+            this._jqx(this._target()).jqxTree('removeItem', item);
         };
         JqxTree.prototype.renderWidget = function () {
-            this._jqx(this._componentSelector).jqxTree('render');
+            this._jqx(this._target()).jqxTree('render');
         };
         JqxTree.prototype.refresh = function () {
-            this._jqx(this._componentSelector).jqxTree('refresh');
+            this._jqx(this._target()).jqxTree('refresh');
         };
         JqxTree.prototype.selectItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('selectItem', item);
+            this._jqx(this._target()).jqxTree('selectItem', item);
         };
         JqxTree.prototype.uncheckAll = function () {
-            this._jqx(this._componentSelector).jqxTree('uncheckAll');
+            this._jqx(this._target()).jqxTree('uncheckAll');
         };
         JqxTree.prototype.uncheckItem = function (item) {
-            this._jqx(this._componentSelector).jqxTree('uncheckItem', item);
+            this._jqx(this._target()).jqxTree('uncheckItem', item);
         };
         JqxTree.prototype.updateItem = function (item, newItem) {
-            this._jqx(this._componentSelector).jqxTree('updateItem', item, newItem);
+            this._jqx(this._target()).jqxTree('updateItem', item, newItem);
         };
         JqxTree.prototype.val = function (value) {
-            if (value) {
-                this._jqx(this._componentSelector).jqxTree('val', value);
+            if (value !== undefined) {
+                this._jqx(this._target()).jqxTree('val', value);
             }
             else {
-                return this._jqx(this._componentSelector).jqxTree('val');
+                return this._jqx(this._target()).jqxTree('val');
             }
         };
         JqxTree.prototype._manageProps = function () {
@@ -206,20 +297,93 @@ require('../../jqwidgets/jqxcheckbox');
             }
             return options;
         };
+        JqxTree.prototype._hostAttributes = function () {
+            var attributes = {};
+            for (var prop in this.props) {
+                if (prop.indexOf('aria-') === 0 || prop.indexOf('data-') === 0) {
+                    attributes[prop] = this.props[prop];
+                }
+            }
+            return attributes;
+        };
+        JqxTree.prototype._applyHostAttributes = function () {
+            var host = this._host;
+            if (!host) {
+                return;
+            }
+            var attributes = this._hostAttributes();
+            for (var name_1 in attributes) {
+                var value = attributes[name_1];
+                if (value !== undefined && value !== null && host.getAttribute(name_1) !== String(value)) {
+                    host.setAttribute(name_1, String(value));
+                }
+            }
+        };
         JqxTree.prototype._wireEvents = function () {
             for (var prop in this.props) {
-                if (prop.indexOf('on') === 0) {
-                    var originalEventName = prop.slice(2);
-                    originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
-                    this._jqx(this._componentSelector).off(originalEventName);
-                    this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
+                if (prop.indexOf('on') === 0 && !this._eventHandlers[prop]) {
+                    if (!this._eventElement) {
+                        this._eventElement = this._jqx(this._target());
+                    }
+                    this._eventHandlers[prop] = this._eventHandler(prop);
+                    this._eventElement.on(__eventName__(prop), this._eventHandlers[prop]);
                 }
+            }
+        };
+        JqxTree.prototype._eventHandler = function (prop) {
+            var that = this;
+            return function () {
+                var handler = that.props[prop];
+                return typeof handler === 'function' ? handler.apply(this, arguments) : undefined;
+            };
+        };
+        JqxTree.prototype._teardown = function () {
+            var node = this._host;
+            var place = this._widgetPlace;
+            var kept = !!node.ownerDocument && node.ownerDocument.documentElement.contains(node);
+            for (var prop in this._eventHandlers) {
+                if (this._eventHandlers.hasOwnProperty(prop)) {
+                    this._eventElement.off(__eventName__(prop), this._eventHandlers[prop]);
+                }
+            }
+            this._eventHandlers = {};
+            this._eventElement = null;
+            this._appliedOptions = null;
+            this._host = null;
+            this._widgetPlace = null;
+            var parent = node.parentNode;
+            var next = node.nextSibling;
+            if (place) {
+                place.parent.insertBefore(node, place.next && place.next.parentNode === place.parent ? place.next : null);
+            }
+            try {
+                this._jqx(node).jqxTree('destroy');
+            }
+            catch (e) {
+                /* widget was already destroyed or never created */
+            }
+            if (kept && parent) {
+                if (node.parentNode !== parent) {
+                    parent.insertBefore(node, next && next.parentNode === parent ? next : null);
+                }
+                node.id = this._id;
+                while (node.firstChild) {
+                    node.removeChild(node.firstChild);
+                }
+                this._hostChildren.forEach(function (child) { return node.appendChild(child); });
+            }
+            else if (place && node.parentNode === place.parent) {
+                place.parent.removeChild(node);
             }
         };
         return JqxTree;
     }(React.PureComponent));
-    var jqx = window.jqx;
-    var JQXLite = window.JQXLite;
+    function __eventName__(prop) {
+        return prop.charAt(2).toLowerCase() + prop.slice(3);
+    }
+    var __hasWindow__ = typeof window !== 'undefined';
+    var jqx = (__hasWindow__ ? window.jqx : undefined);
+    var JQXLite = (__hasWindow__ ? window.JQXLite : undefined);
 
     exports.default = JqxTree;
     exports.jqx = jqx;

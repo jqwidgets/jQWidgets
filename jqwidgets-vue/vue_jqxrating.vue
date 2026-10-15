@@ -23,6 +23,7 @@
                 default: false,
                 type: Boolean
             },
+            theme: String,
             value: Number,
             width: [Number, String],
             autoCreate: {
@@ -121,6 +122,13 @@
                     return JQXLite(this.componentSelector).jqxRating('singleVote');
                 }
             },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxRating('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxRating('theme');
+                }
+            },
             _value: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxRating('value', arg)
@@ -143,7 +151,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['count','disabled','height','itemHeight','itemWidth','precision','singleVote','value','width'];
+                const widgetProps = ['count','disabled','height','itemHeight','itemWidth','precision','singleVote','theme','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -223,6 +231,16 @@
                     },
                     set: function(newValue) {
                         that._singleVote(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get: function() {
+                        return that._theme();
+                    },
+                    set: function(newValue) {
+                        that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true

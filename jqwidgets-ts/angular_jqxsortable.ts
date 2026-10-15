@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,7 +36,7 @@ export class jqxSortableComponent implements OnChanges
    @Input('forcePlaceholderSize') attrForcePlaceholderSize: boolean;
    @Input('grid') attrGrid: Array<number>;
    @Input('handle') attrHandle: string | boolean;
-   @Input('helper') attrHelper: (originalEvent?: any, content?: any) => void | 'original' | 'clone';
+   @Input('helper') attrHelper: ((originalEvent: any, content: any) => any) | 'original' | 'clone';
    @Input('items') attrItems: string;
    @Input('opacity') attrOpacity: number | boolean;
    @Input('placeholderShow') attrPlaceholderShow: string | boolean;
@@ -44,6 +44,7 @@ export class jqxSortableComponent implements OnChanges
    @Input('scroll') attrScroll: boolean;
    @Input('scrollSensitivity') attrScrollSensitivity: number;
    @Input('scrollSpeed') attrScrollSpeed: number;
+   @Input('theme') attrTheme: string;
    @Input('tolerance') attrTolerance: string;
    @Input('zIndex') attrZIndex: number;
    @Input('width') attrWidth: string | number;
@@ -51,7 +52,7 @@ export class jqxSortableComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
+   properties: string[] = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSortable;
@@ -63,6 +64,18 @@ export class jqxSortableComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxSortable('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -286,7 +299,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   helper(arg?: (originalEvent?: any, content?: any) => void | 'original' | 'clone'): (originalEvent?: any, content?: any) => void | 'original' | 'clone' {
+   helper(arg?: ((originalEvent: any, content: any) => any) | 'original' | 'clone'): ((originalEvent: any, content: any) => any) | 'original' | 'clone' {
       if (arg !== undefined) {
           this.host.jqxSortable('helper', arg);
       } else {
@@ -350,6 +363,14 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxSortable('theme', arg);
+      } else {
+          return this.host.jqxSortable('theme');
+      }
+   }
+
    tolerance(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('tolerance', arg);
@@ -392,7 +413,7 @@ export class jqxSortableComponent implements OnChanges
       this.host.jqxSortable('refreshPositions');
    }
 
-   serialize(object: undefined): string {
+   serialize(object?: any): string {
       return this.host.jqxSortable('serialize', object);
    }
 

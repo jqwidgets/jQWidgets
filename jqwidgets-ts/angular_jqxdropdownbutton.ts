@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -53,6 +53,18 @@ export class jqxDropDownButtonComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxDropDownButton('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -318,7 +330,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       this.host.jqxDropDownButton('open');
    }
 
-   setContent(content: string): void {
+   setContent(content: string | HTMLElement): void {
       this.host.jqxDropDownButton('setContent', content);
    }
 

@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxresponsivepanel.umd.js",
-    "module": "react_jqxresponsivepanel.esm.js",
-    "typings": "react_jqxresponsivepanel.d.ts",
-    "name": "jqwidgets-react/jqxresponsivepanel",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxresponsivepanel",
+  "version": "27.1.0",
+  "main": "react_jqxresponsivepanel.umd.js",
+  "module": "react_jqxresponsivepanel.esm.js",
+  "typings": "react_jqxresponsivepanel.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxresponsivepanel.d.ts",
+      "import": "./react_jqxresponsivepanel.esm.js",
+      "require": "./react_jqxresponsivepanel.umd.js",
+      "default": "./react_jqxresponsivepanel.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

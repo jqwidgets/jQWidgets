@@ -1,16 +1,27 @@
 import * as React from 'react';
-declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> {
-    protected static getDerivedStateFromProps(props: IDataTableProps, state: IState): null | IState;
+declare class JqxDataTable extends React.PureComponent<IDataTableProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IDataTableProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDataTableProps): void;
     getOptions(option: string): any;
-    addRow(rowIndex: number, rowData: any, rowPosition: any): void;
+    addRow(rowIndex: number | string | null, rowData: any, rowPosition: any): void;
     addFilter(dataField: string, filerGroup: any): void;
     applyFilters(): void;
     beginUpdate(): void;
@@ -36,7 +47,7 @@ declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> 
     getView(): any[];
     getCellValue(rowIndex: number, dataField: string): any;
     hideColumn(dataField: string): void;
-    hideDetails(rowIndex: boolean): void;
+    hideDetails(rowIndex: number): void;
     isBindingCompleted(): boolean;
     lockRow(rowIndex: number): void;
     refresh(): void;
@@ -55,14 +66,15 @@ declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> 
     updateRow(rowIndex: number, rowData: any): void;
     unlockRow(rowIndex: number): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDataTable;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IDataTableColumns {
     text?: string;
     dataField?: string;
@@ -72,17 +84,17 @@ export interface IDataTableColumns {
     hidden?: boolean;
     columnGroup?: string;
     autoCellHeight?: boolean;
-    renderer?: (text: string, align?: string, height?: string | number) => string;
-    rendered?: (element: any, align?: string, height?: string | number) => boolean;
-    cellsRenderer?: (row: number, column?: any, value?: any, rowData?: any) => string;
+    renderer?: (text: string, align: string, height: number) => string;
+    rendered?: (element: any, align: string, height: number) => boolean;
+    cellsRenderer?: (row: number, column: string, value: any, rowData: any) => string;
     columnType?: string;
-    validation?: (cell: number, value?: any) => any;
-    initEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
-    createEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
-    getEditorValue?: (row: number, cellValue?: any, editor?: any) => void;
+    validation?: (cell: any, value: any) => any;
+    initEditor?: (row: number, cellValue: any, editor: any, cellText: string, width: number, height: number) => void;
+    createEditor?: (row: number, cellValue: any, editor: any, cellText: string, width: number, height: number) => void;
+    getEditorValue?: (row: number, cellValue: any, editor: any) => any;
     cellsFormat?: string;
     aggregates?: any[];
-    aggregatesRenderer?: (aggregates?: any, column?: any, element?: any) => string;
+    aggregatesRenderer?: (aggregates: any, column: any, element: any) => string;
     align?: 'left' | 'right' | 'center';
     cellsAlign?: 'left' | 'right' | 'center';
     width?: number | string;
@@ -102,21 +114,21 @@ export interface IDataTableColumnGroups {
     name?: string;
 }
 export interface IDataTableGroupsRenderer {
-    value?: string;
-    rowdata?: object;
-    level?: number;
+    value: string;
+    rowdata: object;
+    level: number;
 }
 export interface IDataTableInitRowDetails {
-    id?: number;
-    row?: number;
-    element?: object;
-    rowinfo?: object;
+    id: number | string;
+    row: any;
+    element: any;
+    rowinfo: any;
 }
 export interface IDataTableRenderToolbar {
-    toolbar?: object;
+    toolbar: any;
 }
 export interface IDataTableRenderStatusBar {
-    statusbar?: object;
+    statusbar: any;
 }
 export interface IDataTableEditSettings {
     saveOnPageChange?: boolean;
@@ -134,7 +146,7 @@ export interface IDataTableExportSettings {
     serverURL?: any;
     characterSet?: any;
     recordsInView?: boolean;
-    fileName?: string;
+    fileName?: string | null;
 }
 interface IDataTableOptions {
     altRows?: boolean;
@@ -156,9 +168,9 @@ interface IDataTableOptions {
     filterHeight?: number;
     filterMode?: 'default' | 'simple' | 'advanced';
     groups?: any[];
-    groupsRenderer?: (value?: IDataTableGroupsRenderer['value'], rowData?: IDataTableGroupsRenderer['rowdata'], level?: IDataTableGroupsRenderer['level']) => string;
+    groupsRenderer?: (value: IDataTableGroupsRenderer['value'], rowData: IDataTableGroupsRenderer['rowdata'], level: IDataTableGroupsRenderer['level']) => string;
     height?: number | string;
-    initRowDetails?: (id?: IDataTableInitRowDetails['id'], row?: IDataTableInitRowDetails['row'], element?: IDataTableInitRowDetails['element'], rowInfo?: IDataTableInitRowDetails['rowinfo']) => void;
+    initRowDetails?: (id: IDataTableInitRowDetails['id'], row: IDataTableInitRowDetails['row'], element: IDataTableInitRowDetails['element'], rowInfo: IDataTableInitRowDetails['rowinfo']) => void;
     incrementalSearch?: boolean;
     localization?: any;
     pagerHeight?: number;
@@ -171,8 +183,8 @@ interface IDataTableOptions {
     pagerRenderer?: () => any;
     ready?: () => void;
     rowDetails?: boolean;
-    renderToolbar?: (toolbar?: IDataTableRenderToolbar['toolbar']) => void;
-    renderStatusBar?: (statusbar?: IDataTableRenderStatusBar['statusbar']) => void;
+    renderToolbar?: (toolbar: IDataTableRenderToolbar['toolbar']) => void;
+    renderStatusBar?: (statusbar: IDataTableRenderStatusBar['statusbar']) => void;
     rendering?: () => void;
     rendered?: () => void;
     rtl?: boolean;
@@ -191,25 +203,26 @@ interface IDataTableOptions {
     toolbarHeight?: number;
     width?: string | number;
 }
-export interface IDataTableProps extends IDataTableOptions {
+export interface IDataTableProps extends IDataTableOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onBindingComplete?: (e?: Event) => void;
-    onCellBeginEdit?: (e?: Event) => void;
-    onCellEndEdit?: (e?: Event) => void;
-    onCellValueChanged?: (e?: Event) => void;
-    onColumnResized?: (e?: Event) => void;
-    onColumnReordered?: (e?: Event) => void;
-    onSort?: (e?: Event) => void;
-    onFilter?: (e?: Event) => void;
-    onPageChanged?: (e?: Event) => void;
-    onPageSizeChanged?: (e?: Event) => void;
-    onRowClick?: (e?: Event) => void;
-    onRowDoubleClick?: (e?: Event) => void;
-    onRowSelect?: (e?: Event) => void;
-    onRowUnselect?: (e?: Event) => void;
-    onRowBeginEdit?: (e?: Event) => void;
-    onRowEndEdit?: (e?: Event) => void;
-    onRowExpand?: (e?: Event) => void;
-    onRowCollapse?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onBindingComplete?: (e?: any) => void;
+    onCellBeginEdit?: (e?: any) => void;
+    onCellEndEdit?: (e?: any) => void;
+    onCellValueChanged?: (e?: any) => void;
+    onColumnResized?: (e?: any) => void;
+    onColumnReordered?: (e?: any) => void;
+    onSort?: (e?: any) => void;
+    onFilter?: (e?: any) => void;
+    onPageChanged?: (e?: any) => void;
+    onPageSizeChanged?: (e?: any) => void;
+    onRowClick?: (e?: any) => void;
+    onRowDoubleClick?: (e?: any) => void;
+    onRowSelect?: (e?: any) => void;
+    onRowUnselect?: (e?: any) => void;
+    onRowBeginEdit?: (e?: any) => void;
+    onRowEndEdit?: (e?: any) => void;
+    onRowExpand?: (e?: any) => void;
+    onRowCollapse?: (e?: any) => void;
 }

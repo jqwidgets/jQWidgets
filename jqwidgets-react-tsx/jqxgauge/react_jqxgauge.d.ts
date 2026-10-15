@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxGauge extends React.PureComponent<IGaugeProps, IState> {
-    protected static getDerivedStateFromProps(props: IGaugeProps, state: IState): null | IState;
+declare class JqxGauge extends React.PureComponent<IGaugeProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IGaugeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IGaugeProps): void;
     getOptions(option: string): any;
@@ -14,14 +24,15 @@ declare class JqxGauge extends React.PureComponent<IGaugeProps, IState> {
     enable(): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxGauge;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IGaugeStyle {
     fill?: string;
     stroke?: string;
@@ -49,7 +60,7 @@ export interface IGaugeLabels {
     interval?: number | string;
     offset?: number[];
     visible?: boolean;
-    formatValue?: (value?: number) => string;
+    formatValue?: (value: any) => string | number;
 }
 export interface IGaugePointer {
     pointerType?: string;
@@ -93,15 +104,17 @@ interface IGaugeOptions {
     startAngle?: number | string;
     showRanges?: boolean;
     styles?: IGaugeStyle;
+    theme?: string;
     ticksMajor?: IGaugeTicks;
     ticksMinor?: IGaugeTicks;
     ticksDistance?: string;
     value?: number;
     width?: number | string;
 }
-export interface IGaugeProps extends IGaugeOptions {
+export interface IGaugeProps extends IGaugeOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onValueChanging?: (e?: Event) => void;
-    onValueChanged?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onValueChanging?: (e?: any) => void;
+    onValueChanged?: (e?: any) => void;
 }

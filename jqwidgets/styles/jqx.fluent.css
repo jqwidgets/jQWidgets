@@ -12,7 +12,10 @@
   --fluent-body-divider: #EDEBE9;
   --fluent-input-background: #fff;
   --fluent-input-disabled-background: #EDEBE9;
-  --fluent-input-border: #8A8886;
+  /* Fluent 2 strokes: neutralStroke1 round a control, and neutralStrokeAccessible along the
+     bottom of a text field (and round a checkbox), which is the edge that meets WCAG 1.4.11. */
+  --fluent-input-border: #D1D1D1;
+  --fluent-input-border-accessible: #616161;
   --fluent-input-border-hover: #323130;
   --fluent-alert-color: #201F1E;
   --fluent-theme-primary: #0078D4;
@@ -62,6 +65,57 @@
   --fluent-severe-warning-color: #D83B01;
   --fluent-warning-bg: #FFF4CE;
   --fluent-warning-color: #797775;
+  /* Semantic fills for the success/danger/... button and input variants, from Fluent's
+     shared colours. White on each fill is >= 4.5:1 (success 5.37, danger 7.26, info 4.56,
+     inverse 6.46); the warning fill is Fluent's yellow and carries dark text (9.55:1). */
+  --fluent-success: #107C10;
+  --fluent-danger: #A4262C;
+  --fluent-warning: #FFB900;
+  --fluent-info: #038387;
+  --fluent-inverse: #605E5C;
+  /* the same colours as text on the surface (the yellow is 1.8:1 as text, so warning text
+     is Fluent's dark orange, 7.98:1) */
+  --fluent-success-text: #107C10;
+  --fluent-danger-text: #A4262C;
+  --fluent-warning-text: #8A3707;
+  --fluent-info-text: #038387;
+  --fluent-inverse-text: #605E5C;
+  --fluent-on-accent: #fff;
+  --fluent-on-bright: #201F1E;
+  --fluent-rating-empty: #8A8886;
+  --fluent-rating-filled: #201F1E;
+  --fluent-editor-icons: url("images/html_editor.png");
+  /* lines between grid, scheduler and calendar cells: dividers, not control edges */
+  --fluent-grid-line: #E1DFDD;
+  /* raster icons from jqx.base.css; the dark variant points these at the -white images */
+  --fluent-icon-down: url("images/icon-down.png");
+  --fluent-icon-up: url("images/icon-up.png");
+  --fluent-icon-left: url("images/icon-left.png");
+  --fluent-icon-right: url("images/icon-right.png");
+  --fluent-icon-pin: url("images/pin.png");
+  --fluent-icon-pinned: url("images/pinned.png");
+  --fluent-icon-plus: url("images/icon-plus.png");
+  --fluent-icon-recurrence: url("images/icon-recurrence.png");
+  --fluent-icon-recurrence-exception: url("images/icon-recurrence-exception.png");
+  --fluent-icon-edit: url("images/icon-edit.png");
+  --fluent-icon-delete: url("images/icon-delete.png");
+  --fluent-icon-save: url("images/icon-save.png");
+  --fluent-icon-cancel: url("images/icon-cancel.png");
+  --fluent-icon-menu-minimized: url("images/icon-menu-minimized.png");
+  --fluent-icon-menu-small: url("images/icon-menu-small.png");
+  /* the same icons on a pressed (brand) fill */
+  --fluent-icon-delete-on-accent: url("images/icon-delete-white.png");
+  --fluent-icon-edit-on-accent: url("images/icon-edit-white.png");
+  --fluent-icon-save-on-accent: url("images/icon-save-white.png");
+  --fluent-icon-cancel-on-accent: url("images/icon-cancel-white.png");
+  --fluent-icon-search-on-accent: url("images/search_white.png");
+  --fluent-icon-plus-on-accent: url("images/plus_white.png");
+  --fluent-icon-menu-minimized-on-accent: url("images/icon-menu-minimized-white.png");
+  /* for the few rasters that ship without a white twin */
+  --fluent-raster-filter: none;
+  --fluent-icon-sort-asc: url("images/icon-sort-asc.png");
+  --fluent-icon-sort-desc: url("images/icon-sort-desc.png");
+  --fluent-icon-sort-remove: url("images/icon-sort-remove.png");
   --fluent-greys-white: #fff;
   --fluent-greys-grey10: #FAF9F8;
   --fluent-greys-grey20: #F3F2F1;
@@ -91,7 +145,9 @@
   --jqx-surface-rgb: var(--fluent-surface-rgb);
   --jqx-surface: rgb(var(--jqx-surface-rgb));
   --jqx-surface-color: rgba(0, 0, 0, .88);
-  --jqx-border: var(--fluent-body-divider);
+  --jqx-border: var(--fluent-input-border);
+  /* Fluent 2's control stroke, #D1D1D1 (1.5:1 on white). Text fields carry the 3:1 edge on
+     their bottom border (--fluent-input-border-accessible, #616161, 6.2:1), as Fluent 2 draws them. */
   --jqx-border-radius: 2px;
   --jqx-scrollbar-background: #f5f5f5;
   --jqx-scrollbar-border: #ddd;
@@ -567,10 +623,13 @@ jqx-button-fluent input {
 }
 .jqx-button-fluent.jqx-button-fluent:not(.jqx-navbar-block).jqx-fill-state-pressed, .jqx-button-fluent.jqx-button-fluent:not(.jqx-navbar-block).jqx-fill-state-focus, .jqx-button-fluent.jqx-button-fluent:not(.jqx-navbar-block):focus {
   outline-offset: 1px;
-  outline: 2px solid var(--jqx-border);
+  /* the accessible stroke, not the control stroke: #D1D1D1 would not show focus (1.5:1) */
+  outline: 2px solid var(--fluent-input-border-accessible);
 }
 .jqx-button-fluent.jqx-button-fluent.jqx-navbar-block.jqx-fill-state-pressed, .jqx-button-fluent.jqx-button-fluent.jqx-navbar-block.jqx-fill-state-focus, .jqx-button-fluent.jqx-button-fluent.jqx-navbar-block:focus {
-  background: var(--fluent-btn-secondary-bg-active);
+  /* the selected fill, grey30: the same #EDEBE9 as a pressed button here, but lighter than
+     the ground on the dark variant, where a pressed button is darker */
+  background: var(--fluent-greys-grey30);
 }
 .jqx-button-fluent.jqx-button-fluent[disabled] {
   opacity: 1;
@@ -740,7 +799,7 @@ jqx-button-fluent input {
 
 .jqx-button-fluent.jqx-fill-state-pressed.outlined,
 .jqx-button-fluent.jqx-fill-state-pressed.flat {
-  background: rgba(179, 229, 252, 0.15);
+  background: rgba(var(--jqx-primary-rgb), 0.15);
   box-shadow: none;
   color: var(--jqx-primary);
 }
@@ -785,10 +844,6 @@ jqx-button-fluent input {
 .jqx-menu-item-top-selected-fluent,
 .jqx-slider-button-fluent,
 .jqx-slider-slider-fluent {
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
   transition: background-color 100ms linear;
 }
 
@@ -801,48 +856,48 @@ jqx-button-fluent input {
 }
 
 .jqx-success-fluent.jqx-input-label-fluent {
-  color: #5cb85c !important;
+  color: var(--fluent-success-text) !important;
 }
 
 .jqx-success-fluent.jqx-input-bar-fluent:before {
-  background: #5cb85c !important;
+  background: var(--fluent-success) !important;
 }
 
 .jqx-inverse-fluent.jqx-input-label-fluent {
-  color: #666 !important;
+  color: var(--fluent-inverse-text) !important;
 }
 
 .jqx-inverse-fluent.jqx-input-bar-fluent:before {
-  background: #666 !important;
+  background: var(--fluent-inverse) !important;
 }
 
 .jqx-danger-fluent.jqx-input-label-fluent {
-  color: #d9534f !important;
+  color: var(--fluent-danger-text) !important;
 }
 
 .jqx-danger-fluent.jqx-input-bar-fluent:before {
-  background: #d9534f !important;
+  background: var(--fluent-danger) !important;
 }
 
 .jqx-warning-fluent.jqx-input-label-fluent {
-  color: #f0ad4e !important;
+  color: var(--fluent-warning-text) !important;
 }
 
 .jqx-warning-fluent.jqx-input-bar-fluent:before {
-  background: #f0ad4e !important;
+  background: var(--fluent-warning) !important;
 }
 
 .jqx-info-fluent.jqx-input-label-fluent {
-  color: #5bc0de !important;
+  color: var(--fluent-info-text) !important;
 }
 
 .jqx-info-fluent.jqx-input-bar-fluent:before {
-  background: #5bc0de !important;
+  background: var(--fluent-info) !important;
 }
 
 .jqx-primary-fluent {
   color: var(--jqx-primary) !important;
-  background: #fff !important;
+  background: var(--fluent-surface) !important;
   border-color: var(--jqx-primary) !important;
   text-shadow: none !important;
 }
@@ -859,7 +914,7 @@ jqx-button-fluent input {
 .jqx-primary-fluent.active,
 .jqx-primary-fluent.disabled,
 .jqx-primary-fluent[disabled] {
-  color: #fff !important;
+  color: var(--jqx-primary-color) !important;
   background: var(--jqx-primary) !important;
   border-color: var(--jqx-primary) !important;
   text-shadow: none !important;
@@ -868,16 +923,16 @@ jqx-button-fluent input {
 .jqx-fill-state-pressed-fluent.jqx-primary-fluent,
 .jqx-primary-fluent:active,
 .jqx-primary-fluent.active {
-  color: #fff !important;
-  background-color: var(--jqx-primary) !important;
+  color: var(--jqx-primary-color) !important;
+  background: var(--jqx-primary) !important;
   border-color: var(--jqx-primary) !important;
   text-shadow: none !important;
 }
 
 .jqx-success-fluent {
-  color: #5cb85c !important;
-  background: #fff !important;
-  border-color: #5cb85c !important;
+  color: var(--fluent-success-text) !important;
+  background: var(--fluent-surface) !important;
+  border-color: var(--fluent-success) !important;
   text-shadow: none !important;
 }
 
@@ -893,33 +948,33 @@ jqx-button-fluent input {
 .jqx-success-fluent.active,
 .jqx-success-fluent.disabled,
 .jqx-success-fluent[disabled] {
-  color: #fff !important;
-  background: #5cb85c !important;
-  border-color: #5cb85c !important;
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-success) !important;
+  border-color: var(--fluent-success) !important;
   text-shadow: none !important;
 }
 
 .jqx-fill-state-pressed-fluent.jqx-success-fluent,
 .jqx-success-fluent:active,
 .jqx-success-fluent.active {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-success) !important;
+  border-color: var(--fluent-success) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #5cb85c !important;
-  border-color: #5cb85c !important;
 }
 
 .jqx-inverse-fluent {
+  color: var(--fluent-inverse-text) !important;
+  background: var(--fluent-surface) !important;
+  border-color: var(--fluent-inverse) !important;
   text-shadow: none !important;
-  color: #666 !important;
-  background: #fff !important;
-  border-color: #cccccc !important;
 }
 
 .jqx-inverse-fluent.jqx-dropdownlist-state-normal-fluent,
 .jqx-inverse-fluent.jqx-slider-button-fluent,
 .jqx-inverse-fluent.jqx-slider-slider-fluent,
-.jqx-inverse-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-inverse-fluent.jqx-combobox-arrow-normal-fluent,
+.jqx-inverse-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-inverse-fluent.jqx-action-button-fluent,
 .jqx-inverse-fluent:hover,
 .jqx-inverse-fluent:focus,
@@ -927,33 +982,33 @@ jqx-button-fluent input {
 .jqx-inverse-fluent.active,
 .jqx-inverse-fluent.disabled,
 .jqx-inverse-fluent[disabled] {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-inverse) !important;
+  border-color: var(--fluent-inverse) !important;
   text-shadow: none !important;
-  color: #666 !important;
-  background: #cccccc !important;
-  border-color: #cccccc !important;
 }
 
 .jqx-fill-state-pressed-fluent.jqx-inverse-fluent,
 .jqx-inverse-fluent:active,
 .jqx-inverse-fluent.active {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-inverse) !important;
+  border-color: var(--fluent-inverse) !important;
   text-shadow: none !important;
-  color: #666 !important;
-  background: #cccccc !important;
-  border-color: #cccccc !important;
 }
 
 .jqx-danger-fluent {
+  color: var(--fluent-danger-text) !important;
+  background: var(--fluent-surface) !important;
+  border-color: var(--fluent-danger) !important;
   text-shadow: none !important;
-  color: #d9534f !important;
-  background: #fff !important;
-  border-color: #d9534f !important;
 }
 
 .jqx-danger-fluent.jqx-dropdownlist-state-normal-fluent,
 .jqx-danger-fluent.jqx-slider-button-fluent,
 .jqx-danger-fluent.jqx-slider-slider-fluent,
-.jqx-danger-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-danger-fluent.jqx-combobox-arrow-normal-fluent,
+.jqx-danger-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-danger-fluent.jqx-action-button-fluent,
 .jqx-danger-fluent:hover,
 .jqx-danger-fluent:focus,
@@ -961,37 +1016,37 @@ jqx-button-fluent input {
 .jqx-danger-fluent.active,
 .jqx-danger-fluent.disabled,
 .jqx-danger-fluent[disabled] {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-danger) !important;
+  border-color: var(--fluent-danger) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #d9534f !important;
-  border-color: #d9534f !important;
 }
 
 .jqx-fill-state-pressed-fluent.jqx-danger-fluent,
 .jqx-danger-fluent:active,
 .jqx-danger-fluent.active {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-danger) !important;
+  border-color: var(--fluent-danger) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #d9534f !important;
-  border-color: #d9534f !important;
 }
 
 .jqx-validator-error-label-fluent {
-  color: #d9534f !important;
+  color: var(--fluent-danger-text) !important;
 }
 
 .jqx-warning-fluent {
+  color: var(--fluent-warning-text) !important;
+  background: var(--fluent-surface) !important;
+  border-color: var(--fluent-warning) !important;
   text-shadow: none !important;
-  color: #f0ad4e !important;
-  background: #fff !important;
-  border-color: #f0ad4e !important;
 }
 
 .jqx-warning-fluent.jqx-dropdownlist-state-normal-fluent,
 .jqx-warning-fluent.jqx-slider-button-fluent,
 .jqx-warning-fluent.jqx-slider-slider-fluent,
-.jqx-warning-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-warning-fluent.jqx-combobox-arrow-normal-fluent,
+.jqx-warning-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-warning-fluent.jqx-action-button-fluent,
 .jqx-warning-fluent:hover,
 .jqx-warning-fluent:focus,
@@ -999,33 +1054,33 @@ jqx-button-fluent input {
 .jqx-warning-fluent.active,
 .jqx-warning-fluent.disabled,
 .jqx-warning-fluent[disabled] {
+  color: var(--fluent-on-bright) !important;
+  background: var(--fluent-warning) !important;
+  border-color: var(--fluent-warning) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #f0ad4e !important;
-  border-color: #f0ad4e !important;
 }
 
 .jqx-fill-state-pressed-fluent.jqx-warning-fluent,
 .jqx-warning-fluent:active,
 .jqx-warning-fluent.active {
+  color: var(--fluent-on-bright) !important;
+  background: var(--fluent-warning) !important;
+  border-color: var(--fluent-warning) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #f0ad4e !important;
-  border-color: #f0ad4e !important;
 }
 
 .jqx-info-fluent {
+  color: var(--fluent-info-text) !important;
+  background: var(--fluent-surface) !important;
+  border-color: var(--fluent-info) !important;
   text-shadow: none !important;
-  color: #5bc0de !important;
-  background: #fff !important;
-  border-color: #5bc0de !important;
 }
 
 .jqx-info-fluent.jqx-dropdownlist-state-normal-fluent,
 .jqx-info-fluent.jqx-slider-button-fluent,
 .jqx-info-fluent.jqx-slider-slider-fluent,
-.jqx-info-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-info-fluent.jqx-combobox-arrow-normal-fluent,
+.jqx-info-fluent.jqx-combobox-arrow-hover-fluent,
 .jqx-info-fluent.jqx-action-button-fluent,
 .jqx-info-fluent:hover,
 .jqx-info-fluent:focus,
@@ -1033,19 +1088,19 @@ jqx-button-fluent input {
 .jqx-info-fluent.active,
 .jqx-info-fluent.disabled,
 .jqx-info-fluent[disabled] {
-  color: #fff !important;
-  background: #5bc0de !important;
-  border-color: #5bc0de !important;
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-info) !important;
+  border-color: var(--fluent-info) !important;
   text-shadow: none !important;
 }
 
 .jqx-fill-state-pressed-fluent.jqx-info-fluent,
 .jqx-info-fluent:active,
 .jqx-info-fluent.active {
+  color: var(--fluent-on-accent) !important;
+  background: var(--fluent-info) !important;
+  border-color: var(--fluent-info) !important;
   text-shadow: none !important;
-  color: #fff !important;
-  background: #5bc0de !important;
-  border-color: #5bc0de !important;
 }
 
 .jqx-fill-state-pressed-fluent {
@@ -1102,8 +1157,6 @@ jqx-button-fluent input {
 .jqx-grid-cell-fluent {
   background: var(--jqx-background);
   color: var(--jqx-background-color);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -1190,7 +1243,7 @@ jqx-button-fluent input {
 .jqx-grid-pager-top-fluent .jqx-grid-pager-number-fluent.jqx-fill-state-pressed-fluent,
 .jqx-grid-pager-fluent .jqx-grid-pager-number-fluent.jqx-fill-state-pressed-fluent {
   background: var(--jqx-primary);
-  color: var(--jqx-background) !important;
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-grid-column-menubutton-fluent {
@@ -1313,14 +1366,10 @@ jqx-button-fluent input {
   background: var(--jqx-scrollbar-thumb-background-hover);
   border-color: var(--jqx-scrollbar-thumb-border-hover);
   box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
 }
 
 .jqx-progressbar-fluent {
   background: var(--jqx-background) !important;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -1445,16 +1494,24 @@ jqx-grid-column-filterbutton-fluent,
 }
 
 .jqx-rating-image-backward:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23A19F9D'/%3E%3C/svg%3E");
-  background-color: #fff;
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23A19F9D'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23A19F9D'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-rating-empty);
 }
 
 .jqx-rating-image-hover:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%230078D4'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%230078D4'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%230078D4'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--jqx-primary);
 }
 
 .jqx-rating-image-default:after {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23201F1E'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23201F1E'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='24' height='36' viewBox='0 0 24 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8281 20.2461L18.25 28L12 23.1953L5.75 28L8.17188 20.2461L2 15.5H9.65625L12 8L14.3438 15.5H22L15.8281 20.2461Z' fill='%23201F1E'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-rating-filled);
 }
 
 .jqx-docking-fluent .jqx-window-fluent {
@@ -1473,8 +1530,6 @@ jqx-grid-column-filterbutton-fluent,
 .jqx-radiobutton-fluent {
   overflow: visible;
   box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   background-repeat: no-repeat;
   background: none;
   line-height: 20px;
@@ -1510,7 +1565,7 @@ jqx-grid-column-filterbutton-fluent,
 .jqx-checkbox-default-fluent,
 .jqx-radiobutton-default-fluent {
   border-width: 1px;
-  border-color: var(--fluent-input-border);
+  border-color: var(--fluent-input-border-accessible);
   background-color: var(--jqx-background);
   overflow: visible;
 }
@@ -1636,8 +1691,8 @@ jqx-grid-column-filterbutton-fluent,
 .jqx-listitem-state-normal-fluent {
   border-radius: 0;
   margin: 0px;
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
+  padding-top: 6px;
+  padding-bottom: 6px;
   padding-left: 5px;
   cursor: pointer;
 }
@@ -1700,7 +1755,7 @@ jqx-grid-column-filterbutton-fluent,
 .jqx-scheduler-cell-hover-fluent {
   border-color: var(--jqx-primary) !important;
   background: var(--jqx-primary) !important;
-  color: var(--jqx-background) !important;
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-listitem-state-selected-fluent,
@@ -1851,7 +1906,6 @@ jqx-grid-column-filterbutton-fluent,
 .jqx-grid-column-sorticon-fluent.jqx-icon-arrow-down-fluent:after {
   content: var(--jqx-icon-sort-down);
 }
-
 
 .jqx-grid-column-header-fluent[sort][sort-index] .sorticon {
   display: flex;
@@ -2010,8 +2064,8 @@ jqx-grid-column-filterbutton-fluent,
 }
 
 .jqx-widget-fluent .jqx-widget-header-fluent:hover .jqx-grid-column-header-fluent {
-  border-right-color: var(--jqx-border) !important;
-  border-bottom-color: var(--jqx-border) !important;
+  border-right-color: var(--fluent-grid-line) !important;
+  border-bottom-color: var(--fluent-grid-line) !important;
 }
 
 .jqx-widget-fluent .jqx-grid-cell-fluent {
@@ -2019,7 +2073,7 @@ jqx-grid-column-filterbutton-fluent,
 }
 
 .jqx-widgets-fluent .jqx-scheduler-cell-selected span {
-  color: var(--jqx-background) !important;
+  color: var(--jqx-primary-color) !important;
 }
 
 .jqx-scheduler-time-column-fluent,
@@ -2043,7 +2097,7 @@ jqx-grid-column-filterbutton-fluent,
 
 .jqx-widget-fluent.jqx-scheduler-fluent .jqx-grid-cell-fluent,
 .jqx-widget-fluent.jqx-scheduler-fluent .jqx-grid-column-header-fluent {
-  border-bottom-color: var(--jqx-border);
+  border-bottom-color: var(--fluent-grid-line);
 }
 
 .jqx-widget-fluent.jqx-scheduler-fluent td.jqx-grid-cell-fluent span {
@@ -2200,7 +2254,7 @@ jqx-grid-column-filterbutton-fluent,
 
 .jqx-input-fluent.jqx-validator-error-element {
   border-color: transparent !important;
-  border-bottom: 1px solid #df2227 !important;
+  border-bottom: 1px solid var(--fluent-danger) !important;
 }
 
 .jqx-input-fluent.underlined input,
@@ -2709,25 +2763,16 @@ textarea:focus ~ .jqx-input-label-fluent,
   margin-top: 1px;
 }
 
-input[type=text].jqx-input-fluent:-moz-placeholder,
-input[type=text].jqx-widget-content-fluent:-moz-placeholder,
-input[type=textarea].jqx-widget-content-fluent:-moz-placeholder,
-textarea.jqx-input-fluent:-moz-placeholder {
-  color: #999999;
-}
-
-input[type=text].jqx-input-fluent:-webkit-input-placeholder,
-input[type=text].jqx-widget-content-fluent:-webkit-input-placeholder,
-input[type=textarea].jqx-widget-content-fluent:-webkit-input-placeholder,
-textarea.jqx-input-fluent:-webkit-input-placeholder {
-  color: #999999;
-}
-
-input[type=text].jqx-input-fluent:-ms-input-placeholder,
-input[type=text].jqx-widget-content-fluent:-ms-input-placeholder,
-input[type=textarea].jqx-widget-content-fluent:-ms-input-placeholder,
-textarea.jqx-input-fluent:-ms-input-placeholder {
-  color: #999999;
+/* Fluent's placeholder is neutralSecondary (grey130): 6.1:1 on white, and 6.9:1 on the dark
+   variant's #292929 where the browser default (#757575) is 2.9:1. The old single-colon
+   :-webkit-input-placeholder selectors never matched. */
+.jqx-widget-fluent input::placeholder,
+.jqx-widget-fluent textarea::placeholder,
+input.jqx-input-fluent::placeholder,
+textarea.jqx-input-fluent::placeholder,
+input.jqx-widget-content-fluent::placeholder {
+  color: var(--fluent-greys-grey130);
+  opacity: 1;
 }
 
 .jqx-combobox-content-focus-fluent,
@@ -2782,8 +2827,6 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   filter: none;
   background: inherit;
   color: inherit;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -2868,8 +2911,6 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   border-top: 1px solid var(--jqx-background);
   filter: none;
   background: var(--jqx-background);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -2904,8 +2945,6 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 .jqx-tabs-title-hover-top-fluent,
 .jqx-tabs-title-hover-bottom-fluent,
 .jqx-tabs-header-fluent {
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
   background: var(--jqx-surface);
   color: var(--jqx-surface-color);
@@ -3102,8 +3141,15 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   background-image: none;
 }
 
+/* The glyph needs the icon font and a size of its own: jqxTabs sets font-size: 1px inline on
+   the button, so without these the close button drew nothing. */
 .jqx-tabs-close-button-fluent:after {
   content: var(--jqx-icon-close);
+  font-family: jqx-icons;
+  font-size: 12px;
+  line-height: 16px;
+  display: block;
+  text-align: center;
 }
 
 .jqx-scrollbar-button-state-pressed-fluent .jqx-icon-arrow-up-selected-fluent {
@@ -3250,27 +3296,27 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   }
 }
 .jqx-fill-state-pressed-fluent .jqx-icon-delete-fluent {
-  background-image: url("images/icon-delete-white.png");
+  background-image: var(--fluent-icon-delete-on-accent);
 }
 
 .jqx-fill-state-pressed-fluent .jqx-icon-edit-fluent {
-  background-image: url("images/icon-edit-white.png");
+  background-image: var(--fluent-icon-edit-on-accent);
 }
 
 .jqx-fill-state-pressed-fluent .jqx-icon-save-fluent {
-  background-image: url("images/icon-save-white.png");
+  background-image: var(--fluent-icon-save-on-accent);
 }
 
 .jqx-fill-state-pressed-fluent .jqx-icon-cancel-fluent {
-  background-image: url("images/icon-cancel-white.png");
+  background-image: var(--fluent-icon-cancel-on-accent);
 }
 
 .jqx-fill-state-pressed-fluent .jqx-icon-search-fluent {
-  background-image: url("images/search_white.png");
+  background-image: var(--fluent-icon-search-on-accent);
 }
 
 .jqx-fill-state-pressed-fluent .jqx-icon-plus-fluent {
-  background-image: url("images/plus_white.png");
+  background-image: var(--fluent-icon-plus-on-accent);
 }
 
 .jqx-menu-minimized-button-fluent {
@@ -3278,7 +3324,7 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 }
 
 .jqx-fill-state-pressed-fluent .jqx-menu-minimized-button-fluent {
-  background-image: url("images/icon-menu-minimized-white.png");
+  background-image: var(--fluent-icon-menu-minimized-on-accent);
 }
 
 .jqx-editor-fluent {
@@ -3286,14 +3332,14 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 }
 
 .jqx-editor-toolbar-icon-fluent {
-  background: url("images/html_editor.png") no-repeat;
+  background: var(--fluent-editor-icons) no-repeat;
 }
 
 .jqx-fill-state-hover-fluent .jqx-editor-toolbar-icon-fontsize-fluent,
 .jqx-fill-state-pressed-fluent .jqx-editor-toolbar-icon-fontsize-fluent,
 .jqx-fill-state-hover-fluent .jqx-editor-toolbar-icon-forecolor-fluent,
 .jqx-fill-state-pressed-fluent .jqx-editor-toolbar-icon-forecolor-fluent {
-  background: url("images/html_editor.png") no-repeat;
+  background: var(--fluent-editor-icons) no-repeat;
 }
 
 .jqx-editor-toolbar-button-fluent {
@@ -3329,8 +3375,9 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 }
 
 .jqx-validator-hint-fluent {
-  background: #D94F43;
-  border-color: #D94F43;
+  background: var(--fluent-danger);
+  border-color: var(--fluent-danger);
+  color: var(--fluent-on-accent);
   padding: 10px;
 }
 
@@ -3361,8 +3408,9 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   padding-right: 4px !important;
 }
 
+/* Solid, not 80%: white on 80% of #0078D4 over white is 3.3:1; on the solid fill 4.53:1. */
 .jqx-grid-cell-selected-fluent {
-  background: rgba(var(--jqx-primary-rgb), 0.8) !important;
+  background: var(--jqx-primary) !important;
 }
 
 .jqx-grid-cell-selected-fluent span {
@@ -3389,7 +3437,7 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   border-radius: 50%;
   border-width: 1.5px;
   border-style: solid;
-  border-color: rgb(0, 120, 212) rgb(199, 224, 244) rgb(199, 224, 244);
+  border-color: var(--jqx-primary) var(--fluent-theme-light) var(--fluent-theme-light);
   border-image: initial;
   animation-name: css-spinner;
   animation-duration: 1.3s;
@@ -3443,23 +3491,38 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-info,
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-primary,
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-warning {
-  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23605E5C'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23605E5C'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 15C6.80729 15 6.14062 14.9115 5.5 14.7344C4.86458 14.5573 4.26823 14.3073 3.71094 13.9844C3.15365 13.6562 2.64583 13.2656 2.1875 12.8125C1.73438 12.3542 1.34375 11.8464 1.01562 11.2891C0.692708 10.7318 0.442708 10.1354 0.265625 9.5C0.0885417 8.85938 0 8.19271 0 7.5C0 6.80729 0.0885417 6.14323 0.265625 5.50781C0.442708 4.86719 0.692708 4.26823 1.01562 3.71094C1.34375 3.15365 1.73438 2.64844 2.1875 2.19531C2.64583 1.73698 3.15365 1.34635 3.71094 1.02344C4.26823 0.695312 4.86458 0.442708 5.5 0.265625C6.14062 0.0885417 6.80729 0 7.5 0C8.19271 0 8.85677 0.0885417 9.49219 0.265625C10.1328 0.442708 10.7318 0.695312 11.2891 1.02344C11.8464 1.34635 12.3516 1.73698 12.8047 2.19531C13.263 2.64844 13.6536 3.15365 13.9766 3.71094C14.3047 4.26823 14.5573 4.86719 14.7344 5.50781C14.9115 6.14323 15 6.80729 15 7.5C15 8.19271 14.9115 8.85938 14.7344 9.5C14.5573 10.1354 14.3047 10.7318 13.9766 11.2891C13.6536 11.8464 13.263 12.3542 12.8047 12.8125C12.3516 13.2656 11.8464 13.6562 11.2891 13.9844C10.7318 14.3073 10.1328 14.5573 9.49219 14.7344C8.85677 14.9115 8.19271 15 7.5 15ZM7.5 1C6.90104 1 6.32552 1.07812 5.77344 1.23438C5.22135 1.39062 4.70312 1.60938 4.21875 1.89062C3.73958 2.17188 3.30208 2.51042 2.90625 2.90625C2.51042 3.30208 2.17188 3.74219 1.89062 4.22656C1.60938 4.70573 1.39062 5.22396 1.23438 5.78125C1.07812 6.33333 1 6.90625 1 7.5C1 8.09375 1.07812 8.66927 1.23438 9.22656C1.39062 9.77865 1.60938 10.2969 1.89062 10.7812C2.17188 11.2604 2.51042 11.6979 2.90625 12.0938C3.30208 12.4896 3.73958 12.8281 4.21875 13.1094C4.70312 13.3906 5.22135 13.6094 5.77344 13.7656C6.32552 13.9219 6.90104 14 7.5 14C8.09375 14 8.66667 13.9219 9.21875 13.7656C9.77604 13.6094 10.2943 13.3906 10.7734 13.1094C11.2578 12.8281 11.6979 12.4896 12.0938 12.0938C12.4896 11.6979 12.8281 11.2604 13.1094 10.7812C13.3906 10.2969 13.6094 9.77865 13.7656 9.22656C13.9219 8.67448 14 8.09896 14 7.5C14 6.90625 13.9219 6.33333 13.7656 5.78125C13.6094 5.22396 13.3906 4.70573 13.1094 4.22656C12.8281 3.74219 12.4896 3.30208 12.0938 2.90625C11.6979 2.51042 11.2578 2.17188 10.7734 1.89062C10.2943 1.60938 9.77604 1.39062 9.21875 1.23438C8.66667 1.07812 8.09375 1 7.5 1ZM7 6H8V11H7V6ZM7 4H8V5H7V4Z' fill='%23605E5C'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-greys-grey130);
   width: 30px;
   height: 25px;
 }
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-serve-warning {
-  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23D83B01'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23D83B01'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15H0L7.5 0L15 15ZM1.61719 14H13.3828L7.5 2.23438L1.61719 14ZM8 6V11H7V6H8ZM7 12H8V13H7V12Z' fill='%23D83B01'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-severe-warning-color);
   width: 30px;
   height: 25px;
 }
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-success {
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23107C10'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23107C10'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6484 4.64844L12.3516 5.35156L6.5 11.2031L3.64844 8.35156L4.35156 7.64844L6.5 9.79688L11.6484 4.64844ZM8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26562 15 8.64583 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.35938 1 6.73958 1.08333 6.14062 1.25C5.54688 1.41667 4.98958 1.65365 4.46875 1.96094C3.95312 2.26302 3.48177 2.6276 3.05469 3.05469C2.6276 3.48177 2.26042 3.95573 1.95312 4.47656C1.65104 4.99219 1.41667 5.54948 1.25 6.14844C1.08333 6.74219 1 7.35938 1 8C1 8.64062 1.08333 9.26042 1.25 9.85938C1.41667 10.4531 1.65104 11.0104 1.95312 11.5312C2.26042 12.0469 2.6276 12.5182 3.05469 12.9453C3.48177 13.3724 3.95312 13.7396 4.46875 14.0469C4.98958 14.349 5.54688 14.5833 6.14062 14.75C6.73438 14.9167 7.35417 15 8 15Z' fill='%23107C10'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-success-color);
 }
 .jqx-notification-fluent .jqx-notification-icon.jqx-notification-icon-error {
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23A4262C'/%3E%3C/svg%3E");
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23A4262C'/%3E%3C/svg%3E") center / auto no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4427 0.744792 12.0312 1.09375C12.625 1.44271 13.1641 1.86198 13.6484 2.35156C14.138 2.83594 14.5573 3.375 14.9062 3.96875C15.2552 4.55729 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5573 12.6276 14.138 13.1667 13.6484 13.6562C13.1641 14.1406 12.625 14.5573 12.0312 14.9062C11.4427 15.2552 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2552 3.96094 14.9062C3.3724 14.5573 2.83333 14.1406 2.34375 13.6562C1.85938 13.1667 1.44271 12.6276 1.09375 12.0391C0.744792 11.4453 0.473958 10.8073 0.28125 10.125C0.09375 9.44271 0 8.73438 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.744792 4.55729 1.09375 3.96875C1.44271 3.375 1.85938 2.83594 2.34375 2.35156C2.83333 1.86198 3.3724 1.44271 3.96094 1.09375C4.55469 0.744792 5.19271 0.476562 5.875 0.289062C6.55729 0.0963542 7.26562 0 8 0ZM8 15C8.64583 15 9.26562 14.9167 9.85938 14.75C10.4583 14.5833 11.0156 14.349 11.5312 14.0469C12.0521 13.7396 12.5234 13.375 12.9453 12.9531C13.3724 12.526 13.737 12.0547 14.0391 11.5391C14.3464 11.0182 14.5833 10.4609 14.75 9.86719C14.9167 9.26823 15 8.64583 15 8C15 7.35417 14.9167 6.73438 14.75 6.14062C14.5833 5.54167 14.3464 4.98438 14.0391 4.46875C13.737 3.94792 13.3724 3.47656 12.9453 3.05469C12.5234 2.6276 12.0521 2.26302 11.5312 1.96094C11.0156 1.65365 10.4583 1.41667 9.85938 1.25C9.26562 1.08333 8.64583 1 8 1C7.35417 1 6.73177 1.08333 6.13281 1.25C5.53906 1.41667 4.98177 1.65365 4.46094 1.96094C3.94531 2.26302 3.47396 2.6276 3.04688 3.05469C2.625 3.47656 2.26042 3.94792 1.95312 4.46875C1.65104 4.98438 1.41667 5.54167 1.25 6.14062C1.08333 6.73438 1 7.35417 1 8C1 8.64583 1.08333 9.26823 1.25 9.86719C1.41667 10.4609 1.65104 11.0182 1.95312 11.5391C2.26042 12.0547 2.625 12.526 3.04688 12.9531C3.47396 13.375 3.94531 13.7396 4.46094 14.0469C4.98177 14.349 5.53906 14.5833 6.13281 14.75C6.73177 14.9167 7.35417 15 8 15ZM11.4609 5.24219L8.71094 8L11.4609 10.7578L10.7578 11.4609L8 8.71094L5.24219 11.4609L4.53906 10.7578L7.28906 8L4.53906 5.24219L5.24219 4.53906L8 7.28906L10.7578 4.53906L11.4609 5.24219Z' fill='%23A4262C'/%3E%3C/svg%3E") center / auto no-repeat;
+  background-color: var(--fluent-error-color);
 }
 .jqx-notification-fluent .jqx-notification-close-button {
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23201F1E'/%3E%3C/svg%3E") !important;
+  background-image: none !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23201F1E'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.44434 5L9.90723 9.46777L9.46777 9.90723L5 5.44434L0.532227 9.90723L0.0927734 9.46777L4.55566 5L0.0927734 0.532227L0.532227 0.0927734L5 4.55566L9.46777 0.0927734L9.90723 0.532227L5.44434 5Z' fill='%23201F1E'/%3E%3C/svg%3E") center / auto no-repeat !important;
+  background-color: currentColor !important;
   right: 0 !important;
   top: 0 !important;
   background-position: center center !important;
@@ -3477,8 +3540,11 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   color: var(--fluent-greys-grey190);
 }
 
-.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) .jqx-widget-fluent:not(.jqx-button-fluent),
-.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) input {
+/* Structural edges inside a widget (a popup list, a grid's panes) are dividers. Editable
+   controls nested in a widget - a grid's filter row and pager, a toolbar's inputs - keep the
+   control border: at the divider colour they measured 1.19:1 on white (WCAG 1.4.11). */
+.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) .jqx-widget-fluent:not(.jqx-button-fluent):not(.jqx-input):not(.jqx-dropdownlist):not(.jqx-combobox):not(.jqx-datetimeinput):not(.jqx-numberinput),
+.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) input:not(.jqx-input):not(.jqx-grid-pager-input):not(.jqx-input-fluent > input) {
   --jqx-border:var(--fluent-body-divider) !important;
 }
 .jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) .jqx-widget-fluent:not(.jqx-button-fluent).jqx-input:hover,
@@ -3571,17 +3637,15 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   color: var(--jqx-background);
 }
 
-
 /*applied to a pinned grid cell.*/
 .jqx-grid-cell-pinned-fluent {
-    background-color: #e5e5e5 !important;
+    background-color: var(--fluent-greys-grey30) !important;
 }
 
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt-fluent {
-    background-color: #e5e5e5 !important;
+    background-color: var(--fluent-greys-grey30) !important;
 }
-
 
 .jqx-grid-cell-pinned-fluent.jqx-grid-cell-selected-fluent {
     background-color: var(--jqx-primary) !important;
@@ -3590,4 +3654,225 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt-fluent.jqx-grid-cell-selected-fluent {
     background-color: var(--jqx-primary) !important;
+}
+/* Padding must never push an item past its row. With itemHeight set, jqxListBox sizes the
+   ROW and leaves a custom-rendered item's height to its content, so an item that fit the
+   row exactly overflowed it by the padding and painted over the item below - measured at
+   4px on the filtering demo. Clipping at the row keeps every width as it was (the item is
+   sized to overflow the row's right edge by its side padding on purpose, so a full-width
+   highlight reaches the border) and stops the overflow from painting where it should not. */
+.jqx-listbox-fluent .jqx-listitem-element {
+  overflow: hidden;
+}
+
+/* A form is a card on the neutral-lighter ground (grey10), themed through the ramp so the
+   dark variant follows; jqx.base.css paints it #F5F5F5 with a #E5E5E5 edge, a light block on
+   the dark ground. */
+.jqx-form-table.jqx-form-table-fluent {
+  background-color: var(--fluent-greys-grey10);
+  border-color: var(--fluent-greys-grey40);
+}
+
+/* jqx.base.css gives .jqx-split-layout a light palette of its own, which hides this theme's
+   :root roles (white panes on the dark variant, a #005C99 accent on both). Inherit them. */
+.jqx-split-layout-component-fluent .jqx-split-layout {
+  --jqx-primary-rgb: inherit;
+  --jqx-primary: inherit;
+  --jqx-primary-color: inherit;
+  --jqx-background: inherit;
+  --jqx-background-color: inherit;
+  --jqx-background-hover-rgb: inherit;
+  --jqx-background-hover: inherit;
+  --jqx-background-color-hover: inherit;
+  --jqx-surface-rgb: inherit;
+  --jqx-surface: inherit;
+  --jqx-surface-color: inherit;
+  --jqx-border: inherit;
+  --jqx-scrollbar-background: inherit;
+  --jqx-scrollbar-border: inherit;
+  --jqx-scrollbar-thumb-background: inherit;
+  --jqx-scrollbar-thumb-border: inherit;
+  --jqx-scrollbar-thumb-background-hover: inherit;
+  --jqx-scrollbar-thumb-border-hover: inherit;
+  --jqx-scrollbar-thumb-background-pressed: inherit;
+  --jqx-scrollbar-thumb-border-pressed: inherit;
+  --jqx-scrollbar-button-color-hover: inherit;
+  --jqx-scrollbar-button-background-hover: inherit;
+  --jqx-scrollbar-button-border-hover: inherit;
+  --jqx-scrollbar-button-color-pressed: inherit;
+  --jqx-scrollbar-button-background-pressed: inherit;
+  --jqx-scrollbar-button-border-pressed: inherit;
+  color: var(--jqx-background-color);
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+
+/* jqxTagCloud: tags without a textColor are plain links, #0000EE - 1.9:1 on the dark
+   variant and off-brand on both. The brand is 4.53:1 on white and 5.17:1 on #292929. */
+.jqx-tag-cloud-item-fluent a {
+  color: var(--jqx-primary);
+}
+
+/* jqxPopover: jqx.base.css fills the arrow with #ffffff. */
+.jqx-popover-fluent.top .jqx-popover-arrow-fluent:after {
+  border-top-color: var(--jqx-background);
+}
+.jqx-popover-fluent.right .jqx-popover-arrow-fluent:after {
+  border-right-color: var(--jqx-background);
+}
+.jqx-popover-fluent.bottom .jqx-popover-arrow-fluent:after {
+  border-bottom-color: var(--jqx-surface);
+}
+.jqx-popover-fluent.left .jqx-popover-arrow-fluent:after {
+  border-left-color: var(--jqx-background);
+}
+
+/* Link-template buttons: jqx.base.css forces #0088cc, off-brand here. The brand is 4.53:1 on
+   white and 5.17:1 on the dark variant's #292929. */
+.jqx-button-fluent.jqx-link-fluent {
+  color: var(--jqx-primary) !important;
+}
+
+/* Lines between grid, scheduler and tree-grid cells are dividers, not control boundaries
+   (WCAG 1.4.11 asks 3:1 of the latter); at the control-border colour they drew a lattice. */
+.jqx-widget-fluent .jqx-grid-cell,
+.jqx-widget-fluent .jqx-grid-column-header,
+.jqx-widget-fluent .jqx-grid-group-cell {
+  border-color: var(--fluent-grid-line);
+}
+
+/* Sort items in the grid and pivot grid menus: jqx.base.css draws them as dark rasters. */
+.jqx-widget-fluent .jqx-grid-sortasc-icon,
+.jqx-widget-fluent .jqx-pivotgrid-sortasc-icon {
+  background-image: var(--fluent-icon-sort-asc);
+}
+.jqx-widget-fluent .jqx-grid-sortdesc-icon,
+.jqx-widget-fluent .jqx-pivotgrid-sortdesc-icon {
+  background-image: var(--fluent-icon-sort-desc);
+}
+.jqx-widget-fluent .jqx-grid-sortremove-icon,
+.jqx-widget-fluent .jqx-pivotgrid-sortremove-icon {
+  background-image: var(--fluent-icon-sort-remove);
+}
+
+/* jqxScheduler's half-hour line: jqx.base.css forces #ddd, a bright rule on the dark
+   variant. One step lighter than the hour lines. */
+.jqx-widget-fluent .jqx-scheduler-middle-cell {
+  border-bottom-color: var(--fluent-greys-grey30) !important;
+}
+
+/* jqxScheduler month view: jqx.base.css paints the day-number strip #f2f2f2 with #000 text
+   at 80% opacity, and its "more" popup #f2f2f2 - light blocks on the dark variant. The
+   strip is the neutral-lighter fill (grey20) here, with the theme's text. */
+.jqx-scheduler-month-cell-fluent {
+  background: var(--fluent-greys-grey20);
+  color: var(--jqx-background-color);
+  opacity: 1;
+}
+.jqx-scheduler-month-cell-popup-fluent {
+  background: var(--jqx-background);
+  border-color: var(--jqx-border);
+}
+/* days outside the month: secondary text, 5.6:1 on the strip (4.84:1 on the dark one) */
+.jqx-scheduler-month-outer-cell-fluent.jqx-scheduler-month-cell-fluent {
+  color: var(--fluent-greys-grey130);
+}
+
+/* jqxKanban cards: a Fluent card, a subtle stroke and shadow 4. jqx.base.css gives them a
+   #ddd drop shadow, which glows on the dark variant. */
+.jqx-kanban-item-fluent {
+  border-color: var(--fluent-greys-grey40);
+  box-shadow: var(--fluent-box-shadow-4);
+}
+
+/* Raster icons jqx.base.css draws dark, pointed at tokens so the dark variant can swap in the
+   white images. The first four are the scroll arrows of popup menus, whose themed class the
+   widget writes without a separating space. */
+.jqx-reset-fluent.jqx-icon-arrow-down:not(.jqx-icon-arrow-down-fluent) { background-image: var(--fluent-icon-down); }
+.jqx-reset-fluent.jqx-icon-arrow-up:not(.jqx-icon-arrow-up-fluent) { background-image: var(--fluent-icon-up); }
+.jqx-reset-fluent.jqx-icon-arrow-left:not(.jqx-icon-arrow-left-fluent) { background-image: var(--fluent-icon-left); }
+.jqx-reset-fluent.jqx-icon-arrow-right:not(.jqx-icon-arrow-right-fluent) { background-image: var(--fluent-icon-right); }
+.jqx-layout-pseudo-window-pin-icon-fluent { background-image: var(--fluent-icon-pin); }
+.jqx-layout-pseudo-window-pinned-icon-fluent { background-image: var(--fluent-icon-pinned); }
+.jqx-icon-plus-alt-fluent { background-image: var(--fluent-icon-plus); }
+.jqx-icon-recurrence-fluent { background-image: var(--fluent-icon-recurrence); }
+.jqx-icon-recurrence-exception-fluent { background-image: var(--fluent-icon-recurrence-exception); }
+.jqx-icon-edit-fluent { background-image: var(--fluent-icon-edit); }
+.jqx-icon-delete-fluent { background-image: var(--fluent-icon-delete); }
+.jqx-icon-save-fluent { background-image: var(--fluent-icon-save); }
+.jqx-icon-cancel-fluent { background-image: var(--fluent-icon-cancel); }
+.jqx-menu-minimized-button-fluent { background-image: var(--fluent-icon-menu-minimized); }
+.jqx-widget-content-fluent .jqx-pivotgrid-settings-icon,
+.jqx-widget-content-fluent .jqx-pivotgrid-menu-button { background-image: var(--fluent-icon-menu-small); }
+.jqx-widget-content-fluent .jqx-pivotgrid-expand-button,
+.jqx-widget-content-fluent .jqx-pivotgrid-collapse-button { filter: var(--fluent-raster-filter); }
+
+/* jqxGrid's "add new row" line: jqx.base.css paints it cream (#fdfcf3) with #000 text, a
+   light bar on the dark variant. The neutral-lighter fill with the theme's text. */
+.jqx-grid-fluent .jqx-grid-cell-add-new-row {
+  background: var(--fluent-greys-grey10) !important;
+  color: var(--jqx-background-color) !important;
+}
+.jqx-grid-fluent .jqx-grid-cell-add-new-row input {
+  background: var(--jqx-background);
+  color: var(--jqx-background-color);
+}
+/* its Add / Reset links: the browser's #0000EE is 1.7:1 on the dark variant */
+.jqx-grid-fluent .jqx-grid-cell-add-new-row a {
+  color: var(--jqx-primary);
+}
+
+/* jqxKanban's avatar placeholder (#eee in jqx.base.css) */
+.jqx-kanban-fluent .jqx-kanban-item-avatar {
+  background-color: var(--fluent-greys-grey20);
+}
+
+/* jqxFormattedInput's spin and drop-down addons sat outside the field's border (their border
+   was the background colour); they are part of the control, so the field's edge goes round
+   them. */
+.jqx-input-group-fluent > div.jqx-input-group-addon-fluent {
+  border-color: var(--fluent-input-border);
+  border-left-width: 0;
+}
+
+/* jqxRating paints the empty stars over a full row of filled ones, so the empty star needs an
+   opaque ground under its outline (it was a #fff box); the theme's background, so the dark
+   variant does not show a white square. */
+.jqx-rating-image-backward:not(.hidden-item):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--jqx-background);
+}
+
+/* jqxProgressBar's value text sits across the fill and the track, so no one colour clears
+   both (white on the dark variant's #479EF5 fill is 2.9:1). The theme's text colour with a
+   halo of the background reads on either - the dark theme's approach. */
+.jqx-progressbar-text-fluent {
+  color: var(--jqx-background-color);
+  font-weight: 600;
+  text-shadow: 0 0 2px var(--jqx-background), 0 0 3px var(--jqx-background), 0 0 4px var(--jqx-background);
+}
+
+/* jqxDropDownButton's popup is its own container: it takes the container's -10px but has no
+   inner popup to take it back, so it hung 10px left of the button. */
+.jqx-dropdownbutton-popup-fluent.jqx-listbox-container-fluent {
+  margin-left: 0;
+}
+
+/* Fluent 2 text fields: a light stroke round the field and the accessible stroke along its
+   bottom (6.2:1). Hover and focus rules replace the whole border as before. */
+.jqx-input-fluent:not(:focus):not(.jqx-fill-state-focus-fluent),
+.jqx-numberinput-fluent:not(.jqx-fill-state-focus-fluent),
+.jqx-dropdownlist-fluent:not(.jqx-fill-state-focus-fluent),
+.jqx-combobox-fluent:not(.jqx-fill-state-focus-fluent),
+.jqx-datetimeinput-fluent:not(.jqx-fill-state-focus-fluent),
+.jqx-input-group-fluent > .jqx-input-group-addon-fluent,
+.jqx-input-group-fluent > input:not(:focus),
+.jqx-panel-fluent:has(> div > .jqx-text-area-element-fluent:not(:focus)),
+textarea.jqx-widget-content-fluent:not(:focus) {
+  border-bottom-color: var(--fluent-input-border-accessible);
 }

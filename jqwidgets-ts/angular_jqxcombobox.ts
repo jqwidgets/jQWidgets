@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -59,19 +59,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('remoteAutoComplete') attrRemoteAutoComplete: boolean;
    @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: number;
-   @Input('renderer') attrRenderer: (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string;
-   @Input('renderSelectedItem') attrRenderSelectedItem: (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string;
+   @Input('renderer') attrRenderer: (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string;
+   @Input('renderSelectedItem') attrRenderSelectedItem: (index: jqwidgets.ComboBoxRenderSelectedItem['index'], item: jqwidgets.ComboBoxRenderSelectedItem['item']) => string;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('showCloseButtons') attrShowCloseButtons: boolean;
    @Input('searchMode') attrSearchMode: string;
-   @Input('search') attrSearch: (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void;
+   @Input('search') attrSearch: (searchString: jqwidgets.ComboBoxSearch['searchString']) => void;
    @Input('source') attrSource: any;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
-   @Input('validateSelection') attrValidateSelection: (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean;
+   @Input('validateSelection') attrValidateSelection: (itemValue: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean;
    @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -87,12 +87,25 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    container: HTMLDivElement;
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
    ngOnInit() {
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxComboBox('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -223,6 +236,10 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
         this.widgetObject.clearSelection();
@@ -236,6 +253,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -572,7 +590,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   renderer(arg?: (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string): (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string {
+   renderer(arg?: (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string): (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -585,7 +603,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   renderSelectedItem(arg?: (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string): (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string {
+   renderSelectedItem(arg?: (index: jqwidgets.ComboBoxRenderSelectedItem['index'], item: jqwidgets.ComboBoxRenderSelectedItem['item']) => string): (index: jqwidgets.ComboBoxRenderSelectedItem['index'], item: jqwidgets.ComboBoxRenderSelectedItem['item']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -663,7 +681,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   search(arg?: (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void): (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void {
+   search(arg?: (searchString: jqwidgets.ComboBoxSearch['searchString']) => void): (searchString: jqwidgets.ComboBoxSearch['searchString']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -728,7 +746,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   validateSelection(arg?: (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean): (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean {
+   validateSelection(arg?: (itemValue: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean): (itemValue: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

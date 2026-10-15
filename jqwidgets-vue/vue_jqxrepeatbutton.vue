@@ -29,10 +29,6 @@
             textImageRelation: String,
             theme: String,
             template: String,
-            toggled: {
-                default: false,
-                type: Boolean
-            },
             width: [Number, String],
             value: String,
             autoCreate: {
@@ -170,13 +166,6 @@
                     return JQXLite(this.componentSelector).jqxRepeatButton('template');
                 }
             },
-            _toggled: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRepeatButton('toggled', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRepeatButton('toggled');
-                }
-            },
             _width: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxRepeatButton('width', arg)
@@ -199,7 +188,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+                const widgetProps = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -339,16 +328,6 @@
                     },
                     set: function(newValue) {
                         that._template(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'toggled', {
-                    get: function() {
-                        return that._toggled();
-                    },
-                    set: function(newValue) {
-                        that._toggled(newValue);
                     },
                     enumerable: true,
                     configurable: true

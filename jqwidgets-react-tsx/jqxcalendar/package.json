@@ -1,7 +1,21 @@
 {
-    "main": "react_jqxcalendar.umd.js",
-    "module": "react_jqxcalendar.esm.js",
-    "typings": "react_jqxcalendar.d.ts",
-    "name": "jqwidgets-react/jqxcalendar",
-    "sideEffects": false
-  }
+  "name": "jqwidgets-react/jqxcalendar",
+  "version": "27.1.0",
+  "main": "react_jqxcalendar.umd.js",
+  "module": "react_jqxcalendar.esm.js",
+  "typings": "react_jqxcalendar.d.ts",
+  "exports": {
+    ".": {
+      "types": "./react_jqxcalendar.d.ts",
+      "import": "./react_jqxcalendar.esm.js",
+      "require": "./react_jqxcalendar.umd.js",
+      "default": "./react_jqxcalendar.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "sideEffects": true
+}

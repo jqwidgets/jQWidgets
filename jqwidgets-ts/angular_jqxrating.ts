@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,19 +37,21 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
    @Input('itemWidth') attrItemWidth: number;
    @Input('precision') attrPrecision: number;
    @Input('singleVote') attrSingleVote: boolean;
+   @Input('theme') attrTheme: string;
    @Input('value') attrValue: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['count','disabled','height','itemHeight','itemWidth','precision','singleVote','value','width'];
+   properties: string[] = ['count','disabled','height','itemHeight','itemWidth','precision','singleVote','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRating;
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -59,6 +61,13 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -157,6 +166,10 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
        }
@@ -167,6 +180,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -231,6 +245,14 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
           this.host.jqxRating('singleVote', arg);
       } else {
           return this.host.jqxRating('singleVote');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxRating('theme', arg);
+      } else {
+          return this.host.jqxRating('theme');
       }
    }
 

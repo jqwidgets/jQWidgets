@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxRibbon extends React.PureComponent<IRibbonProps, IState> {
-    protected static getDerivedStateFromProps(props: IRibbonProps, state: IState): null | IState;
+declare class JqxRibbon extends React.PureComponent<IRibbonProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IRibbonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IRibbonProps): void;
     getOptions(option: string): any;
@@ -25,14 +36,15 @@ declare class JqxRibbon extends React.PureComponent<IRibbonProps, IState> {
     updateAt(index: number, item: object): void;
     val(value?: any): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxRibbon;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IRibbonOptions {
     animationType?: 'fade' | 'slide' | 'none';
     animationDelay?: number | string;
@@ -52,11 +64,12 @@ interface IRibbonOptions {
     theme?: string;
     width?: string | number;
 }
-export interface IRibbonProps extends IRibbonOptions {
+export interface IRibbonProps extends IRibbonOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onChange?: (e?: Event) => void;
-    onReorder?: (e?: Event) => void;
-    onSelect?: (e?: Event) => void;
-    onUnselect?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onChange?: (e?: any) => void;
+    onReorder?: (e?: any) => void;
+    onSelect?: (e?: any) => void;
+    onUnselect?: (e?: any) => void;
 }

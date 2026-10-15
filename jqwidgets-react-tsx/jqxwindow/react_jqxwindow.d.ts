@@ -1,12 +1,23 @@
 import * as React from 'react';
-declare class JqxWindow extends React.PureComponent<IWindowProps, IState> {
-    protected static getDerivedStateFromProps(props: IWindowProps, state: IState): null | IState;
+declare class JqxWindow extends React.PureComponent<IWindowProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
+    private _hostChildren;
     constructor(props: IWindowProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IWindowProps): void;
     getOptions(option: string): any;
@@ -29,14 +40,15 @@ declare class JqxWindow extends React.PureComponent<IWindowProps, IState> {
     setTitle(title: string): void;
     setContent(content: string): void;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxWindow;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 export interface IWindowDragArea {
     left?: number;
     top?: number;
@@ -80,15 +92,16 @@ interface IWindowOptions {
     width?: string | number;
     zIndex?: number;
 }
-export interface IWindowProps extends IWindowOptions {
+export interface IWindowProps extends IWindowOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
-    onClose?: (e?: Event) => void;
-    onCollapse?: (e?: Event) => void;
-    onExpand?: (e?: Event) => void;
-    onMoving?: (e?: Event) => void;
-    onMoved?: (e?: Event) => void;
-    onOpen?: (e?: Event) => void;
-    onResizing?: (e?: Event) => void;
-    onResized?: (e?: Event) => void;
+    children?: React.ReactNode;
+    onClose?: (e?: any) => void;
+    onCollapse?: (e?: any) => void;
+    onExpand?: (e?: any) => void;
+    onMoving?: (e?: any) => void;
+    onMoved?: (e?: any) => void;
+    onOpen?: (e?: any) => void;
+    onResizing?: (e?: any) => void;
+    onResized?: (e?: any) => void;
 }

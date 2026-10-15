@@ -54,7 +54,7 @@
 .jqx-window-collapse-button-ui-redmond{background-position:0 -16px; background-image:url(./images/redmond/ui-icons_d8e7f3_256x240.png)}
 .jqx-window-collapse-button-hover-ui-redmond{background-image:url(./images/redmond/ui-icons_217bc0_256x240.png); background-color:#fff; border-radius:5px; moz-border-radius:5px; webkit-border-radius:5px}
 .jqx-window-collapse-button-collapsed-ui-redmond, .jqx-window-collapse-button-collapsed-hover-ui-redmond{background-position:-65px -16px}
-.jqx-window-modal-ui-redmond{background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30);}
+.jqx-window-modal-ui-redmond{background: #aaaaaa; opacity: .30;}
 .jqx-window-close-button-hover-ui-redmond{background-color:#fff; background-position:-96px -128px; background-image:url(./images/redmond/ui-icons_217bc0_256x240.png); cursor:pointer; width:16px; height:16px}
 /*Common Settings*/
 .jqx-widget-ui-redmond{font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size:13px; font-style:normal; webkit-tap-highlight-color:rgba(0,0,0,0)}
@@ -69,7 +69,7 @@
 .jqx-fill-state-focus-ui-redmond {border-color: #79b7e7; color: #1d5987; }
 .jqx-fill-state-pressed-ui-redmond{border-color: #79b7e7; background: #f5f8f9 url(./images/redmond/ui-bg_inset-hard_100_f5f8f9_1x100.png) 50% 50% repeat-x; color: #e17009; }
 .jqx-fill-state-pressed-ui-redmond a, .jqx-fill-state-pressed-ui-redmond a:link, .jqx-fill-state-pressed-ui-redmond a:visited{color:#e17009; text-decoration:none}
-.jqx-fill-state-disabled-ui-redmond {cursor: default; color: #000; opacity: .55; filter:Alpha(Opacity=45);}
+.jqx-fill-state-disabled-ui-redmond {cursor: default; color: #000; opacity: .55;}
 .jqx-grid-column-menubutton-ui-redmond{position: relative; max-height: 16px; height: 16px !important; top:50%; margin-top:-8px; background-position:-65px -16px; background-image:url(./images/redmond/ui-icons_f9bd01_256x240.png); border-width:0px}
 
 .jqx-input-button-content-ui-redmond{font-size:10px}
@@ -127,14 +127,8 @@ font-weight: bold;
 }
 .jqx-menu-dropdown-ui-redmond
 {
-    -moz-border-radius-bottomleft: 5px;
-    -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -webkit-border-top-right-radius: 5px;
     border-top-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
     right: -1px;
 }

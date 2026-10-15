@@ -62,7 +62,7 @@
 .jqx-window-modal-ui-lightness{}
 
 .jqx-widget-ui-lightness{line-height: 17px; font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-style:normal; webkit-tap-highlight-color:rgba(0,0,0,0)}
-.jqx-widget-content-ui-lightness{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; background-color:#f8f8f8; background-image:-webkit-gradient(linear,0 0,0 100%,from(#f8f8f8),to(#eee));  background-image:-moz-linear-gradient(top,#f8f8f8,#eee);  background-image:-o-linear-gradient(top,#f8f8f8,#eee); border-color:#ddd; color:#333; font-size:12px}
+.jqx-widget-content-ui-lightness{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; background-color:#f8f8f8; background-image: linear-gradient(#f8f8f8, #eee); border-color:#ddd; color:#333; font-size:12px}
 .jqx-widget-content-ui-lightness a{color:#333}
 .jqx-widget-header-ui-lightness{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; background:#f6a828 url(./images/lightness/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x; border-color: #e78f08; color:#fff; font-size:12px}
 .jqx-widget-header-ui-lightness a{color:#fff}
@@ -159,7 +159,6 @@
 {
     background-image: none;
 }
-
 
 .jqx-grid-pager-ui-lightness .jqx-button {
 	overflow: hidden;

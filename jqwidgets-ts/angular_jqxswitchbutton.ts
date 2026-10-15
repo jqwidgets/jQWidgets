@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,6 +36,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    @Input('orientation') attrOrientation: string;
    @Input('onLabel') attrOnLabel: string;
    @Input('offLabel') attrOffLabel: string;
+   @Input('theme') attrTheme: string;
    @Input('thumbSize') attrThumbSize: string;
    @Input('rtl') attrRtl: boolean;
    @Input('width') attrWidth: string | number;
@@ -43,13 +44,14 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','rtl','width'];
+   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','rtl','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSwitchButton;
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
+   private modelReady: boolean = false;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -59,6 +61,13 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       if (this.autoCreate) {
          this.createComponent(); 
       }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -157,6 +166,10 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
+       if ((value === null || value === undefined) && !this.modelReady) {
+           if (this.widgetObject) this.onChangeCallback(this.host.val());
+           return;
+       }
        if(this.widgetObject) {
            this.onChangeCallback(this.host.val());
        }
@@ -167,6 +180,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
 
    registerOnChange(fn: any): void {
        this.onChangeCallback = fn;
+       setTimeout(() => { this.modelReady = true; });
    }
 
    registerOnTouched(fn: any): void {
@@ -223,6 +237,14 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
           this.host.jqxSwitchButton('offLabel', arg);
       } else {
           return this.host.jqxSwitchButton('offLabel');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('theme', arg);
+      } else {
+          return this.host.jqxSwitchButton('theme');
       }
    }
 

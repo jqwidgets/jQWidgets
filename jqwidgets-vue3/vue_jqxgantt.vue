@@ -5,7 +5,8 @@
 </template>
 
 <script>
-	import { onUpdated, onMounted } from 'vue';
+	import { onMounted, onUnmounted, watch } from 'vue';
+	let __ssrIdCounter__ = 0;
     import '../jqwidgets/jqxcore.js';
     import '../jqwidgets/jqxgantt.api.js';
     import '../jqwidgets/jqxgantt.js';
@@ -24,11 +25,11 @@
             currentTimeIndicator: Boolean,
             currentTimeIndicatorInterval: Number,
             dataExportFileName: String,
-            source: Any,
+            source: null,
             dayFormat: String,
             dateEnd: [String, Date],
             dateStart: [String, Date],
-            dateMarkers: [{label?: string, date: Date, String, className?: string }[]],
+            dateMarkers: null,
             disabled: Boolean,
             disableAutoScroll: Boolean,
             disableTaskDrag: Boolean,
@@ -42,7 +43,7 @@
             filterRow: Boolean,
             firstDayOfWeek: Number,
             groupByResources: Boolean,
-            headerTemplate: Any,
+            headerTemplate: null,
             hideDateMarkers: Boolean,
             hideTimelineHeader: Boolean,
             hideTimelineHeaderDetails: Boolean,
@@ -58,43 +59,43 @@
             min: [String, Date],
             monthFormat: String,
             monthScale: String,
-            nonworkingDays: Number[],
-            nonworkingHours: [Number[], Number[][]],
-            onTaskRender: Any,
-            popupWindowCustomizationFunction: Any,
-            popupWindowTabs: String[],
-            progressLabelFormatFunction: Any,
+            nonworkingDays: null,
+            nonworkingHours: null,
+            onTaskRender: null,
+            popupWindowCustomizationFunction: null,
+            popupWindowTabs: null,
+            progressLabelFormatFunction: null,
             quarterFormat: String,
-            resources: {label: string, capacity: number, value: string, workload: number, progress: number, id: string,  class: string }[],
-            resourceColumns: {label: string, value: string}[],
+            resources: null,
+            resourceColumns: null,
             resourceFiltering: Boolean,
-            resourceGroupFormatFunction: Any,
-            resourcePanelHeaderTemplate: Any,
+            resourceGroupFormatFunction: null,
+            resourcePanelHeaderTemplate: null,
             resourcePanelMin: [Number, String],
             resourcePanelSize: [Number, String],
             resourcePanelRefreshRate: Number,
-            resourceTimelineFormatFunction: Any,
+            resourceTimelineFormatFunction: null,
             resourceTimelineMode: String,
             resourceTimelineView: String,
-            rightToLeft: Boolean,
-            selectedTaskIds: [Number[], String[]],
-            selectedResourceIds: [Number[], String[]],
+            rtl: Boolean,
+            selectedTaskIds: null,
+            selectedResourceIds: null,
             shadeUntilCurrentTime: Boolean,
             showSelectionColumn: Boolean,
             showBaseline: Boolean,
             showProgressLabel: Boolean,
             snapToNearest: Boolean,
-            sortFunction: { (dataSource: any, sortColumns: string[], directions: string[], defaultCompareFunctions: { (firstRecord: any, secondRecord: any): number }[]): void },
+            sortFunction: null,
             sortMode: String,
-            tasks: [{label: string, dateStart: string, Date, dateEnd: string, Date, expanded?: boolean, progress?: number, type?: string}[]],
-            taskColumns: {label: string, value: string}[],
+            tasks: null,
+            taskColumns: null,
             taskFiltering: Boolean,
             taskPanelMin: [String, Number],
             taskPanelSize: [String, Number],
             timelineMin: [String, Number],
             treeMin: [String, Number],
             treeSize: [String, Number],
-            timelineHeaderFormatFunction: Any,
+            timelineHeaderFormatFunction: null,
             tooltip: Object,
             verticalScrollBarVisibility: String,
             view: String,
@@ -108,8 +109,10 @@
         },
         emits: ["beginUpdate","endUpdate","connectionStart","connectionEnd","change","columnResize","closing","close","collapse","dragStart","dragEnd","expand","filter","itemClick","itemInsert","itemRemove","itemUpdate","opening","open","progressChangeStart","progressChangeEnd","resizeStart","resizeEnd","sort","scrollBottomReached","scrollTopReached","scrollLeftReached","scrollRightReached"],
         setup(props, context) {
-			const id = "jqxGantt" + JQXLite.generateID();
+			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
+			const id = "jqxGantt" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
 			const componentSelector = '#' + id;
+			let __appliedProps__ = {}, __created__ = false, __host__ = null;
             function createComponent(options) {
                 if (!props.autoCreate) __createComponent__(options)
                 else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
@@ -738,11 +741,11 @@
                     return JQXLite(componentSelector).jqxGantt('resourceTimelineView');
                 }
             }
-            function _rightToLeft (arg) {
+            function _rtl (arg) {
                 if (arg !== undefined) {
-                    JQXLite(componentSelector).jqxGantt('rightToLeft', arg)
+                    JQXLite(componentSelector).jqxGantt('rtl', arg)
                 } else {
-                    return JQXLite(componentSelector).jqxGantt('rightToLeft');
+                    return JQXLite(componentSelector).jqxGantt('rtl');
                 }
             }
             function _selectedTaskIds (arg) {
@@ -917,10 +920,13 @@
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
                 JQXLite(componentSelector).jqxGantt(widgetOptions);
+                __appliedProps__ = widgetOptions;
+                __created__ = true;
+                __host__ = JQXLite(componentSelector)[0];
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rightToLeft','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
+                const widgetProps = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
                 const componentProps = props;
                 let options = {};
 
@@ -1316,11 +1322,11 @@
                  set resourceTimelineView(newValue) {
                      _resourceTimelineView(newValue);
                  },
-                 get rightToLeft() {
-                     return _rightToLeft();
+                 get rtl() {
+                     return _rtl();
                  },
-                 set rightToLeft(newValue) {
-                     _rightToLeft(newValue);
+                 set rtl(newValue) {
+                     _rtl(newValue);
                  },
                  get selectedTaskIds() {
                      return _selectedTaskIds();
@@ -1503,11 +1509,39 @@
 			onMounted(() => {
 				if (props.autoCreate) __createComponent__();
 			})
-			onUpdated(() => {
-				const widgetOptions = __manageProps__();
-				JQXLite(componentSelector).jqxGantt(widgetOptions);
+			// The props that changed, and only those (arrays and objects by reference): all of
+			// them again, on every update, reset the widget (JqxGrid bound its source again and
+			// showed "Loading...", JqxDropDownList went back to its selectedIndex).
+			watch(__manageProps__, (widgetOptions) => {
+				if (!__hasJQXLite__ || !__created__) return;
+				const changed = {};
+				let hasChanges = false;
+				for (const key in widgetOptions) {
+					if (!Object.is(widgetOptions[key], __appliedProps__[key])) {
+						changed[key] = widgetOptions[key];
+						hasChanges = true;
+					}
+				}
+				// new data resets the widget's selection: the selection the props ask for goes with it
+				if ('source' in changed) {
+					for (const key of ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']) {
+						if (!(key in changed) && widgetOptions[key] !== undefined) changed[key] = widgetOptions[key];
+					}
+				}
+				__appliedProps__ = widgetOptions;
+				if (hasChanges) JQXLite(componentSelector).jqxGantt(changed);
+			}, { flush: 'post' });
+
+			onUnmounted(() => {
+				if (!__hasJQXLite__) return;
+				__created__ = false;
+				// (not '#id': the element is no longer on the page, and the widget was never destroyed)
+				const element = JQXLite(__host__ || componentSelector);
+				__host__ = null;
+				if (!element || element.length === 0) return;
+				element.off();
 			})
-			return {id, componentSelector, addFilter,clearFilters,clearSort,clearSelection,clearState,clearTasks,clearResources,createConnection,collapse,beginUpdate,endUpdate,ensureVisible,expand,exportData,getConnections,getConnectionDetails,getState,getItemPath,getTask,getTasks,getTaskIndex,getTaskConnections,getTaskProject,getResource,getResources,getResourceIndex,getResourceTasks,getSelectedIds,getSelectedTasks,getSelectedResources,getWorkingHours,hideTooltip,isWorkingDay,loadState,removeAllConnections,removeConnection,removeTaskConnection,showTooltip,saveState,insertTask,updateTask,removeTask,insertResource,updateResource,removeResource,openWindow,closeWindow,print,setWorkTime,selectTask,selectResource,unselectTask,unselectResource,unsetWorkTime,sort, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addFilter, clearFilters, clearSort, clearSelection, clearState, clearTasks, clearResources, createConnection, collapse, beginUpdate, endUpdate, ensureVisible, expand, exportData, getConnections, getConnectionDetails, getState, getItemPath, getTask, getTasks, getTaskIndex, getTaskConnections, getTaskProject, getResource, getResources, getResourceIndex, getResourceTasks, getSelectedIds, getSelectedTasks, getSelectedResources, getWorkingHours, hideTooltip, isWorkingDay, loadState, removeAllConnections, removeConnection, removeTaskConnection, showTooltip, saveState, insertTask, updateTask, removeTask, insertResource, updateResource, removeResource, openWindow, closeWindow, print, setWorkTime, selectTask, selectResource, unselectTask, unselectResource, unsetWorkTime, sort, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

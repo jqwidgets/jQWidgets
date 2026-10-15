@@ -1,12 +1,22 @@
 import * as React from 'react';
-declare class JqxDraw extends React.PureComponent<IDrawProps, IState> {
-    protected static getDerivedStateFromProps(props: IDrawProps, state: IState): null | IState;
+declare class JqxDraw extends React.PureComponent<IDrawProps> {
     private _jqx;
     private _id;
     private _componentSelector;
+    private _rendered;
+    private _host;
+    private _appliedOptions;
+    private _eventHandlers;
+    private _eventElement;
+    private _teardownPending;
+    private _hostParent;
+    private _hostNext;
+    private _widgetPlace;
     constructor(props: IDrawProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    private _target;
     render(): React.ReactNode;
     setOptions(options: IDrawProps): void;
     getOptions(option: string): any;
@@ -27,18 +37,21 @@ declare class JqxDraw extends React.PureComponent<IDrawProps, IState> {
     saveAsPNG(image?: string, url?: string): void;
     text(text?: string, x?: number, y?: number, width?: number | string, height?: number | string, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any;
     private _manageProps;
+    private _hostAttributes;
+    private _applyHostAttributes;
     private _wireEvents;
+    private _eventHandler;
+    private _teardown;
 }
 export default JqxDraw;
 export declare const jqx: any;
 export declare const JQXLite: any;
-interface IState {
-    lastProps: object;
-}
 interface IDrawOptions {
     renderEngine?: 'SVG' | 'VML' | 'HTML5';
+    theme?: string;
 }
-export interface IDrawProps extends IDrawOptions {
+export interface IDrawProps extends IDrawOptions, React.AriaAttributes {
     className?: string;
     style?: React.CSSProperties;
+    children?: React.ReactNode;
 }

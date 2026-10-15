@@ -13,7 +13,7 @@
                 default: true,
                 type: Boolean
             },
-            autoHidePromptChart: {
+            autoHidePromptChar: {
                 default: true,
                 type: Boolean
             },
@@ -113,11 +113,11 @@
                     return JQXLite(this.componentSelector).jqxNumberInput('allowNull');
                 }
             },
-            _autoHidePromptChart: function(arg) {
+            _autoHidePromptChar: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChart', arg)
+                    JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChar', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChart');
+                    return JQXLite(this.componentSelector).jqxNumberInput('autoHidePromptChar');
                 }
             },
             _decimal: function(arg) {
@@ -317,7 +317,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['allowNull','autoHidePromptChart','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+                const widgetProps = ['allowNull','autoHidePromptChar','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -341,12 +341,12 @@
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'autoHidePromptChart', {
+                Object.defineProperty(that, 'autoHidePromptChar', {
                     get: function() {
-                        return that._autoHidePromptChart();
+                        return that._autoHidePromptChar();
                     },
                     set: function(newValue) {
-                        that._autoHidePromptChart(newValue);
+                        that._autoHidePromptChar(newValue);
                     },
                     enumerable: true,
                     configurable: true

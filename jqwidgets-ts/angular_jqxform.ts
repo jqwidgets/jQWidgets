@@ -1,5 +1,5 @@
 /*
-jQWidgets v26.0.0 (2026-July)
+jQWidgets v27.1.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -38,6 +38,7 @@ export class jqxFormComponent implements OnChanges
    @Input('padding') attrPadding: jqwidgets.FormPadding;
    @Input('backgroundColor') attrBackgroundColor: string;
    @Input('borderColor') attrBorderColor: string;
+   @Input('theme') attrTheme: string;
    @Input('value') attrValue: any;
    @Input('template') attrTemplate: Array<jqwidgets.FormTemplateItem>;
    @Input('enableSmartPaste') attrEnableSmartPaste: boolean;
@@ -48,7 +49,7 @@ export class jqxFormComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['padding','backgroundColor','borderColor','value','template','enableSmartPaste','aiKey','aiUrl'];
+   properties: string[] = ['padding','backgroundColor','borderColor','theme','value','template','enableSmartPaste','aiKey','aiUrl'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxForm;
@@ -63,6 +64,18 @@ export class jqxFormComponent implements OnChanges
    ngOnInit() {
       if (this.autoCreate) {
          this.createComponent(); 
+      }
+   }; 
+
+   ngOnDestroy(): void {
+      if (typeof JQXLite === 'undefined') { return; }
+      if (!this.host) { return; }
+
+      this.host.off();
+      try {
+         this.host.jqxForm('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
       }
    }; 
 
@@ -189,6 +202,14 @@ export class jqxFormComponent implements OnChanges
           this.host.jqxForm('borderColor', arg);
       } else {
           return this.host.jqxForm('borderColor');
+      }
+   }
+
+   theme(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('theme', arg);
+      } else {
+          return this.host.jqxForm('theme');
       }
    }
 
