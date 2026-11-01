@@ -13,6 +13,11 @@
     export default {
         props: {
             modelValue: null,
+            animationDuration: Number,
+            animationEnabled: {
+                default: true,
+                type: Boolean
+            },
             checked: {
                 default: false,
                 type: Boolean
@@ -27,6 +32,8 @@
             offLabel: String,
             theme: String,
             thumbSize: String,
+            switchRatio: [String, Number],
+            toggleMode: String,
             rtl: {
                 default: false,
                 type: Boolean
@@ -78,6 +85,20 @@
                     JQXLite(componentSelector).jqxSwitchButton('val',  value)
                 } else {
                     return JQXLite(componentSelector).jqxSwitchButton('val');
+                }
+            }
+            function _animationDuration (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSwitchButton('animationDuration', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSwitchButton('animationDuration');
+                }
+            }
+            function _animationEnabled (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSwitchButton('animationEnabled', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSwitchButton('animationEnabled');
                 }
             }
             function _checked (arg) {
@@ -136,6 +157,20 @@
                     return JQXLite(componentSelector).jqxSwitchButton('thumbSize');
                 }
             }
+            function _switchRatio (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSwitchButton('switchRatio', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSwitchButton('switchRatio');
+                }
+            }
+            function _toggleMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSwitchButton('toggleMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSwitchButton('toggleMode');
+                }
+            }
             function _rtl (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSwitchButton('rtl', arg)
@@ -161,7 +196,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','rtl','width'];
+                const widgetProps = ['animationDuration','animationEnabled','checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','switchRatio','toggleMode','rtl','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -173,6 +208,18 @@
                 return options;
             }
             const options = {
+                 get animationDuration() {
+                     return _animationDuration();
+                 },
+                 set animationDuration(newValue) {
+                     _animationDuration(newValue);
+                 },
+                 get animationEnabled() {
+                     return _animationEnabled();
+                 },
+                 set animationEnabled(newValue) {
+                     _animationEnabled(newValue);
+                 },
                  get checked() {
                      return _checked();
                  },
@@ -220,6 +267,18 @@
                  },
                  set thumbSize(newValue) {
                      _thumbSize(newValue);
+                 },
+                 get switchRatio() {
+                     return _switchRatio();
+                 },
+                 set switchRatio(newValue) {
+                     _switchRatio(newValue);
+                 },
+                 get toggleMode() {
+                     return _toggleMode();
+                 },
+                 set toggleMode(newValue) {
+                     _toggleMode(newValue);
                  },
                  get rtl() {
                      return _rtl();

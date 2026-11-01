@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxfileupload",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxfileupload.umd.js",
   "module": "react_jqxfileupload.esm.js",
   "typings": "react_jqxfileupload.d.ts",

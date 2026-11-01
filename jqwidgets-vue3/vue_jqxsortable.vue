@@ -42,6 +42,7 @@
             handle: String,
             helper: String,
             items: String,
+            maxItems: Number,
             opacity: Number,
             placeholderShow: String,
             revert: {
@@ -62,7 +63,7 @@
                 type: Boolean
             }
         },
-        emits: ["activate","beforeStop","change","deactivate","out","over","receive","remove","sort","start","stop","update"],
+        emits: ["activate","beforeStop","change","deactivate","out","over","receive","removeItem","remove","sort","start","stop","update"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxSortable" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -83,8 +84,8 @@
                 }
                 return resultToReturn;
             }
-            function cancelMethod() {
-                JQXLite(componentSelector).jqxSortable('cancelMethod');  
+            function cancelSort() {
+                JQXLite(componentSelector).jqxSortable('cancelSort');  
             }
             function destroy() {
                 JQXLite(componentSelector).jqxSortable('destroy');  
@@ -226,6 +227,13 @@
                     return JQXLite(componentSelector).jqxSortable('items');
                 }
             }
+            function _maxItems (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSortable('maxItems', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSortable('maxItems');
+                }
+            }
             function _opacity (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSortable('opacity', arg)
@@ -299,7 +307,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
+                const widgetProps = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','maxItems','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
                 const componentProps = props;
                 let options = {};
 
@@ -413,6 +421,12 @@
                  set items(newValue) {
                      _items(newValue);
                  },
+                 get maxItems() {
+                     return _maxItems();
+                 },
+                 set maxItems(newValue) {
+                     _maxItems(newValue);
+                 },
                  get opacity() {
                      return _opacity();
                  },
@@ -478,6 +492,7 @@
                 JQXLite(componentSelector).on('out', function (event) { that.emit('out', event); });
                 JQXLite(componentSelector).on('over', function (event) { that.emit('over', event); });
                 JQXLite(componentSelector).on('receive', function (event) { that.emit('receive', event); });
+                JQXLite(componentSelector).on('removeItem', function (event) { that.emit('removeItem', event); });
                 JQXLite(componentSelector).on('remove', function (event) { that.emit('remove', event); });
                 JQXLite(componentSelector).on('sort', function (event) { that.emit('sort', event); });
                 JQXLite(componentSelector).on('start', function (event) { that.emit('start', event); });
@@ -521,7 +536,7 @@
 				element.off();
 				try { element.jqxSortable('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, cancelMethod, destroy, disable, enable, refresh, refreshPositions, serialize, toArray, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, cancelSort, destroy, disable, enable, refresh, refreshPositions, serialize, toArray, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

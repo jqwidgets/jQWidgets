@@ -89,6 +89,9 @@
             function refresh() {
                 return JQXLite(componentSelector).jqxPivotGrid('refresh');  
             }
+            function destroy() {
+                return JQXLite(componentSelector).jqxPivotGrid('destroy');  
+            }
             function getPivotRows() {
                 return JQXLite(componentSelector).jqxPivotGrid('getPivotRows');  
             }
@@ -307,8 +310,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxPivotGrid('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, getInstance, refresh, getPivotRows, getPivotColumns, getPivotCells, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, getInstance, refresh, destroy, getPivotRows, getPivotColumns, getPivotCells, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

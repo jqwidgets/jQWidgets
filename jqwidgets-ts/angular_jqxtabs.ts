@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,7 +22,9 @@ declare let JQXLite: any;
 export class jqxTabsComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: string;
+   @Input('arrowButtonSize') attrArrowButtonSize: number;
    @Input('autoHeight') attrAutoHeight: boolean;
+   @Input('canCloseAllTabs') attrCanCloseAllTabs: boolean;
    @Input('closeButtonSize') attrCloseButtonSize: number;
    @Input('collapsible') attrCollapsible: boolean;
    @Input('contentTransitionDuration') attrContentTransitionDuration: number;
@@ -30,16 +32,16 @@ export class jqxTabsComponent implements OnChanges
    @Input('enabledHover') attrEnabledHover: boolean;
    @Input('enableScrollAnimation') attrEnableScrollAnimation: boolean;
    @Input('enableDropAnimation') attrEnableDropAnimation: boolean;
+   @Input('headerHeight') attrHeaderHeight: number | string;
    @Input('initTabContent') attrInitTabContent: (tab: number) => void;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
-   @Input('next') attrNext: any;
-   @Input('previous') attrPrevious: any;
    @Input('position') attrPosition: string;
    @Input('reorder') attrReorder: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('scrollAnimationDuration') attrScrollAnimationDuration: number;
    @Input('selectedItem') attrSelectedItem: number;
    @Input('selectionTracker') attrSelectionTracker: boolean;
+   @Input('selectionTrackerAnimationDuration') attrSelectionTrackerAnimationDuration: number;
    @Input('scrollable') attrScrollable: boolean;
    @Input('scrollPosition') attrScrollPosition: string;
    @Input('scrollStep') attrScrollStep: number;
@@ -51,7 +53,7 @@ export class jqxTabsComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+   properties: string[] = ['animationType','arrowButtonSize','autoHeight','canCloseAllTabs','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','headerHeight','initTabContent','keyboardNavigation','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','selectionTrackerAnimationDuration','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTabs;
@@ -186,11 +188,27 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
+   arrowButtonSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxTabs('arrowButtonSize', arg);
+      } else {
+          return this.host.jqxTabs('arrowButtonSize');
+      }
+   }
+
    autoHeight(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('autoHeight', arg);
       } else {
           return this.host.jqxTabs('autoHeight');
+      }
+   }
+
+   canCloseAllTabs(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTabs('canCloseAllTabs', arg);
+      } else {
+          return this.host.jqxTabs('canCloseAllTabs');
       }
    }
 
@@ -258,6 +276,14 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
+   headerHeight(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxTabs('headerHeight', arg);
+      } else {
+          return this.host.jqxTabs('headerHeight');
+      }
+   }
+
    initTabContent(arg?: (tab: number) => void): (tab: number) => void {
       if (arg !== undefined) {
           this.host.jqxTabs('initTabContent', arg);
@@ -271,22 +297,6 @@ export class jqxTabsComponent implements OnChanges
           this.host.jqxTabs('keyboardNavigation', arg);
       } else {
           return this.host.jqxTabs('keyboardNavigation');
-      }
-   }
-
-   next(arg?: any): any {
-      if (arg !== undefined) {
-          this.host.jqxTabs('next', arg);
-      } else {
-          return this.host.jqxTabs('next');
-      }
-   }
-
-   previous(arg?: any): any {
-      if (arg !== undefined) {
-          this.host.jqxTabs('previous', arg);
-      } else {
-          return this.host.jqxTabs('previous');
       }
    }
 
@@ -335,6 +345,14 @@ export class jqxTabsComponent implements OnChanges
           this.host.jqxTabs('selectionTracker', arg);
       } else {
           return this.host.jqxTabs('selectionTracker');
+      }
+   }
+
+   selectionTrackerAnimationDuration(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxTabs('selectionTrackerAnimationDuration', arg);
+      } else {
+          return this.host.jqxTabs('selectionTrackerAnimationDuration');
       }
    }
 
@@ -436,6 +454,10 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('expand');
    }
 
+   first(): void {
+      this.host.jqxTabs('first');
+   }
+
    enable(): void {
       this.host.jqxTabs('enable');
    }
@@ -452,6 +474,10 @@ export class jqxTabsComponent implements OnChanges
       return this.host.jqxTabs('getContentAt', index);
    }
 
+   getEnabledTabsCount(): number {
+      return this.host.jqxTabs('getEnabledTabsCount');
+   }
+
    getDisabledTabsCount(): any {
       return this.host.jqxTabs('getDisabledTabsCount');
    }
@@ -464,8 +490,32 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('hideAllCloseButtons');
    }
 
+   isDisabled(index: number): boolean {
+      return this.host.jqxTabs('isDisabled', index);
+   }
+
+   last(): void {
+      this.host.jqxTabs('last');
+   }
+
    length(): number {
       return this.host.jqxTabs('length');
+   }
+
+   lockAt(index: number): void {
+      this.host.jqxTabs('lockAt', index);
+   }
+
+   lockAll(): void {
+      this.host.jqxTabs('lockAll');
+   }
+
+   next(index?: number): boolean {
+      return this.host.jqxTabs('next', index);
+   }
+
+   previous(index?: number): boolean {
+      return this.host.jqxTabs('previous', index);
    }
 
    removeAt(index: number): void {
@@ -500,6 +550,14 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('showAllCloseButtons');
    }
 
+   unlockAt(index: number): void {
+      this.host.jqxTabs('unlockAt', index);
+   }
+
+   unlockAll(): void {
+      this.host.jqxTabs('unlockAll');
+   }
+
    val(value?: string): any {
       if (value !== undefined) {
          return this.host.jqxTabs('val', value);
@@ -515,10 +573,12 @@ export class jqxTabsComponent implements OnChanges
    @Output() onDragStart = new EventEmitter();
    @Output() onDragEnd = new EventEmitter();
    @Output() onExpanded = new EventEmitter();
+   @Output() onLocked = new EventEmitter();
    @Output() onRemoved = new EventEmitter();
    @Output() onSelecting = new EventEmitter();
    @Output() onSelected = new EventEmitter();
    @Output() onTabclick = new EventEmitter();
+   @Output() onUnlocked = new EventEmitter();
    @Output() onUnselecting = new EventEmitter();
    @Output() onUnselected = new EventEmitter();
 
@@ -528,10 +588,12 @@ export class jqxTabsComponent implements OnChanges
       this.host.on('dragStart', (eventData: any) => { this.onDragStart.emit(eventData); });
       this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
       this.host.on('expanded', (eventData: any) => { this.onExpanded.emit(eventData); });
+      this.host.on('locked', (eventData: any) => { this.onLocked.emit(eventData); });
       this.host.on('removed', (eventData: any) => { this.onRemoved.emit(eventData); });
       this.host.on('selecting', (eventData: any) => { this.onSelecting.emit(eventData); });
       this.host.on('selected', (eventData: any) => { this.onSelected.emit(eventData); });
       this.host.on('tabclick', (eventData: any) => { this.onTabclick.emit(eventData); });
+      this.host.on('unlocked', (eventData: any) => { this.onUnlocked.emit(eventData); });
       this.host.on('unselecting', (eventData: any) => { this.onUnselecting.emit(eventData); });
       this.host.on('unselected', (eventData: any) => { this.onUnselected.emit(eventData); });
    }

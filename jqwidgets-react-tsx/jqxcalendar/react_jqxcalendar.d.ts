@@ -9,13 +9,17 @@ declare class JqxCalendar extends React.PureComponent<ICalendarProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ICalendarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -66,8 +70,10 @@ interface ICalendarOptions {
     forwardText?: string;
     firstDayOfWeek?: number;
     height?: string | number;
+    keyboardNavigation?: boolean;
     min?: any;
     max?: any;
+    monthNameFormat?: string;
     navigationDelay?: number;
     rowHeaderWidth?: number | string;
     readOnly?: boolean;
@@ -79,12 +85,14 @@ interface ICalendarOptions {
     showOtherMonthDays?: boolean;
     showFooter?: boolean;
     selectionMode?: 'none' | 'default' | 'range';
+    selectableDays?: string[];
     specialDates?: any[];
     theme?: string;
     titleHeight?: number;
     titleFormat?: string[];
     todayString?: string;
     value?: Date;
+    views?: string[];
     width?: string | number;
 }
 export interface ICalendarProps extends ICalendarOptions, React.AriaAttributes {

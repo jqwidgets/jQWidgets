@@ -220,8 +220,11 @@
     margin: 0px;
 }
 
-.jqx-popup {
+.jqx-popup,
+.jqx-calendar-popup,
+.jqx-calendar.jqx-popup {
     box-sizing: content-box;
+	z-index: 9999 !important;
 }
 
 .jqx-position-reset {
@@ -1074,6 +1077,135 @@ input[type=submit].jqx-button {
     border-color: #DDDDDD !important;
 }
 
+/* a cell editor fills its rectangular cell: square corners, in every theme (the themes round
+   inputs, drop-down lists, date and number inputs; their popups, outside the grid, stay rounded).
+   :not(#jqx-none) gives the rule an id's weight, so it wins over the themes' rounding rules, some of
+   which chain five classes with !important (.jqx-widget-tailwind-blue:not(...) .jqx-widget-...) */
+.jqx-grid:not(#jqx-none) .jqx-grid-cell-edit,
+.jqx-grid:not(#jqx-none) .jqx-grid-cell-edit * {
+    border-radius: 0px !important;
+}
+
+/* ... and stays inside it. The grid sizes an editor to its cell, but the themes add to that size:
+   the text box gets the cell's width + 1px plus 4px padding on each side (content-box: 8px too
+   wide), and the date and number editors' outer element, which is also a .jqx-input, gets the
+   themes' input padding on top of the cell's height (4px too tall in the Tailwind and Fluent themes).
+   Border-box sizing, no outer padding, and the text box never larger than its cell. */
+.jqx-grid:not(#jqx-none) input.jqx-grid-cell-edit,
+.jqx-grid:not(#jqx-none) textarea.jqx-grid-cell-edit {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+.jqx-grid:not(#jqx-none) div.jqx-grid-cell-edit:not(.jqx-grid-cell) {
+    box-sizing: border-box !important;
+    padding: 0px !important;
+}
+/* A custom or template editor is often the widget itself (createeditor makes a jqxDropDownList of
+   it), sized when it is not yet in the grid: the widget counts its border into the size it was
+   given, so the editor keeps its own box sizing (border-box made it 2px smaller) */
+.jqx-grid:not(#jqx-none) div.jqx-grid-cell-edit.jqx-grid-custom-edit:not(.jqx-grid-cell) {
+    box-sizing: content-box !important;
+}
+/* the rating editor's stars where the rating cell has them: 5px in, in the middle of the row */
+.jqx-grid:not(#jqx-none) div.jqx-grid-cell-edit.jqx-grid-rating-edit {
+    padding: 0px 5px !important;
+}
+
+/* The editor's own border shows that it has the focus; the input inside a number, date or
+   drop-down editor draws no second focus ring inside it (the Fluent themes outline any focused
+   element). A text box editor is the input itself and keeps its focus style. */
+.jqx-grid:not(#jqx-none) .jqx-grid-cell-edit input:focus,
+.jqx-grid:not(#jqx-none) .jqx-grid-cell-edit input:focus-visible {
+    outline: none !important;
+}
+
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid {
+    --jqx-grid-edit-ring: var(--jqx-primary);
+}
+/* Every editor shows that it has the focus the same way in the modern themes: a 2px ring in the
+   theme's accent (a 1px line fell between the screen's pixels at a display scale of 125% and showed
+   at half strength) round the part of the cell that shows, just inside its grid lines (a cell's grid
+   lines lie over the first pixel row and column of the cells after it; a grid that frames its
+   selected cell draws that frame right outside the ring). A drop-down, combo box, date or number editor
+   drew a ring outside its box, under the next cells, so it looked unfocused next to a text box with
+   a border of its own; Material showed a ring on some editors and an underline on others. The ring
+   of an editor with parts inside it is a layer over them (an outline was painted under them). The
+   ring is on the editor with the focus, or, when no editor has it (a custom editor may never take
+   it), on the grid's current editor (jqx-grid-cell-edit-active, set in jqxgrid.edit.js). */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) .jqx-grid-cell-edit:not(.jqx-grid-cell):not(input):not(textarea):focus-within {
+    outline: none !important;
+}
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) .jqx-grid-cell-edit:not(.jqx-grid-cell):not(input):not(textarea):focus-within::after,
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none):not(:has(.jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell-edit-active:not(.jqx-grid-cell):not(input):not(textarea)::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 1px 0px 0px 1px !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0px !important;
+    border: 2px solid var(--jqx-grid-edit-ring) !important;
+    border-radius: 0px !important;
+    background: none !important;
+    box-sizing: border-box !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is(input, textarea).jqx-grid-cell-edit:focus,
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none):not(:has(.jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) :is(input, textarea).jqx-grid-cell-edit-active {
+    outline: 2px solid var(--jqx-grid-edit-ring) !important;
+    outline-offset: -2px !important;
+}
+/* A text box editor covers the part of its cell that shows, as the other editors do (in the
+   Fluent and Tailwind themes it had a box border of its own: in a row being edited it was the only
+   editor with a box) */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is(input, textarea).jqx-grid-cell-edit {
+    position: relative !important;
+    top: 1px !important;
+    left: 1px !important;
+    width: calc(100% - 1px) !important;
+    height: calc(100% - 1px) !important;
+    max-width: none !important;
+    max-height: none !important;
+    border: 1px solid transparent !important;
+}
+/* A custom or template editor (the widget a page's createeditor makes in the grid's editor, or puts
+   in it) shows the focus as the built-in editors do: the ring, not that widget's own border, which
+   the cells round it half covered (grey on the top and left, the accent on the right and bottom) */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is([id^="customeditor"], [id^="templateeditor"]).jqx-grid-cell-edit,
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is([id^="customeditor"], [id^="templateeditor"]).jqx-grid-cell-edit > :is(input, textarea, .jqx-widget) {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+/* ... and when the editor is the widget itself, its 1px border becomes 1px of padding (the content
+   stays where it was), so the ring, which lies inside a border, is on its edge as on the others */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is([id^="customeditor"], [id^="templateeditor"]).jqx-grid-cell-edit.jqx-widget {
+    border-width: 0px !important;
+    padding: 1px !important;
+}
+/* An editor's parts stay in its box (the light and dark themes' calendar and spin buttons reached
+   1px past it, over the cell's grid line) */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) div.jqx-grid-cell-edit:not(.jqx-grid-cell) {
+    overflow: hidden !important;
+}
+/* The text of a text box or drop-down editor starts where the cell's text did (8px in), so it does
+   not move when editing starts: the text box is 1px in with a 1px border (it had 4px of padding);
+   the drop-down's text is indented, as its box has the width the widget gave it beside its arrow */
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) :is(input, textarea).jqx-grid-cell-edit {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+:is(.jqx-grid-base, .jqx-grid-light, .jqx-grid-dark, .jqx-grid-fluent, .jqx-grid-fluent-dark, .jqx-grid-tailwind, .jqx-grid-tailwind-blue, .jqx-grid-tailwind-dark, .jqx-grid-tailwind-blue-dark, .jqx-grid-material, .jqx-grid-material-dark, .jqx-grid-material-purple, .jqx-grid-material-purple-dark, .jqx-grid-material-green, .jqx-grid-material-green-dark).jqx-grid:not(#jqx-none) .jqx-grid-cell-edit .jqx-dropdownlist-content {
+    text-indent: 4px;
+}
+/* Material's underline under a focused drop-down or date editor: the ring marks it */
+.jqx-grid:not(#jqx-none) .jqx-grid-cell-edit .jqx-input-bar {
+    display: none !important;
+}
+
 .jqx-cell-rtl {
     border-left-width: 1px;
     border-right-width: 0px;
@@ -1187,6 +1319,95 @@ input[type=submit].jqx-button {
 .jqx-grid:not(.jqx-scheduler) :is(.jqx-header-ellipsis-left-csp, .jqx-header-ellipsis-right-csp) {
     margin-left: 8px;
     margin-right: 8px;
+}
+
+/* A sorted or filtered column's title ends before its icons: the widths that make room for them
+   were set for the old 2-4px margins, and with 8px a right-aligned title ran under the sort icon
+   ("Tota" for "Total"): the title box ends at the icon box (the arrow is narrower than its box). (The
+   [menu] rules above already allow for the 8px margins.) */
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header[sort]:not([menu])>div>div:not(.iconscontainer),
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header[filter]:not([menu])>div>div:not(.iconscontainer) {
+    width: calc(100% - 26px);
+}
+
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header[filter][sort]:not([menu])>div>div:not(.iconscontainer) {
+    width: calc(100% - 46px);
+}
+
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header[sort][sort-index]:not([menu])>div>div:not(.iconscontainer) {
+    width: calc(100% - 60px);
+}
+
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header[filter][sort][sort-index]:not([menu])>div>div:not(.iconscontainer) {
+    width: calc(100% - 80px);
+}
+
+/* Right to left, the icons are on the left: the narrowed title keeps to the right (and the sort
+   and filter icons together take a little more room there). */
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header-rtl[filter][sort]:not([menu]):not([sort-index])>div>div:not(.iconscontainer) {
+    width: calc(100% - 58px);
+}
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-column-header-rtl:is([sort], [filter], [menu])>div>div:not(.iconscontainer) {
+    margin-left: auto;
+}
+
+/* A React component in a cell (the React JqxGrid's column.cellComponent): in the middle of the
+   row's height, with the room round it that the cells' values have, aligned as cellsalign says. */
+.jqx-grid-react-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 4px;
+    overflow: hidden;
+}
+
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-react-cell {
+    padding: 0 8px;
+}
+
+.jqx-grid-react-cell-center {
+    justify-content: center;
+}
+
+/* the element each cell's component is rendered into, moved from one drawn placeholder to the
+   next: it lays out as if the component's own elements were the cell's */
+.jqx-grid-react-cell-host {
+    display: contents;
+}
+
+.jqx-grid-react-cell-right {
+    justify-content: flex-end;
+}
+
+/* The React JqxGrid's headerComponent, toolbarComponent, statusbarComponent and
+   rowDetailsComponent: a header's in the middle of its height with its text's room; the bars'
+   in a row, centred in the bar's height; the details' filling the details area. */
+.jqx-grid-react-header,
+.jqx-grid-react-toolbar,
+.jqx-grid-react-statusbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 8px;
+    overflow: hidden;
+}
+
+/* A bar wider than a narrow screen scrolls sideways, so its last buttons can be reached. */
+.jqx-grid-react-toolbar,
+.jqx-grid-react-statusbar {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.jqx-grid-react-details {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 8px;
+    overflow: auto;
 }
 
 .jqx-grid:not(.jqx-scheduler) .jqx-header-link-left-csp {
@@ -1331,8 +1552,10 @@ input[type=submit].jqx-button {
    border an unselected one (jqx-grid-selection-edge-*): an inset shadow sized by its variable. On the
    right and bottom it is 1px plus the cell's own border in the accent (a 2px line inside a separate
    border read as double); on the top and left 2px, of which the neighbour's border, in the accent,
-   covers the first. A run of cells down a column was a stack of boxes, cells side by side had no outline. */
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark) {
+   covers the first. A run of cells down a column was a stack of boxes, cells side by side had no outline.
+   While a cell is edited the frame steps aside and the editor's ring is the one mark: side by side,
+   the two read as a double line where a display scale put a pixel between them. */
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark) {
     --jqx-selection-edge-top: 0px;
     --jqx-selection-edge-right: 0px;
     --jqx-selection-edge-bottom: 0px;
@@ -1344,42 +1567,45 @@ input[type=submit].jqx-button {
         inset var(--jqx-selection-edge-left) 0 0 var(--jqx-primary, #005c99);
 }
 
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-top {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-top {
     --jqx-selection-edge-top: 2px;
 }
 
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-right {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-right {
     /* the cell's own right border is part of the line: accent, with 1px more inside it (a 2px
        line inside a separate 1px border read as a double edge) */
     --jqx-selection-edge-right: 1px;
     border-right-color: var(--jqx-primary, #005c99) !important;
 }
 
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-bottom {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-bottom {
     --jqx-selection-edge-bottom: 1px;
     border-bottom-color: var(--jqx-primary, #005c99) !important;
 }
 
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-left {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell.jqx-grid-cell-selected:is(.jqx-grid-cell-selected-base, .jqx-grid-cell-selected-light, .jqx-grid-cell-selected-dark, .jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark, .jqx-grid-cell-selected-tailwind, .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-material, .jqx-grid-cell-selected-material-dark, .jqx-grid-cell-selected-material-purple, .jqx-grid-cell-selected-material-purple-dark, .jqx-grid-cell-selected-material-green, .jqx-grid-cell-selected-material-green-dark).jqx-grid-selection-edge-left {
     --jqx-selection-edge-left: 2px;
 }
 
 /* the cells above a range and before it paint their bottom and right borders over its first pixel
    row and column: those borders are the line's outer pixel there */
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell:is(.jqx-grid-cell-base, .jqx-grid-cell-light, .jqx-grid-cell-dark, .jqx-grid-cell-fluent, .jqx-grid-cell-fluent-dark, .jqx-grid-cell-tailwind, .jqx-grid-cell-tailwind-blue, .jqx-grid-cell-tailwind-dark, .jqx-grid-cell-tailwind-blue-dark, .jqx-grid-cell-material, .jqx-grid-cell-material-dark, .jqx-grid-cell-material-purple, .jqx-grid-cell-material-purple-dark, .jqx-grid-cell-material-green, .jqx-grid-cell-material-green-dark).jqx-grid-selection-edge-above {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell:is(.jqx-grid-cell-base, .jqx-grid-cell-light, .jqx-grid-cell-dark, .jqx-grid-cell-fluent, .jqx-grid-cell-fluent-dark, .jqx-grid-cell-tailwind, .jqx-grid-cell-tailwind-blue, .jqx-grid-cell-tailwind-dark, .jqx-grid-cell-tailwind-blue-dark, .jqx-grid-cell-material, .jqx-grid-cell-material-dark, .jqx-grid-cell-material-purple, .jqx-grid-cell-material-purple-dark, .jqx-grid-cell-material-green, .jqx-grid-cell-material-green-dark).jqx-grid-selection-edge-above {
     border-bottom-color: var(--jqx-primary, #005c99) !important;
 }
 
-.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler) .jqx-grid-cell:is(.jqx-grid-cell-base, .jqx-grid-cell-light, .jqx-grid-cell-dark, .jqx-grid-cell-fluent, .jqx-grid-cell-fluent-dark, .jqx-grid-cell-tailwind, .jqx-grid-cell-tailwind-blue, .jqx-grid-cell-tailwind-dark, .jqx-grid-cell-tailwind-blue-dark, .jqx-grid-cell-material, .jqx-grid-cell-material-dark, .jqx-grid-cell-material-purple, .jqx-grid-cell-material-purple-dark, .jqx-grid-cell-material-green, .jqx-grid-cell-material-green-dark).jqx-grid-selection-edge-before {
+.jqx-grid.jqx-grid-cellselectionmode:not(.jqx-scheduler):not(:has(.jqx-grid-cell-edit-active:not(.jqx-grid-cell), .jqx-grid-cell-edit:not(.jqx-grid-cell):focus-within)) .jqx-grid-cell:is(.jqx-grid-cell-base, .jqx-grid-cell-light, .jqx-grid-cell-dark, .jqx-grid-cell-fluent, .jqx-grid-cell-fluent-dark, .jqx-grid-cell-tailwind, .jqx-grid-cell-tailwind-blue, .jqx-grid-cell-tailwind-dark, .jqx-grid-cell-tailwind-blue-dark, .jqx-grid-cell-material, .jqx-grid-cell-material-dark, .jqx-grid-cell-material-purple, .jqx-grid-cell-material-purple-dark, .jqx-grid-cell-material-green, .jqx-grid-cell-material-green-dark).jqx-grid-selection-edge-before {
     border-right-color: var(--jqx-primary, #005c99) !important;
 }
 
-/* Check boxes in a selected row keep their normal look (the themes whiten them for a solid bar). */
-.jqx-grid:not(.jqx-scheduler) :is(.jqx-grid-cell-selected-fluent, .jqx-grid-cell-selected-fluent-dark,
-    .jqx-grid-cell-selected-tailwind,
-    .jqx-grid-cell-selected-tailwind-blue, .jqx-grid-cell-selected-tailwind-dark, .jqx-grid-cell-selected-tailwind-blue-dark, .jqx-grid-cell-selected-light,
-    .jqx-grid-cell-selected-dark) .jqx-checkbox-default {
+/* Check boxes in a selected row keep their normal look: the light theme whitens them for a solid
+   bar, so they get its border back, and its accent once checked. (The rule covered Fluent, Tailwind
+   and dark too, which no longer whiten them: it gave them the divider colour, so an unchecked box
+   in a selected row, or in a row being edited, all but vanished, and a checked one lost its accent.) */
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-cell-selected-light .jqx-checkbox-default {
     border-color: var(--jqx-border) !important;
+}
+.jqx-grid:not(.jqx-scheduler) .jqx-grid-cell-selected-light .jqx-checkbox-default:has(.jqx-checkbox-check-checked) {
+    border-color: var(--jqx-primary) !important;
 }
 
 /* jqxDataTable and jqxTreeGrid share the grid's modern look above (they carry .jqx-grid). Their
@@ -2205,6 +2431,7 @@ input.jqx-input-widget-base {
 :where(.jqx-calendar-container:is(.jqx-calendar-container-base, .jqx-calendar-container-light, .jqx-calendar-container-dark, .jqx-calendar-container-fluent, .jqx-calendar-container-fluent-dark, .jqx-calendar-container-tailwind, .jqx-calendar-container-tailwind-blue, .jqx-calendar-container-tailwind-dark, .jqx-calendar-container-tailwind-blue-dark, .jqx-calendar-container-material, .jqx-calendar-container-material-dark, .jqx-calendar-container-material-purple, .jqx-calendar-container-material-purple-dark, .jqx-calendar-container-material-green, .jqx-calendar-container-material-green-dark)).jqx-calendar-container {
     overflow: visible !important;
     clip-path: inset(0 -40px -40px -40px);
+	z-index: 9999;
 }
 
 :where(.jqx-calendar-container:is(.jqx-calendar-container-base, .jqx-calendar-container-light, .jqx-calendar-container-dark, .jqx-calendar-container-fluent, .jqx-calendar-container-fluent-dark, .jqx-calendar-container-tailwind, .jqx-calendar-container-tailwind-blue, .jqx-calendar-container-tailwind-dark, .jqx-calendar-container-tailwind-blue-dark, .jqx-calendar-container-material, .jqx-calendar-container-material-dark, .jqx-calendar-container-material-purple, .jqx-calendar-container-material-purple-dark, .jqx-calendar-container-material-green, .jqx-calendar-container-material-green-dark)) > .jqx-calendar.jqx-popup {
@@ -2212,6 +2439,7 @@ input.jqx-input-widget-base {
     border-color: color-mix(in srgb, currentColor 16%, transparent);
     border-radius: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+	z-index: 9999;
 }
 
 :where(.jqx-calendar-container:is(.jqx-calendar-container-base, .jqx-calendar-container-light, .jqx-calendar-container-dark, .jqx-calendar-container-fluent, .jqx-calendar-container-fluent-dark, .jqx-calendar-container-tailwind, .jqx-calendar-container-tailwind-blue, .jqx-calendar-container-tailwind-dark, .jqx-calendar-container-tailwind-blue-dark, .jqx-calendar-container-material, .jqx-calendar-container-material-dark, .jqx-calendar-container-material-purple, .jqx-calendar-container-material-purple-dark, .jqx-calendar-container-material-green, .jqx-calendar-container-material-green-dark)) > .jqx-popup:not(.jqx-calendar) {
@@ -2220,6 +2448,7 @@ input.jqx-input-widget-base {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+	z-index: 9999;
 }
 
 :where(.jqx-calendar-container:is(.jqx-calendar-container-base, .jqx-calendar-container-light, .jqx-calendar-container-dark, .jqx-calendar-container-fluent, .jqx-calendar-container-fluent-dark, .jqx-calendar-container-tailwind, .jqx-calendar-container-tailwind-blue, .jqx-calendar-container-tailwind-dark, .jqx-calendar-container-tailwind-blue-dark, .jqx-calendar-container-material, .jqx-calendar-container-material-dark, .jqx-calendar-container-material-purple, .jqx-calendar-container-material-purple-dark, .jqx-calendar-container-material-green, .jqx-calendar-container-material-green-dark)) > .jqx-popup > .jqx-date-time-input-popup {
@@ -2915,6 +3144,8 @@ input.jqx-input-widget-base {
 
 .jqx-listbox-container:is(.jqx-listbox-container-base, .jqx-listbox-container-light, .jqx-listbox-container-dark, .jqx-listbox-container-material, .jqx-listbox-container-material-dark, .jqx-listbox-container-material-purple, .jqx-listbox-container-material-purple-dark, .jqx-listbox-container-material-green, .jqx-listbox-container-material-green-dark):not(.jqx-dropdownbutton-popup) > .jqx-listbox {
     translate: 0 4px;
+		z-index: 9999;
+
 }
 
 .jqx-listbox-container:is(.jqx-listbox-container-base, .jqx-listbox-container-light, .jqx-listbox-container-dark, .jqx-listbox-container-material, .jqx-listbox-container-material-dark, .jqx-listbox-container-material-purple, .jqx-listbox-container-material-purple-dark, .jqx-listbox-container-material-green, .jqx-listbox-container-material-green-dark):not(.jqx-dropdownbutton-popup).jqx-popup-up > .jqx-listbox {
@@ -2932,6 +3163,8 @@ input.jqx-input-widget-base {
 .jqx-listbox-container:is(.jqx-listbox-container-base, .jqx-listbox-container-light, .jqx-listbox-container-dark, .jqx-listbox-container-material, .jqx-listbox-container-material-dark, .jqx-listbox-container-material-purple, .jqx-listbox-container-material-purple-dark, .jqx-listbox-container-material-green, .jqx-listbox-container-material-green-dark):not(.jqx-dropdownbutton-popup) {
     overflow: visible !important;
     clip-path: inset(0 -40px -40px -40px);
+	z-index: 9999;
+
 }
 
 .jqx-listbox-container:is(.jqx-listbox-container-base, .jqx-listbox-container-light, .jqx-listbox-container-dark, .jqx-listbox-container-material, .jqx-listbox-container-material-dark, .jqx-listbox-container-material-purple, .jqx-listbox-container-material-purple-dark, .jqx-listbox-container-material-green, .jqx-listbox-container-material-green-dark):not(.jqx-dropdownbutton-popup).jqx-popup-up {
@@ -4728,6 +4961,20 @@ input:has(+ .jqx-formatted-input-spin-buttons-container:is(.jqx-formatted-input-
     cursor: pointer;
     background-image: url(./images/star_disabled.png);
     overflow: hidden;
+}
+
+/* Each star clips its own image: a star that a theme draws with ::after (Fluent, Tailwind) is
+   positioned in the star, so the star's width cuts it as it cuts an image, and an empty star
+   shows no filled star under it. The themes' square in the page colour behind the empty star,
+   which hid that filled star, is then not needed; on any other surface (a selected grid row, a
+   card, a dialog) it showed as a box. */
+.jqx-rating-voteWrapper > div,
+.jqx-rating-hoverWrapper > div {
+    position: relative;
+}
+.jqx-rating-voteWrapper > .jqx-rating-image-backward::before,
+.jqx-rating-hoverWrapper > .jqx-rating-image-backward::before {
+    display: none !important;
 }
 
 /*jqxCalendar Style*/
@@ -11717,7 +11964,7 @@ jqx-knob {
     height: 100%;
     padding: 10px;
     table-layout: fixed;
-    border: 1px solid #bbb;
+    border: 1px solid var(--jqx-border, #bbb);
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 4px;
@@ -11744,10 +11991,36 @@ jqx-knob {
 
 }
 
+/* the theme's text, a step quieter (a fixed grey was 2.6:1 on the dark themes) */
 .jqx-grid-card-cell-label {
     font-size: 12px;
     text-transform: uppercase;
-    color: rgb(90, 90, 90);
+    color: inherit;
+    opacity: 0.75;
+}
+
+/* The card view's edit dialog: the labels as wide as their text, the inputs taking the rest of the
+   row at the height of the theme's inputs, the theme's border round the fields */
+.jqx-grid-card-edit .jqx-grid-card-cell table {
+    table-layout: auto;
+    height: auto;
+    border-color: var(--jqx-border, #bbb);
+    box-shadow: none;
+    border-spacing: 0px 6px;
+}
+.jqx-grid-card-edit .jqx-grid-card-cell-label {
+    width: 1%;
+    white-space: nowrap;
+    padding-right: 16px;
+}
+.jqx-grid-card-edit .jqx-grid-card-cell input {
+    width: 100%;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 4px 8px;
+}
+.jqx-grid-card-edit .jqx-grid-card-cell input[readonly] {
+    opacity: 0.7;
 }
 
 .jqx-grid-card-cell td div {

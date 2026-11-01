@@ -47,9 +47,14 @@
                 default: true,
                 type: Boolean
             },
+            showToolTipsOnAllSeries: {
+                default: false,
+                type: Boolean
+            },
             toolTipShowDelay: Number,
             toolTipHideDelay: Number,
             toolTipMoveDuration: Number,
+            toolTipFormatFunction: Function,
             drawBefore: Function,
             draw: Function,
             rtl: {
@@ -80,7 +85,17 @@
                 default: false,
                 type: Boolean
             },
+            enableEvents: {
+                default: true,
+                type: Boolean
+            },
+            enableSampling: {
+                default: true,
+                type: Boolean
+            },
             renderEngine: String,
+            axisPadding: Number,
+            localization: Object,
             xAxis: Object,
             valueAxis: Object,
             categoryAxis: Object,
@@ -122,6 +137,9 @@
             }
             function destroy() {
                 JQXLite(componentSelector).jqxChart('destroy');  
+            }
+            function clear() {
+                JQXLite(componentSelector).jqxChart('clear');  
             }
             function addColorScheme(schemeName, colors) {
                 JQXLite(componentSelector).jqxChart('addColorScheme', schemeName, colors);  
@@ -176,6 +194,27 @@
             }
             function getValueAxisValue(offset, groupIndex) {
                 return JQXLite(componentSelector).jqxChart('getValueAxisValue', offset, groupIndex);  
+            }
+            function getXAxisDataPointOffset(value, groupIndex) {
+                return JQXLite(componentSelector).jqxChart('getXAxisDataPointOffset', value, groupIndex);  
+            }
+            function getValueAxisDataPointOffset(value, groupIndex) {
+                return JQXLite(componentSelector).jqxChart('getValueAxisDataPointOffset', value, groupIndex);  
+            }
+            function getPolarDataPointOffset(xValue, yValue, groupIndex) {
+                return JQXLite(componentSelector).jqxChart('getPolarDataPointOffset', xValue, yValue, groupIndex);  
+            }
+            function getPlotAreaRect() {
+                return JQXLite(componentSelector).jqxChart('getPlotAreaRect');  
+            }
+            function getRect() {
+                return JQXLite(componentSelector).jqxChart('getRect');  
+            }
+            function isSerieVisible(groupIndex, serieIndex, itemIndex) {
+                return JQXLite(componentSelector).jqxChart('isSerieVisible', groupIndex, serieIndex, itemIndex);  
+            }
+            function isGroupVisible(groupIndex) {
+                return JQXLite(componentSelector).jqxChart('isGroupVisible', groupIndex);  
             }
             function _title (arg) {
                 if (arg !== undefined) {
@@ -289,6 +328,13 @@
                     return JQXLite(componentSelector).jqxChart('showToolTips');
                 }
             }
+            function _showToolTipsOnAllSeries (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('showToolTipsOnAllSeries', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('showToolTipsOnAllSeries');
+                }
+            }
             function _toolTipShowDelay (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxChart('toolTipShowDelay', arg)
@@ -308,6 +354,13 @@
                     JQXLite(componentSelector).jqxChart('toolTipMoveDuration', arg)
                 } else {
                     return JQXLite(componentSelector).jqxChart('toolTipMoveDuration');
+                }
+            }
+            function _toolTipFormatFunction (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('toolTipFormatFunction', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('toolTipFormatFunction');
                 }
             }
             function _drawBefore (arg) {
@@ -394,11 +447,39 @@
                     return JQXLite(componentSelector).jqxChart('enableAxisTextAnimation');
                 }
             }
+            function _enableEvents (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('enableEvents', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('enableEvents');
+                }
+            }
+            function _enableSampling (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('enableSampling', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('enableSampling');
+                }
+            }
             function _renderEngine (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxChart('renderEngine', arg)
                 } else {
                     return JQXLite(componentSelector).jqxChart('renderEngine');
+                }
+            }
+            function _axisPadding (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('axisPadding', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('axisPadding');
+                }
+            }
+            function _localization (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxChart('localization', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxChart('localization');
                 }
             }
             function _xAxis (arg) {
@@ -439,7 +520,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
+                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','showToolTipsOnAllSeries','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','toolTipFormatFunction','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','enableEvents','enableSampling','renderEngine','axisPadding','localization','xAxis','valueAxis','categoryAxis','seriesGroups'];
                 const componentProps = props;
                 let options = {};
 
@@ -547,6 +628,12 @@
                  set showToolTips(newValue) {
                      _showToolTips(newValue);
                  },
+                 get showToolTipsOnAllSeries() {
+                     return _showToolTipsOnAllSeries();
+                 },
+                 set showToolTipsOnAllSeries(newValue) {
+                     _showToolTipsOnAllSeries(newValue);
+                 },
                  get toolTipShowDelay() {
                      return _toolTipShowDelay();
                  },
@@ -564,6 +651,12 @@
                  },
                  set toolTipMoveDuration(newValue) {
                      _toolTipMoveDuration(newValue);
+                 },
+                 get toolTipFormatFunction() {
+                     return _toolTipFormatFunction();
+                 },
+                 set toolTipFormatFunction(newValue) {
+                     _toolTipFormatFunction(newValue);
                  },
                  get drawBefore() {
                      return _drawBefore();
@@ -637,11 +730,35 @@
                  set enableAxisTextAnimation(newValue) {
                      _enableAxisTextAnimation(newValue);
                  },
+                 get enableEvents() {
+                     return _enableEvents();
+                 },
+                 set enableEvents(newValue) {
+                     _enableEvents(newValue);
+                 },
+                 get enableSampling() {
+                     return _enableSampling();
+                 },
+                 set enableSampling(newValue) {
+                     _enableSampling(newValue);
+                 },
                  get renderEngine() {
                      return _renderEngine();
                  },
                  set renderEngine(newValue) {
                      _renderEngine(newValue);
+                 },
+                 get axisPadding() {
+                     return _axisPadding();
+                 },
+                 set axisPadding(newValue) {
+                     _axisPadding(newValue);
+                 },
+                 get localization() {
+                     return _localization();
+                 },
+                 set localization(newValue) {
+                     _localization(newValue);
                  },
                  get xAxis() {
                      return _xAxis();
@@ -715,7 +832,7 @@
 				element.off();
 				try { element.jqxChart('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, getInstance, refresh, update, destroy, addColorScheme, removeColorScheme, getItemsCount, getItemCoord, getXAxisRect, getXAxisLabels, getValueAxisRect, getValueAxisLabels, getColorScheme, hideSerie, showSerie, hideToolTip, showToolTip, saveAsJPEG, saveAsPNG, saveAsPDF, getXAxisValue, getValueAxisValue, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, getInstance, refresh, update, destroy, clear, addColorScheme, removeColorScheme, getItemsCount, getItemCoord, getXAxisRect, getXAxisLabels, getValueAxisRect, getValueAxisLabels, getColorScheme, hideSerie, showSerie, hideToolTip, showToolTip, saveAsJPEG, saveAsPNG, saveAsPDF, getXAxisValue, getValueAxisValue, getXAxisDataPointOffset, getValueAxisDataPointOffset, getPolarDataPointOffset, getPlotAreaRect, getRect, isSerieVisible, isGroupVisible, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

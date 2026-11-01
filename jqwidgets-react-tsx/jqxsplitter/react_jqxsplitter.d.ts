@@ -9,13 +9,17 @@ declare class JqxSplitter extends React.PureComponent<ISplitterProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ISplitterProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -47,12 +51,14 @@ export interface ISplitterPanel {
 interface ISplitterOptions {
     disabled?: boolean;
     height?: string | number;
+    initContent?: () => void;
     orientation?: 'horizontal' | 'vertical';
     panels?: ISplitterPanel[];
     resizable?: boolean;
     splitBarSize?: number;
     showSplitBar?: boolean;
     theme?: string;
+    touchSplitBarSize?: number;
     width?: string | number;
 }
 export interface ISplitterProps extends ISplitterOptions, React.AriaAttributes {

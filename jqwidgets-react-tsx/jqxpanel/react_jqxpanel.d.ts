@@ -9,13 +9,17 @@ declare class JqxPanel extends React.PureComponent<IPanelProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IPanelProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -32,6 +36,7 @@ declare class JqxPanel extends React.PureComponent<IPanelProps> {
     prepend(HTMLElement: any): void;
     remove(HTMLElement: any): void;
     scrollTo(left: number | string, top: number | string): void;
+    setcontent(html: string): void;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -44,12 +49,15 @@ export declare const jqx: any;
 export declare const JQXLite: any;
 interface IPanelOptions {
     autoUpdate?: boolean;
+    autoUpdateInterval?: number;
     disabled?: boolean;
     height?: string | number;
+    horizontalScrollBarMax?: number;
     rtl?: boolean;
     sizeMode?: 'fixed' | 'wrap';
     scrollBarSize?: number | string;
     theme?: string;
+    verticalScrollBarMax?: number;
     width?: string | number;
 }
 export interface IPanelProps extends IPanelOptions, React.AriaAttributes {

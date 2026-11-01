@@ -1,5 +1,5 @@
 import * as React from 'react';
-declare class JqxGrid extends React.PureComponent<IGridProps> {
+declare class JqxGrid<T = any> extends React.PureComponent<IGridProps<T>> {
     private _jqx;
     private _id;
     private _componentSelector;
@@ -9,13 +9,92 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
-    constructor(props: IGridProps);
+    private _changedInARow;
+    private _warned;
+    private _cellComponents;
+    private _cellRenderers;
+    private _cellData;
+    private _cellContainers;
+    private _cellKeyData;
+    private _cellCount;
+    private _cellObserver;
+    private _cellFlushPending;
+    private _editorComponents;
+    private _editorHooks;
+    private _activeEditor;
+    private _editCount;
+    private _columnFunctions;
+    private _columnWrappers;
+    private _redrawPending;
+    private _newComponents;
+    private _headerComponents;
+    private _headerRenderers;
+    private _headerContainers;
+    private _toolbarContainer;
+    private _statusbarContainer;
+    private _detailContainers;
+    private _partRenderers;
+    private _stateApplying;
+    private _selectionReportPending;
+    private _sortReportPending;
+    private _selectionApplied;
+    private _sortApplied;
+    private _stateCheck;
+    private _totalApplied;
+    private _queryReportPending;
+    private _lastQuery;
+    private _loadingShown;
+    private _serverRowsRenderer;
+    private _columnsIn;
+    private _columnsOut;
+    private _rowsSource;
+    private _rowsAdapter;
+    private _rowsApplied;
+    private _readyHandler;
+    constructor(props: IGridProps<T>);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _prepareColumns;
+    private _originalRow;
+    private _indexOfKey;
+    private _plainCopy;
+    private _columnFunction;
+    private _watchComponent;
+    private _cellRenderer;
+    private _scheduleCells;
+    private _flushCells;
+    private _editorHooksOf;
+    private _renderCells;
+    private _headerRenderer;
+    private _columnByName;
+    private _partRenderer;
+    private _detailsTemplate;
+    private _serverRows;
+    private _query;
+    private _reportQuery;
+    private _watchQuery;
+    private _showLoading;
+    private _selectedKeys;
+    private _sortState;
+    private _watchState;
+    private _reportSelection;
+    private _checkState;
+    private _reportSort;
+    private _applyState;
+    private _getRowsAdapter;
+    private _rowFields;
+    private _typedRow;
+    private _refreshFields;
+    private _keepFilterFocus;
+    private _rebind;
+    private _syncRows;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -35,6 +114,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     destroy(): void;
     endupdate(): void;
     ensurerowvisible(rowBoundIndex: number): void;
+    ensurecellvisible(rowBoundIndex: number, dataField: string): void;
     focus(): void;
     getcolumnindex(dataField: string): number;
     getcolumn(dataField: string): IGridColumn;
@@ -44,6 +124,8 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     getrowdatabyid(rowID: number | string): any;
     getrowboundindexbyid(rowID: number | string): number;
     getrowboundindex(rowDisplayIndex: number): number;
+    getrowheight(rowBoundIndex: number): number;
+    getrowvisibleindex(rowBoundIndex: number): number;
     getrows(): any[];
     getboundrows(): any[];
     getdisplayrows(): any[];
@@ -53,6 +135,8 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     hidecolumn(dataField: string): void;
     hideloadelement(): void;
     hiderowdetails(rowBoundIndex: number): void;
+    hiderow(rowBoundIndex: number): void;
+    isrowhiddenat(rowBoundIndex: number): boolean;
     iscolumnvisible(dataField: string): boolean;
     iscolumnpinned(dataField: string): boolean;
     localizestrings(localizationobject: IGridLocalizationobject): void;
@@ -61,9 +145,11 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     refresh(): void;
     renderWidget(): void;
     scrolloffset(top: number, left: number): void;
+    scrollto(left: number, top: number): void;
     scrollposition(): IGridScrollPosition;
     showloadelement(): void;
     showrowdetails(rowBoundIndex: number): void;
+    showrow(rowBoundIndex: number): void;
     setcolumnindex(dataField: string, index: number): void;
     setcolumnproperty(dataField: string, propertyName: any, propertyValue: any): void;
     showcolumn(dataField: string): void;
@@ -71,6 +157,10 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     updatebounddata(type?: any): void;
     updating(): boolean;
     getsortcolumn(): string;
+    getsortcolumns(): {
+        dataField: string;
+        ascending: boolean;
+    }[];
     removesort(): void;
     sortby(dataField: string, sortOrder: string): void;
     addgroup(dataField: string): void;
@@ -81,6 +171,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     expandgroup(group: number | string): void;
     getrootgroupscount(): number;
     getgroup(groupIndex: number): IGridGetGroup;
+    isgroupexpanded(groupIndex: number): boolean;
     insertgroup(groupIndex: number, dataField: string): void;
     iscolumngroupable(dataField: string): boolean;
     removegroupat(groupIndex: number): void;
@@ -112,6 +203,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps> {
     openmenu(dataField: string): void;
     setcellvalue(rowBoundIndex: number, dataField: string, value: any): void;
     setcellvaluebyid(rowID: number | string, dataField: string, value: any): void;
+    setrowheight(rowBoundIndex: number, height: number): void;
     showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void;
     updaterow(rowIds: string | number | Array<number | string>, data: any): void;
     clearselection(): void;
@@ -152,7 +244,73 @@ export interface IGridCharting {
     formatSettings?: any;
     ready?: any;
 }
-export interface IGridColumn {
+/** A column's filter: its conditions, joined by and / or. */
+export interface IGridFilterState {
+    datafield: string;
+    conditions: Array<{
+        condition: string;
+        value: any;
+        operator: 'and' | 'or';
+    }>;
+}
+/** What a server-mode grid asks the app for: the page, its size, the sort and the filters. */
+export interface IGridQuery {
+    page: number;
+    pageSize: number;
+    sort: IGridSortState | null;
+    filters: IGridFilterState[];
+}
+/** A sort: the column's datafield and the direction. */
+export interface IGridSortState {
+    datafield: string;
+    direction: 'asc' | 'desc';
+}
+/** What a column's headerComponent gets. */
+export interface IGridHeaderProps {
+    text: string;
+    datafield: string;
+}
+/** What toolbarComponent and statusbarComponent get: the grid, to call its methods. */
+export interface IGridBarProps<T = any> {
+    grid: JqxGrid<T>;
+}
+/** What rowDetailsComponent gets: the row and its index. */
+export interface IGridRowDetailsProps<T = any> {
+    row: T;
+    rowIndex: number;
+}
+/** A grid event: event.args has what the grid passes with it. */
+export declare type IGridEvent<A> = Event & {
+    args: A;
+};
+/** What a column's cellComponent gets: the cell's value, its row's data and index, the column. */
+export interface IGridCellProps<T = any> {
+    value: any;
+    row: T;
+    rowIndex: number;
+    datafield: string;
+}
+/** What a column's editorComponent gets: the value to edit, the row, and the calls that report the
+    new value (onChange), end the edit with it (onCommit), or end it with the old value (onCancel). */
+export interface IGridEditorProps<T = any> {
+    /** The value to edit; after onChange, the value it reported. */
+    value: any;
+    row: T;
+    rowIndex: number;
+    datafield: string;
+    /** The character typed to start editing, if the edit began with one. */
+    typed?: string;
+    onChange: (value: any) => void;
+    onCommit: (value?: any) => void;
+    onCancel: () => void;
+}
+export interface IGridColumn<T = any> {
+    /** A React component in the column's header, with its text and datafield. */
+    headerComponent?: React.ComponentType<IGridHeaderProps>;
+    /** A React component rendered in each cell of the column, with the cell's value and row. */
+    cellComponent?: React.ComponentType<IGridCellProps<T>>;
+    /** A React component that edits the column's cells (a custom editor): it gets the value and onChange, onCommit, onCancel. */
+    editorComponent?: React.ComponentType<IGridEditorProps<T>>;
     text?: string;
     datafield?: string;
     displayfield?: string;
@@ -410,6 +568,7 @@ interface IGridOptions {
     altrows?: boolean;
     altstart?: number;
     altstep?: number;
+    autoselectfirstrow?: boolean;
     autoshowloadelement?: boolean;
     autoshowfiltericon?: boolean;
     autoshowcolumnsmenubutton?: boolean;
@@ -427,6 +586,10 @@ interface IGridOptions {
     commandcolumn?: boolean;
     commandcolumnrenderer?: (row: number, columnfield: string, active: any) => string;
     clipboard?: boolean;
+    clipboardbegin?: (action: string, text?: string) => boolean | void;
+    clipboardend?: (action: string) => void;
+    copytoclipboardwithheaders?: boolean;
+    copytoclipboardhiddencolumns?: boolean;
     closeablegroups?: boolean;
     columnsmenuwidth?: number;
     columnmenuopening?: (menu: IGridColumnmenuopening['menu'], datafield: IGridColumnmenuopening['datafield'], height: IGridColumnmenuopening['height']) => boolean | void;
@@ -472,6 +635,7 @@ interface IGridOptions {
     showfilterbar?: boolean;
     filterbarmode?: string;
     selectionmode?: 'none' | 'singlerow' | 'multiplerows' | 'multiplerowsextended' | 'singlecell' | 'multiplecells' | 'multiplecellsextended' | 'multiplecellsadvanced' | 'checkbox';
+    multipleselectionbegins?: (event?: any) => boolean | void;
     updatefilterconditions?: (type: string, defaultconditions: any) => any;
     updatefilterpanel?: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any;
     theme?: string;
@@ -492,7 +656,9 @@ interface IGridOptions {
     autosavestate?: boolean;
     autoloadstate?: boolean;
     columns?: IGridColumn[];
+    autogeneratecolumns?: boolean;
     enableSanitize?: boolean;
+    enableSanitizeAll?: boolean;
     cardview?: boolean;
     cardviewcolumns?: any;
     cardheight?: number;
@@ -523,6 +689,8 @@ interface IGridOptions {
     horizontalscrollbarstep?: number;
     horizontalscrollbarlargestep?: number;
     initrowdetails?: (index: number, parentElement: any, gridElement: any, datarecord: any) => void;
+    layoutrowdetails?: (index?: number, detailsElement?: any, gridElement?: any, datarecord?: any) => void;
+    enablerowdetailsindent?: boolean;
     disablerowdetails?: (index: number) => boolean;
     keyboardnavigation?: boolean;
     localization?: IGridLocalizationobject;
@@ -539,6 +707,7 @@ interface IGridOptions {
     renderstatusbar?: (statusbar: IGridRenderstatusbar['statusbar']) => void;
     rendertoolbar?: (toolbar: IGridRendertoolbar['toolbar']) => void;
     rendergridrows?: (params: any) => any;
+    rendergroups?: (params: any) => any;
     sortable?: boolean;
     sortmode?: string;
     sortmodekey?: string;
@@ -551,7 +720,38 @@ interface IGridOptions {
     verticalscrollbarstep?: number;
     verticalscrollbarlargestep?: number;
 }
-export interface IGridProps extends IGridOptions, React.AriaAttributes {
+export interface IGridProps<T = any> extends IGridOptions, React.AriaAttributes {
+    /** The rows, from React state: a new array updates the grid (keeping its sort, filters and groups). In place of source. */
+    rows?: T[];
+    /** The field that identifies a row: with it, a new rows array updates only the rows that changed. */
+    rowKey?: string;
+    /** The type of a field of the rows ('string', 'number', 'bool', 'date'...). Without it: the column's filtertype or columntype, else the first value's type. */
+    fieldTypes?: {
+        [field: string]: string;
+    };
+    columns?: Array<IGridColumn<T>>;
+    /** The keys (rowKey's values; without it, the rows' indexes) of the rows to select. Set when it changes. */
+    selectedRowKeys?: any[];
+    /** Called with the keys of the selected rows when the user changes the selection. */
+    onSelectionChange?: (keys: any[]) => void;
+    /** The sort to apply (null: none). Set when it changes. */
+    sort?: IGridSortState | null;
+    /** Called with the sort when the user changes it. */
+    onSortChange?: (sort: IGridSortState | null) => void;
+    /** A React component in the toolbar (showtoolbar is then true unless set). */
+    toolbarComponent?: React.ComponentType<IGridBarProps<T>>;
+    /** A React component in the status bar (showstatusbar is then true unless set). */
+    statusbarComponent?: React.ComponentType<IGridBarProps<T>>;
+    /** A React component shown in each row's details (rowdetails is then true). */
+    rowDetailsComponent?: React.ComponentType<IGridRowDetailsProps<T>>;
+    /** The height of the row details, in pixels (200). */
+    rowDetailsHeight?: number;
+    /** Server mode: the number of rows the server has; rows is then the page it sent. The grid pages, sorts and filters through onQueryChange. */
+    totalRows?: number;
+    /** Server mode: called with the page, page size, sort and filters to fetch, at the start and when the user changes them. */
+    onQueryChange?: (query: IGridQuery) => void;
+    /** Shows the grid's loading indicator while true. */
+    loading?: boolean;
     className?: string;
     style?: React.CSSProperties;
     children?: React.ReactNode;
@@ -561,6 +761,8 @@ export interface IGridProps extends IGridOptions, React.AriaAttributes {
     onColumnresized?: (e?: any) => void;
     onColumnreordered?: (e?: any) => void;
     onColumnclick?: (e?: any) => void;
+    onColumnchooserokclick?: (e?: any) => void;
+    onColumnchoosercancelclick?: (e?: any) => void;
     onCellclick?: (e?: any) => void;
     onCelldoubleclick?: (e?: any) => void;
     onCellselect?: (e?: any) => void;
@@ -573,6 +775,7 @@ export interface IGridProps extends IGridOptions, React.AriaAttributes {
     onGroupexpand?: (e?: any) => void;
     onGroupcollapse?: (e?: any) => void;
     onPagechanged?: (e?: any) => void;
+    onPagechanging?: (e?: any) => void;
     onPagesizechanged?: (e?: any) => void;
     onRowclick?: (e?: any) => void;
     onRowdoubleclick?: (e?: any) => void;
@@ -581,4 +784,151 @@ export interface IGridProps extends IGridOptions, React.AriaAttributes {
     onRowexpand?: (e?: any) => void;
     onRowcollapse?: (e?: any) => void;
     onSort?: (e?: any) => void;
+}
+/** The grid's events, each with what its event.args has: (event: IGridEvents<Order>['cellendedit']) => ... */
+export interface IGridEvents<T = any> {
+    bindingcomplete: IGridEvent<any>;
+    columnresized: IGridEvent<{
+        columntext: string;
+        column: any;
+        datafield: string;
+        displayfield?: string;
+        oldwidth: number;
+        newwidth: number;
+    }>;
+    columnreordered: IGridEvent<{
+        columntext: string;
+        datafield: string;
+        oldindex: number;
+        newindex: number;
+    }>;
+    columnclick: IGridEvent<{
+        column: any;
+        datafield: string;
+        originalEvent: Event;
+    }>;
+    columnchooserokclick: IGridEvent<any>;
+    columnchoosercancelclick: IGridEvent<any>;
+    cellclick: IGridEvent<{
+        rowindex: number;
+        column: any;
+        row: T;
+        visibleindex: number;
+        datafield: string;
+        columnindex: any;
+        value: any;
+        rightclick: any;
+        originalEvent: Event;
+    }>;
+    celldoubleclick: IGridEvent<{
+        rowindex: number;
+        row: T;
+        visibleindex: number;
+        column: any;
+        datafield: string;
+        columnindex: any;
+        value: any;
+        rightclick: any;
+        originalEvent: Event;
+    }>;
+    cellselect: IGridEvent<any>;
+    cellunselect: IGridEvent<{
+        rowindex: number;
+        datafield: string;
+    }>;
+    cellvaluechanged: IGridEvent<{
+        rowindex: number;
+        datafield: string;
+        newvalue: any;
+        value: any;
+        oldvalue: any;
+    }>;
+    cellbeginedit: IGridEvent<{
+        rowindex: number;
+        row?: T;
+        datafield: string;
+        value: any;
+        columntype?: string;
+    }>;
+    cellendedit: IGridEvent<{
+        rowindex: number;
+        row?: T;
+        datafield: string;
+        oldvalue: any;
+        value: any;
+        columntype?: string;
+        displayfield?: string;
+    }>;
+    filter: IGridEvent<{
+        filters: any[];
+    }>;
+    groupschanged: IGridEvent<{
+        type: string;
+        index: number;
+        groups: any[];
+    }>;
+    groupexpand: IGridEvent<{
+        group: any;
+        parentgroup: any;
+        level: number;
+        visibleindex: number;
+    }>;
+    groupcollapse: IGridEvent<{
+        group: any;
+        parentgroup: any;
+        level: number;
+        visibleindex: number;
+    }>;
+    pagechanged: IGridEvent<{
+        pagenum: number;
+        oldpagenum: number;
+        pagesize: number;
+    }>;
+    pagechanging: IGridEvent<{
+        oldpagenum: number;
+        pagenum: number;
+        pagesize: number;
+    }>;
+    pagesizechanged: IGridEvent<{
+        pagenum: number;
+        oldpagesize: number;
+        pagesize: number;
+    }>;
+    rowclick: IGridEvent<{
+        rowindex: number;
+        visibleindex: number;
+        row: T;
+        group: any;
+        rightclick: any;
+        originalEvent: Event;
+    }>;
+    rowdoubleclick: IGridEvent<{
+        rowindex: number;
+        row: T;
+        visibleindex: number;
+        group: any;
+        rightclick: any;
+        originalEvent: Event;
+    }>;
+    rowselect: IGridEvent<{
+        rowindex: number | number[];
+        row?: T;
+    }>;
+    rowunselect: IGridEvent<{
+        rowindex: number | number[];
+        row?: T;
+    }>;
+    rowexpand: IGridEvent<{
+        rowindex: number;
+        details: any;
+        height: number;
+    }>;
+    rowcollapse: IGridEvent<{
+        rowindex: number;
+        details: any;
+        height: number;
+    }>;
+    sort: IGridEvent<{
+        sortinformation: any;
+    }>;
 }

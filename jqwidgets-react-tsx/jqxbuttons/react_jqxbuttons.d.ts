@@ -9,13 +9,17 @@ declare class JqxButton extends React.PureComponent<IButtonProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -45,11 +49,14 @@ interface IButtonOptions {
     roundedCorners?: 'top' | 'bottom' | 'all' | 'left' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
     rtl?: boolean;
     enableDefault?: boolean;
+    enableHover?: boolean;
+    enablePressed?: boolean;
     cursor?: string;
     textPosition?: 'left' | 'center' | 'right' | 'top' | 'bottom' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
     textImageRelation?: 'imageBeforeText' | 'imageAboveText' | 'textAboveImage' | 'textBeforeImage' | 'overlay';
     theme?: string;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'inverse' | 'info' | 'link';
+    type?: string;
     width?: number | string;
     value?: string;
 }

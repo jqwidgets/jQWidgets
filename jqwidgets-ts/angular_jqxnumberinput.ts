@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,13 +34,16 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 {
    @Input('allowNull') attrAllowNull: boolean;
    @Input('autoHidePromptChar') attrAutoHidePromptChar: boolean;
+   @Input('autoValidate') attrAutoValidate: boolean;
    @Input('decimal') attrDecimal: number | string;
    @Input('disabled') attrDisabled: boolean;
    @Input('decimalDigits') attrDecimalDigits: number | string;
    @Input('decimalSeparator') attrDecimalSeparator: number | string;
    @Input('digits') attrDigits: number | string;
+   @Input('enableMouseWheel') attrEnableMouseWheel: boolean;
    @Input('groupSeparator') attrGroupSeparator: string;
    @Input('groupSize') attrGroupSize: number | string;
+   @Input('hint') attrHint: boolean;
    @Input('inputMode') attrInputMode: string;
    @Input('min') attrMin: number | string;
    @Input('max') attrMax: number | string;
@@ -58,13 +61,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    @Input('textAlign') attrTextAlign: string;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
+   @Input('touchMode') attrTouchMode: boolean | string;
    @Input('value') attrValue: number | string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowNull','autoHidePromptChar','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+   properties: string[] = ['allowNull','autoHidePromptChar','autoValidate','decimal','disabled','decimalDigits','decimalSeparator','digits','enableMouseWheel','groupSeparator','groupSize','height','hint','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','touchMode','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNumberInput;
@@ -233,6 +237,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   autoValidate(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('autoValidate', arg);
+      } else {
+          return this.host.jqxNumberInput('autoValidate');
+      }
+   }
+
    decimal(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimal', arg);
@@ -273,6 +285,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   enableMouseWheel(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('enableMouseWheel', arg);
+      } else {
+          return this.host.jqxNumberInput('enableMouseWheel');
+      }
+   }
+
    groupSeparator(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('groupSeparator', arg);
@@ -294,6 +314,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxNumberInput('height', arg);
       } else {
           return this.host.jqxNumberInput('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('hint', arg);
+      } else {
+          return this.host.jqxNumberInput('hint');
       }
    }
 
@@ -430,6 +458,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxNumberInput('theme', arg);
       } else {
           return this.host.jqxNumberInput('theme');
+      }
+   }
+
+   touchMode(arg?: boolean | string): boolean | string {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('touchMode', arg);
+      } else {
+          return this.host.jqxNumberInput('touchMode');
       }
    }
 

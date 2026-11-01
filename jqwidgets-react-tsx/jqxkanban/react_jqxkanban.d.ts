@@ -9,24 +9,35 @@ declare class JqxKanban extends React.PureComponent<IKanbanProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: IKanbanProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: IKanbanProps): void;
     getOptions(option: string): any;
     addItem(newItem: any): void;
+    collapseColumn(dataField: string): boolean;
     destroy(): void;
+    expandColumn(dataField: string): boolean;
     getColumn(dataField: string): IKanbanColumns;
     getColumnItems(dataField: string): IKanbanSource[];
     getItems(): IKanbanSource;
+    getSelectedColumn(): string;
+    getSelectedItem(): IKanbanSource;
     removeItem(itemId: string | number): void;
+    selectItem(itemId: string | number): void;
     updateItem(itemId: string, newContent: IKanbanUpdateItem): void;
     private _manageProps;
     private _hostAttributes;
@@ -78,11 +89,13 @@ export interface IKanbanUpdateItem {
     className?: string;
 }
 interface IKanbanOptions {
+    animationDelay?: number;
     columnRenderer?: (element: IKanbanColumnRenderer['element'], collapsedElement: IKanbanColumnRenderer['collapsedElement'], column: IKanbanColumnRenderer['column']) => void;
     columns?: IKanbanColumns[];
     connectWith?: string;
     headerHeight?: number | string;
     headerWidth?: number;
+    handle?: string;
     height?: string | number;
     itemRenderer?: (element: IKanbanItemRenderer['element'], item: IKanbanItemRenderer['item'], resource: IKanbanItemRenderer['resource']) => void;
     ready?: () => void;
@@ -91,6 +104,7 @@ interface IKanbanOptions {
     resources?: any;
     template?: string;
     templateContent?: any;
+    verticalTextOrientation?: string;
     theme?: string;
     width?: string | number;
 }
@@ -101,6 +115,11 @@ export interface IKanbanProps extends IKanbanOptions, React.AriaAttributes {
     onColumnAttrClicked?: (e?: any) => void;
     onColumnCollapsed?: (e?: any) => void;
     onColumnExpanded?: (e?: any) => void;
+    onColumnSelected?: (e?: any) => void;
+    onColumnUnselected?: (e?: any) => void;
     onItemAttrClicked?: (e?: any) => void;
+    onItemCreated?: (e?: any) => void;
     onItemMoved?: (e?: any) => void;
+    onItemReceived?: (e?: any) => void;
+    onItemSelected?: (e?: any) => void;
 }

@@ -87,6 +87,9 @@
             function open(left, top) {
                 JQXLite(componentSelector).jqxTooltip('open', left, top);  
             }
+            function opened() {
+                return JQXLite(componentSelector).jqxTooltip('opened');  
+            }
             function refresh() {
                 JQXLite(componentSelector).jqxTooltip('refresh');  
             }
@@ -444,7 +447,7 @@
 				element.off();
 				try { element.jqxTooltip('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, close, destroy, open, refresh, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, close, destroy, open, opened, refresh, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

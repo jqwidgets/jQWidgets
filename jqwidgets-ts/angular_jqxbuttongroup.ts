@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,6 +24,8 @@ export class jqxButtonGroupComponent implements OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('mode') attrMode: string;
+   @Input('orientation') attrOrientation: string;
+   @Input('roundedCorners') attrRoundedCorners: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
@@ -32,7 +34,7 @@ export class jqxButtonGroupComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','enableHover','mode','rtl','template','theme'];
+   properties: string[] = ['disabled','enableHover','height','mode','orientation','roundedCorners','rtl','template','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxButtonGroup;
@@ -176,11 +178,35 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
+   height(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxButtonGroup('height', arg);
+      } else {
+          return this.host.jqxButtonGroup('height');
+      }
+   }
+
    mode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('mode', arg);
       } else {
           return this.host.jqxButtonGroup('mode');
+      }
+   }
+
+   orientation(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxButtonGroup('orientation', arg);
+      } else {
+          return this.host.jqxButtonGroup('orientation');
+      }
+   }
+
+   roundedCorners(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxButtonGroup('roundedCorners', arg);
+      } else {
+          return this.host.jqxButtonGroup('roundedCorners');
       }
    }
 
@@ -208,8 +234,20 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
+   width(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxButtonGroup('width', arg);
+      } else {
+          return this.host.jqxButtonGroup('width');
+      }
+   }
+
 
    // jqxButtonGroupComponent functions
+   clearSelection(): void {
+      this.host.jqxButtonGroup('clearSelection');
+   }
+
    disableAt(index: number): void {
       this.host.jqxButtonGroup('disableAt', index);
    }

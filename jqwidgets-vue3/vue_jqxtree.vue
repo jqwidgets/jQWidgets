@@ -21,23 +21,25 @@
             animationShowDuration: Number,
             animationHideDuration: Number,
             allowDrag: {
-                default: false,
+                default: true,
                 type: Boolean
             },
             allowDrop: {
-                default: false,
+                default: true,
                 type: Boolean
             },
             checkboxes: {
                 default: false,
                 type: Boolean
             },
+            checkSize: Number,
             dragStart: Function,
             dragEnd: Function,
             disabled: {
                 default: false,
                 type: Boolean
             },
+            displayMember: String,
             easing: String,
             enableHover: {
                 default: true,
@@ -52,6 +54,7 @@
                 default: true,
                 type: Boolean
             },
+            itemsMember: String,
             keyboardNavigation: {
                 default: true,
                 type: Boolean
@@ -61,16 +64,21 @@
                 type: Boolean
             },
             source: [Array, Object],
+            submitCheckedItems: {
+                default: false,
+                type: Boolean
+            },
             toggleIndicatorSize: Number,
             toggleMode: String,
             theme: String,
+            valueMember: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
                 type: Boolean
             }
         },
-        emits: ["added","checkChange","collapse","dragStart","dragEnd","expand","itemClick","removed","select"],
+        emits: ["added","checkChange","collapse","dragStart","dragEnd","expand","initialized","itemClick","removed","select"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxTree" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -102,6 +110,9 @@
             }
             function clear() {
                 JQXLite(componentSelector).jqxTree('clear');  
+            }
+            function clearSelection() {
+                JQXLite(componentSelector).jqxTree('clearSelection');  
             }
             function checkAll() {
                 JQXLite(componentSelector).jqxTree('checkAll');  
@@ -169,6 +180,15 @@
             function hitTest(left, top) {
                 return JQXLite(componentSelector).jqxTree('hitTest', left, top);  
             }
+            function isExpanded(element) {
+                return JQXLite(componentSelector).jqxTree('isExpanded', element);  
+            }
+            function isSelected(element) {
+                return JQXLite(componentSelector).jqxTree('isSelected', element);  
+            }
+            function lockItem(element) {
+                JQXLite(componentSelector).jqxTree('lockItem', element);  
+            }
             function removeItem(item) {
                 JQXLite(componentSelector).jqxTree('removeItem', item);  
             }
@@ -186,6 +206,9 @@
             }
             function uncheckItem(item) {
                 JQXLite(componentSelector).jqxTree('uncheckItem', item);  
+            }
+            function unlockItem(element) {
+                JQXLite(componentSelector).jqxTree('unlockItem', element);  
             }
             function updateItem(item, newItem) {
                 JQXLite(componentSelector).jqxTree('updateItem', item, newItem);  
@@ -232,6 +255,13 @@
                     return JQXLite(componentSelector).jqxTree('checkboxes');
                 }
             }
+            function _checkSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTree('checkSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTree('checkSize');
+                }
+            }
             function _dragStart (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTree('dragStart', arg)
@@ -251,6 +281,13 @@
                     JQXLite(componentSelector).jqxTree('disabled', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTree('disabled');
+                }
+            }
+            function _displayMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTree('displayMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTree('displayMember');
                 }
             }
             function _easing (arg) {
@@ -288,6 +325,13 @@
                     return JQXLite(componentSelector).jqxTree('incrementalSearch');
                 }
             }
+            function _itemsMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTree('itemsMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTree('itemsMember');
+                }
+            }
             function _keyboardNavigation (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTree('keyboardNavigation', arg)
@@ -307,6 +351,13 @@
                     JQXLite(componentSelector).jqxTree('source', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTree('source');
+                }
+            }
+            function _submitCheckedItems (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTree('submitCheckedItems', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTree('submitCheckedItems');
                 }
             }
             function _toggleIndicatorSize (arg) {
@@ -330,6 +381,13 @@
                     return JQXLite(componentSelector).jqxTree('theme');
                 }
             }
+            function _valueMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTree('valueMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTree('valueMember');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTree('width', arg)
@@ -347,7 +405,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','source','toggleIndicatorSize','toggleMode','theme','width'];
+                const widgetProps = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','checkSize','dragStart','dragEnd','disabled','displayMember','easing','enableHover','height','hasThreeStates','incrementalSearch','itemsMember','keyboardNavigation','rtl','source','submitCheckedItems','toggleIndicatorSize','toggleMode','theme','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -389,6 +447,12 @@
                  set checkboxes(newValue) {
                      _checkboxes(newValue);
                  },
+                 get checkSize() {
+                     return _checkSize();
+                 },
+                 set checkSize(newValue) {
+                     _checkSize(newValue);
+                 },
                  get dragStart() {
                      return _dragStart();
                  },
@@ -406,6 +470,12 @@
                  },
                  set disabled(newValue) {
                      _disabled(newValue);
+                 },
+                 get displayMember() {
+                     return _displayMember();
+                 },
+                 set displayMember(newValue) {
+                     _displayMember(newValue);
                  },
                  get easing() {
                      return _easing();
@@ -437,6 +507,12 @@
                  set incrementalSearch(newValue) {
                      _incrementalSearch(newValue);
                  },
+                 get itemsMember() {
+                     return _itemsMember();
+                 },
+                 set itemsMember(newValue) {
+                     _itemsMember(newValue);
+                 },
                  get keyboardNavigation() {
                      return _keyboardNavigation();
                  },
@@ -454,6 +530,12 @@
                  },
                  set source(newValue) {
                      _source(newValue);
+                 },
+                 get submitCheckedItems() {
+                     return _submitCheckedItems();
+                 },
+                 set submitCheckedItems(newValue) {
+                     _submitCheckedItems(newValue);
                  },
                  get toggleIndicatorSize() {
                      return _toggleIndicatorSize();
@@ -473,6 +555,12 @@
                  set theme(newValue) {
                      _theme(newValue);
                  },
+                 get valueMember() {
+                     return _valueMember();
+                 },
+                 set valueMember(newValue) {
+                     _valueMember(newValue);
+                 },
                  get width() {
                      return _width();
                  },
@@ -489,6 +577,7 @@
                 JQXLite(componentSelector).on('dragStart', function (event) { that.emit('dragStart', event); });
                 JQXLite(componentSelector).on('dragEnd', function (event) { that.emit('dragEnd', event); });
                 JQXLite(componentSelector).on('expand', function (event) { that.emit('expand', event); });
+                JQXLite(componentSelector).on('initialized', function (event) { that.emit('initialized', event); });
                 JQXLite(componentSelector).on('itemClick', function (event) { that.emit('itemClick', event); });
                 JQXLite(componentSelector).on('removed', function (event) { that.emit('removed', event); });
                 JQXLite(componentSelector).on('select', function (event) { that.emit('select', event); });
@@ -530,7 +619,7 @@
 				element.off();
 				try { element.jqxTree('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addBefore, addAfter, addTo, clear, checkAll, checkItem, collapseAll, collapseItem, destroy, disableCheckbox, disableItem, ensureVisible, enableCheckbox, enableItem, enableAll, expandAll, expandItem, focus, getCheckedItems, getUncheckedItems, getItems, getItem, getSelectedItem, getPrevItem, getNextItem, hitTest, removeItem, render, refresh, selectItem, uncheckAll, uncheckItem, updateItem, val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addBefore, addAfter, addTo, clear, clearSelection, checkAll, checkItem, collapseAll, collapseItem, destroy, disableCheckbox, disableItem, ensureVisible, enableCheckbox, enableItem, enableAll, expandAll, expandItem, focus, getCheckedItems, getUncheckedItems, getItems, getItem, getSelectedItem, getPrevItem, getNextItem, hitTest, isExpanded, isSelected, lockItem, removeItem, render, refresh, selectItem, uncheckAll, uncheckItem, unlockItem, updateItem, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

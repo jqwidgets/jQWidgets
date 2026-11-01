@@ -9,12 +9,16 @@ declare class JqxSwitchButton extends React.PureComponent<ISwitchButtonProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: ISwitchButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -37,6 +41,8 @@ export default JqxSwitchButton;
 export declare const jqx: any;
 export declare const JQXLite: any;
 interface ISwitchButtonOptions {
+    animationDuration?: number;
+    animationEnabled?: boolean;
     checked?: boolean;
     disabled?: boolean;
     height?: string | number;
@@ -45,6 +51,8 @@ interface ISwitchButtonOptions {
     offLabel?: string;
     theme?: string;
     thumbSize?: string;
+    switchRatio?: string | number;
+    toggleMode?: string;
     rtl?: boolean;
     width?: string | number;
 }

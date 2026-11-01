@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,6 +24,7 @@ export class jqxExpanderComponent implements OnChanges
    @Input('arrowPosition') attrArrowPosition: string;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
    @Input('disabled') attrDisabled: boolean;
+   @Input('easing') attrEasing: string;
    @Input('expanded') attrExpanded: boolean;
    @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
    @Input('headerPosition') attrHeaderPosition: string;
@@ -37,7 +38,7 @@ export class jqxExpanderComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expanded','expandAnimationDuration','height','headerPosition','initContent','rtl','showArrow','theme','toggleMode','width'];
+   properties: string[] = ['animationType','arrowPosition','collapseAnimationDuration','disabled','easing','expanded','expandAnimationDuration','height','headerPosition','initContent','rtl','showArrow','theme','toggleMode','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxExpander;
@@ -193,6 +194,14 @@ export class jqxExpanderComponent implements OnChanges
           this.host.jqxExpander('disabled', arg);
       } else {
           return this.host.jqxExpander('disabled');
+      }
+   }
+
+   easing(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxExpander('easing', arg);
+      } else {
+          return this.host.jqxExpander('easing');
       }
    }
 

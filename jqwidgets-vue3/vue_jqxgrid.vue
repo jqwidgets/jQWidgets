@@ -47,6 +47,10 @@
             },
             altstart: Number,
             altstep: Number,
+            autoselectfirstrow: {
+                default: true,
+                type: Boolean
+            },
             autoshowloadelement: {
                 default: true,
                 type: Boolean
@@ -95,6 +99,16 @@
             commandcolumnrenderer: Function,
             clipboard: {
                 default: true,
+                type: Boolean
+            },
+            clipboardbegin: Function,
+            clipboardend: Function,
+            copytoclipboardwithheaders: {
+                default: false,
+                type: Boolean
+            },
+            copytoclipboardhiddencolumns: {
+                default: false,
                 type: Boolean
             },
             closeablegroups: {
@@ -226,6 +240,7 @@
             },
             filterbarmode: String,
             selectionmode: String,
+            multipleselectionbegins: Function,
             updatefilterconditions: Function,
             updatefilterpanel: Function,
             theme: String,
@@ -258,7 +273,15 @@
                 type: Boolean
             },
             columns: Array,
+            autogeneratecolumns: {
+                default: false,
+                type: Boolean
+            },
             enableSanitize: {
+                default: false,
+                type: Boolean
+            },
+            enableSanitizeAll: {
                 default: false,
                 type: Boolean
             },
@@ -322,6 +345,11 @@
             horizontalscrollbarstep: Number,
             horizontalscrollbarlargestep: Number,
             initrowdetails: Function,
+            layoutrowdetails: Function,
+            enablerowdetailsindent: {
+                default: true,
+                type: Boolean
+            },
             disablerowdetails: Function,
             keyboardnavigation: {
                 default: true,
@@ -350,6 +378,7 @@
             renderstatusbar: Function,
             rendertoolbar: Function,
             rendergridrows: Function,
+            rendergroups: Function,
             sortable: {
                 default: false,
                 type: Boolean
@@ -372,7 +401,7 @@
                 type: Boolean
             }
         },
-        emits: ["gridaiResult","gridaiError","bindingcomplete","columnresized","columnreordered","columnclick","cellclick","celldoubleclick","cellselect","cellunselect","cellvaluechanged","cellbeginedit","cellendedit","filter","groupschanged","groupexpand","groupcollapse","pagechanged","pagesizechanged","rowclick","rowdoubleclick","rowselect","rowunselect","rowexpand","rowcollapse","sort"],
+        emits: ["gridaiResult","gridaiError","bindingcomplete","columnresized","columnreordered","columnclick","columnchooserokclick","columnchoosercancelclick","cellclick","celldoubleclick","cellselect","cellunselect","cellvaluechanged","cellbeginedit","cellendedit","filter","groupschanged","groupexpand","groupcollapse","pagechanged","pagechanging","pagesizechanged","rowclick","rowdoubleclick","rowselect","rowunselect","rowexpand","rowcollapse","sort"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxGrid" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -435,6 +464,9 @@
             function ensurerowvisible(rowBoundIndex) {
                 JQXLite(componentSelector).jqxGrid('ensurerowvisible', rowBoundIndex);  
             }
+            function ensurecellvisible(rowBoundIndex, dataField) {
+                JQXLite(componentSelector).jqxGrid('ensurecellvisible', rowBoundIndex, dataField);  
+            }
             function focus() {
                 JQXLite(componentSelector).jqxGrid('focus');  
             }
@@ -461,6 +493,12 @@
             }
             function getrowboundindex(rowDisplayIndex) {
                 return JQXLite(componentSelector).jqxGrid('getrowboundindex', rowDisplayIndex);  
+            }
+            function getrowheight(rowBoundIndex) {
+                return JQXLite(componentSelector).jqxGrid('getrowheight', rowBoundIndex);  
+            }
+            function getrowvisibleindex(rowBoundIndex) {
+                return JQXLite(componentSelector).jqxGrid('getrowvisibleindex', rowBoundIndex);  
             }
             function getrows() {
                 return JQXLite(componentSelector).jqxGrid('getrows');  
@@ -489,6 +527,12 @@
             function hiderowdetails(rowBoundIndex) {
                 JQXLite(componentSelector).jqxGrid('hiderowdetails', rowBoundIndex);  
             }
+            function hiderow(rowBoundIndex) {
+                JQXLite(componentSelector).jqxGrid('hiderow', rowBoundIndex);  
+            }
+            function isrowhiddenat(rowBoundIndex) {
+                return JQXLite(componentSelector).jqxGrid('isrowhiddenat', rowBoundIndex);  
+            }
             function iscolumnvisible(dataField) {
                 return JQXLite(componentSelector).jqxGrid('iscolumnvisible', dataField);  
             }
@@ -513,6 +557,9 @@
             function scrolloffset(top, left) {
                 JQXLite(componentSelector).jqxGrid('scrolloffset', top, left);  
             }
+            function scrollto(left, top) {
+                JQXLite(componentSelector).jqxGrid('scrollto', left, top);  
+            }
             function scrollposition() {
                 return JQXLite(componentSelector).jqxGrid('scrollposition');  
             }
@@ -521,6 +568,9 @@
             }
             function showrowdetails(rowBoundIndex) {
                 JQXLite(componentSelector).jqxGrid('showrowdetails', rowBoundIndex);  
+            }
+            function showrow(rowBoundIndex) {
+                JQXLite(componentSelector).jqxGrid('showrow', rowBoundIndex);  
             }
             function setcolumnindex(dataField, index) {
                 JQXLite(componentSelector).jqxGrid('setcolumnindex', dataField, index);  
@@ -542,6 +592,9 @@
             }
             function getsortcolumn() {
                 return JQXLite(componentSelector).jqxGrid('getsortcolumn');  
+            }
+            function getsortcolumns() {
+                return JQXLite(componentSelector).jqxGrid('getsortcolumns');  
             }
             function removesort() {
                 JQXLite(componentSelector).jqxGrid('removesort');  
@@ -572,6 +625,9 @@
             }
             function getgroup(groupIndex) {
                 return JQXLite(componentSelector).jqxGrid('getgroup', groupIndex);  
+            }
+            function isgroupexpanded(groupIndex) {
+                return JQXLite(componentSelector).jqxGrid('isgroupexpanded', groupIndex);  
             }
             function insertgroup(groupIndex, dataField) {
                 JQXLite(componentSelector).jqxGrid('insertgroup', groupIndex, dataField);  
@@ -666,6 +722,9 @@
             function setcellvaluebyid(rowID, dataField, value) {
                 JQXLite(componentSelector).jqxGrid('setcellvaluebyid', rowID, dataField, value);  
             }
+            function setrowheight(rowBoundIndex, height) {
+                JQXLite(componentSelector).jqxGrid('setrowheight', rowBoundIndex, height);  
+            }
             function showvalidationpopup(rowBoundIndex, dataField, validationMessage) {
                 JQXLite(componentSelector).jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);  
             }
@@ -754,6 +813,13 @@
                     JQXLite(componentSelector).jqxGrid('altstep', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGrid('altstep');
+                }
+            }
+            function _autoselectfirstrow (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('autoselectfirstrow', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('autoselectfirstrow');
                 }
             }
             function _autoshowloadelement (arg) {
@@ -873,6 +939,34 @@
                     JQXLite(componentSelector).jqxGrid('clipboard', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGrid('clipboard');
+                }
+            }
+            function _clipboardbegin (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('clipboardbegin', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('clipboardbegin');
+                }
+            }
+            function _clipboardend (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('clipboardend', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('clipboardend');
+                }
+            }
+            function _copytoclipboardwithheaders (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('copytoclipboardwithheaders', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('copytoclipboardwithheaders');
+                }
+            }
+            function _copytoclipboardhiddencolumns (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('copytoclipboardhiddencolumns', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('copytoclipboardhiddencolumns');
                 }
             }
             function _closeablegroups (arg) {
@@ -1190,6 +1284,13 @@
                     return JQXLite(componentSelector).jqxGrid('selectionmode');
                 }
             }
+            function _multipleselectionbegins (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('multipleselectionbegins', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('multipleselectionbegins');
+                }
+            }
             function _updatefilterconditions (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGrid('updatefilterconditions', arg)
@@ -1330,11 +1431,25 @@
                     return JQXLite(componentSelector).jqxGrid('columns');
                 }
             }
+            function _autogeneratecolumns (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('autogeneratecolumns', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('autogeneratecolumns');
+                }
+            }
             function _enableSanitize (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGrid('enableSanitize', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGrid('enableSanitize');
+                }
+            }
+            function _enableSanitizeAll (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('enableSanitizeAll', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('enableSanitizeAll');
                 }
             }
             function _cardview (arg) {
@@ -1547,6 +1662,20 @@
                     return JQXLite(componentSelector).jqxGrid('initrowdetails');
                 }
             }
+            function _layoutrowdetails (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('layoutrowdetails', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('layoutrowdetails');
+                }
+            }
+            function _enablerowdetailsindent (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('enablerowdetailsindent', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('enablerowdetailsindent');
+                }
+            }
             function _disablerowdetails (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGrid('disablerowdetails', arg)
@@ -1659,6 +1788,13 @@
                     return JQXLite(componentSelector).jqxGrid('rendergridrows');
                 }
             }
+            function _rendergroups (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('rendergroups', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('rendergroups');
+                }
+            }
             function _sortable (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGrid('sortable', arg)
@@ -1746,7 +1882,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoselectfirstrow','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','clipboardbegin','clipboardend','copytoclipboardwithheaders','copytoclipboardhiddencolumns','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','multipleselectionbegins','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','autogeneratecolumns','enableSanitize','enableSanitizeAll','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','layoutrowdetails','enablerowdetailsindent','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','rendergroups','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = props;
                 let options = {};
 
@@ -1775,6 +1911,12 @@
                  },
                  set altstep(newValue) {
                      _altstep(newValue);
+                 },
+                 get autoselectfirstrow() {
+                     return _autoselectfirstrow();
+                 },
+                 set autoselectfirstrow(newValue) {
+                     _autoselectfirstrow(newValue);
                  },
                  get autoshowloadelement() {
                      return _autoshowloadelement();
@@ -1877,6 +2019,30 @@
                  },
                  set clipboard(newValue) {
                      _clipboard(newValue);
+                 },
+                 get clipboardbegin() {
+                     return _clipboardbegin();
+                 },
+                 set clipboardbegin(newValue) {
+                     _clipboardbegin(newValue);
+                 },
+                 get clipboardend() {
+                     return _clipboardend();
+                 },
+                 set clipboardend(newValue) {
+                     _clipboardend(newValue);
+                 },
+                 get copytoclipboardwithheaders() {
+                     return _copytoclipboardwithheaders();
+                 },
+                 set copytoclipboardwithheaders(newValue) {
+                     _copytoclipboardwithheaders(newValue);
+                 },
+                 get copytoclipboardhiddencolumns() {
+                     return _copytoclipboardhiddencolumns();
+                 },
+                 set copytoclipboardhiddencolumns(newValue) {
+                     _copytoclipboardhiddencolumns(newValue);
                  },
                  get closeablegroups() {
                      return _closeablegroups();
@@ -2148,6 +2314,12 @@
                  set selectionmode(newValue) {
                      _selectionmode(newValue);
                  },
+                 get multipleselectionbegins() {
+                     return _multipleselectionbegins();
+                 },
+                 set multipleselectionbegins(newValue) {
+                     _multipleselectionbegins(newValue);
+                 },
                  get updatefilterconditions() {
                      return _updatefilterconditions();
                  },
@@ -2268,11 +2440,23 @@
                  set columns(newValue) {
                      _columns(newValue);
                  },
+                 get autogeneratecolumns() {
+                     return _autogeneratecolumns();
+                 },
+                 set autogeneratecolumns(newValue) {
+                     _autogeneratecolumns(newValue);
+                 },
                  get enableSanitize() {
                      return _enableSanitize();
                  },
                  set enableSanitize(newValue) {
                      _enableSanitize(newValue);
+                 },
+                 get enableSanitizeAll() {
+                     return _enableSanitizeAll();
+                 },
+                 set enableSanitizeAll(newValue) {
+                     _enableSanitizeAll(newValue);
                  },
                  get cardview() {
                      return _cardview();
@@ -2454,6 +2638,18 @@
                  set initrowdetails(newValue) {
                      _initrowdetails(newValue);
                  },
+                 get layoutrowdetails() {
+                     return _layoutrowdetails();
+                 },
+                 set layoutrowdetails(newValue) {
+                     _layoutrowdetails(newValue);
+                 },
+                 get enablerowdetailsindent() {
+                     return _enablerowdetailsindent();
+                 },
+                 set enablerowdetailsindent(newValue) {
+                     _enablerowdetailsindent(newValue);
+                 },
                  get disablerowdetails() {
                      return _disablerowdetails();
                  },
@@ -2550,6 +2746,12 @@
                  set rendergridrows(newValue) {
                      _rendergridrows(newValue);
                  },
+                 get rendergroups() {
+                     return _rendergroups();
+                 },
+                 set rendergroups(newValue) {
+                     _rendergroups(newValue);
+                 },
                  get sortable() {
                      return _sortable();
                  },
@@ -2626,6 +2828,8 @@
                 JQXLite(componentSelector).on('columnresized', function (event) { that.emit('columnresized', event); });
                 JQXLite(componentSelector).on('columnreordered', function (event) { that.emit('columnreordered', event); });
                 JQXLite(componentSelector).on('columnclick', function (event) { that.emit('columnclick', event); });
+                JQXLite(componentSelector).on('columnchooserokclick', function (event) { that.emit('columnchooserokclick', event); });
+                JQXLite(componentSelector).on('columnchoosercancelclick', function (event) { that.emit('columnchoosercancelclick', event); });
                 JQXLite(componentSelector).on('cellclick', function (event) { that.emit('cellclick', event); });
                 JQXLite(componentSelector).on('celldoubleclick', function (event) { that.emit('celldoubleclick', event); });
                 JQXLite(componentSelector).on('cellselect', function (event) { that.emit('cellselect', event); });
@@ -2638,6 +2842,7 @@
                 JQXLite(componentSelector).on('groupexpand', function (event) { that.emit('groupexpand', event); });
                 JQXLite(componentSelector).on('groupcollapse', function (event) { that.emit('groupcollapse', event); });
                 JQXLite(componentSelector).on('pagechanged', function (event) { that.emit('pagechanged', event); });
+                JQXLite(componentSelector).on('pagechanging', function (event) { that.emit('pagechanging', event); });
                 JQXLite(componentSelector).on('pagesizechanged', function (event) { that.emit('pagesizechanged', event); });
                 JQXLite(componentSelector).on('rowclick', function (event) { that.emit('rowclick', event); });
                 JQXLite(componentSelector).on('rowdoubleclick', function (event) { that.emit('rowdoubleclick', event); });
@@ -2684,7 +2889,7 @@
 				element.off();
 				try { element.jqxGrid('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, aiConfig, aiCommand, aiAsk, aiSummarize, aiExplainRow, aiClassifyColumn, autoresizecolumns, autoresizecolumn, beginupdate, clear, createChart, destroy, endupdate, ensurerowvisible, focus, getcolumnindex, getcolumn, getcolumnproperty, getrowid, getrowdata, getrowdatabyid, getrowboundindexbyid, getrowboundindex, getrows, getboundrows, getdisplayrows, getdatainformation, getsortinformation, getpaginginformation, hidecolumn, hideloadelement, hiderowdetails, iscolumnvisible, iscolumnpinned, localizestrings, pincolumn, refreshdata, refresh, render, scrolloffset, scrollposition, showloadelement, showrowdetails, setcolumnindex, setcolumnproperty, showcolumn, unpincolumn, updatebounddata, updating, getsortcolumn, removesort, sortby, addgroup, cleargroups, collapsegroup, collapseallgroups, expandallgroups, expandgroup, getrootgroupscount, getgroup, insertgroup, iscolumngroupable, removegroupat, removegroup, addfilter, applyfilters, clearfilters, getfilterinformation, getcolumnat, removefilter, refreshfilterrow, gotopage, gotoprevpage, gotonextpage, addrow, begincelledit, beginrowedit, closemenu, deleterow, endcelledit, endrowedit, getcell, getcellatposition, getcelltext, getcelltextbyid, getcellvaluebyid, getcellvalue, isBindingCompleted, openmenu, setcellvalue, setcellvaluebyid, showvalidationpopup, updaterow, clearselection, getselectedrowindex, getselectedrowindexes, getselectedcell, getselectedcells, showSidePanel, closeSidePanel, selectcell, selectallrows, selectrow, unselectrow, unselectcell, getcolumnaggregateddata, refreshaggregates, renderaggregates, exportdata, exportview, openColumnChooser, getstate, loadstate, savestate, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, aiConfig, aiCommand, aiAsk, aiSummarize, aiExplainRow, aiClassifyColumn, autoresizecolumns, autoresizecolumn, beginupdate, clear, createChart, destroy, endupdate, ensurerowvisible, ensurecellvisible, focus, getcolumnindex, getcolumn, getcolumnproperty, getrowid, getrowdata, getrowdatabyid, getrowboundindexbyid, getrowboundindex, getrowheight, getrowvisibleindex, getrows, getboundrows, getdisplayrows, getdatainformation, getsortinformation, getpaginginformation, hidecolumn, hideloadelement, hiderowdetails, hiderow, isrowhiddenat, iscolumnvisible, iscolumnpinned, localizestrings, pincolumn, refreshdata, refresh, render, scrolloffset, scrollto, scrollposition, showloadelement, showrowdetails, showrow, setcolumnindex, setcolumnproperty, showcolumn, unpincolumn, updatebounddata, updating, getsortcolumn, getsortcolumns, removesort, sortby, addgroup, cleargroups, collapsegroup, collapseallgroups, expandallgroups, expandgroup, getrootgroupscount, getgroup, isgroupexpanded, insertgroup, iscolumngroupable, removegroupat, removegroup, addfilter, applyfilters, clearfilters, getfilterinformation, getcolumnat, removefilter, refreshfilterrow, gotopage, gotoprevpage, gotonextpage, addrow, begincelledit, beginrowedit, closemenu, deleterow, endcelledit, endrowedit, getcell, getcellatposition, getcelltext, getcelltextbyid, getcellvaluebyid, getcellvalue, isBindingCompleted, openmenu, setcellvalue, setcellvaluebyid, setrowheight, showvalidationpopup, updaterow, clearselection, getselectedrowindex, getselectedrowindexes, getselectedcell, getselectedcells, showSidePanel, closeSidePanel, selectcell, selectallrows, selectrow, unselectrow, unselectcell, getcolumnaggregateddata, refreshaggregates, renderaggregates, exportdata, exportview, openColumnChooser, getstate, loadstate, savestate, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

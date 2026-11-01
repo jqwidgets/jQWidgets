@@ -9,12 +9,16 @@ declare class JqxColorPicker extends React.PureComponent<IColorPickerProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: IColorPickerProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -22,6 +26,7 @@ declare class JqxColorPicker extends React.PureComponent<IColorPickerProps> {
     getOptions(option: string): any;
     getColor(): any;
     setColor(color: object | string): void;
+    val(value?: any): any;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -35,7 +40,13 @@ export declare const JQXLite: any;
 interface IColorPickerOptions {
     color?: string;
     colorMode?: 'hue' | 'saturation';
+    colorBarString?: string;
+    colorMapString?: string;
     disabled?: boolean;
+    hexString?: string;
+    redString?: string;
+    greenString?: string;
+    blueString?: string;
     height?: string | number;
     showTransparent?: boolean;
     theme?: string;

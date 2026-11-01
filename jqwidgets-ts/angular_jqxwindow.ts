@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,17 +22,23 @@ declare let JQXLite: any;
 export class jqxWindowComponent implements OnChanges
 {
    @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('autoFocus') attrAutoFocus: boolean;
    @Input('animationType') attrAnimationType: string;
    @Input('collapsed') attrCollapsed: boolean;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
+   @Input('collapseButtonSize') attrCollapseButtonSize: number;
+   @Input('collapseButtonString') attrCollapseButtonString: string;
    @Input('content') attrContent: string;
    @Input('closeAnimationDuration') attrCloseAnimationDuration: number;
    @Input('closeButtonSize') attrCloseButtonSize: number;
    @Input('closeButtonAction') attrCloseButtonAction: string;
+   @Input('closeButtonString') attrCloseButtonString: string;
+   @Input('closing') attrClosing: () => boolean | void;
    @Input('cancelButton') attrCancelButton: any;
    @Input('dragArea') attrDragArea: jqwidgets.WindowDragArea;
    @Input('draggable') attrDraggable: boolean;
    @Input('disabled') attrDisabled: boolean;
+   @Input('headerHeight') attrHeaderHeight: number;
    @Input('initContent') attrInitContent: () => void;
    @Input('isModal') attrIsModal: boolean;
    @Input('keyboardCloseKey') attrKeyboardCloseKey: number | string;
@@ -48,6 +54,7 @@ export class jqxWindowComponent implements OnChanges
    @Input('position') attrPosition: string | any;
    @Input('rtl') attrRtl: boolean;
    @Input('resizable') attrResizable: boolean;
+   @Input('restricter') attrRestricter: any;
    @Input('showAnimationDuration') attrShowAnimationDuration: number;
    @Input('showCloseButton') attrShowCloseButton: boolean;
    @Input('showCollapseButton') attrShowCollapseButton: boolean;
@@ -59,7 +66,7 @@ export class jqxWindowComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoOpen','animationType','collapsed','collapseAnimationDuration','content','closeAnimationDuration','closeButtonSize','closeButtonAction','cancelButton','dragArea','draggable','disabled','height','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
+   properties: string[] = ['autoOpen','autoFocus','animationType','collapsed','collapseAnimationDuration','collapseButtonSize','collapseButtonString','content','closeAnimationDuration','closeButtonSize','closeButtonAction','closeButtonString','closing','cancelButton','dragArea','draggable','disabled','height','headerHeight','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','restricter','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxWindow;
@@ -194,6 +201,14 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
+   autoFocus(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxWindow('autoFocus', arg);
+      } else {
+          return this.host.jqxWindow('autoFocus');
+      }
+   }
+
    animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('animationType', arg);
@@ -215,6 +230,22 @@ export class jqxWindowComponent implements OnChanges
           this.host.jqxWindow('collapseAnimationDuration', arg);
       } else {
           return this.host.jqxWindow('collapseAnimationDuration');
+      }
+   }
+
+   collapseButtonSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxWindow('collapseButtonSize', arg);
+      } else {
+          return this.host.jqxWindow('collapseButtonSize');
+      }
+   }
+
+   collapseButtonString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxWindow('collapseButtonString', arg);
+      } else {
+          return this.host.jqxWindow('collapseButtonString');
       }
    }
 
@@ -247,6 +278,22 @@ export class jqxWindowComponent implements OnChanges
           this.host.jqxWindow('closeButtonAction', arg);
       } else {
           return this.host.jqxWindow('closeButtonAction');
+      }
+   }
+
+   closeButtonString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxWindow('closeButtonString', arg);
+      } else {
+          return this.host.jqxWindow('closeButtonString');
+      }
+   }
+
+   closing(arg?: () => boolean | void): () => boolean | void {
+      if (arg !== undefined) {
+          this.host.jqxWindow('closing', arg);
+      } else {
+          return this.host.jqxWindow('closing');
       }
    }
 
@@ -287,6 +334,14 @@ export class jqxWindowComponent implements OnChanges
           this.host.jqxWindow('height', arg);
       } else {
           return this.host.jqxWindow('height');
+      }
+   }
+
+   headerHeight(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxWindow('headerHeight', arg);
+      } else {
+          return this.host.jqxWindow('headerHeight');
       }
    }
 
@@ -407,6 +462,14 @@ export class jqxWindowComponent implements OnChanges
           this.host.jqxWindow('resizable', arg);
       } else {
           return this.host.jqxWindow('resizable');
+      }
+   }
+
+   restricter(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxWindow('restricter', arg);
+      } else {
+          return this.host.jqxWindow('restricter');
       }
    }
 

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtoolbar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtoolbar.umd.js",
   "module": "react_jqxtoolbar.esm.js",
   "typings": "react_jqxtoolbar.d.ts",

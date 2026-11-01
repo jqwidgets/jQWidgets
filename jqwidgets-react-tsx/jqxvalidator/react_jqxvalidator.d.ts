@@ -9,12 +9,16 @@ declare class JqxValidator extends React.PureComponent<IValidatorProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: IValidatorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -50,11 +54,16 @@ interface IValidatorOptions {
     closeOnClick?: boolean;
     focus?: boolean;
     hintType?: 'tooltip' | 'label';
+    hintPositionOffset?: number;
     onError?: () => void;
     onSuccess?: () => void;
+    ownerElement?: any;
     position?: string;
     rules?: IValidatorRule[];
     rtl?: boolean;
+    scroll?: boolean;
+    scrollDuration?: number;
+    scrollCallback?: () => void;
     theme?: string;
 }
 export interface IValidatorProps extends IValidatorOptions, React.AriaAttributes {

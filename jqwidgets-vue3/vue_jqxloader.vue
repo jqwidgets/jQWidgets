@@ -60,6 +60,9 @@
             function close() {
                 JQXLite(componentSelector).jqxLoader('close');  
             }
+            function destroy() {
+                JQXLite(componentSelector).jqxLoader('destroy');  
+            }
             function open(left, top) {
                 JQXLite(componentSelector).jqxLoader('open', left, top);  
             }
@@ -255,8 +258,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxLoader('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, close, open, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, close, destroy, open, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

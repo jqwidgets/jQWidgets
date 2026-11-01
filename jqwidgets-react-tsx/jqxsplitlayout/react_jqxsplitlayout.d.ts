@@ -9,12 +9,18 @@ declare class JqxSplitLayout extends React.PureComponent<ISplitLayoutProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: ISplitLayoutProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;

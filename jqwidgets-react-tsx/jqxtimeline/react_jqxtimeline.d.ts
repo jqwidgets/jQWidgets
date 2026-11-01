@@ -9,12 +9,16 @@ declare class JqxTimeline extends React.PureComponent<ITimelineProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITimelineProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;

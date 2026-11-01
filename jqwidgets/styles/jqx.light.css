@@ -2733,7 +2733,9 @@ textarea.jqx-widget-content-light::placeholder {
 .jqx-grid-cell-selected-light {
     background: var(--jqx-primary) !important;
     }
-    .jqx-grid-cell-selected-light span {
+    /* (not in a React Grid part: a cell, editor, header, bar or row details component keeps its own
+       colours and padding) */
+    .jqx-grid-cell-selected-light span:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) span) {
         color: inherit !important;
     }
 

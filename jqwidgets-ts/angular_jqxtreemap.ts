@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,6 +34,7 @@ export class jqxTreeMapComponent implements OnChanges
    @Input('legendScaleCallback') attrLegendScaleCallback: (v: jqwidgets.TreeMapLegendScaleCallback['v']) => string | number;
    @Input('renderCallbacks') attrRenderCallbacks: { [label: string]: (element: any, data: any) => boolean | void };
    @Input('selectionEnabled') attrSelectionEnabled: boolean;
+   @Input('singleSelection') attrSingleSelection: boolean;
    @Input('showLegend') attrShowLegend: boolean;
    @Input('source') attrSource: any;
    @Input('theme') attrTheme: string;
@@ -43,7 +44,7 @@ export class jqxTreeMapComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','showLegend','source','theme','valueMember','width'];
+   properties: string[] = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','singleSelection','showLegend','source','theme','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeMap;
@@ -275,6 +276,14 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
+   singleSelection(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTreeMap('singleSelection', arg);
+      } else {
+          return this.host.jqxTreeMap('singleSelection');
+      }
+   }
+
    showLegend(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTreeMap('showLegend', arg);
@@ -317,6 +326,10 @@ export class jqxTreeMapComponent implements OnChanges
 
 
    // jqxTreeMapComponent functions
+   clearSelection(): void {
+      this.host.jqxTreeMap('clearSelection');
+   }
+
    destroy(): void {
       this.host.jqxTreeMap('destroy');
    }
@@ -328,9 +341,13 @@ export class jqxTreeMapComponent implements OnChanges
 
    // jqxTreeMapComponent events
    @Output() onBindingComplete = new EventEmitter();
+   @Output() onMouseenterSector = new EventEmitter();
+   @Output() onMouseleaveSector = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('mouseenterSector', (eventData: any) => { this.onMouseenterSector.emit(eventData); });
+      this.host.on('mouseleaveSector', (eventData: any) => { this.onMouseleaveSector.emit(eventData); });
    }
 
 } //jqxTreeMapComponent

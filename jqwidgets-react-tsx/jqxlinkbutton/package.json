@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxlinkbutton",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxlinkbutton.umd.js",
   "module": "react_jqxlinkbutton.esm.js",
   "typings": "react_jqxlinkbutton.d.ts",

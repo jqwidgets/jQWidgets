@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,20 +25,25 @@ export class jqxLinearGaugeComponent implements OnChanges
    @Input('background') attrBackground: jqwidgets.LinearGaugeBackground;
    @Input('colorScheme') attrColorScheme: string;
    @Input('disabled') attrDisabled: boolean;
+   @Input('displayTank') attrDisplayTank: boolean;
    @Input('easing') attrEasing: string;
+   @Input('editableLabels') attrEditableLabels: boolean;
    @Input('int64') attrInt64: boolean;
    @Input('labels') attrLabels: jqwidgets.LinearGaugeLabels | jqwidgets.LinearGaugeLabels[];
    @Input('min') attrMin: number;
    @Input('max') attrMax: number;
+   @Input('niceInterval') attrNiceInterval: boolean;
    @Input('orientation') attrOrientation: string;
    @Input('pointer') attrPointer: jqwidgets.LinearGaugePointer;
    @Input('rangesOffset') attrRangesOffset: number;
    @Input('rangeSize') attrRangeSize: number | string;
    @Input('ranges') attrRanges: Array<jqwidgets.LinearGaugeRanges>;
    @Input('showRanges') attrShowRanges: boolean;
+   @Input('tankStyle') attrTankStyle: object;
    @Input('scaleStyle') attrScaleStyle: any;
    @Input('scaleLength') attrScaleLength: number | string;
    @Input('theme') attrTheme: string;
+   @Input('tickMode') attrTickMode: string;
    @Input('ticksOffset') attrTicksOffset: Array<number | string>;
    @Input('ticksPosition') attrTicksPosition: string;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.LinearGaugeTicks;
@@ -49,7 +54,7 @@ export class jqxLinearGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','theme','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
+   properties: string[] = ['animationDuration','background','colorScheme','disabled','displayTank','easing','editableLabels','height','int64','labels','min','max','niceInterval','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','tankStyle','scaleStyle','scaleLength','theme','tickMode','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinearGauge;
@@ -69,6 +74,11 @@ export class jqxLinearGaugeComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxLinearGauge('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -203,11 +213,27 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
+   displayTank(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('displayTank', arg);
+      } else {
+          return this.host.jqxLinearGauge('displayTank');
+      }
+   }
+
    easing(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('easing', arg);
       } else {
           return this.host.jqxLinearGauge('easing');
+      }
+   }
+
+   editableLabels(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('editableLabels', arg);
+      } else {
+          return this.host.jqxLinearGauge('editableLabels');
       }
    }
 
@@ -248,6 +274,14 @@ export class jqxLinearGaugeComponent implements OnChanges
           this.host.jqxLinearGauge('max', arg);
       } else {
           return this.host.jqxLinearGauge('max');
+      }
+   }
+
+   niceInterval(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('niceInterval', arg);
+      } else {
+          return this.host.jqxLinearGauge('niceInterval');
       }
    }
 
@@ -299,6 +333,14 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
+   tankStyle(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('tankStyle', arg);
+      } else {
+          return this.host.jqxLinearGauge('tankStyle');
+      }
+   }
+
    scaleStyle(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('scaleStyle', arg);
@@ -320,6 +362,14 @@ export class jqxLinearGaugeComponent implements OnChanges
           this.host.jqxLinearGauge('theme', arg);
       } else {
           return this.host.jqxLinearGauge('theme');
+      }
+   }
+
+   tickMode(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxLinearGauge('tickMode', arg);
+      } else {
+          return this.host.jqxLinearGauge('tickMode');
       }
    }
 
@@ -373,6 +423,10 @@ export class jqxLinearGaugeComponent implements OnChanges
 
 
    // jqxLinearGaugeComponent functions
+   destroy(): void {
+      this.host.jqxLinearGauge('destroy');
+   }
+
    disable(): void {
       this.host.jqxLinearGauge('disable');
    }

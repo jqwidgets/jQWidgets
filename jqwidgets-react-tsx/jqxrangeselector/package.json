@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxrangeselector",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxrangeselector.umd.js",
   "module": "react_jqxrangeselector.esm.js",
   "typings": "react_jqxrangeselector.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxcheckboxgroup",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxcheckboxgroup.umd.js",
   "module": "react_jqxcheckboxgroup.esm.js",
   "typings": "react_jqxcheckboxgroup.d.ts",

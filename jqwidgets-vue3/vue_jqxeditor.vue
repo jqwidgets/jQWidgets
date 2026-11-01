@@ -29,7 +29,9 @@
                 default: true,
                 type: Boolean
             },
+            fontFamily: String,
             height: [String, Number],
+            keyPressed: Function,
             lineBreak: String,
             localization: Object,
             pasteMode: String,
@@ -108,11 +110,25 @@
                     return JQXLite(componentSelector).jqxEditor('editable');
                 }
             }
+            function _fontFamily (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxEditor('fontFamily', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxEditor('fontFamily');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxEditor('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxEditor('height');
+                }
+            }
+            function _keyPressed (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxEditor('keyPressed', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxEditor('keyPressed');
                 }
             }
             function _lineBreak (arg) {
@@ -191,7 +207,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['createCommand','disabled','editable','height','lineBreak','localization','pasteMode','rtl','stylesheets','theme','toolbarPosition','tools','width'];
+                const widgetProps = ['createCommand','disabled','editable','fontFamily','height','keyPressed','lineBreak','localization','pasteMode','rtl','stylesheets','theme','toolbarPosition','tools','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -221,11 +237,23 @@
                  set editable(newValue) {
                      _editable(newValue);
                  },
+                 get fontFamily() {
+                     return _fontFamily();
+                 },
+                 set fontFamily(newValue) {
+                     _fontFamily(newValue);
+                 },
                  get height() {
                      return _height();
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get keyPressed() {
+                     return _keyPressed();
+                 },
+                 set keyPressed(newValue) {
+                     _keyPressed(newValue);
                  },
                  get lineBreak() {
                      return _lineBreak();

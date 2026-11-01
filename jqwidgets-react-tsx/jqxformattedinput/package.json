@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxformattedinput",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxformattedinput.umd.js",
   "module": "react_jqxformattedinput.esm.js",
   "typings": "react_jqxformattedinput.d.ts",

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -40,6 +40,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    @Input('minorTickSize') attrMinorTickSize: number;
    @Input('max') attrMax: number;
    @Input('min') attrMin: number;
+   @Input('int64') attrInt64: boolean | string;
    @Input('orientation') attrOrientation: string;
    @Input('rangeSlider') attrRangeSlider: boolean;
    @Input('rtl') attrRtl: boolean;
@@ -47,18 +48,27 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    @Input('showTicks') attrShowTicks: boolean;
    @Input('showMinorTicks') attrShowMinorTicks: boolean;
    @Input('showTickLabels') attrShowTickLabels: boolean;
+   @Input('editableLabels') attrEditableLabels: boolean;
    @Input('showButtons') attrShowButtons: boolean;
+   @Input('sliderButtonSize') attrSliderButtonSize: number;
    @Input('showRange') attrShowRange: boolean;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('ticksPosition') attrTicksPosition: string;
    @Input('ticksFrequency') attrTicksFrequency: number;
    @Input('tickSize') attrTickSize: number;
+   @Input('tickMode') attrTickMode: string;
+   @Input('tickNumber') attrTickNumber: number;
+   @Input('minorTickNumber') attrMinorTickNumber: number;
+   @Input('niceInterval') attrNiceInterval: boolean;
    @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number;
+   @Input('tickLabelFormatSettings') attrTickLabelFormatSettings: object;
+   @Input('tickLabelStyleSettings') attrTickLabelStyleSettings: object;
    @Input('tooltip') attrTooltip: boolean;
    @Input('tooltipHideDelay') attrTooltipHideDelay: number;
    @Input('tooltipPosition') attrTooltipPosition: string;
    @Input('tooltipFormatFunction') attrTooltipFormatFunction: (value: jqwidgets.SliderTooltipFormatFunction['value']) => any;
+   @Input('tooltipFormatSettings') attrTooltipFormatSettings: object;
    @Input('value') attrValue: any;
    @Input('values') attrValues: Array<number>;
    @Input('width') attrWidth: string | number;
@@ -66,7 +76,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
+   properties: string[] = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','int64','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','editableLabels','showButtons','sliderButtonSize','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickMode','tickNumber','minorTickNumber','niceInterval','tickLabelFormatFunction','tickLabelFormatSettings','tickLabelStyleSettings','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','tooltipFormatSettings','value','values','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSlider;
@@ -305,6 +315,14 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   int64(arg?: boolean | string): boolean | string {
+      if (arg !== undefined) {
+          this.host.jqxSlider('int64', arg);
+      } else {
+          return this.host.jqxSlider('int64');
+      }
+   }
+
    orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSlider('orientation', arg);
@@ -361,11 +379,27 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   editableLabels(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxSlider('editableLabels', arg);
+      } else {
+          return this.host.jqxSlider('editableLabels');
+      }
+   }
+
    showButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSlider('showButtons', arg);
       } else {
           return this.host.jqxSlider('showButtons');
+      }
+   }
+
+   sliderButtonSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSlider('sliderButtonSize', arg);
+      } else {
+          return this.host.jqxSlider('sliderButtonSize');
       }
    }
 
@@ -417,11 +451,59 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   tickMode(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxSlider('tickMode', arg);
+      } else {
+          return this.host.jqxSlider('tickMode');
+      }
+   }
+
+   tickNumber(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSlider('tickNumber', arg);
+      } else {
+          return this.host.jqxSlider('tickNumber');
+      }
+   }
+
+   minorTickNumber(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSlider('minorTickNumber', arg);
+      } else {
+          return this.host.jqxSlider('minorTickNumber');
+      }
+   }
+
+   niceInterval(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxSlider('niceInterval', arg);
+      } else {
+          return this.host.jqxSlider('niceInterval');
+      }
+   }
+
    tickLabelFormatFunction(arg?: (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number): (value: jqwidgets.SliderTickLabelFormatFunction['value']) => string | number {
       if (arg !== undefined) {
           this.host.jqxSlider('tickLabelFormatFunction', arg);
       } else {
           return this.host.jqxSlider('tickLabelFormatFunction');
+      }
+   }
+
+   tickLabelFormatSettings(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxSlider('tickLabelFormatSettings', arg);
+      } else {
+          return this.host.jqxSlider('tickLabelFormatSettings');
+      }
+   }
+
+   tickLabelStyleSettings(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxSlider('tickLabelStyleSettings', arg);
+      } else {
+          return this.host.jqxSlider('tickLabelStyleSettings');
       }
    }
 
@@ -454,6 +536,14 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
           this.host.jqxSlider('tooltipFormatFunction', arg);
       } else {
           return this.host.jqxSlider('tooltipFormatFunction');
+      }
+   }
+
+   tooltipFormatSettings(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxSlider('tooltipFormatSettings', arg);
+      } else {
+          return this.host.jqxSlider('tooltipFormatSettings');
       }
    }
 

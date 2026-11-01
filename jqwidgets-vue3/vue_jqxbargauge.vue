@@ -67,6 +67,9 @@
                 }
                 return resultToReturn;
             }
+            function destroy() {
+                JQXLite(componentSelector).jqxBarGauge('destroy');  
+            }
             function refresh() {
                 JQXLite(componentSelector).jqxBarGauge('refresh');  
             }
@@ -434,8 +437,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxBarGauge('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, refresh, render, val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, refresh, render, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

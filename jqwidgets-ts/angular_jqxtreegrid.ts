@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -33,12 +33,15 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('disabled') attrDisabled: boolean;
    @Input('editable') attrEditable: boolean;
    @Input('editSettings') attrEditSettings: jqwidgets.TreeGridEditSettings;
+   @Input('beginEdit') attrBeginEdit: (key: any, column?: any) => boolean | void;
+   @Input('endEdit') attrEndEdit: (key: any) => boolean | void;
    @Input('exportSettings') attrExportSettings: jqwidgets.TreeGridExportSettings;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
    @Input('filterable') attrFilterable: boolean;
    @Input('filterHeight') attrFilterHeight: number;
    @Input('filterMode') attrFilterMode: string;
+   @Input('handleKeyboardNavigation') attrHandleKeyboardNavigation: (key: number) => boolean | void;
    @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: boolean;
    @Input('icons') attrIcons: any;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
@@ -79,7 +82,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
+   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','beginEdit','endEdit','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','handleKeyboardNavigation','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeGrid;
@@ -420,6 +423,32 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
+   beginEdit(arg?: (key: any, column?: any) => boolean | void): (key: any, column?: any) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxTreeGrid('beginEdit', arg);
+      } else {
+          return this.host.jqxTreeGrid('beginEdit');
+      }
+   }
+
+   endEdit(arg?: (key: any) => boolean | void): (key: any) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxTreeGrid('endEdit', arg);
+      } else {
+          return this.host.jqxTreeGrid('endEdit');
+      }
+   }
+
    exportSettings(arg?: jqwidgets.TreeGridExportSettings): jqwidgets.TreeGridExportSettings {
 
       if (this.autoCreate && !this.host) {
@@ -508,6 +537,19 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
           this.host.jqxTreeGrid('height', arg);
       } else {
           return this.host.jqxTreeGrid('height');
+      }
+   }
+
+   handleKeyboardNavigation(arg?: (key: number) => boolean | void): (key: number) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxTreeGrid('handleKeyboardNavigation', arg);
+      } else {
+          return this.host.jqxTreeGrid('handleKeyboardNavigation');
       }
    }
 

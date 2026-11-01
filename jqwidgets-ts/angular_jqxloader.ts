@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -53,6 +53,11 @@ export class jqxLoaderComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxLoader('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -239,6 +244,10 @@ export class jqxLoaderComponent implements OnChanges
    // jqxLoaderComponent functions
    close(): void {
       this.host.jqxLoader('close');
+   }
+
+   destroy(): void {
+      this.host.jqxLoader('destroy');
    }
 
    open(left?: number | string, top?: number | string): void {

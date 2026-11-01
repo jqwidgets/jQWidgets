@@ -19,10 +19,18 @@
             },
             dropDownWidth: Number,
             displayMember: String,
+            enableBrowserBoundsDetection: {
+                default: true,
+                type: Boolean
+            },
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             items: Number,
             inlineAutoComplete: {
-                default: "",
+                default: false,
                 type: Boolean
             },
             minLength: Number,
@@ -35,6 +43,10 @@
             popupZIndex: Number,
             query: String,
             renderer: Function,
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            },
             rtl: {
                 default: false,
                 type: Boolean
@@ -115,11 +127,25 @@
                     return JQXLite(componentSelector).jqxInput('displayMember');
                 }
             }
+            function _enableBrowserBoundsDetection (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxInput('enableBrowserBoundsDetection', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxInput('enableBrowserBoundsDetection');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxInput('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxInput('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxInput('hint');
                 }
             }
             function _items (arg) {
@@ -185,6 +211,13 @@
                     return JQXLite(componentSelector).jqxInput('renderer');
                 }
             }
+            function _roundedCorners (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxInput('roundedCorners', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxInput('roundedCorners');
+                }
+            }
             function _rtl (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxInput('rtl', arg)
@@ -245,7 +278,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['aiKey','disabled','dropDownWidth','displayMember','height','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
+                const widgetProps = ['aiKey','disabled','dropDownWidth','displayMember','enableBrowserBoundsDetection','height','hint','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','searchMode','source','theme','valueMember','width','value'];
                 const componentProps = props;
                 let options = {};
 
@@ -281,11 +314,23 @@
                  set displayMember(newValue) {
                      _displayMember(newValue);
                  },
+                 get enableBrowserBoundsDetection() {
+                     return _enableBrowserBoundsDetection();
+                 },
+                 set enableBrowserBoundsDetection(newValue) {
+                     _enableBrowserBoundsDetection(newValue);
+                 },
                  get height() {
                      return _height();
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get items() {
                      return _items();
@@ -340,6 +385,12 @@
                  },
                  set renderer(newValue) {
                      _renderer(newValue);
+                 },
+                 get roundedCorners() {
+                     return _roundedCorners();
+                 },
+                 set roundedCorners(newValue) {
+                     _roundedCorners(newValue);
                  },
                  get rtl() {
                      return _rtl();

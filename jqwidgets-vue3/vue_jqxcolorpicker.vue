@@ -17,10 +17,16 @@
         props: {
             color: String,
             colorMode: String,
+            colorBarString: String,
+            colorMapString: String,
             disabled: {
                 default: false,
                 type: Boolean
             },
+            hexString: String,
+            redString: String,
+            greenString: String,
+            blueString: String,
             height: [Number, String],
             showTransparent: {
                 default: false,
@@ -60,6 +66,13 @@
             function setColor(color) {
                 JQXLite(componentSelector).jqxColorPicker('setColor', color);  
             }
+            function val(value) {
+                if (value !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('val',  value)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('val');
+                }
+            }
             function _color (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxColorPicker('color', arg)
@@ -74,11 +87,53 @@
                     return JQXLite(componentSelector).jqxColorPicker('colorMode');
                 }
             }
+            function _colorBarString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('colorBarString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('colorBarString');
+                }
+            }
+            function _colorMapString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('colorMapString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('colorMapString');
+                }
+            }
             function _disabled (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxColorPicker('disabled', arg)
                 } else {
                     return JQXLite(componentSelector).jqxColorPicker('disabled');
+                }
+            }
+            function _hexString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('hexString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('hexString');
+                }
+            }
+            function _redString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('redString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('redString');
+                }
+            }
+            function _greenString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('greenString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('greenString');
+                }
+            }
+            function _blueString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxColorPicker('blueString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxColorPicker('blueString');
                 }
             }
             function _height (arg) {
@@ -119,7 +174,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['color','colorMode','disabled','height','showTransparent','theme','width'];
+                const widgetProps = ['color','colorMode','colorBarString','colorMapString','disabled','hexString','redString','greenString','blueString','height','showTransparent','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -143,11 +198,47 @@
                  set colorMode(newValue) {
                      _colorMode(newValue);
                  },
+                 get colorBarString() {
+                     return _colorBarString();
+                 },
+                 set colorBarString(newValue) {
+                     _colorBarString(newValue);
+                 },
+                 get colorMapString() {
+                     return _colorMapString();
+                 },
+                 set colorMapString(newValue) {
+                     _colorMapString(newValue);
+                 },
                  get disabled() {
                      return _disabled();
                  },
                  set disabled(newValue) {
                      _disabled(newValue);
+                 },
+                 get hexString() {
+                     return _hexString();
+                 },
+                 set hexString(newValue) {
+                     _hexString(newValue);
+                 },
+                 get redString() {
+                     return _redString();
+                 },
+                 set redString(newValue) {
+                     _redString(newValue);
+                 },
+                 get greenString() {
+                     return _greenString();
+                 },
+                 set greenString(newValue) {
+                     _greenString(newValue);
+                 },
+                 get blueString() {
+                     return _blueString();
+                 },
+                 set blueString(newValue) {
+                     _blueString(newValue);
                  },
                  get height() {
                      return _height();
@@ -215,7 +306,7 @@
 				if (!element || element.length === 0) return;
 				element.off();
 			})
-			return {id, componentSelector, getColor, setColor, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, getColor, setColor, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

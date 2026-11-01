@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -360,6 +360,10 @@ export class jqxTooltipComponent implements OnChanges
 
    open(left?: number, top?: number): void {
       this.host.jqxTooltip('open', left, top);
+   }
+
+   opened(): boolean {
+      return this.host.jqxTooltip('opened');
    }
 
    refresh(): void {

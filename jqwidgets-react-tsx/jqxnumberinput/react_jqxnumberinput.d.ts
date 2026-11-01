@@ -9,13 +9,17 @@ declare class JqxNumberInput extends React.PureComponent<INumberInputProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: INumberInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -40,14 +44,17 @@ export declare const JQXLite: any;
 interface INumberInputOptions {
     allowNull?: boolean;
     autoHidePromptChar?: boolean;
+    autoValidate?: boolean;
     decimal?: number | string;
     disabled?: boolean;
     decimalDigits?: number | string;
     decimalSeparator?: number | string;
     digits?: number | string;
+    enableMouseWheel?: boolean;
     groupSeparator?: string;
     groupSize?: number | string;
     height?: string | number;
+    hint?: boolean;
     inputMode?: 'advanced' | 'simple';
     min?: number | string;
     max?: number | string;
@@ -65,6 +72,7 @@ interface INumberInputOptions {
     textAlign?: 'left' | 'right' | 'center';
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
+    touchMode?: boolean | string;
     value?: number | string;
     width?: string | number;
 }

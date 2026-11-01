@@ -21,6 +21,10 @@
             displayMember: String,
             dropDownWidth: Number,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             items: Number,
             maxLength: Number,
             minLength: Number,
@@ -120,6 +124,13 @@
                     JQXLite(componentSelector).jqxTextArea('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTextArea('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTextArea('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTextArea('hint');
                 }
             }
             function _items (arg) {
@@ -245,7 +256,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','displayMember','dropDownWidth','height','items','maxLength','minLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','scrollBarSize','searchMode','source','theme','valueMember','width'];
+                const widgetProps = ['disabled','displayMember','dropDownWidth','height','hint','items','maxLength','minLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','scrollBarSize','searchMode','source','theme','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -280,6 +291,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get items() {
                      return _items();

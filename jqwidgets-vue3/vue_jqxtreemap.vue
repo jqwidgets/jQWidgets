@@ -33,6 +33,10 @@
                 default: true,
                 type: Boolean
             },
+            singleSelection: {
+                default: true,
+                type: Boolean
+            },
             showLegend: {
                 default: true,
                 type: Boolean
@@ -46,7 +50,7 @@
                 type: Boolean
             }
         },
-        emits: ["bindingComplete"],
+        emits: ["bindingComplete","mouseenterSector","mouseleaveSector"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxTreeMap" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -66,6 +70,9 @@
                     resultToReturn[usedProps[i]] = JQXLite(componentSelector).jqxTreeMap(usedProps[i]);
                 }
                 return resultToReturn;
+            }
+            function clearSelection() {
+                JQXLite(componentSelector).jqxTreeMap('clearSelection');  
             }
             function destroy() {
                 JQXLite(componentSelector).jqxTreeMap('destroy');  
@@ -164,6 +171,13 @@
                     return JQXLite(componentSelector).jqxTreeMap('selectionEnabled');
                 }
             }
+            function _singleSelection (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTreeMap('singleSelection', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTreeMap('singleSelection');
+                }
+            }
             function _showLegend (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTreeMap('showLegend', arg)
@@ -209,7 +223,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','showLegend','source','theme','valueMember','width'];
+                const widgetProps = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','singleSelection','showLegend','source','theme','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -299,6 +313,12 @@
                  set selectionEnabled(newValue) {
                      _selectionEnabled(newValue);
                  },
+                 get singleSelection() {
+                     return _singleSelection();
+                 },
+                 set singleSelection(newValue) {
+                     _singleSelection(newValue);
+                 },
                  get showLegend() {
                      return _showLegend();
                  },
@@ -334,6 +354,8 @@
                 const that = context;
 
                 JQXLite(componentSelector).on('bindingComplete', function (event) { that.emit('bindingComplete', event); });
+                JQXLite(componentSelector).on('mouseenterSector', function (event) { that.emit('mouseenterSector', event); });
+                JQXLite(componentSelector).on('mouseleaveSector', function (event) { that.emit('mouseleaveSector', event); });
             }
 
 			onMounted(() => {
@@ -372,7 +394,7 @@
 				element.off();
 				try { element.jqxTreeMap('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, destroy, render, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, clearSelection, destroy, render, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

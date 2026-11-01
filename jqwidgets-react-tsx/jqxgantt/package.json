@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxgantt",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxgantt.umd.js",
   "module": "react_jqxgantt.esm.js",
   "typings": "react_jqxgantt.d.ts",

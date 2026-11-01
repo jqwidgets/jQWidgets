@@ -9,13 +9,17 @@ declare class JqxKnob extends React.PureComponent<IKnobProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IKnobProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -128,4 +132,5 @@ export interface IKnobProps extends IKnobOptions, React.AriaAttributes {
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onChange?: (e?: any) => void;
+    onSlide?: (e?: any) => void;
 }

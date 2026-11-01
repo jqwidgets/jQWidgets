@@ -9,24 +9,38 @@ declare class JqxGantt extends React.PureComponent<IGanttProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IGanttProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: IGanttProps): void;
     getOptions(option: string): any;
     addFilter(columns: object | object[], filterGroup: object): void;
+    aiConfig(options?: object): object;
+    aiCommand(text: string, callback?: Function): Promise<any>;
+    aiAddTask(text: string, callback?: Function): Promise<any>;
+    aiAsk(text: string, callback?: Function): Promise<any>;
+    aiSummarize(callback?: Function): Promise<any>;
+    aiExplainTask(ref: string, callback?: Function): Promise<any>;
+    aiClassifyTasks(options: object, callback?: Function): Promise<any>;
+    aiGetCustomField(ref: string, field: string): any;
     clearFilters(): void;
     clearSort(): void;
     clearSelection(): void;
     clearState(): void;
     clearTasks(): void;
     clearResources(): void;
+    destroy(): void;
     createConnection(startTaskIndex: number | string, taskEndIndex?: number | string, connectionType?: number, lag?: number): void;
     collapse(id: string | number): void;
     beginUpdate(): void;
@@ -93,6 +107,13 @@ export declare const jqx: any;
 export declare const JQXLite: any;
 interface IGanttOptions {
     adjustToNonworkingTime?: boolean;
+    aiProvider?: string;
+    aiKey?: string;
+    aiModel?: string;
+    aiProxyUrl?: string;
+    aiHeaders?: object;
+    aiSendRequest?: (request: any, owner: any) => any;
+    aiMaxRows?: number;
     autoSchedule?: boolean;
     autoScheduleStrictMode?: boolean;
     autoScrollStep?: number;
@@ -127,6 +148,7 @@ interface IGanttOptions {
     firstDayOfWeek?: number;
     groupByResources?: boolean;
     headerTemplate?: any;
+    height?: number | string;
     hideDateMarkers?: boolean;
     hideTimelineHeader?: boolean;
     hideTimelineHeaderDetails?: boolean;
@@ -204,11 +226,12 @@ interface IGanttOptions {
     treeMin?: string | number;
     treeSize?: string | number;
     timelineHeaderFormatFunction?: any;
-    tooltip?: object;
+    tooltip?: boolean;
     verticalScrollBarVisibility?: string;
     view?: string;
     yearFormat?: string;
     weekFormat?: string;
+    width?: number | string;
     theme?: string;
 }
 export interface IGanttProps extends IGanttOptions, React.AriaAttributes {
@@ -243,4 +266,6 @@ export interface IGanttProps extends IGanttOptions, React.AriaAttributes {
     onScrollTopReached?: (e?: any) => void;
     onScrollLeftReached?: (e?: any) => void;
     onScrollRightReached?: (e?: any) => void;
+    onGanttaiResult?: (e?: any) => void;
+    onGanttaiError?: (e?: any) => void;
 }

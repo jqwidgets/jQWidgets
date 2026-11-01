@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxexpander",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxexpander.umd.js",
   "module": "react_jqxexpander.esm.js",
   "typings": "react_jqxexpander.d.ts",

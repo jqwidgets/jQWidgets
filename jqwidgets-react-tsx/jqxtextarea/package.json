@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtextarea",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtextarea.umd.js",
   "module": "react_jqxtextarea.esm.js",
   "typings": "react_jqxtextarea.d.ts",

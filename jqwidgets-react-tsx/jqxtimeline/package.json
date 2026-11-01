@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtimeline",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtimeline.umd.js",
   "module": "react_jqxtimeline.esm.js",
   "typings": "react_jqxtimeline.d.ts",

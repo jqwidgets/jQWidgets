@@ -9,13 +9,17 @@ declare class JqxRadioButton extends React.PureComponent<IRadioButtonProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IRadioButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -26,6 +30,7 @@ declare class JqxRadioButton extends React.PureComponent<IRadioButtonProps> {
     destroy(): void;
     enable(): void;
     focus(): void;
+    indeterminate(): void;
     renderWidget(): void;
     uncheck(): void;
     val(value?: any): any;
@@ -49,6 +54,7 @@ interface IRadioButtonOptions {
     groupName?: string;
     hasThreeStates?: boolean;
     height?: string | number;
+    locked?: boolean;
     rtl?: boolean;
     theme?: string;
     width?: string | number;
@@ -60,4 +66,5 @@ export interface IRadioButtonProps extends IRadioButtonOptions, React.AriaAttrib
     onChecked?: (e?: any) => void;
     onChange?: (e?: any) => void;
     onUnchecked?: (e?: any) => void;
+    onIndeterminate?: (e?: any) => void;
 }

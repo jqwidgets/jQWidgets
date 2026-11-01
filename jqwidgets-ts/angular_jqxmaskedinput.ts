@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,10 +32,13 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('disabled') attrDisabled: boolean;
+   @Input('hint') attrHint: boolean;
    @Input('mask') attrMask: string;
+   @Input('placeHolder') attrPlaceHolder: string;
    @Input('promptChar') attrPromptChar: number | string;
    @Input('readOnly') attrReadOnly: boolean;
    @Input('rtl') attrRtl: boolean;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('textAlign') attrTextAlign: string;
    @Input('value') attrValue: number | string;
@@ -44,7 +47,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','mask','promptChar','readOnly','rtl','theme','textAlign','value','width'];
+   properties: string[] = ['disabled','height','hint','mask','placeHolder','promptChar','readOnly','rtl','template','theme','textAlign','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxMaskedInput;
@@ -212,11 +215,27 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxMaskedInput('hint', arg);
+      } else {
+          return this.host.jqxMaskedInput('hint');
+      }
+   }
+
    mask(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('mask', arg);
       } else {
           return this.host.jqxMaskedInput('mask');
+      }
+   }
+
+   placeHolder(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxMaskedInput('placeHolder', arg);
+      } else {
+          return this.host.jqxMaskedInput('placeHolder');
       }
    }
 
@@ -241,6 +260,14 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxMaskedInput('rtl', arg);
       } else {
           return this.host.jqxMaskedInput('rtl');
+      }
+   }
+
+   template(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxMaskedInput('template', arg);
+      } else {
+          return this.host.jqxMaskedInput('template');
       }
    }
 

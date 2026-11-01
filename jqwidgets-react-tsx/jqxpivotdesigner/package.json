@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxpivotdesigner",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxpivotdesigner.umd.js",
   "module": "react_jqxpivotdesigner.esm.js",
   "typings": "react_jqxpivotdesigner.d.ts",

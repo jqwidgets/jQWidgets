@@ -9,13 +9,19 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: IDropDownListProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -39,6 +45,7 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps> {
     getItem(index: number): IDropDownListItem;
     getItemByValue(itemValue: string): IDropDownListItem;
     getItems(): IDropDownListItem[];
+    getVisibleItems(): any[];
     getCheckedItems(): IDropDownListItem[];
     getSelectedItem(): IDropDownListItem;
     getSelectedIndex(): number;
@@ -92,8 +99,10 @@ export interface IDropDownListSelectionRenderer {
     value: any;
 }
 interface IDropDownListOptions {
+    arrowSize?: number;
     autoOpen?: boolean;
     autoDropDownHeight?: boolean;
+    autoItemsHeight?: boolean;
     animationType?: 'none' | 'slide' | 'fade';
     checkboxes?: boolean;
     closeDelay?: number;
@@ -103,29 +112,39 @@ interface IDropDownListOptions {
     dropDownVerticalAlignment?: 'bottom' | 'top';
     dropDownHeight?: number | string;
     dropDownWidth?: number | string;
+    dropDownContainer?: string;
+    emptyString?: string;
     enableSelection?: boolean;
     enableBrowserBoundsDetection?: boolean;
     enableHover?: boolean;
+    equalItemsWidth?: boolean;
     filterable?: boolean;
     filterHeight?: number;
     filterDelay?: number;
     filterPlaceHolder?: string;
+    focusable?: boolean;
+    groupMember?: string;
     height?: number | string;
+    hint?: boolean;
     incrementalSearch?: boolean;
     incrementalSearchDelay?: number;
     itemHeight?: number;
+    keyboardSelection?: boolean;
     openDelay?: number;
     placeHolder?: string;
     popupZIndex?: number;
+    ready?: () => void;
     rtl?: boolean;
     renderer?: (index: IDropDownListRenderer['index'], label: IDropDownListRenderer['label'], value: IDropDownListRenderer['value']) => string;
     selectionRenderer?: (element: IDropDownListSelectionRenderer['element'], index: IDropDownListSelectionRenderer['index'], label: IDropDownListSelectionRenderer['label'], value: IDropDownListSelectionRenderer['value']) => string;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
+    searchMember?: string;
     source?: any[];
     selectedIndex?: number;
     scrollBarSize?: number;
     theme?: string;
     template?: string;
+    touchMode?: boolean | string;
     valueMember?: string;
     width?: number | string;
 }
@@ -140,4 +159,7 @@ export interface IDropDownListProps extends IDropDownListOptions, React.AriaAttr
     onOpen?: (e?: any) => void;
     onSelect?: (e?: any) => void;
     onUnselect?: (e?: any) => void;
+    onItemAdd?: (e?: any) => void;
+    onItemRemove?: (e?: any) => void;
+    onItemUpdate?: (e?: any) => void;
 }

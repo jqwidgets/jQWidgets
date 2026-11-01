@@ -30,11 +30,20 @@
                 default: true,
                 type: Boolean
             },
+            enableHover: {
+                default: true,
+                type: Boolean
+            },
+            enablePressed: {
+                default: true,
+                type: Boolean
+            },
             cursor: String,
             textPosition: String,
             textImageRelation: String,
             theme: String,
             template: String,
+            type: String,
             width: [String, Number],
             value: String,
             autoCreate: {
@@ -142,6 +151,20 @@
                     return JQXLite(componentSelector).jqxButton('enableDefault');
                 }
             }
+            function _enableHover (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButton('enableHover', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButton('enableHover');
+                }
+            }
+            function _enablePressed (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButton('enablePressed', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButton('enablePressed');
+                }
+            }
             function _cursor (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxButton('cursor', arg)
@@ -177,6 +200,13 @@
                     return JQXLite(componentSelector).jqxButton('template');
                 }
             }
+            function _type (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButton('type', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButton('type');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxButton('width', arg)
@@ -201,7 +231,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
+                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','enableHover','enablePressed','cursor','textPosition','textImageRelation','theme','template','type','width','value'];
                 const componentProps = props;
                 let options = {};
 
@@ -267,6 +297,18 @@
                  set enableDefault(newValue) {
                      _enableDefault(newValue);
                  },
+                 get enableHover() {
+                     return _enableHover();
+                 },
+                 set enableHover(newValue) {
+                     _enableHover(newValue);
+                 },
+                 get enablePressed() {
+                     return _enablePressed();
+                 },
+                 set enablePressed(newValue) {
+                     _enablePressed(newValue);
+                 },
                  get cursor() {
                      return _cursor();
                  },
@@ -296,6 +338,12 @@
                  },
                  set template(newValue) {
                      _template(newValue);
+                 },
+                 get type() {
+                     return _type();
+                 },
+                 set type(newValue) {
+                     _type(newValue);
                  },
                  get width() {
                      return _width();

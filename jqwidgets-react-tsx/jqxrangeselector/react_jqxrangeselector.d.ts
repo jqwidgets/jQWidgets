@@ -9,13 +9,17 @@ declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps> 
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IRangeSelectorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -26,6 +30,7 @@ declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps> 
     renderWidget(): void;
     refresh(): void;
     setRange(from: any, to: any): void;
+    val(value?: any): any;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -66,6 +71,7 @@ interface IRangeSelectorOptions {
     labelsOnTicks?: boolean;
     markersFormat?: string;
     markersFormatFunction?: (value: IRangeSelectorMarkersFormatFunction['value'], position: IRangeSelectorMarkersFormatFunction['position']) => string;
+    markersPosition?: string;
     majorTicksInterval?: any;
     minorTicksInterval?: any;
     max?: any;
@@ -76,6 +82,8 @@ interface IRangeSelectorOptions {
     resizable?: boolean;
     rtl?: boolean;
     showGroupLabels?: boolean;
+    showLabels?: boolean;
+    showMajorTicks?: boolean;
     showMinorTicks?: boolean;
     snapToTicks?: boolean;
     showMarkers?: boolean;

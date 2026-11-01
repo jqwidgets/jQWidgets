@@ -103,6 +103,12 @@
             function destroy() {
                 JQXLite(componentSelector).jqxListMenu('destroy');  
             }
+            function disable() {
+                JQXLite(componentSelector).jqxListMenu('disable');  
+            }
+            function enable() {
+                JQXLite(componentSelector).jqxListMenu('enable');  
+            }
             function _alwaysShowNavigationArrows (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListMenu('alwaysShowNavigationArrows', arg)
@@ -427,7 +433,7 @@
 				element.off();
 				try { element.jqxListMenu('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, back, changePage, destroy, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, back, changePage, destroy, disable, enable, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

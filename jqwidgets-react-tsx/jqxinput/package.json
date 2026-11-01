@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxinput",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxinput.umd.js",
   "module": "react_jqxinput.esm.js",
   "typings": "react_jqxinput.d.ts",

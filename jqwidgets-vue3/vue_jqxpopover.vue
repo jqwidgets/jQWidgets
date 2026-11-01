@@ -19,6 +19,7 @@
                 default: true,
                 type: Boolean
             },
+            closeButtonString: String,
             animationType: String,
             height: [Number, String],
             initContent: Function,
@@ -105,6 +106,13 @@
                     JQXLite(componentSelector).jqxPopover('autoClose', arg)
                 } else {
                     return JQXLite(componentSelector).jqxPopover('autoClose');
+                }
+            }
+            function _closeButtonString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPopover('closeButtonString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPopover('closeButtonString');
                 }
             }
             function _animationType (arg) {
@@ -208,7 +216,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['arrowOffsetValue','animationOpenDelay','animationCloseDelay','autoClose','animationType','height','initContent','isModal','offset','position','rtl','selector','showArrow','showCloseButton','width','title','theme'];
+                const widgetProps = ['arrowOffsetValue','animationOpenDelay','animationCloseDelay','autoClose','closeButtonString','animationType','height','initContent','isModal','offset','position','rtl','selector','showArrow','showCloseButton','width','title','theme'];
                 const componentProps = props;
                 let options = {};
 
@@ -243,6 +251,12 @@
                  },
                  set autoClose(newValue) {
                      _autoClose(newValue);
+                 },
+                 get closeButtonString() {
+                     return _closeButtonString();
+                 },
+                 set closeButtonString(newValue) {
+                     _closeButtonString(newValue);
                  },
                  get animationType() {
                      return _animationType();

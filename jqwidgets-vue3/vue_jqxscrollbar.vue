@@ -31,6 +31,8 @@
                 type: Boolean
             },
             thumbMinSize: Number,
+            thumbSize: Number,
+            thumbStep: [Number, String],
             theme: String,
             vertical: {
                 default: false,
@@ -43,7 +45,7 @@
                 type: Boolean
             }
         },
-        emits: ["valueChanged"],
+        emits: ["valueChanged","complete"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxScrollBar" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -72,6 +74,13 @@
             }
             function setPosition(index) {
                 JQXLite(componentSelector).jqxScrollBar('setPosition', index);  
+            }
+            function val(value) {
+                if (value !== undefined) {
+                    JQXLite(componentSelector).jqxScrollBar('val',  value)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollBar('val');
+                }
             }
             function _disabled (arg) {
                 if (arg !== undefined) {
@@ -136,6 +145,20 @@
                     return JQXLite(componentSelector).jqxScrollBar('thumbMinSize');
                 }
             }
+            function _thumbSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScrollBar('thumbSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollBar('thumbSize');
+                }
+            }
+            function _thumbStep (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScrollBar('thumbStep', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollBar('thumbStep');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxScrollBar('theme', arg)
@@ -174,7 +197,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','theme','vertical','value','width'];
+                const widgetProps = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','thumbSize','thumbStep','theme','vertical','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -240,6 +263,18 @@
                  set thumbMinSize(newValue) {
                      _thumbMinSize(newValue);
                  },
+                 get thumbSize() {
+                     return _thumbSize();
+                 },
+                 set thumbSize(newValue) {
+                     _thumbSize(newValue);
+                 },
+                 get thumbStep() {
+                     return _thumbStep();
+                 },
+                 set thumbStep(newValue) {
+                     _thumbStep(newValue);
+                 },
                  get theme() {
                      return _theme();
                  },
@@ -269,6 +304,7 @@
                 const that = context;
 
                 JQXLite(componentSelector).on('valueChanged', function (event) { that.emit('valueChanged', event); });
+                JQXLite(componentSelector).on('complete', function (event) { that.emit('complete', event); });
             }
 
 			onMounted(() => {
@@ -307,7 +343,7 @@
 				element.off();
 				try { element.jqxScrollBar('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, destroy, isScrolling, setPosition, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, isScrolling, setPosition, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

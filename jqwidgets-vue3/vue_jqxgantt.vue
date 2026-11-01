@@ -14,6 +14,13 @@
     export default {
         props: {
             adjustToNonworkingTime: Boolean,
+            aiProvider: String,
+            aiKey: String,
+            aiModel: String,
+            aiProxyUrl: String,
+            aiHeaders: Object,
+            aiSendRequest: Function,
+            aiMaxRows: Number,
             autoSchedule: Boolean,
             autoScheduleStrictMode: Boolean,
             autoScrollStep: Number,
@@ -44,10 +51,14 @@
             firstDayOfWeek: Number,
             groupByResources: Boolean,
             headerTemplate: null,
+            height: [Number, String],
             hideDateMarkers: Boolean,
             hideTimelineHeader: Boolean,
             hideTimelineHeaderDetails: Boolean,
-            hideTimelineSecondHeaderDetails: Boolean,
+            hideTimelineSecondHeaderDetails: {
+                default: true,
+                type: Boolean
+            },
             hideResourcePanel: Boolean,
             horizontalScrollBarVisibility: String,
             hourFormat: String,
@@ -96,18 +107,22 @@
             treeMin: [String, Number],
             treeSize: [String, Number],
             timelineHeaderFormatFunction: null,
-            tooltip: Object,
+            tooltip: {
+                default: false,
+                type: Boolean
+            },
             verticalScrollBarVisibility: String,
             view: String,
             yearFormat: String,
             weekFormat: String,
+            width: [Number, String],
             theme: String,
             autoCreate: {
                 default: true,
                 type: Boolean
             }
         },
-        emits: ["beginUpdate","endUpdate","connectionStart","connectionEnd","change","columnResize","closing","close","collapse","dragStart","dragEnd","expand","filter","itemClick","itemInsert","itemRemove","itemUpdate","opening","open","progressChangeStart","progressChangeEnd","resizeStart","resizeEnd","sort","scrollBottomReached","scrollTopReached","scrollLeftReached","scrollRightReached"],
+        emits: ["beginUpdate","endUpdate","connectionStart","connectionEnd","change","columnResize","closing","close","collapse","dragStart","dragEnd","expand","filter","itemClick","itemInsert","itemRemove","itemUpdate","opening","open","progressChangeStart","progressChangeEnd","resizeStart","resizeEnd","sort","scrollBottomReached","scrollTopReached","scrollLeftReached","scrollRightReached","ganttaiResult","ganttaiError"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxGantt" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -131,6 +146,30 @@
             function addFilter(columns, filterGroup) {
                 JQXLite(componentSelector).jqxGantt('addFilter', columns, filterGroup);  
             }
+            function aiConfig(options) {
+                return JQXLite(componentSelector).jqxGantt('aiConfig', options);  
+            }
+            function aiCommand(text, callback) {
+                return JQXLite(componentSelector).jqxGantt('aiCommand', text, callback);  
+            }
+            function aiAddTask(text, callback) {
+                return JQXLite(componentSelector).jqxGantt('aiAddTask', text, callback);  
+            }
+            function aiAsk(text, callback) {
+                return JQXLite(componentSelector).jqxGantt('aiAsk', text, callback);  
+            }
+            function aiSummarize(callback) {
+                return JQXLite(componentSelector).jqxGantt('aiSummarize', callback);  
+            }
+            function aiExplainTask(ref, callback) {
+                return JQXLite(componentSelector).jqxGantt('aiExplainTask', ref, callback);  
+            }
+            function aiClassifyTasks(options, callback) {
+                return JQXLite(componentSelector).jqxGantt('aiClassifyTasks', options, callback);  
+            }
+            function aiGetCustomField(ref, field) {
+                return JQXLite(componentSelector).jqxGantt('aiGetCustomField', ref, field);  
+            }
             function clearFilters() {
                 JQXLite(componentSelector).jqxGantt('clearFilters');  
             }
@@ -148,6 +187,9 @@
             }
             function clearResources() {
                 JQXLite(componentSelector).jqxGantt('clearResources');  
+            }
+            function destroy() {
+                JQXLite(componentSelector).jqxGantt('destroy');  
             }
             function createConnection(startTaskIndex, taskEndIndex, connectionType, lag) {
                 JQXLite(componentSelector).jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);  
@@ -298,6 +340,55 @@
                     JQXLite(componentSelector).jqxGantt('adjustToNonworkingTime', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGantt('adjustToNonworkingTime');
+                }
+            }
+            function _aiProvider (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiProvider', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiProvider');
+                }
+            }
+            function _aiKey (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiKey', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiKey');
+                }
+            }
+            function _aiModel (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiModel', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiModel');
+                }
+            }
+            function _aiProxyUrl (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiProxyUrl', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiProxyUrl');
+                }
+            }
+            function _aiHeaders (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiHeaders', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiHeaders');
+                }
+            }
+            function _aiSendRequest (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiSendRequest', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiSendRequest');
+                }
+            }
+            function _aiMaxRows (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('aiMaxRows', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('aiMaxRows');
                 }
             }
             function _autoSchedule (arg) {
@@ -508,6 +599,13 @@
                     JQXLite(componentSelector).jqxGantt('headerTemplate', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGantt('headerTemplate');
+                }
+            }
+            function _height (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('height', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('height');
                 }
             }
             function _hideDateMarkers (arg) {
@@ -909,6 +1007,13 @@
                     return JQXLite(componentSelector).jqxGantt('weekFormat');
                 }
             }
+            function _width (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGantt('width', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGantt('width');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGantt('theme', arg)
@@ -926,7 +1031,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
+                const widgetProps = ['adjustToNonworkingTime','aiProvider','aiKey','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','height','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','width','theme'];
                 const componentProps = props;
                 let options = {};
 
@@ -943,6 +1048,48 @@
                  },
                  set adjustToNonworkingTime(newValue) {
                      _adjustToNonworkingTime(newValue);
+                 },
+                 get aiProvider() {
+                     return _aiProvider();
+                 },
+                 set aiProvider(newValue) {
+                     _aiProvider(newValue);
+                 },
+                 get aiKey() {
+                     return _aiKey();
+                 },
+                 set aiKey(newValue) {
+                     _aiKey(newValue);
+                 },
+                 get aiModel() {
+                     return _aiModel();
+                 },
+                 set aiModel(newValue) {
+                     _aiModel(newValue);
+                 },
+                 get aiProxyUrl() {
+                     return _aiProxyUrl();
+                 },
+                 set aiProxyUrl(newValue) {
+                     _aiProxyUrl(newValue);
+                 },
+                 get aiHeaders() {
+                     return _aiHeaders();
+                 },
+                 set aiHeaders(newValue) {
+                     _aiHeaders(newValue);
+                 },
+                 get aiSendRequest() {
+                     return _aiSendRequest();
+                 },
+                 set aiSendRequest(newValue) {
+                     _aiSendRequest(newValue);
+                 },
+                 get aiMaxRows() {
+                     return _aiMaxRows();
+                 },
+                 set aiMaxRows(newValue) {
+                     _aiMaxRows(newValue);
                  },
                  get autoSchedule() {
                      return _autoSchedule();
@@ -1123,6 +1270,12 @@
                  },
                  set headerTemplate(newValue) {
                      _headerTemplate(newValue);
+                 },
+                 get height() {
+                     return _height();
+                 },
+                 set height(newValue) {
+                     _height(newValue);
                  },
                  get hideDateMarkers() {
                      return _hideDateMarkers();
@@ -1466,6 +1619,12 @@
                  set weekFormat(newValue) {
                      _weekFormat(newValue);
                  },
+                 get width() {
+                     return _width();
+                 },
+                 set width(newValue) {
+                     _width(newValue);
+                 },
                  get theme() {
                      return _theme();
                  },
@@ -1504,6 +1663,8 @@
                 JQXLite(componentSelector).on('scrollTopReached', function (event) { that.emit('scrollTopReached', event); });
                 JQXLite(componentSelector).on('scrollLeftReached', function (event) { that.emit('scrollLeftReached', event); });
                 JQXLite(componentSelector).on('scrollRightReached', function (event) { that.emit('scrollRightReached', event); });
+                JQXLite(componentSelector).on('ganttaiResult', function (event) { that.emit('ganttaiResult', event); });
+                JQXLite(componentSelector).on('ganttaiError', function (event) { that.emit('ganttaiError', event); });
             }
 
 			onMounted(() => {
@@ -1540,8 +1701,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxGantt('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addFilter, clearFilters, clearSort, clearSelection, clearState, clearTasks, clearResources, createConnection, collapse, beginUpdate, endUpdate, ensureVisible, expand, exportData, getConnections, getConnectionDetails, getState, getItemPath, getTask, getTasks, getTaskIndex, getTaskConnections, getTaskProject, getResource, getResources, getResourceIndex, getResourceTasks, getSelectedIds, getSelectedTasks, getSelectedResources, getWorkingHours, hideTooltip, isWorkingDay, loadState, removeAllConnections, removeConnection, removeTaskConnection, showTooltip, saveState, insertTask, updateTask, removeTask, insertResource, updateResource, removeResource, openWindow, closeWindow, print, setWorkTime, selectTask, selectResource, unselectTask, unselectResource, unsetWorkTime, sort, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addFilter, aiConfig, aiCommand, aiAddTask, aiAsk, aiSummarize, aiExplainTask, aiClassifyTasks, aiGetCustomField, clearFilters, clearSort, clearSelection, clearState, clearTasks, clearResources, destroy, createConnection, collapse, beginUpdate, endUpdate, ensureVisible, expand, exportData, getConnections, getConnectionDetails, getState, getItemPath, getTask, getTasks, getTaskIndex, getTaskConnections, getTaskProject, getResource, getResources, getResourceIndex, getResourceTasks, getSelectedIds, getSelectedTasks, getSelectedResources, getWorkingHours, hideTooltip, isWorkingDay, loadState, removeAllConnections, removeConnection, removeTaskConnection, showTooltip, saveState, insertTask, updateTask, removeTask, insertResource, updateResource, removeResource, openWindow, closeWindow, print, setWorkTime, selectTask, selectResource, unselectTask, unselectResource, unsetWorkTime, sort, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

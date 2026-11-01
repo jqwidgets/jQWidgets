@@ -30,12 +30,21 @@
             padding: Object,
             backgroundColor: String,
             borderColor: String,
+            width: [String, Number],
+            height: [String, Number],
             theme: String,
             value: Object,
             template: Array,
-            enableSmartPaste: Boolean,
+            enableSmartPaste: {
+                default: false,
+                type: Boolean
+            },
             aiKey: String,
             aiUrl: String,
+            aiModel: String,
+            pasteProgress: String,
+            pasteSuccess: String,
+            pasteError: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -111,6 +120,20 @@
                     return JQXLite(componentSelector).jqxForm('borderColor');
                 }
             }
+            function _width (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('width', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('width');
+                }
+            }
+            function _height (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('height', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('height');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxForm('theme', arg)
@@ -153,6 +176,34 @@
                     return JQXLite(componentSelector).jqxForm('aiUrl');
                 }
             }
+            function _aiModel (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('aiModel', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('aiModel');
+                }
+            }
+            function _pasteProgress (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('pasteProgress', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('pasteProgress');
+                }
+            }
+            function _pasteSuccess (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('pasteSuccess', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('pasteSuccess');
+                }
+            }
+            function _pasteError (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxForm('pasteError', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxForm('pasteError');
+                }
+            }
             function __createComponent__ (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
@@ -163,7 +214,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['padding','backgroundColor','borderColor','theme','value','template','enableSmartPaste','aiKey','aiUrl'];
+                const widgetProps = ['padding','backgroundColor','borderColor','width','height','theme','value','template','enableSmartPaste','aiKey','aiUrl','aiModel','pasteProgress','pasteSuccess','pasteError'];
                 const componentProps = props;
                 let options = {};
 
@@ -192,6 +243,18 @@
                  },
                  set borderColor(newValue) {
                      _borderColor(newValue);
+                 },
+                 get width() {
+                     return _width();
+                 },
+                 set width(newValue) {
+                     _width(newValue);
+                 },
+                 get height() {
+                     return _height();
+                 },
+                 set height(newValue) {
+                     _height(newValue);
                  },
                  get theme() {
                      return _theme();
@@ -228,6 +291,30 @@
                  },
                  set aiUrl(newValue) {
                      _aiUrl(newValue);
+                 },
+                 get aiModel() {
+                     return _aiModel();
+                 },
+                 set aiModel(newValue) {
+                     _aiModel(newValue);
+                 },
+                 get pasteProgress() {
+                     return _pasteProgress();
+                 },
+                 set pasteProgress(newValue) {
+                     _pasteProgress(newValue);
+                 },
+                 get pasteSuccess() {
+                     return _pasteSuccess();
+                 },
+                 set pasteSuccess(newValue) {
+                     _pasteSuccess(newValue);
+                 },
+                 get pasteError() {
+                     return _pasteError();
+                 },
+                 set pasteError(newValue) {
+                     _pasteError(newValue);
                  },
             }
             function __wireEvents__() {

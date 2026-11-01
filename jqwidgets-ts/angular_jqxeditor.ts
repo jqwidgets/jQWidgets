@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -44,6 +44,8 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
    @Input('createCommand') attrCreateCommand: (name: jqwidgets.EditorCreateCommand['name']) => any;
    @Input('disabled') attrDisabled: boolean;
    @Input('editable') attrEditable: boolean;
+   @Input('fontFamily') attrFontFamily: string;
+   @Input('keyPressed') attrKeyPressed: (event: any) => void;
    @Input('lineBreak') attrLineBreak: string;
    @Input('localization') attrLocalization: jqwidgets.EditorLocalization;
    @Input('pasteMode') attrPasteMode: string;
@@ -57,7 +59,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['createCommand','disabled','editable','height','lineBreak','localization','pasteMode','rtl','stylesheets','theme','toolbarPosition','tools','width'];
+   properties: string[] = ['createCommand','disabled','editable','fontFamily','height','keyPressed','lineBreak','localization','pasteMode','rtl','stylesheets','theme','toolbarPosition','tools','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxEditor;
@@ -235,11 +237,27 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   fontFamily(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxEditor('fontFamily', arg);
+      } else {
+          return this.host.jqxEditor('fontFamily');
+      }
+   }
+
    height(arg?: string  | number): string  | number {
       if (arg !== undefined) {
           this.host.jqxEditor('height', arg);
       } else {
           return this.host.jqxEditor('height');
+      }
+   }
+
+   keyPressed(arg?: (event: any) => void): (event: any) => void {
+      if (arg !== undefined) {
+          this.host.jqxEditor('keyPressed', arg);
+      } else {
+          return this.host.jqxEditor('keyPressed');
       }
    }
 

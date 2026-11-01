@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxrating",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxrating.umd.js",
   "module": "react_jqxrating.esm.js",
   "typings": "react_jqxrating.d.ts",

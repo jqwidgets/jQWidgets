@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,6 +36,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    @Input('decimalNotation') attrDecimalNotation: string;
    @Input('dropDown') attrDropDown: boolean;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('hint') attrHint: boolean;
    @Input('min') attrMin: number | string;
    @Input('max') attrMax: number | string;
    @Input('placeHolder') attrPlaceHolder: string;
@@ -54,7 +55,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','decimalNotation','dropDown','dropDownWidth','height','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
+   properties: string[] = ['disabled','decimalNotation','dropDown','dropDownWidth','height','hint','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxFormattedInput;
@@ -274,6 +275,14 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
           this.host.jqxFormattedInput('height', arg);
       } else {
           return this.host.jqxFormattedInput('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxFormattedInput('hint', arg);
+      } else {
+          return this.host.jqxFormattedInput('hint');
       }
    }
 

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxvalidator",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxvalidator.umd.js",
   "module": "react_jqxvalidator.esm.js",
   "typings": "react_jqxvalidator.d.ts",

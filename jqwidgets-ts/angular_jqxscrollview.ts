@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,10 +24,13 @@ export class jqxScrollViewComponent implements OnChanges
    @Input('animationDuration') attrAnimationDuration: number;
    @Input('bounceEnabled') attrBounceEnabled: boolean;
    @Input('buttonsOffset') attrButtonsOffset: Array<number>;
+   @Input('carouselString') attrCarouselString: string;
    @Input('currentPage') attrCurrentPage: number;
    @Input('disabled') attrDisabled: boolean;
+   @Input('dragEnabled') attrDragEnabled: boolean;
    @Input('moveThreshold') attrMoveThreshold: number;
    @Input('showButtons') attrShowButtons: boolean;
+   @Input('slideString') attrSlideString: string;
    @Input('slideShow') attrSlideShow: boolean;
    @Input('slideDuration') attrSlideDuration: number;
    @Input('theme') attrTheme: string;
@@ -36,7 +39,7 @@ export class jqxScrollViewComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','bounceEnabled','buttonsOffset','currentPage','disabled','height','moveThreshold','showButtons','slideShow','slideDuration','theme','width'];
+   properties: string[] = ['animationDuration','bounceEnabled','buttonsOffset','carouselString','currentPage','disabled','dragEnabled','height','moveThreshold','showButtons','slideString','slideShow','slideDuration','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScrollView;
@@ -56,6 +59,11 @@ export class jqxScrollViewComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxScrollView('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -182,6 +190,14 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
+   carouselString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScrollView('carouselString', arg);
+      } else {
+          return this.host.jqxScrollView('carouselString');
+      }
+   }
+
    currentPage(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollView('currentPage', arg);
@@ -195,6 +211,14 @@ export class jqxScrollViewComponent implements OnChanges
           this.host.jqxScrollView('disabled', arg);
       } else {
           return this.host.jqxScrollView('disabled');
+      }
+   }
+
+   dragEnabled(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScrollView('dragEnabled', arg);
+      } else {
+          return this.host.jqxScrollView('dragEnabled');
       }
    }
 
@@ -219,6 +243,14 @@ export class jqxScrollViewComponent implements OnChanges
           this.host.jqxScrollView('showButtons', arg);
       } else {
           return this.host.jqxScrollView('showButtons');
+      }
+   }
+
+   slideString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScrollView('slideString', arg);
+      } else {
+          return this.host.jqxScrollView('slideString');
       }
    }
 
@@ -262,6 +294,10 @@ export class jqxScrollViewComponent implements OnChanges
 
    changePage(index: number): void {
       this.host.jqxScrollView('changePage', index);
+   }
+
+   destroy(): void {
+      this.host.jqxScrollView('destroy');
    }
 
    forward(): void {

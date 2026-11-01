@@ -9,12 +9,16 @@ declare class JqxTimePicker extends React.PureComponent<ITimePickerProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITimePickerProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -33,6 +37,7 @@ export default JqxTimePicker;
 export declare const jqx: any;
 export declare const JQXLite: any;
 interface ITimePickerOptions {
+    animation?: boolean;
     autoSwitchToMinutes?: boolean;
     disabled?: boolean;
     footer?: boolean;

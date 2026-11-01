@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,6 +20,13 @@ declare let JQXLite: any;
 
 export class jqxSchedulerComponent implements OnChanges
 {
+   @Input('aiProvider') attrAiProvider: string;
+   @Input('aiKey') attrAiKey: string;
+   @Input('aiModel') attrAiModel: string;
+   @Input('aiProxyUrl') attrAiProxyUrl: string;
+   @Input('aiHeaders') attrAiHeaders: object;
+   @Input('aiSendRequest') attrAiSendRequest: (request: any, owner: any) => any;
+   @Input('aiMaxRows') attrAiMaxRows: number;
    @Input('allowOverlap') attrAllowOverlap: boolean;
    @Input('blockedTimes') attrBlockedTimes: any[];
    @Input('maxDuration') attrMaxDuration: number;
@@ -50,6 +57,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('legendPosition') attrLegendPosition: string;
    @Input('legendHeight') attrLegendHeight: number;
    @Input('localization') attrLocalization: any;
+   @Input('maxAppointmentsPerDay') attrMaxAppointmentsPerDay: number;
    @Input('min') attrMin: any;
    @Input('max') attrMax: any;
    @Input('ready') attrReady: () => void;
@@ -62,6 +70,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('showToolbar') attrShowToolbar: boolean;
    @Input('showLegend') attrShowLegend: boolean;
    @Input('showCurrent') attrShowCurrent: boolean;
+   @Input('showAllDayRow') attrShowAllDayRow: boolean;
    @Input('showCurrentAppointment') attrShowCurrentAppointment: boolean;
    @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('source') attrSource: any;
@@ -71,6 +80,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('touchAppointmentsMinHeight') attrTouchAppointmentsMinHeight: number;
    @Input('touchScrollBarSize') attrTouchScrollBarSize: number;
    @Input('timeZone') attrTimeZone: string;
+   @Input('timeRulerWidth') attrTimeRulerWidth: number;
    @Input('touchDayNameFormat') attrTouchDayNameFormat: string;
    @Input('toolBarRangeFormat') attrToolBarRangeFormat: string;
    @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr: string;
@@ -84,7 +94,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowOverlap','blockedTimes','maxDuration','minDuration','appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','undoRedo','undoRedoLimit','views','view','width'];
+   properties: string[] = ['aiProvider','aiKey','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','allowOverlap','blockedTimes','maxDuration','minDuration','appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','maxAppointmentsPerDay','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showAllDayRow','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','timeRulerWidth','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','undoRedo','undoRedoLimit','views','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScheduler;
@@ -211,6 +221,62 @@ export class jqxSchedulerComponent implements OnChanges
    }
 
    // jqxSchedulerComponent properties
+   aiProvider(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiProvider', arg);
+      } else {
+          return this.host.jqxScheduler('aiProvider');
+      }
+   }
+
+   aiKey(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiKey', arg);
+      } else {
+          return this.host.jqxScheduler('aiKey');
+      }
+   }
+
+   aiModel(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiModel', arg);
+      } else {
+          return this.host.jqxScheduler('aiModel');
+      }
+   }
+
+   aiProxyUrl(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiProxyUrl', arg);
+      } else {
+          return this.host.jqxScheduler('aiProxyUrl');
+      }
+   }
+
+   aiHeaders(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiHeaders', arg);
+      } else {
+          return this.host.jqxScheduler('aiHeaders');
+      }
+   }
+
+   aiSendRequest(arg?: (request: any, owner: any) => any): (request: any, owner: any) => any {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiSendRequest', arg);
+      } else {
+          return this.host.jqxScheduler('aiSendRequest');
+      }
+   }
+
+   aiMaxRows(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('aiMaxRows', arg);
+      } else {
+          return this.host.jqxScheduler('aiMaxRows');
+      }
+   }
+
    allowOverlap(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('allowOverlap', arg);
@@ -459,6 +525,14 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
+   maxAppointmentsPerDay(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('maxAppointmentsPerDay', arg);
+      } else {
+          return this.host.jqxScheduler('maxAppointmentsPerDay');
+      }
+   }
+
    min(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('min', arg);
@@ -555,6 +629,14 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
+   showAllDayRow(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('showAllDayRow', arg);
+      } else {
+          return this.host.jqxScheduler('showAllDayRow');
+      }
+   }
+
    showCurrentAppointment(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('showCurrentAppointment', arg);
@@ -624,6 +706,14 @@ export class jqxSchedulerComponent implements OnChanges
           this.host.jqxScheduler('timeZone', arg);
       } else {
           return this.host.jqxScheduler('timeZone');
+      }
+   }
+
+   timeRulerWidth(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('timeRulerWidth', arg);
+      } else {
+          return this.host.jqxScheduler('timeRulerWidth');
       }
    }
 
@@ -705,15 +795,15 @@ export class jqxSchedulerComponent implements OnChanges
       return this.host.jqxScheduler('aiConfig', config);
    }
 
-   aiCommand(text: string, callback?: Function): any {
+   aiCommand(text: string, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiCommand', text, callback);
    }
 
-   aiScheduleAppointment(text: string, callback?: Function): any {
+   aiScheduleAppointment(text: string, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiScheduleAppointment', text, callback);
    }
 
-   aiFindSlot(text: string, callback?: Function): any {
+   aiFindSlot(text: string, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiFindSlot', text, callback);
    }
 
@@ -721,7 +811,7 @@ export class jqxSchedulerComponent implements OnChanges
       return this.host.jqxScheduler('aiBookSlot', slot, details);
    }
 
-   aiResolveConflicts(options?: any, callback?: Function): any {
+   aiResolveConflicts(options?: any, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiResolveConflicts', options, callback);
    }
 
@@ -729,19 +819,19 @@ export class jqxSchedulerComponent implements OnChanges
       return this.host.jqxScheduler('aiApplyResolution', proposals);
    }
 
-   aiAsk(text: string, callback?: Function): any {
+   aiAsk(text: string, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiAsk', text, callback);
    }
 
-   aiSummarize(callback?: Function): any {
+   aiSummarize(callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiSummarize', callback);
    }
 
-   aiExplainAppointment(key: string, callback?: Function): any {
+   aiExplainAppointment(key: string, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiExplainAppointment', key, callback);
    }
 
-   aiClassifyAppointments(options: any, callback?: Function): any {
+   aiClassifyAppointments(options: any, callback?: Function): Promise<any> {
       return this.host.jqxScheduler('aiClassifyAppointments', options, callback);
    }
 
@@ -793,6 +883,10 @@ export class jqxSchedulerComponent implements OnChanges
       return this.host.jqxScheduler('findAvailableSlots', options);
    }
 
+   filterAppointments(text: string): void {
+      this.host.jqxScheduler('filterAppointments', text);
+   }
+
    importData(data: string, options?: any): any {
       return this.host.jqxScheduler('importData', data, options);
    }
@@ -823,6 +917,18 @@ export class jqxSchedulerComponent implements OnChanges
 
    hideAppointmentsByResource(resourcesId: string): void {
       this.host.jqxScheduler('hideAppointmentsByResource', resourcesId);
+   }
+
+   navigateTo(date: any): void {
+      this.host.jqxScheduler('navigateTo', date);
+   }
+
+   navigateForward(): void {
+      this.host.jqxScheduler('navigateForward');
+   }
+
+   navigateBackward(): void {
+      this.host.jqxScheduler('navigateBackward');
    }
 
    openMenu(left: number, top: number): void {
@@ -865,6 +971,10 @@ export class jqxSchedulerComponent implements OnChanges
       this.host.jqxScheduler('scrollTop', top);
    }
 
+   scrollOffset(top?: number, left?: number): any {
+      return this.host.jqxScheduler('scrollOffset', top, left);
+   }
+
    scrollToTime(time: any): boolean {
       return this.host.jqxScheduler('scrollToTime', time);
    }
@@ -892,6 +1002,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    // jqxSchedulerComponent events
    @Output() onScheduleraiResult = new EventEmitter();
+   @Output() onScheduleraiError = new EventEmitter();
    @Output() onAppointmentChange = new EventEmitter();
    @Output() onAppointmentClick = new EventEmitter();
    @Output() onAppointmentDoubleClick = new EventEmitter();
@@ -918,6 +1029,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    __wireEvents__(): void {
       this.host.on('scheduleraiResult', (eventData: any) => { this.onScheduleraiResult.emit(eventData); });
+      this.host.on('scheduleraiError', (eventData: any) => { this.onScheduleraiError.emit(eventData); });
       this.host.on('appointmentChange', (eventData: any) => { this.onAppointmentChange.emit(eventData); });
       this.host.on('appointmentClick', (eventData: any) => { this.onAppointmentClick.emit(eventData); });
       this.host.on('appointmentDoubleClick', (eventData: any) => { this.onAppointmentDoubleClick.emit(eventData); });

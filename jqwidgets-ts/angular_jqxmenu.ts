@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -43,12 +43,13 @@ export class jqxMenuComponent implements OnChanges
    @Input('showTopLevelArrows') attrShowTopLevelArrows: boolean;
    @Input('source') attrSource: any;
    @Input('theme') attrTheme: string;
+   @Input('title') attrTitle: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
+   properties: string[] = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','title','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxMenu;
@@ -359,6 +360,14 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
+   title(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxMenu('title', arg);
+      } else {
+          return this.host.jqxMenu('title');
+      }
+   }
+
    width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxMenu('width', arg);
@@ -381,12 +390,24 @@ export class jqxMenuComponent implements OnChanges
       this.host.jqxMenu('disable', itemID, value);
    }
 
+   disableItem(itemID: number | string): void {
+      this.host.jqxMenu('disableItem', itemID);
+   }
+
    destroy(): void {
       this.host.jqxMenu('destroy');
    }
 
+   enableItem(itemID: number | string): void {
+      this.host.jqxMenu('enableItem', itemID);
+   }
+
    focus(): void {
       this.host.jqxMenu('focus');
+   }
+
+   hideItem(itemID: number | string): void {
+      this.host.jqxMenu('hideItem', itemID);
    }
 
    minimize(): void {
@@ -407,6 +428,10 @@ export class jqxMenuComponent implements OnChanges
 
    setItemOpenDirection(item: number | string, horizontaldirection: string, verticaldirection: string): void {
       this.host.jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);
+   }
+
+   showItem(itemID: number | string): void {
+      this.host.jqxMenu('showItem', itemID);
    }
 
 

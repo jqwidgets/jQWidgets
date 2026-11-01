@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtooltip",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtooltip.umd.js",
   "module": "react_jqxtooltip.esm.js",
   "typings": "react_jqxtooltip.d.ts",

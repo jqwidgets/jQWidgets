@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxnotification",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxnotification.umd.js",
   "module": "react_jqxnotification.esm.js",
   "typings": "react_jqxnotification.d.ts",

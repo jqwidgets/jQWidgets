@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -35,8 +35,10 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges, AfterViewInit, AfterViewChecked 
 {
+   @Input('arrowSize') attrArrowSize: number;
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('autoDropDownHeight') attrAutoDropDownHeight: boolean;
+   @Input('autoItemsHeight') attrAutoItemsHeight: boolean;
    @Input('animationType') attrAnimationType: string;
    @Input('checkboxes') attrCheckboxes: boolean;
    @Input('closeDelay') attrCloseDelay: number;
@@ -46,35 +48,45 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownHeight') attrDropDownHeight: number | string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('dropDownContainer') attrDropDownContainer: string;
+   @Input('emptyString') attrEmptyString: string;
    @Input('enableSelection') attrEnableSelection: boolean;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('enableHover') attrEnableHover: boolean;
+   @Input('equalItemsWidth') attrEqualItemsWidth: boolean;
    @Input('filterable') attrFilterable: boolean;
    @Input('filterHeight') attrFilterHeight: number;
    @Input('filterDelay') attrFilterDelay: number;
    @Input('filterPlaceHolder') attrFilterPlaceHolder: string;
+   @Input('focusable') attrFocusable: boolean;
+   @Input('groupMember') attrGroupMember: string;
+   @Input('hint') attrHint: boolean;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('incrementalSearchDelay') attrIncrementalSearchDelay: number;
    @Input('itemHeight') attrItemHeight: number;
+   @Input('keyboardSelection') attrKeyboardSelection: boolean;
    @Input('openDelay') attrOpenDelay: number;
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('ready') attrReady: () => void;
    @Input('rtl') attrRtl: boolean;
    @Input('renderer') attrRenderer: (index: jqwidgets.DropDownListRenderer['index'], label: jqwidgets.DropDownListRenderer['label'], value: jqwidgets.DropDownListRenderer['value']) => string;
    @Input('selectionRenderer') attrSelectionRenderer: (element: jqwidgets.DropDownListSelectionRenderer['element'], index: jqwidgets.DropDownListSelectionRenderer['index'], label: jqwidgets.DropDownListSelectionRenderer['label'], value: jqwidgets.DropDownListSelectionRenderer['value']) => string;
    @Input('searchMode') attrSearchMode: string;
+   @Input('searchMember') attrSearchMember: string;
    @Input('source') attrSource: Array<any>;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
+   @Input('touchMode') attrTouchMode: boolean | string;
    @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','scrollBarSize','theme','template','valueMember','width'];
+   properties: string[] = ['arrowSize','autoOpen','autoDropDownHeight','autoItemsHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','dropDownContainer','emptyString','enableSelection','enableBrowserBoundsDetection','enableHover','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','focusable','groupMember','height','hint','incrementalSearch','incrementalSearchDelay','itemHeight','keyboardSelection','openDelay','placeHolder','popupZIndex','ready','rtl','renderer','selectionRenderer','searchMode','searchMember','source','selectedIndex','scrollBarSize','theme','template','touchMode','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownList;
@@ -261,6 +273,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxDropDownListComponent properties
+   arrowSize(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('arrowSize', arg);
+      } else {
+          return this.host.jqxDropDownList('arrowSize');
+      }
+   }
+
    autoOpen(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -284,6 +309,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('autoDropDownHeight', arg);
       } else {
           return this.host.jqxDropDownList('autoDropDownHeight');
+      }
+   }
+
+   autoItemsHeight(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('autoItemsHeight', arg);
+      } else {
+          return this.host.jqxDropDownList('autoItemsHeight');
       }
    }
 
@@ -404,6 +442,32 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   dropDownContainer(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('dropDownContainer', arg);
+      } else {
+          return this.host.jqxDropDownList('dropDownContainer');
+      }
+   }
+
+   emptyString(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('emptyString', arg);
+      } else {
+          return this.host.jqxDropDownList('emptyString');
+      }
+   }
+
    enableSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -440,6 +504,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('enableHover', arg);
       } else {
           return this.host.jqxDropDownList('enableHover');
+      }
+   }
+
+   equalItemsWidth(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('equalItemsWidth', arg);
+      } else {
+          return this.host.jqxDropDownList('equalItemsWidth');
       }
    }
 
@@ -495,6 +572,32 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   focusable(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('focusable', arg);
+      } else {
+          return this.host.jqxDropDownList('focusable');
+      }
+   }
+
+   groupMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('groupMember', arg);
+      } else {
+          return this.host.jqxDropDownList('groupMember');
+      }
+   }
+
    height(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
@@ -505,6 +608,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('height', arg);
       } else {
           return this.host.jqxDropDownList('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('hint', arg);
+      } else {
+          return this.host.jqxDropDownList('hint');
       }
    }
 
@@ -547,6 +663,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   keyboardSelection(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('keyboardSelection', arg);
+      } else {
+          return this.host.jqxDropDownList('keyboardSelection');
+      }
+   }
+
    openDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
@@ -583,6 +712,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('popupZIndex', arg);
       } else {
           return this.host.jqxDropDownList('popupZIndex');
+      }
+   }
+
+   ready(arg?: () => void): () => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('ready', arg);
+      } else {
+          return this.host.jqxDropDownList('ready');
       }
    }
 
@@ -635,6 +777,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('searchMode', arg);
       } else {
           return this.host.jqxDropDownList('searchMode');
+      }
+   }
+
+   searchMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('searchMember', arg);
+      } else {
+          return this.host.jqxDropDownList('searchMember');
       }
    }
 
@@ -700,6 +855,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('template', arg);
       } else {
           return this.host.jqxDropDownList('template');
+      }
+   }
+
+   touchMode(arg?: boolean | string): boolean | string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('touchMode', arg);
+      } else {
+          return this.host.jqxDropDownList('touchMode');
       }
    }
 
@@ -891,6 +1059,15 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
 
       return this.host.jqxDropDownList('getItems');
+   }
+
+   getVisibleItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxDropDownList('getVisibleItems');
    }
 
    getCheckedItems(): Array<jqwidgets.DropDownListItem> {
@@ -1099,6 +1276,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Output() onOpen = new EventEmitter();
    @Output() onSelect = new EventEmitter();
    @Output() onUnselect = new EventEmitter();
+   @Output() onItemAdd = new EventEmitter();
+   @Output() onItemRemove = new EventEmitter();
+   @Output() onItemUpdate = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
@@ -1108,6 +1288,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
       this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });
+      this.host.on('itemAdd', (eventData: any) => { this.onItemAdd.emit(eventData); });
+      this.host.on('itemRemove', (eventData: any) => { this.onItemRemove.emit(eventData); });
+      this.host.on('itemUpdate', (eventData: any) => { this.onItemUpdate.emit(eventData); });
    }
 
 } //jqxDropDownListComponent

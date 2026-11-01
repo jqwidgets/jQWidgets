@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxdockpanel",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxdockpanel.umd.js",
   "module": "react_jqxdockpanel.esm.js",
   "typings": "react_jqxdockpanel.d.ts",

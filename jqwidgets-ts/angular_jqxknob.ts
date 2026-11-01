@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -406,9 +406,11 @@ export class jqxKnobComponent implements OnChanges
 
    // jqxKnobComponent events
    @Output() onChange = new EventEmitter();
+   @Output() onSlide = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
+      this.host.on('slide', (eventData: any) => { this.onSlide.emit(eventData); });
    }
 
 } //jqxKnobComponent

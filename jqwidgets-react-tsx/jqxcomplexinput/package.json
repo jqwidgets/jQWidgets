@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxcomplexinput",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxcomplexinput.umd.js",
   "module": "react_jqxcomplexinput.esm.js",
   "typings": "react_jqxcomplexinput.d.ts",

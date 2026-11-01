@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxlistbox",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxlistbox.umd.js",
   "module": "react_jqxlistbox.esm.js",
   "typings": "react_jqxlistbox.d.ts",

@@ -9,12 +9,17 @@ declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IPivotGridProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -22,6 +27,7 @@ declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps> {
     getOptions(option: string): any;
     getInstance(): any;
     refresh(): void;
+    destroy(): void;
     getPivotRows(): IPivotGridRows;
     getPivotColumns(): IPivotGridColumns;
     getPivotCells(): object;

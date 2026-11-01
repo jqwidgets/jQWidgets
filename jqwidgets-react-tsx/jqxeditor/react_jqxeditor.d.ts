@@ -9,13 +9,17 @@ declare class JqxEditor extends React.PureComponent<IEditorProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IEditorProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -64,7 +68,9 @@ interface IEditorOptions {
     createCommand?: (name: IEditorCreateCommand['name']) => any;
     disabled?: boolean;
     editable?: boolean;
+    fontFamily?: string;
     height?: string | number;
+    keyPressed?: (event: any) => void;
     lineBreak?: 'br' | 'p' | 'div' | 'default';
     localization?: IEditorLocalization;
     pasteMode?: 'html' | 'text';

@@ -9,13 +9,17 @@ declare class JqxTree extends React.PureComponent<ITreeProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITreeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -25,6 +29,7 @@ declare class JqxTree extends React.PureComponent<ITreeProps> {
     addAfter(item: any, id: string): void;
     addTo(item: any, id: string | null): void;
     clear(): void;
+    clearSelection(): void;
     checkAll(): void;
     checkItem(item: any, checked: boolean): void;
     collapseAll(): void;
@@ -47,12 +52,16 @@ declare class JqxTree extends React.PureComponent<ITreeProps> {
     getPrevItem(item: any): ITreeItem;
     getNextItem(item: any): ITreeItem;
     hitTest(left: number, top: number): any;
+    isExpanded(element: any): boolean;
+    isSelected(element: any): boolean;
+    lockItem(element: any): void;
     removeItem(item: any): void;
     renderWidget(): void;
     refresh(): void;
     selectItem(item: any): void;
     uncheckAll(): void;
     uncheckItem(item: any): void;
+    unlockItem(element: any): void;
     updateItem(item: any, newItem: any): void;
     val(value?: any): any;
     private _manageProps;
@@ -91,20 +100,25 @@ interface ITreeOptions {
     allowDrag?: boolean;
     allowDrop?: boolean;
     checkboxes?: boolean;
+    checkSize?: number;
     dragStart?: (item: ITreeDragStart['item']) => boolean;
     dragEnd?: (dragItem: ITreeDragEnd['dragItem'], dropItem?: ITreeDragEnd['dropItem'], args?: ITreeDragEnd['args'], dropPosition?: ITreeDragEnd['dropPosition'], tree?: ITreeDragEnd['tree']) => boolean;
     disabled?: boolean;
+    displayMember?: string;
     easing?: string;
     enableHover?: boolean;
     height?: number | string;
     hasThreeStates?: boolean;
     incrementalSearch?: boolean;
+    itemsMember?: string;
     keyboardNavigation?: boolean;
     rtl?: boolean;
     source?: any;
+    submitCheckedItems?: boolean;
     toggleIndicatorSize?: number;
     toggleMode?: 'click' | 'dblclick';
     theme?: string;
+    valueMember?: string;
     width?: string | number;
 }
 export interface ITreeProps extends ITreeOptions, React.AriaAttributes {
@@ -117,6 +131,7 @@ export interface ITreeProps extends ITreeOptions, React.AriaAttributes {
     onDragStart?: (e?: any) => void;
     onDragEnd?: (e?: any) => void;
     onExpand?: (e?: any) => void;
+    onInitialized?: (e?: any) => void;
     onItemClick?: (e?: any) => void;
     onRemoved?: (e?: any) => void;
     onSelect?: (e?: any) => void;

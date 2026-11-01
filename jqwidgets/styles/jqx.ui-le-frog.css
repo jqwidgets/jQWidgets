@@ -318,7 +318,7 @@
 .jqx-svg-picker-ui-le-frog {
 	background-image: linear-gradient(rgb(63, 117, 6) 5%, rgb(83, 155, 27) 35%, rgb(58, 129, 4), rgb(40, 92, 0) 97%);
 }
-.jqx-widget-content-ui-le-frog {
+.jqx-time-picker-ui-le-frog .jqx-widget-content-ui-le-frog {
 	background: none;
 }
 .jqx-svg-picker-ui-le-frog:focus {

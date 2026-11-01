@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxnavbar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxnavbar.umd.js",
   "module": "react_jqxnavbar.esm.js",
   "typings": "react_jqxnavbar.d.ts",

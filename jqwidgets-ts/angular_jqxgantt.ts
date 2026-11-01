@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,6 +22,13 @@ declare let JQXLite: any;
 export class jqxGanttComponent implements OnChanges
 {
    @Input('adjustToNonworkingTime') attrAdjustToNonworkingTime: boolean;
+   @Input('aiProvider') attrAiProvider: string;
+   @Input('aiKey') attrAiKey: string;
+   @Input('aiModel') attrAiModel: string;
+   @Input('aiProxyUrl') attrAiProxyUrl: string;
+   @Input('aiHeaders') attrAiHeaders: object;
+   @Input('aiSendRequest') attrAiSendRequest: (request: any, owner: any) => any;
+   @Input('aiMaxRows') attrAiMaxRows: number;
    @Input('autoSchedule') attrAutoSchedule: boolean;
    @Input('autoScheduleStrictMode') attrAutoScheduleStrictMode: boolean;
    @Input('autoScrollStep') attrAutoScrollStep: number;
@@ -104,7 +111,7 @@ export class jqxGanttComponent implements OnChanges
    @Input('treeMin') attrTreeMin: string | number;
    @Input('treeSize') attrTreeSize: string | number;
    @Input('timelineHeaderFormatFunction') attrTimelineHeaderFormatFunction: any;
-   @Input('tooltip') attrTooltip: object;
+   @Input('tooltip') attrTooltip: boolean;
    @Input('verticalScrollBarVisibility') attrVerticalScrollBarVisibility: string;
    @Input('view') attrView: string;
    @Input('yearFormat') attrYearFormat: string;
@@ -115,7 +122,7 @@ export class jqxGanttComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['adjustToNonworkingTime','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','theme'];
+   properties: string[] = ['adjustToNonworkingTime','aiProvider','aiKey','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','autoSchedule','autoScheduleStrictMode','autoScrollStep','columnMenu','columnMinWidth','columnResize','columnResizeFeedback','currentTime','currentTimeIndicator','currentTimeIndicatorInterval','dataExportFileName','source','dayFormat','dateEnd','dateStart','dateMarkers','disabled','disableAutoScroll','disableTaskDrag','disableTaskProgressChange','disableTaskResize','disableSelection','disableSegmentDrag','disableSegmentResize','disableWindowEditor','durationUnit','filterRow','firstDayOfWeek','groupByResources','headerTemplate','height','hideDateMarkers','hideTimelineHeader','hideTimelineHeaderDetails','hideTimelineSecondHeaderDetails','hideResourcePanel','horizontalScrollBarVisibility','hourFormat','infiniteTimeline','infiniteTimelineStep','inverted','keyboardNavigation','max','min','monthFormat','monthScale','nonworkingDays','nonworkingHours','onTaskRender','popupWindowCustomizationFunction','popupWindowTabs','progressLabelFormatFunction','quarterFormat','resources','resourceColumns','resourceFiltering','resourceGroupFormatFunction','resourcePanelHeaderTemplate','resourcePanelMin','resourcePanelSize','resourcePanelRefreshRate','resourceTimelineFormatFunction','resourceTimelineMode','resourceTimelineView','rtl','selectedTaskIds','selectedResourceIds','shadeUntilCurrentTime','showSelectionColumn','showBaseline','showProgressLabel','snapToNearest','sortFunction','sortMode','tasks','taskColumns','taskFiltering','taskPanelMin','taskPanelSize','timelineMin','treeMin','treeSize','timelineHeaderFormatFunction','tooltip','verticalScrollBarVisibility','view','yearFormat','weekFormat','width','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGantt;
@@ -138,6 +145,11 @@ export class jqxGanttComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxGantt('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
     ngAfterViewInit() {
@@ -251,6 +263,62 @@ export class jqxGanttComponent implements OnChanges
           this.host.jqxGantt('adjustToNonworkingTime', arg);
       } else {
           return this.host.jqxGantt('adjustToNonworkingTime');
+      }
+   }
+
+   aiProvider(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiProvider', arg);
+      } else {
+          return this.host.jqxGantt('aiProvider');
+      }
+   }
+
+   aiKey(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiKey', arg);
+      } else {
+          return this.host.jqxGantt('aiKey');
+      }
+   }
+
+   aiModel(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiModel', arg);
+      } else {
+          return this.host.jqxGantt('aiModel');
+      }
+   }
+
+   aiProxyUrl(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiProxyUrl', arg);
+      } else {
+          return this.host.jqxGantt('aiProxyUrl');
+      }
+   }
+
+   aiHeaders(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiHeaders', arg);
+      } else {
+          return this.host.jqxGantt('aiHeaders');
+      }
+   }
+
+   aiSendRequest(arg?: (request: any, owner: any) => any): (request: any, owner: any) => any {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiSendRequest', arg);
+      } else {
+          return this.host.jqxGantt('aiSendRequest');
+      }
+   }
+
+   aiMaxRows(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxGantt('aiMaxRows', arg);
+      } else {
+          return this.host.jqxGantt('aiMaxRows');
       }
    }
 
@@ -491,6 +559,14 @@ export class jqxGanttComponent implements OnChanges
           this.host.jqxGantt('headerTemplate', arg);
       } else {
           return this.host.jqxGantt('headerTemplate');
+      }
+   }
+
+   height(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('height', arg);
+      } else {
+          return this.host.jqxGantt('height');
       }
    }
 
@@ -910,7 +986,7 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
-   tooltip(arg?: any): any {
+   tooltip(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxGantt('tooltip', arg);
       } else {
@@ -950,6 +1026,14 @@ export class jqxGanttComponent implements OnChanges
       }
    }
 
+   width(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxGantt('width', arg);
+      } else {
+          return this.host.jqxGantt('width');
+      }
+   }
+
    theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxGantt('theme', arg);
@@ -962,6 +1046,38 @@ export class jqxGanttComponent implements OnChanges
    // jqxGanttComponent functions
    addFilter(columns: object | object[], filterGroup: any): void {
       this.host.jqxGantt('addFilter', columns, filterGroup);
+   }
+
+   aiConfig(options?: any): any {
+      return this.host.jqxGantt('aiConfig', options);
+   }
+
+   aiCommand(text: string, callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiCommand', text, callback);
+   }
+
+   aiAddTask(text: string, callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiAddTask', text, callback);
+   }
+
+   aiAsk(text: string, callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiAsk', text, callback);
+   }
+
+   aiSummarize(callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiSummarize', callback);
+   }
+
+   aiExplainTask(ref: string, callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiExplainTask', ref, callback);
+   }
+
+   aiClassifyTasks(options: any, callback?: Function): Promise<any> {
+      return this.host.jqxGantt('aiClassifyTasks', options, callback);
+   }
+
+   aiGetCustomField(ref: string, field: string): any {
+      return this.host.jqxGantt('aiGetCustomField', ref, field);
    }
 
    clearFilters(): void {
@@ -986,6 +1102,10 @@ export class jqxGanttComponent implements OnChanges
 
    clearResources(): void {
       this.host.jqxGantt('clearResources');
+   }
+
+   destroy(): void {
+      this.host.jqxGantt('destroy');
    }
 
    createConnection(startTaskIndex: number | string, taskEndIndex?: number | string, connectionType?: number, lag?: number): void {
@@ -1210,6 +1330,8 @@ export class jqxGanttComponent implements OnChanges
    @Output() onScrollTopReached = new EventEmitter();
    @Output() onScrollLeftReached = new EventEmitter();
    @Output() onScrollRightReached = new EventEmitter();
+   @Output() onGanttaiResult = new EventEmitter();
+   @Output() onGanttaiError = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('beginUpdate', (eventData: any) => { this.onBeginUpdate.emit(eventData); });
@@ -1240,6 +1362,8 @@ export class jqxGanttComponent implements OnChanges
       this.host.on('scrollTopReached', (eventData: any) => { this.onScrollTopReached.emit(eventData); });
       this.host.on('scrollLeftReached', (eventData: any) => { this.onScrollLeftReached.emit(eventData); });
       this.host.on('scrollRightReached', (eventData: any) => { this.onScrollRightReached.emit(eventData); });
+      this.host.on('ganttaiResult', (eventData: any) => { this.onGanttaiResult.emit(eventData); });
+      this.host.on('ganttaiError', (eventData: any) => { this.onGanttaiError.emit(eventData); });
    }
 
 } //jqxGanttComponent

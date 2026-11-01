@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtogglebutton",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtogglebutton.umd.js",
   "module": "react_jqxtogglebutton.esm.js",
   "typings": "react_jqxtogglebutton.d.ts",

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -44,12 +44,16 @@ export class jqxFormComponent implements OnChanges
    @Input('enableSmartPaste') attrEnableSmartPaste: boolean;
    @Input('aiKey') attrAiKey: string;
    @Input('aiUrl') attrAiUrl: string;
+   @Input('aiModel') attrAiModel: string;
+   @Input('pasteProgress') attrPasteProgress: string;
+   @Input('pasteSuccess') attrPasteSuccess: string;
+   @Input('pasteError') attrPasteError: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['padding','backgroundColor','borderColor','theme','value','template','enableSmartPaste','aiKey','aiUrl'];
+   properties: string[] = ['padding','backgroundColor','borderColor','width','height','theme','value','template','enableSmartPaste','aiKey','aiUrl','aiModel','pasteProgress','pasteSuccess','pasteError'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxForm;
@@ -205,6 +209,22 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
+   width(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxForm('width', arg);
+      } else {
+          return this.host.jqxForm('width');
+      }
+   }
+
+   height(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxForm('height', arg);
+      } else {
+          return this.host.jqxForm('height');
+      }
+   }
+
    theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxForm('theme', arg);
@@ -250,6 +270,38 @@ export class jqxFormComponent implements OnChanges
           this.host.jqxForm('aiUrl', arg);
       } else {
           return this.host.jqxForm('aiUrl');
+      }
+   }
+
+   aiModel(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('aiModel', arg);
+      } else {
+          return this.host.jqxForm('aiModel');
+      }
+   }
+
+   pasteProgress(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('pasteProgress', arg);
+      } else {
+          return this.host.jqxForm('pasteProgress');
+      }
+   }
+
+   pasteSuccess(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('pasteSuccess', arg);
+      } else {
+          return this.host.jqxForm('pasteSuccess');
+      }
+   }
+
+   pasteError(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxForm('pasteError', arg);
+      } else {
+          return this.host.jqxForm('pasteError');
       }
    }
 

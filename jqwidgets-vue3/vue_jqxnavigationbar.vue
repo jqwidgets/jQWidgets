@@ -19,6 +19,7 @@
                 default: false,
                 type: Boolean
             },
+            easing: String,
             expandAnimationDuration: Number,
             expandMode: String,
             expandedIndexes: Array,
@@ -159,6 +160,13 @@
                     return JQXLite(componentSelector).jqxNavigationBar('disabled');
                 }
             }
+            function _easing (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNavigationBar('easing', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNavigationBar('easing');
+                }
+            }
             function _expandAnimationDuration (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxNavigationBar('expandAnimationDuration', arg)
@@ -239,7 +247,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
+                const widgetProps = ['animationType','arrowPosition','collapseAnimationDuration','disabled','easing','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -274,6 +282,12 @@
                  },
                  set disabled(newValue) {
                      _disabled(newValue);
+                 },
+                 get easing() {
+                     return _easing();
+                 },
+                 set easing(newValue) {
+                     _easing(newValue);
                  },
                  get expandAnimationDuration() {
                      return _expandAnimationDuration();

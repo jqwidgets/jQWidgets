@@ -98,6 +98,9 @@
             function focus() {
                 JQXLite(componentSelector).jqxDocking('focus');  
             }
+            function getWindowProperty(windowId, propertyName) {
+                return JQXLite(componentSelector).jqxDocking('getWindowProperty', windowId, propertyName);  
+            }
             function hideAllCloseButtons() {
                 JQXLite(componentSelector).jqxDocking('hideAllCloseButtons');  
             }
@@ -121,6 +124,9 @@
             }
             function setWindowMode(windowId, mode) {
                 JQXLite(componentSelector).jqxDocking('setWindowMode', windowId, mode);  
+            }
+            function setWindowProperty(windowId, propertyName, value) {
+                JQXLite(componentSelector).jqxDocking('setWindowProperty', windowId, propertyName, value);  
             }
             function showCloseButton(windowId) {
                 JQXLite(componentSelector).jqxDocking('showCloseButton', windowId);  
@@ -375,7 +381,7 @@
 				element.off();
 				try { element.jqxDocking('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addWindow, closeWindow, collapseWindow, destroy, disableWindowResize, disable, exportLayout, enable, expandWindow, enableWindowResize, focus, hideAllCloseButtons, hideAllCollapseButtons, hideCollapseButton, hideCloseButton, importLayout, move, pinWindow, setWindowMode, showCloseButton, showCollapseButton, setWindowPosition, showAllCloseButtons, showAllCollapseButtons, unpinWindow, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addWindow, closeWindow, collapseWindow, destroy, disableWindowResize, disable, exportLayout, enable, expandWindow, enableWindowResize, focus, getWindowProperty, hideAllCloseButtons, hideAllCollapseButtons, hideCollapseButton, hideCloseButton, importLayout, move, pinWindow, setWindowMode, setWindowProperty, showCloseButton, showCollapseButton, setWindowPosition, showAllCloseButtons, showAllCollapseButtons, unpinWindow, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

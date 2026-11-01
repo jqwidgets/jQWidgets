@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtree",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtree.umd.js",
   "module": "react_jqxtree.esm.js",
   "typings": "react_jqxtree.d.ts",

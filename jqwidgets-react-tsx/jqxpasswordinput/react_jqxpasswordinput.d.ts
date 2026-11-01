@@ -9,12 +9,16 @@ declare class JqxPasswordInput extends React.PureComponent<IPasswordInputProps> 
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _changedInARow;
+    private _warned;
     constructor(props: IPasswordInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -69,8 +73,10 @@ export interface IPasswordInputStrengthTypeRenderer {
 interface IPasswordInputOptions {
     disabled?: boolean;
     height?: string | number;
+    hint?: boolean;
     localization?: IPasswordInputLocalization;
     maxLength?: number | string;
+    minLength?: number | string;
     placeHolder?: number | string;
     passwordStrength?: (password: IPasswordInputPasswordStrength['password'], characters: IPasswordInputPasswordStrength['characters'], defaultStrength: IPasswordInputPasswordStrength['defaultStrength']) => string;
     rtl?: boolean;
@@ -80,6 +86,7 @@ interface IPasswordInputOptions {
     strengthTypeRenderer?: (password: IPasswordInputStrengthTypeRenderer['password'], characters: IPasswordInputStrengthTypeRenderer['characters'], defaultStrength: IPasswordInputStrengthTypeRenderer['defaultStrength']) => string;
     showPasswordIcon?: boolean;
     theme?: string;
+    value?: string;
     width?: string | number;
 }
 export interface IPasswordInputProps extends IPasswordInputOptions, React.AriaAttributes {

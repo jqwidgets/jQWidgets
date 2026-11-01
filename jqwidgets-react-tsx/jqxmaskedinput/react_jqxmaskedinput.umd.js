@@ -50,6 +50,73 @@ require('../../jqwidgets/jqxmaskedinput');
     function __sameValue__(x, y) {
         return x === y ? (x !== 0 || 1 / x === 1 / y) : (x !== x && y !== y);
     }
+    function __sameContent__(x, y, depth, loose) {
+        if (__sameValue__(x, y)) {
+            return true;
+        }
+        if (loose && typeof x === 'function' && typeof y === 'function') {
+            return String(x) === String(y);
+        }
+        if (!x || !y || typeof x !== 'object' || typeof y !== 'object' || depth > 32) {
+            return false;
+        }
+        if (x instanceof Date && y instanceof Date) {
+            return x.getTime() === y.getTime();
+        }
+        var isArray = Array.isArray(x);
+        if (isArray !== Array.isArray(y)) {
+            return false;
+        }
+        if (!isArray) {
+            var px = Object.getPrototypeOf(x);
+            var py = Object.getPrototypeOf(y);
+            if ((px !== Object.prototype && px !== null) || (py !== Object.prototype && py !== null)) {
+                if (!loose || !x._source || !y._source) {
+                    return false;
+                }
+                if (x._source === y._source) {
+                    return true;
+                }
+                for (var _i = 0, _a = Object.keys(x._source); _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    if (!__sameContent__(x._source[key], y._source[key], depth + 1, true)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        var keys = Object.keys(x);
+        if (keys.length !== Object.keys(y).length) {
+            return false;
+        }
+        for (var _b = 0, keys_1 = keys; _b < keys_1.length; _b++) {
+            var key = keys_1[_b];
+            if (!Object.prototype.hasOwnProperty.call(y, key)) {
+                return false;
+            }
+            var a = x[key];
+            var b = y[key];
+            if (a === b && a && typeof a === 'object') {
+                if (loose) {
+                    continue;
+                }
+                return false;
+            }
+            if (!__sameContent__(a, b, depth + 1, loose)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    var __isDevelopment__ = (function () {
+        try {
+            return process.env.NODE_ENV !== 'production';
+        }
+        catch (error) {
+            return false;
+        }
+    })();
     function __afterTask__(callback) {
         if (typeof Promise !== 'undefined') {
             Promise.resolve().then(callback);
@@ -77,6 +144,8 @@ require('../../jqwidgets/jqxmaskedinput');
             /* tslint:disable:variable-name */
             _this._teardownPending = false;
             /* tslint:disable:variable-name */
+            _this._mounting = false;
+            /* tslint:disable:variable-name */
             _this._hostParent = null;
             /* tslint:disable:variable-name */
             _this._hostNext = null;
@@ -84,6 +153,10 @@ require('../../jqwidgets/jqxmaskedinput');
             _this._widgetPlace = null;
             /* tslint:disable:variable-name */
             _this._hostChildren = [];
+            /* tslint:disable:variable-name */
+            _this._changedInARow = {};
+            /* tslint:disable:variable-name */
+            _this._warned = {};
             _this._id = 'JqxMaskedInput' + (_this._jqx ? _this._jqx.generateID() : 'SSR' + (++__ssrIdCounter__));
             _this._componentSelector = '#' + _this._id;
             return _this;
@@ -98,13 +171,33 @@ require('../../jqwidgets/jqxmaskedinput');
                 this._widgetPlace = null;
                 return;
             }
+            if (this._rendered && this._rendered.id !== this._id) {
+                this._rendered.id = this._id;
+            }
             var element = this._jqx(this._target());
             this._host = element[0] || null;
             this._hostParent = this._host ? this._host.parentNode : null;
             this._hostNext = this._host ? this._host.nextSibling : null;
             this._hostChildren = this._host ? Array.prototype.slice.call(this._host.childNodes) : [];
             var widgetOptions = this._manageProps();
-            element.jqxMaskedInput(widgetOptions);
+            this._eventElement = element;
+            this._wireEvents();
+            this._mounting = true;
+            try {
+                element.jqxMaskedInput(widgetOptions);
+            }
+            finally {
+                this._mounting = false;
+            }
+            if (this._eventElement[0] !== this._jqx(this._target())[0]) {
+                for (var prop in this._eventHandlers) {
+                    if (this._eventHandlers.hasOwnProperty(prop)) {
+                        this._eventElement.off(__eventName__(prop), this._eventHandlers[prop]);
+                    }
+                }
+                this._eventHandlers = {};
+                this._eventElement = null;
+            }
             this._appliedOptions = widgetOptions;
             this._applyHostAttributes();
             this._wireEvents();
@@ -117,10 +210,13 @@ require('../../jqwidgets/jqxmaskedinput');
             var changed = {};
             var hasChanges = false;
             for (var key in widgetOptions) {
-                if (!__sameValue__(widgetOptions[key], this._appliedOptions[key])) {
+                if (!__sameContent__(widgetOptions[key], this._appliedOptions[key], 0)) {
                     changed[key] = widgetOptions[key];
                     hasChanges = true;
                 }
+            }
+            if (__isDevelopment__) {
+                this._warnRebuiltProps(changed);
             }
             if ('source' in changed) {
                 for (var _i = 0, _a = ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']; _i < _a.length; _i++) {
@@ -136,6 +232,30 @@ require('../../jqwidgets/jqxmaskedinput');
                 this._applyHostAttributes();
             }
             this._wireEvents();
+        };
+        JqxMaskedInput.prototype._warnRebuiltProps = function (changed) {
+            for (var key in this._changedInARow) {
+                if (!(key in changed)) {
+                    this._changedInARow[key] = 0;
+                }
+            }
+            for (var key in changed) {
+                var value = changed[key];
+                if (!value || (typeof value !== 'object' && typeof value !== 'function')) {
+                    continue;
+                }
+                if (!__sameContent__(value, this._appliedOptions[key], 0, true)) {
+                    this._changedInARow[key] = 0;
+                    continue;
+                }
+                this._changedInARow[key] = (this._changedInARow[key] || 0) + 1;
+                if (this._changedInARow[key] === 3 && !this._warned[key]) {
+                    this._warned[key] = true;
+                    console.warn('JqxMaskedInput: the "' + key + '" prop was new on three renders in a row, and each time the widget was updated with it'
+                        + (key === 'source' ? ' (its data bound again)' : '') + '. Create it once, outside the component or with useMemo or useCallback;'
+                        + ' a function inside it, or a new jqx.dataAdapter, makes it new on every render.');
+                }
+            }
         };
         JqxMaskedInput.prototype.componentWillUnmount = function () {
             var _this = this;
@@ -166,7 +286,7 @@ require('../../jqwidgets/jqxmaskedinput');
         };
         JqxMaskedInput.prototype.render = function () {
             var _this = this;
-            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style }, this._hostAttributes()), this.props.children));
+            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style, suppressHydrationWarning: true }, this._hostAttributes()), this.props.children));
         };
         JqxMaskedInput.prototype.setOptions = function (options) {
             this._jqx(this._target()).jqxMaskedInput(options);
@@ -192,7 +312,7 @@ require('../../jqwidgets/jqxmaskedinput');
             }
         };
         JqxMaskedInput.prototype._manageProps = function () {
-            var widgetProps = ['disabled', 'height', 'mask', 'promptChar', 'readOnly', 'rtl', 'theme', 'textAlign', 'value', 'width'];
+            var widgetProps = ['disabled', 'height', 'hint', 'mask', 'placeHolder', 'promptChar', 'readOnly', 'rtl', 'template', 'theme', 'textAlign', 'value', 'width'];
             var options = {};
             for (var prop in this.props) {
                 if (widgetProps.indexOf(prop) !== -1) {
@@ -238,7 +358,16 @@ require('../../jqwidgets/jqxmaskedinput');
             var that = this;
             return function () {
                 var handler = that.props[prop];
-                return typeof handler === 'function' ? handler.apply(this, arguments) : undefined;
+                if (typeof handler !== 'function') {
+                    return undefined;
+                }
+                if (that._mounting) {
+                    var target_1 = this;
+                    var args_1 = arguments;
+                    __afterTask__(function () { handler.apply(target_1, args_1); });
+                    return undefined;
+                }
+                return handler.apply(this, arguments);
             };
         };
         JqxMaskedInput.prototype._teardown = function () {

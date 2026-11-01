@@ -3413,7 +3413,9 @@ input.jqx-widget-content-fluent::placeholder {
   background: var(--jqx-primary) !important;
 }
 
-.jqx-grid-cell-selected-fluent span {
+/* (not in a React Grid part: a cell, editor, header, bar or row details component keeps its own
+   colours and padding) */
+.jqx-grid-cell-selected-fluent span:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) span) {
   color: inherit !important;
 }
 
@@ -3557,8 +3559,10 @@ input.jqx-widget-content-fluent::placeholder {
   outline-color: var(--jqx-primary) !important;
   color: var(--fluent-greys-grey190) !important;
 }
-.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) textarea,
-.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) input {
+/* (not in a React Grid part: a cell, editor, header, bar or row details component keeps its own
+   colours and padding) */
+.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) textarea:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) *),
+.jqx-widget-fluent:not(.jqx-input-group):not(.jqx-form-fluent) input:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) *) {
   padding-left: 5px;
   box-sizing: border-box;
 }

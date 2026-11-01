@@ -9,13 +9,17 @@ declare class JqxDropDownButton extends React.PureComponent<IDropDownButtonProps
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IDropDownButtonProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -28,6 +32,7 @@ declare class JqxDropDownButton extends React.PureComponent<IDropDownButtonProps
     isOpened(): boolean;
     open(): void;
     setContent(content: string | HTMLElement): void;
+    val(value?: any): any;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -39,16 +44,21 @@ export default JqxDropDownButton;
 export declare const jqx: any;
 export declare const JQXLite: any;
 interface IDropDownButtonOptions {
-    animationType?: 'none' | 'slide' | 'fade';
+    animationType?: 'default' | 'none' | 'slide' | 'fade';
     arrowSize?: number;
     autoOpen?: boolean;
     closeDelay?: number;
     disabled?: boolean;
     dropDownHorizontalAlignment?: 'left' | 'right';
+    dropDownContainer?: string;
     dropDownVerticalAlignment?: 'top' | 'bottom';
     dropDownWidth?: number | string;
+    dropDownHeight?: number | string;
     enableBrowserBoundsDetection?: boolean;
+    enableHover?: boolean;
+    focusable?: boolean;
     height?: string | number;
+    hint?: boolean;
     initContent?: () => void;
     openDelay?: number;
     popupZIndex?: number;
@@ -62,5 +72,7 @@ export interface IDropDownButtonProps extends IDropDownButtonOptions, React.Aria
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onClose?: (e?: any) => void;
+    onClosing?: (e?: any) => void;
     onOpen?: (e?: any) => void;
+    onOpening?: (e?: any) => void;
 }

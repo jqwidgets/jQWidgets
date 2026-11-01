@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -345,6 +345,14 @@ export class jqxListMenuComponent implements OnChanges
 
    destroy(): void {
       this.host.jqxListMenu('destroy');
+   }
+
+   disable(): void {
+      this.host.jqxListMenu('disable');
+   }
+
+   enable(): void {
+      this.host.jqxListMenu('enable');
    }
 
 

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxcolorpicker",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxcolorpicker.umd.js",
   "module": "react_jqxcolorpicker.esm.js",
   "typings": "react_jqxcolorpicker.d.ts",

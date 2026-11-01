@@ -9,13 +9,17 @@ declare class JqxTagCloud extends React.PureComponent<ITagCloudProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITagCloudProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -58,6 +62,7 @@ export interface ITagCloudSource {
 }
 interface ITagCloudOptions {
     alterTextCase?: 'none' | 'allLower' | 'allUpper' | 'firstUpper' | 'titleCase';
+    autoBind?: boolean;
     disabled?: boolean;
     displayLimit?: number;
     displayMember?: string;
@@ -88,5 +93,6 @@ export interface ITagCloudProps extends ITagCloudOptions, React.AriaAttributes {
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onBindingComplete?: (e?: any) => void;
+    onBindingUpdateComplete?: (e?: any) => void;
     onItemClick?: (e?: any) => void;
 }

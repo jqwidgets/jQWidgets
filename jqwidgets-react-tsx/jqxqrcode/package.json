@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxqrcode",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxqrcode.umd.js",
   "module": "react_jqxqrcode.esm.js",
   "typings": "react_jqxqrcode.d.ts",

@@ -17,8 +17,13 @@
                 type: Boolean
             },
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             localization: Object,
             maxLength: Number,
+            minLength: Number,
             placeHolder: String,
             passwordStrength: Function,
             rtl: {
@@ -37,6 +42,7 @@
                 type: Boolean
             },
             theme: String,
+            value: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -91,6 +97,13 @@
                     return JQXLite(componentSelector).jqxPasswordInput('height');
                 }
             }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPasswordInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPasswordInput('hint');
+                }
+            }
             function _localization (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxPasswordInput('localization', arg)
@@ -103,6 +116,13 @@
                     JQXLite(componentSelector).jqxPasswordInput('maxLength', arg)
                 } else {
                     return JQXLite(componentSelector).jqxPasswordInput('maxLength');
+                }
+            }
+            function _minLength (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPasswordInput('minLength', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPasswordInput('minLength');
                 }
             }
             function _placeHolder (arg) {
@@ -168,6 +188,13 @@
                     return JQXLite(componentSelector).jqxPasswordInput('theme');
                 }
             }
+            function _value (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPasswordInput('value', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPasswordInput('value');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxPasswordInput('width', arg)
@@ -186,7 +213,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','height','localization','maxLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','width'];
+                const widgetProps = ['disabled','height','hint','localization','maxLength','minLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -210,6 +237,12 @@
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
+                 },
                  get localization() {
                      return _localization();
                  },
@@ -221,6 +254,12 @@
                  },
                  set maxLength(newValue) {
                      _maxLength(newValue);
+                 },
+                 get minLength() {
+                     return _minLength();
+                 },
+                 set minLength(newValue) {
+                     _minLength(newValue);
                  },
                  get placeHolder() {
                      return _placeHolder();
@@ -275,6 +314,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get value() {
+                     return _value();
+                 },
+                 set value(newValue) {
+                     _value(newValue);
                  },
                  get width() {
                      return _width();

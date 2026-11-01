@@ -15,6 +15,10 @@
     export default {
         props: {
             alterTextCase: String,
+            autoBind: {
+                default: true,
+                type: Boolean
+            },
             disabled: {
                 default: false,
                 type: Boolean
@@ -56,7 +60,7 @@
                 type: Boolean
             }
         },
-        emits: ["bindingComplete","itemClick"],
+        emits: ["bindingComplete","bindingUpdateComplete","itemClick"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxTagCloud" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -112,6 +116,13 @@
                     JQXLite(componentSelector).jqxTagCloud('alterTextCase', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTagCloud('alterTextCase');
+                }
+            }
+            function _autoBind (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTagCloud('autoBind', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTagCloud('autoBind');
                 }
             }
             function _disabled (arg) {
@@ -292,7 +303,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
+                const widgetProps = ['alterTextCase','autoBind','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -309,6 +320,12 @@
                  },
                  set alterTextCase(newValue) {
                      _alterTextCase(newValue);
+                 },
+                 get autoBind() {
+                     return _autoBind();
+                 },
+                 set autoBind(newValue) {
+                     _autoBind(newValue);
                  },
                  get disabled() {
                      return _disabled();
@@ -459,6 +476,7 @@
                 const that = context;
 
                 JQXLite(componentSelector).on('bindingComplete', function (event) { that.emit('bindingComplete', event); });
+                JQXLite(componentSelector).on('bindingUpdateComplete', function (event) { that.emit('bindingUpdateComplete', event); });
                 JQXLite(componentSelector).on('itemClick', function (event) { that.emit('itemClick', event); });
             }
 

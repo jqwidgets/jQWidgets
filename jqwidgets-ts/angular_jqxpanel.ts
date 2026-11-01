@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,17 +23,20 @@ declare let JQXLite: any;
 export class jqxPanelComponent implements OnChanges
 {
    @Input('autoUpdate') attrAutoUpdate: boolean;
+   @Input('autoUpdateInterval') attrAutoUpdateInterval: number;
    @Input('disabled') attrDisabled: boolean;
+   @Input('horizontalScrollBarMax') attrHorizontalScrollBarMax: number;
    @Input('rtl') attrRtl: boolean;
    @Input('sizeMode') attrSizeMode: string;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('theme') attrTheme: string;
+   @Input('verticalScrollBarMax') attrVerticalScrollBarMax: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoUpdate','disabled','height','rtl','sizeMode','scrollBarSize','theme','width'];
+   properties: string[] = ['autoUpdate','autoUpdateInterval','disabled','height','horizontalScrollBarMax','rtl','sizeMode','scrollBarSize','theme','verticalScrollBarMax','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPanel;
@@ -168,6 +171,14 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
+   autoUpdateInterval(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxPanel('autoUpdateInterval', arg);
+      } else {
+          return this.host.jqxPanel('autoUpdateInterval');
+      }
+   }
+
    disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPanel('disabled', arg);
@@ -181,6 +192,14 @@ export class jqxPanelComponent implements OnChanges
           this.host.jqxPanel('height', arg);
       } else {
           return this.host.jqxPanel('height');
+      }
+   }
+
+   horizontalScrollBarMax(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxPanel('horizontalScrollBarMax', arg);
+      } else {
+          return this.host.jqxPanel('horizontalScrollBarMax');
       }
    }
 
@@ -213,6 +232,14 @@ export class jqxPanelComponent implements OnChanges
           this.host.jqxPanel('theme', arg);
       } else {
           return this.host.jqxPanel('theme');
+      }
+   }
+
+   verticalScrollBarMax(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxPanel('verticalScrollBarMax', arg);
+      } else {
+          return this.host.jqxPanel('verticalScrollBarMax');
       }
    }
 
@@ -268,6 +295,10 @@ export class jqxPanelComponent implements OnChanges
 
    scrollTo(left: number | string, top: number | string): void {
       this.host.jqxPanel('scrollTo', left, top);
+   }
+
+   setcontent(html: string): void {
+      this.host.jqxPanel('setcontent', html);
    }
 
 

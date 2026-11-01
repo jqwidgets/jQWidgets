@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,6 +21,7 @@ declare let JQXLite: any;
 
 export class jqxTimePickerComponent implements OnChanges
 {
+   @Input('animation') attrAnimation: boolean;
    @Input('autoSwitchToMinutes') attrAutoSwitchToMinutes: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('footer') attrFooter: boolean;
@@ -39,7 +40,7 @@ export class jqxTimePickerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
+   properties: string[] = ['animation','autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTimePicker;
@@ -161,6 +162,14 @@ export class jqxTimePickerComponent implements OnChanges
    }
 
    // jqxTimePickerComponent properties
+   animation(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTimePicker('animation', arg);
+      } else {
+          return this.host.jqxTimePicker('animation');
+      }
+   }
+
    autoSwitchToMinutes(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTimePicker('autoSwitchToMinutes', arg);

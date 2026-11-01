@@ -9,17 +9,26 @@ declare class JqxDragDrop extends React.PureComponent<IDragDropProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IDragDropProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: IDragDropProps): void;
     getOptions(option: string): any;
+    cancelDrag(): void;
+    destroy(): void;
+    disable(): void;
+    enable(): void;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -51,6 +60,7 @@ export interface IDragDropOnDropTargetLeave {
 }
 interface IDragDropOptions {
     appendTo?: string;
+    cursor?: string;
     disabled?: boolean;
     distance?: number;
     data?: any;
@@ -58,6 +68,7 @@ interface IDragDropOptions {
     dropTarget?: any;
     dragZIndex?: number;
     feedback?: 'clone' | 'original';
+    handle?: string | boolean;
     initFeedback?: (feedback: any) => void;
     opacity?: number;
     onDragEnd?: () => void;

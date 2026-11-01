@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,8 +37,10 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    @Input('checked') attrChecked: boolean | null;
    @Input('disabled') attrDisabled: boolean;
    @Input('enableContainerClick') attrEnableContainerClick: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
    @Input('groupName') attrGroupName: string;
    @Input('hasThreeStates') attrHasThreeStates: boolean;
+   @Input('keyboardCheck') attrKeyboardCheck: boolean;
    @Input('locked') attrLocked: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('theme') attrTheme: string;
@@ -47,7 +49,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','height','hasThreeStates','locked','rtl','theme','width'];
+   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','enableHover','groupName','height','hasThreeStates','keyboardCheck','locked','rtl','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxCheckBox;
@@ -242,6 +244,14 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   enableHover(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxCheckBox('enableHover', arg);
+      } else {
+          return this.host.jqxCheckBox('enableHover');
+      }
+   }
+
    groupName(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('groupName', arg);
@@ -263,6 +273,14 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
           this.host.jqxCheckBox('hasThreeStates', arg);
       } else {
           return this.host.jqxCheckBox('hasThreeStates');
+      }
+   }
+
+   keyboardCheck(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxCheckBox('keyboardCheck', arg);
+      } else {
+          return this.host.jqxCheckBox('keyboardCheck');
       }
    }
 

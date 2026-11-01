@@ -55,6 +55,7 @@
             template: String,
             theme: String,
             width: [Number, String],
+            zIndex: Number,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -246,6 +247,13 @@
                     return JQXLite(componentSelector).jqxNotification('width');
                 }
             }
+            function _zIndex (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNotification('zIndex', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNotification('zIndex');
+                }
+            }
             function __createComponent__ (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
@@ -256,7 +264,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width'];
+                const widgetProps = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width','zIndex'];
                 const componentProps = props;
                 let options = {};
 
@@ -393,6 +401,12 @@
                  },
                  set width(newValue) {
                      _width(newValue);
+                 },
+                 get zIndex() {
+                     return _zIndex();
+                 },
+                 set zIndex(newValue) {
+                     _zIndex(newValue);
                  },
             }
             function __wireEvents__() {

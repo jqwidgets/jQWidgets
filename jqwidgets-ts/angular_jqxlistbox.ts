@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,27 +36,38 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, AfterViewInit, AfterViewChecked 
 {
    @Input('autoHeight') attrAutoHeight: boolean;
+   @Input('autoItemsHeight') attrAutoItemsHeight: boolean;
    @Input('allowDrag') attrAllowDrag: boolean;
    @Input('allowDrop') attrAllowDrop: boolean;
    @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('checkboxSize') attrCheckboxSize: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayMember') attrDisplayMember: number | string;
    @Input('dropAction') attrDropAction: string;
    @Input('dragStart') attrDragStart: (item:jqwidgets.ListBoxDragStart['item']) => boolean;
    @Input('dragEnd') attrDragEnd: (dragItem: jqwidgets.ListBoxDragEnd['dragItem'], dropItem: jqwidgets.ListBoxDragEnd['dropItem']) => boolean;
+   @Input('emptyGroupText') attrEmptyGroupText: string;
+   @Input('emptyString') attrEmptyString: string;
    @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableMouseWheel') attrEnableMouseWheel: boolean;
    @Input('enableSelection') attrEnableSelection: boolean;
    @Input('equalItemsWidth') attrEqualItemsWidth: boolean;
    @Input('filterable') attrFilterable: boolean;
    @Input('filterHeight') attrFilterHeight: number;
    @Input('filterDelay') attrFilterDelay: number | string;
    @Input('filterPlaceHolder') attrFilterPlaceHolder: number | string;
+   @Input('filterChange') attrFilterChange: (value: string) => void;
+   @Input('focusable') attrFocusable: boolean;
+   @Input('groupMember') attrGroupMember: string;
    @Input('hasThreeStates') attrHasThreeStates: boolean;
    @Input('itemHeight') attrItemHeight: number;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('incrementalSearchDelay') attrIncrementalSearchDelay: number | string;
+   @Input('incrementalSearchKeyDownDelay') attrIncrementalSearchKeyDownDelay: number;
+   @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('multiple') attrMultiple: boolean;
    @Input('multipleextended') attrMultipleextended: boolean;
+   @Input('ready') attrReady: () => void;
    @Input('renderer') attrRenderer: (index: jqwidgets.ListBoxRenderer['index'], label: jqwidgets.ListBoxRenderer['label'], value: jqwidgets.ListBoxRenderer['value']) => string;
    @Input('rendered') attrRendered: () => any;
    @Input('rtl') attrRtl: boolean;
@@ -65,14 +76,16 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    @Input('source') attrSource: Array<any>;
    @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('searchMode') attrSearchMode: string;
+   @Input('searchMember') attrSearchMember: string;
    @Input('theme') attrTheme: string;
+   @Input('touchMode') attrTouchMode: boolean | string;
    @Input('valueMember') attrValueMember: number | string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rendered','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
+   properties: string[] = ['autoHeight','autoItemsHeight','allowDrag','allowDrop','checkboxes','checkboxSize','disabled','displayMember','dropAction','dragStart','dragEnd','emptyGroupText','emptyString','enableHover','enableMouseWheel','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','filterChange','focusable','groupMember','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','incrementalSearchKeyDownDelay','keyboardNavigation','multiple','multipleextended','ready','renderer','rendered','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','searchMember','theme','touchMode','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxListBox;
@@ -272,6 +285,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
+   autoItemsHeight(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('autoItemsHeight', arg);
+      } else {
+          return this.host.jqxListBox('autoItemsHeight');
+      }
+   }
+
    allowDrag(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -308,6 +334,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
           this.host.jqxListBox('checkboxes', arg);
       } else {
           return this.host.jqxListBox('checkboxes');
+      }
+   }
+
+   checkboxSize(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('checkboxSize', arg);
+      } else {
+          return this.host.jqxListBox('checkboxSize');
       }
    }
 
@@ -376,6 +415,32 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
+   emptyGroupText(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('emptyGroupText', arg);
+      } else {
+          return this.host.jqxListBox('emptyGroupText');
+      }
+   }
+
+   emptyString(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('emptyString', arg);
+      } else {
+          return this.host.jqxListBox('emptyString');
+      }
+   }
+
    enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -386,6 +451,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
           this.host.jqxListBox('enableHover', arg);
       } else {
           return this.host.jqxListBox('enableHover');
+      }
+   }
+
+   enableMouseWheel(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('enableMouseWheel', arg);
+      } else {
+          return this.host.jqxListBox('enableMouseWheel');
       }
    }
 
@@ -467,6 +545,45 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
+   filterChange(arg?: (value: string) => void): (value: string) => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('filterChange', arg);
+      } else {
+          return this.host.jqxListBox('filterChange');
+      }
+   }
+
+   focusable(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('focusable', arg);
+      } else {
+          return this.host.jqxListBox('focusable');
+      }
+   }
+
+   groupMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('groupMember', arg);
+      } else {
+          return this.host.jqxListBox('groupMember');
+      }
+   }
+
    height(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
@@ -532,6 +649,32 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
+   incrementalSearchKeyDownDelay(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('incrementalSearchKeyDownDelay', arg);
+      } else {
+          return this.host.jqxListBox('incrementalSearchKeyDownDelay');
+      }
+   }
+
+   keyboardNavigation(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('keyboardNavigation', arg);
+      } else {
+          return this.host.jqxListBox('keyboardNavigation');
+      }
+   }
+
    multiple(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -555,6 +698,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
           this.host.jqxListBox('multipleextended', arg);
       } else {
           return this.host.jqxListBox('multipleextended');
+      }
+   }
+
+   ready(arg?: () => void): () => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('ready', arg);
+      } else {
+          return this.host.jqxListBox('ready');
       }
    }
 
@@ -662,6 +818,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
+   searchMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('searchMember', arg);
+      } else {
+          return this.host.jqxListBox('searchMember');
+      }
+   }
+
    theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
@@ -672,6 +841,19 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
           this.host.jqxListBox('theme', arg);
       } else {
           return this.host.jqxListBox('theme');
+      }
+   }
+
+   touchMode(arg?: boolean | string): boolean | string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxListBox('touchMode', arg);
+      } else {
+          return this.host.jqxListBox('touchMode');
       }
    }
 
@@ -856,6 +1038,24 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       return this.host.jqxListBox('getItems');
    }
 
+   getVisibleItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxListBox('getVisibleItems');
+   }
+
+   findItems(text: string): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxListBox('findItems', text);
+   }
+
    getSelectedItems(): Array<any> {
 
       if (this.autoCreate && !this.host) {
@@ -991,6 +1191,15 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       this.host.jqxListBox('refresh');
    }
 
+   scrollTo(left: number, top: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxListBox('scrollTo', left, top);
+   }
+
    selectItem(Item: any): void {
 
       if (this.autoCreate && !this.host) {
@@ -1089,6 +1298,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    @Output() onDragEnd = new EventEmitter();
    @Output() onSelect = new EventEmitter();
    @Output() onUnselect = new EventEmitter();
+   @Output() onItemAdd = new EventEmitter();
+   @Output() onItemRemove = new EventEmitter();
+   @Output() onItemUpdate = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
@@ -1098,6 +1310,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
       this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });
+      this.host.on('itemAdd', (eventData: any) => { this.onItemAdd.emit(eventData); });
+      this.host.on('itemRemove', (eventData: any) => { this.onItemRemove.emit(eventData); });
+      this.host.on('itemUpdate', (eventData: any) => { this.onItemUpdate.emit(eventData); });
    }
 
 } //jqxListBoxComponent

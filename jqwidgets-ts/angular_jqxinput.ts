@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,6 +37,8 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('displayMember') attrDisplayMember: string;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('hint') attrHint: boolean;
    @Input('items') attrItems: number;
    @Input('inlineAutoComplete') attrInlineAutoComplete: boolean;
    @Input('minLength') attrMinLength: number;
@@ -46,6 +48,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    @Input('popupZIndex') attrPopupZIndex: number;
    @Input('query') attrQuery: string;
    @Input('renderer') attrRenderer: (itemValue: string, inputValue: string) => string;
+   @Input('roundedCorners') attrRoundedCorners: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: any;
@@ -57,7 +60,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['aiKey','disabled','dropDownWidth','displayMember','height','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
+   properties: string[] = ['aiKey','disabled','dropDownWidth','displayMember','enableBrowserBoundsDetection','height','hint','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','searchMode','source','theme','valueMember','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxInput;
@@ -263,11 +266,27 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   enableBrowserBoundsDetection(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxInput('enableBrowserBoundsDetection', arg);
+      } else {
+          return this.host.jqxInput('enableBrowserBoundsDetection');
+      }
+   }
+
    height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxInput('height', arg);
       } else {
           return this.host.jqxInput('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxInput('hint', arg);
+      } else {
+          return this.host.jqxInput('hint');
       }
    }
 
@@ -340,6 +359,14 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxInput('renderer', arg);
       } else {
           return this.host.jqxInput('renderer');
+      }
+   }
+
+   roundedCorners(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxInput('roundedCorners', arg);
+      } else {
+          return this.host.jqxInput('roundedCorners');
       }
    }
 

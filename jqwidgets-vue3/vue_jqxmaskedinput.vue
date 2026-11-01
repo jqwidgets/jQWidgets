@@ -18,7 +18,12 @@
                 type: Boolean
             },
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             mask: String,
+            placeHolder: String,
             promptChar: String,
             readOnly: {
                 default: false,
@@ -28,6 +33,7 @@
                 default: false,
                 type: Boolean
             },
+            template: String,
             theme: String,
             textAlign: String,
             value: [String, Number],
@@ -88,11 +94,25 @@
                     return JQXLite(componentSelector).jqxMaskedInput('height');
                 }
             }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxMaskedInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxMaskedInput('hint');
+                }
+            }
             function _mask (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxMaskedInput('mask', arg)
                 } else {
                     return JQXLite(componentSelector).jqxMaskedInput('mask');
+                }
+            }
+            function _placeHolder (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxMaskedInput('placeHolder', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxMaskedInput('placeHolder');
                 }
             }
             function _promptChar (arg) {
@@ -114,6 +134,13 @@
                     JQXLite(componentSelector).jqxMaskedInput('rtl', arg)
                 } else {
                     return JQXLite(componentSelector).jqxMaskedInput('rtl');
+                }
+            }
+            function _template (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxMaskedInput('template', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxMaskedInput('template');
                 }
             }
             function _theme (arg) {
@@ -155,7 +182,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','height','mask','promptChar','readOnly','rtl','theme','textAlign','value','width'];
+                const widgetProps = ['disabled','height','hint','mask','placeHolder','promptChar','readOnly','rtl','template','theme','textAlign','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -179,11 +206,23 @@
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
+                 },
                  get mask() {
                      return _mask();
                  },
                  set mask(newValue) {
                      _mask(newValue);
+                 },
+                 get placeHolder() {
+                     return _placeHolder();
+                 },
+                 set placeHolder(newValue) {
+                     _placeHolder(newValue);
                  },
                  get promptChar() {
                      return _promptChar();
@@ -202,6 +241,12 @@
                  },
                  set rtl(newValue) {
                      _rtl(newValue);
+                 },
+                 get template() {
+                     return _template();
+                 },
+                 set template(newValue) {
+                     _template(newValue);
                  },
                  get theme() {
                      return _theme();

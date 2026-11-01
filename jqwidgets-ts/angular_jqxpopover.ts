@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,6 +24,7 @@ export class jqxPopoverComponent implements OnChanges
    @Input('animationOpenDelay') attrAnimationOpenDelay: number | string;
    @Input('animationCloseDelay') attrAnimationCloseDelay: number | string;
    @Input('autoClose') attrAutoClose: boolean;
+   @Input('closeButtonString') attrCloseButtonString: string;
    @Input('animationType') attrAnimationType: string;
    @Input('initContent') attrInitContent: () => void;
    @Input('isModal') attrIsModal: boolean;
@@ -40,7 +41,7 @@ export class jqxPopoverComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['arrowOffsetValue','animationOpenDelay','animationCloseDelay','autoClose','animationType','height','initContent','isModal','offset','position','rtl','selector','showArrow','showCloseButton','width','title','theme'];
+   properties: string[] = ['arrowOffsetValue','animationOpenDelay','animationCloseDelay','autoClose','closeButtonString','animationType','height','initContent','isModal','offset','position','rtl','selector','showArrow','showCloseButton','width','title','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPopover;
@@ -197,6 +198,14 @@ export class jqxPopoverComponent implements OnChanges
           this.host.jqxPopover('autoClose', arg);
       } else {
           return this.host.jqxPopover('autoClose');
+      }
+   }
+
+   closeButtonString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxPopover('closeButtonString', arg);
+      } else {
+          return this.host.jqxPopover('closeButtonString');
       }
    }
 

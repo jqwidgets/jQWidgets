@@ -1308,6 +1308,13 @@ jqx-button-tailwind input {
   font-weight: 600;
 }
 
+/* A column header's sort, filter and menu icons sit on the header's own colour (their boxes are
+   widget headers, which are white: white squares on the grey header). */
+.jqx-grid-column-header-tailwind .jqx-grid-header-icon-csp,
+.jqx-grid-column-header-tailwind .jqx-columns-menu-csp {
+  background: transparent;
+}
+
 .jqx-grid-tailwind:not(.jqx-scheduler) .jqx-grid-cell:not(.jqx-grid-cell-selected):not(.jqx-grid-cell-pinned).jqx-grid-cell-alt-tailwind {
   background: var(--tailwind-row-alt) !important;
   color: var(--jqx-surface-color) !important;
@@ -3675,7 +3682,9 @@ textarea.jqx-input-tailwind:-webkit-input-placeholder {
   background: rgba(var(--jqx-primary-rgb), 1) !important;
 }
 
-.jqx-grid-cell-selected-tailwind span {
+/* (not in a React Grid part: a cell, editor, header, bar or row details component keeps its own
+   colours and padding) */
+.jqx-grid-cell-selected-tailwind span:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) span) {
   color: inherit !important;
 }
 
@@ -3876,8 +3885,10 @@ textarea.jqx-input-tailwind:-webkit-input-placeholder {
   color: var(--tailwind-type-primary) !important;
 }
 
-.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea,
-.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input {
+/* (not in a React Grid part: a cell, editor, header, bar or row details component keeps its own
+   colours and padding) */
+.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) textarea:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) *),
+.jqx-widget-tailwind:not(.jqx-input-group):not(.jqx-form-tailwind) input:not(:is(.jqx-grid-react-cell, .jqx-grid-react-header, .jqx-grid-react-toolbar, .jqx-grid-react-statusbar, .jqx-grid-react-details, .jqx-grid-react-editor) *) {
   padding-left: 5px;
   box-sizing: border-box;
 }

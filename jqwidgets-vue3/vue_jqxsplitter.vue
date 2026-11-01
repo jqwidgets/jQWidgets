@@ -18,6 +18,7 @@
                 type: Boolean
             },
             height: [Number, String],
+            initContent: Function,
             orientation: String,
             panels: Array,
             resizable: {
@@ -30,6 +31,7 @@
                 type: Boolean
             },
             theme: String,
+            touchSplitBarSize: Number,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -92,6 +94,13 @@
                     return JQXLite(componentSelector).jqxSplitter('height');
                 }
             }
+            function _initContent (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSplitter('initContent', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSplitter('initContent');
+                }
+            }
             function _orientation (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSplitter('orientation', arg)
@@ -134,6 +143,13 @@
                     return JQXLite(componentSelector).jqxSplitter('theme');
                 }
             }
+            function _touchSplitBarSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSplitter('touchSplitBarSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSplitter('touchSplitBarSize');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSplitter('width', arg)
@@ -151,7 +167,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','height','orientation','panels','resizable','splitBarSize','showSplitBar','theme','width'];
+                const widgetProps = ['disabled','height','initContent','orientation','panels','resizable','splitBarSize','showSplitBar','theme','touchSplitBarSize','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -174,6 +190,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get initContent() {
+                     return _initContent();
+                 },
+                 set initContent(newValue) {
+                     _initContent(newValue);
                  },
                  get orientation() {
                      return _orientation();
@@ -210,6 +232,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get touchSplitBarSize() {
+                     return _touchSplitBarSize();
+                 },
+                 set touchSplitBarSize(newValue) {
+                     _touchSplitBarSize(newValue);
                  },
                  get width() {
                      return _width();

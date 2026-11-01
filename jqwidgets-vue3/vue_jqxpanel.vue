@@ -18,11 +18,13 @@
                 default: false,
                 type: Boolean
             },
+            autoUpdateInterval: Number,
             disabled: {
                 default: false,
                 type: Boolean
             },
             height: [Number, String],
+            horizontalScrollBarMax: Number,
             rtl: {
                 default: false,
                 type: Boolean
@@ -30,6 +32,7 @@
             sizeMode: String,
             scrollBarSize: Number,
             theme: String,
+            verticalScrollBarMax: Number,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -90,11 +93,21 @@
             function scrollTo(left, top) {
                 JQXLite(componentSelector).jqxPanel('scrollTo', left, top);  
             }
+            function setcontent(html) {
+                JQXLite(componentSelector).jqxPanel('setcontent', html);  
+            }
             function _autoUpdate (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxPanel('autoUpdate', arg)
                 } else {
                     return JQXLite(componentSelector).jqxPanel('autoUpdate');
+                }
+            }
+            function _autoUpdateInterval (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPanel('autoUpdateInterval', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPanel('autoUpdateInterval');
                 }
             }
             function _disabled (arg) {
@@ -109,6 +122,13 @@
                     JQXLite(componentSelector).jqxPanel('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxPanel('height');
+                }
+            }
+            function _horizontalScrollBarMax (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPanel('horizontalScrollBarMax', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPanel('horizontalScrollBarMax');
                 }
             }
             function _rtl (arg) {
@@ -139,6 +159,13 @@
                     return JQXLite(componentSelector).jqxPanel('theme');
                 }
             }
+            function _verticalScrollBarMax (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxPanel('verticalScrollBarMax', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxPanel('verticalScrollBarMax');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxPanel('width', arg)
@@ -156,7 +183,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['autoUpdate','disabled','height','rtl','sizeMode','scrollBarSize','theme','width'];
+                const widgetProps = ['autoUpdate','autoUpdateInterval','disabled','height','horizontalScrollBarMax','rtl','sizeMode','scrollBarSize','theme','verticalScrollBarMax','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -174,6 +201,12 @@
                  set autoUpdate(newValue) {
                      _autoUpdate(newValue);
                  },
+                 get autoUpdateInterval() {
+                     return _autoUpdateInterval();
+                 },
+                 set autoUpdateInterval(newValue) {
+                     _autoUpdateInterval(newValue);
+                 },
                  get disabled() {
                      return _disabled();
                  },
@@ -185,6 +218,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get horizontalScrollBarMax() {
+                     return _horizontalScrollBarMax();
+                 },
+                 set horizontalScrollBarMax(newValue) {
+                     _horizontalScrollBarMax(newValue);
                  },
                  get rtl() {
                      return _rtl();
@@ -209,6 +248,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get verticalScrollBarMax() {
+                     return _verticalScrollBarMax();
+                 },
+                 set verticalScrollBarMax(newValue) {
+                     _verticalScrollBarMax(newValue);
                  },
                  get width() {
                      return _width();
@@ -258,7 +303,7 @@
 				element.off();
 				try { element.jqxPanel('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, append, clearcontent, destroy, focus, getScrollHeight, getVScrollPosition, getScrollWidth, getHScrollPosition, prepend, remove, scrollTo, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, append, clearcontent, destroy, focus, getScrollHeight, getVScrollPosition, getScrollWidth, getHScrollPosition, prepend, remove, scrollTo, setcontent, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

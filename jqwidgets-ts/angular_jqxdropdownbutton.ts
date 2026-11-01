@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,9 +27,14 @@ export class jqxDropDownButtonComponent implements OnChanges
    @Input('closeDelay') attrCloseDelay: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: string;
+   @Input('dropDownContainer') attrDropDownContainer: string;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('dropDownHeight') attrDropDownHeight: number | string;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('focusable') attrFocusable: boolean;
+   @Input('hint') attrHint: boolean;
    @Input('initContent') attrInitContent: () => void;
    @Input('openDelay') attrOpenDelay: number;
    @Input('popupZIndex') attrPopupZIndex: number;
@@ -41,7 +46,7 @@ export class jqxDropDownButtonComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownWidth','enableBrowserBoundsDetection','height','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
+   properties: string[] = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownContainer','dropDownVerticalAlignment','dropDownWidth','dropDownHeight','enableBrowserBoundsDetection','enableHover','focusable','height','hint','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownButton;
@@ -216,6 +221,14 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
+   dropDownContainer(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDropDownButton('dropDownContainer', arg);
+      } else {
+          return this.host.jqxDropDownButton('dropDownContainer');
+      }
+   }
+
    dropDownVerticalAlignment(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('dropDownVerticalAlignment', arg);
@@ -232,6 +245,14 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
+   dropDownHeight(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxDropDownButton('dropDownHeight', arg);
+      } else {
+          return this.host.jqxDropDownButton('dropDownHeight');
+      }
+   }
+
    enableBrowserBoundsDetection(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('enableBrowserBoundsDetection', arg);
@@ -240,11 +261,35 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
+   enableHover(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDropDownButton('enableHover', arg);
+      } else {
+          return this.host.jqxDropDownButton('enableHover');
+      }
+   }
+
+   focusable(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDropDownButton('focusable', arg);
+      } else {
+          return this.host.jqxDropDownButton('focusable');
+      }
+   }
+
    height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('height', arg);
       } else {
           return this.host.jqxDropDownButton('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDropDownButton('hint', arg);
+      } else {
+          return this.host.jqxDropDownButton('hint');
       }
    }
 
@@ -334,14 +379,26 @@ export class jqxDropDownButtonComponent implements OnChanges
       this.host.jqxDropDownButton('setContent', content);
    }
 
+   val(value?: string): any {
+      if (value !== undefined) {
+         return this.host.jqxDropDownButton('val', value);
+      } else {
+         return this.host.jqxDropDownButton('val');
+      }
+   };
+
 
    // jqxDropDownButtonComponent events
    @Output() onClose = new EventEmitter();
+   @Output() onClosing = new EventEmitter();
    @Output() onOpen = new EventEmitter();
+   @Output() onOpening = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('closing', (eventData: any) => { this.onClosing.emit(eventData); });
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
+      this.host.on('opening', (eventData: any) => { this.onOpening.emit(eventData); });
    }
 
 } //jqxDropDownButtonComponent

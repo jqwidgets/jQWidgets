@@ -23,6 +23,10 @@
                 type: Boolean
             },
             easing: String,
+            editableLabels: {
+                default: false,
+                type: Boolean
+            },
             endAngle: Number,
             height: [Number, String],
             int64: {
@@ -32,6 +36,10 @@
             labels: Object,
             min: Number,
             max: Number,
+            niceInterval: {
+                default: false,
+                type: Boolean
+            },
             pointer: Object,
             radius: Number,
             ranges: Array,
@@ -42,6 +50,7 @@
             },
             styles: Object,
             theme: String,
+            tickMode: String,
             ticksMajor: Object,
             ticksMinor: Object,
             ticksDistance: String,
@@ -72,6 +81,9 @@
                     resultToReturn[usedProps[i]] = JQXLite(componentSelector).jqxGauge(usedProps[i]);
                 }
                 return resultToReturn;
+            }
+            function destroy() {
+                JQXLite(componentSelector).jqxGauge('destroy');  
             }
             function disable() {
                 JQXLite(componentSelector).jqxGauge('disable');  
@@ -135,6 +147,13 @@
                     return JQXLite(componentSelector).jqxGauge('easing');
                 }
             }
+            function _editableLabels (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGauge('editableLabels', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGauge('editableLabels');
+                }
+            }
             function _endAngle (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGauge('endAngle', arg)
@@ -175,6 +194,13 @@
                     JQXLite(componentSelector).jqxGauge('max', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGauge('max');
+                }
+            }
+            function _niceInterval (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGauge('niceInterval', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGauge('niceInterval');
                 }
             }
             function _pointer (arg) {
@@ -226,6 +252,13 @@
                     return JQXLite(componentSelector).jqxGauge('theme');
                 }
             }
+            function _tickMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGauge('tickMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGauge('tickMode');
+                }
+            }
             function _ticksMajor (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxGauge('ticksMajor', arg)
@@ -271,7 +304,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','theme','ticksMajor','ticksMinor','ticksDistance','value','width'];
+                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','editableLabels','endAngle','height','int64','labels','min','max','niceInterval','pointer','radius','ranges','startAngle','showRanges','styles','theme','tickMode','ticksMajor','ticksMinor','ticksDistance','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -326,6 +359,12 @@
                  set easing(newValue) {
                      _easing(newValue);
                  },
+                 get editableLabels() {
+                     return _editableLabels();
+                 },
+                 set editableLabels(newValue) {
+                     _editableLabels(newValue);
+                 },
                  get endAngle() {
                      return _endAngle();
                  },
@@ -361,6 +400,12 @@
                  },
                  set max(newValue) {
                      _max(newValue);
+                 },
+                 get niceInterval() {
+                     return _niceInterval();
+                 },
+                 set niceInterval(newValue) {
+                     _niceInterval(newValue);
                  },
                  get pointer() {
                      return _pointer();
@@ -403,6 +448,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get tickMode() {
+                     return _tickMode();
+                 },
+                 set tickMode(newValue) {
+                     _tickMode(newValue);
                  },
                  get ticksMajor() {
                      return _ticksMajor();
@@ -476,8 +527,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxGauge('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, disable, enable, val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, disable, enable, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

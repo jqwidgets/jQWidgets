@@ -21,18 +21,23 @@
                 default: false,
                 type: Boolean
             },
+            autoItemsHeight: {
+                default: false,
+                type: Boolean
+            },
             allowDrag: {
                 default: false,
                 type: Boolean
             },
             allowDrop: {
-                default: false,
+                default: true,
                 type: Boolean
             },
             checkboxes: {
                 default: false,
                 type: Boolean
             },
+            checkboxSize: Number,
             disabled: {
                 default: false,
                 type: Boolean
@@ -41,7 +46,13 @@
             dropAction: String,
             dragStart: Function,
             dragEnd: Function,
+            emptyGroupText: String,
+            emptyString: String,
             enableHover: {
+                default: true,
+                type: Boolean
+            },
+            enableMouseWheel: {
                 default: true,
                 type: Boolean
             },
@@ -60,6 +71,12 @@
             filterHeight: Number,
             filterDelay: Number,
             filterPlaceHolder: String,
+            filterChange: Function,
+            focusable: {
+                default: true,
+                type: Boolean
+            },
+            groupMember: String,
             height: [String, Number],
             hasThreeStates: {
                 default: false,
@@ -71,6 +88,11 @@
                 type: Boolean
             },
             incrementalSearchDelay: Number,
+            incrementalSearchKeyDownDelay: Number,
+            keyboardNavigation: {
+                default: true,
+                type: Boolean
+            },
             multiple: {
                 default: false,
                 type: Boolean
@@ -79,6 +101,7 @@
                 default: false,
                 type: Boolean
             },
+            ready: Function,
             renderer: Function,
             rendered: Function,
             rtl: {
@@ -90,7 +113,9 @@
             source: [Array, Object],
             scrollBarSize: Number,
             searchMode: String,
+            searchMember: String,
             theme: String,
+            touchMode: null,
             valueMember: String,
             width: [String, Number],
             autoCreate: {
@@ -98,7 +123,7 @@
                 type: Boolean
             }
         },
-        emits: ["update:modelValue","bindingComplete","change","checkChange","dragStart","dragEnd","select","unselect"],
+        emits: ["update:modelValue","bindingComplete","change","checkChange","dragStart","dragEnd","select","unselect","itemAdd","itemRemove","itemUpdate"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxListBox" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -170,6 +195,12 @@
             function getItems() {
                 return JQXLite(componentSelector).jqxListBox('getItems');  
             }
+            function getVisibleItems() {
+                return JQXLite(componentSelector).jqxListBox('getVisibleItems');  
+            }
+            function findItems(text) {
+                return JQXLite(componentSelector).jqxListBox('findItems', text);  
+            }
             function getSelectedItems() {
                 return JQXLite(componentSelector).jqxListBox('getSelectedItems');  
             }
@@ -215,6 +246,9 @@
             function refresh() {
                 JQXLite(componentSelector).jqxListBox('refresh');  
             }
+            function scrollTo(left, top) {
+                JQXLite(componentSelector).jqxListBox('scrollTo', left, top);  
+            }
             function selectItem(Item) {
                 JQXLite(componentSelector).jqxListBox('selectItem', Item);  
             }
@@ -256,6 +290,13 @@
                     return JQXLite(componentSelector).jqxListBox('autoHeight');
                 }
             }
+            function _autoItemsHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('autoItemsHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('autoItemsHeight');
+                }
+            }
             function _allowDrag (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListBox('allowDrag', arg)
@@ -275,6 +316,13 @@
                     JQXLite(componentSelector).jqxListBox('checkboxes', arg)
                 } else {
                     return JQXLite(componentSelector).jqxListBox('checkboxes');
+                }
+            }
+            function _checkboxSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('checkboxSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('checkboxSize');
                 }
             }
             function _disabled (arg) {
@@ -312,11 +360,32 @@
                     return JQXLite(componentSelector).jqxListBox('dragEnd');
                 }
             }
+            function _emptyGroupText (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('emptyGroupText', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('emptyGroupText');
+                }
+            }
+            function _emptyString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('emptyString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('emptyString');
+                }
+            }
             function _enableHover (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListBox('enableHover', arg)
                 } else {
                     return JQXLite(componentSelector).jqxListBox('enableHover');
+                }
+            }
+            function _enableMouseWheel (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('enableMouseWheel', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('enableMouseWheel');
                 }
             }
             function _enableSelection (arg) {
@@ -361,6 +430,27 @@
                     return JQXLite(componentSelector).jqxListBox('filterPlaceHolder');
                 }
             }
+            function _filterChange (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('filterChange', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('filterChange');
+                }
+            }
+            function _focusable (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('focusable', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('focusable');
+                }
+            }
+            function _groupMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('groupMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('groupMember');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListBox('height', arg)
@@ -396,6 +486,20 @@
                     return JQXLite(componentSelector).jqxListBox('incrementalSearchDelay');
                 }
             }
+            function _incrementalSearchKeyDownDelay (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('incrementalSearchKeyDownDelay', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('incrementalSearchKeyDownDelay');
+                }
+            }
+            function _keyboardNavigation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('keyboardNavigation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('keyboardNavigation');
+                }
+            }
             function _multiple (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListBox('multiple', arg)
@@ -408,6 +512,13 @@
                     JQXLite(componentSelector).jqxListBox('multipleextended', arg)
                 } else {
                     return JQXLite(componentSelector).jqxListBox('multipleextended');
+                }
+            }
+            function _ready (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('ready', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('ready');
                 }
             }
             function _renderer (arg) {
@@ -466,11 +577,25 @@
                     return JQXLite(componentSelector).jqxListBox('searchMode');
                 }
             }
+            function _searchMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('searchMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('searchMember');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxListBox('theme', arg)
                 } else {
                     return JQXLite(componentSelector).jqxListBox('theme');
+                }
+            }
+            function _touchMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxListBox('touchMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxListBox('touchMode');
                 }
             }
             function _valueMember (arg) {
@@ -498,7 +623,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rendered','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
+                const widgetProps = ['autoHeight','autoItemsHeight','allowDrag','allowDrop','checkboxes','checkboxSize','disabled','displayMember','dropAction','dragStart','dragEnd','emptyGroupText','emptyString','enableHover','enableMouseWheel','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','filterChange','focusable','groupMember','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','incrementalSearchKeyDownDelay','keyboardNavigation','multiple','multipleextended','ready','renderer','rendered','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','searchMember','theme','touchMode','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -515,6 +640,12 @@
                  },
                  set autoHeight(newValue) {
                      _autoHeight(newValue);
+                 },
+                 get autoItemsHeight() {
+                     return _autoItemsHeight();
+                 },
+                 set autoItemsHeight(newValue) {
+                     _autoItemsHeight(newValue);
                  },
                  get allowDrag() {
                      return _allowDrag();
@@ -533,6 +664,12 @@
                  },
                  set checkboxes(newValue) {
                      _checkboxes(newValue);
+                 },
+                 get checkboxSize() {
+                     return _checkboxSize();
+                 },
+                 set checkboxSize(newValue) {
+                     _checkboxSize(newValue);
                  },
                  get disabled() {
                      return _disabled();
@@ -564,11 +701,29 @@
                  set dragEnd(newValue) {
                      _dragEnd(newValue);
                  },
+                 get emptyGroupText() {
+                     return _emptyGroupText();
+                 },
+                 set emptyGroupText(newValue) {
+                     _emptyGroupText(newValue);
+                 },
+                 get emptyString() {
+                     return _emptyString();
+                 },
+                 set emptyString(newValue) {
+                     _emptyString(newValue);
+                 },
                  get enableHover() {
                      return _enableHover();
                  },
                  set enableHover(newValue) {
                      _enableHover(newValue);
+                 },
+                 get enableMouseWheel() {
+                     return _enableMouseWheel();
+                 },
+                 set enableMouseWheel(newValue) {
+                     _enableMouseWheel(newValue);
                  },
                  get enableSelection() {
                      return _enableSelection();
@@ -606,6 +761,24 @@
                  set filterPlaceHolder(newValue) {
                      _filterPlaceHolder(newValue);
                  },
+                 get filterChange() {
+                     return _filterChange();
+                 },
+                 set filterChange(newValue) {
+                     _filterChange(newValue);
+                 },
+                 get focusable() {
+                     return _focusable();
+                 },
+                 set focusable(newValue) {
+                     _focusable(newValue);
+                 },
+                 get groupMember() {
+                     return _groupMember();
+                 },
+                 set groupMember(newValue) {
+                     _groupMember(newValue);
+                 },
                  get height() {
                      return _height();
                  },
@@ -636,6 +809,18 @@
                  set incrementalSearchDelay(newValue) {
                      _incrementalSearchDelay(newValue);
                  },
+                 get incrementalSearchKeyDownDelay() {
+                     return _incrementalSearchKeyDownDelay();
+                 },
+                 set incrementalSearchKeyDownDelay(newValue) {
+                     _incrementalSearchKeyDownDelay(newValue);
+                 },
+                 get keyboardNavigation() {
+                     return _keyboardNavigation();
+                 },
+                 set keyboardNavigation(newValue) {
+                     _keyboardNavigation(newValue);
+                 },
                  get multiple() {
                      return _multiple();
                  },
@@ -647,6 +832,12 @@
                  },
                  set multipleextended(newValue) {
                      _multipleextended(newValue);
+                 },
+                 get ready() {
+                     return _ready();
+                 },
+                 set ready(newValue) {
+                     _ready(newValue);
                  },
                  get renderer() {
                      return _renderer();
@@ -696,11 +887,23 @@
                  set searchMode(newValue) {
                      _searchMode(newValue);
                  },
+                 get searchMember() {
+                     return _searchMember();
+                 },
+                 set searchMember(newValue) {
+                     _searchMember(newValue);
+                 },
                  get theme() {
                      return _theme();
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get touchMode() {
+                     return _touchMode();
+                 },
+                 set touchMode(newValue) {
+                     _touchMode(newValue);
                  },
                  get valueMember() {
                      return _valueMember();
@@ -739,6 +942,9 @@
                 JQXLite(componentSelector).on('dragEnd', function (event) { that.emit('dragEnd', event); });
                 JQXLite(componentSelector).on('select', function (event) { that.emit('select', event); });
                 JQXLite(componentSelector).on('unselect', function (event) { that.emit('unselect', event); });
+                JQXLite(componentSelector).on('itemAdd', function (event) { that.emit('itemAdd', event); });
+                JQXLite(componentSelector).on('itemRemove', function (event) { that.emit('itemRemove', event); });
+                JQXLite(componentSelector).on('itemUpdate', function (event) { that.emit('itemUpdate', event); });
             }
 
 			onMounted(() => {
@@ -782,7 +988,7 @@
 				element.off();
 				try { element.jqxListBox('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addItem, beginUpdate, clear, clearSelection, checkIndex, checkItem, checkAll, clearFilter, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, endUpdate, focus, getItems, getSelectedItems, getCheckedItems, getItem, getItemByValue, getSelectedItem, getSelectedIndex, insertAt, invalidate, indeterminateItem, indeterminateIndex, loadFromSelect, removeItem, removeAt, render, refresh, selectItem, selectIndex, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addItem, beginUpdate, clear, clearSelection, checkIndex, checkItem, checkAll, clearFilter, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, endUpdate, focus, getItems, getVisibleItems, findItems, getSelectedItems, getCheckedItems, getItem, getItemByValue, getSelectedItem, getSelectedIndex, insertAt, invalidate, indeterminateItem, indeterminateIndex, loadFromSelect, removeItem, removeAt, render, refresh, scrollTo, selectItem, selectIndex, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

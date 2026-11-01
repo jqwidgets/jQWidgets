@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxribbon",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxribbon.umd.js",
   "module": "react_jqxribbon.esm.js",
   "typings": "react_jqxribbon.d.ts",

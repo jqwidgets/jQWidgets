@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -315,6 +315,10 @@ export class jqxDockingComponent implements OnChanges
       this.host.jqxDocking('focus');
    }
 
+   getWindowProperty(windowId: string, propertyName: string): any {
+      return this.host.jqxDocking('getWindowProperty', windowId, propertyName);
+   }
+
    hideAllCloseButtons(): void {
       this.host.jqxDocking('hideAllCloseButtons');
    }
@@ -345,6 +349,10 @@ export class jqxDockingComponent implements OnChanges
 
    setWindowMode(windowId: string, mode: any): void {
       this.host.jqxDocking('setWindowMode', windowId, mode);
+   }
+
+   setWindowProperty(windowId: string, propertyName: string, value: any): void {
+      this.host.jqxDocking('setWindowProperty', windowId, propertyName, value);
    }
 
    showCloseButton(windowId: string): void {

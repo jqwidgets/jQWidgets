@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxscrollview",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxscrollview.umd.js",
   "module": "react_jqxscrollview.esm.js",
   "typings": "react_jqxscrollview.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxpasswordinput",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxpasswordinput.umd.js",
   "module": "react_jqxpasswordinput.esm.js",
   "typings": "react_jqxpasswordinput.d.ts",

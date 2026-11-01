@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,11 +23,13 @@ declare let JQXLite: any;
 
 export class jqxKanbanComponent implements OnChanges
 {
+   @Input('animationDelay') attrAnimationDelay: number;
    @Input('columnRenderer') attrColumnRenderer: (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void;
    @Input('columns') attrColumns: Array<jqwidgets.KanbanColumns>;
    @Input('connectWith') attrConnectWith: string;
    @Input('headerHeight') attrHeaderHeight: number | string;
    @Input('headerWidth') attrHeaderWidth: number;
+   @Input('handle') attrHandle: string;
    @Input('itemRenderer') attrItemRenderer: (element: jqwidgets.KanbanItemRenderer['element'], item: jqwidgets.KanbanItemRenderer['item'], resource: jqwidgets.KanbanItemRenderer['resource']) => void;
    @Input('ready') attrReady: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -35,13 +37,14 @@ export class jqxKanbanComponent implements OnChanges
    @Input('resources') attrResources: any;
    @Input('template') attrTemplate: string;
    @Input('templateContent') attrTemplateContent: any;
+   @Input('verticalTextOrientation') attrVerticalTextOrientation: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['columnRenderer','columns','connectWith','headerHeight','headerWidth','height','itemRenderer','ready','rtl','source','resources','template','templateContent','theme','width'];
+   properties: string[] = ['animationDelay','columnRenderer','columns','connectWith','headerHeight','headerWidth','handle','height','itemRenderer','ready','rtl','source','resources','template','templateContent','verticalTextOrientation','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKanban;
@@ -168,6 +171,14 @@ export class jqxKanbanComponent implements OnChanges
    }
 
    // jqxKanbanComponent properties
+   animationDelay(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxKanban('animationDelay', arg);
+      } else {
+          return this.host.jqxKanban('animationDelay');
+      }
+   }
+
    columnRenderer(arg?: (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void): (element: jqwidgets.KanbanColumnRenderer['element'], collapsedElement: jqwidgets.KanbanColumnRenderer['collapsedElement'], column: jqwidgets.KanbanColumnRenderer['column']) => void {
       if (arg !== undefined) {
           this.host.jqxKanban('columnRenderer', arg);
@@ -205,6 +216,14 @@ export class jqxKanbanComponent implements OnChanges
           this.host.jqxKanban('headerWidth', arg);
       } else {
           return this.host.jqxKanban('headerWidth');
+      }
+   }
+
+   handle(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxKanban('handle', arg);
+      } else {
+          return this.host.jqxKanban('handle');
       }
    }
 
@@ -272,6 +291,14 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
+   verticalTextOrientation(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxKanban('verticalTextOrientation', arg);
+      } else {
+          return this.host.jqxKanban('verticalTextOrientation');
+      }
+   }
+
    theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKanban('theme', arg);
@@ -294,8 +321,16 @@ export class jqxKanbanComponent implements OnChanges
       this.host.jqxKanban('addItem', newItem);
    }
 
+   collapseColumn(dataField: string): boolean {
+      return this.host.jqxKanban('collapseColumn', dataField);
+   }
+
    destroy(): void {
       this.host.jqxKanban('destroy');
+   }
+
+   expandColumn(dataField: string): boolean {
+      return this.host.jqxKanban('expandColumn', dataField);
    }
 
    getColumn(dataField: string): jqwidgets.KanbanColumns {
@@ -310,8 +345,20 @@ export class jqxKanbanComponent implements OnChanges
       return this.host.jqxKanban('getItems');
    }
 
+   getSelectedColumn(): string {
+      return this.host.jqxKanban('getSelectedColumn');
+   }
+
+   getSelectedItem(): jqwidgets.KanbanSource {
+      return this.host.jqxKanban('getSelectedItem');
+   }
+
    removeItem(itemId: string | number): void {
       this.host.jqxKanban('removeItem', itemId);
+   }
+
+   selectItem(itemId: string | number): void {
+      this.host.jqxKanban('selectItem', itemId);
    }
 
    updateItem(itemId: string, newContent: jqwidgets.KanbanUpdateItem): void {
@@ -323,15 +370,25 @@ export class jqxKanbanComponent implements OnChanges
    @Output() onColumnAttrClicked = new EventEmitter();
    @Output() onColumnCollapsed = new EventEmitter();
    @Output() onColumnExpanded = new EventEmitter();
+   @Output() onColumnSelected = new EventEmitter();
+   @Output() onColumnUnselected = new EventEmitter();
    @Output() onItemAttrClicked = new EventEmitter();
+   @Output() onItemCreated = new EventEmitter();
    @Output() onItemMoved = new EventEmitter();
+   @Output() onItemReceived = new EventEmitter();
+   @Output() onItemSelected = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('columnAttrClicked', (eventData: any) => { this.onColumnAttrClicked.emit(eventData); });
       this.host.on('columnCollapsed', (eventData: any) => { this.onColumnCollapsed.emit(eventData); });
       this.host.on('columnExpanded', (eventData: any) => { this.onColumnExpanded.emit(eventData); });
+      this.host.on('columnSelected', (eventData: any) => { this.onColumnSelected.emit(eventData); });
+      this.host.on('columnUnselected', (eventData: any) => { this.onColumnUnselected.emit(eventData); });
       this.host.on('itemAttrClicked', (eventData: any) => { this.onItemAttrClicked.emit(eventData); });
+      this.host.on('itemCreated', (eventData: any) => { this.onItemCreated.emit(eventData); });
       this.host.on('itemMoved', (eventData: any) => { this.onItemMoved.emit(eventData); });
+      this.host.on('itemReceived', (eventData: any) => { this.onItemReceived.emit(eventData); });
+      this.host.on('itemSelected', (eventData: any) => { this.onItemSelected.emit(eventData); });
    }
 
 } //jqxKanbanComponent

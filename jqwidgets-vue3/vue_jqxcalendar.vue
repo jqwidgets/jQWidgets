@@ -57,8 +57,13 @@
             forwardText: String,
             firstDayOfWeek: Number,
             height: [Number, String],
+            keyboardNavigation: {
+                default: true,
+                type: Boolean
+            },
             min: Date,
             max: Date,
+            monthNameFormat: String,
             navigationDelay: Number,
             rowHeaderWidth: Number,
             readOnly: {
@@ -72,7 +77,7 @@
             },
             stepMonths: Number,
             showWeekNumbers: {
-                default: true,
+                default: false,
                 type: Boolean
             },
             showDayNames: {
@@ -88,12 +93,14 @@
                 type: Boolean
             },
             selectionMode: String,
+            selectableDays: Array,
             specialDates: Array,
             theme: String,
             titleHeight: Number,
             titleFormat: Array,
             todayString: String,
             value: Date,
+            views: Array,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -291,6 +298,13 @@
                     return JQXLite(componentSelector).jqxCalendar('height');
                 }
             }
+            function _keyboardNavigation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCalendar('keyboardNavigation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCalendar('keyboardNavigation');
+                }
+            }
             function _min (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxCalendar('min', arg)
@@ -303,6 +317,13 @@
                     JQXLite(componentSelector).jqxCalendar('max', arg)
                 } else {
                     return JQXLite(componentSelector).jqxCalendar('max');
+                }
+            }
+            function _monthNameFormat (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCalendar('monthNameFormat', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCalendar('monthNameFormat');
                 }
             }
             function _navigationDelay (arg) {
@@ -382,6 +403,13 @@
                     return JQXLite(componentSelector).jqxCalendar('selectionMode');
                 }
             }
+            function _selectableDays (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCalendar('selectableDays', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCalendar('selectableDays');
+                }
+            }
             function _specialDates (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxCalendar('specialDates', arg)
@@ -424,6 +452,13 @@
                     return JQXLite(componentSelector).jqxCalendar('value');
                 }
             }
+            function _views (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCalendar('views', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCalendar('views');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxCalendar('width', arg)
@@ -442,7 +477,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todayString','value','width'];
+                const widgetProps = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','keyboardNavigation','min','max','monthNameFormat','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','selectableDays','specialDates','theme','titleHeight','titleFormat','todayString','value','views','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -550,6 +585,12 @@
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get keyboardNavigation() {
+                     return _keyboardNavigation();
+                 },
+                 set keyboardNavigation(newValue) {
+                     _keyboardNavigation(newValue);
+                 },
                  get min() {
                      return _min();
                  },
@@ -561,6 +602,12 @@
                  },
                  set max(newValue) {
                      _max(newValue);
+                 },
+                 get monthNameFormat() {
+                     return _monthNameFormat();
+                 },
+                 set monthNameFormat(newValue) {
+                     _monthNameFormat(newValue);
                  },
                  get navigationDelay() {
                      return _navigationDelay();
@@ -628,6 +675,12 @@
                  set selectionMode(newValue) {
                      _selectionMode(newValue);
                  },
+                 get selectableDays() {
+                     return _selectableDays();
+                 },
+                 set selectableDays(newValue) {
+                     _selectableDays(newValue);
+                 },
                  get specialDates() {
                      return _specialDates();
                  },
@@ -663,6 +716,12 @@
                  },
                  set value(newValue) {
                      _value(newValue);
+                 },
+                 get views() {
+                     return _views();
+                 },
+                 set views(newValue) {
+                     _views(newValue);
                  },
                  get width() {
                      return _width();

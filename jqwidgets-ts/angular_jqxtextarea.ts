@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,6 +37,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('displayMember') attrDisplayMember: string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('hint') attrHint: boolean;
    @Input('items') attrItems: number;
    @Input('maxLength') attrMaxLength: number;
    @Input('minLength') attrMinLength: number;
@@ -57,7 +58,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','displayMember','dropDownWidth','height','items','maxLength','minLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','scrollBarSize','searchMode','source','theme','valueMember','width'];
+   properties: string[] = ['disabled','displayMember','dropDownWidth','height','hint','items','maxLength','minLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','scrollBarSize','searchMode','source','theme','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTextArea;
@@ -239,6 +240,14 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
           this.host.jqxTextArea('height', arg);
       } else {
           return this.host.jqxTextArea('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTextArea('hint', arg);
+      } else {
+          return this.host.jqxTextArea('hint');
       }
    }
 

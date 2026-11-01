@@ -9,18 +9,23 @@ declare class JqxTreeMap extends React.PureComponent<ITreeMapProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITreeMapProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: ITreeMapProps): void;
     getOptions(option: string): any;
+    clearSelection(): void;
     destroy(): void;
     renderWidget(): void;
     private _manageProps;
@@ -61,6 +66,7 @@ interface ITreeMapOptions {
         [label: string]: (element: any, data: any) => boolean | void;
     };
     selectionEnabled?: boolean;
+    singleSelection?: boolean;
     showLegend?: boolean;
     source?: any;
     theme?: string;
@@ -72,4 +78,6 @@ export interface ITreeMapProps extends ITreeMapOptions, React.AriaAttributes {
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onBindingComplete?: (e?: any) => void;
+    onMouseenterSector?: (e?: any) => void;
+    onMouseleaveSector?: (e?: any) => void;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -43,9 +43,11 @@ export class jqxChartComponent implements OnChanges
    @Input('colorScheme') attrColorScheme: string;
    @Input('greyScale') attrGreyScale: boolean;
    @Input('showToolTips') attrShowToolTips: boolean;
+   @Input('showToolTipsOnAllSeries') attrShowToolTipsOnAllSeries: boolean;
    @Input('toolTipShowDelay') attrToolTipShowDelay: number;
    @Input('toolTipHideDelay') attrToolTipHideDelay: number;
    @Input('toolTipMoveDuration') attrToolTipMoveDuration: number;
+   @Input('toolTipFormatFunction') attrToolTipFormatFunction: (value?: any, itemIndex?: number, serie?: any, group?: any, xAxisValue?: any, xAxis?: any) => string;
    @Input('drawBefore') attrDrawBefore: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void;
    @Input('draw') attrDraw: (renderer: jqwidgets.ChartRenderer, rect: jqwidgets.ChartRect) => void;
    @Input('rtl') attrRtl: boolean;
@@ -58,7 +60,11 @@ export class jqxChartComponent implements OnChanges
    @Input('enableAnimations') attrEnableAnimations: boolean;
    @Input('animationDuration') attrAnimationDuration: number;
    @Input('enableAxisTextAnimation') attrEnableAxisTextAnimation: boolean;
+   @Input('enableEvents') attrEnableEvents: boolean;
+   @Input('enableSampling') attrEnableSampling: boolean;
    @Input('renderEngine') attrRenderEngine: string;
+   @Input('axisPadding') attrAxisPadding: number;
+   @Input('localization') attrLocalization: any;
    @Input('xAxis') attrXAxis: jqwidgets.ChartXAxis;
    @Input('valueAxis') attrValueAxis: jqwidgets.ChartValueAxis;
    @Input('categoryAxis') attrCategoryAxis: any;
@@ -68,7 +74,7 @@ export class jqxChartComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
+   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','theme','colorScheme','greyScale','showToolTips','showToolTipsOnAllSeries','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','toolTipFormatFunction','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','enableEvents','enableSampling','renderEngine','axisPadding','localization','xAxis','valueAxis','categoryAxis','seriesGroups'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxChart;
@@ -331,6 +337,14 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
+   showToolTipsOnAllSeries(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxChart('showToolTipsOnAllSeries', arg);
+      } else {
+          return this.host.jqxChart('showToolTipsOnAllSeries');
+      }
+   }
+
    toolTipShowDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxChart('toolTipShowDelay', arg);
@@ -352,6 +366,14 @@ export class jqxChartComponent implements OnChanges
           this.host.jqxChart('toolTipMoveDuration', arg);
       } else {
           return this.host.jqxChart('toolTipMoveDuration');
+      }
+   }
+
+   toolTipFormatFunction(arg?: (value?: any, itemIndex?: number, serie?: any, group?: any, xAxisValue?: any, xAxis?: any) => string): (value?: any, itemIndex?: number, serie?: any, group?: any, xAxisValue?: any, xAxis?: any) => string {
+      if (arg !== undefined) {
+          this.host.jqxChart('toolTipFormatFunction', arg);
+      } else {
+          return this.host.jqxChart('toolTipFormatFunction');
       }
    }
 
@@ -451,11 +473,43 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
+   enableEvents(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxChart('enableEvents', arg);
+      } else {
+          return this.host.jqxChart('enableEvents');
+      }
+   }
+
+   enableSampling(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxChart('enableSampling', arg);
+      } else {
+          return this.host.jqxChart('enableSampling');
+      }
+   }
+
    renderEngine(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxChart('renderEngine', arg);
       } else {
           return this.host.jqxChart('renderEngine');
+      }
+   }
+
+   axisPadding(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxChart('axisPadding', arg);
+      } else {
+          return this.host.jqxChart('axisPadding');
+      }
+   }
+
+   localization(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxChart('localization', arg);
+      } else {
+          return this.host.jqxChart('localization');
       }
    }
 
@@ -507,6 +561,10 @@ export class jqxChartComponent implements OnChanges
 
    destroy(): void {
       this.host.jqxChart('destroy');
+   }
+
+   clear(): void {
+      this.host.jqxChart('clear');
    }
 
    addColorScheme(schemeName: string, colors: Array<string>): void {
@@ -579,6 +637,34 @@ export class jqxChartComponent implements OnChanges
 
    getValueAxisValue(offset: number, groupIndex: number): any {
       return this.host.jqxChart('getValueAxisValue', offset, groupIndex);
+   }
+
+   getXAxisDataPointOffset(value: number, groupIndex: number): number {
+      return this.host.jqxChart('getXAxisDataPointOffset', value, groupIndex);
+   }
+
+   getValueAxisDataPointOffset(value: number, groupIndex: number): number {
+      return this.host.jqxChart('getValueAxisDataPointOffset', value, groupIndex);
+   }
+
+   getPolarDataPointOffset(xValue: number, yValue: number, groupIndex: number): any {
+      return this.host.jqxChart('getPolarDataPointOffset', xValue, yValue, groupIndex);
+   }
+
+   getPlotAreaRect(): any {
+      return this.host.jqxChart('getPlotAreaRect');
+   }
+
+   getRect(): any {
+      return this.host.jqxChart('getRect');
+   }
+
+   isSerieVisible(groupIndex: number, serieIndex: number, itemIndex?: number): boolean {
+      return this.host.jqxChart('isSerieVisible', groupIndex, serieIndex, itemIndex);
+   }
+
+   isGroupVisible(groupIndex: number): boolean {
+      return this.host.jqxChart('isGroupVisible', groupIndex);
    }
 
 

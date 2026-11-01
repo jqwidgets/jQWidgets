@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,6 +24,7 @@ export class jqxNavigationBarComponent implements OnChanges
    @Input('arrowPosition') attrArrowPosition: string;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
    @Input('disabled') attrDisabled: boolean;
+   @Input('easing') attrEasing: string;
    @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
    @Input('expandMode') attrExpandMode: string;
    @Input('expandedIndexes') attrExpandedIndexes: Array<number>;
@@ -37,7 +38,7 @@ export class jqxNavigationBarComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
+   properties: string[] = ['animationType','arrowPosition','collapseAnimationDuration','disabled','easing','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNavigationBar;
@@ -193,6 +194,14 @@ export class jqxNavigationBarComponent implements OnChanges
           this.host.jqxNavigationBar('disabled', arg);
       } else {
           return this.host.jqxNavigationBar('disabled');
+      }
+   }
+
+   easing(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxNavigationBar('easing', arg);
+      } else {
+          return this.host.jqxNavigationBar('easing');
       }
    }
 

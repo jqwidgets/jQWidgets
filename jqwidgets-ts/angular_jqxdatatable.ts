@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,6 +32,8 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('disabled') attrDisabled: boolean;
    @Input('editable') attrEditable: boolean;
    @Input('editSettings') attrEditSettings: jqwidgets.DataTableEditSettings;
+   @Input('beginEdit') attrBeginEdit: (key: any, column?: any) => boolean | void;
+   @Input('endEdit') attrEndEdit: (key: any) => boolean | void;
    @Input('exportSettings') attrExportSettings: jqwidgets.DataTableExportSettings;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
@@ -40,8 +42,10 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('filterMode') attrFilterMode: string;
    @Input('groups') attrGroups: Array<any>;
    @Input('groupsRenderer') attrGroupsRenderer: (value: jqwidgets.DataTableGroupsRenderer['value'], rowData: jqwidgets.DataTableGroupsRenderer['rowdata'], level: jqwidgets.DataTableGroupsRenderer['level']) => string;
+   @Input('handleKeyboardNavigation') attrHandleKeyboardNavigation: (key: number) => boolean | void;
    @Input('initRowDetails') attrInitRowDetails: (id: jqwidgets.DataTableInitRowDetails['id'], row: jqwidgets.DataTableInitRowDetails['row'], element: jqwidgets.DataTableInitRowDetails['element'], rowInfo: jqwidgets.DataTableInitRowDetails['rowinfo']) => void;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
+   @Input('indentWidth') attrIndentWidth: number;
    @Input('localization') attrLocalization: any;
    @Input('pagerHeight') attrPagerHeight: number;
    @Input('pageSize') attrPageSize: number;
@@ -76,7 +80,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
+   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','beginEdit','endEdit','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','handleKeyboardNavigation','height','initRowDetails','incrementalSearch','indentWidth','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDataTable;
@@ -404,6 +408,32 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
+   beginEdit(arg?: (key: any, column?: any) => boolean | void): (key: any, column?: any) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDataTable('beginEdit', arg);
+      } else {
+          return this.host.jqxDataTable('beginEdit');
+      }
+   }
+
+   endEdit(arg?: (key: any) => boolean | void): (key: any) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDataTable('endEdit', arg);
+      } else {
+          return this.host.jqxDataTable('endEdit');
+      }
+   }
+
    exportSettings(arg?: jqwidgets.DataTableExportSettings): jqwidgets.DataTableExportSettings {
 
       if (this.autoCreate && !this.host) {
@@ -508,6 +538,19 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
+   handleKeyboardNavigation(arg?: (key: number) => boolean | void): (key: number) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDataTable('handleKeyboardNavigation', arg);
+      } else {
+          return this.host.jqxDataTable('handleKeyboardNavigation');
+      }
+   }
+
    height(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
@@ -544,6 +587,19 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
           this.host.jqxDataTable('incrementalSearch', arg);
       } else {
           return this.host.jqxDataTable('incrementalSearch');
+      }
+   }
+
+   indentWidth(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDataTable('indentWidth', arg);
+      } else {
+          return this.host.jqxDataTable('indentWidth');
       }
    }
 

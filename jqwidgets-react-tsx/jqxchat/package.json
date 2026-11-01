@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxchat",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxchat.umd.js",
   "module": "react_jqxchat.esm.js",
   "typings": "react_jqxchat.d.ts",

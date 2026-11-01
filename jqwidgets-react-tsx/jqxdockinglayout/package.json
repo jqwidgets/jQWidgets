@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxdockinglayout",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxdockinglayout.umd.js",
   "module": "react_jqxdockinglayout.esm.js",
   "typings": "react_jqxdockinglayout.d.ts",

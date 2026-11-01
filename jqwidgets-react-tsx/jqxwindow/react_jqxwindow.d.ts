@@ -9,13 +9,17 @@ declare class JqxWindow extends React.PureComponent<IWindowProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IWindowProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -57,18 +61,24 @@ export interface IWindowDragArea {
 }
 interface IWindowOptions {
     autoOpen?: boolean;
+    autoFocus?: boolean;
     animationType?: 'none' | 'fade' | 'slide' | 'combined';
     collapsed?: boolean;
     collapseAnimationDuration?: number;
+    collapseButtonSize?: number;
+    collapseButtonString?: string;
     content?: string;
     closeAnimationDuration?: number;
     closeButtonSize?: number;
     closeButtonAction?: 'hide' | 'close';
+    closeButtonString?: string;
+    closing?: () => boolean | void;
     cancelButton?: any;
     dragArea?: IWindowDragArea;
     draggable?: boolean;
     disabled?: boolean;
     height?: string | number;
+    headerHeight?: number;
     initContent?: () => void;
     isModal?: boolean;
     keyboardCloseKey?: number | string;
@@ -84,6 +94,7 @@ interface IWindowOptions {
     position?: string | any;
     rtl?: boolean;
     resizable?: boolean;
+    restricter?: any;
     showAnimationDuration?: number;
     showCloseButton?: boolean;
     showCollapseButton?: boolean;

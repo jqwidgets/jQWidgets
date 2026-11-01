@@ -54,6 +54,73 @@ require('../../jqwidgets/jqxcombobox');
     function __sameValue__(x, y) {
         return x === y ? (x !== 0 || 1 / x === 1 / y) : (x !== x && y !== y);
     }
+    function __sameContent__(x, y, depth, loose) {
+        if (__sameValue__(x, y)) {
+            return true;
+        }
+        if (loose && typeof x === 'function' && typeof y === 'function') {
+            return String(x) === String(y);
+        }
+        if (!x || !y || typeof x !== 'object' || typeof y !== 'object' || depth > 32) {
+            return false;
+        }
+        if (x instanceof Date && y instanceof Date) {
+            return x.getTime() === y.getTime();
+        }
+        var isArray = Array.isArray(x);
+        if (isArray !== Array.isArray(y)) {
+            return false;
+        }
+        if (!isArray) {
+            var px = Object.getPrototypeOf(x);
+            var py = Object.getPrototypeOf(y);
+            if ((px !== Object.prototype && px !== null) || (py !== Object.prototype && py !== null)) {
+                if (!loose || !x._source || !y._source) {
+                    return false;
+                }
+                if (x._source === y._source) {
+                    return true;
+                }
+                for (var _i = 0, _a = Object.keys(x._source); _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    if (!__sameContent__(x._source[key], y._source[key], depth + 1, true)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        var keys = Object.keys(x);
+        if (keys.length !== Object.keys(y).length) {
+            return false;
+        }
+        for (var _b = 0, keys_1 = keys; _b < keys_1.length; _b++) {
+            var key = keys_1[_b];
+            if (!Object.prototype.hasOwnProperty.call(y, key)) {
+                return false;
+            }
+            var a = x[key];
+            var b = y[key];
+            if (a === b && a && typeof a === 'object') {
+                if (loose) {
+                    continue;
+                }
+                return false;
+            }
+            if (!__sameContent__(a, b, depth + 1, loose)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    var __isDevelopment__ = (function () {
+        try {
+            return process.env.NODE_ENV !== 'production';
+        }
+        catch (error) {
+            return false;
+        }
+    })();
     function __afterTask__(callback) {
         if (typeof Promise !== 'undefined') {
             Promise.resolve().then(callback);
@@ -81,6 +148,8 @@ require('../../jqwidgets/jqxcombobox');
             /* tslint:disable:variable-name */
             _this._teardownPending = false;
             /* tslint:disable:variable-name */
+            _this._mounting = false;
+            /* tslint:disable:variable-name */
             _this._hostParent = null;
             /* tslint:disable:variable-name */
             _this._hostNext = null;
@@ -88,6 +157,12 @@ require('../../jqwidgets/jqxcombobox');
             _this._widgetPlace = null;
             /* tslint:disable:variable-name */
             _this._hostChildren = [];
+            /* tslint:disable:variable-name */
+            _this._changedInARow = {};
+            /* tslint:disable:variable-name */
+            _this._warned = {};
+            /* tslint:disable:variable-name */
+            _this._readyHandler = null;
             _this._id = 'JqxComboBox' + (_this._jqx ? _this._jqx.generateID() : 'SSR' + (++__ssrIdCounter__));
             _this._componentSelector = '#' + _this._id;
             return _this;
@@ -102,13 +177,33 @@ require('../../jqwidgets/jqxcombobox');
                 this._widgetPlace = null;
                 return;
             }
+            if (this._rendered && this._rendered.id !== this._id) {
+                this._rendered.id = this._id;
+            }
             var element = this._jqx(this._target());
             this._host = element[0] || null;
             this._hostParent = this._host ? this._host.parentNode : null;
             this._hostNext = this._host ? this._host.nextSibling : null;
             this._hostChildren = this._host ? Array.prototype.slice.call(this._host.childNodes) : [];
             var widgetOptions = this._manageProps();
-            element.jqxComboBox(widgetOptions);
+            this._eventElement = element;
+            this._wireEvents();
+            this._mounting = true;
+            try {
+                element.jqxComboBox(widgetOptions);
+            }
+            finally {
+                this._mounting = false;
+            }
+            if (this._eventElement[0] !== this._jqx(this._target())[0]) {
+                for (var prop in this._eventHandlers) {
+                    if (this._eventHandlers.hasOwnProperty(prop)) {
+                        this._eventElement.off(__eventName__(prop), this._eventHandlers[prop]);
+                    }
+                }
+                this._eventHandlers = {};
+                this._eventElement = null;
+            }
             this._appliedOptions = widgetOptions;
             this._applyHostAttributes();
             this._wireEvents();
@@ -121,10 +216,13 @@ require('../../jqwidgets/jqxcombobox');
             var changed = {};
             var hasChanges = false;
             for (var key in widgetOptions) {
-                if (!__sameValue__(widgetOptions[key], this._appliedOptions[key])) {
+                if (!__sameContent__(widgetOptions[key], this._appliedOptions[key], 0)) {
                     changed[key] = widgetOptions[key];
                     hasChanges = true;
                 }
+            }
+            if (__isDevelopment__) {
+                this._warnRebuiltProps(changed);
             }
             if ('source' in changed) {
                 for (var _i = 0, _a = ['selectedIndex', 'selectedIndexes', 'checkedIndexes', 'value']; _i < _a.length; _i++) {
@@ -140,6 +238,46 @@ require('../../jqwidgets/jqxcombobox');
                 this._applyHostAttributes();
             }
             this._wireEvents();
+        };
+        JqxComboBox.prototype._warnRebuiltProps = function (changed) {
+            for (var key in this._changedInARow) {
+                if (!(key in changed)) {
+                    this._changedInARow[key] = 0;
+                }
+            }
+            for (var key in changed) {
+                var value = changed[key];
+                if (!value || (typeof value !== 'object' && typeof value !== 'function')) {
+                    continue;
+                }
+                if (!__sameContent__(value, this._appliedOptions[key], 0, true)) {
+                    this._changedInARow[key] = 0;
+                    continue;
+                }
+                this._changedInARow[key] = (this._changedInARow[key] || 0) + 1;
+                if (this._changedInARow[key] === 3 && !this._warned[key]) {
+                    this._warned[key] = true;
+                    console.warn('JqxComboBox: the "' + key + '" prop was new on three renders in a row, and each time the widget was updated with it'
+                        + (key === 'source' ? ' (its data bound again)' : '') + '. Create it once, outside the component or with useMemo or useCallback;'
+                        + ' a function inside it, or a new jqx.dataAdapter, makes it new on every render.');
+                }
+            }
+        };
+        JqxComboBox.prototype._onReady = function () {
+            var component = this;
+            if (!this._readyHandler) {
+                this._readyHandler = function () {
+                    var widget = this;
+                    var args = arguments;
+                    __afterTask__(function () {
+                        var ready = component.props.ready;
+                        if (typeof ready === 'function') {
+                            ready.apply(widget, args);
+                        }
+                    });
+                };
+            }
+            return this._readyHandler;
         };
         JqxComboBox.prototype.componentWillUnmount = function () {
             var _this = this;
@@ -170,7 +308,7 @@ require('../../jqwidgets/jqxcombobox');
         };
         JqxComboBox.prototype.render = function () {
             var _this = this;
-            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style }, this._hostAttributes()), this.props.children));
+            return (React.createElement("div", __assign({ id: this._id, ref: function (element) { _this._rendered = element; }, className: this.props.className, style: this.props.style, suppressHydrationWarning: true }, this._hostAttributes()), this.props.children));
         };
         JqxComboBox.prototype.setOptions = function (options) {
             this._jqx(this._target()).jqxComboBox(options);
@@ -216,6 +354,9 @@ require('../../jqwidgets/jqxcombobox');
         };
         JqxComboBox.prototype.ensureVisible = function (index) {
             this._jqx(this._target()).jqxComboBox('ensureVisible', index);
+        };
+        JqxComboBox.prototype.findItems = function (text) {
+            return this._jqx(this._target()).jqxComboBox('findItems', text);
         };
         JqxComboBox.prototype.focus = function () {
             this._jqx(this._target()).jqxComboBox('focus');
@@ -274,6 +415,9 @@ require('../../jqwidgets/jqxcombobox');
         JqxComboBox.prototype.selectItem = function (item) {
             this._jqx(this._target()).jqxComboBox('selectItem', item);
         };
+        JqxComboBox.prototype.setContent = function (content) {
+            this._jqx(this._target()).jqxComboBox('setContent', content);
+        };
         JqxComboBox.prototype.searchString = function () {
             return this._jqx(this._target()).jqxComboBox('searchString');
         };
@@ -307,11 +451,16 @@ require('../../jqwidgets/jqxcombobox');
             }
         };
         JqxComboBox.prototype._manageProps = function () {
-            var widgetProps = ['animationType', 'autoComplete', 'autoOpen', 'autoItemsHeight', 'autoDropDownHeight', 'closeDelay', 'checkboxes', 'disabled', 'displayMember', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownHeight', 'dropDownWidth', 'enableHover', 'enableSelection', 'enableBrowserBoundsDetection', 'height', 'itemHeight', 'multiSelect', 'minLength', 'openDelay', 'popupZIndex', 'placeHolder', 'remoteAutoComplete', 'remoteAutoCompleteDelay', 'renderer', 'renderSelectedItem', 'rtl', 'selectedIndex', 'showArrow', 'showCloseButtons', 'searchMode', 'search', 'source', 'scrollBarSize', 'template', 'theme', 'validateSelection', 'valueMember', 'width'];
+            var widgetProps = ['animationType', 'arrowSize', 'autoComplete', 'autoOpen', 'autoItemsHeight', 'autoDropDownHeight', 'closeDelay', 'checkboxes', 'disabled', 'displayMember', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownHeight', 'dropDownWidth', 'dropDownContainer', 'emptyString', 'enableHover', 'enableSelection', 'enableBrowserBoundsDetection', 'equalItemsWidth', 'groupMember', 'height', 'hint', 'itemHeight', 'keyboardSelection', 'multiSelect', 'minLength', 'openDelay', 'popupZIndex', 'placeHolder', 'remoteAutoComplete', 'remoteAutoCompleteDelay', 'ready', 'renderer', 'renderSelectedItem', 'rtl', 'selectedIndex', 'selectionMode', 'showArrow', 'showCloseButtons', 'searchMode', 'search', 'searchMember', 'source', 'scrollBarSize', 'template', 'theme', 'touchMode', 'validateSelection', 'valueMember', 'width'];
             var options = {};
             for (var prop in this.props) {
                 if (widgetProps.indexOf(prop) !== -1) {
-                    options[prop] = this.props[prop];
+                    if (prop === 'ready' && typeof this.props.ready === 'function') {
+                        options[prop] = this._onReady();
+                    }
+                    else {
+                        options[prop] = this.props[prop];
+                    }
                 }
             }
             return options;
@@ -353,7 +502,16 @@ require('../../jqwidgets/jqxcombobox');
             var that = this;
             return function () {
                 var handler = that.props[prop];
-                return typeof handler === 'function' ? handler.apply(this, arguments) : undefined;
+                if (typeof handler !== 'function') {
+                    return undefined;
+                }
+                if (that._mounting) {
+                    var target_1 = this;
+                    var args_1 = arguments;
+                    __afterTask__(function () { handler.apply(target_1, args_1); });
+                    return undefined;
+                }
+                return handler.apply(this, arguments);
             };
         };
         JqxComboBox.prototype._teardown = function () {

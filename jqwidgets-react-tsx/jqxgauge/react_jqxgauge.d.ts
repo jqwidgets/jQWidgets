@@ -9,17 +9,23 @@ declare class JqxGauge extends React.PureComponent<IGaugeProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
+    private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IGaugeProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: IGaugeProps): void;
     getOptions(option: string): any;
+    destroy(): void;
     disable(): void;
     enable(): void;
     val(value?: any): any;
@@ -58,6 +64,7 @@ export interface IGaugeLabels {
     distance?: string;
     position?: 'none' | 'inside' | 'outside';
     interval?: number | string;
+    number?: number | string;
     offset?: number[];
     visible?: boolean;
     formatValue?: (value: any) => string | number;
@@ -81,6 +88,7 @@ export interface IGaugeRanges {
 export interface IGaugeTicks {
     size?: number | string;
     interval?: number | string;
+    number?: number | string;
     visible?: boolean;
     style?: IGaugeStyle;
 }
@@ -92,12 +100,14 @@ interface IGaugeOptions {
     colorScheme?: string;
     disabled?: boolean;
     easing?: 'linear' | 'easeOutBack' | 'easeInQuad' | 'easeInOutCirc' | 'easeInOutSine' | 'easeOutCubic';
+    editableLabels?: boolean;
     endAngle?: number | string;
     height?: number | string;
     int64?: boolean;
     labels?: IGaugeLabels;
     min?: number;
     max?: number | string;
+    niceInterval?: boolean;
     pointer?: IGaugePointer;
     radius?: number | string;
     ranges?: IGaugeRanges[];
@@ -105,6 +115,7 @@ interface IGaugeOptions {
     showRanges?: boolean;
     styles?: IGaugeStyle;
     theme?: string;
+    tickMode?: string;
     ticksMajor?: IGaugeTicks;
     ticksMinor?: IGaugeTicks;
     ticksDistance?: string;

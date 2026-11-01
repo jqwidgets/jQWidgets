@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,6 +21,7 @@ declare let JQXLite: any;
 export class jqxDragDropComponent implements OnChanges
 {
    @Input('appendTo') attrAppendTo: string;
+   @Input('cursor') attrCursor: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('distance') attrDistance: number;
    @Input('data') attrData: any;
@@ -28,6 +29,7 @@ export class jqxDragDropComponent implements OnChanges
    @Input('dropTarget') attrDropTarget: any;
    @Input('dragZIndex') attrDragZIndex: number;
    @Input('feedback') attrFeedback: string;
+   @Input('handle') attrHandle: string | boolean;
    @Input('initFeedback') attrInitFeedback: (feedback: any) => void;
    @Input('opacity') attrOpacity: number;
    @Input('onDragEnd') attrOnDragEnd: () => void;
@@ -46,7 +48,7 @@ export class jqxDragDropComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
+   properties: string[] = ['appendTo','cursor','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','handle','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDragDrop;
@@ -66,6 +68,11 @@ export class jqxDragDropComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxDragDrop('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -176,6 +183,14 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
+   cursor(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDragDrop('cursor', arg);
+      } else {
+          return this.host.jqxDragDrop('cursor');
+      }
+   }
+
    disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDragDrop('disabled', arg);
@@ -229,6 +244,14 @@ export class jqxDragDropComponent implements OnChanges
           this.host.jqxDragDrop('feedback', arg);
       } else {
           return this.host.jqxDragDrop('feedback');
+      }
+   }
+
+   handle(arg?: string | boolean): string | boolean {
+      if (arg !== undefined) {
+          this.host.jqxDragDrop('handle', arg);
+      } else {
+          return this.host.jqxDragDrop('handle');
       }
    }
 
@@ -338,6 +361,21 @@ export class jqxDragDropComponent implements OnChanges
 
 
    // jqxDragDropComponent functions
+   cancelDrag(): void {
+      this.host.jqxDragDrop('cancelDrag');
+   }
+
+   destroy(): void {
+      this.host.jqxDragDrop('destroy');
+   }
+
+   disable(): void {
+      this.host.jqxDragDrop('disable');
+   }
+
+   enable(): void {
+      this.host.jqxDragDrop('enable');
+   }
 
 
    // jqxDragDropComponent events

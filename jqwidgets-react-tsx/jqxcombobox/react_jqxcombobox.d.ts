@@ -9,13 +9,19 @@ declare class JqxComboBox extends React.PureComponent<IComboBoxProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: IComboBoxProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -34,6 +40,7 @@ declare class JqxComboBox extends React.PureComponent<IComboBoxProps> {
     enableItem(item: any): void;
     enableAt(index: number): void;
     ensureVisible(index: number): void;
+    findItems(text: string): any[];
     focus(): void;
     getItem(index: number): any;
     getItemByValue(value: string): any;
@@ -53,6 +60,7 @@ declare class JqxComboBox extends React.PureComponent<IComboBoxProps> {
     removeAt(index: number): boolean;
     selectIndex(index: number): void;
     selectItem(item: any): void;
+    setContent(content: string): void;
     searchString(): string;
     updateItem(item: any, itemValue: string): void;
     updateAt(item: any, index: any): void;
@@ -89,6 +97,7 @@ export interface IComboBoxValidateSelection {
 }
 interface IComboBoxOptions {
     animationType?: 'fade' | 'slide' | 'none';
+    arrowSize?: number;
     autoComplete?: boolean;
     autoOpen?: boolean;
     autoItemsHeight?: boolean;
@@ -101,11 +110,17 @@ interface IComboBoxOptions {
     dropDownVerticalAlignment?: 'top' | 'bottom';
     dropDownHeight?: number | string;
     dropDownWidth?: number | string;
+    dropDownContainer?: string;
+    emptyString?: string;
     enableHover?: boolean;
     enableSelection?: boolean;
     enableBrowserBoundsDetection?: boolean;
+    equalItemsWidth?: boolean;
+    groupMember?: string;
     height?: string | number;
+    hint?: boolean;
     itemHeight?: number;
+    keyboardSelection?: boolean;
     multiSelect?: boolean;
     minLength?: number;
     openDelay?: number;
@@ -113,18 +128,22 @@ interface IComboBoxOptions {
     placeHolder?: string;
     remoteAutoComplete?: boolean;
     remoteAutoCompleteDelay?: number;
+    ready?: () => void;
     renderer?: (index: IComboBoxRenderer['index'], label: IComboBoxRenderer['label'], value: IComboBoxRenderer['value']) => string;
     renderSelectedItem?: (index: IComboBoxRenderSelectedItem['index'], item: IComboBoxRenderSelectedItem['item']) => string;
     rtl?: boolean;
     selectedIndex?: number;
+    selectionMode?: string;
     showArrow?: boolean;
     showCloseButtons?: boolean;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     search?: (searchString: IComboBoxSearch['searchString']) => void;
+    searchMember?: string;
     source?: any;
     scrollBarSize?: number | string;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
+    touchMode?: boolean | string;
     validateSelection?: (itemValue: IComboBoxValidateSelection['itemValue']) => boolean;
     valueMember?: string;
     width?: string | number;
@@ -140,4 +159,7 @@ export interface IComboBoxProps extends IComboBoxOptions, React.AriaAttributes {
     onOpen?: (e?: any) => void;
     onSelect?: (e?: any) => void;
     onUnselect?: (e?: any) => void;
+    onItemAdd?: (e?: any) => void;
+    onItemRemove?: (e?: any) => void;
+    onItemUpdate?: (e?: any) => void;
 }

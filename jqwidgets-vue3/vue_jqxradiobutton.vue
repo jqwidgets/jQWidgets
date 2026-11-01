@@ -34,6 +34,10 @@
                 type: Boolean
             },
             height: [Number, String],
+            locked: {
+                default: false,
+                type: Boolean
+            },
             rtl: {
                 default: false,
                 type: Boolean
@@ -45,7 +49,7 @@
                 type: Boolean
             }
         },
-        emits: ["update:modelValue","checked","change","unchecked"],
+        emits: ["update:modelValue","checked","change","unchecked","indeterminate"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxRadioButton" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -80,6 +84,9 @@
             }
             function focus() {
                 JQXLite(componentSelector).jqxRadioButton('focus');  
+            }
+            function indeterminate() {
+                JQXLite(componentSelector).jqxRadioButton('indeterminate');  
             }
             function render() {
                 JQXLite(componentSelector).jqxRadioButton('render');  
@@ -157,6 +164,13 @@
                     return JQXLite(componentSelector).jqxRadioButton('height');
                 }
             }
+            function _locked (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxRadioButton('locked', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxRadioButton('locked');
+                }
+            }
             function _rtl (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxRadioButton('rtl', arg)
@@ -189,7 +203,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','rtl','theme','width'];
+                const widgetProps = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','locked','rtl','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -255,6 +269,12 @@
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get locked() {
+                     return _locked();
+                 },
+                 set locked(newValue) {
+                     _locked(newValue);
+                 },
                  get rtl() {
                      return _rtl();
                  },
@@ -294,6 +314,7 @@
                 JQXLite(componentSelector).on('checked', function (event) { that.emit('checked', event); twoWayBinding(); });
                 JQXLite(componentSelector).on('change', function (event) { that.emit('change', event); });
                 JQXLite(componentSelector).on('unchecked', function (event) { that.emit('unchecked', event); });
+                JQXLite(componentSelector).on('indeterminate', function (event) { that.emit('indeterminate', event); });
             }
 
 			onMounted(() => {
@@ -337,7 +358,7 @@
 				element.off();
 				try { element.jqxRadioButton('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, check, disable, destroy, enable, focus, render, uncheck, val, twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, check, disable, destroy, enable, focus, indeterminate, render, uncheck, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

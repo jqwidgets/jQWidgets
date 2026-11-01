@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,6 +36,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, AfterViewInit, AfterViewChecked 
 {
    @Input('animationType') attrAnimationType: string;
+   @Input('arrowSize') attrArrowSize: number;
    @Input('autoComplete') attrAutoComplete: boolean;
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('autoItemsHeight') attrAutoItemsHeight: boolean;
@@ -48,10 +49,16 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownHeight') attrDropDownHeight: number | string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('dropDownContainer') attrDropDownContainer: string;
+   @Input('emptyString') attrEmptyString: string;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('enableSelection') attrEnableSelection: boolean;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('equalItemsWidth') attrEqualItemsWidth: boolean;
+   @Input('groupMember') attrGroupMember: string;
+   @Input('hint') attrHint: boolean;
    @Input('itemHeight') attrItemHeight: number;
+   @Input('keyboardSelection') attrKeyboardSelection: boolean;
    @Input('multiSelect') attrMultiSelect: boolean;
    @Input('minLength') attrMinLength: number;
    @Input('openDelay') attrOpenDelay: number;
@@ -59,18 +66,22 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('remoteAutoComplete') attrRemoteAutoComplete: boolean;
    @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: number;
+   @Input('ready') attrReady: () => void;
    @Input('renderer') attrRenderer: (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string;
    @Input('renderSelectedItem') attrRenderSelectedItem: (index: jqwidgets.ComboBoxRenderSelectedItem['index'], item: jqwidgets.ComboBoxRenderSelectedItem['item']) => string;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
+   @Input('selectionMode') attrSelectionMode: string;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('showCloseButtons') attrShowCloseButtons: boolean;
    @Input('searchMode') attrSearchMode: string;
    @Input('search') attrSearch: (searchString: jqwidgets.ComboBoxSearch['searchString']) => void;
+   @Input('searchMember') attrSearchMember: string;
    @Input('source') attrSource: any;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
+   @Input('touchMode') attrTouchMode: boolean | string;
    @Input('validateSelection') attrValidateSelection: (itemValue: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean;
    @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
@@ -78,7 +89,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','autoComplete','autoOpen','autoItemsHeight','autoDropDownHeight','closeDelay','checkboxes','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableHover','enableSelection','enableBrowserBoundsDetection','height','itemHeight','multiSelect','minLength','openDelay','popupZIndex','placeHolder','remoteAutoComplete','remoteAutoCompleteDelay','renderer','renderSelectedItem','rtl','selectedIndex','showArrow','showCloseButtons','searchMode','search','source','scrollBarSize','template','theme','validateSelection','valueMember','width'];
+   properties: string[] = ['animationType','arrowSize','autoComplete','autoOpen','autoItemsHeight','autoDropDownHeight','closeDelay','checkboxes','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','dropDownContainer','emptyString','enableHover','enableSelection','enableBrowserBoundsDetection','equalItemsWidth','groupMember','height','hint','itemHeight','keyboardSelection','multiSelect','minLength','openDelay','popupZIndex','placeHolder','remoteAutoComplete','remoteAutoCompleteDelay','ready','renderer','renderSelectedItem','rtl','selectedIndex','selectionMode','showArrow','showCloseButtons','searchMode','search','searchMember','source','scrollBarSize','template','theme','touchMode','validateSelection','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxComboBox;
@@ -278,6 +289,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   arrowSize(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('arrowSize', arg);
+      } else {
+          return this.host.jqxComboBox('arrowSize');
+      }
+   }
+
    autoComplete(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -434,6 +458,32 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   dropDownContainer(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('dropDownContainer', arg);
+      } else {
+          return this.host.jqxComboBox('dropDownContainer');
+      }
+   }
+
+   emptyString(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('emptyString', arg);
+      } else {
+          return this.host.jqxComboBox('emptyString');
+      }
+   }
+
    enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -473,6 +523,32 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   equalItemsWidth(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('equalItemsWidth', arg);
+      } else {
+          return this.host.jqxComboBox('equalItemsWidth');
+      }
+   }
+
+   groupMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('groupMember', arg);
+      } else {
+          return this.host.jqxComboBox('groupMember');
+      }
+   }
+
    height(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
@@ -486,6 +562,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   hint(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('hint', arg);
+      } else {
+          return this.host.jqxComboBox('hint');
+      }
+   }
+
    itemHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
@@ -496,6 +585,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
           this.host.jqxComboBox('itemHeight', arg);
       } else {
           return this.host.jqxComboBox('itemHeight');
+      }
+   }
+
+   keyboardSelection(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('keyboardSelection', arg);
+      } else {
+          return this.host.jqxComboBox('keyboardSelection');
       }
    }
 
@@ -590,6 +692,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   ready(arg?: () => void): () => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('ready', arg);
+      } else {
+          return this.host.jqxComboBox('ready');
+      }
+   }
+
    renderer(arg?: (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string): (index: jqwidgets.ComboBoxRenderer['index'], label: jqwidgets.ComboBoxRenderer['label'], value: jqwidgets.ComboBoxRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
@@ -639,6 +754,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
           this.host.jqxComboBox('selectedIndex', arg);
       } else {
           return this.host.jqxComboBox('selectedIndex');
+      }
+   }
+
+   selectionMode(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('selectionMode', arg);
+      } else {
+          return this.host.jqxComboBox('selectionMode');
       }
    }
 
@@ -694,6 +822,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
+   searchMember(arg?: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('searchMember', arg);
+      } else {
+          return this.host.jqxComboBox('searchMember');
+      }
+   }
+
    source(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
@@ -743,6 +884,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
           this.host.jqxComboBox('theme', arg);
       } else {
           return this.host.jqxComboBox('theme');
+      }
+   }
+
+   touchMode(arg?: boolean | string): boolean | string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxComboBox('touchMode', arg);
+      } else {
+          return this.host.jqxComboBox('touchMode');
       }
    }
 
@@ -902,6 +1056,15 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
 
       this.host.jqxComboBox('ensureVisible', index);
+   }
+
+   findItems(text: string): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxComboBox('findItems', text);
    }
 
    focus(): void {
@@ -1075,6 +1238,15 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       this.host.jqxComboBox('selectItem', item);
    }
 
+   setContent(content: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxComboBox('setContent', content);
+   }
+
    searchString(): string {
 
       if (this.autoCreate && !this.host) {
@@ -1164,6 +1336,9 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Output() onOpen = new EventEmitter();
    @Output() onSelect = new EventEmitter();
    @Output() onUnselect = new EventEmitter();
+   @Output() onItemAdd = new EventEmitter();
+   @Output() onItemRemove = new EventEmitter();
+   @Output() onItemUpdate = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
@@ -1173,6 +1348,9 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
       this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });
+      this.host.on('itemAdd', (eventData: any) => { this.onItemAdd.emit(eventData); });
+      this.host.on('itemRemove', (eventData: any) => { this.onItemRemove.emit(eventData); });
+      this.host.on('itemUpdate', (eventData: any) => { this.onItemUpdate.emit(eventData); });
    }
 
 } //jqxComboBoxComponent

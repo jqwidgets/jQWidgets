@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxscrollbar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxscrollbar.umd.js",
   "module": "react_jqxscrollbar.esm.js",
   "typings": "react_jqxscrollbar.d.ts",

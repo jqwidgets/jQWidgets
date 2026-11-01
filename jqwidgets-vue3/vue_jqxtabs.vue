@@ -14,7 +14,12 @@
     export default {
         props: {
             animationType: String,
+            arrowButtonSize: Number,
             autoHeight: {
+                default: true,
+                type: Boolean
+            },
+            canCloseAllTabs: {
                 default: true,
                 type: Boolean
             },
@@ -41,13 +46,12 @@
                 type: Boolean
             },
             height: [Number, String],
+            headerHeight: Number,
             initTabContent: Function,
             keyboardNavigation: {
                 default: true,
                 type: Boolean
             },
-            next: Object,
-            previous: Object,
             position: String,
             reorder: {
                 default: false,
@@ -63,6 +67,7 @@
                 default: false,
                 type: Boolean
             },
+            selectionTrackerAnimationDuration: Number,
             scrollable: {
                 default: true,
                 type: Boolean
@@ -81,7 +86,7 @@
                 type: Boolean
             }
         },
-        emits: ["add","collapsed","dragStart","dragEnd","expanded","removed","selecting","selected","tabclick","unselecting","unselected"],
+        emits: ["add","collapsed","dragStart","dragEnd","expanded","locked","removed","selecting","selected","tabclick","unlocked","unselecting","unselected"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxTabs" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -132,6 +137,9 @@
             function expand() {
                 JQXLite(componentSelector).jqxTabs('expand');  
             }
+            function first() {
+                JQXLite(componentSelector).jqxTabs('first');  
+            }
             function enable() {
                 JQXLite(componentSelector).jqxTabs('enable');  
             }
@@ -144,6 +152,9 @@
             function getContentAt(index) {
                 return JQXLite(componentSelector).jqxTabs('getContentAt', index);  
             }
+            function getEnabledTabsCount() {
+                return JQXLite(componentSelector).jqxTabs('getEnabledTabsCount');  
+            }
             function getDisabledTabsCount() {
                 return JQXLite(componentSelector).jqxTabs('getDisabledTabsCount');  
             }
@@ -153,8 +164,26 @@
             function hideAllCloseButtons() {
                 JQXLite(componentSelector).jqxTabs('hideAllCloseButtons');  
             }
+            function isDisabled(index) {
+                return JQXLite(componentSelector).jqxTabs('isDisabled', index);  
+            }
+            function last() {
+                JQXLite(componentSelector).jqxTabs('last');  
+            }
             function length() {
                 return JQXLite(componentSelector).jqxTabs('length');  
+            }
+            function lockAt(index) {
+                JQXLite(componentSelector).jqxTabs('lockAt', index);  
+            }
+            function lockAll() {
+                JQXLite(componentSelector).jqxTabs('lockAll');  
+            }
+            function next(index) {
+                return JQXLite(componentSelector).jqxTabs('next', index);  
+            }
+            function previous(index) {
+                return JQXLite(componentSelector).jqxTabs('previous', index);  
             }
             function removeAt(index) {
                 JQXLite(componentSelector).jqxTabs('removeAt', index);  
@@ -180,6 +209,12 @@
             function showAllCloseButtons() {
                 JQXLite(componentSelector).jqxTabs('showAllCloseButtons');  
             }
+            function unlockAt(index) {
+                JQXLite(componentSelector).jqxTabs('unlockAt', index);  
+            }
+            function unlockAll() {
+                JQXLite(componentSelector).jqxTabs('unlockAll');  
+            }
             function val(value) {
                 if (value !== undefined) {
                     JQXLite(componentSelector).jqxTabs('val',  value)
@@ -194,11 +229,25 @@
                     return JQXLite(componentSelector).jqxTabs('animationType');
                 }
             }
+            function _arrowButtonSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTabs('arrowButtonSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTabs('arrowButtonSize');
+                }
+            }
             function _autoHeight (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTabs('autoHeight', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTabs('autoHeight');
+                }
+            }
+            function _canCloseAllTabs (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTabs('canCloseAllTabs', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTabs('canCloseAllTabs');
                 }
             }
             function _closeButtonSize (arg) {
@@ -257,6 +306,13 @@
                     return JQXLite(componentSelector).jqxTabs('height');
                 }
             }
+            function _headerHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTabs('headerHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTabs('headerHeight');
+                }
+            }
             function _initTabContent (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTabs('initTabContent', arg)
@@ -269,20 +325,6 @@
                     JQXLite(componentSelector).jqxTabs('keyboardNavigation', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTabs('keyboardNavigation');
-                }
-            }
-            function _next (arg) {
-                if (arg !== undefined) {
-                    JQXLite(componentSelector).jqxTabs('next', arg)
-                } else {
-                    return JQXLite(componentSelector).jqxTabs('next');
-                }
-            }
-            function _previous (arg) {
-                if (arg !== undefined) {
-                    JQXLite(componentSelector).jqxTabs('previous', arg)
-                } else {
-                    return JQXLite(componentSelector).jqxTabs('previous');
                 }
             }
             function _position (arg) {
@@ -325,6 +367,13 @@
                     JQXLite(componentSelector).jqxTabs('selectionTracker', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTabs('selectionTracker');
+                }
+            }
+            function _selectionTrackerAnimationDuration (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTabs('selectionTrackerAnimationDuration', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTabs('selectionTrackerAnimationDuration');
                 }
             }
             function _scrollable (arg) {
@@ -386,7 +435,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+                const widgetProps = ['animationType','arrowButtonSize','autoHeight','canCloseAllTabs','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','headerHeight','initTabContent','keyboardNavigation','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','selectionTrackerAnimationDuration','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -404,11 +453,23 @@
                  set animationType(newValue) {
                      _animationType(newValue);
                  },
+                 get arrowButtonSize() {
+                     return _arrowButtonSize();
+                 },
+                 set arrowButtonSize(newValue) {
+                     _arrowButtonSize(newValue);
+                 },
                  get autoHeight() {
                      return _autoHeight();
                  },
                  set autoHeight(newValue) {
                      _autoHeight(newValue);
+                 },
+                 get canCloseAllTabs() {
+                     return _canCloseAllTabs();
+                 },
+                 set canCloseAllTabs(newValue) {
+                     _canCloseAllTabs(newValue);
                  },
                  get closeButtonSize() {
                      return _closeButtonSize();
@@ -458,6 +519,12 @@
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get headerHeight() {
+                     return _headerHeight();
+                 },
+                 set headerHeight(newValue) {
+                     _headerHeight(newValue);
+                 },
                  get initTabContent() {
                      return _initTabContent();
                  },
@@ -469,18 +536,6 @@
                  },
                  set keyboardNavigation(newValue) {
                      _keyboardNavigation(newValue);
-                 },
-                 get next() {
-                     return _next();
-                 },
-                 set next(newValue) {
-                     _next(newValue);
-                 },
-                 get previous() {
-                     return _previous();
-                 },
-                 set previous(newValue) {
-                     _previous(newValue);
                  },
                  get position() {
                      return _position();
@@ -517,6 +572,12 @@
                  },
                  set selectionTracker(newValue) {
                      _selectionTracker(newValue);
+                 },
+                 get selectionTrackerAnimationDuration() {
+                     return _selectionTrackerAnimationDuration();
+                 },
+                 set selectionTrackerAnimationDuration(newValue) {
+                     _selectionTrackerAnimationDuration(newValue);
                  },
                  get scrollable() {
                      return _scrollable();
@@ -569,10 +630,12 @@
                 JQXLite(componentSelector).on('dragStart', function (event) { that.emit('dragStart', event); });
                 JQXLite(componentSelector).on('dragEnd', function (event) { that.emit('dragEnd', event); });
                 JQXLite(componentSelector).on('expanded', function (event) { that.emit('expanded', event); });
+                JQXLite(componentSelector).on('locked', function (event) { that.emit('locked', event); });
                 JQXLite(componentSelector).on('removed', function (event) { that.emit('removed', event); });
                 JQXLite(componentSelector).on('selecting', function (event) { that.emit('selecting', event); });
                 JQXLite(componentSelector).on('selected', function (event) { that.emit('selected', event); });
                 JQXLite(componentSelector).on('tabclick', function (event) { that.emit('tabclick', event); });
+                JQXLite(componentSelector).on('unlocked', function (event) { that.emit('unlocked', event); });
                 JQXLite(componentSelector).on('unselecting', function (event) { that.emit('unselecting', event); });
                 JQXLite(componentSelector).on('unselected', function (event) { that.emit('unselected', event); });
             }
@@ -613,7 +676,7 @@
 				element.off();
 				try { element.jqxTabs('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addAt, addFirst, addLast, collapse, disable, disableAt, destroy, ensureVisible, enableAt, expand, enable, focus, getTitleAt, getContentAt, getDisabledTabsCount, hideCloseButtonAt, hideAllCloseButtons, length, removeAt, removeFirst, removeLast, select, setContentAt, setTitleAt, showCloseButtonAt, showAllCloseButtons, val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addAt, addFirst, addLast, collapse, disable, disableAt, destroy, ensureVisible, enableAt, expand, first, enable, focus, getTitleAt, getContentAt, getEnabledTabsCount, getDisabledTabsCount, hideCloseButtonAt, hideAllCloseButtons, isDisabled, last, length, lockAt, lockAll, next, previous, removeAt, removeFirst, removeLast, select, setContentAt, setTitleAt, showCloseButtonAt, showAllCloseButtons, unlockAt, unlockAll, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

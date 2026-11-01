@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxscheduler",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxscheduler.umd.js",
   "module": "react_jqxscheduler.esm.js",
   "typings": "react_jqxscheduler.d.ts",

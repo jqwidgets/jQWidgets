@@ -20,7 +20,15 @@
                 default: false,
                 type: Boolean
             },
+            displayTank: {
+                default: false,
+                type: Boolean
+            },
             easing: String,
+            editableLabels: {
+                default: false,
+                type: Boolean
+            },
             height: [Number, String],
             int64: {
                 default: false,
@@ -29,6 +37,10 @@
             labels: Object,
             min: Number,
             max: Number,
+            niceInterval: {
+                default: false,
+                type: Boolean
+            },
             orientation: String,
             pointer: Object,
             rangesOffset: Number,
@@ -38,9 +50,11 @@
                 default: true,
                 type: Boolean
             },
+            tankStyle: Object,
             scaleStyle: Object,
             scaleLength: [String, Number],
             theme: String,
+            tickMode: String,
             ticksOffset: Array,
             ticksPosition: String,
             ticksMinor: Object,
@@ -72,6 +86,9 @@
                     resultToReturn[usedProps[i]] = JQXLite(componentSelector).jqxLinearGauge(usedProps[i]);
                 }
                 return resultToReturn;
+            }
+            function destroy() {
+                JQXLite(componentSelector).jqxLinearGauge('destroy');  
             }
             function disable() {
                 JQXLite(componentSelector).jqxLinearGauge('disable');  
@@ -114,11 +131,25 @@
                     return JQXLite(componentSelector).jqxLinearGauge('disabled');
                 }
             }
+            function _displayTank (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxLinearGauge('displayTank', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxLinearGauge('displayTank');
+                }
+            }
             function _easing (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxLinearGauge('easing', arg)
                 } else {
                     return JQXLite(componentSelector).jqxLinearGauge('easing');
+                }
+            }
+            function _editableLabels (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxLinearGauge('editableLabels', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxLinearGauge('editableLabels');
                 }
             }
             function _height (arg) {
@@ -154,6 +185,13 @@
                     JQXLite(componentSelector).jqxLinearGauge('max', arg)
                 } else {
                     return JQXLite(componentSelector).jqxLinearGauge('max');
+                }
+            }
+            function _niceInterval (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxLinearGauge('niceInterval', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxLinearGauge('niceInterval');
                 }
             }
             function _orientation (arg) {
@@ -198,6 +236,13 @@
                     return JQXLite(componentSelector).jqxLinearGauge('showRanges');
                 }
             }
+            function _tankStyle (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxLinearGauge('tankStyle', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxLinearGauge('tankStyle');
+                }
+            }
             function _scaleStyle (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxLinearGauge('scaleStyle', arg)
@@ -217,6 +262,13 @@
                     JQXLite(componentSelector).jqxLinearGauge('theme', arg)
                 } else {
                     return JQXLite(componentSelector).jqxLinearGauge('theme');
+                }
+            }
+            function _tickMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxLinearGauge('tickMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxLinearGauge('tickMode');
                 }
             }
             function _ticksOffset (arg) {
@@ -271,7 +323,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','theme','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
+                const widgetProps = ['animationDuration','background','colorScheme','disabled','displayTank','easing','editableLabels','height','int64','labels','min','max','niceInterval','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','tankStyle','scaleStyle','scaleLength','theme','tickMode','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -307,11 +359,23 @@
                  set disabled(newValue) {
                      _disabled(newValue);
                  },
+                 get displayTank() {
+                     return _displayTank();
+                 },
+                 set displayTank(newValue) {
+                     _displayTank(newValue);
+                 },
                  get easing() {
                      return _easing();
                  },
                  set easing(newValue) {
                      _easing(newValue);
+                 },
+                 get editableLabels() {
+                     return _editableLabels();
+                 },
+                 set editableLabels(newValue) {
+                     _editableLabels(newValue);
                  },
                  get height() {
                      return _height();
@@ -342,6 +406,12 @@
                  },
                  set max(newValue) {
                      _max(newValue);
+                 },
+                 get niceInterval() {
+                     return _niceInterval();
+                 },
+                 set niceInterval(newValue) {
+                     _niceInterval(newValue);
                  },
                  get orientation() {
                      return _orientation();
@@ -379,6 +449,12 @@
                  set showRanges(newValue) {
                      _showRanges(newValue);
                  },
+                 get tankStyle() {
+                     return _tankStyle();
+                 },
+                 set tankStyle(newValue) {
+                     _tankStyle(newValue);
+                 },
                  get scaleStyle() {
                      return _scaleStyle();
                  },
@@ -396,6 +472,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get tickMode() {
+                     return _tickMode();
+                 },
+                 set tickMode(newValue) {
+                     _tickMode(newValue);
                  },
                  get ticksOffset() {
                      return _ticksOffset();
@@ -475,8 +557,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxLinearGauge('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, disable, enable, val, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, disable, enable, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

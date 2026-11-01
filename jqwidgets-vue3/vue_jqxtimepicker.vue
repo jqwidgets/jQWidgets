@@ -13,6 +13,10 @@
 
     export default {
         props: {
+            animation: {
+                default: true,
+                type: Boolean
+            },
             autoSwitchToMinutes: {
                 default: false,
                 type: Boolean
@@ -74,6 +78,13 @@
             }
             function setMinutes(minutes) {
                 JQXLite(componentSelector).jqxTimePicker('setMinutes', minutes);  
+            }
+            function _animation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTimePicker('animation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTimePicker('animation');
+                }
             }
             function _autoSwitchToMinutes (arg) {
                 if (arg !== undefined) {
@@ -190,7 +201,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
+                const widgetProps = ['animation','autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -202,6 +213,12 @@
                 return options;
             }
             const options = {
+                 get animation() {
+                     return _animation();
+                 },
+                 set animation(newValue) {
+                     _animation(newValue);
+                 },
                  get autoSwitchToMinutes() {
                      return _autoSwitchToMinutes();
                  },

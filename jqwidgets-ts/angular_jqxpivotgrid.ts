@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -70,6 +70,11 @@ export class jqxPivotGridComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxPivotGrid('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -262,6 +267,10 @@ export class jqxPivotGridComponent implements OnChanges
 
    refresh(): void {
       this.host.jqxPivotGrid('refresh');
+   }
+
+   destroy(): void {
+      this.host.jqxPivotGrid('destroy');
    }
 
    getPivotRows(): jqwidgets.PivotGridRows {

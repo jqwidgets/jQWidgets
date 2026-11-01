@@ -26,6 +26,10 @@
             minorTickSize: Number,
             max: Number,
             min: Number,
+            int64: {
+                default: false,
+                type: Boolean
+            },
             orientation: String,
             rangeSlider: {
                 default: false,
@@ -48,10 +52,15 @@
                 default: false,
                 type: Boolean
             },
+            editableLabels: {
+                default: false,
+                type: Boolean
+            },
             showButtons: {
                 default: true,
                 type: Boolean
             },
+            sliderButtonSize: Number,
             showRange: {
                 default: true,
                 type: Boolean
@@ -61,7 +70,16 @@
             ticksPosition: String,
             ticksFrequency: Number,
             tickSize: Number,
+            tickMode: String,
+            tickNumber: Number,
+            minorTickNumber: Number,
+            niceInterval: {
+                default: false,
+                type: Boolean
+            },
             tickLabelFormatFunction: Function,
+            tickLabelFormatSettings: Object,
+            tickLabelStyleSettings: Object,
             tooltip: {
                 default: false,
                 type: Boolean
@@ -69,6 +87,7 @@
             tooltipHideDelay: Number,
             tooltipPosition: String,
             tooltipFormatFunction: Function,
+            tooltipFormatSettings: Object,
             value: Number,
             values: Array,
             width: [Number, String],
@@ -192,6 +211,13 @@
                     return JQXLite(componentSelector).jqxSlider('min');
                 }
             }
+            function _int64 (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('int64', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('int64');
+                }
+            }
             function _orientation (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSlider('orientation', arg)
@@ -241,11 +267,25 @@
                     return JQXLite(componentSelector).jqxSlider('showTickLabels');
                 }
             }
+            function _editableLabels (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('editableLabels', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('editableLabels');
+                }
+            }
             function _showButtons (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSlider('showButtons', arg)
                 } else {
                     return JQXLite(componentSelector).jqxSlider('showButtons');
+                }
+            }
+            function _sliderButtonSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('sliderButtonSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('sliderButtonSize');
                 }
             }
             function _showRange (arg) {
@@ -290,11 +330,53 @@
                     return JQXLite(componentSelector).jqxSlider('tickSize');
                 }
             }
+            function _tickMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('tickMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('tickMode');
+                }
+            }
+            function _tickNumber (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('tickNumber', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('tickNumber');
+                }
+            }
+            function _minorTickNumber (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('minorTickNumber', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('minorTickNumber');
+                }
+            }
+            function _niceInterval (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('niceInterval', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('niceInterval');
+                }
+            }
             function _tickLabelFormatFunction (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxSlider('tickLabelFormatFunction', arg)
                 } else {
                     return JQXLite(componentSelector).jqxSlider('tickLabelFormatFunction');
+                }
+            }
+            function _tickLabelFormatSettings (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('tickLabelFormatSettings', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('tickLabelFormatSettings');
+                }
+            }
+            function _tickLabelStyleSettings (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('tickLabelStyleSettings', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('tickLabelStyleSettings');
                 }
             }
             function _tooltip (arg) {
@@ -323,6 +405,13 @@
                     JQXLite(componentSelector).jqxSlider('tooltipFormatFunction', arg)
                 } else {
                     return JQXLite(componentSelector).jqxSlider('tooltipFormatFunction');
+                }
+            }
+            function _tooltipFormatSettings (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxSlider('tooltipFormatSettings', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxSlider('tooltipFormatSettings');
                 }
             }
             function _value (arg) {
@@ -357,7 +446,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
+                const widgetProps = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','int64','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','editableLabels','showButtons','sliderButtonSize','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickMode','tickNumber','minorTickNumber','niceInterval','tickLabelFormatFunction','tickLabelFormatSettings','tickLabelStyleSettings','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','tooltipFormatSettings','value','values','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -423,6 +512,12 @@
                  set min(newValue) {
                      _min(newValue);
                  },
+                 get int64() {
+                     return _int64();
+                 },
+                 set int64(newValue) {
+                     _int64(newValue);
+                 },
                  get orientation() {
                      return _orientation();
                  },
@@ -465,11 +560,23 @@
                  set showTickLabels(newValue) {
                      _showTickLabels(newValue);
                  },
+                 get editableLabels() {
+                     return _editableLabels();
+                 },
+                 set editableLabels(newValue) {
+                     _editableLabels(newValue);
+                 },
                  get showButtons() {
                      return _showButtons();
                  },
                  set showButtons(newValue) {
                      _showButtons(newValue);
+                 },
+                 get sliderButtonSize() {
+                     return _sliderButtonSize();
+                 },
+                 set sliderButtonSize(newValue) {
+                     _sliderButtonSize(newValue);
                  },
                  get showRange() {
                      return _showRange();
@@ -507,11 +614,47 @@
                  set tickSize(newValue) {
                      _tickSize(newValue);
                  },
+                 get tickMode() {
+                     return _tickMode();
+                 },
+                 set tickMode(newValue) {
+                     _tickMode(newValue);
+                 },
+                 get tickNumber() {
+                     return _tickNumber();
+                 },
+                 set tickNumber(newValue) {
+                     _tickNumber(newValue);
+                 },
+                 get minorTickNumber() {
+                     return _minorTickNumber();
+                 },
+                 set minorTickNumber(newValue) {
+                     _minorTickNumber(newValue);
+                 },
+                 get niceInterval() {
+                     return _niceInterval();
+                 },
+                 set niceInterval(newValue) {
+                     _niceInterval(newValue);
+                 },
                  get tickLabelFormatFunction() {
                      return _tickLabelFormatFunction();
                  },
                  set tickLabelFormatFunction(newValue) {
                      _tickLabelFormatFunction(newValue);
+                 },
+                 get tickLabelFormatSettings() {
+                     return _tickLabelFormatSettings();
+                 },
+                 set tickLabelFormatSettings(newValue) {
+                     _tickLabelFormatSettings(newValue);
+                 },
+                 get tickLabelStyleSettings() {
+                     return _tickLabelStyleSettings();
+                 },
+                 set tickLabelStyleSettings(newValue) {
+                     _tickLabelStyleSettings(newValue);
                  },
                  get tooltip() {
                      return _tooltip();
@@ -536,6 +679,12 @@
                  },
                  set tooltipFormatFunction(newValue) {
                      _tooltipFormatFunction(newValue);
+                 },
+                 get tooltipFormatSettings() {
+                     return _tooltipFormatSettings();
+                 },
+                 set tooltipFormatSettings(newValue) {
+                     _tooltipFormatSettings(newValue);
                  },
                  get value() {
                      return _value();

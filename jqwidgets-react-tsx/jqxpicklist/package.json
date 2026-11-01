@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxpicklist",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxpicklist.umd.js",
   "module": "react_jqxpicklist.esm.js",
   "typings": "react_jqxpicklist.d.ts",

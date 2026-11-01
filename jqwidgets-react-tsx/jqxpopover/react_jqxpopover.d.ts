@@ -9,13 +9,17 @@ declare class JqxPopover extends React.PureComponent<IPopoverProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IPopoverProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -39,6 +43,7 @@ interface IPopoverOptions {
     animationOpenDelay?: number | string;
     animationCloseDelay?: number | string;
     autoClose?: boolean;
+    closeButtonString?: string;
     animationType?: 'none' | 'fade';
     height?: number | string;
     initContent?: () => void;

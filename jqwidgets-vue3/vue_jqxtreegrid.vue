@@ -66,6 +66,8 @@
                 type: Boolean
             },
             editSettings: Object,
+            beginEdit: Function,
+            endEdit: Function,
             exportSettings: Object,
             enableHover: {
                 default: true,
@@ -82,6 +84,7 @@
             filterHeight: Number,
             filterMode: String,
             height: [Number, String],
+            handleKeyboardNavigation: Function,
             hierarchicalCheckboxes: {
                 default: false,
                 type: Boolean
@@ -421,6 +424,20 @@
                     return JQXLite(componentSelector).jqxTreeGrid('editSettings');
                 }
             }
+            function _beginEdit (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTreeGrid('beginEdit', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTreeGrid('beginEdit');
+                }
+            }
+            function _endEdit (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTreeGrid('endEdit', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTreeGrid('endEdit');
+                }
+            }
             function _exportSettings (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxTreeGrid('exportSettings', arg)
@@ -468,6 +485,13 @@
                     JQXLite(componentSelector).jqxTreeGrid('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxTreeGrid('height');
+                }
+            }
+            function _handleKeyboardNavigation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxTreeGrid('handleKeyboardNavigation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxTreeGrid('handleKeyboardNavigation');
                 }
             }
             function _hierarchicalCheckboxes (arg) {
@@ -732,7 +756,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
+                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','beginEdit','endEdit','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','handleKeyboardNavigation','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
                 const componentProps = props;
                 let options = {};
 
@@ -822,6 +846,18 @@
                  set editSettings(newValue) {
                      _editSettings(newValue);
                  },
+                 get beginEdit() {
+                     return _beginEdit();
+                 },
+                 set beginEdit(newValue) {
+                     _beginEdit(newValue);
+                 },
+                 get endEdit() {
+                     return _endEdit();
+                 },
+                 set endEdit(newValue) {
+                     _endEdit(newValue);
+                 },
                  get exportSettings() {
                      return _exportSettings();
                  },
@@ -863,6 +899,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get handleKeyboardNavigation() {
+                     return _handleKeyboardNavigation();
+                 },
+                 set handleKeyboardNavigation(newValue) {
+                     _handleKeyboardNavigation(newValue);
                  },
                  get hierarchicalCheckboxes() {
                      return _hierarchicalCheckboxes();

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxsplitter",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxsplitter.umd.js",
   "module": "react_jqxsplitter.esm.js",
   "typings": "react_jqxsplitter.d.ts",

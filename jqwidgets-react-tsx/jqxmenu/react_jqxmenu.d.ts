@@ -9,13 +9,17 @@ declare class JqxMenu extends React.PureComponent<IMenuProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IMenuProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -24,13 +28,17 @@ declare class JqxMenu extends React.PureComponent<IMenuProps> {
     closeItem(itemID: number | string): void;
     close(): void;
     disable(itemID: number | string, value: boolean): void;
+    disableItem(itemID: number | string): void;
     destroy(): void;
+    enableItem(itemID: number | string): void;
     focus(): void;
+    hideItem(itemID: number | string): void;
     minimize(): void;
     open(left: number, top: number): void;
     openItem(itemID: number | string): void;
     restore(): void;
     setItemOpenDirection(item: number | string, horizontaldirection: string, verticaldirection: string): void;
+    showItem(itemID: number | string): void;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -65,6 +73,7 @@ interface IMenuOptions {
     showTopLevelArrows?: boolean;
     source?: any;
     theme?: string;
+    title?: string;
     width?: string | number;
 }
 export interface IMenuProps extends IMenuOptions, React.AriaAttributes {

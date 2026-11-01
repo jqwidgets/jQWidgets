@@ -9,13 +9,17 @@ declare class JqxScrollBar extends React.PureComponent<IScrollBarProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IScrollBarProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -24,6 +28,7 @@ declare class JqxScrollBar extends React.PureComponent<IScrollBarProps> {
     destroy(): void;
     isScrolling(): boolean;
     setPosition(index: number): void;
+    val(value?: any): any;
     private _manageProps;
     private _hostAttributes;
     private _applyHostAttributes;
@@ -44,6 +49,8 @@ interface IScrollBarOptions {
     step?: number;
     showButtons?: boolean;
     thumbMinSize?: number;
+    thumbSize?: number;
+    thumbStep?: number | string;
     theme?: string;
     vertical?: boolean;
     value?: number;
@@ -54,4 +61,5 @@ export interface IScrollBarProps extends IScrollBarOptions, React.AriaAttributes
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onValueChanged?: (e?: any) => void;
+    onComplete?: (e?: any) => void;
 }

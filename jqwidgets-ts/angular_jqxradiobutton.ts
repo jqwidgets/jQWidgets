@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,6 +39,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    @Input('enableContainerClick') attrEnableContainerClick: boolean;
    @Input('groupName') attrGroupName: string;
    @Input('hasThreeStates') attrHasThreeStates: boolean;
+   @Input('locked') attrLocked: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
@@ -46,7 +47,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','rtl','theme','width'];
+   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','locked','rtl','theme','width'];
    valueAttr: any;
    host: any;
    elementRef: ElementRef;
@@ -267,6 +268,14 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   locked(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxRadioButton('locked', arg);
+      } else {
+          return this.host.jqxRadioButton('locked');
+      }
+   }
+
    rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('rtl', arg);
@@ -313,6 +322,10 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       this.host.jqxRadioButton('focus');
    }
 
+   indeterminate(): void {
+      this.host.jqxRadioButton('indeterminate');
+   }
+
    render(): void {
       this.host.jqxRadioButton('render');
    }
@@ -334,11 +347,13 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    @Output() onChecked = new EventEmitter();
    @Output() onChange = new EventEmitter();
    @Output() onUnchecked = new EventEmitter();
+   @Output() onIndeterminate = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('checked', (eventData: any) => { this.onChecked.emit(eventData); this.onChangeCallback(this.valueAttr); });
       this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
       this.host.on('unchecked', (eventData: any) => { this.onUnchecked.emit(eventData); });
+      this.host.on('indeterminate', (eventData: any) => { this.onIndeterminate.emit(eventData); });
    }
 
 } //jqxRadioButtonComponent

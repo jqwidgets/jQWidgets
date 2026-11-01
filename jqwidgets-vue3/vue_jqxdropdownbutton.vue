@@ -25,13 +25,27 @@
                 type: Boolean
             },
             dropDownHorizontalAlignment: String,
+            dropDownContainer: String,
             dropDownVerticalAlignment: String,
             dropDownWidth: [String, Number],
+            dropDownHeight: [String, Number],
             enableBrowserBoundsDetection: {
                 default: false,
                 type: Boolean
             },
+            enableHover: {
+                default: true,
+                type: Boolean
+            },
+            focusable: {
+                default: true,
+                type: Boolean
+            },
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             initContent: Function,
             openDelay: Number,
             popupZIndex: Number,
@@ -47,7 +61,7 @@
                 type: Boolean
             }
         },
-        emits: ["close","open"],
+        emits: ["close","closing","open","opening"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxDropDownButton" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -88,6 +102,13 @@
             }
             function setContent(content) {
                 JQXLite(componentSelector).jqxDropDownButton('setContent', content);  
+            }
+            function val(value) {
+                if (value !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('val',  value)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('val');
+                }
             }
             function _animationType (arg) {
                 if (arg !== undefined) {
@@ -131,6 +152,13 @@
                     return JQXLite(componentSelector).jqxDropDownButton('dropDownHorizontalAlignment');
                 }
             }
+            function _dropDownContainer (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('dropDownContainer', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('dropDownContainer');
+                }
+            }
             function _dropDownVerticalAlignment (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownButton('dropDownVerticalAlignment', arg)
@@ -145,6 +173,13 @@
                     return JQXLite(componentSelector).jqxDropDownButton('dropDownWidth');
                 }
             }
+            function _dropDownHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('dropDownHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('dropDownHeight');
+                }
+            }
             function _enableBrowserBoundsDetection (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownButton('enableBrowserBoundsDetection', arg)
@@ -152,11 +187,32 @@
                     return JQXLite(componentSelector).jqxDropDownButton('enableBrowserBoundsDetection');
                 }
             }
+            function _enableHover (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('enableHover', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('enableHover');
+                }
+            }
+            function _focusable (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('focusable', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('focusable');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownButton('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownButton('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownButton('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownButton('hint');
                 }
             }
             function _initContent (arg) {
@@ -218,7 +274,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownWidth','enableBrowserBoundsDetection','height','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
+                const widgetProps = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownContainer','dropDownVerticalAlignment','dropDownWidth','dropDownHeight','enableBrowserBoundsDetection','enableHover','focusable','height','hint','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -266,6 +322,12 @@
                  set dropDownHorizontalAlignment(newValue) {
                      _dropDownHorizontalAlignment(newValue);
                  },
+                 get dropDownContainer() {
+                     return _dropDownContainer();
+                 },
+                 set dropDownContainer(newValue) {
+                     _dropDownContainer(newValue);
+                 },
                  get dropDownVerticalAlignment() {
                      return _dropDownVerticalAlignment();
                  },
@@ -278,17 +340,41 @@
                  set dropDownWidth(newValue) {
                      _dropDownWidth(newValue);
                  },
+                 get dropDownHeight() {
+                     return _dropDownHeight();
+                 },
+                 set dropDownHeight(newValue) {
+                     _dropDownHeight(newValue);
+                 },
                  get enableBrowserBoundsDetection() {
                      return _enableBrowserBoundsDetection();
                  },
                  set enableBrowserBoundsDetection(newValue) {
                      _enableBrowserBoundsDetection(newValue);
                  },
+                 get enableHover() {
+                     return _enableHover();
+                 },
+                 set enableHover(newValue) {
+                     _enableHover(newValue);
+                 },
+                 get focusable() {
+                     return _focusable();
+                 },
+                 set focusable(newValue) {
+                     _focusable(newValue);
+                 },
                  get height() {
                      return _height();
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get initContent() {
                      return _initContent();
@@ -337,7 +423,9 @@
                 const that = context;
 
                 JQXLite(componentSelector).on('close', function (event) { that.emit('close', event); });
+                JQXLite(componentSelector).on('closing', function (event) { that.emit('closing', event); });
                 JQXLite(componentSelector).on('open', function (event) { that.emit('open', event); });
+                JQXLite(componentSelector).on('opening', function (event) { that.emit('opening', event); });
             }
 
 			onMounted(() => {
@@ -376,7 +464,7 @@
 				element.off();
 				try { element.jqxDropDownButton('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, close, destroy, focus, getContent, isOpened, open, setContent, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, close, destroy, focus, getContent, isOpened, open, setContent, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

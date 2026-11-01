@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxloader",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxloader.umd.js",
   "module": "react_jqxloader.esm.js",
   "typings": "react_jqxloader.d.ts",

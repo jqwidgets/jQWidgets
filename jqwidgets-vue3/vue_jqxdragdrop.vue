@@ -13,6 +13,7 @@
     export default {
         props: {
             appendTo: String,
+            cursor: String,
             disabled: {
                 default: false,
                 type: Boolean
@@ -23,6 +24,7 @@
             dropTarget: [String, Object],
             dragZIndex: Number,
             feedback: String,
+            handle: String,
             initFeedback: Function,
             opacity: Number,
             onDragEnd: Function,
@@ -65,11 +67,30 @@
                 }
                 return resultToReturn;
             }
+            function cancelDrag() {
+                JQXLite(componentSelector).jqxDragDrop('cancelDrag');  
+            }
+            function destroy() {
+                JQXLite(componentSelector).jqxDragDrop('destroy');  
+            }
+            function disable() {
+                JQXLite(componentSelector).jqxDragDrop('disable');  
+            }
+            function enable() {
+                JQXLite(componentSelector).jqxDragDrop('enable');  
+            }
             function _appendTo (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDragDrop('appendTo', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDragDrop('appendTo');
+                }
+            }
+            function _cursor (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDragDrop('cursor', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDragDrop('cursor');
                 }
             }
             function _disabled (arg) {
@@ -119,6 +140,13 @@
                     JQXLite(componentSelector).jqxDragDrop('feedback', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDragDrop('feedback');
+                }
+            }
+            function _handle (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDragDrop('handle', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDragDrop('handle');
                 }
             }
             function _initFeedback (arg) {
@@ -222,7 +250,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['appendTo','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
+                const widgetProps = ['appendTo','cursor','disabled','distance','data','dropAction','dropTarget','dragZIndex','feedback','handle','initFeedback','opacity','onDragEnd','onDrag','onDragStart','onTargetDrop','onDropTargetEnter','onDropTargetLeave','restricter','revert','revertDuration','theme','tolerance'];
                 const componentProps = props;
                 let options = {};
 
@@ -239,6 +267,12 @@
                  },
                  set appendTo(newValue) {
                      _appendTo(newValue);
+                 },
+                 get cursor() {
+                     return _cursor();
+                 },
+                 set cursor(newValue) {
+                     _cursor(newValue);
                  },
                  get disabled() {
                      return _disabled();
@@ -281,6 +315,12 @@
                  },
                  set feedback(newValue) {
                      _feedback(newValue);
+                 },
+                 get handle() {
+                     return _handle();
+                 },
+                 set handle(newValue) {
+                     _handle(newValue);
                  },
                  get initFeedback() {
                      return _initFeedback();
@@ -405,8 +445,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxDragDrop('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, cancelDrag, destroy, disable, enable, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

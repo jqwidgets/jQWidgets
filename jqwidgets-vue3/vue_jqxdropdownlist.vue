@@ -17,11 +17,16 @@
     export default {
         props: {
             modelValue: null,
+            arrowSize: Number,
             autoOpen: {
                 default: false,
                 type: Boolean
             },
             autoDropDownHeight: {
+                default: false,
+                type: Boolean
+            },
+            autoItemsHeight: {
                 default: false,
                 type: Boolean
             },
@@ -40,6 +45,8 @@
             dropDownVerticalAlignment: String,
             dropDownHeight: Number,
             dropDownWidth: Number,
+            dropDownContainer: String,
+            emptyString: String,
             enableSelection: {
                 default: true,
                 type: Boolean
@@ -52,6 +59,10 @@
                 default: true,
                 type: Boolean
             },
+            equalItemsWidth: {
+                default: true,
+                type: Boolean
+            },
             filterable: {
                 default: false,
                 type: Boolean
@@ -59,16 +70,30 @@
             filterHeight: Number,
             filterDelay: Number,
             filterPlaceHolder: String,
+            focusable: {
+                default: true,
+                type: Boolean
+            },
+            groupMember: String,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             incrementalSearch: {
                 default: true,
                 type: Boolean
             },
             incrementalSearchDelay: Number,
             itemHeight: Number,
+            keyboardSelection: {
+                default: true,
+                type: Boolean
+            },
             openDelay: Number,
             placeHolder: String,
             popupZIndex: Number,
+            ready: Function,
             rtl: {
                 default: false,
                 type: Boolean
@@ -76,11 +101,13 @@
             renderer: Function,
             selectionRenderer: Function,
             searchMode: String,
+            searchMember: String,
             source: [Array, Object],
             selectedIndex: Number,
             scrollBarSize: Number,
             theme: String,
             template: String,
+            touchMode: null,
             valueMember: String,
             width: [Number, String],
             autoCreate: {
@@ -88,7 +115,7 @@
                 type: Boolean
             }
         },
-        emits: ["update:modelValue","bindingComplete","close","checkChange","change","open","select","unselect"],
+        emits: ["update:modelValue","bindingComplete","close","checkChange","change","open","select","unselect","itemAdd","itemRemove","itemUpdate"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxDropDownList" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -163,6 +190,9 @@
             function getItems() {
                 return JQXLite(componentSelector).jqxDropDownList('getItems');  
             }
+            function getVisibleItems() {
+                return JQXLite(componentSelector).jqxDropDownList('getVisibleItems');  
+            }
             function getCheckedItems() {
                 return JQXLite(componentSelector).jqxDropDownList('getCheckedItems');  
             }
@@ -233,6 +263,13 @@
                     return JQXLite(componentSelector).jqxDropDownList('val');
                 }
             }
+            function _arrowSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('arrowSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('arrowSize');
+                }
+            }
             function _autoOpen (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownList('autoOpen', arg)
@@ -245,6 +282,13 @@
                     JQXLite(componentSelector).jqxDropDownList('autoDropDownHeight', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownList('autoDropDownHeight');
+                }
+            }
+            function _autoItemsHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('autoItemsHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('autoItemsHeight');
                 }
             }
             function _animationType (arg) {
@@ -310,6 +354,20 @@
                     return JQXLite(componentSelector).jqxDropDownList('dropDownWidth');
                 }
             }
+            function _dropDownContainer (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('dropDownContainer', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('dropDownContainer');
+                }
+            }
+            function _emptyString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('emptyString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('emptyString');
+                }
+            }
             function _enableSelection (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownList('enableSelection', arg)
@@ -329,6 +387,13 @@
                     JQXLite(componentSelector).jqxDropDownList('enableHover', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownList('enableHover');
+                }
+            }
+            function _equalItemsWidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('equalItemsWidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('equalItemsWidth');
                 }
             }
             function _filterable (arg) {
@@ -359,11 +424,32 @@
                     return JQXLite(componentSelector).jqxDropDownList('filterPlaceHolder');
                 }
             }
+            function _focusable (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('focusable', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('focusable');
+                }
+            }
+            function _groupMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('groupMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('groupMember');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownList('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownList('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('hint');
                 }
             }
             function _incrementalSearch (arg) {
@@ -387,6 +473,13 @@
                     return JQXLite(componentSelector).jqxDropDownList('itemHeight');
                 }
             }
+            function _keyboardSelection (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('keyboardSelection', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('keyboardSelection');
+                }
+            }
             function _openDelay (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownList('openDelay', arg)
@@ -406,6 +499,13 @@
                     JQXLite(componentSelector).jqxDropDownList('popupZIndex', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownList('popupZIndex');
+                }
+            }
+            function _ready (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('ready', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('ready');
                 }
             }
             function _rtl (arg) {
@@ -434,6 +534,13 @@
                     JQXLite(componentSelector).jqxDropDownList('searchMode', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDropDownList('searchMode');
+                }
+            }
+            function _searchMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('searchMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('searchMember');
                 }
             }
             function _source (arg) {
@@ -471,6 +578,13 @@
                     return JQXLite(componentSelector).jqxDropDownList('template');
                 }
             }
+            function _touchMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDropDownList('touchMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDropDownList('touchMode');
+                }
+            }
             function _valueMember (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDropDownList('valueMember', arg)
@@ -496,7 +610,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','scrollBarSize','theme','template','valueMember','width'];
+                const widgetProps = ['arrowSize','autoOpen','autoDropDownHeight','autoItemsHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','dropDownContainer','emptyString','enableSelection','enableBrowserBoundsDetection','enableHover','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','focusable','groupMember','height','hint','incrementalSearch','incrementalSearchDelay','itemHeight','keyboardSelection','openDelay','placeHolder','popupZIndex','ready','rtl','renderer','selectionRenderer','searchMode','searchMember','source','selectedIndex','scrollBarSize','theme','template','touchMode','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -508,6 +622,12 @@
                 return options;
             }
             const options = {
+                 get arrowSize() {
+                     return _arrowSize();
+                 },
+                 set arrowSize(newValue) {
+                     _arrowSize(newValue);
+                 },
                  get autoOpen() {
                      return _autoOpen();
                  },
@@ -519,6 +639,12 @@
                  },
                  set autoDropDownHeight(newValue) {
                      _autoDropDownHeight(newValue);
+                 },
+                 get autoItemsHeight() {
+                     return _autoItemsHeight();
+                 },
+                 set autoItemsHeight(newValue) {
+                     _autoItemsHeight(newValue);
                  },
                  get animationType() {
                      return _animationType();
@@ -574,6 +700,18 @@
                  set dropDownWidth(newValue) {
                      _dropDownWidth(newValue);
                  },
+                 get dropDownContainer() {
+                     return _dropDownContainer();
+                 },
+                 set dropDownContainer(newValue) {
+                     _dropDownContainer(newValue);
+                 },
+                 get emptyString() {
+                     return _emptyString();
+                 },
+                 set emptyString(newValue) {
+                     _emptyString(newValue);
+                 },
                  get enableSelection() {
                      return _enableSelection();
                  },
@@ -591,6 +729,12 @@
                  },
                  set enableHover(newValue) {
                      _enableHover(newValue);
+                 },
+                 get equalItemsWidth() {
+                     return _equalItemsWidth();
+                 },
+                 set equalItemsWidth(newValue) {
+                     _equalItemsWidth(newValue);
                  },
                  get filterable() {
                      return _filterable();
@@ -616,11 +760,29 @@
                  set filterPlaceHolder(newValue) {
                      _filterPlaceHolder(newValue);
                  },
+                 get focusable() {
+                     return _focusable();
+                 },
+                 set focusable(newValue) {
+                     _focusable(newValue);
+                 },
+                 get groupMember() {
+                     return _groupMember();
+                 },
+                 set groupMember(newValue) {
+                     _groupMember(newValue);
+                 },
                  get height() {
                      return _height();
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get incrementalSearch() {
                      return _incrementalSearch();
@@ -640,6 +802,12 @@
                  set itemHeight(newValue) {
                      _itemHeight(newValue);
                  },
+                 get keyboardSelection() {
+                     return _keyboardSelection();
+                 },
+                 set keyboardSelection(newValue) {
+                     _keyboardSelection(newValue);
+                 },
                  get openDelay() {
                      return _openDelay();
                  },
@@ -657,6 +825,12 @@
                  },
                  set popupZIndex(newValue) {
                      _popupZIndex(newValue);
+                 },
+                 get ready() {
+                     return _ready();
+                 },
+                 set ready(newValue) {
+                     _ready(newValue);
                  },
                  get rtl() {
                      return _rtl();
@@ -681,6 +855,12 @@
                  },
                  set searchMode(newValue) {
                      _searchMode(newValue);
+                 },
+                 get searchMember() {
+                     return _searchMember();
+                 },
+                 set searchMember(newValue) {
+                     _searchMember(newValue);
                  },
                  get source() {
                      return _source();
@@ -711,6 +891,12 @@
                  },
                  set template(newValue) {
                      _template(newValue);
+                 },
+                 get touchMode() {
+                     return _touchMode();
+                 },
+                 set touchMode(newValue) {
+                     _touchMode(newValue);
                  },
                  get valueMember() {
                      return _valueMember();
@@ -749,6 +935,9 @@
                 JQXLite(componentSelector).on('open', function (event) { that.emit('open', event); });
                 JQXLite(componentSelector).on('select', function (event) { that.emit('select', event); });
                 JQXLite(componentSelector).on('unselect', function (event) { that.emit('unselect', event); });
+                JQXLite(componentSelector).on('itemAdd', function (event) { that.emit('itemAdd', event); });
+                JQXLite(componentSelector).on('itemRemove', function (event) { that.emit('itemRemove', event); });
+                JQXLite(componentSelector).on('itemUpdate', function (event) { that.emit('itemUpdate', event); });
             }
 
 			onMounted(() => {
@@ -792,7 +981,7 @@
 				element.off();
 				try { element.jqxDropDownList('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addItem, clearSelection, clear, close, checkIndex, checkItem, checkAll, clearFilter, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, focus, getItem, getItemByValue, getItems, getCheckedItems, getSelectedItem, getSelectedIndex, insertAt, isOpened, indeterminateIndex, indeterminateItem, loadFromSelect, open, removeItem, removeAt, selectIndex, selectItem, setContent, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addItem, clearSelection, clear, close, checkIndex, checkItem, checkAll, clearFilter, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, focus, getItem, getItemByValue, getItems, getVisibleItems, getCheckedItems, getSelectedItem, getSelectedIndex, insertAt, isOpened, indeterminateIndex, indeterminateItem, loadFromSelect, open, removeItem, removeAt, selectIndex, selectItem, setContent, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

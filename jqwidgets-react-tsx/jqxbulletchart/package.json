@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxbulletchart",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxbulletchart.umd.js",
   "module": "react_jqxbulletchart.esm.js",
   "typings": "react_jqxbulletchart.d.ts",

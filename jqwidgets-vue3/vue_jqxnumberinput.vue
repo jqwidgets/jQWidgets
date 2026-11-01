@@ -20,6 +20,10 @@
                 default: true,
                 type: Boolean
             },
+            autoValidate: {
+                default: true,
+                type: Boolean
+            },
             decimal: Number,
             disabled: {
                 default: false,
@@ -28,9 +32,17 @@
             decimalDigits: Number,
             decimalSeparator: String,
             digits: Number,
+            enableMouseWheel: {
+                default: true,
+                type: Boolean
+            },
             groupSeparator: String,
             groupSize: Number,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             inputMode: String,
             min: Number,
             max: Number,
@@ -57,6 +69,7 @@
             textAlign: String,
             template: String,
             theme: String,
+            touchMode: null,
             value: Number,
             width: [Number, String],
             autoCreate: {
@@ -121,6 +134,13 @@
                     return JQXLite(componentSelector).jqxNumberInput('autoHidePromptChar');
                 }
             }
+            function _autoValidate (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNumberInput('autoValidate', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNumberInput('autoValidate');
+                }
+            }
             function _decimal (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxNumberInput('decimal', arg)
@@ -156,6 +176,13 @@
                     return JQXLite(componentSelector).jqxNumberInput('digits');
                 }
             }
+            function _enableMouseWheel (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNumberInput('enableMouseWheel', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNumberInput('enableMouseWheel');
+                }
+            }
             function _groupSeparator (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxNumberInput('groupSeparator', arg)
@@ -175,6 +202,13 @@
                     JQXLite(componentSelector).jqxNumberInput('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxNumberInput('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNumberInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNumberInput('hint');
                 }
             }
             function _inputMode (arg) {
@@ -296,6 +330,13 @@
                     return JQXLite(componentSelector).jqxNumberInput('theme');
                 }
             }
+            function _touchMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxNumberInput('touchMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxNumberInput('touchMode');
+                }
+            }
             function _value (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxNumberInput('value', arg)
@@ -321,7 +362,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['allowNull','autoHidePromptChar','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
+                const widgetProps = ['allowNull','autoHidePromptChar','autoValidate','decimal','disabled','decimalDigits','decimalSeparator','digits','enableMouseWheel','groupSeparator','groupSize','height','hint','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','touchMode','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -344,6 +385,12 @@
                  },
                  set autoHidePromptChar(newValue) {
                      _autoHidePromptChar(newValue);
+                 },
+                 get autoValidate() {
+                     return _autoValidate();
+                 },
+                 set autoValidate(newValue) {
+                     _autoValidate(newValue);
                  },
                  get decimal() {
                      return _decimal();
@@ -375,6 +422,12 @@
                  set digits(newValue) {
                      _digits(newValue);
                  },
+                 get enableMouseWheel() {
+                     return _enableMouseWheel();
+                 },
+                 set enableMouseWheel(newValue) {
+                     _enableMouseWheel(newValue);
+                 },
                  get groupSeparator() {
                      return _groupSeparator();
                  },
@@ -392,6 +445,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get inputMode() {
                      return _inputMode();
@@ -494,6 +553,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get touchMode() {
+                     return _touchMode();
+                 },
+                 set touchMode(newValue) {
+                     _touchMode(newValue);
                  },
                  get value() {
                      return _value();

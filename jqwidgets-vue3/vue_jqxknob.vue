@@ -59,7 +59,7 @@
                 type: Boolean
             }
         },
-        emits: ["change"],
+        emits: ["change","slide"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxKnob" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -455,6 +455,7 @@
                 const that = context;
 
                 JQXLite(componentSelector).on('change', function (event) { that.emit('change', event); });
+                JQXLite(componentSelector).on('slide', function (event) { that.emit('slide', event); });
             }
 
 			onMounted(() => {

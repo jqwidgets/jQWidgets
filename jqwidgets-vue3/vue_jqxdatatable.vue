@@ -61,6 +61,8 @@
                 type: Boolean
             },
             editSettings: Object,
+            beginEdit: Function,
+            endEdit: Function,
             exportSettings: Object,
             enableHover: {
                 default: true,
@@ -78,12 +80,14 @@
             filterMode: String,
             groups: Array,
             groupsRenderer: Function,
+            handleKeyboardNavigation: Function,
             height: [Number, String],
             initRowDetails: Function,
             incrementalSearch: {
                 default: true,
                 type: Boolean
             },
+            indentWidth: Number,
             localization: Object,
             pagerHeight: Number,
             pageSize: Number,
@@ -386,6 +390,20 @@
                     return JQXLite(componentSelector).jqxDataTable('editSettings');
                 }
             }
+            function _beginEdit (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDataTable('beginEdit', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDataTable('beginEdit');
+                }
+            }
+            function _endEdit (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDataTable('endEdit', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDataTable('endEdit');
+                }
+            }
             function _exportSettings (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDataTable('exportSettings', arg)
@@ -442,6 +460,13 @@
                     return JQXLite(componentSelector).jqxDataTable('groupsRenderer');
                 }
             }
+            function _handleKeyboardNavigation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDataTable('handleKeyboardNavigation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDataTable('handleKeyboardNavigation');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDataTable('height', arg)
@@ -461,6 +486,13 @@
                     JQXLite(componentSelector).jqxDataTable('incrementalSearch', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDataTable('incrementalSearch');
+                }
+            }
+            function _indentWidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDataTable('indentWidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDataTable('indentWidth');
                 }
             }
             function _localization (arg) {
@@ -683,7 +715,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
+                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','beginEdit','endEdit','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','handleKeyboardNavigation','height','initRowDetails','incrementalSearch','indentWidth','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -767,6 +799,18 @@
                  set editSettings(newValue) {
                      _editSettings(newValue);
                  },
+                 get beginEdit() {
+                     return _beginEdit();
+                 },
+                 set beginEdit(newValue) {
+                     _beginEdit(newValue);
+                 },
+                 get endEdit() {
+                     return _endEdit();
+                 },
+                 set endEdit(newValue) {
+                     _endEdit(newValue);
+                 },
                  get exportSettings() {
                      return _exportSettings();
                  },
@@ -815,6 +859,12 @@
                  set groupsRenderer(newValue) {
                      _groupsRenderer(newValue);
                  },
+                 get handleKeyboardNavigation() {
+                     return _handleKeyboardNavigation();
+                 },
+                 set handleKeyboardNavigation(newValue) {
+                     _handleKeyboardNavigation(newValue);
+                 },
                  get height() {
                      return _height();
                  },
@@ -832,6 +882,12 @@
                  },
                  set incrementalSearch(newValue) {
                      _incrementalSearch(newValue);
+                 },
+                 get indentWidth() {
+                     return _indentWidth();
+                 },
+                 set indentWidth(newValue) {
+                     _indentWidth(newValue);
                  },
                  get localization() {
                      return _localization();

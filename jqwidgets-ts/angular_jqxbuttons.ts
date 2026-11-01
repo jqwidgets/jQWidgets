@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,18 +28,21 @@ export class jqxButtonComponent implements OnChanges
    @Input('roundedCorners') attrRoundedCorners: string;
    @Input('rtl') attrRtl: boolean;
    @Input('enableDefault') attrEnableDefault: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enablePressed') attrEnablePressed: boolean;
    @Input('cursor') attrCursor: string;
    @Input('textPosition') attrTextPosition: string;
    @Input('textImageRelation') attrTextImageRelation: string;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
+   @Input('type') attrType: string;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
+   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','enableHover','enablePressed','cursor','textPosition','textImageRelation','theme','template','type','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxButton;
@@ -239,6 +242,22 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
+   enableHover(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxButton('enableHover', arg);
+      } else {
+          return this.host.jqxButton('enableHover');
+      }
+   }
+
+   enablePressed(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxButton('enablePressed', arg);
+      } else {
+          return this.host.jqxButton('enablePressed');
+      }
+   }
+
    cursor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('cursor', arg);
@@ -276,6 +295,14 @@ export class jqxButtonComponent implements OnChanges
           this.host.jqxButton('template', arg);
       } else {
           return this.host.jqxButton('template');
+      }
+   }
+
+   type(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxButton('type', arg);
+      } else {
+          return this.host.jqxButton('type');
       }
    }
 

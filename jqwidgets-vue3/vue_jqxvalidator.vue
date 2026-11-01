@@ -27,14 +27,22 @@
                 type: Boolean
             },
             hintType: String,
+            hintPositionOffset: Number,
             onError: Function,
             onSuccess: Function,
+            ownerElement: null,
             position: String,
             rules: Array,
             rtl: {
                 default: false,
                 type: Boolean
             },
+            scroll: {
+                default: true,
+                type: Boolean
+            },
+            scrollDuration: Number,
+            scrollCallback: Function,
             theme: String,
             autoCreate: {
                 default: true,
@@ -119,6 +127,13 @@
                     return JQXLite(componentSelector).jqxValidator('hintType');
                 }
             }
+            function _hintPositionOffset (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxValidator('hintPositionOffset', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxValidator('hintPositionOffset');
+                }
+            }
             function _onError (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxValidator('onError', arg)
@@ -131,6 +146,13 @@
                     JQXLite(componentSelector).jqxValidator('onSuccess', arg)
                 } else {
                     return JQXLite(componentSelector).jqxValidator('onSuccess');
+                }
+            }
+            function _ownerElement (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxValidator('ownerElement', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxValidator('ownerElement');
                 }
             }
             function _position (arg) {
@@ -154,6 +176,27 @@
                     return JQXLite(componentSelector).jqxValidator('rtl');
                 }
             }
+            function _scroll (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxValidator('scroll', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxValidator('scroll');
+                }
+            }
+            function _scrollDuration (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxValidator('scrollDuration', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxValidator('scrollDuration');
+                }
+            }
+            function _scrollCallback (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxValidator('scrollCallback', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxValidator('scrollCallback');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxValidator('theme', arg)
@@ -171,7 +214,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl','theme'];
+                const widgetProps = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','hintPositionOffset','onError','onSuccess','ownerElement','position','rules','rtl','scroll','scrollDuration','scrollCallback','theme'];
                 const componentProps = props;
                 let options = {};
 
@@ -219,6 +262,12 @@
                  set hintType(newValue) {
                      _hintType(newValue);
                  },
+                 get hintPositionOffset() {
+                     return _hintPositionOffset();
+                 },
+                 set hintPositionOffset(newValue) {
+                     _hintPositionOffset(newValue);
+                 },
                  get onError() {
                      return _onError();
                  },
@@ -230,6 +279,12 @@
                  },
                  set onSuccess(newValue) {
                      _onSuccess(newValue);
+                 },
+                 get ownerElement() {
+                     return _ownerElement();
+                 },
+                 set ownerElement(newValue) {
+                     _ownerElement(newValue);
                  },
                  get position() {
                      return _position();
@@ -248,6 +303,24 @@
                  },
                  set rtl(newValue) {
                      _rtl(newValue);
+                 },
+                 get scroll() {
+                     return _scroll();
+                 },
+                 set scroll(newValue) {
+                     _scroll(newValue);
+                 },
+                 get scrollDuration() {
+                     return _scrollDuration();
+                 },
+                 set scrollDuration(newValue) {
+                     _scrollDuration(newValue);
+                 },
+                 get scrollCallback() {
+                     return _scrollCallback();
+                 },
+                 set scrollCallback(newValue) {
+                     _scrollCallback(newValue);
                  },
                  get theme() {
                      return _theme();

@@ -17,16 +17,24 @@
                 default: true,
                 type: Boolean
             },
+            autoFocus: {
+                default: true,
+                type: Boolean
+            },
             animationType: String,
             collapsed: {
                 default: false,
                 type: Boolean
             },
             collapseAnimationDuration: Number,
+            collapseButtonSize: Number,
+            collapseButtonString: String,
             content: String,
             closeAnimationDuration: Number,
             closeButtonSize: Number,
             closeButtonAction: String,
+            closeButtonString: String,
+            closing: Function,
             cancelButton: [Object, String],
             dragArea: Object,
             draggable: {
@@ -38,6 +46,7 @@
                 type: Boolean
             },
             height: [Number, String],
+            headerHeight: Number,
             initContent: Function,
             isModal: {
                 default: false,
@@ -65,6 +74,7 @@
                 default: true,
                 type: Boolean
             },
+            restricter: [Object, String],
             showAnimationDuration: Number,
             showCloseButton: {
                 default: true,
@@ -165,6 +175,13 @@
                     return JQXLite(componentSelector).jqxWindow('autoOpen');
                 }
             }
+            function _autoFocus (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('autoFocus', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('autoFocus');
+                }
+            }
             function _animationType (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxWindow('animationType', arg)
@@ -184,6 +201,20 @@
                     JQXLite(componentSelector).jqxWindow('collapseAnimationDuration', arg)
                 } else {
                     return JQXLite(componentSelector).jqxWindow('collapseAnimationDuration');
+                }
+            }
+            function _collapseButtonSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('collapseButtonSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('collapseButtonSize');
+                }
+            }
+            function _collapseButtonString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('collapseButtonString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('collapseButtonString');
                 }
             }
             function _content (arg) {
@@ -212,6 +243,20 @@
                     JQXLite(componentSelector).jqxWindow('closeButtonAction', arg)
                 } else {
                     return JQXLite(componentSelector).jqxWindow('closeButtonAction');
+                }
+            }
+            function _closeButtonString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('closeButtonString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('closeButtonString');
+                }
+            }
+            function _closing (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('closing', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('closing');
                 }
             }
             function _cancelButton (arg) {
@@ -247,6 +292,13 @@
                     JQXLite(componentSelector).jqxWindow('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxWindow('height');
+                }
+            }
+            function _headerHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('headerHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('headerHeight');
                 }
             }
             function _initContent (arg) {
@@ -354,6 +406,13 @@
                     return JQXLite(componentSelector).jqxWindow('resizable');
                 }
             }
+            function _restricter (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxWindow('restricter', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxWindow('restricter');
+                }
+            }
             function _showAnimationDuration (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxWindow('showAnimationDuration', arg)
@@ -413,7 +472,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['autoOpen','animationType','collapsed','collapseAnimationDuration','content','closeAnimationDuration','closeButtonSize','closeButtonAction','cancelButton','dragArea','draggable','disabled','height','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
+                const widgetProps = ['autoOpen','autoFocus','animationType','collapsed','collapseAnimationDuration','collapseButtonSize','collapseButtonString','content','closeAnimationDuration','closeButtonSize','closeButtonAction','closeButtonString','closing','cancelButton','dragArea','draggable','disabled','height','headerHeight','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','restricter','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
                 const componentProps = props;
                 let options = {};
 
@@ -430,6 +489,12 @@
                  },
                  set autoOpen(newValue) {
                      _autoOpen(newValue);
+                 },
+                 get autoFocus() {
+                     return _autoFocus();
+                 },
+                 set autoFocus(newValue) {
+                     _autoFocus(newValue);
                  },
                  get animationType() {
                      return _animationType();
@@ -448,6 +513,18 @@
                  },
                  set collapseAnimationDuration(newValue) {
                      _collapseAnimationDuration(newValue);
+                 },
+                 get collapseButtonSize() {
+                     return _collapseButtonSize();
+                 },
+                 set collapseButtonSize(newValue) {
+                     _collapseButtonSize(newValue);
+                 },
+                 get collapseButtonString() {
+                     return _collapseButtonString();
+                 },
+                 set collapseButtonString(newValue) {
+                     _collapseButtonString(newValue);
                  },
                  get content() {
                      return _content();
@@ -472,6 +549,18 @@
                  },
                  set closeButtonAction(newValue) {
                      _closeButtonAction(newValue);
+                 },
+                 get closeButtonString() {
+                     return _closeButtonString();
+                 },
+                 set closeButtonString(newValue) {
+                     _closeButtonString(newValue);
+                 },
+                 get closing() {
+                     return _closing();
+                 },
+                 set closing(newValue) {
+                     _closing(newValue);
                  },
                  get cancelButton() {
                      return _cancelButton();
@@ -502,6 +591,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get headerHeight() {
+                     return _headerHeight();
+                 },
+                 set headerHeight(newValue) {
+                     _headerHeight(newValue);
                  },
                  get initContent() {
                      return _initContent();
@@ -592,6 +687,12 @@
                  },
                  set resizable(newValue) {
                      _resizable(newValue);
+                 },
+                 get restricter() {
+                     return _restricter();
+                 },
+                 set restricter(newValue) {
+                     _restricter(newValue);
                  },
                  get showAnimationDuration() {
                      return _showAnimationDuration();

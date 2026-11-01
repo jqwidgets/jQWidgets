@@ -21,13 +21,20 @@
                 default: false,
                 type: Boolean
             },
+            height: [String, Number],
             mode: String,
+            orientation: String,
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            },
             rtl: {
                 default: false,
                 type: Boolean
             },
             template: String,
             theme: String,
+            width: [String, Number],
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -53,6 +60,9 @@
                     resultToReturn[usedProps[i]] = JQXLite(componentSelector).jqxButtonGroup(usedProps[i]);
                 }
                 return resultToReturn;
+            }
+            function clearSelection() {
+                JQXLite(componentSelector).jqxButtonGroup('clearSelection');  
             }
             function disableAt(index) {
                 JQXLite(componentSelector).jqxButtonGroup('disableAt', index);  
@@ -92,11 +102,32 @@
                     return JQXLite(componentSelector).jqxButtonGroup('enableHover');
                 }
             }
+            function _height (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButtonGroup('height', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButtonGroup('height');
+                }
+            }
             function _mode (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxButtonGroup('mode', arg)
                 } else {
                     return JQXLite(componentSelector).jqxButtonGroup('mode');
+                }
+            }
+            function _orientation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButtonGroup('orientation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButtonGroup('orientation');
+                }
+            }
+            function _roundedCorners (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButtonGroup('roundedCorners', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButtonGroup('roundedCorners');
                 }
             }
             function _rtl (arg) {
@@ -120,6 +151,13 @@
                     return JQXLite(componentSelector).jqxButtonGroup('theme');
                 }
             }
+            function _width (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxButtonGroup('width', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxButtonGroup('width');
+                }
+            }
             function __createComponent__ (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = __manageProps__();
@@ -130,7 +168,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','enableHover','mode','rtl','template','theme'];
+                const widgetProps = ['disabled','enableHover','height','mode','orientation','roundedCorners','rtl','template','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -154,11 +192,29 @@
                  set enableHover(newValue) {
                      _enableHover(newValue);
                  },
+                 get height() {
+                     return _height();
+                 },
+                 set height(newValue) {
+                     _height(newValue);
+                 },
                  get mode() {
                      return _mode();
                  },
                  set mode(newValue) {
                      _mode(newValue);
+                 },
+                 get orientation() {
+                     return _orientation();
+                 },
+                 set orientation(newValue) {
+                     _orientation(newValue);
+                 },
+                 get roundedCorners() {
+                     return _roundedCorners();
+                 },
+                 set roundedCorners(newValue) {
+                     _roundedCorners(newValue);
                  },
                  get rtl() {
                      return _rtl();
@@ -177,6 +233,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get width() {
+                     return _width();
+                 },
+                 set width(newValue) {
+                     _width(newValue);
                  },
             }
             function __wireEvents__() {
@@ -223,7 +285,7 @@
 				element.off();
 				try { element.jqxButtonGroup('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, disableAt, disable, destroy, enable, enableAt, getSelection, render, setSelection, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, clearSelection, disableAt, disable, destroy, enable, enableAt, getSelection, render, setSelection, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

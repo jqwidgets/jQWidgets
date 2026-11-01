@@ -69,6 +69,7 @@
             },
             source: [Array, Object],
             theme: String,
+            title: String,
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -105,11 +106,20 @@
             function disable(itemID, value) {
                 JQXLite(componentSelector).jqxMenu('disable', itemID, value);  
             }
+            function disableItem(itemID) {
+                JQXLite(componentSelector).jqxMenu('disableItem', itemID);  
+            }
             function destroy() {
                 JQXLite(componentSelector).jqxMenu('destroy');  
             }
+            function enableItem(itemID) {
+                JQXLite(componentSelector).jqxMenu('enableItem', itemID);  
+            }
             function focus() {
                 JQXLite(componentSelector).jqxMenu('focus');  
+            }
+            function hideItem(itemID) {
+                JQXLite(componentSelector).jqxMenu('hideItem', itemID);  
             }
             function minimize() {
                 JQXLite(componentSelector).jqxMenu('minimize');  
@@ -125,6 +135,9 @@
             }
             function setItemOpenDirection(item, horizontaldirection, verticaldirection) {
                 JQXLite(componentSelector).jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);  
+            }
+            function showItem(itemID) {
+                JQXLite(componentSelector).jqxMenu('showItem', itemID);  
             }
             function _animationShowDuration (arg) {
                 if (arg !== undefined) {
@@ -287,6 +300,13 @@
                     return JQXLite(componentSelector).jqxMenu('theme');
                 }
             }
+            function _title (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxMenu('title', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxMenu('title');
+                }
+            }
             function _width (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxMenu('width', arg)
@@ -304,7 +324,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
+                const widgetProps = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','title','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -454,6 +474,12 @@
                  set theme(newValue) {
                      _theme(newValue);
                  },
+                 get title() {
+                     return _title();
+                 },
+                 set title(newValue) {
+                     _title(newValue);
+                 },
                  get width() {
                      return _width();
                  },
@@ -505,7 +531,7 @@
 				element.off();
 				try { element.jqxMenu('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, closeItem, close, disable, destroy, focus, minimize, open, openItem, restore, setItemOpenDirection, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, closeItem, close, disable, disableItem, destroy, enableItem, focus, hideItem, minimize, open, openItem, restore, setItemOpenDirection, showItem, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

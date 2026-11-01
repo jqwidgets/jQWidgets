@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,25 +31,30 @@ export class jqxTreeComponent implements OnChanges
    @Input('allowDrag') attrAllowDrag: boolean;
    @Input('allowDrop') attrAllowDrop: boolean;
    @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('checkSize') attrCheckSize: number;
    @Input('dragStart') attrDragStart: (item: jqwidgets.TreeDragStart['item']) => boolean;
    @Input('dragEnd') attrDragEnd: (dragItem: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean;
    @Input('disabled') attrDisabled: boolean;
+   @Input('displayMember') attrDisplayMember: string;
    @Input('easing') attrEasing: string;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('hasThreeStates') attrHasThreeStates: boolean;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
+   @Input('itemsMember') attrItemsMember: string;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
+   @Input('submitCheckedItems') attrSubmitCheckedItems: boolean;
    @Input('toggleIndicatorSize') attrToggleIndicatorSize: number;
    @Input('toggleMode') attrToggleMode: string;
    @Input('theme') attrTheme: string;
+   @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','source','toggleIndicatorSize','toggleMode','theme','width'];
+   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','checkSize','dragStart','dragEnd','disabled','displayMember','easing','enableHover','height','hasThreeStates','incrementalSearch','itemsMember','keyboardNavigation','rtl','source','submitCheckedItems','toggleIndicatorSize','toggleMode','theme','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTree;
@@ -216,6 +221,14 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
+   checkSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxTree('checkSize', arg);
+      } else {
+          return this.host.jqxTree('checkSize');
+      }
+   }
+
    dragStart(arg?: (item: jqwidgets.TreeDragStart['item']) => boolean): (item: jqwidgets.TreeDragStart['item']) => boolean {
       if (arg !== undefined) {
           this.host.jqxTree('dragStart', arg);
@@ -237,6 +250,14 @@ export class jqxTreeComponent implements OnChanges
           this.host.jqxTree('disabled', arg);
       } else {
           return this.host.jqxTree('disabled');
+      }
+   }
+
+   displayMember(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxTree('displayMember', arg);
+      } else {
+          return this.host.jqxTree('displayMember');
       }
    }
 
@@ -280,6 +301,14 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
+   itemsMember(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxTree('itemsMember', arg);
+      } else {
+          return this.host.jqxTree('itemsMember');
+      }
+   }
+
    keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('keyboardNavigation', arg);
@@ -301,6 +330,14 @@ export class jqxTreeComponent implements OnChanges
           this.host.jqxTree('source', arg);
       } else {
           return this.host.jqxTree('source');
+      }
+   }
+
+   submitCheckedItems(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTree('submitCheckedItems', arg);
+      } else {
+          return this.host.jqxTree('submitCheckedItems');
       }
    }
 
@@ -328,6 +365,14 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
+   valueMember(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxTree('valueMember', arg);
+      } else {
+          return this.host.jqxTree('valueMember');
+      }
+   }
+
    width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTree('width', arg);
@@ -352,6 +397,10 @@ export class jqxTreeComponent implements OnChanges
 
    clear(): void {
       this.host.jqxTree('clear');
+   }
+
+   clearSelection(): void {
+      this.host.jqxTree('clearSelection');
    }
 
    checkAll(): void {
@@ -442,6 +491,18 @@ export class jqxTreeComponent implements OnChanges
       return this.host.jqxTree('hitTest', left, top);
    }
 
+   isExpanded(element: any): boolean {
+      return this.host.jqxTree('isExpanded', element);
+   }
+
+   isSelected(element: any): boolean {
+      return this.host.jqxTree('isSelected', element);
+   }
+
+   lockItem(element: any): void {
+      this.host.jqxTree('lockItem', element);
+   }
+
    removeItem(item: any): void {
       this.host.jqxTree('removeItem', item);
    }
@@ -466,6 +527,10 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('uncheckItem', item);
    }
 
+   unlockItem(element: any): void {
+      this.host.jqxTree('unlockItem', element);
+   }
+
    updateItem(item: any, newItem: any): void {
       this.host.jqxTree('updateItem', item, newItem);
    }
@@ -486,6 +551,7 @@ export class jqxTreeComponent implements OnChanges
    @Output() onDragStart = new EventEmitter();
    @Output() onDragEnd = new EventEmitter();
    @Output() onExpand = new EventEmitter();
+   @Output() onInitialized = new EventEmitter();
    @Output() onItemClick = new EventEmitter();
    @Output() onRemoved = new EventEmitter();
    @Output() onSelect = new EventEmitter();
@@ -497,6 +563,7 @@ export class jqxTreeComponent implements OnChanges
       this.host.on('dragStart', (eventData: any) => { this.onDragStart.emit(eventData); });
       this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
       this.host.on('expand', (eventData: any) => { this.onExpand.emit(eventData); });
+      this.host.on('initialized', (eventData: any) => { this.onInitialized.emit(eventData); });
       this.host.on('itemClick', (eventData: any) => { this.onItemClick.emit(eventData); });
       this.host.on('removed', (eventData: any) => { this.onRemoved.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });

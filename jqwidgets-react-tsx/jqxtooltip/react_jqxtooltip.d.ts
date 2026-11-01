@@ -9,13 +9,17 @@ declare class JqxTooltip extends React.PureComponent<ITooltipProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: ITooltipProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -24,6 +28,7 @@ declare class JqxTooltip extends React.PureComponent<ITooltipProps> {
     close(index?: number): void;
     destroy(): void;
     open(left?: number, top?: number): void;
+    opened(): boolean;
     refresh(): void;
     private _manageProps;
     private _hostAttributes;

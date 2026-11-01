@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxpanel",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxpanel.umd.js",
   "module": "react_jqxpanel.esm.js",
   "typings": "react_jqxpanel.d.ts",

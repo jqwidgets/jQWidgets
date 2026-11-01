@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxcalendar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxcalendar.umd.js",
   "module": "react_jqxcalendar.esm.js",
   "typings": "react_jqxcalendar.d.ts",

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,6 +23,7 @@ declare let JQXLite: any;
 export class jqxTagCloudComponent implements OnChanges
 {
    @Input('alterTextCase') attrAlterTextCase: string;
+   @Input('autoBind') attrAutoBind: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayLimit') attrDisplayLimit: number;
    @Input('displayMember') attrDisplayMember: string;
@@ -50,7 +51,7 @@ export class jqxTagCloudComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
+   properties: string[] = ['alterTextCase','autoBind','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','theme','urlBase','urlMember','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTagCloud;
@@ -182,6 +183,14 @@ export class jqxTagCloudComponent implements OnChanges
           this.host.jqxTagCloud('alterTextCase', arg);
       } else {
           return this.host.jqxTagCloud('alterTextCase');
+      }
+   }
+
+   autoBind(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxTagCloud('autoBind', arg);
+      } else {
+          return this.host.jqxTagCloud('autoBind');
       }
    }
 
@@ -422,10 +431,12 @@ export class jqxTagCloudComponent implements OnChanges
 
    // jqxTagCloudComponent events
    @Output() onBindingComplete = new EventEmitter();
+   @Output() onBindingUpdateComplete = new EventEmitter();
    @Output() onItemClick = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('bindingUpdateComplete', (eventData: any) => { this.onBindingUpdateComplete.emit(eventData); });
       this.host.on('itemClick', (eventData: any) => { this.onItemClick.emit(eventData); });
    }
 

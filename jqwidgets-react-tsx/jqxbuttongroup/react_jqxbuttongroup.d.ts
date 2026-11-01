@@ -9,18 +9,23 @@ declare class JqxButtonGroup extends React.PureComponent<IButtonGroupProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IButtonGroupProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: IButtonGroupProps): void;
     getOptions(option: string): any;
+    clearSelection(): void;
     disableAt(index: number): void;
     disable(): void;
     destroy(): void;
@@ -42,10 +47,14 @@ export declare const JQXLite: any;
 interface IButtonGroupOptions {
     disabled?: boolean;
     enableHover?: boolean;
+    height?: number | string;
     mode?: 'checkbox' | 'radio' | 'default';
+    orientation?: string;
+    roundedCorners?: boolean;
     rtl?: boolean;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
+    width?: number | string;
 }
 export interface IButtonGroupProps extends IButtonGroupOptions, React.AriaAttributes {
     className?: string;

@@ -26,10 +26,18 @@
                 default: true,
                 type: Boolean
             },
+            enableHover: {
+                default: true,
+                type: Boolean
+            },
             groupName: String,
             height: [Number, String],
             hasThreeStates: {
                 default: false,
+                type: Boolean
+            },
+            keyboardCheck: {
+                default: true,
                 type: Boolean
             },
             locked: {
@@ -144,6 +152,13 @@
                     return JQXLite(componentSelector).jqxCheckBox('enableContainerClick');
                 }
             }
+            function _enableHover (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCheckBox('enableHover', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCheckBox('enableHover');
+                }
+            }
             function _groupName (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxCheckBox('groupName', arg)
@@ -163,6 +178,13 @@
                     JQXLite(componentSelector).jqxCheckBox('hasThreeStates', arg)
                 } else {
                     return JQXLite(componentSelector).jqxCheckBox('hasThreeStates');
+                }
+            }
+            function _keyboardCheck (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxCheckBox('keyboardCheck', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxCheckBox('keyboardCheck');
                 }
             }
             function _locked (arg) {
@@ -204,7 +226,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','height','hasThreeStates','locked','rtl','theme','width'];
+                const widgetProps = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','enableHover','groupName','height','hasThreeStates','keyboardCheck','locked','rtl','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -252,6 +274,12 @@
                  set enableContainerClick(newValue) {
                      _enableContainerClick(newValue);
                  },
+                 get enableHover() {
+                     return _enableHover();
+                 },
+                 set enableHover(newValue) {
+                     _enableHover(newValue);
+                 },
                  get groupName() {
                      return _groupName();
                  },
@@ -269,6 +297,12 @@
                  },
                  set hasThreeStates(newValue) {
                      _hasThreeStates(newValue);
+                 },
+                 get keyboardCheck() {
+                     return _keyboardCheck();
+                 },
+                 set keyboardCheck(newValue) {
+                     _keyboardCheck(newValue);
                  },
                  get locked() {
                      return _locked();

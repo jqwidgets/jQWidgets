@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,18 +22,20 @@ declare let JQXLite: any;
 export class jqxSplitterComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
+   @Input('initContent') attrInitContent: () => void;
    @Input('orientation') attrOrientation: string;
    @Input('panels') attrPanels: Array<jqwidgets.SplitterPanel>;
    @Input('resizable') attrResizable: boolean;
    @Input('splitBarSize') attrSplitBarSize: number;
    @Input('showSplitBar') attrShowSplitBar: boolean;
    @Input('theme') attrTheme: string;
+   @Input('touchSplitBarSize') attrTouchSplitBarSize: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','orientation','panels','resizable','splitBarSize','showSplitBar','theme','width'];
+   properties: string[] = ['disabled','height','initContent','orientation','panels','resizable','splitBarSize','showSplitBar','theme','touchSplitBarSize','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSplitter;
@@ -176,6 +178,14 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
+   initContent(arg?: () => void): () => void {
+      if (arg !== undefined) {
+          this.host.jqxSplitter('initContent', arg);
+      } else {
+          return this.host.jqxSplitter('initContent');
+      }
+   }
+
    orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSplitter('orientation', arg);
@@ -221,6 +231,14 @@ export class jqxSplitterComponent implements OnChanges
           this.host.jqxSplitter('theme', arg);
       } else {
           return this.host.jqxSplitter('theme');
+      }
+   }
+
+   touchSplitBarSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSplitter('touchSplitBarSize', arg);
+      } else {
+          return this.host.jqxSplitter('touchSplitBarSize');
       }
    }
 

@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxbuttons",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxbuttons.umd.js",
   "module": "react_jqxbuttons.esm.js",
   "typings": "react_jqxbuttons.d.ts",

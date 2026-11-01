@@ -9,13 +9,17 @@ declare class JqxInput extends React.PureComponent<IInputProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IInputProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -40,7 +44,9 @@ interface IInputOptions {
     disabled?: boolean;
     dropDownWidth?: number | string;
     displayMember?: string;
+    enableBrowserBoundsDetection?: boolean;
     height?: string | number;
+    hint?: boolean;
     items?: number;
     inlineAutoComplete?: boolean;
     minLength?: number;
@@ -50,6 +56,7 @@ interface IInputOptions {
     popupZIndex?: number;
     query?: string;
     renderer?: (itemValue: string, inputValue: string) => string;
+    roundedCorners?: boolean;
     rtl?: boolean;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     source?: any;

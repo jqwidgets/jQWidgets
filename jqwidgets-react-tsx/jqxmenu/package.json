@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxmenu",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxmenu.umd.js",
   "module": "react_jqxmenu.esm.js",
   "typings": "react_jqxmenu.d.ts",

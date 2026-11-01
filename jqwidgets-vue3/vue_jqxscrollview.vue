@@ -19,9 +19,14 @@
                 type: Boolean
             },
             buttonsOffset: Array,
+            carouselString: String,
             currentPage: Number,
             disabled: {
                 default: false,
+                type: Boolean
+            },
+            dragEnabled: {
+                default: true,
                 type: Boolean
             },
             height: [Number, String],
@@ -30,6 +35,7 @@
                 default: true,
                 type: Boolean
             },
+            slideString: String,
             slideShow: {
                 default: false,
                 type: Boolean
@@ -69,6 +75,9 @@
             function changePage(index) {
                 JQXLite(componentSelector).jqxScrollView('changePage', index);  
             }
+            function destroy() {
+                JQXLite(componentSelector).jqxScrollView('destroy');  
+            }
             function forward() {
                 JQXLite(componentSelector).jqxScrollView('forward');  
             }
@@ -96,6 +105,13 @@
                     return JQXLite(componentSelector).jqxScrollView('buttonsOffset');
                 }
             }
+            function _carouselString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScrollView('carouselString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollView('carouselString');
+                }
+            }
             function _currentPage (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxScrollView('currentPage', arg)
@@ -108,6 +124,13 @@
                     JQXLite(componentSelector).jqxScrollView('disabled', arg)
                 } else {
                     return JQXLite(componentSelector).jqxScrollView('disabled');
+                }
+            }
+            function _dragEnabled (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScrollView('dragEnabled', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollView('dragEnabled');
                 }
             }
             function _height (arg) {
@@ -129,6 +152,13 @@
                     JQXLite(componentSelector).jqxScrollView('showButtons', arg)
                 } else {
                     return JQXLite(componentSelector).jqxScrollView('showButtons');
+                }
+            }
+            function _slideString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxScrollView('slideString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxScrollView('slideString');
                 }
             }
             function _slideShow (arg) {
@@ -169,7 +199,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationDuration','bounceEnabled','buttonsOffset','currentPage','disabled','height','moveThreshold','showButtons','slideShow','slideDuration','theme','width'];
+                const widgetProps = ['animationDuration','bounceEnabled','buttonsOffset','carouselString','currentPage','disabled','dragEnabled','height','moveThreshold','showButtons','slideString','slideShow','slideDuration','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -199,6 +229,12 @@
                  set buttonsOffset(newValue) {
                      _buttonsOffset(newValue);
                  },
+                 get carouselString() {
+                     return _carouselString();
+                 },
+                 set carouselString(newValue) {
+                     _carouselString(newValue);
+                 },
                  get currentPage() {
                      return _currentPage();
                  },
@@ -210,6 +246,12 @@
                  },
                  set disabled(newValue) {
                      _disabled(newValue);
+                 },
+                 get dragEnabled() {
+                     return _dragEnabled();
+                 },
+                 set dragEnabled(newValue) {
+                     _dragEnabled(newValue);
                  },
                  get height() {
                      return _height();
@@ -228,6 +270,12 @@
                  },
                  set showButtons(newValue) {
                      _showButtons(newValue);
+                 },
+                 get slideString() {
+                     return _slideString();
+                 },
+                 set slideString(newValue) {
+                     _slideString(newValue);
                  },
                  get slideShow() {
                      return _slideShow();
@@ -294,8 +342,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxScrollView('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, back, changePage, forward, refresh, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, back, changePage, destroy, forward, refresh, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

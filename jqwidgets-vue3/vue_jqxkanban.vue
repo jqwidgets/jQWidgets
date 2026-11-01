@@ -15,11 +15,13 @@
 
     export default {
         props: {
+            animationDelay: Number,
             columnRenderer: Function,
             columns: Array,
             connectWith: String,
             headerHeight: Number,
             headerWidth: Number,
+            handle: String,
             height: [String, Number],
             itemRenderer: Function,
             ready: Function,
@@ -31,6 +33,7 @@
             resources: [Array, Object],
             template: String,
             templateContent: Object,
+            verticalTextOrientation: String,
             theme: String,
             width: [String, Number],
             autoCreate: {
@@ -38,7 +41,7 @@
                 type: Boolean
             }
         },
-        emits: ["columnAttrClicked","columnCollapsed","columnExpanded","itemAttrClicked","itemMoved"],
+        emits: ["columnAttrClicked","columnCollapsed","columnExpanded","columnSelected","columnUnselected","itemAttrClicked","itemCreated","itemMoved","itemReceived","itemSelected"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxKanban" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -62,8 +65,14 @@
             function addItem(newItem) {
                 JQXLite(componentSelector).jqxKanban('addItem', newItem);  
             }
+            function collapseColumn(dataField) {
+                return JQXLite(componentSelector).jqxKanban('collapseColumn', dataField);  
+            }
             function destroy() {
                 JQXLite(componentSelector).jqxKanban('destroy');  
+            }
+            function expandColumn(dataField) {
+                return JQXLite(componentSelector).jqxKanban('expandColumn', dataField);  
             }
             function getColumn(dataField) {
                 return JQXLite(componentSelector).jqxKanban('getColumn', dataField);  
@@ -74,11 +83,27 @@
             function getItems() {
                 return JQXLite(componentSelector).jqxKanban('getItems');  
             }
+            function getSelectedColumn() {
+                return JQXLite(componentSelector).jqxKanban('getSelectedColumn');  
+            }
+            function getSelectedItem() {
+                return JQXLite(componentSelector).jqxKanban('getSelectedItem');  
+            }
             function removeItem(itemId) {
                 JQXLite(componentSelector).jqxKanban('removeItem', itemId);  
             }
+            function selectItem(itemId) {
+                JQXLite(componentSelector).jqxKanban('selectItem', itemId);  
+            }
             function updateItem(itemId, newContent) {
                 JQXLite(componentSelector).jqxKanban('updateItem', itemId, newContent);  
+            }
+            function _animationDelay (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxKanban('animationDelay', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxKanban('animationDelay');
+                }
             }
             function _columnRenderer (arg) {
                 if (arg !== undefined) {
@@ -113,6 +138,13 @@
                     JQXLite(componentSelector).jqxKanban('headerWidth', arg)
                 } else {
                     return JQXLite(componentSelector).jqxKanban('headerWidth');
+                }
+            }
+            function _handle (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxKanban('handle', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxKanban('handle');
                 }
             }
             function _height (arg) {
@@ -171,6 +203,13 @@
                     return JQXLite(componentSelector).jqxKanban('templateContent');
                 }
             }
+            function _verticalTextOrientation (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxKanban('verticalTextOrientation', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxKanban('verticalTextOrientation');
+                }
+            }
             function _theme (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxKanban('theme', arg)
@@ -195,7 +234,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['columnRenderer','columns','connectWith','headerHeight','headerWidth','height','itemRenderer','ready','rtl','source','resources','template','templateContent','theme','width'];
+                const widgetProps = ['animationDelay','columnRenderer','columns','connectWith','headerHeight','headerWidth','handle','height','itemRenderer','ready','rtl','source','resources','template','templateContent','verticalTextOrientation','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -207,6 +246,12 @@
                 return options;
             }
             const options = {
+                 get animationDelay() {
+                     return _animationDelay();
+                 },
+                 set animationDelay(newValue) {
+                     _animationDelay(newValue);
+                 },
                  get columnRenderer() {
                      return _columnRenderer();
                  },
@@ -236,6 +281,12 @@
                  },
                  set headerWidth(newValue) {
                      _headerWidth(newValue);
+                 },
+                 get handle() {
+                     return _handle();
+                 },
+                 set handle(newValue) {
+                     _handle(newValue);
                  },
                  get height() {
                      return _height();
@@ -285,6 +336,12 @@
                  set templateContent(newValue) {
                      _templateContent(newValue);
                  },
+                 get verticalTextOrientation() {
+                     return _verticalTextOrientation();
+                 },
+                 set verticalTextOrientation(newValue) {
+                     _verticalTextOrientation(newValue);
+                 },
                  get theme() {
                      return _theme();
                  },
@@ -304,8 +361,13 @@
                 JQXLite(componentSelector).on('columnAttrClicked', function (event) { that.emit('columnAttrClicked', event); });
                 JQXLite(componentSelector).on('columnCollapsed', function (event) { that.emit('columnCollapsed', event); });
                 JQXLite(componentSelector).on('columnExpanded', function (event) { that.emit('columnExpanded', event); });
+                JQXLite(componentSelector).on('columnSelected', function (event) { that.emit('columnSelected', event); });
+                JQXLite(componentSelector).on('columnUnselected', function (event) { that.emit('columnUnselected', event); });
                 JQXLite(componentSelector).on('itemAttrClicked', function (event) { that.emit('itemAttrClicked', event); });
+                JQXLite(componentSelector).on('itemCreated', function (event) { that.emit('itemCreated', event); });
                 JQXLite(componentSelector).on('itemMoved', function (event) { that.emit('itemMoved', event); });
+                JQXLite(componentSelector).on('itemReceived', function (event) { that.emit('itemReceived', event); });
+                JQXLite(componentSelector).on('itemSelected', function (event) { that.emit('itemSelected', event); });
             }
 
 			onMounted(() => {
@@ -344,7 +406,7 @@
 				element.off();
 				try { element.jqxKanban('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addItem, destroy, getColumn, getColumnItems, getItems, removeItem, updateItem, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addItem, collapseColumn, destroy, expandColumn, getColumn, getColumnItems, getItems, getSelectedColumn, getSelectedItem, removeItem, selectItem, updateItem, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

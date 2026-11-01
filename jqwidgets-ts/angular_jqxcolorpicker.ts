@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,7 +25,13 @@ export class jqxColorPickerComponent implements OnChanges
 {
    @Input('color') attrColor: string;
    @Input('colorMode') attrColorMode: string;
+   @Input('colorBarString') attrColorBarString: string;
+   @Input('colorMapString') attrColorMapString: string;
    @Input('disabled') attrDisabled: boolean;
+   @Input('hexString') attrHexString: string;
+   @Input('redString') attrRedString: string;
+   @Input('greenString') attrGreenString: string;
+   @Input('blueString') attrBlueString: string;
    @Input('showTransparent') attrShowTransparent: boolean;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
@@ -33,7 +39,7 @@ export class jqxColorPickerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['color','colorMode','disabled','height','showTransparent','theme','width'];
+   properties: string[] = ['color','colorMode','colorBarString','colorMapString','disabled','hexString','redString','greenString','blueString','height','showTransparent','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxColorPicker;
@@ -171,11 +177,59 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
+   colorBarString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('colorBarString', arg);
+      } else {
+          return this.host.jqxColorPicker('colorBarString');
+      }
+   }
+
+   colorMapString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('colorMapString', arg);
+      } else {
+          return this.host.jqxColorPicker('colorMapString');
+      }
+   }
+
    disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxColorPicker('disabled', arg);
       } else {
           return this.host.jqxColorPicker('disabled');
+      }
+   }
+
+   hexString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('hexString', arg);
+      } else {
+          return this.host.jqxColorPicker('hexString');
+      }
+   }
+
+   redString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('redString', arg);
+      } else {
+          return this.host.jqxColorPicker('redString');
+      }
+   }
+
+   greenString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('greenString', arg);
+      } else {
+          return this.host.jqxColorPicker('greenString');
+      }
+   }
+
+   blueString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxColorPicker('blueString', arg);
+      } else {
+          return this.host.jqxColorPicker('blueString');
       }
    }
 
@@ -220,6 +274,14 @@ export class jqxColorPickerComponent implements OnChanges
    setColor(color: object | string): void {
       this.host.jqxColorPicker('setColor', color);
    }
+
+   val(value?: any): any {
+      if (value !== undefined) {
+         return this.host.jqxColorPicker('val', value);
+      } else {
+         return this.host.jqxColorPicker('val');
+      }
+   };
 
 
    // jqxColorPickerComponent events

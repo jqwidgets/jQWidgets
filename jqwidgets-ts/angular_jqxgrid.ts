@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,6 +23,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('altrows') attrAltrows: boolean;
    @Input('altstart') attrAltstart: number;
    @Input('altstep') attrAltstep: number;
+   @Input('autoselectfirstrow') attrAutoselectfirstrow: boolean;
    @Input('autoshowloadelement') attrAutoshowloadelement: boolean;
    @Input('autoshowfiltericon') attrAutoshowfiltericon: boolean;
    @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: boolean;
@@ -40,6 +41,10 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('commandcolumn') attrCommandcolumn: boolean;
    @Input('commandcolumnrenderer') attrCommandcolumnrenderer: (row: number, columnfield: string, active: any) => string;
    @Input('clipboard') attrClipboard: boolean;
+   @Input('clipboardbegin') attrClipboardbegin: (action: string, text?: string) => boolean | void;
+   @Input('clipboardend') attrClipboardend: (action: string) => void;
+   @Input('copytoclipboardwithheaders') attrCopytoclipboardwithheaders: boolean;
+   @Input('copytoclipboardhiddencolumns') attrCopytoclipboardhiddencolumns: boolean;
    @Input('closeablegroups') attrCloseablegroups: boolean;
    @Input('columnsmenuwidth') attrColumnsmenuwidth: number;
    @Input('columnmenuopening') attrColumnmenuopening: (menu: jqwidgets.GridColumnmenuopening['menu'], datafield: jqwidgets.GridColumnmenuopening['datafield'], height: jqwidgets.GridColumnmenuopening['height']) => boolean | void;
@@ -85,6 +90,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('showfilterbar') attrShowfilterbar: boolean;
    @Input('filterbarmode') attrFilterbarmode: string;
    @Input('selectionmode') attrSelectionmode: string;
+   @Input('multipleselectionbegins') attrMultipleselectionbegins: (event?: any) => boolean | void;
    @Input('updatefilterconditions') attrUpdatefilterconditions: (type: string, defaultconditions: any) => any;
    @Input('updatefilterpanel') attrUpdatefilterpanel: (filtertypedropdown1: any, filtertypedropdown2: any, filteroperatordropdown: any, filterinputfield1: any, filterinputfield2: any, filterbutton: any, clearbutton: any, columnfilter: any, filtertype: any, filterconditions: any) => any;
    @Input('theme') attrTheme: string;
@@ -103,7 +109,9 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('autosavestate') attrAutosavestate: boolean;
    @Input('autoloadstate') attrAutoloadstate: boolean;
    @Input('columns') attrColumns: jqwidgets.GridColumn[];
+   @Input('autogeneratecolumns') attrAutogeneratecolumns: boolean;
    @Input('enableSanitize') attrEnableSanitize: boolean;
+   @Input('enableSanitizeAll') attrEnableSanitizeAll: boolean;
    @Input('cardview') attrCardview: boolean;
    @Input('cardviewcolumns') attrCardviewcolumns: any;
    @Input('cardheight') attrCardheight: number;
@@ -134,6 +142,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: number;
    @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: number;
    @Input('initrowdetails') attrInitrowdetails: (index: number, parentElement: any, gridElement: any, datarecord: any) => void;
+   @Input('layoutrowdetails') attrLayoutrowdetails: (index?: number, detailsElement?: any, gridElement?: any, datarecord?: any) => void;
+   @Input('enablerowdetailsindent') attrEnablerowdetailsindent: boolean;
    @Input('disablerowdetails') attrDisablerowdetails: (index: number) => boolean;
    @Input('keyboardnavigation') attrKeyboardnavigation: boolean;
    @Input('localization') attrLocalization: jqwidgets.GridLocalizationobject;
@@ -150,6 +160,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('renderstatusbar') attrRenderstatusbar: (statusbar: jqwidgets.GridRenderstatusbar['statusbar']) => void;
    @Input('rendertoolbar') attrRendertoolbar: (toolbar: jqwidgets.GridRendertoolbar['toolbar']) => void;
    @Input('rendergridrows') attrRendergridrows: (params: any) => any;
+   @Input('rendergroups') attrRendergroups: (params: any) => any;
    @Input('sortable') attrSortable: boolean;
    @Input('sortmode') attrSortmode: string;
    @Input('sortmodekey') attrSortmodekey: string;
@@ -166,7 +177,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoselectfirstrow','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','clipboardbegin','clipboardend','copytoclipboardwithheaders','copytoclipboardhiddencolumns','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','multipleselectionbegins','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','autogeneratecolumns','enableSanitize','enableSanitizeAll','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','filternlpinput','aiKey','aiUrl','aiProvider','aiModel','aiProxyUrl','aiHeaders','aiSendRequest','aiMaxRows','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','layoutrowdetails','enablerowdetailsindent','disablerowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','rendergroups','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -374,6 +385,19 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('altstep', arg);
       } else {
           return this.host.jqxGrid('altstep');
+      }
+   }
+
+   autoselectfirstrow(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('autoselectfirstrow', arg);
+      } else {
+          return this.host.jqxGrid('autoselectfirstrow');
       }
    }
 
@@ -595,6 +619,58 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('clipboard', arg);
       } else {
           return this.host.jqxGrid('clipboard');
+      }
+   }
+
+   clipboardbegin(arg?: (action: string, text?: string) => boolean | void): (action: string, text?: string) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('clipboardbegin', arg);
+      } else {
+          return this.host.jqxGrid('clipboardbegin');
+      }
+   }
+
+   clipboardend(arg?: (action: string) => void): (action: string) => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('clipboardend', arg);
+      } else {
+          return this.host.jqxGrid('clipboardend');
+      }
+   }
+
+   copytoclipboardwithheaders(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('copytoclipboardwithheaders', arg);
+      } else {
+          return this.host.jqxGrid('copytoclipboardwithheaders');
+      }
+   }
+
+   copytoclipboardhiddencolumns(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('copytoclipboardhiddencolumns', arg);
+      } else {
+          return this.host.jqxGrid('copytoclipboardhiddencolumns');
       }
    }
 
@@ -1183,6 +1259,19 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
+   multipleselectionbegins(arg?: (event?: any) => boolean | void): (event?: any) => boolean | void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('multipleselectionbegins', arg);
+      } else {
+          return this.host.jqxGrid('multipleselectionbegins');
+      }
+   }
+
    updatefilterconditions(arg?: (type: string, defaultconditions: any) => any): (type: string, defaultconditions: any) => any {
 
       if (this.autoCreate && !this.host) {
@@ -1443,6 +1532,19 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
+   autogeneratecolumns(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('autogeneratecolumns', arg);
+      } else {
+          return this.host.jqxGrid('autogeneratecolumns');
+      }
+   }
+
    enableSanitize(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -1453,6 +1555,19 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('enableSanitize', arg);
       } else {
           return this.host.jqxGrid('enableSanitize');
+      }
+   }
+
+   enableSanitizeAll(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('enableSanitizeAll', arg);
+      } else {
+          return this.host.jqxGrid('enableSanitizeAll');
       }
    }
 
@@ -1846,6 +1961,32 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
+   layoutrowdetails(arg?: (index?: number, detailsElement?: any, gridElement?: any, datarecord?: any) => void): (index?: number, detailsElement?: any, gridElement?: any, datarecord?: any) => void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('layoutrowdetails', arg);
+      } else {
+          return this.host.jqxGrid('layoutrowdetails');
+      }
+   }
+
+   enablerowdetailsindent(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('enablerowdetailsindent', arg);
+      } else {
+          return this.host.jqxGrid('enablerowdetailsindent');
+      }
+   }
+
    disablerowdetails(arg?: (index: number) => boolean): (index: number) => boolean {
 
       if (this.autoCreate && !this.host) {
@@ -2051,6 +2192,19 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('rendergridrows', arg);
       } else {
           return this.host.jqxGrid('rendergridrows');
+      }
+   }
+
+   rendergroups(arg?: (params: any) => any): (params: any) => any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('rendergroups', arg);
+      } else {
+          return this.host.jqxGrid('rendergroups');
       }
    }
 
@@ -2325,6 +2479,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('ensurerowvisible', rowBoundIndex);
    }
 
+   ensurecellvisible(rowBoundIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('ensurecellvisible', rowBoundIndex, dataField);
+   }
+
    focus(): void {
 
       if (this.autoCreate && !this.host) {
@@ -2404,6 +2567,24 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       return this.host.jqxGrid('getrowboundindex', rowDisplayIndex);
+   }
+
+   getrowheight(rowBoundIndex: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('getrowheight', rowBoundIndex);
+   }
+
+   getrowvisibleindex(rowBoundIndex: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('getrowvisibleindex', rowBoundIndex);
    }
 
    getrows(): Array<any> {
@@ -2487,6 +2668,24 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('hiderowdetails', rowBoundIndex);
    }
 
+   hiderow(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('hiderow', rowBoundIndex);
+   }
+
+   isrowhiddenat(rowBoundIndex: number): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('isrowhiddenat', rowBoundIndex);
+   }
+
    iscolumnvisible(dataField: string): boolean {
 
       if (this.autoCreate && !this.host) {
@@ -2559,6 +2758,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('scrolloffset', top, left);
    }
 
+   scrollto(left: number, top: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('scrollto', left, top);
+   }
+
    scrollposition(): jqwidgets.GridScrollPosition {
 
       if (this.autoCreate && !this.host) {
@@ -2584,6 +2792,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       this.host.jqxGrid('showrowdetails', rowBoundIndex);
+   }
+
+   showrow(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('showrow', rowBoundIndex);
    }
 
    setcolumnindex(dataField: string, index: number): void {
@@ -2647,6 +2864,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       return this.host.jqxGrid('getsortcolumn');
+   }
+
+   getsortcolumns(): Array<{ dataField: string, ascending: boolean }> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('getsortcolumns');
    }
 
    removesort(): void {
@@ -2737,6 +2963,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       return this.host.jqxGrid('getgroup', groupIndex);
+   }
+
+   isgroupexpanded(groupIndex: number): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      return this.host.jqxGrid('isgroupexpanded', groupIndex);
    }
 
    insertgroup(groupIndex: number, dataField: string): void {
@@ -3018,6 +3253,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.jqxGrid('setcellvaluebyid', rowID, dataField, value);
    }
 
+   setrowheight(rowBoundIndex: number, height: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('setrowheight', rowBoundIndex, height);
+   }
+
    showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void {
 
       if (this.autoCreate && !this.host) {
@@ -3233,6 +3477,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Output() onColumnresized = new EventEmitter();
    @Output() onColumnreordered = new EventEmitter();
    @Output() onColumnclick = new EventEmitter();
+   @Output() onColumnchooserokclick = new EventEmitter();
+   @Output() onColumnchoosercancelclick = new EventEmitter();
    @Output() onCellclick = new EventEmitter();
    @Output() onCelldoubleclick = new EventEmitter();
    @Output() onCellselect = new EventEmitter();
@@ -3245,6 +3491,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Output() onGroupexpand = new EventEmitter();
    @Output() onGroupcollapse = new EventEmitter();
    @Output() onPagechanged = new EventEmitter();
+   @Output() onPagechanging = new EventEmitter();
    @Output() onPagesizechanged = new EventEmitter();
    @Output() onRowclick = new EventEmitter();
    @Output() onRowdoubleclick = new EventEmitter();
@@ -3261,6 +3508,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.on('columnresized', (eventData: any) => { this.onColumnresized.emit(eventData); });
       this.host.on('columnreordered', (eventData: any) => { this.onColumnreordered.emit(eventData); });
       this.host.on('columnclick', (eventData: any) => { this.onColumnclick.emit(eventData); });
+      this.host.on('columnchooserokclick', (eventData: any) => { this.onColumnchooserokclick.emit(eventData); });
+      this.host.on('columnchoosercancelclick', (eventData: any) => { this.onColumnchoosercancelclick.emit(eventData); });
       this.host.on('cellclick', (eventData: any) => { this.onCellclick.emit(eventData); });
       this.host.on('celldoubleclick', (eventData: any) => { this.onCelldoubleclick.emit(eventData); });
       this.host.on('cellselect', (eventData: any) => { this.onCellselect.emit(eventData); });
@@ -3273,6 +3522,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.host.on('groupexpand', (eventData: any) => { this.onGroupexpand.emit(eventData); });
       this.host.on('groupcollapse', (eventData: any) => { this.onGroupcollapse.emit(eventData); });
       this.host.on('pagechanged', (eventData: any) => { this.onPagechanged.emit(eventData); });
+      this.host.on('pagechanging', (eventData: any) => { this.onPagechanging.emit(eventData); });
       this.host.on('pagesizechanged', (eventData: any) => { this.onPagesizechanged.emit(eventData); });
       this.host.on('rowclick', (eventData: any) => { this.onRowclick.emit(eventData); });
       this.host.on('rowdoubleclick', (eventData: any) => { this.onRowdoubleclick.emit(eventData); });

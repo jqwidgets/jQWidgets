@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxdatetimeinput",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxdatetimeinput.umd.js",
   "module": "react_jqxdatetimeinput.esm.js",
   "typings": "react_jqxdatetimeinput.d.ts",

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,6 +29,7 @@ export class jqxRangeSelectorComponent implements OnChanges
    @Input('labelsOnTicks') attrLabelsOnTicks: boolean;
    @Input('markersFormat') attrMarkersFormat: string;
    @Input('markersFormatFunction') attrMarkersFormatFunction: (value: jqwidgets.RangeSelectorMarkersFormatFunction['value'], position: jqwidgets.RangeSelectorMarkersFormatFunction['position']) => string;
+   @Input('markersPosition') attrMarkersPosition: string;
    @Input('majorTicksInterval') attrMajorTicksInterval: any;
    @Input('minorTicksInterval') attrMinorTicksInterval: any;
    @Input('max') attrMax: any;
@@ -39,6 +40,8 @@ export class jqxRangeSelectorComponent implements OnChanges
    @Input('resizable') attrResizable: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('showGroupLabels') attrShowGroupLabels: boolean;
+   @Input('showLabels') attrShowLabels: boolean;
+   @Input('showMajorTicks') attrShowMajorTicks: boolean;
    @Input('showMinorTicks') attrShowMinorTicks: boolean;
    @Input('snapToTicks') attrSnapToTicks: boolean;
    @Input('showMarkers') attrShowMarkers: boolean;
@@ -48,7 +51,7 @@ export class jqxRangeSelectorComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMarkers','theme','width'];
+   properties: string[] = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','markersPosition','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showLabels','showMajorTicks','showMinorTicks','snapToTicks','showMarkers','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRangeSelector;
@@ -239,6 +242,14 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
+   markersPosition(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('markersPosition', arg);
+      } else {
+          return this.host.jqxRangeSelector('markersPosition');
+      }
+   }
+
    majorTicksInterval(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('majorTicksInterval', arg);
@@ -319,6 +330,22 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
+   showLabels(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('showLabels', arg);
+      } else {
+          return this.host.jqxRangeSelector('showLabels');
+      }
+   }
+
+   showMajorTicks(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('showMajorTicks', arg);
+      } else {
+          return this.host.jqxRangeSelector('showMajorTicks');
+      }
+   }
+
    showMinorTicks(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('showMinorTicks', arg);
@@ -380,6 +407,14 @@ export class jqxRangeSelectorComponent implements OnChanges
    setRange(from: any, to: any): void {
       this.host.jqxRangeSelector('setRange', from, to);
    }
+
+   val(value?: any): any {
+      if (value !== undefined) {
+         return this.host.jqxRangeSelector('val', value);
+      } else {
+         return this.host.jqxRangeSelector('val');
+      }
+   };
 
 
    // jqxRangeSelectorComponent events

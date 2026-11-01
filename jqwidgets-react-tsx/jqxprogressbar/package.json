@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxprogressbar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxprogressbar.umd.js",
   "module": "react_jqxprogressbar.esm.js",
   "typings": "react_jqxprogressbar.d.ts",

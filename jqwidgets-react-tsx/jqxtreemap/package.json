@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxtreemap",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxtreemap.umd.js",
   "module": "react_jqxtreemap.esm.js",
   "typings": "react_jqxtreemap.d.ts",

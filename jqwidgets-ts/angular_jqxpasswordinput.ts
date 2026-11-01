@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,8 +34,10 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxPasswordInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('disabled') attrDisabled: boolean;
+   @Input('hint') attrHint: boolean;
    @Input('localization') attrLocalization: jqwidgets.PasswordInputLocalization;
    @Input('maxLength') attrMaxLength: number | string;
+   @Input('minLength') attrMinLength: number | string;
    @Input('placeHolder') attrPlaceHolder: number | string;
    @Input('passwordStrength') attrPasswordStrength: (password:jqwidgets.PasswordInputPasswordStrength['password'], characters:jqwidgets.PasswordInputPasswordStrength['characters'], defaultStrength:jqwidgets.PasswordInputPasswordStrength['defaultStrength']) => string;
    @Input('rtl') attrRtl: boolean;
@@ -45,12 +47,13 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
    @Input('strengthTypeRenderer') attrStrengthTypeRenderer: (password:jqwidgets.PasswordInputStrengthTypeRenderer['password'], characters:jqwidgets.PasswordInputStrengthTypeRenderer['characters'], defaultStrength:jqwidgets.PasswordInputStrengthTypeRenderer['defaultStrength']) => string;
    @Input('showPasswordIcon') attrShowPasswordIcon: boolean;
    @Input('theme') attrTheme: string;
+   @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','localization','maxLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','width'];
+   properties: string[] = ['disabled','height','hint','localization','maxLength','minLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPasswordInput;
@@ -227,6 +230,14 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxPasswordInput('hint', arg);
+      } else {
+          return this.host.jqxPasswordInput('hint');
+      }
+   }
+
    localization(arg?: jqwidgets.PasswordInputLocalization): jqwidgets.PasswordInputLocalization {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('localization', arg);
@@ -240,6 +251,14 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxPasswordInput('maxLength', arg);
       } else {
           return this.host.jqxPasswordInput('maxLength');
+      }
+   }
+
+   minLength(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxPasswordInput('minLength', arg);
+      } else {
+          return this.host.jqxPasswordInput('minLength');
       }
    }
 
@@ -312,6 +331,14 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxPasswordInput('theme', arg);
       } else {
           return this.host.jqxPasswordInput('theme');
+      }
+   }
+
+   value(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxPasswordInput('value', arg);
+      } else {
+          return this.host.jqxPasswordInput('value');
       }
    }
 

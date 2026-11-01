@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxgrid",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxgrid.umd.js",
   "module": "react_jqxgrid.esm.js",
   "typings": "react_jqxgrid.d.ts",

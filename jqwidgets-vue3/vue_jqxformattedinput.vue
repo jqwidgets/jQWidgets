@@ -31,6 +31,10 @@
             },
             dropDownWidth: Number,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             min: [Number, String],
             max: [Number, String],
             placeHolder: String,
@@ -156,6 +160,13 @@
                     return JQXLite(componentSelector).jqxFormattedInput('height');
                 }
             }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxFormattedInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxFormattedInput('hint');
+                }
+            }
             function _min (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxFormattedInput('min', arg)
@@ -265,7 +276,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','decimalNotation','dropDown','dropDownWidth','height','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
+                const widgetProps = ['disabled','decimalNotation','dropDown','dropDownWidth','height','hint','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -306,6 +317,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get min() {
                      return _min();

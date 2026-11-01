@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,6 +29,8 @@ export class jqxScrollBarComponent implements OnChanges
    @Input('step') attrStep: number;
    @Input('showButtons') attrShowButtons: boolean;
    @Input('thumbMinSize') attrThumbMinSize: number;
+   @Input('thumbSize') attrThumbSize: number;
+   @Input('thumbStep') attrThumbStep: number | string;
    @Input('theme') attrTheme: string;
    @Input('vertical') attrVertical: boolean;
    @Input('value') attrValue: number;
@@ -37,7 +39,7 @@ export class jqxScrollBarComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','theme','vertical','value','width'];
+   properties: string[] = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','thumbSize','thumbStep','theme','vertical','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScrollBar;
@@ -236,6 +238,22 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
+   thumbSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxScrollBar('thumbSize', arg);
+      } else {
+          return this.host.jqxScrollBar('thumbSize');
+      }
+   }
+
+   thumbStep(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxScrollBar('thumbStep', arg);
+      } else {
+          return this.host.jqxScrollBar('thumbStep');
+      }
+   }
+
    theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScrollBar('theme', arg);
@@ -282,12 +300,22 @@ export class jqxScrollBarComponent implements OnChanges
       this.host.jqxScrollBar('setPosition', index);
    }
 
+   val(value?: number): any {
+      if (value !== undefined) {
+         return this.host.jqxScrollBar('val', value);
+      } else {
+         return this.host.jqxScrollBar('val');
+      }
+   };
+
 
    // jqxScrollBarComponent events
    @Output() onValueChanged = new EventEmitter();
+   @Output() onComplete = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
+      this.host.on('complete', (eventData: any) => { this.onComplete.emit(eventData); });
    }
 
 } //jqxScrollBarComponent

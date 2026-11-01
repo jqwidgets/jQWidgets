@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxnavigationbar",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxnavigationbar.umd.js",
   "module": "react_jqxnavigationbar.esm.js",
   "typings": "react_jqxnavigationbar.d.ts",

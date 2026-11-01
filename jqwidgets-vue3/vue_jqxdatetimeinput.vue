@@ -26,6 +26,7 @@
                 default: true,
                 type: Boolean
             },
+            buttonSize: Number,
             clearString: String,
             culture: String,
             closeDelay: Number,
@@ -33,8 +34,13 @@
                 default: true,
                 type: Boolean
             },
+            columnHeaderHeight: Number,
             dropDownHorizontalAlignment: String,
             dropDownVerticalAlignment: String,
+            dayNameFormat: String,
+            dropDownContainer: String,
+            dropDownHeight: [String, Number],
+            dropDownWidth: [String, Number],
             disabled: {
                 default: false,
                 type: Boolean
@@ -47,10 +53,22 @@
                 default: false,
                 type: Boolean
             },
+            enableHover: {
+                default: true,
+                type: Boolean
+            },
+            enableViews: {
+                default: true,
+                type: Boolean
+            },
             editMode: String,
             firstDayOfWeek: Number,
             formatString: String,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             min: Date,
             max: Date,
             openDelay: Number,
@@ -64,13 +82,16 @@
                 default: false,
                 type: Boolean
             },
+            restrictedDates: Array,
+            rowHeaderWidth: Number,
             showFooter: {
                 default: false,
                 type: Boolean
             },
             selectionMode: String,
+            selectableDays: Array,
             showWeekNumbers: {
-                default: true,
+                default: false,
                 type: Boolean
             },
             showTimeButton: {
@@ -88,8 +109,12 @@
             theme: String,
             template: String,
             textAlign: String,
+            timeRange: Object,
+            titleFormat: Array,
+            titleHeight: Number,
             todayString: String,
             value: [Date, null],
+            views: Array,
             width: [Number, String],
             yearCutoff: Number,
             autoCreate: {
@@ -121,6 +146,9 @@
             function close() {
                 JQXLite(componentSelector).jqxDateTimeInput('close');  
             }
+            function clear() {
+                JQXLite(componentSelector).jqxDateTimeInput('clear');  
+            }
             function destroy() {
                 JQXLite(componentSelector).jqxDateTimeInput('destroy');  
             }
@@ -142,6 +170,9 @@
             function getMinDate() {
                 return JQXLite(componentSelector).jqxDateTimeInput('getMinDate');  
             }
+            function isOpened() {
+                return JQXLite(componentSelector).jqxDateTimeInput('isOpened');  
+            }
             function open() {
                 JQXLite(componentSelector).jqxDateTimeInput('open');  
             }
@@ -156,6 +187,9 @@
             }
             function setDate(date) {
                 JQXLite(componentSelector).jqxDateTimeInput('setDate', date);  
+            }
+            function today() {
+                JQXLite(componentSelector).jqxDateTimeInput('today');  
             }
             function val(value, value2) {
                 if (value !== undefined) {
@@ -183,6 +217,13 @@
                     JQXLite(componentSelector).jqxDateTimeInput('allowKeyboardDelete', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('allowKeyboardDelete');
+                }
+            }
+            function _buttonSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('buttonSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('buttonSize');
                 }
             }
             function _clearString (arg) {
@@ -213,6 +254,13 @@
                     return JQXLite(componentSelector).jqxDateTimeInput('closeCalendarAfterSelection');
                 }
             }
+            function _columnHeaderHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('columnHeaderHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('columnHeaderHeight');
+                }
+            }
             function _dropDownHorizontalAlignment (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDateTimeInput('dropDownHorizontalAlignment', arg)
@@ -225,6 +273,34 @@
                     JQXLite(componentSelector).jqxDateTimeInput('dropDownVerticalAlignment', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('dropDownVerticalAlignment');
+                }
+            }
+            function _dayNameFormat (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('dayNameFormat', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('dayNameFormat');
+                }
+            }
+            function _dropDownContainer (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('dropDownContainer', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('dropDownContainer');
+                }
+            }
+            function _dropDownHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('dropDownHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('dropDownHeight');
+                }
+            }
+            function _dropDownWidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('dropDownWidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('dropDownWidth');
                 }
             }
             function _disabled (arg) {
@@ -246,6 +322,20 @@
                     JQXLite(componentSelector).jqxDateTimeInput('enableAbsoluteSelection', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('enableAbsoluteSelection');
+                }
+            }
+            function _enableHover (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('enableHover', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('enableHover');
+                }
+            }
+            function _enableViews (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('enableViews', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('enableViews');
                 }
             }
             function _editMode (arg) {
@@ -274,6 +364,13 @@
                     JQXLite(componentSelector).jqxDateTimeInput('height', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('height');
+                }
+            }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('hint');
                 }
             }
             function _min (arg) {
@@ -325,6 +422,20 @@
                     return JQXLite(componentSelector).jqxDateTimeInput('readonly');
                 }
             }
+            function _restrictedDates (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('restrictedDates', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('restrictedDates');
+                }
+            }
+            function _rowHeaderWidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('rowHeaderWidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('rowHeaderWidth');
+                }
+            }
             function _showFooter (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDateTimeInput('showFooter', arg)
@@ -337,6 +448,13 @@
                     JQXLite(componentSelector).jqxDateTimeInput('selectionMode', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('selectionMode');
+                }
+            }
+            function _selectableDays (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('selectableDays', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('selectableDays');
                 }
             }
             function _showWeekNumbers (arg) {
@@ -388,6 +506,27 @@
                     return JQXLite(componentSelector).jqxDateTimeInput('textAlign');
                 }
             }
+            function _timeRange (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('timeRange', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('timeRange');
+                }
+            }
+            function _titleFormat (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('titleFormat', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('titleFormat');
+                }
+            }
+            function _titleHeight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('titleHeight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('titleHeight');
+                }
+            }
             function _todayString (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxDateTimeInput('todayString', arg)
@@ -400,6 +539,13 @@
                     JQXLite(componentSelector).jqxDateTimeInput('value', arg)
                 } else {
                     return JQXLite(componentSelector).jqxDateTimeInput('value');
+                }
+            }
+            function _views (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxDateTimeInput('views', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxDateTimeInput('views');
                 }
             }
             function _width (arg) {
@@ -427,7 +573,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
+                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','buttonSize','clearString','culture','closeDelay','closeCalendarAfterSelection','columnHeaderHeight','dropDownHorizontalAlignment','dropDownVerticalAlignment','dayNameFormat','dropDownContainer','dropDownHeight','dropDownWidth','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','enableHover','enableViews','editMode','firstDayOfWeek','formatString','height','hint','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','restrictedDates','rowHeaderWidth','showFooter','selectionMode','selectableDays','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','timeRange','titleFormat','titleHeight','todayString','value','views','width','yearCutoff'];
                 const componentProps = props;
                 let options = {};
 
@@ -457,6 +603,12 @@
                  set allowKeyboardDelete(newValue) {
                      _allowKeyboardDelete(newValue);
                  },
+                 get buttonSize() {
+                     return _buttonSize();
+                 },
+                 set buttonSize(newValue) {
+                     _buttonSize(newValue);
+                 },
                  get clearString() {
                      return _clearString();
                  },
@@ -481,6 +633,12 @@
                  set closeCalendarAfterSelection(newValue) {
                      _closeCalendarAfterSelection(newValue);
                  },
+                 get columnHeaderHeight() {
+                     return _columnHeaderHeight();
+                 },
+                 set columnHeaderHeight(newValue) {
+                     _columnHeaderHeight(newValue);
+                 },
                  get dropDownHorizontalAlignment() {
                      return _dropDownHorizontalAlignment();
                  },
@@ -492,6 +650,30 @@
                  },
                  set dropDownVerticalAlignment(newValue) {
                      _dropDownVerticalAlignment(newValue);
+                 },
+                 get dayNameFormat() {
+                     return _dayNameFormat();
+                 },
+                 set dayNameFormat(newValue) {
+                     _dayNameFormat(newValue);
+                 },
+                 get dropDownContainer() {
+                     return _dropDownContainer();
+                 },
+                 set dropDownContainer(newValue) {
+                     _dropDownContainer(newValue);
+                 },
+                 get dropDownHeight() {
+                     return _dropDownHeight();
+                 },
+                 set dropDownHeight(newValue) {
+                     _dropDownHeight(newValue);
+                 },
+                 get dropDownWidth() {
+                     return _dropDownWidth();
+                 },
+                 set dropDownWidth(newValue) {
+                     _dropDownWidth(newValue);
                  },
                  get disabled() {
                      return _disabled();
@@ -510,6 +692,18 @@
                  },
                  set enableAbsoluteSelection(newValue) {
                      _enableAbsoluteSelection(newValue);
+                 },
+                 get enableHover() {
+                     return _enableHover();
+                 },
+                 set enableHover(newValue) {
+                     _enableHover(newValue);
+                 },
+                 get enableViews() {
+                     return _enableViews();
+                 },
+                 set enableViews(newValue) {
+                     _enableViews(newValue);
                  },
                  get editMode() {
                      return _editMode();
@@ -534,6 +728,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get min() {
                      return _min();
@@ -577,6 +777,18 @@
                  set readonly(newValue) {
                      _readonly(newValue);
                  },
+                 get restrictedDates() {
+                     return _restrictedDates();
+                 },
+                 set restrictedDates(newValue) {
+                     _restrictedDates(newValue);
+                 },
+                 get rowHeaderWidth() {
+                     return _rowHeaderWidth();
+                 },
+                 set rowHeaderWidth(newValue) {
+                     _rowHeaderWidth(newValue);
+                 },
                  get showFooter() {
                      return _showFooter();
                  },
@@ -588,6 +800,12 @@
                  },
                  set selectionMode(newValue) {
                      _selectionMode(newValue);
+                 },
+                 get selectableDays() {
+                     return _selectableDays();
+                 },
+                 set selectableDays(newValue) {
+                     _selectableDays(newValue);
                  },
                  get showWeekNumbers() {
                      return _showWeekNumbers();
@@ -631,6 +849,24 @@
                  set textAlign(newValue) {
                      _textAlign(newValue);
                  },
+                 get timeRange() {
+                     return _timeRange();
+                 },
+                 set timeRange(newValue) {
+                     _timeRange(newValue);
+                 },
+                 get titleFormat() {
+                     return _titleFormat();
+                 },
+                 set titleFormat(newValue) {
+                     _titleFormat(newValue);
+                 },
+                 get titleHeight() {
+                     return _titleHeight();
+                 },
+                 set titleHeight(newValue) {
+                     _titleHeight(newValue);
+                 },
                  get todayString() {
                      return _todayString();
                  },
@@ -642,6 +878,12 @@
                  },
                  set value(newValue) {
                      _value(newValue);
+                 },
+                 get views() {
+                     return _views();
+                 },
+                 set views(newValue) {
+                     _views(newValue);
                  },
                  get width() {
                      return _width();
@@ -721,7 +963,7 @@
 				element.off();
 				try { element.jqxDateTimeInput('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, close, destroy, focus, getRange, getText, getDate, getMaxDate, getMinDate, open, setRange, setMinDate, setMaxDate, setDate, val, twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, close, clear, destroy, focus, getRange, getText, getDate, getMaxDate, getMinDate, isOpened, open, setRange, setMinDate, setMaxDate, setDate, today, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

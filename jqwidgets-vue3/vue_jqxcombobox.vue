@@ -18,6 +18,7 @@
         props: {
             modelValue: null,
             animationType: String,
+            arrowSize: Number,
             autoComplete: {
                 default: false,
                 type: Boolean
@@ -48,6 +49,8 @@
             dropDownVerticalAlignment: String,
             dropDownHeight: Number,
             dropDownWidth: Number,
+            dropDownContainer: String,
+            emptyString: String,
             enableHover: {
                 default: true,
                 type: Boolean
@@ -60,8 +63,21 @@
                 default: false,
                 type: Boolean
             },
+            equalItemsWidth: {
+                default: true,
+                type: Boolean
+            },
+            groupMember: String,
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             itemHeight: Number,
+            keyboardSelection: {
+                default: true,
+                type: Boolean
+            },
             multiSelect: {
                 default: false,
                 type: Boolean
@@ -75,6 +91,7 @@
                 type: Boolean
             },
             remoteAutoCompleteDelay: Number,
+            ready: Function,
             renderer: Function,
             renderSelectedItem: Function,
             rtl: {
@@ -82,6 +99,7 @@
                 type: Boolean
             },
             selectedIndex: Number,
+            selectionMode: String,
             showArrow: {
                 default: true,
                 type: Boolean
@@ -92,10 +110,12 @@
             },
             searchMode: String,
             search: Function,
+            searchMember: String,
             source: [Array, Object],
             scrollBarSize: Number,
             template: String,
             theme: String,
+            touchMode: null,
             validateSelection: Function,
             valueMember: String,
             width: [Number, String],
@@ -104,7 +124,7 @@
                 type: Boolean
             }
         },
-        emits: ["update:modelValue","bindingComplete","checkChange","close","change","open","select","unselect"],
+        emits: ["update:modelValue","bindingComplete","checkChange","close","change","open","select","unselect","itemAdd","itemRemove","itemUpdate"],
         setup(props, context) {
 			const __hasJQXLite__ = typeof JQXLite !== 'undefined';
 			const id = "jqxComboBox" + (__hasJQXLite__ ? JQXLite.generateID() : 'SSR' + (++__ssrIdCounter__));
@@ -164,6 +184,9 @@
             function ensureVisible(index) {
                 JQXLite(componentSelector).jqxComboBox('ensureVisible', index);  
             }
+            function findItems(text) {
+                return JQXLite(componentSelector).jqxComboBox('findItems', text);  
+            }
             function focus() {
                 JQXLite(componentSelector).jqxComboBox('focus');  
             }
@@ -221,6 +244,9 @@
             function selectItem(item) {
                 JQXLite(componentSelector).jqxComboBox('selectItem', item);  
             }
+            function setContent(content) {
+                JQXLite(componentSelector).jqxComboBox('setContent', content);  
+            }
             function searchString() {
                 return JQXLite(componentSelector).jqxComboBox('searchString');  
             }
@@ -257,6 +283,13 @@
                     JQXLite(componentSelector).jqxComboBox('animationType', arg)
                 } else {
                     return JQXLite(componentSelector).jqxComboBox('animationType');
+                }
+            }
+            function _arrowSize (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('arrowSize', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('arrowSize');
                 }
             }
             function _autoComplete (arg) {
@@ -343,6 +376,20 @@
                     return JQXLite(componentSelector).jqxComboBox('dropDownWidth');
                 }
             }
+            function _dropDownContainer (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('dropDownContainer', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('dropDownContainer');
+                }
+            }
+            function _emptyString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('emptyString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('emptyString');
+                }
+            }
             function _enableHover (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComboBox('enableHover', arg)
@@ -364,6 +411,20 @@
                     return JQXLite(componentSelector).jqxComboBox('enableBrowserBoundsDetection');
                 }
             }
+            function _equalItemsWidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('equalItemsWidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('equalItemsWidth');
+                }
+            }
+            function _groupMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('groupMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('groupMember');
+                }
+            }
             function _height (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComboBox('height', arg)
@@ -371,11 +432,25 @@
                     return JQXLite(componentSelector).jqxComboBox('height');
                 }
             }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('hint');
+                }
+            }
             function _itemHeight (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComboBox('itemHeight', arg)
                 } else {
                     return JQXLite(componentSelector).jqxComboBox('itemHeight');
+                }
+            }
+            function _keyboardSelection (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('keyboardSelection', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('keyboardSelection');
                 }
             }
             function _multiSelect (arg) {
@@ -427,6 +502,13 @@
                     return JQXLite(componentSelector).jqxComboBox('remoteAutoCompleteDelay');
                 }
             }
+            function _ready (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('ready', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('ready');
+                }
+            }
             function _renderer (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComboBox('renderer', arg)
@@ -453,6 +535,13 @@
                     JQXLite(componentSelector).jqxComboBox('selectedIndex', arg)
                 } else {
                     return JQXLite(componentSelector).jqxComboBox('selectedIndex');
+                }
+            }
+            function _selectionMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('selectionMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('selectionMode');
                 }
             }
             function _showArrow (arg) {
@@ -483,6 +572,13 @@
                     return JQXLite(componentSelector).jqxComboBox('search');
                 }
             }
+            function _searchMember (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('searchMember', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('searchMember');
+                }
+            }
             function _source (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComboBox('source', arg)
@@ -509,6 +605,13 @@
                     JQXLite(componentSelector).jqxComboBox('theme', arg)
                 } else {
                     return JQXLite(componentSelector).jqxComboBox('theme');
+                }
+            }
+            function _touchMode (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComboBox('touchMode', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComboBox('touchMode');
                 }
             }
             function _validateSelection (arg) {
@@ -543,7 +646,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','autoComplete','autoOpen','autoItemsHeight','autoDropDownHeight','closeDelay','checkboxes','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableHover','enableSelection','enableBrowserBoundsDetection','height','itemHeight','multiSelect','minLength','openDelay','popupZIndex','placeHolder','remoteAutoComplete','remoteAutoCompleteDelay','renderer','renderSelectedItem','rtl','selectedIndex','showArrow','showCloseButtons','searchMode','search','source','scrollBarSize','template','theme','validateSelection','valueMember','width'];
+                const widgetProps = ['animationType','arrowSize','autoComplete','autoOpen','autoItemsHeight','autoDropDownHeight','closeDelay','checkboxes','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','dropDownContainer','emptyString','enableHover','enableSelection','enableBrowserBoundsDetection','equalItemsWidth','groupMember','height','hint','itemHeight','keyboardSelection','multiSelect','minLength','openDelay','popupZIndex','placeHolder','remoteAutoComplete','remoteAutoCompleteDelay','ready','renderer','renderSelectedItem','rtl','selectedIndex','selectionMode','showArrow','showCloseButtons','searchMode','search','searchMember','source','scrollBarSize','template','theme','touchMode','validateSelection','valueMember','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -560,6 +663,12 @@
                  },
                  set animationType(newValue) {
                      _animationType(newValue);
+                 },
+                 get arrowSize() {
+                     return _arrowSize();
+                 },
+                 set arrowSize(newValue) {
+                     _arrowSize(newValue);
                  },
                  get autoComplete() {
                      return _autoComplete();
@@ -633,6 +742,18 @@
                  set dropDownWidth(newValue) {
                      _dropDownWidth(newValue);
                  },
+                 get dropDownContainer() {
+                     return _dropDownContainer();
+                 },
+                 set dropDownContainer(newValue) {
+                     _dropDownContainer(newValue);
+                 },
+                 get emptyString() {
+                     return _emptyString();
+                 },
+                 set emptyString(newValue) {
+                     _emptyString(newValue);
+                 },
                  get enableHover() {
                      return _enableHover();
                  },
@@ -651,17 +772,41 @@
                  set enableBrowserBoundsDetection(newValue) {
                      _enableBrowserBoundsDetection(newValue);
                  },
+                 get equalItemsWidth() {
+                     return _equalItemsWidth();
+                 },
+                 set equalItemsWidth(newValue) {
+                     _equalItemsWidth(newValue);
+                 },
+                 get groupMember() {
+                     return _groupMember();
+                 },
+                 set groupMember(newValue) {
+                     _groupMember(newValue);
+                 },
                  get height() {
                      return _height();
                  },
                  set height(newValue) {
                      _height(newValue);
                  },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
+                 },
                  get itemHeight() {
                      return _itemHeight();
                  },
                  set itemHeight(newValue) {
                      _itemHeight(newValue);
+                 },
+                 get keyboardSelection() {
+                     return _keyboardSelection();
+                 },
+                 set keyboardSelection(newValue) {
+                     _keyboardSelection(newValue);
                  },
                  get multiSelect() {
                      return _multiSelect();
@@ -705,6 +850,12 @@
                  set remoteAutoCompleteDelay(newValue) {
                      _remoteAutoCompleteDelay(newValue);
                  },
+                 get ready() {
+                     return _ready();
+                 },
+                 set ready(newValue) {
+                     _ready(newValue);
+                 },
                  get renderer() {
                      return _renderer();
                  },
@@ -728,6 +879,12 @@
                  },
                  set selectedIndex(newValue) {
                      _selectedIndex(newValue);
+                 },
+                 get selectionMode() {
+                     return _selectionMode();
+                 },
+                 set selectionMode(newValue) {
+                     _selectionMode(newValue);
                  },
                  get showArrow() {
                      return _showArrow();
@@ -753,6 +910,12 @@
                  set search(newValue) {
                      _search(newValue);
                  },
+                 get searchMember() {
+                     return _searchMember();
+                 },
+                 set searchMember(newValue) {
+                     _searchMember(newValue);
+                 },
                  get source() {
                      return _source();
                  },
@@ -776,6 +939,12 @@
                  },
                  set theme(newValue) {
                      _theme(newValue);
+                 },
+                 get touchMode() {
+                     return _touchMode();
+                 },
+                 set touchMode(newValue) {
+                     _touchMode(newValue);
                  },
                  get validateSelection() {
                      return _validateSelection();
@@ -820,6 +989,9 @@
                 JQXLite(componentSelector).on('open', function (event) { that.emit('open', event); });
                 JQXLite(componentSelector).on('select', function (event) { that.emit('select', event); });
                 JQXLite(componentSelector).on('unselect', function (event) { that.emit('unselect', event); });
+                JQXLite(componentSelector).on('itemAdd', function (event) { that.emit('itemAdd', event); });
+                JQXLite(componentSelector).on('itemRemove', function (event) { that.emit('itemRemove', event); });
+                JQXLite(componentSelector).on('itemUpdate', function (event) { that.emit('itemUpdate', event); });
             }
 
 			onMounted(() => {
@@ -863,7 +1035,7 @@
 				element.off();
 				try { element.jqxComboBox('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, addItem, clearSelection, clear, close, checkIndex, checkItem, checkAll, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, focus, getItem, getItemByValue, getVisibleItems, getItems, getCheckedItems, getSelectedItem, getSelectedItems, getSelectedIndex, insertAt, isOpened, indeterminateIndex, indeterminateItem, loadFromSelect, open, removeItem, removeAt, selectIndex, selectItem, searchString, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, addItem, clearSelection, clear, close, checkIndex, checkItem, checkAll, destroy, disableItem, disableAt, enableItem, enableAt, ensureVisible, findItems, focus, getItem, getItemByValue, getVisibleItems, getItems, getCheckedItems, getSelectedItem, getSelectedItems, getSelectedIndex, insertAt, isOpened, indeterminateIndex, indeterminateItem, loadFromSelect, open, removeItem, removeAt, selectIndex, selectItem, setContent, searchString, updateItem, updateAt, unselectIndex, unselectItem, uncheckIndex, uncheckItem, uncheckAll, val, twoWayBinding, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

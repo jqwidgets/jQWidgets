@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxbargauge",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxbargauge.umd.js",
   "module": "react_jqxbargauge.esm.js",
   "typings": "react_jqxbargauge.d.ts",

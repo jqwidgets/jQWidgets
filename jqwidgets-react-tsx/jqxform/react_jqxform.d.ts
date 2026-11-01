@@ -9,13 +9,17 @@ declare class JqxForm extends React.PureComponent<IFormProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IFormProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -79,12 +83,18 @@ interface IFormOptions {
     padding?: IFormPadding;
     backgroundColor?: string;
     borderColor?: string;
+    width?: string | number;
+    height?: string | number;
     theme?: string;
     value?: any;
     template?: IFormTemplateItem[];
     enableSmartPaste?: boolean;
     aiKey?: string;
     aiUrl?: string;
+    aiModel?: string;
+    pasteProgress?: string;
+    pasteSuccess?: string;
+    pasteError?: string;
 }
 export interface IFormProps extends IFormOptions, React.AriaAttributes {
     className?: string;

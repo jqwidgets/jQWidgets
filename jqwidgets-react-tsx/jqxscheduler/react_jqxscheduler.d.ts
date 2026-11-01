@@ -9,33 +9,39 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: ISchedulerProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
     setOptions(options: ISchedulerProps): void;
     getOptions(option: string): any;
     aiConfig(config?: object): object;
-    aiCommand(text: string, callback?: Function): Object;
-    aiScheduleAppointment(text: string, callback?: Function): Object;
-    aiFindSlot(text: string, callback?: Function): Object;
+    aiCommand(text: string, callback?: Function): Promise<any>;
+    aiScheduleAppointment(text: string, callback?: Function): Promise<any>;
+    aiFindSlot(text: string, callback?: Function): Promise<any>;
     aiBookSlot(slot: object, details?: object): Object;
-    aiResolveConflicts(options?: object, callback?: Function): Object;
+    aiResolveConflicts(options?: object, callback?: Function): Promise<any>;
     aiApplyResolution(proposals: Array<{
         id: number | string;
         proposedFrom: Date | string;
         proposedTo: Date | string;
     }>): Number;
-    aiAsk(text: string, callback?: Function): Object;
-    aiSummarize(callback?: Function): Object;
-    aiExplainAppointment(key: string, callback?: Function): Object;
-    aiClassifyAppointments(options: object, callback?: Function): Object;
+    aiAsk(text: string, callback?: Function): Promise<any>;
+    aiSummarize(callback?: Function): Promise<any>;
+    aiExplainAppointment(key: string, callback?: Function): Promise<any>;
+    aiClassifyAppointments(options: object, callback?: Function): Promise<any>;
     addAppointment(item: ISchedulerAppointmentDataFields): boolean;
     beginAppointmentsUpdate(): void;
     clearAppointmentsSelection(): void;
@@ -48,6 +54,7 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps> {
     ensureAppointmentVisible(id: string): void;
     ensureVisible(item: any, resourceId?: string): void;
     findAvailableSlots(options?: object): any[];
+    filterAppointments(text: string): void;
     importData(data: string, options?: object): object;
     exportData(format: string): any;
     focus(): void;
@@ -56,6 +63,9 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps> {
     getAppointments(): ISchedulerAppointmentDataFields[];
     getDataAppointments(): any[];
     hideAppointmentsByResource(resourcesId: string): void;
+    navigateTo(date: any): void;
+    navigateForward(): void;
+    navigateBackward(): void;
     openMenu(left: number, top: number): void;
     openDialog(left: number, top: number): void;
     selectAppointment(appointmentId: string): void;
@@ -66,6 +76,7 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps> {
     scrollHeight(): number;
     scrollLeft(left: number): void;
     scrollTop(top: number): void;
+    scrollOffset(top?: number, left?: number): any;
     scrollToTime(time: any): boolean;
     undo(): boolean;
     redo(): boolean;
@@ -189,6 +200,13 @@ export interface ISchedulerGetSelection {
     ResourceId?: any;
 }
 interface ISchedulerOptions {
+    aiProvider?: string;
+    aiKey?: string;
+    aiModel?: string;
+    aiProxyUrl?: string;
+    aiHeaders?: object;
+    aiSendRequest?: (request: any, owner: any) => any;
+    aiMaxRows?: number;
     allowOverlap?: boolean;
     blockedTimes?: any[];
     maxDuration?: number;
@@ -220,6 +238,7 @@ interface ISchedulerOptions {
     legendPosition?: string;
     legendHeight?: number;
     localization?: any;
+    maxAppointmentsPerDay?: number;
     min?: any;
     max?: any;
     ready?: () => void;
@@ -232,6 +251,7 @@ interface ISchedulerOptions {
     showToolbar?: boolean;
     showLegend?: boolean;
     showCurrent?: boolean;
+    showAllDayRow?: boolean;
     showCurrentAppointment?: boolean;
     scrollBarSize?: number;
     source?: any;
@@ -241,6 +261,7 @@ interface ISchedulerOptions {
     touchAppointmentsMinHeight?: number;
     touchScrollBarSize?: number;
     timeZone?: string;
+    timeRulerWidth?: number;
     touchDayNameFormat?: 'shortest' | 'firstTwoLetters' | 'firstLetter' | 'abbr' | 'full';
     toolBarRangeFormat?: string;
     toolBarRangeFormatAbbr?: string;
@@ -256,6 +277,7 @@ export interface ISchedulerProps extends ISchedulerOptions, React.AriaAttributes
     style?: React.CSSProperties;
     children?: React.ReactNode;
     onScheduleraiResult?: (e?: any) => void;
+    onScheduleraiError?: (e?: any) => void;
     onAppointmentChange?: (e?: any) => void;
     onAppointmentClick?: (e?: any) => void;
     onAppointmentDoubleClick?: (e?: any) => void;

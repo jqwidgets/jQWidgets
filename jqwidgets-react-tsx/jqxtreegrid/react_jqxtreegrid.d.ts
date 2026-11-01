@@ -9,13 +9,19 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: ITreeGridProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -141,6 +147,8 @@ interface ITreeGridOptions {
     disabled?: boolean;
     editable?: boolean;
     editSettings?: ITreeGridEditSettings;
+    beginEdit?: (key: any, column?: any) => boolean | void;
+    endEdit?: (key: any) => boolean | void;
     exportSettings?: ITreeGridExportSettings;
     enableHover?: boolean;
     enableBrowserSelection?: boolean;
@@ -148,6 +156,7 @@ interface ITreeGridOptions {
     filterHeight?: number;
     filterMode?: 'default' | 'simple' | 'advanced';
     height?: number | string;
+    handleKeyboardNavigation?: (key: number) => boolean | void;
     hierarchicalCheckboxes?: boolean;
     icons?: any;
     incrementalSearch?: boolean;

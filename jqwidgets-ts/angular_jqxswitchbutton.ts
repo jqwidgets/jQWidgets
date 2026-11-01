@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,6 +31,8 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges 
 {
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('animationEnabled') attrAnimationEnabled: boolean;
    @Input('checked') attrChecked: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('orientation') attrOrientation: string;
@@ -38,13 +40,15 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    @Input('offLabel') attrOffLabel: string;
    @Input('theme') attrTheme: string;
    @Input('thumbSize') attrThumbSize: string;
+   @Input('switchRatio') attrSwitchRatio: string | number;
+   @Input('toggleMode') attrToggleMode: string;
    @Input('rtl') attrRtl: boolean;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','rtl','width'];
+   properties: string[] = ['animationDuration','animationEnabled','checked','disabled','height','orientation','onLabel','offLabel','theme','thumbSize','switchRatio','toggleMode','rtl','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSwitchButton;
@@ -192,6 +196,22 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxSwitchButtonComponent properties
+   animationDuration(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('animationDuration', arg);
+      } else {
+          return this.host.jqxSwitchButton('animationDuration');
+      }
+   }
+
+   animationEnabled(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('animationEnabled', arg);
+      } else {
+          return this.host.jqxSwitchButton('animationEnabled');
+      }
+   }
+
    checked(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('checked', arg);
@@ -253,6 +273,22 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
           this.host.jqxSwitchButton('thumbSize', arg);
       } else {
           return this.host.jqxSwitchButton('thumbSize');
+      }
+   }
+
+   switchRatio(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('switchRatio', arg);
+      } else {
+          return this.host.jqxSwitchButton('switchRatio');
+      }
+   }
+
+   toggleMode(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('toggleMode', arg);
+      } else {
+          return this.host.jqxSwitchButton('toggleMode');
       }
    }
 

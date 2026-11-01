@@ -21,6 +21,10 @@
                 type: Boolean
             },
             height: [Number, String],
+            hint: {
+                default: true,
+                type: Boolean
+            },
             placeHolder: String,
             roundedCorners: {
                 default: true,
@@ -35,6 +39,8 @@
                 type: Boolean
             },
             spinButtonsStep: Number,
+            incrementString: String,
+            decrementString: String,
             template: String,
             theme: String,
             value: String,
@@ -111,6 +117,13 @@
                     return JQXLite(componentSelector).jqxComplexInput('height');
                 }
             }
+            function _hint (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComplexInput('hint', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComplexInput('hint');
+                }
+            }
             function _placeHolder (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxComplexInput('placeHolder', arg)
@@ -144,6 +157,20 @@
                     JQXLite(componentSelector).jqxComplexInput('spinButtonsStep', arg)
                 } else {
                     return JQXLite(componentSelector).jqxComplexInput('spinButtonsStep');
+                }
+            }
+            function _incrementString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComplexInput('incrementString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComplexInput('incrementString');
+                }
+            }
+            function _decrementString (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxComplexInput('decrementString', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxComplexInput('decrementString');
                 }
             }
             function _template (arg) {
@@ -185,7 +212,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['decimalNotation','disabled','height','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','template','theme','value','width'];
+                const widgetProps = ['decimalNotation','disabled','height','hint','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','incrementString','decrementString','template','theme','value','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -214,6 +241,12 @@
                  },
                  set height(newValue) {
                      _height(newValue);
+                 },
+                 get hint() {
+                     return _hint();
+                 },
+                 set hint(newValue) {
+                     _hint(newValue);
                  },
                  get placeHolder() {
                      return _placeHolder();
@@ -244,6 +277,18 @@
                  },
                  set spinButtonsStep(newValue) {
                      _spinButtonsStep(newValue);
+                 },
+                 get incrementString() {
+                     return _incrementString();
+                 },
+                 set incrementString(newValue) {
+                     _incrementString(newValue);
+                 },
+                 get decrementString() {
+                     return _decrementString();
+                 },
+                 set decrementString(newValue) {
+                     _decrementString(newValue);
                  },
                  get template() {
                      return _template();

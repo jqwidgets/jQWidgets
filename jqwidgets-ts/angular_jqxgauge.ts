@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,11 +28,13 @@ export class jqxGaugeComponent implements OnChanges
    @Input('colorScheme') attrColorScheme: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('easing') attrEasing: string;
+   @Input('editableLabels') attrEditableLabels: boolean;
    @Input('endAngle') attrEndAngle: number | string;
    @Input('int64') attrInt64: boolean;
    @Input('labels') attrLabels: jqwidgets.GaugeLabels;
    @Input('min') attrMin: number;
    @Input('max') attrMax: number | string;
+   @Input('niceInterval') attrNiceInterval: boolean;
    @Input('pointer') attrPointer: jqwidgets.GaugePointer;
    @Input('radius') attrRadius: number | string;
    @Input('ranges') attrRanges: Array<jqwidgets.GaugeRanges>;
@@ -40,6 +42,7 @@ export class jqxGaugeComponent implements OnChanges
    @Input('showRanges') attrShowRanges: boolean;
    @Input('styles') attrStyles: jqwidgets.GaugeStyle;
    @Input('theme') attrTheme: string;
+   @Input('tickMode') attrTickMode: string;
    @Input('ticksMajor') attrTicksMajor: jqwidgets.GaugeTicks;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.GaugeTicks;
    @Input('ticksDistance') attrTicksDistance: string;
@@ -49,7 +52,7 @@ export class jqxGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','theme','ticksMajor','ticksMinor','ticksDistance','value','width'];
+   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','editableLabels','endAngle','height','int64','labels','min','max','niceInterval','pointer','radius','ranges','startAngle','showRanges','styles','theme','tickMode','ticksMajor','ticksMinor','ticksDistance','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGauge;
@@ -69,6 +72,11 @@ export class jqxGaugeComponent implements OnChanges
       if (!this.host) { return; }
 
       this.host.off();
+      try {
+         this.host.jqxGauge('destroy');
+      } catch (e) {
+         /* widget was already destroyed or never created */
+      }
    }; 
 
    ngOnChanges(changes: SimpleChanges) {
@@ -227,6 +235,14 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
+   editableLabels(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxGauge('editableLabels', arg);
+      } else {
+          return this.host.jqxGauge('editableLabels');
+      }
+   }
+
    endAngle(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('endAngle', arg);
@@ -272,6 +288,14 @@ export class jqxGaugeComponent implements OnChanges
           this.host.jqxGauge('max', arg);
       } else {
           return this.host.jqxGauge('max');
+      }
+   }
+
+   niceInterval(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxGauge('niceInterval', arg);
+      } else {
+          return this.host.jqxGauge('niceInterval');
       }
    }
 
@@ -331,6 +355,14 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
+   tickMode(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxGauge('tickMode', arg);
+      } else {
+          return this.host.jqxGauge('tickMode');
+      }
+   }
+
    ticksMajor(arg?: jqwidgets.GaugeTicks): jqwidgets.GaugeTicks {
       if (arg !== undefined) {
           this.host.jqxGauge('ticksMajor', arg);
@@ -373,6 +405,10 @@ export class jqxGaugeComponent implements OnChanges
 
 
    // jqxGaugeComponent functions
+   destroy(): void {
+      this.host.jqxGauge('destroy');
+   }
+
    disable(): void {
       this.host.jqxGauge('disable');
    }

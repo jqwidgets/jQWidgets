@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -26,18 +26,23 @@ export class jqxValidatorComponent implements OnChanges
    @Input('closeOnClick') attrCloseOnClick: boolean;
    @Input('focus') attrFocus: boolean;
    @Input('hintType') attrHintType: string;
+   @Input('hintPositionOffset') attrHintPositionOffset: number;
    @Input('onError') attrOnError: () => void;
    @Input('onSuccess') attrOnSuccess: () => void;
+   @Input('ownerElement') attrOwnerElement: any;
    @Input('position') attrPosition: string;
    @Input('rules') attrRules: Array<jqwidgets.ValidatorRule>;
    @Input('rtl') attrRtl: boolean;
+   @Input('scroll') attrScroll: boolean;
+   @Input('scrollDuration') attrScrollDuration: number;
+   @Input('scrollCallback') attrScrollCallback: () => void;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl','theme'];
+   properties: string[] = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','hintPositionOffset','onError','onSuccess','ownerElement','position','rules','rtl','scroll','scrollDuration','scrollCallback','theme'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxValidator;
@@ -207,6 +212,14 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
+   hintPositionOffset(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxValidator('hintPositionOffset', arg);
+      } else {
+          return this.host.jqxValidator('hintPositionOffset');
+      }
+   }
+
    onError(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxValidator('onError', arg);
@@ -220,6 +233,14 @@ export class jqxValidatorComponent implements OnChanges
           this.host.jqxValidator('onSuccess', arg);
       } else {
           return this.host.jqxValidator('onSuccess');
+      }
+   }
+
+   ownerElement(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxValidator('ownerElement', arg);
+      } else {
+          return this.host.jqxValidator('ownerElement');
       }
    }
 
@@ -244,6 +265,30 @@ export class jqxValidatorComponent implements OnChanges
           this.host.jqxValidator('rtl', arg);
       } else {
           return this.host.jqxValidator('rtl');
+      }
+   }
+
+   scroll(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxValidator('scroll', arg);
+      } else {
+          return this.host.jqxValidator('scroll');
+      }
+   }
+
+   scrollDuration(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxValidator('scrollDuration', arg);
+      } else {
+          return this.host.jqxValidator('scrollDuration');
+      }
+   }
+
+   scrollCallback(arg?: () => void): () => void {
+      if (arg !== undefined) {
+          this.host.jqxValidator('scrollCallback', arg);
+      } else {
+          return this.host.jqxValidator('scrollCallback');
       }
    }
 

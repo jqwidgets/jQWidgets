@@ -49,6 +49,9 @@
                 }
                 return resultToReturn;
             }
+            function destroy() {
+                JQXLite(componentSelector).jqxDockPanel('destroy');  
+            }
             function refresh() {
                 JQXLite(componentSelector).jqxDockPanel('refresh');  
             }
@@ -180,8 +183,9 @@
 				__host__ = null;
 				if (!element || element.length === 0) return;
 				element.off();
+				try { element.jqxDockPanel('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, refresh, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, refresh, setOptions, options, getOptions, createComponent};
         },
     }
 </script>

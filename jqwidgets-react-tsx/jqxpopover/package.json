@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-react/jqxpopover",
-  "version": "27.1.0",
+  "version": "27.2.0",
   "main": "react_jqxpopover.umd.js",
   "module": "react_jqxpopover.esm.js",
   "typings": "react_jqxpopover.d.ts",

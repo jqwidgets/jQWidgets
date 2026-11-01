@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,18 +39,27 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('animationType') attrAnimationType: string;
    @Input('allowNullDate') attrAllowNullDate: boolean;
    @Input('allowKeyboardDelete') attrAllowKeyboardDelete: boolean;
+   @Input('buttonSize') attrButtonSize: number;
    @Input('clearString') attrClearString: string;
    @Input('culture') attrCulture: string;
    @Input('closeDelay') attrCloseDelay: number;
    @Input('closeCalendarAfterSelection') attrCloseCalendarAfterSelection: boolean;
+   @Input('columnHeaderHeight') attrColumnHeaderHeight: number;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: string;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
+   @Input('dayNameFormat') attrDayNameFormat: string;
+   @Input('dropDownContainer') attrDropDownContainer: string;
+   @Input('dropDownHeight') attrDropDownHeight: string | number;
+   @Input('dropDownWidth') attrDropDownWidth: string | number;
    @Input('disabled') attrDisabled: boolean;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableViews') attrEnableViews: boolean;
    @Input('editMode') attrEditMode: string;
    @Input('firstDayOfWeek') attrFirstDayOfWeek: number;
    @Input('formatString') attrFormatString: string;
+   @Input('hint') attrHint: boolean;
    @Input('min') attrMin: Date;
    @Input('max') attrMax: Date;
    @Input('openDelay') attrOpenDelay: number;
@@ -58,8 +67,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('popupZIndex') attrPopupZIndex: number;
    @Input('rtl') attrRtl: boolean;
    @Input('readonly') attrReadonly: boolean;
+   @Input('restrictedDates') attrRestrictedDates: Array<Date>;
+   @Input('rowHeaderWidth') attrRowHeaderWidth: number;
    @Input('showFooter') attrShowFooter: boolean;
    @Input('selectionMode') attrSelectionMode: string;
+   @Input('selectableDays') attrSelectableDays: string[];
    @Input('showWeekNumbers') attrShowWeekNumbers: boolean;
    @Input('showTimeButton') attrShowTimeButton: boolean;
    @Input('showCalendarButton') attrShowCalendarButton: boolean;
@@ -67,15 +79,19 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
    @Input('textAlign') attrTextAlign: string;
+   @Input('timeRange') attrTimeRange: { min?: string, max?: string };
+   @Input('titleFormat') attrTitleFormat: string[];
+   @Input('titleHeight') attrTitleHeight: number;
    @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date | null;
+   @Input('views') attrViews: string[];
    @Input('yearCutoff') attrYearCutoff: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','buttonSize','clearString','culture','closeDelay','closeCalendarAfterSelection','columnHeaderHeight','dropDownHorizontalAlignment','dropDownVerticalAlignment','dayNameFormat','dropDownContainer','dropDownHeight','dropDownWidth','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','enableHover','enableViews','editMode','firstDayOfWeek','formatString','height','hint','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','restrictedDates','rowHeaderWidth','showFooter','selectionMode','selectableDays','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','timeRange','titleFormat','titleHeight','todayString','value','views','width','yearCutoff'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -266,6 +282,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   buttonSize(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('buttonSize', arg);
+      } else {
+          return this.host.jqxDateTimeInput('buttonSize');
+      }
+   }
+
    clearString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDateTimeInput('clearString', arg);
@@ -298,6 +322,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   columnHeaderHeight(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('columnHeaderHeight', arg);
+      } else {
+          return this.host.jqxDateTimeInput('columnHeaderHeight');
+      }
+   }
+
    dropDownHorizontalAlignment(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDateTimeInput('dropDownHorizontalAlignment', arg);
@@ -311,6 +343,38 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('dropDownVerticalAlignment', arg);
       } else {
           return this.host.jqxDateTimeInput('dropDownVerticalAlignment');
+      }
+   }
+
+   dayNameFormat(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('dayNameFormat', arg);
+      } else {
+          return this.host.jqxDateTimeInput('dayNameFormat');
+      }
+   }
+
+   dropDownContainer(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('dropDownContainer', arg);
+      } else {
+          return this.host.jqxDateTimeInput('dropDownContainer');
+      }
+   }
+
+   dropDownHeight(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('dropDownHeight', arg);
+      } else {
+          return this.host.jqxDateTimeInput('dropDownHeight');
+      }
+   }
+
+   dropDownWidth(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('dropDownWidth', arg);
+      } else {
+          return this.host.jqxDateTimeInput('dropDownWidth');
       }
    }
 
@@ -335,6 +399,22 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('enableAbsoluteSelection', arg);
       } else {
           return this.host.jqxDateTimeInput('enableAbsoluteSelection');
+      }
+   }
+
+   enableHover(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('enableHover', arg);
+      } else {
+          return this.host.jqxDateTimeInput('enableHover');
+      }
+   }
+
+   enableViews(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('enableViews', arg);
+      } else {
+          return this.host.jqxDateTimeInput('enableViews');
       }
    }
 
@@ -367,6 +447,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('height', arg);
       } else {
           return this.host.jqxDateTimeInput('height');
+      }
+   }
+
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('hint', arg);
+      } else {
+          return this.host.jqxDateTimeInput('hint');
       }
    }
 
@@ -426,6 +514,22 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   restrictedDates(arg?: Array<Date>): Array<Date> {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('restrictedDates', arg);
+      } else {
+          return this.host.jqxDateTimeInput('restrictedDates');
+      }
+   }
+
+   rowHeaderWidth(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('rowHeaderWidth', arg);
+      } else {
+          return this.host.jqxDateTimeInput('rowHeaderWidth');
+      }
+   }
+
    showFooter(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDateTimeInput('showFooter', arg);
@@ -439,6 +543,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('selectionMode', arg);
       } else {
           return this.host.jqxDateTimeInput('selectionMode');
+      }
+   }
+
+   selectableDays(arg?: string[]): string[] {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('selectableDays', arg);
+      } else {
+          return this.host.jqxDateTimeInput('selectableDays');
       }
    }
 
@@ -498,6 +610,30 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   timeRange(arg?: { min?: string, max?: string }): { min?: string, max?: string } {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('timeRange', arg);
+      } else {
+          return this.host.jqxDateTimeInput('timeRange');
+      }
+   }
+
+   titleFormat(arg?: string[]): string[] {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('titleFormat', arg);
+      } else {
+          return this.host.jqxDateTimeInput('titleFormat');
+      }
+   }
+
+   titleHeight(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('titleHeight', arg);
+      } else {
+          return this.host.jqxDateTimeInput('titleHeight');
+      }
+   }
+
    todayString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDateTimeInput('todayString', arg);
@@ -511,6 +647,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('value', arg);
       } else {
           return this.host.jqxDateTimeInput('value');
+      }
+   }
+
+   views(arg?: string[]): string[] {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('views', arg);
+      } else {
+          return this.host.jqxDateTimeInput('views');
       }
    }
 
@@ -534,6 +678,10 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    // jqxDateTimeInputComponent functions
    close(): void {
       this.host.jqxDateTimeInput('close');
+   }
+
+   clear(): void {
+      this.host.jqxDateTimeInput('clear');
    }
 
    destroy(): void {
@@ -564,6 +712,10 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       return this.host.jqxDateTimeInput('getMinDate');
    }
 
+   isOpened(): boolean {
+      return this.host.jqxDateTimeInput('isOpened');
+   }
+
    open(): void {
       this.host.jqxDateTimeInput('open');
    }
@@ -582,6 +734,10 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    setDate(date: any): void {
       this.host.jqxDateTimeInput('setDate', date);
+   }
+
+   today(): void {
+      this.host.jqxDateTimeInput('today');
    }
 
    val(value?: any, value2?: any): any {

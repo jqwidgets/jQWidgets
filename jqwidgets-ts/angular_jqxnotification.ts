@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -40,12 +40,13 @@ export class jqxNotificationComponent implements OnChanges
    @Input('showCloseButton') attrShowCloseButton: boolean;
    @Input('template') attrTemplate: 'info' | 'warning' | 'success' | 'error' | 'mail' | 'time' | null;
    @Input('theme') attrTheme: string;
+   @Input('zIndex') attrZIndex: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width'];
+   properties: string[] = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width','zIndex'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNotification;
@@ -337,6 +338,14 @@ export class jqxNotificationComponent implements OnChanges
           this.host.jqxNotification('width', arg);
       } else {
           return this.host.jqxNotification('width');
+      }
+   }
+
+   zIndex(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxNotification('zIndex', arg);
+      } else {
+          return this.host.jqxNotification('zIndex');
       }
    }
 

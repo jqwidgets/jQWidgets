@@ -19,6 +19,7 @@
                 default: false,
                 type: Boolean
             },
+            easing: String,
             expanded: {
                 default: true,
                 type: Boolean
@@ -131,6 +132,13 @@
                     return JQXLite(componentSelector).jqxExpander('disabled');
                 }
             }
+            function _easing (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxExpander('easing', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxExpander('easing');
+                }
+            }
             function _expanded (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxExpander('expanded', arg)
@@ -211,7 +219,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expanded','expandAnimationDuration','height','headerPosition','initContent','rtl','showArrow','theme','toggleMode','width'];
+                const widgetProps = ['animationType','arrowPosition','collapseAnimationDuration','disabled','easing','expanded','expandAnimationDuration','height','headerPosition','initContent','rtl','showArrow','theme','toggleMode','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -246,6 +254,12 @@
                  },
                  set disabled(newValue) {
                      _disabled(newValue);
+                 },
+                 get easing() {
+                     return _easing();
+                 },
+                 set easing(newValue) {
+                     _easing(newValue);
                  },
                  get expanded() {
                      return _expanded();

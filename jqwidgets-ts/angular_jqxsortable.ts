@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -38,6 +38,7 @@ export class jqxSortableComponent implements OnChanges
    @Input('handle') attrHandle: string | boolean;
    @Input('helper') attrHelper: ((originalEvent: any, content: any) => any) | 'original' | 'clone';
    @Input('items') attrItems: string;
+   @Input('maxItems') attrMaxItems: number;
    @Input('opacity') attrOpacity: number | boolean;
    @Input('placeholderShow') attrPlaceholderShow: string | boolean;
    @Input('revert') attrRevert: number | boolean;
@@ -52,7 +53,7 @@ export class jqxSortableComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
+   properties: string[] = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','maxItems','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','theme','tolerance','zIndex'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSortable;
@@ -315,6 +316,14 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
+   maxItems(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxSortable('maxItems', arg);
+      } else {
+          return this.host.jqxSortable('maxItems');
+      }
+   }
+
    opacity(arg?: number | boolean): number | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('opacity', arg);
@@ -389,8 +398,8 @@ export class jqxSortableComponent implements OnChanges
 
 
    // jqxSortableComponent functions
-   cancelMethod(): void {
-      this.host.jqxSortable('cancelMethod');
+   cancelSort(): void {
+      this.host.jqxSortable('cancelSort');
    }
 
    destroy(): void {
@@ -430,6 +439,7 @@ export class jqxSortableComponent implements OnChanges
    @Output() onOut = new EventEmitter();
    @Output() onOver = new EventEmitter();
    @Output() onReceive = new EventEmitter();
+   @Output() onRemoveItem = new EventEmitter();
    @Output() onRemove = new EventEmitter();
    @Output() onSort = new EventEmitter();
    @Output() onStart = new EventEmitter();
@@ -444,6 +454,7 @@ export class jqxSortableComponent implements OnChanges
       this.host.on('out', (eventData: any) => { this.onOut.emit(eventData); });
       this.host.on('over', (eventData: any) => { this.onOver.emit(eventData); });
       this.host.on('receive', (eventData: any) => { this.onReceive.emit(eventData); });
+      this.host.on('removeItem', (eventData: any) => { this.onRemoveItem.emit(eventData); });
       this.host.on('remove', (eventData: any) => { this.onRemove.emit(eventData); });
       this.host.on('sort', (eventData: any) => { this.onSort.emit(eventData); });
       this.host.on('start', (eventData: any) => { this.onStart.emit(eventData); });

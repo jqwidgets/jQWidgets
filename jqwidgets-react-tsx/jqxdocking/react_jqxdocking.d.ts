@@ -9,13 +9,17 @@ declare class JqxDocking extends React.PureComponent<IDockingProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
     constructor(props: IDockingProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -32,6 +36,7 @@ declare class JqxDocking extends React.PureComponent<IDockingProps> {
     expandWindow(windowId: string): void;
     enableWindowResize(windowId: string): void;
     focus(): void;
+    getWindowProperty(windowId: string, propertyName: string): object;
     hideAllCloseButtons(): void;
     hideAllCollapseButtons(): void;
     hideCollapseButton(windowId: string): void;
@@ -40,6 +45,7 @@ declare class JqxDocking extends React.PureComponent<IDockingProps> {
     move(windowId: string, panel: number, position: number): void;
     pinWindow(windowId: string): void;
     setWindowMode(windowId: string, mode: any): void;
+    setWindowProperty(windowId: string, propertyName: string, value: any): void;
     showCloseButton(windowId: string): void;
     showCollapseButton(windowId: string): void;
     setWindowPosition(windowId: string, top: any, left: number): void;

@@ -9,13 +9,19 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps> {
     private _eventHandlers;
     private _eventElement;
     private _teardownPending;
+    private _mounting;
     private _hostParent;
     private _hostNext;
     private _widgetPlace;
     private _hostChildren;
+    private _changedInARow;
+    private _warned;
+    private _readyHandler;
     constructor(props: IListBoxProps);
     componentDidMount(): void;
     componentDidUpdate(): void;
+    private _warnRebuiltProps;
+    private _onReady;
     componentWillUnmount(): void;
     private _target;
     render(): React.ReactNode;
@@ -38,6 +44,8 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps> {
     endUpdate(): void;
     focus(): void;
     getItems(): any[];
+    getVisibleItems(): any[];
+    findItems(text: string): any[];
     getSelectedItems(): any[];
     getCheckedItems(): any[];
     getItem(Index: number): any;
@@ -53,6 +61,7 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps> {
     removeAt(Index: number | string): void;
     renderWidget(): void;
     refresh(): void;
+    scrollTo(left: number, top: number): void;
     selectItem(Item: any): void;
     selectIndex(Index: number | string): void;
     updateItem(Item: any, Value: number | string): void;
@@ -99,28 +108,39 @@ export interface IListBoxRenderer {
 }
 interface IListBoxOptions {
     autoHeight?: boolean;
+    autoItemsHeight?: boolean;
     allowDrag?: boolean;
     allowDrop?: boolean;
     checkboxes?: boolean;
+    checkboxSize?: number;
     disabled?: boolean;
     displayMember?: number | string;
     dropAction?: 'default' | 'copy' | 'none';
     dragStart?: (item: IListBoxDragStart['item']) => boolean;
     dragEnd?: (dragItem: IListBoxDragEnd['dragItem'], dropItem: IListBoxDragEnd['dropItem']) => boolean;
+    emptyGroupText?: string;
+    emptyString?: string;
     enableHover?: boolean;
+    enableMouseWheel?: boolean;
     enableSelection?: boolean;
     equalItemsWidth?: boolean;
     filterable?: boolean;
     filterHeight?: number;
     filterDelay?: number | string;
     filterPlaceHolder?: number | string;
+    filterChange?: (value: string) => void;
+    focusable?: boolean;
+    groupMember?: string;
     height?: string | number;
     hasThreeStates?: boolean;
     itemHeight?: number;
     incrementalSearch?: boolean;
     incrementalSearchDelay?: number | string;
+    incrementalSearchKeyDownDelay?: number;
+    keyboardNavigation?: boolean;
     multiple?: boolean;
     multipleextended?: boolean;
+    ready?: () => void;
     renderer?: (index: IListBoxRenderer['index'], label: IListBoxRenderer['label'], value: IListBoxRenderer['value']) => string;
     rendered?: () => any;
     rtl?: boolean;
@@ -129,7 +149,9 @@ interface IListBoxOptions {
     source?: any[];
     scrollBarSize?: number;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
+    searchMember?: string;
     theme?: string;
+    touchMode?: boolean | string;
     valueMember?: number | string;
     width?: string | number;
 }
@@ -144,4 +166,7 @@ export interface IListBoxProps extends IListBoxOptions, React.AriaAttributes {
     onDragEnd?: (e?: any) => void;
     onSelect?: (e?: any) => void;
     onUnselect?: (e?: any) => void;
+    onItemAdd?: (e?: any) => void;
+    onItemRemove?: (e?: any) => void;
+    onItemUpdate?: (e?: any) => void;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v27.1.0 (2026-Oct)
+jQWidgets v27.2.0 (2026-Oct)
 Copyright (c) 2011-2026 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -35,11 +35,14 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 {
    @Input('decimalNotation') attrDecimalNotation: string;
    @Input('disabled') attrDisabled: boolean;
+   @Input('hint') attrHint: boolean;
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('roundedCorners') attrRoundedCorners: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('spinButtons') attrSpinButtons: boolean;
    @Input('spinButtonsStep') attrSpinButtonsStep: number;
+   @Input('incrementString') attrIncrementString: string;
+   @Input('decrementString') attrDecrementString: string;
    @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('value') attrValue: string;
@@ -48,7 +51,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['decimalNotation','disabled','height','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','template','theme','value','width'];
+   properties: string[] = ['decimalNotation','disabled','height','hint','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','incrementString','decrementString','template','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxComplexInput;
@@ -244,6 +247,14 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   hint(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxComplexInput('hint', arg);
+      } else {
+          return this.host.jqxComplexInput('hint');
+      }
+   }
+
    placeHolder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('placeHolder', arg);
@@ -281,6 +292,22 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxComplexInput('spinButtonsStep', arg);
       } else {
           return this.host.jqxComplexInput('spinButtonsStep');
+      }
+   }
+
+   incrementString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxComplexInput('incrementString', arg);
+      } else {
+          return this.host.jqxComplexInput('incrementString');
+      }
+   }
+
+   decrementString(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxComplexInput('decrementString', arg);
+      } else {
+          return this.host.jqxComplexInput('decrementString');
       }
    }
 

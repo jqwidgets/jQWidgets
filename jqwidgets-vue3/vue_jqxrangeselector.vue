@@ -28,6 +28,7 @@
             },
             markersFormat: String,
             markersFormatFunction: Function,
+            markersPosition: String,
             majorTicksInterval: [Number, String, Object],
             minorTicksInterval: [Number, String, Object],
             max: [Number, String, Date],
@@ -48,6 +49,14 @@
             },
             showGroupLabels: {
                 default: false,
+                type: Boolean
+            },
+            showLabels: {
+                default: true,
+                type: Boolean
+            },
+            showMajorTicks: {
+                default: true,
                 type: Boolean
             },
             showMinorTicks: {
@@ -105,6 +114,13 @@
             function setRange(from, to) {
                 JQXLite(componentSelector).jqxRangeSelector('setRange', from, to);  
             }
+            function val(value) {
+                if (value !== undefined) {
+                    JQXLite(componentSelector).jqxRangeSelector('val',  value)
+                } else {
+                    return JQXLite(componentSelector).jqxRangeSelector('val');
+                }
+            }
             function _disabled (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxRangeSelector('disabled', arg)
@@ -159,6 +175,13 @@
                     JQXLite(componentSelector).jqxRangeSelector('markersFormatFunction', arg)
                 } else {
                     return JQXLite(componentSelector).jqxRangeSelector('markersFormatFunction');
+                }
+            }
+            function _markersPosition (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxRangeSelector('markersPosition', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxRangeSelector('markersPosition');
                 }
             }
             function _majorTicksInterval (arg) {
@@ -231,6 +254,20 @@
                     return JQXLite(componentSelector).jqxRangeSelector('showGroupLabels');
                 }
             }
+            function _showLabels (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxRangeSelector('showLabels', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxRangeSelector('showLabels');
+                }
+            }
+            function _showMajorTicks (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxRangeSelector('showMajorTicks', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxRangeSelector('showMajorTicks');
+                }
+            }
             function _showMinorTicks (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxRangeSelector('showMinorTicks', arg)
@@ -276,7 +313,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMarkers','theme','width'];
+                const widgetProps = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','markersPosition','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showLabels','showMajorTicks','showMinorTicks','snapToTicks','showMarkers','theme','width'];
                 const componentProps = props;
                 let options = {};
 
@@ -335,6 +372,12 @@
                  },
                  set markersFormatFunction(newValue) {
                      _markersFormatFunction(newValue);
+                 },
+                 get markersPosition() {
+                     return _markersPosition();
+                 },
+                 set markersPosition(newValue) {
+                     _markersPosition(newValue);
                  },
                  get majorTicksInterval() {
                      return _majorTicksInterval();
@@ -395,6 +438,18 @@
                  },
                  set showGroupLabels(newValue) {
                      _showGroupLabels(newValue);
+                 },
+                 get showLabels() {
+                     return _showLabels();
+                 },
+                 set showLabels(newValue) {
+                     _showLabels(newValue);
+                 },
+                 get showMajorTicks() {
+                     return _showMajorTicks();
+                 },
+                 set showMajorTicks(newValue) {
+                     _showMajorTicks(newValue);
                  },
                  get showMinorTicks() {
                      return _showMinorTicks();
@@ -469,7 +524,7 @@
 				element.off();
 				try { element.jqxRangeSelector('destroy'); } catch (e) { /* already destroyed */ }
 			})
-			return {id, componentSelector, destroy, getRange, render, refresh, setRange, setOptions, options, getOptions, createComponent};
+			return {id, componentSelector, destroy, getRange, render, refresh, setRange, val, setOptions, options, getOptions, createComponent};
         },
     }
 </script>
